@@ -4,5 +4,12 @@
     <string name="app_name">undercover</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="textPeople">参与人数</string>
+    <string name="startGame">开始游戏</string>
+    <string name="cost">-</string>
+    <string name="add">+</string>
+    <string name="remamber">记住了</string>
+    <string name="one">1</string>
+    <string name="guesscontent">快去猜谁是卧底吧~</string>
 
 </resources>

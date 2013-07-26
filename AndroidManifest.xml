@@ -22,6 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="fanpai"></activity>
+        <activity android:name="guess"></activity>
     </application>
 
 </manifest>

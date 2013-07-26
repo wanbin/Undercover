@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="content">
+        <item >大学_中学</item>
+        <item >母鸡_公鸡</item>
+        <item >台灯_电灯</item>
+    </string-array>
+</resources>
