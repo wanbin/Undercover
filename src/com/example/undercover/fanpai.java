@@ -31,7 +31,7 @@ public class fanpai extends Activity {
 
 		Bundle bundle = this.getIntent().getExtras();
 		son = bundle.getString("son");
-		soncount = bundle.getInt("soncount");
+		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		for (int i = 0; i < content.length; i++) {
 			Log(content[i]);
