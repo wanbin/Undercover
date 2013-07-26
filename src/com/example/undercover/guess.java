@@ -47,7 +47,7 @@ public class guess extends Activity {
 						tt.setText("*");
 					}
 				});
-				newrow.addView(btn, 100, 50);
+				newrow.addView(btn, 120, 70);
 			}
 			contentTable.addView(newrow);
 		}
