@@ -9,14 +9,15 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingTop="50dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/txtPeopleTitle"
+                android:id="@+id/TextView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="15dp"
@@ -42,14 +43,60 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtPeopleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp"
+                android:text="@string/txtUndex"
+                android:textSize="@dimen/index" />
+
+            <Button
+                android:id="@+id/btnCostUnder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cost" />
+
+            <TextView
+                android:id="@+id/txtUnder"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/index" />
+
+            <Button
+                android:id="@+id/btnAddUnder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add" />
+        </LinearLayout>
         
              <Button
                  android:id="@+id/btnStart"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:layout_marginTop="30dp"
+                 android:layout_marginTop="10dp"
                  android:text="@string/startGame" />
 
+             <TextView
+                 android:id="@+id/textView1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/tip" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp" />
 
 </RelativeLayout>
