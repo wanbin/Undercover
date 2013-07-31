@@ -38,6 +38,7 @@ public class Setting extends Activity {
 		btnCost = (Button) findViewById(R.id.btnCost);
 		btnCostUnder = (Button) findViewById(R.id.btnCostUnder);
 		btnStart = (Button) findViewById(R.id.btnStart);
+		Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
@@ -104,6 +105,15 @@ public class Setting extends Activity {
 				goMain.setClass(Setting.this, fanpai.class);
 				startActivity(goMain);
 				finish();
+			}
+		});
+		
+		startChatRoom.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent goChat = new Intent();
+				goChat.setClass(Setting.this,ChatRoomActivity.class);
+				startActivity(goChat);
 			}
 		});
 

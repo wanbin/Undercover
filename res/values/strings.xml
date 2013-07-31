@@ -13,5 +13,7 @@
     <string name="guesscontent">快去猜谁是卧底吧~</string>
     <string name="txtUndex">卧底人数</string>
     <string name="tip">注：为保证游戏趣味性，对卧底最大比例进行了限制</string>
-
+    <string name="title_activity_chat_room">ChatRoomActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="chatroom">打开聊天室</string>
 </resources>
