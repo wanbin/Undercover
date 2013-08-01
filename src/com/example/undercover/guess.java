@@ -1,5 +1,8 @@
 package com.example.undercover;
 
+import com.example.util.MathUtil;
+import com.example.util.PunishProps;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,27 +15,37 @@ import android.widget.TextView;
 
 public class guess extends Activity {
 	private TableLayout contentTable;
+
+	// 卧底人数
 	private int soncount;
+	// 平民人数
 	private int fathercount;
+	// 卧底的词语
 	private String son;
+	// 0-n人数的词语数组
 	private String[] content;
 	private TextView txtTitle;
+	private Button restartBtn;
+	private boolean isOver;
+	private boolean flag;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guess);
+		isOver = false;
+		flag = false;
 		contentTable = (TableLayout) findViewById(R.id.contentTable);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-
+		restartBtn = new Button(this);
 		Bundle bundle = this.getIntent().getExtras();
 		son = bundle.getString("son");
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		int temindex = 0;
-		for (int i = 0; i < Math.ceil((float) content.length / 3); i++) {
+		for (int i = 0; i < Math.ceil((float) content.length / 5); i++) {
 			TableRow newrow = new TableRow(this);
-			for (int m = 0; m < 3; m++) {
+			for (int m = 0; m < 5; m++) {
 				temindex++;
 				if (temindex > content.length) {
 					break;
@@ -62,17 +75,20 @@ public class guess extends Activity {
 		} else {
 			fathercount--;
 		}
-
-		if (soncount <= 0) {
-			Log("任务完成");
-			txtTitle.setText("完成任务，卧底为" + son);
-			refash();
-		} else if (fathercount <= soncount) {
-			Log("卧底胜利");
-			txtTitle.setText("卧底胜利，卧底为" + son);
-			refash();
-		} else {
-			Log("还有" + soncount + "个");
+		if (!isOver) {
+			if (soncount <= 0) {
+				Log("任务完成");
+				txtTitle.setText("完成任务，卧底为" + son);
+				isOver = true;
+				refash();
+			} else if (fathercount <= soncount) {
+				Log("卧底胜利");
+				txtTitle.setText("卧底胜利，卧底为" + son);
+				isOver = true;
+				refash();
+			} else {
+				Log("还有" + soncount + "个");
+			}
 		}
 	}
 
@@ -81,18 +97,43 @@ public class guess extends Activity {
 	}
 
 	private void refash() {
-		Button btn = new Button(this);
-		btn.setText("重新开始");
-		btn.setOnClickListener(new Button.OnClickListener() {
+		// Button restartBtn = new Button(this);
+		restartBtn.setText("开始惩罚");
+		restartBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent goMain = new Intent();
-				goMain.setClass(guess.this, Setting.class);
-				startActivity(goMain);
-				finish();
+				flag = true;
+				getPunish();
+				// Intent goMain = new Intent();
+				// goMain.setClass(guess.this, Setting.class);
+				// startActivity(goMain);
+				// finish();
 			}
 		});
-		contentTable.addView(btn);
+		contentTable.addView(restartBtn);
+	}
+
+	/**
+	 * 获取惩罚内容数组
+	 * 
+	 * @return
+	 */
+	private void getPunish() {
+		if (flag) {
+			flag 			= false;
+			int[] intArr 	= MathUtil.getInstance().check(12, 6);
+			TextView text 	= null;
+			String temp 	= null;
+			for (int i = 0; i < 6; i++) {
+				text 		= new TextView(this);
+				temp 		= PunishProps.get("punish_" + i);
+				if (null == temp) {
+					temp 	= "请执行第一条";
+				}
+				text.setText(temp);
+				contentTable.addView(text);
+			}
+		}
 	}
 
 }
