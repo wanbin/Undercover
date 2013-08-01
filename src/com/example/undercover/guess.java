@@ -17,6 +17,7 @@ public class guess extends Activity {
 	private String son;
 	private String[] content;
 	private TextView txtTitle;
+	private int temindex = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +30,6 @@ public class guess extends Activity {
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
-		int temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 3); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 3; m++) {
@@ -66,10 +66,12 @@ public class guess extends Activity {
 		if (soncount <= 0) {
 			Log("任务完成");
 			txtTitle.setText("完成任务，卧底为" + son);
+			frozenBtn();
 			refash();
 		} else if (fathercount <= soncount) {
 			Log("卧底胜利");
 			txtTitle.setText("卧底胜利，卧底为" + son);
+			frozenBtn();
 			refash();
 		} else {
 			Log("还有" + soncount + "个");
@@ -93,6 +95,20 @@ public class guess extends Activity {
 			}
 		});
 		contentTable.addView(btn);
+	}
+	
+	private void frozenBtn()
+	{
+		for(int i = 1 ;i < temindex+1 ; i++)
+		{
+			Button btn = (Button)contentTable.findViewWithTag(i);
+			if(btn == null)
+			{
+			    continue ;	
+			}
+			
+			btn.setClickable(false);
+		}
 	}
 
 }
