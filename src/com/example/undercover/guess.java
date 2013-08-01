@@ -28,6 +28,7 @@ public class guess extends Activity {
 	private Button restartBtn;
 	private boolean isOver;
 	private boolean flag;
+	private int temindex = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -133,6 +134,20 @@ public class guess extends Activity {
 				text.setText(temp);
 				contentTable.addView(text);
 			}
+		}
+	}
+	
+	private void frozenBtn()
+	{
+		for(int i = 1 ;i < temindex+1 ; i++)
+		{
+			Button btn = (Button)contentTable.findViewWithTag(i);
+			if(btn == null)
+			{
+			    continue ;	
+			}
+			
+			btn.setClickable(false);
 		}
 	}
 
