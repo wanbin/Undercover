@@ -25,10 +25,10 @@ public class guess extends Activity {
 	// 0-n人数的词语数组
 	private String[] content;
 	private TextView txtTitle;
-	private Button restartBtn;
+	private Button punishBtn;
 	private boolean isOver;
 	private boolean flag;
-	private int temindex = 0;
+//	private int temindex = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,16 +37,16 @@ public class guess extends Activity {
 		flag = false;
 		contentTable = (TableLayout) findViewById(R.id.contentTable);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		restartBtn = new Button(this);
+		punishBtn = new Button(this);
 		Bundle bundle = this.getIntent().getExtras();
 		son = bundle.getString("son");
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		int temindex = 0;
-		for (int i = 0; i < Math.ceil((float) content.length / 5); i++) {
+		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
-			for (int m = 0; m < 5; m++) {
+			for (int m = 0; m < 4; m++) {
 				temindex++;
 				if (temindex > content.length) {
 					break;
@@ -98,20 +98,21 @@ public class guess extends Activity {
 	}
 
 	private void refash() {
-		// Button restartBtn = new Button(this);
-		restartBtn.setText("开始惩罚");
-		restartBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
+		System.out.println("--------------------------------------------");
+		//Button punishBtn = new Button(this);
+		punishBtn.setText("开始惩罚");
+		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				flag = true;
+				System.out.println("*********************************");
 				getPunish();
+				getRestartButton();
 				// Intent goMain = new Intent();
 				// goMain.setClass(guess.this, Setting.class);
 				// startActivity(goMain);
 				// finish();
 			}
 		});
-		contentTable.addView(restartBtn);
+		contentTable.addView(punishBtn);
 	}
 
 	/**
@@ -120,14 +121,14 @@ public class guess extends Activity {
 	 * @return
 	 */
 	private void getPunish() {
-		if (flag) {
-			flag 			= false;
-			int[] intArr 	= MathUtil.getInstance().check(12, 6);
+		if (!flag) {
+			flag 			= true;
+			int arr[]		= MathUtil.getInstance().check(200, 6);
 			TextView text 	= null;
 			String temp 	= null;
 			for (int i = 0; i < 6; i++) {
 				text 		= new TextView(this);
-				temp 		= PunishProps.get("punish_" + i);
+				temp 		= PunishProps.get("punish_" + arr[i]);
 				if (null == temp) {
 					temp 	= "请执行第一条";
 				}
@@ -137,18 +138,32 @@ public class guess extends Activity {
 		}
 	}
 	
-	private void frozenBtn()
-	{
-		for(int i = 1 ;i < temindex+1 ; i++)
-		{
-			Button btn = (Button)contentTable.findViewWithTag(i);
-			if(btn == null)
-			{
-			    continue ;	
+	private void getRestartButton(){
+		Button restartBtn = new Button(this);
+		restartBtn.setText("重新开始");
+		restartBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 Intent goMain = new Intent();
+				 goMain.setClass(guess.this, Setting.class);
+				 startActivity(goMain);
+				 finish();
 			}
-			
-			btn.setClickable(false);
-		}
+		});
+		contentTable.addView(restartBtn);
 	}
+//	private void frozenBtn()
+//	{
+//		for(int i = 1 ;i < temindex+1 ; i++)
+//		{
+//			Button btn = (Button)contentTable.findViewWithTag(i);
+//			if(btn == null)
+//			{
+//			    continue ;	
+//			}
+//			
+//			btn.setClickable(false);
+//		}
+//	}
 
 }
