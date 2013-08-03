@@ -25,10 +25,6 @@
         </activity>
         <activity android:name="com.example.undercover.guess" >
         </activity>
-        <activity
-            android:name="com.example.undercover.ChatRoomActivity"
-            android:label="@string/title_activity_chat_room" >
-        </activity>
         <activity android:name="com.example.undercover.random_50"></activity>
         <activity android:name="com.example.undercover.Setting"></activity>
     </application>
