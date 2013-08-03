@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical" >
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="75dp"
+        android:layout_y="35dp"
+        android:gravity="center_vertical|top"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="75dp"
+            android:layout_y="100dp"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text="Undercover"
+            android:textSize="@dimen/activity_vertical_margin" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="75dp"
+            android:layout_y="200dp"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text="Random"
+            android:textSize="@dimen/Large" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="75dp"
+            android:layout_y="300dp"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text="Random"
+            android:textSize="@dimen/Large" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="75dp"
+            android:layout_y="400dp"
+            android:gravity="center_vertical|center_horizontal|left"
+            android:text="Random"
+            android:textSize="@dimen/Large" />
+
+    </LinearLayout>
+
+</AbsoluteLayout>
