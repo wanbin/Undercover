@@ -121,7 +121,7 @@ public class QuestionAnswer extends Activity {
 	private void showPunish(){
 		//0默认可见，1不可见但是在页面上留有位置，2移除
 		
-		int[] num	= MathUtil.getInstance().check(120, 6);
+		int[] num	= MathUtil.getInstance().check(73, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<num.length;i++){
 			str[i]	=PunishProps.getPunish(num[i]);

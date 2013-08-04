@@ -126,7 +126,7 @@ public class guess extends Activity {
 	private void getPunish() {
 		if (!flag) {
 			flag 			= true;
-			int arr[]		= MathUtil.getInstance().check(120, 6);
+			int arr[]		= MathUtil.getInstance().check(73,6);
 			TextView text 	= null;
 			String temp 	= null;
 			for (int i = 0; i < 6; i++) {
