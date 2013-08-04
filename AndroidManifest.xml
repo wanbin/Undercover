@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.undercover.home_page"
+            android:name="com.example.undercover.Setting"
             android:label="@string/app_name" >
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,10 +29,12 @@
         <activity android:name="com.example.undercover.guess" >
         </activity>
         <activity android:name="com.example.undercover.random_50"></activity>
-        <activity android:name="com.example.undercover.Setting"></activity>
         <activity android:name="com.example.undercover.RotaryBottleActivity">
            
         </activity>
+
+        <activity android:name="com.example.undercover.home_page"></activity>
+
     </application>
 
 </manifest>

@@ -106,4 +106,13 @@
         android:layout_marginTop="15dp"
         android:text="@string/question_jump" />
 
+    <Button
+        android:id="@+id/moregame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/LinearLayout1"
+        android:layout_marginBottom="27dp"
+        android:text="More Game" />
+
 </RelativeLayout>

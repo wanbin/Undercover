@@ -4,6 +4,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,7 @@ public class Setting extends Activity {
 	private Button btnAddUnder;
 	private Button btnCostUnder;
 	private Button questionButton;
+	private Button moregame;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -40,6 +42,8 @@ public class Setting extends Activity {
 		btnCost = (Button) findViewById(R.id.btnCost);
 		btnCostUnder = (Button) findViewById(R.id.btnCostUnder);
 		btnStart = (Button) findViewById(R.id.btnStart);
+		moregame = (Button) findViewById(R.id.moregame);
+		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
@@ -47,7 +51,10 @@ public class Setting extends Activity {
 
 		random = new Random();
 		content = getResources().getStringArray(R.array.content);
-
+		
+		//注释掉chat room
+		//startChatRoom.setVisibility(View.INVISIBLE);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		setPeople();
 		setUnder();
 		initTip();
@@ -120,6 +127,20 @@ public class Setting extends Activity {
 				startActivity(questionIntent);
 			}
 		});
+		
+		moregame.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			
+			public void onClick(View v) {
+				
+				if (true){
+					
+					Intent goChat = new Intent();
+					goChat.setClass(Setting.this,home_page.class);
+					startActivity(goChat);
+				}
+			}
+		});
 
 	}
 
@@ -170,5 +191,6 @@ public class Setting extends Activity {
 				+ "胜利条件； \n" + "\t 1.当卧底全部被指出则平民胜利 \n"
 				+ "\t 2.当卧底数大于等于平民数则卧底胜利");
 	}
+	
 
 }
