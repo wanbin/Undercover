@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="content">
-        <item >大学_中学</item>
         <item >母鸡_公鸡</item>
-        <item >台灯_电灯</item>
-        <item>玫瑰_月季</item>
+ <item >台灯_电灯</item>
+<item>玫瑰_月季</item>
 <item>董永_许仙</item>
-<item>若曦_晴川</item>
-<item>谢娜_李湘</item>
 <item>孟非_乐嘉</item>
 <item>牛奶_豆浆</item>
 <item>保安_保镖</item>
@@ -31,7 +28,6 @@
 <item>蝴蝶_蜜蜂</item>
 <item>小品_话剧</item>
 <item>裸婚_闪婚</item>
-<item>新年_跨年</item>
 <item>吉他_琵琶</item>
 <item>公交_地铁</item>
 <item>剩女_御姐</item>
@@ -49,7 +45,6 @@
 <item>枕头_抱枕</item>
 <item>手机_座机</item>
 <item>同学_同桌</item>
-<item>婚纱_喜服</item>
 <item>老佛爷_老天爷</item>
 <item>魔术师_魔法师</item>
 <item>鸭舌帽_遮阳帽</item>
@@ -86,8 +81,6 @@
 <item>过山车_碰碰车</item>
 <item>铁观音_碧螺春</item>
 <item>十面埋伏_四面楚歌</item>
-<item>成吉思汗_努尔哈赤</item>
-<item>谢娜张杰_邓超孙俪</item>
 <item>福尔摩斯_工藤新一</item>
 <item>贵妃醉酒_黛玉葬花</item>
 <item>流星花园_花样男子</item>
@@ -104,6 +97,5 @@
 <item>降龙十八掌_九阴白骨爪</item>
 <item>红烧牛肉面_香辣牛肉面</item>
 <item>江南style_最炫民族风</item>
-<item>梁山伯与祝英台_罗密欧与朱丽叶</item>
     </string-array>
 </resources>
