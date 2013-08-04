@@ -119,6 +119,7 @@ public class Setting extends Activity {
 		
 		//进入头脑风暴按钮
 		questionButton	= (Button)findViewById(R.id.question_go_btn);
+		questionButton.setVisibility(View.INVISIBLE);
 		questionButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -136,7 +137,7 @@ public class Setting extends Activity {
 				if (true){
 					
 					Intent goChat = new Intent();
-					goChat.setClass(Setting.this,home_page.class);
+					goChat.setClass(Setting.this,random_50.class);
 					startActivity(goChat);
 				}
 			}

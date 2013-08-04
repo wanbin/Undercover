@@ -2,6 +2,7 @@ package com.example.undercover;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,7 @@ public class fanpai extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pai);
 		//
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		btnOK = (Button) findViewById(R.id.btnOk);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);

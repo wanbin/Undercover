@@ -5,6 +5,7 @@ import com.example.util.PunishProps;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,7 @@ public class guess extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guess);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		isOver = false;
 		flag = false;
 		isGetRestart = false;

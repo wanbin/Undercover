@@ -4,6 +4,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,10 +27,12 @@ public class random_50 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
+		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		click_button = (Button) findViewById(R.id.button1);
 		restart_button = (Button) findViewById(R.id.button2);
 		punishment_button = (Button) findViewById(R.id.button3);
 		image_random1 = (ImageView) findViewById(R.id.imageView1);
+		
 
 		// v.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
@@ -53,7 +56,7 @@ public class random_50 extends Activity {
 					v.setVisibility(View.INVISIBLE);
 					click_button.setVisibility(View.INVISIBLE);
 					restart_button.setVisibility(View.VISIBLE);
-					punishment_button.setVisibility(View.VISIBLE);
+					//punishment_button.setVisibility(View.VISIBLE);
 					image_random1.setVisibility(View.VISIBLE);
 
 				}

@@ -65,7 +65,7 @@
         android:layout_x="0dp"
         android:layout_y="312dp"
         android:gravity="left|center"
-        android:text="     游戏简介/n  点我吧！看谁最衰！！/n1，点击50次之内会爆2，危险级数表示你下次点爆的概率！/n3，点击次数为合计点击的次数！/n4，大胆的你就多点吧！
+        android:text="         游戏简介\n  点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！
 " />
 
     <TextView
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_x="99dp"
         android:layout_y="276dp"
-        android:text="211203工作室"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </AbsoluteLayout>
