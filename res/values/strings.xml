@@ -16,4 +16,6 @@
     <string name="title_activity_chat_room">ChatRoomActivity</string>
     <string name="action_settings">Settings</string>
     <string name="chatroom">打开聊天室</string>
+    <string name="question_jump">进入头脑风暴</string>
+    <string name="question_title">开始头脑风暴啦,嘎嘎</string>
 </resources>

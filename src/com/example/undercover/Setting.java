@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class Setting extends Activity {
 	private Button btnStart;
 	private Button btnAddUnder;
 	private Button btnCostUnder;
+	private Button questionButton;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -107,6 +109,26 @@ public class Setting extends Activity {
 			}
 		});
 		
+		startChatRoom.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent goChat = new Intent();
+				goChat.setClass(Setting.this,ChatRoomActivity.class);
+				startActivity(goChat);
+			}
+		});
+		
+		//进入头脑风暴按钮
+		questionButton	= (Button)findViewById(R.id.question_go_btn);
+		questionButton.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent	questionIntent	= new Intent();
+				questionIntent.setClass(Setting.this, QuestionAnswer.class);
+				startActivity(questionIntent);
+			}
+		});
+
 	}
 
 	private void setPeople() {

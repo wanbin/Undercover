@@ -39,4 +39,18 @@ public class MathUtil {
 		}
 		return array;
 	}
+	
+	/**
+	 * 获得一个随机数，begin 要比 end大 ，否则返回0
+	 * @param begin 	随机区间的开始数字
+	 * @param end		随机区间的结束数字
+	 * @return
+	 */
+	public int getRondom(int begin, int end){
+		if(end>begin){
+			return begin+(int)Math.floor((Math.random()*(end-begin)));
+		}else{
+			return 0;
+		}
+	}
 }

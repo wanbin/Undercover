@@ -98,12 +98,10 @@ public class guess extends Activity {
 	}
 
 	private void refash() {
-		System.out.println("--------------------------------------------");
 		//Button punishBtn = new Button(this);
 		punishBtn.setText("开始惩罚");
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				System.out.println("*********************************");
 				getPunish();
 				getRestartButton();
 				// Intent goMain = new Intent();
@@ -128,7 +126,7 @@ public class guess extends Activity {
 			String temp 	= null;
 			for (int i = 0; i < 6; i++) {
 				text 		= new TextView(this);
-				temp 		= PunishProps.get("punish_" + arr[i]);
+				temp 		= PunishProps.getPunish(arr[i]);
 				if (null == temp) {
 					temp 	= "请执行第一条";
 				}

@@ -22,6 +22,10 @@
         </activity>
         <activity android:name="com.example.undercover.fanpai" >
         </activity>
+        <!-- android:screenOrientation屏幕方向 -->
+        <activity android:name="com.example.undercover.QuestionAnswer"
+            android:screenOrientation="portrait" >
+        </activity>
         <activity android:name="com.example.undercover.guess" >
         </activity>
         <activity android:name="com.example.undercover.random_50"></activity>
