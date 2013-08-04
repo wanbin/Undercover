@@ -28,6 +28,7 @@ public class guess extends Activity {
 	private Button punishBtn;
 	private boolean isOver;
 	private boolean flag;
+	private boolean isGetRestart;
 //	private int temindex = 0;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class guess extends Activity {
 		setContentView(R.layout.guess);
 		isOver = false;
 		flag = false;
+		isGetRestart = false;
 		contentTable = (TableLayout) findViewById(R.id.contentTable);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		punishBtn = new Button(this);
@@ -103,7 +105,10 @@ public class guess extends Activity {
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				getPunish();
-				getRestartButton();
+				if(!isGetRestart){
+					isGetRestart	= true;
+					getRestartButton();
+				}
 				// Intent goMain = new Intent();
 				// goMain.setClass(guess.this, Setting.class);
 				// startActivity(goMain);
@@ -121,7 +126,7 @@ public class guess extends Activity {
 	private void getPunish() {
 		if (!flag) {
 			flag 			= true;
-			int arr[]		= MathUtil.getInstance().check(200, 6);
+			int arr[]		= MathUtil.getInstance().check(120, 6);
 			TextView text 	= null;
 			String temp 	= null;
 			for (int i = 0; i < 6; i++) {
@@ -130,7 +135,7 @@ public class guess extends Activity {
 				if (null == temp) {
 					temp 	= "请执行第一条";
 				}
-				text.setText(temp);
+				text.setText((i+1)+"、"+temp);
 				contentTable.addView(text);
 			}
 		}

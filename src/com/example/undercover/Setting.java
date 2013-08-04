@@ -109,14 +109,6 @@ public class Setting extends Activity {
 			}
 		});
 		
-		startChatRoom.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent goChat = new Intent();
-				goChat.setClass(Setting.this,ChatRoomActivity.class);
-				startActivity(goChat);
-			}
-		});
 		
 		//进入头脑风暴按钮
 		questionButton	= (Button)findViewById(R.id.question_go_btn);

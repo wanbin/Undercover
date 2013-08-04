@@ -58,8 +58,8 @@ public class QuestionAnswer extends Activity {
 		baseTable.addView(punish_3);
 		baseTable.addView(punish_4);
 		baseTable.addView(punish_5);
-//		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
-		timeLimit	= 300;
+		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+//		timeLimit	= 300;
 		updateTime();
 		
 		restartBtn.setOnClickListener(new OnClickListener() {
@@ -102,10 +102,6 @@ public class QuestionAnswer extends Activity {
 		public void handleMessage(Message msg) {
 			if(!isOver){
 				addTenMMS();
-			}else{
-				//游戏结束后的操作
-				isOver	= true;
-				baseBtn.setText("开始惩罚");
 			}
 			super.handleMessage(msg);
 		}
@@ -125,17 +121,17 @@ public class QuestionAnswer extends Activity {
 	private void showPunish(){
 		//0默认可见，1不可见但是在页面上留有位置，2移除
 		
-		int[] num	= MathUtil.getInstance().check(200, 6);
+		int[] num	= MathUtil.getInstance().check(120, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<num.length;i++){
 			str[i]	=PunishProps.getPunish(num[i]);
 		}
-		punish_0.setText("0"+str[0]);
-		punish_1.setText("1"+str[1]);
-		punish_2.setText("2"+str[2]);
-		punish_3.setText("3"+str[3]);
-		punish_4.setText("4"+str[4]);
-		punish_5.setText("5"+str[5]);
+		punish_0.setText("1"+str[0]);
+		punish_1.setText("2"+str[1]);
+		punish_2.setText("3"+str[2]);
+		punish_3.setText("4"+str[3]);
+		punish_4.setText("5"+str[4]);
+		punish_5.setText("6"+str[5]);
 	}
 	/**
 	 * 计时加10毫秒
@@ -143,9 +139,12 @@ public class QuestionAnswer extends Activity {
 	private void addTenMMS(){
 		timeLimit	-=1;
 		if(timeLimit<=0){
+			//游戏结束后的操作
 			isOver	= true;
 			baseBtn.setBackgroundResource(R.drawable.ic_launcher);
 			punish_0.setText("");
+			isOver	= true;
+			baseBtn.setText("开始惩罚");
 		}
 		updateTime();
 	}
