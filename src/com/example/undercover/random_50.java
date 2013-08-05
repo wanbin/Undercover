@@ -3,7 +3,6 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +20,7 @@ public class random_50 extends Activity {
 	private TextView Probability;
 	private TextView clicktimes;
 	private TextView preference;
+	private TextView lose;
 	Random random = new Random();
 	int random_times = Math.abs(random.nextInt()) % 50;
 
@@ -32,7 +32,7 @@ public class random_50 extends Activity {
 		restart_button = (Button) findViewById(R.id.button2);
 		punishment_button = (Button) findViewById(R.id.button3);
 		image_random1 = (ImageView) findViewById(R.id.imageView1);
-		
+		lose = (TextView) findViewById(R.id.textView5);
 
 		// v.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
@@ -40,7 +40,7 @@ public class random_50 extends Activity {
 		image_random1.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
-
+		lose.setVisibility(View.INVISIBLE);
 		click_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -56,7 +56,8 @@ public class random_50 extends Activity {
 					v.setVisibility(View.INVISIBLE);
 					click_button.setVisibility(View.INVISIBLE);
 					restart_button.setVisibility(View.VISIBLE);
-					//punishment_button.setVisibility(View.VISIBLE);
+					lose.setVisibility(View.VISIBLE);
+					punishment_button.setVisibility(View.VISIBLE);
 					image_random1.setVisibility(View.VISIBLE);
 
 				}
@@ -70,6 +71,7 @@ public class random_50 extends Activity {
 				click_times = 50;
 				image_random1.setVisibility(View.INVISIBLE);
 				click_button.setVisibility(View.VISIBLE);
+				lose.setVisibility(View.INVISIBLE);
 				DisplayParameter(50-click_times);
 			}
 		});
@@ -78,7 +80,7 @@ public class random_50 extends Activity {
 			@Override
 			public void onClick(View v) {
 				// 进入村龙单独的惩罚页面
-
+				finish();
 			}
 		});
 		// 显示概率和点击次数
@@ -88,7 +90,7 @@ public class random_50 extends Activity {
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);
 		clicktimes = (TextView) findViewById(R.id.textView1);
-		Probability.setText("危险级数："+(time+1)*2+"%");
-		clicktimes.setText("你点击了：" +time+ "次数");
+		Probability.setText("危险级数：" + (time + 1) * 2 + "%");
+		clicktimes.setText("（点击了" + time + "次）");
 	}
 }

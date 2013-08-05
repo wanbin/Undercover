@@ -18,6 +18,13 @@
             android:paddingTop="30dp"
             android:text="TextView" />
 
+        <TextView
+            android:id="@+id/textViewab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/givetoother" />
+        
         <Button
             android:id="@+id/btnOk"
             android:layout_width="wrap_content"
@@ -39,6 +46,8 @@
             android:layout_gravity="center"
             android:text="@string/one"
             android:textSize="@dimen/Large" />
+
+        
 
     </FrameLayout>
 
