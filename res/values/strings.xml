@@ -33,4 +33,8 @@
     <string name="strreturn">返回</string>
     <string name="start">开始</string>
     <string name="clicksay">"有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！"</string>
+    <string name="about">关于</string>
+    <string name="strweixin">没玩过【微信】版谁是卧底?</string>
+    <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
+    <string name="saoma">扫描二维码，快速进入</string>
 </resources>

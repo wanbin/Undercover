@@ -115,4 +115,13 @@
         android:layout_centerInParent="true"
         android:text="@string/more" />
 
+    <Button
+        android:id="@+id/btnabout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:text="@string/about" />
+
 </RelativeLayout>
