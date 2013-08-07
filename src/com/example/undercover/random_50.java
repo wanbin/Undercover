@@ -3,7 +3,6 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -33,12 +32,12 @@ public class random_50 extends Activity {
 		click_button = (Button) findViewById(R.id.button1);
 		restart_button = (Button) findViewById(R.id.button2);
 		punishment_button = (Button) findViewById(R.id.button3);
-		punishBtn = (Button) findViewById(R.id.punishBtn);
+		// punishBtn = (Button) findViewById(R.id.punishBtn);
 		image_random1 = (ImageView) findViewById(R.id.imageView1);
 		lose = (TextView) findViewById(R.id.textView5);
 
 		// v.setVisibility(View.INVISIBLE);
-		punishBtn.setVisibility(View.INVISIBLE);
+		// punishBtn.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
 		punishment_button.setVisibility(View.INVISIBLE);
 		image_random1.setVisibility(View.INVISIBLE);
@@ -59,7 +58,7 @@ public class random_50 extends Activity {
 					// startActivity(goChat);
 					v.setVisibility(View.INVISIBLE);
 					click_button.setVisibility(View.INVISIBLE);
-					punishBtn.setVisibility(View.VISIBLE);
+					// punishBtn.setVisibility(View.VISIBLE);
 					restart_button.setVisibility(View.VISIBLE);
 					lose.setVisibility(View.VISIBLE);
 					punishment_button.setVisibility(View.VISIBLE);
@@ -81,17 +80,17 @@ public class random_50 extends Activity {
 				DisplayParameter(50-click_times);
 			}
 		});
-		punishBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intentGo	= new Intent();
-				intentGo.setClass(random_50.this, PunishActivity.class);
-				startActivity(intentGo);
-				finish();
-			}
-		});
-		
+		// punishBtn.setOnClickListener(new Button.OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// Intent intentGo = new Intent();
+		// intentGo.setClass(random_50.this, PunishActivity.class);
+		// startActivity(intentGo);
+		// finish();
+		// }
+		// });
+		//
 		punishment_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

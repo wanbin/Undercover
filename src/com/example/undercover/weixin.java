@@ -29,7 +29,7 @@ public class weixin extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Uri uri = Uri.parse("http://www.baidu.com");
+				Uri uri = Uri.parse("http://weixin.qq.com/r/bnWkvArEolfdrU7f9yB8");
 				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 				startActivity(intent);
 			}
