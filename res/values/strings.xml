@@ -26,4 +26,11 @@
     <string name="punish_tips">可以选择真心话或者大冒险</string>
     <string name="punish_other">点我还有机会换题目哦</string>
     <string name="random_punish">接受惩罚</string>
+    <string name="clickme">有胆量就点</string>
+    <string name="askme">有胆量就问</string>
+    <string name="circleme">有胆量就转</string>
+    <string name="truethings">真心话大冒险</string>
+    <string name="strreturn">返回</string>
+    <string name="start">开始</string>
+    <string name="clicksay">"有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！"</string>
 </resources>
