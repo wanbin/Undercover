@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout_rotarybottle"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_green_light">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imageView1"
@@ -12,18 +11,22 @@
         android:src="@drawable/bottle" 
         android:layout_centerInParent="true"/>
     
-    <Button android:id="@+id/startRotaryBottleBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Start"/>
-    
-     <Button android:id="@+id/rotarybottle_returnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Return"/>
+     <Button
+         android:id="@+id/rotarybottle_returnBtn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+      	 android:layout_alignParentRight="true"
+      	 android:layout_centerInParent="true"
+         android:text="@string/strreturn" />
+
+     <Button
+         android:id="@+id/startRotaryBottleBtn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+      	 android:layout_alignParentLeft="true"
+      	 android:layout_centerInParent="true"
+         android:text="@string/start" />
 
 </RelativeLayout>

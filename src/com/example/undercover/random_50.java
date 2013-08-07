@@ -36,7 +36,7 @@ public class random_50 extends Activity {
 
 		// v.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
-		punishment_button.setVisibility(View.INVISIBLE);
+		// punishment_button.setVisibility(View.INVISIBLE);
 		image_random1.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
@@ -57,7 +57,7 @@ public class random_50 extends Activity {
 					click_button.setVisibility(View.INVISIBLE);
 					restart_button.setVisibility(View.VISIBLE);
 					lose.setVisibility(View.VISIBLE);
-					punishment_button.setVisibility(View.VISIBLE);
+					// punishment_button.setVisibility(View.VISIBLE);
 					image_random1.setVisibility(View.VISIBLE);
 
 				}

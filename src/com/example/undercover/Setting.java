@@ -8,7 +8,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -52,7 +51,7 @@ public class Setting extends Activity {
 		random = new Random();
 		content = getResources().getStringArray(R.array.content);
 		
-		//注释掉chat room
+		// 注释掉chat room
 		//startChatRoom.setVisibility(View.INVISIBLE);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		setPeople();
@@ -117,7 +116,7 @@ public class Setting extends Activity {
 		});
 		
 		
-		//进入头脑风暴按钮
+		// 进入头脑风暴按钮
 		questionButton	= (Button)findViewById(R.id.question_go_btn);
 		questionButton.setVisibility(View.INVISIBLE);
 		questionButton.setOnClickListener(new Button.OnClickListener() {
@@ -135,9 +134,8 @@ public class Setting extends Activity {
 			public void onClick(View v) {
 				
 				if (true){
-					
 					Intent goChat = new Intent();
-					goChat.setClass(Setting.this,random_50.class);
+					goChat.setClass(Setting.this, home_page.class);
 					startActivity(goChat);
 				}
 			}

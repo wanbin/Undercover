@@ -1,88 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="158dp"
-        android:layout_height="128dp"
-        android:layout_x="77dp"
-        android:layout_y="130dp"
-        android:text="点我"
-        android:textSize="@dimen/Large" />
-
-    <Button
-        android:id="@+id/button2"
+    <FrameLayout
+        android:id="@+id/warpclick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="410dp"
-        android:text="重新开始" />
+        android:layout_centerInParent="true" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="196dp"
-        android:layout_y="410dp"
-        android:text="返回主页" />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="158dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:text="点我"
+            android:textSize="@dimen/Large" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="234dp"
-        android:layout_height="234dp"
-        android:layout_x="36dp"
-        android:layout_y="50dp"
-        android:src="@drawable/ic_launcher" />
-
-    <LinearLayout
-        android:id="@+id/parameter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center" >
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="234dp"
+            android:layout_height="234dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="危险概率："
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/lose" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="点击次数："
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </FrameLayout>
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="危险概率："
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView2"
+        android:text="点击次数："
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="312dp"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
         android:gravity="left|center"
-        android:text="         游戏简介\n  点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！
-" />
+        android:padding="5dp"
+        android:text="@string/clicksay" />
 
-    <TextView
-        android:id="@+id/textView4"
+    <Button
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="99dp"
-        android:layout_y="276dp"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:text="@string/strreturn" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_x="110dp"
-        android:layout_y="284dp"
-        android:text="@string/lose" />
+        android:layout_below="@+id/warpclick"
+        android:layout_centerHorizontal="true"
+        android:text="重新开始" />
 
-</AbsoluteLayout>
+</RelativeLayout>
