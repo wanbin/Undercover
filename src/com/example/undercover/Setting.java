@@ -19,6 +19,7 @@ public class Setting extends Activity {
 	private Button btnCostUnder;
 	private Button questionButton;
 	private Button moregame;
+	private Button about;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -42,6 +43,7 @@ public class Setting extends Activity {
 		btnCostUnder = (Button) findViewById(R.id.btnCostUnder);
 		btnStart = (Button) findViewById(R.id.btnStart);
 		moregame = (Button) findViewById(R.id.moregame);
+		about = (Button) findViewById(R.id.btnabout);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
@@ -128,6 +130,15 @@ public class Setting extends Activity {
 			}
 		});
 		
+		about.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent questionIntent = new Intent();
+				questionIntent.setClass(Setting.this, weixin.class);
+				startActivity(questionIntent);
+			}
+		});
+
 		moregame.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			

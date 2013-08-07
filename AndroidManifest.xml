@@ -34,6 +34,7 @@
         </activity>
 
         <activity android:name="com.example.undercover.home_page"></activity>
+        <activity android:name="com.example.undercover.weixin"></activity>
 
     </application>
 
