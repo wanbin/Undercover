@@ -85,4 +85,12 @@
         android:layout_y="284dp"
         android:text="@string/lose" />
 
+    <Button
+        android:id="@+id/punishBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="106dp"
+        android:layout_y="411dp"
+        android:text="@string/random_punish" />
+
 </AbsoluteLayout>

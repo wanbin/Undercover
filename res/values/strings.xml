@@ -21,4 +21,9 @@
     <string name="givetoother">传给下一位</string>
     <string name="more">更多</string>
     <string name="lose">输了不能怨别人</string>
+    <string name="punish_adventure">大冒险</string>
+    <string name="punish_true">真心话</string>
+    <string name="punish_tips">可以选择真心话或者大冒险</string>
+    <string name="punish_other">点我还有机会换题目哦</string>
+    <string name="random_punish">接受惩罚</string>
 </resources>
