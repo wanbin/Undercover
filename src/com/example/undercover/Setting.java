@@ -17,7 +17,6 @@ public class Setting extends BaseActivity {
 	private ImageView btnCostUnder;
 	private ImageView btnStart;
 	private Button moregame;
-	private Button about;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -40,7 +39,6 @@ public class Setting extends BaseActivity {
 		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
 		btnStart = (ImageView) findViewById(R.id.btnStart);
 		moregame = (Button) findViewById(R.id.moregame);
-		about = (Button) findViewById(R.id.btnabout);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
@@ -112,17 +110,6 @@ public class Setting extends BaseActivity {
 		});
 		
 		
-		
-		about.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent questionIntent = new Intent();
-//				暂时先换成 游戏玩法介绍界面
-//				questionIntent.setClass(Setting.this, weixin.class);
-				questionIntent.setClass(Setting.this, UnderCoverContent.class);
-				startActivity(questionIntent);
-			}
-		});
 
 		moregame.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -130,9 +117,7 @@ public class Setting extends BaseActivity {
 			public void onClick(View v) {
 				
 				if (true){
-					Intent goChat = new Intent();
-					goChat.setClass(Setting.this, home_page.class);
-					startActivity(goChat);
+					finish();
 				}
 			}
 		});

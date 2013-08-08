@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,10 +16,9 @@ public class random_50 extends Activity {
 	// int random_times;
 	int click_times = 50;
 	private Button punishBtn;
-	private Button click_button;
+	private ImageView click_button;
 	private Button restart_button;
 	private Button punishment_button;
-	private ImageView image_random1;
 	private TextView Probability;
 	private TextView clicktimes;
 	private TextView preference;
@@ -29,20 +30,30 @@ public class random_50 extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		click_button = (Button) findViewById(R.id.button1);
+		click_button = (ImageView) findViewById(R.id.imageBtnMain);
 		restart_button = (Button) findViewById(R.id.button2);
 		punishment_button = (Button) findViewById(R.id.button3);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);
-		image_random1 = (ImageView) findViewById(R.id.imageView1);
 		lose = (TextView) findViewById(R.id.textView5);
 
 		// v.setVisibility(View.INVISIBLE);
 		// punishBtn.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
 		punishment_button.setVisibility(View.INVISIBLE);
-		image_random1.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
+
+		final AnimationSet aniSet = new AnimationSet(true);
+		final ScaleAnimation scaleAn = new ScaleAnimation(1.02f, 1f, 1.02f, 1f);
+		final ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f,
+				1.02f);
+
+		scaleAni.setDuration(10);
+		scaleAn.setDuration(10);
+		scaleAn.setStartOffset(10);
+		aniSet.addAnimation(scaleAni);
+		aniSet.addAnimation(scaleAn);
+
 		lose.setVisibility(View.INVISIBLE);
 		click_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -50,21 +61,14 @@ public class random_50 extends Activity {
 				click_times--;
 				DisplayParameter(50-click_times);
 				preference.setVisibility(View.INVISIBLE);
-				// click_button.setText();
 				if (click_times == random_times) {
-
-					// Intent goChat = new Intent();
-					// goChat.setClass(random_50.this,randome_gameover.class);
-					// startActivity(goChat);
-					v.setVisibility(View.INVISIBLE);
-					click_button.setVisibility(View.INVISIBLE);
-					// punishBtn.setVisibility(View.VISIBLE);
-					restart_button.setVisibility(View.VISIBLE);
+					v.setBackgroundResource(R.drawable.popogray152);
+					v.setClickable(false);
 					lose.setVisibility(View.VISIBLE);
+					restart_button.setVisibility(View.VISIBLE);
 					punishment_button.setVisibility(View.VISIBLE);
-					image_random1.setVisibility(View.VISIBLE);
-
 				}
+				v.startAnimation(aniSet);
 			}
 		});
 
@@ -73,8 +77,8 @@ public class random_50 extends Activity {
 			public void onClick(View v) {
 				random_times = Math.abs(random.nextInt()) % 50;
 				click_times = 50;
-				image_random1.setVisibility(View.INVISIBLE);
-				click_button.setVisibility(View.VISIBLE);
+				click_button.setClickable(true);
+				click_button.setBackgroundResource(R.drawable.popogray152);
 				lose.setVisibility(View.INVISIBLE);
 				restart_button.setVisibility(View.INVISIBLE);
 				DisplayParameter(50-click_times);

@@ -85,6 +85,12 @@ public class guess extends Activity {
 
 	}
 
+	protected void setAllButton(boolean useable) {
+		for (int i = 1; i <= content.length; i++) {
+			ImageView tem = (ImageView) contentTable.findViewWithTag(i);
+			tem.setClickable(useable);
+		}
+	}
 	protected void tapIndex(int tag) {
 		if (content[tag - 1].equals(son)) {
 			soncount--;
@@ -97,11 +103,13 @@ public class guess extends Activity {
 				txtTitle.setText("完成任务，卧底为" + son);
 				isOver = true;
 				refash();
+				setAllButton(false);
 			} else if (fathercount <= soncount) {
 				Log("卧底胜利");
 				txtTitle.setText("卧底胜利，卧底为" + son);
 				isOver = true;
 				refash();
+				setAllButton(false);
 			} else {
 				Log("还有" + soncount + "个");
 			}

@@ -66,25 +66,29 @@
             android:id="@+id/btnPlayRule"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/strplayrule" />
+            android:text="@string/strplayrule"
+            android:textSize="@dimen/sizehome" />
 
         <Button
             android:id="@+id/btnWeixin"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/strweixinhao" />
+            android:text="@string/strweixinhao"
+            android:textSize="@dimen/sizehome" />
 
         <Button
             android:id="@+id/btnMake"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/strmake" />
+            android:text="@string/strmake"
+            android:textSize="@dimen/sizehome" />
 
         <Button
             android:id="@+id/btnMore"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="@string/more" />
+            android:text="@string/moregame"
+            android:textSize="@dimen/sizehome" />
 
     </LinearLayout>
 
