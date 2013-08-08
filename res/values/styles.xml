@@ -17,5 +17,6 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     <color name="content_head">#99C842</color>
+    <color name="bgcolorgree">#CBE5A8</color>
 
 </resources>

@@ -2,29 +2,26 @@ package com.example.undercover;
 
 import java.util.Random;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Setting extends Activity {
-	private Button btnAdd;
-	private Button btnCost;
-	private Button btnStart;
-	private Button btnAddUnder;
-	private Button btnCostUnder;
-	private Button questionButton;
+public class Setting extends BaseActivity {
+	private ImageView btnAdd;
+	private ImageView btnCost;
+	private ImageView btnAddUnder;
+	private ImageView btnCostUnder;
+	private ImageView btnStart;
 	private Button moregame;
 	private Button about;
 	private TextView people;
 	private TextView under;
 	private TextView title;
 	// 说明
-	private TextView tip;
 	private int peopleCount = 3;
 	private int underCount = 1;
 	private String[] content;
@@ -37,28 +34,25 @@ public class Setting extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
-		btnAdd = (Button) findViewById(R.id.btnAdd);
-		btnAddUnder = (Button) findViewById(R.id.btnAddUnder);
-		btnCost = (Button) findViewById(R.id.btnCost);
-		btnCostUnder = (Button) findViewById(R.id.btnCostUnder);
-		btnStart = (Button) findViewById(R.id.btnStart);
+		btnAdd = (ImageView) findViewById(R.id.btnAdd);
+		btnAddUnder = (ImageView) findViewById(R.id.btnAddUnder);
+		btnCost = (ImageView) findViewById(R.id.btnCost);
+		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
+		btnStart = (ImageView) findViewById(R.id.btnStart);
 		moregame = (Button) findViewById(R.id.moregame);
 		about = (Button) findViewById(R.id.btnabout);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
-		tip = (TextView) findViewById(R.id.txtTip);
 
 		random = new Random();
 		content = getResources().getStringArray(R.array.content);
 		
 		// 注释掉chat room
 		//startChatRoom.setVisibility(View.INVISIBLE);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		setPeople();
 		setUnder();
-		initTip();
 		btnAdd.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -118,17 +112,6 @@ public class Setting extends Activity {
 		});
 		
 		
-		// 进入头脑风暴按钮
-		questionButton	= (Button)findViewById(R.id.question_go_btn);
-		questionButton.setVisibility(View.INVISIBLE);
-		questionButton.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent	questionIntent	= new Intent();
-				questionIntent.setClass(Setting.this, QuestionAnswer.class);
-				startActivity(questionIntent);
-			}
-		});
 		
 		about.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -196,13 +179,13 @@ public class Setting extends Activity {
 		Log.v("tag", string);
 	}
 
-	protected void initTip() {
-		tip.setText("游戏规则：\n" + "\t 1.选择参与人数与卧底人数开始游戏 \n"
-				+ "\t 2.每人记得自己的编号和身份 \n" + "\t 3.依次描述自己的身份 \n"
-				+ "\t 4.每轮结束大家投票选出卧底 \n" + "\t 5.卧底出局后剩余玩家继续进行游戏 \n"
-				+ "胜利条件； \n" + "\t 1.当卧底全部被指出则平民胜利 \n"
-				+ "\t 2.当卧底数大于等于平民数则卧底胜利");
-	}
+	// protected void initTip() {
+	// tip.setText("游戏规则：\n" + "\t 1.选择参与人数与卧底人数开始游戏 \n"
+	// + "\t 2.每人记得自己的编号和身份 \n" + "\t 3.依次描述自己的身份 \n"
+	// + "\t 4.每轮结束大家投票选出卧底 \n" + "\t 5.卧底出局后剩余玩家继续进行游戏 \n"
+	// + "胜利条件； \n" + "\t 1.当卧底全部被指出则平民胜利 \n"
+	// + "\t 2.当卧底数大于等于平民数则卧底胜利");
+	// }
 	
 
 }

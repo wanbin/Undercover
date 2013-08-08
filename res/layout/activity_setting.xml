@@ -2,109 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Setting" >
-
-    <LinearLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:paddingTop="50dp" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="15dp"
-                android:text="@string/textPeople"
-                android:textSize="@dimen/index" />
-
-            <Button
-                android:id="@+id/btnCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cost" />
-
-            <TextView
-                android:id="@+id/txtPeople"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="@dimen/index" />
-
-            <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/txtPeopleTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="15dp"
-                android:text="@string/txtUndex"
-                android:textSize="@dimen/index" />
-
-            <Button
-                android:id="@+id/btnCostUnder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cost" />
-
-            <TextView
-                android:id="@+id/txtUnder"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="@dimen/index" />
-
-            <Button
-                android:id="@+id/btnAddUnder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add" />
-        </LinearLayout>
-        
-             <Button
-                 android:id="@+id/btnStart"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="10dp"
-                 android:text="@string/startGame" />
-
-             <TextView
-                 android:id="@+id/textView1"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/tip" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtTip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp" />
-
-    <Button
-        android:id="@+id/question_go_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LinearLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="@string/question_jump" />
+     android:background="@color/bgcolorgree" >
 
     <Button
         android:id="@+id/moregame"
@@ -123,5 +21,185 @@
         android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
         android:text="@string/about" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="@string/textPeople"
+                android:textSize="@dimen/index" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" >
+
+                <ImageView
+                    android:id="@+id/btnCost"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/popo72" />
+                
+                 <TextView
+                     android:id="@+id/txtcost1"
+                     android:layout_width="50dp"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"
+                     android:gravity="center"
+                     android:text="-"
+                     android:textSize="@dimen/index" />
+
+            </FrameLayout>
+            
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageViewAddBg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/popo72" />
+
+                <TextView
+                    android:id="@+id/txtPeople"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/index" />
+
+            </FrameLayout>
+
+            
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" >
+              <ImageView
+                android:id="@+id/btnAdd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/popo72" />
+              <TextView
+                    android:id="@+id/txtadd1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textSize="@dimen/index" />
+              </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtPeopleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="15dp"
+                android:text="@string/txtUndex"
+                android:textSize="@dimen/index" />
+<FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" >
+             <ImageView
+                android:id="@+id/btnCostUnder"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/popo72" />
+             <TextView
+                    android:id="@+id/txtcost2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textSize="@dimen/index" />
+            
+             </FrameLayout>
+             
+             <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/imageViewUnderBg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/popo72" />
+
+                <TextView
+                    android:id="@+id/txtUnder"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/index" />
+
+            </FrameLayout>
+             
+             
+            
+<FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" >
+            <ImageView
+                android:id="@+id/btnAddUnder"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/popo72" />
+            <TextView
+                    android:id="@+id/txtadd2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textSize="@dimen/index" />
+            </FrameLayout>
+        </LinearLayout>
+
+        
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip" />
+    </LinearLayout>
+
+     <ImageView
+         android:id="@+id/btnStart"
+         android:layout_width="150dp"
+         android:layout_height="150dp"
+         android:layout_below="@+id/LinearLayout1"
+         android:layout_centerHorizontal="true"
+         android:pivotX="50%"
+         android:pivotY="50%"
+         android:src="@drawable/popored" />
 
 </RelativeLayout>
