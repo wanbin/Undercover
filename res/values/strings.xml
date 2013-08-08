@@ -37,4 +37,7 @@
     <string name="strweixin">没玩过【微信】版谁是卧底?</string>
     <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
     <string name="saoma">扫描二维码，快速进入</string>
+    <string name="content_en">who is undercover ?</string>
+    <string name="content_zn">谁 是 卧 底</string>
+    <string name="content_title">玩 法 介 绍</string>
 </resources>

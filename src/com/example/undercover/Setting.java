@@ -134,7 +134,9 @@ public class Setting extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent questionIntent = new Intent();
-				questionIntent.setClass(Setting.this, weixin.class);
+//				暂时先换成 游戏玩法介绍界面
+//				questionIntent.setClass(Setting.this, weixin.class);
+				questionIntent.setClass(Setting.this, UnderCoverContent.class);
 				startActivity(questionIntent);
 			}
 		});

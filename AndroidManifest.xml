@@ -26,6 +26,8 @@
         <activity android:name="com.example.undercover.QuestionAnswer"
             android:screenOrientation="portrait" >
         </activity>
+        <activity android:name="com.example.undercover.UnderCoverContent" >
+        </activity>
         <activity android:name="com.example.undercover.guess" >
         </activity>
         <activity android:name="com.example.undercover.random_50"></activity>
