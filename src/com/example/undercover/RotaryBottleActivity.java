@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
@@ -36,11 +37,7 @@ public class RotaryBottleActivity extends Activity{
 		bottle.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				toDe = getDegrees();
-				Animation a = getAnimation(fromDe, toDe);
-				a.setFillAfter(true);
-				bottle.startAnimation(a);
+				startAnimation();
 			}
 		});
 
@@ -48,11 +45,8 @@ public class RotaryBottleActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				toDe = getDegrees();
-				Animation a = getAnimation(fromDe, toDe);
-				a.setFillAfter(true);
-				bottle.startAnimation(a);
-			}
+				startAnimation();
+		       }
 		});	
 		
 		
@@ -73,7 +67,6 @@ public class RotaryBottleActivity extends Activity{
 			public void onGlobalLayout() {
 				// TODO Auto-generated method stub
 				bottle.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-//				bottle.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 				bottleWidth = bottle.getWidth();
 				bottleHeight = bottle.getHeight();
 			}
@@ -90,7 +83,7 @@ public class RotaryBottleActivity extends Activity{
 	private Animation getAnimation(float fromDegrees,float toDegrees)
 	{
 		AnimationSet as=new AnimationSet(true);  
-		RotateAnimation rt = new RotateAnimation(fromDegrees,2880+toDegrees,bottleWidth/2,bottleHeight/2);
+		RotateAnimation rt = new RotateAnimation(fromDegrees,2880+toDegrees,bottleWidth/2,bottleHeight*4/7);
 		rt.setDuration(6000);
 		rt.setFillAfter(true);
 		rt.setInterpolator(new Interpolator() {
@@ -98,7 +91,6 @@ public class RotaryBottleActivity extends Activity{
 			public float getInterpolation(float arg0) {
 				// TODO Auto-generated method stub
 				bottle.setClickable(true);
-				restartBtn.setClickable(true);
 				return interpolator.accelerate_decelerate;
 			}
 		});
@@ -106,5 +98,38 @@ public class RotaryBottleActivity extends Activity{
 		
 		fromDe = toDegrees%360;
 		return as;
+	}
+	
+	private void startAnimation()
+	{
+		toDe = getDegrees();
+		Animation a = getAnimation(fromDe, toDe);
+		a.setFillAfter(true);
+		
+		bottle.setClickable(false);
+		restartBtn.setClickable(false);
+		bottle.startAnimation(a);
+        a.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				restartBtn.setClickable(true);
+				bottle.setClickable(true);
+			}
+		});
+	
 	}
 }
