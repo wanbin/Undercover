@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CBE5A8" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/FrameLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center|center_vertical|left"
+                android:src="@drawable/popored" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:text="is UnderCover?"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/strwhoisundercover"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/Large" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:pivotX="50%"     
+		android:pivotY="50%"
+        android:src="@drawable/popored" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp" >
+
+        <Button
+            android:id="@+id/btnPlayRule"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strplayrule" />
+
+        <Button
+            android:id="@+id/btnWeixin"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strweixinhao" />
+
+        <Button
+            android:id="@+id/btnMake"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/strmake" />
+
+        <Button
+            android:id="@+id/btnMore"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="@string/more" />
+
+    </LinearLayout>
+
+</RelativeLayout>
