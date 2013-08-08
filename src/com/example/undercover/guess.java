@@ -1,18 +1,21 @@
 package com.example.undercover;
 
-import com.example.util.MathUtil;
-import com.example.util.PunishProps;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.util.MathUtil;
+import com.example.util.PunishProps;
 
 public class guess extends Activity {
 	private TableLayout contentTable;
@@ -55,19 +58,27 @@ public class guess extends Activity {
 				if (temindex > content.length) {
 					break;
 				}
-				Button btn = new Button(this);
-				btn.setText("" + temindex);
-				btn.setTag(temindex);
-				btn.setOnClickListener(new Button.OnClickListener() {
+				FrameLayout fl = new FrameLayout(this);
+				ImageView select = new ImageView(this);
+				TextView temtext = new TextView(this);
+				temtext.setText("" + temindex);
+				temtext.setGravity(Gravity.CENTER);
+				temtext.setTextSize(30);
+				select.setTag(temindex);
+				select.setBackgroundResource(R.drawable.popo72);
+				select.setOnClickListener(new Button.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						tapIndex((Integer) v.getTag());
 						v.setClickable(false);
-						Button tt = (Button) v;
-						tt.setText("*");
+						ImageView tt = (ImageView) v;
+						tt.setBackgroundResource(R.drawable.popogray72);
+						// tt.setText("*");
 					}
 				});
-				newrow.addView(btn, 120, 70);
+				fl.addView(select);
+				fl.addView(temtext);
+				newrow.addView(fl, 120, 120);
 			}
 			contentTable.addView(newrow);
 		}
@@ -135,9 +146,9 @@ public class guess extends Activity {
 				text 		= new TextView(this);
 				temp 		= PunishProps.getPunish(arr[i]);
 				if (null == temp) {
-					temp 	= "请执行第一条";
+					temp = "请执行第一条";
 				}
-				text.setText((i+1)+"、"+temp);
+				text.setText((i + 1) + "、" + temp);
 				contentTable.addView(text);
 			}
 		}

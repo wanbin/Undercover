@@ -16,6 +16,7 @@ public class fanpai extends Activity {
 	private String[] content;
 	private TextView txtShenfen;
 	private TextView txtIndex;
+	private TextView textViewab;
 	private ImageView imagePan;
 	private Button btnOK;
 	private int nowIndex = 1;
@@ -29,6 +30,7 @@ public class fanpai extends Activity {
 		btnOK = (Button) findViewById(R.id.btnOk);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
+		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (ImageView) findViewById(R.id.imagePan);
 
 		Bundle bundle = this.getIntent().getExtras();
@@ -66,7 +68,7 @@ public class fanpai extends Activity {
 			public void onClick(View v) {
 				v.setVisibility(View.INVISIBLE);
 				txtIndex.setVisibility(View.INVISIBLE);
-
+				setContentVis(true);
 			}
 		});
 
@@ -77,10 +79,25 @@ public class fanpai extends Activity {
 		txtIndex.setVisibility(View.VISIBLE);
 		txtIndex.setText("" + index);
 		txtShenfen.setText(content[index - 1]);
+		setContentVis(false);
 	}
 
 	protected void Log(String string) {
 		Log.v("tag", string);
 	}
 
+	protected void setContentVis(boolean show) {
+		if (show) {
+			btnOK.setVisibility(View.VISIBLE);
+			txtIndex.setVisibility(View.INVISIBLE);
+			txtShenfen.setVisibility(View.VISIBLE);
+			textViewab.setVisibility(View.VISIBLE);
+
+		} else {
+			btnOK.setVisibility(View.INVISIBLE);
+			txtIndex.setVisibility(View.VISIBLE);
+			txtShenfen.setVisibility(View.INVISIBLE);
+			textViewab.setVisibility(View.INVISIBLE);
+		}
+	}
 }
