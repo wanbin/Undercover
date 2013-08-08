@@ -50,7 +50,7 @@ public class HomeActivity extends BaseActivity {
 				if (true) {
 					// finish();
 					Intent goChat = new Intent();
-					goChat.setClass(HomeActivity.this, random_50.class);
+					goChat.setClass(HomeActivity.this, UnderCoverContent.class);
 					startActivity(goChat);
 				}
 			}
