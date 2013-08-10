@@ -15,7 +15,7 @@
          android:text="@string/strreturn" />
 
      <TextView
-         android:id="@+id/txtWeixin"
+         android:id="@+id/txtTitle"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentTop="true"
@@ -24,28 +24,12 @@
          android:textAppearance="?android:attr/textAppearanceLarge" />
 
      <TextView
-         android:id="@+id/TextView01"
+         android:id="@+id/txtContent"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_marginTop="30dp"
+         android:autoLink="email"
          android:padding="10dp"
          android:text="@string/cametogether" />
-
-     <TextView
-         android:id="@+id/textView1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/imageView1"
-         android:layout_centerHorizontal="true"
-         android:layout_marginRight="22dp"
-         android:text="@string/saoma" />
-
-     <ImageView
-         android:id="@+id/imageView1"
-         android:layout_width="200dp"
-         android:layout_height="200dp"
-         android:layout_below="@+id/TextView01"
-         android:layout_centerHorizontal="true"
-         android:src="@drawable/qrcode_for_gh_f07084634d58_430" />
 
 </RelativeLayout>

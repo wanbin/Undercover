@@ -14,6 +14,7 @@ public class HomeActivity extends BaseActivity {
 	private Button btnMake;
 	private Button btnMore;
 	private ImageView imgPlay;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,7 +31,6 @@ public class HomeActivity extends BaseActivity {
 		scaleAni.setRepeatCount(-1);
 		scaleAni.setDuration(1000);
 		imgPlay.startAnimation(scaleAni);
-
 
 		imgPlay.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -72,8 +72,7 @@ public class HomeActivity extends BaseActivity {
 				if (true) {
 					// finish();
 					Intent goChat = new Intent();
-					goChat.setClass(HomeActivity.this,
-							RotaryBottleActivity.class);
+					goChat.setClass(HomeActivity.this, MakeActivity.class);
 					startActivity(goChat);
 				}
 			}
@@ -90,6 +89,5 @@ public class HomeActivity extends BaseActivity {
 			}
 		});
 	}
-
 
 }

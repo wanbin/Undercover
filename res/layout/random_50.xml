@@ -12,11 +12,10 @@
         android:layout_centerInParent="true" >
 
         <TextView
-            android:id="@+id/TextView1"
+            android:id="@+id/txtclick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="点我"
             android:textSize="@dimen/Large" />
 
         <ImageView
@@ -24,9 +23,7 @@
             android:layout_width="234dp"
             android:layout_height="234dp"
             android:layout_gravity="center"
-            android:pivotX="50%"     
-			android:pivotY="50%"
-            android:src="@drawable/popo152" />
+             />
 
         <TextView
             android:id="@+id/textView5"
