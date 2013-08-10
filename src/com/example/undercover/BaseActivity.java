@@ -25,4 +25,8 @@ public class BaseActivity extends Activity {
 		super.onPause();
 		MobclickAgent.onPause(this);
 	}
+
+	public void uMengClick(String clickname) {
+		MobclickAgent.onEvent(this, clickname);
+	}
 }

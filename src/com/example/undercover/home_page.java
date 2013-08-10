@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.umeng.analytics.MobclickAgent;
+
 public class home_page extends BaseActivity {
 
 	//private Button game5;
@@ -47,6 +49,7 @@ public class home_page extends BaseActivity {
 				if (true){
 					Intent goChat = new Intent();
 					goChat.setClass(home_page.this,random_50.class);
+					MobclickAgent.onEvent(null, "game_click");
 					startActivity(goChat);
 				}
 			}
@@ -80,6 +83,7 @@ public class home_page extends BaseActivity {
 				// TODO Auto-generated method stub
 				Intent goChat = new Intent();
 				goChat.setClass(home_page.this, RotaryBottleActivity.class);
+				MobclickAgent.onEvent(null, "game_bottle");
 				startActivity(goChat);
 			}
 		});

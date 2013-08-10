@@ -73,6 +73,7 @@ public class random_50 extends BaseActivity {
 		restart_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				uMengClick("count_game_click");
 				random_times = Math.abs(random.nextInt()) % 50;
 				click_times = 50;
 				click_button.setClickable(true);
@@ -113,8 +114,7 @@ public class random_50 extends BaseActivity {
 	}
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);
-		clicktimes = (TextView) findViewById(R.id.textView1);
-		Probability.setText("危险级数：" + Math.max((time + 1) * 2, 100) + "%");
-		clicktimes.setText("（点击了" + time + "次）");
+		Probability.setText("危险级数：" + Math.min((time + 1) * 2, 100) + "%\n点击了"
+				+ time + "次");
 	}
 }

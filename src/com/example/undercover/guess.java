@@ -171,6 +171,7 @@ public class guess extends BaseActivity {
 			public void onClick(View v) {
 				 Intent goMain = new Intent();
 				 goMain.setClass(guess.this, Setting.class);
+				uMengClick("game_undercover");
 				 startActivity(goMain);
 				 finish();
 			}

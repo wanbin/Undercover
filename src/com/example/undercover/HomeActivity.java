@@ -41,6 +41,7 @@ public class HomeActivity extends BaseActivity {
 					// finish();
 					Intent goChat = new Intent();
 					goChat.setClass(HomeActivity.this, Setting.class);
+					uMengClick("game_undercover");
 					startActivity(goChat);
 				}
 			}
@@ -53,6 +54,7 @@ public class HomeActivity extends BaseActivity {
 					// finish();
 					Intent goChat = new Intent();
 					goChat.setClass(HomeActivity.this, UnderCoverContent.class);
+					uMengClick("click_guize");
 					startActivity(goChat);
 				}
 			}
@@ -64,6 +66,7 @@ public class HomeActivity extends BaseActivity {
 					// finish();
 					Intent goChat = new Intent();
 					goChat.setClass(HomeActivity.this, weixin.class);
+					uMengClick("click_weixin");
 					startActivity(goChat);
 				}
 			}
@@ -75,6 +78,7 @@ public class HomeActivity extends BaseActivity {
 					// finish();
 					Intent goChat = new Intent();
 					goChat.setClass(HomeActivity.this, MakeActivity.class);
+					uMengClick("click_about");
 					startActivity(goChat);
 				}
 			}
@@ -86,6 +90,7 @@ public class HomeActivity extends BaseActivity {
 					// finish();
 					Intent goChat = new Intent();
 					goChat.setClass(HomeActivity.this, home_page.class);
+					uMengClick("click_more");
 					startActivity(goChat);
 				}
 			}

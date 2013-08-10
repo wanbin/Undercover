@@ -18,7 +18,7 @@ public class Setting extends BaseActivity {
 	private ImageView btnAddUnder;
 	private ImageView btnCostUnder;
 	private ImageView btnStart;
-	private ImageView moregame;
+	private Button moregame;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -40,7 +40,7 @@ public class Setting extends BaseActivity {
 		btnCost = (ImageView) findViewById(R.id.btnCost);
 		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
 		btnStart = (ImageView) findViewById(R.id.btnStart);
-		moregame = (ImageView) findViewById(R.id.moregame);
+		moregame = (Button) findViewById(R.id.moregame);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
@@ -107,7 +107,6 @@ public class Setting extends BaseActivity {
 				setUnder();
 			}
 		});
-
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -121,6 +120,7 @@ public class Setting extends BaseActivity {
 				goMain.putExtras(bundle);
 				goMain.setClass(Setting.this, fanpai.class);
 				startActivity(goMain);
+				uMengClick("game_undercover_start");
 				finish();
 			}
 		});

@@ -37,6 +37,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				startAnimation();
+				uMengClick("count_bottle");
 			}
 		});
 

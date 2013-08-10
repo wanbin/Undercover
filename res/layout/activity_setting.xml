@@ -4,14 +4,14 @@
     android:layout_height="match_parent"
      android:background="@color/bgcolorgree" >
 
-    <ImageView
+    <Button
         android:id="@+id/moregame"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:background="@drawable/home" />
+        android:text="@string/home_page" />
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
