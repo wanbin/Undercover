@@ -8,7 +8,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +22,6 @@ public class random_50 extends BaseActivity {
 	private TextView clicktimes;
 	private TextView preference;
 	private TextView lose;
-	private FrameLayout warpclick;
-	private TextView txtClick;
 	Random random = new Random();
 	int random_times = Math.abs(random.nextInt()) % 50;
 
@@ -34,11 +31,9 @@ public class random_50 extends BaseActivity {
 		click_button = (ImageView) findViewById(R.id.imageBtnMain);
 		restart_button = (Button) findViewById(R.id.button2);
 		punishment_button = (Button) findViewById(R.id.button3);
-		warpclick = (FrameLayout) findViewById(R.id.warpclick);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);
 		lose = (TextView) findViewById(R.id.textView5);
-		txtClick = (TextView) findViewById(R.id.txtclick);
-		click_button.setBackgroundResource(R.drawable.popo152);
+		click_button.setBackgroundResource(R.drawable.click);
 
 		// v.setVisibility(View.INVISIBLE);
 		// punishBtn.setVisibility(View.INVISIBLE);
@@ -46,7 +41,6 @@ public class random_50 extends BaseActivity {
 		punishment_button.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
-		txtClick.setText("点我");
 		final AnimationSet aniSet = new AnimationSet(true);
 		final ScaleAnimation scaleAn = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -71,7 +65,7 @@ public class random_50 extends BaseActivity {
 				if (click_times <= random_times) {
 					setFinish();
 				} else {
-					warpclick.startAnimation(aniSet);
+					click_button.startAnimation(aniSet);
 				}
 			}
 		});
@@ -82,11 +76,10 @@ public class random_50 extends BaseActivity {
 				random_times = Math.abs(random.nextInt()) % 50;
 				click_times = 50;
 				click_button.setClickable(true);
-				click_button.setBackgroundResource(R.drawable.popo152);
+				click_button.setBackgroundResource(R.drawable.click);
 				lose.setVisibility(View.INVISIBLE);
 				restart_button.setVisibility(View.INVISIBLE);
 				DisplayParameter(50-click_times);
-				txtClick.setText("点我");
 			}
 		});
 		// punishBtn.setOnClickListener(new Button.OnClickListener() {
@@ -113,11 +106,10 @@ public class random_50 extends BaseActivity {
 
 	protected void setFinish() {
 		click_button.setClickable(false);
-		click_button.setBackgroundResource(R.drawable.popogray152);
+		click_button.setBackgroundResource(R.drawable.over);
 		lose.setVisibility(View.VISIBLE);
 		restart_button.setVisibility(View.VISIBLE);
 		punishment_button.setVisibility(View.VISIBLE);
-		txtClick.setText("结束");
 	}
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);

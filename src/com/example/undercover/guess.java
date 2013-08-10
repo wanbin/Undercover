@@ -66,14 +66,15 @@ public class guess extends Activity {
 				temtext.setTextSize(30);
 				select.setTag(temindex);
 				select.setBackgroundResource(R.drawable.popo72);
-				select.setOnClickListener(new Button.OnClickListener() {
+				select.setOnLongClickListener(new Button.OnLongClickListener() {
 					@Override
-					public void onClick(View v) {
+					public boolean onLongClick(View v) {
 						tapIndex((Integer) v.getTag());
 						v.setClickable(false);
 						ImageView tt = (ImageView) v;
 						tt.setBackgroundResource(R.drawable.popogray72);
 						// tt.setText("*");
+						return true;
 					}
 				});
 				fl.addView(select);

@@ -4,21 +4,21 @@
     android:layout_height="match_parent"
      android:background="@color/bgcolorgree" >
 
-    <Button
+    <ImageView
         android:id="@+id/moregame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:text="@string/home_page" />
+        android:background="@drawable/home" />
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -195,7 +195,7 @@
          android:layout_height="150dp"
          android:layout_below="@+id/LinearLayout1"
          android:layout_centerHorizontal="true"
-         android:background="@drawable/play"
+         android:background="@drawable/start"
          />
 
 </RelativeLayout>

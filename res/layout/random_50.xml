@@ -5,32 +5,20 @@
     android:layout_height="match_parent" 
     android:background="@color/bgcolorgree" >
 
+    <ImageView
+        android:id="@+id/imageBtnMain"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/click" />
+
+ 
+
     <FrameLayout
         android:id="@+id/warpclick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" >
-
-        <TextView
-            android:id="@+id/txtclick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="@dimen/Large" />
-
-        <ImageView
-            android:id="@+id/imageBtnMain"
-            android:layout_width="234dp"
-            android:layout_height="234dp"
-            android:layout_gravity="center"
-             />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="@string/lose" />
 
     </FrameLayout>
 
@@ -77,8 +65,16 @@
         android:id="@+id/button2"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/warpclick"
+        android:layout_below="@+id/imageBtnMain"
         android:layout_centerHorizontal="true"
         android:text="重新开始" />
+
+   <TextView
+       android:id="@+id/textView5"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/button2"
+       android:layout_centerHorizontal="true"
+       android:text="@string/lose" />
 
 </RelativeLayout>
