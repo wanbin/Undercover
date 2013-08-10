@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +23,7 @@ public class Setting extends BaseActivity {
 	private TextView under;
 	private TextView title;
 	// 说明
-	private int peopleCount = 3;
+	private int peopleCount = 4;
 	private int underCount = 1;
 	private String[] content;
 	private Random random;
@@ -47,6 +49,14 @@ public class Setting extends BaseActivity {
 		random = new Random();
 		content = getResources().getStringArray(R.array.content);
 		
+		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				0.5f);
+		scaleAni.setRepeatMode(Animation.REVERSE);
+		scaleAni.setRepeatCount(-1);
+		scaleAni.setDuration(1000);
+		btnStart.startAnimation(scaleAni);
+
 		// 注释掉chat room
 		//startChatRoom.setVisibility(View.INVISIBLE);
 		setPeople();
@@ -65,19 +75,25 @@ public class Setting extends BaseActivity {
 		btnCost.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (peopleCount > 3)
-				{
+				if (peopleCount > 4) {
 					peopleCount--;
+					underCount = Math.min(
+							Math.max((int) Math.floor(peopleCount / 5), 1),
+							underCount);
 				}
 				setPeople();
+				setUnder();
 			}
 		});
 
 		btnAddUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (underCount < Math.floor(peopleCount / 3))
+				if (underCount < 4) {
 					underCount++;
+					peopleCount += 5;
+				}
+				setPeople();
 				setUnder();
 			}
 		});
@@ -125,10 +141,39 @@ public class Setting extends BaseActivity {
 	}
 
 	private void setPeople() {
+		if (peopleCount == 20) {
+			btnAdd.setBackgroundResource(R.drawable.popogray72);
+			btnAdd.setClickable(false);
+		} else {
+			btnAdd.setBackgroundResource(R.drawable.popo72);
+			btnAdd.setClickable(true);
+		}
+		if (peopleCount == 4) {
+			btnCost.setBackgroundResource(R.drawable.popogray72);
+			btnCost.setClickable(false);
+		} else {
+			btnCost.setBackgroundResource(R.drawable.popo72);
+			btnCost.setClickable(true);
+		}
 		people.setText(Integer.toString(peopleCount));
 	}
 
 	private void setUnder() {
+		if (underCount == 4) {
+			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
+			btnAddUnder.setClickable(false);
+		} else {
+			btnAddUnder.setBackgroundResource(R.drawable.popo72);
+			btnAddUnder.setClickable(true);
+		}
+		if (underCount == 1) {
+			btnCostUnder.setBackgroundResource(R.drawable.popogray72);
+			btnCostUnder.setClickable(false);
+		} else {
+			btnCostUnder.setBackgroundResource(R.drawable.popo72);
+			btnCostUnder.setClickable(true);
+		}
+
 		under.setText(Integer.toString(underCount));
 	}
 

@@ -43,7 +43,7 @@
                     android:id="@+id/btnCost"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/popo72" />
+                    android:background="@drawable/popo72" />
                 
                  <TextView
                      android:id="@+id/txtcost1"
@@ -64,7 +64,7 @@
                     android:id="@+id/imageViewAddBg"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/popo72" />
+					android:background="@drawable/popo72"/>
 
                 <TextView
                     android:id="@+id/txtPeople"
@@ -81,12 +81,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" >
+
               <ImageView
-                android:id="@+id/btnAdd"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/popo72" />
+                  android:id="@+id/btnAdd"
+                  android:layout_width="50dp"
+                  android:layout_height="50dp"
+                  android:layout_gravity="center_vertical"
+                  android:background="@drawable/popo72"
+                  />
+
               <TextView
                     android:id="@+id/txtadd1"
                     android:layout_width="50dp"
@@ -119,7 +122,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/popo72" />
+                 android:background="@drawable/popo72"
+                />
+             
              <TextView
                     android:id="@+id/txtcost2"
                     android:layout_width="50dp"
@@ -139,7 +144,7 @@
                     android:id="@+id/imageViewUnderBg"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/popo72" />
+                    android:background="@drawable/popo72" />
 
                 <TextView
                     android:id="@+id/txtUnder"
@@ -162,7 +167,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/popo72" />
+                 android:background="@drawable/popo72"
+                />
             <TextView
                     android:id="@+id/txtadd2"
                     android:layout_width="50dp"
@@ -189,8 +195,7 @@
          android:layout_height="150dp"
          android:layout_below="@+id/LinearLayout1"
          android:layout_centerHorizontal="true"
-         android:pivotX="50%"
-         android:pivotY="50%"
-         android:src="@drawable/popored" />
+         android:background="@drawable/play"
+         />
 
 </RelativeLayout>

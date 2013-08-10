@@ -26,7 +26,9 @@ public class HomeActivity extends BaseActivity {
 		btnMore = (Button) findViewById(R.id.btnMore);
 		imgPlay = (ImageView) findViewById(R.id.imageView2);
 
-		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f);
+		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				0.5f);
 		scaleAni.setRepeatMode(Animation.REVERSE);
 		scaleAni.setRepeatCount(-1);
 		scaleAni.setDuration(1000);

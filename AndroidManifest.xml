@@ -44,6 +44,8 @@
         </activity>
         <activity  android:name="com.example.undercover.Setting" >
         </activity>
+        <activity  android:name="com.example.undercover.MakeActivity" >
+        </activity>
     </application>
 
 </manifest>

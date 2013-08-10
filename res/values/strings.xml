@@ -8,7 +8,7 @@
     <string name="startGame">开始游戏</string>
     <string name="cost">-</string>
     <string name="add">+</string>
-    <string name="remamber">记住了</string>
+    <string name="remamber">记住了,传给下一位</string>
     <string name="one">1</string>
     <string name="guesscontent">快去猜谁是卧底吧~</string>
     <string name="txtUndex">卧底人数</string>
@@ -18,7 +18,7 @@
     <string name="chatroom">打开聊天室</string>
     <string name="question_jump">进入头脑风暴</string>
     <string name="question_title">开始头脑风暴啦,嘎嘎</string>
-    <string name="givetoother">传给下一位</string>
+    <string name="givetoother">请避免被别的玩家看到</string>
     <string name="more">更多</string>
     <string name="lose">输了不能怨别人</string>
     <string name="punish_adventure">大冒险</string>

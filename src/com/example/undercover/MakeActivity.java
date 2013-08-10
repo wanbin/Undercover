@@ -20,7 +20,8 @@ public class MakeActivity extends Activity {
 		txtTitle.setText("【谁是卧底】1.04版本");
 		String emailaddr = this.getString(R.string.emailaddr);
 		txtContent
-				.setText("设计制作：一路向北工作室\n意见及建议："+emailaddr+"\n\n\nv1.04版本新功能：\n\n1.添加有胆量就问小游戏\n2.完善游戏惩罚措施\n3.优化界面");
+.setText("设计制作：一路向北工作室\n意见及建议：" + emailaddr
+				+ "\n\n\nv1.04版本新功能：\n\n1.添加有胆量就问小游戏\n2.完善游戏惩罚措施\n3.优化界面");
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

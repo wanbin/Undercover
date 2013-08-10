@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="30dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="@dimen/index" />
 
         <TextView
             android:id="@+id/textViewab"
@@ -38,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/popo152" />
+            android:src="@drawable/popo512" />
         
         <TextView
             android:id="@+id/txtIndex"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/one"
-            android:textSize="@dimen/Large" />
+            android:textSize="@dimen/large80" />
 
         
 
