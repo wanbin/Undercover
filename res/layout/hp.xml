@@ -29,6 +29,14 @@
             android:text="@string/circleme" />
 
 
+        <Button
+            android:id="@+id/jumpQuestion_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/punish_true" />
+
+
     </LinearLayout>
 
    <Button

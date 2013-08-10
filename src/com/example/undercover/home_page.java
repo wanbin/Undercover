@@ -18,6 +18,7 @@ public class home_page extends BaseActivity {
 	private Button btnaskme;
 	private Button btncricleme;
 	private Button btntruethings;
+	private Button btnQuestion;
 	
 	
 	@Override
@@ -30,6 +31,7 @@ public class home_page extends BaseActivity {
 		btnclickme = (Button) findViewById(R.id.btnclickme);
 		// btnaskme = (Button) findViewById(R.id.btnaskme);
 		btncricleme = (Button) findViewById(R.id.btncricleme);
+		btnQuestion = (Button) findViewById(R.id.jumpQuestion_Btn);
 		// btntruethings = (Button) findViewById(R.id.btntruethings);
 		
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
@@ -75,6 +77,7 @@ public class home_page extends BaseActivity {
 		// }
 		// });
 		
+		//酒瓶旋转模块跳转
 		btncricleme.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -82,6 +85,16 @@ public class home_page extends BaseActivity {
 				Intent goChat = new Intent();
 				goChat.setClass(home_page.this, RotaryBottleActivity.class);
 				uMengClick("game_bottle");
+				startActivity(goChat);
+			}
+		});
+		//真心话模块跳转 lcl 20130810 00:08:56
+		btnQuestion.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent goChat = new Intent();
+				goChat.setClass(home_page.this, QuestionAnswer.class);
 				startActivity(goChat);
 			}
 		});
