@@ -3,14 +3,7 @@
     package="com.example.undercover"
     android:versionCode="1"
     android:versionName="1.04" >
-    
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="9" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
-	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-
+   
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -49,8 +42,23 @@
         </activity>
         <activity  android:name="com.example.undercover.MakeActivity" >
         </activity>
-        <meta-data android:value="YOUR_APP_KEY" android:name="5206311756240b10f70a9558"></meta-data>
-		<meta-data android:value="Channel ID" android:name="TEST"/>
+        
+ 		<meta-data android:value="5206311756240b10f70a9558" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="TEST" android:name="UMENG_CHANNEL"/>
     </application>
+    
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="9" />
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
 </manifest>
