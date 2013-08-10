@@ -114,7 +114,7 @@ public class random_50 extends BaseActivity {
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);
 		clicktimes = (TextView) findViewById(R.id.textView1);
-		Probability.setText("危险级数：" + (time + 1) * 2 + "%");
+		Probability.setText("危险级数：" + Math.max((time + 1) * 2, 100) + "%");
 		clicktimes.setText("（点击了" + time + "次）");
 	}
 }

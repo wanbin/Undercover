@@ -2,14 +2,13 @@ package com.example.undercover;
 
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class home_page extends Activity {
+public class home_page extends BaseActivity {
 
 	//private Button game5;
 

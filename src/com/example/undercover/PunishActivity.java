@@ -1,15 +1,14 @@
 package com.example.undercover;
 
-import com.example.util.MathUtil;
-import com.example.util.PunishProps;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class PunishActivity extends Activity {
+import com.example.util.MathUtil;
+import com.example.util.PunishProps;
+
+public class PunishActivity extends BaseActivity {
 	
 	private Button trueBtn;
 	private Button advenBtn;
@@ -37,18 +36,18 @@ public class PunishActivity extends Activity {
 		punish_6	= (TextView)findViewById(R.id.punish_6);
 		
 		changeBtn.setVisibility(View.INVISIBLE);
-		//用户选择真心话
+		// 用户选择真心话
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				trueBtn.setClickable(false);
 				advenBtn.setClickable(false);
 				changeBtn.setVisibility(View.VISIBLE);
-				//获取惩罚
+				// 获取惩罚
 				getTruePunish();
 			}
 		});
-		//用户选择大冒险
+		// 用户选择大冒险
 		advenBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -57,11 +56,11 @@ public class PunishActivity extends Activity {
 				advenBtn.setClickable(false);
 				changeBtn.setVisibility(View.VISIBLE);
 				
-				//获取惩罚
+				// 获取惩罚
 				getAdvenPunish();
 			}
 		});
-		//用户选择换题目
+		// 用户选择换题目
 		changeBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -94,11 +93,11 @@ public class PunishActivity extends Activity {
 	}
 	
 	private void setTextView(String[] str){
-		punish_1.setText("1、"+str[0]);
-		punish_2.setText("2、"+str[1]);
-		punish_3.setText("3、"+str[2]);
-		punish_4.setText("4、"+str[3]);
-		punish_5.setText("5、"+str[4]);
-		punish_6.setText("6、"+str[5]);
+		punish_1.setText("1、" + str[0]);
+		punish_2.setText("2、" + str[1]);
+		punish_3.setText("3、" + str[2]);
+		punish_4.setText("4、" + str[3]);
+		punish_5.setText("5、" + str[4]);
+		punish_6.setText("6、" + str[5]);
 	}
 }

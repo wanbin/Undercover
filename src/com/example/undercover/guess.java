@@ -1,6 +1,5 @@
 package com.example.undercover;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 import com.example.util.MathUtil;
 import com.example.util.PunishProps;
 
-public class guess extends Activity {
+public class guess extends BaseActivity {
 	private TableLayout contentTable;
 
 	// 卧底人数
@@ -50,6 +49,7 @@ public class guess extends Activity {
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
+		txtTitle.setText("快去猜猜谁是卧底吧(长按选择)~");
 		int temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);

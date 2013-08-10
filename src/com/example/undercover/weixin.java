@@ -1,6 +1,5 @@
 package com.example.undercover;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class weixin extends Activity {
+public class weixin extends BaseActivity {
 	private Button btnreturn;
 	private ImageView weixin;
 	@Override

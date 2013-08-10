@@ -3,10 +3,6 @@ package com.example.undercover;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.example.util.MathUtil;
-import com.example.util.PunishProps;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,14 +12,17 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public class QuestionAnswer extends Activity {
+import com.example.util.MathUtil;
+import com.example.util.PunishProps;
+
+public class QuestionAnswer extends BaseActivity {
 	
 	private TableLayout baseTable;
-	//ready Go,下一题，开始惩罚，公用一个按钮
+	// ready Go,下一题，开始惩罚，公用一个按钮
 	private Button baseBtn;
-	//标志位，游戏是否开始，默认否
+	// 标志位，游戏是否开始，默认否
 	private boolean isBegin = false;
-	//标志位，游戏是否结束，默认否
+	// 标志位，游戏是否结束，默认否
 	private boolean isOver	= false;
 	private TextView punish_0;
 	private TextView punish_1;
@@ -72,23 +71,23 @@ public class QuestionAnswer extends Activity {
 			}
 		});
 		
-		//Ready Go,下一题，开始惩罚，button点击事件
+		// Ready Go,下一题，开始惩罚，button点击事件
 		baseBtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//第一次进入游戏
-				if(!isBegin){
+				// 第一次进入游戏
+				if (!isBegin) {
 					isBegin	= true;
 					Timer timer	= new Timer();
 					timer.schedule(timetask, 0, 10);
 					baseBtn.setText("下一题");
 					getNextQuestion();
 				}else{
-					//游戏未结束，继续下一题目,结束后的操作由时间控制，
+					// 游戏未结束，继续下一题目,结束后的操作由时间控制，
 					if(!isOver){
 						getNextQuestion();
 					}else{
-						//游戏结束后的，显示开始惩罚按钮
+						// 游戏结束后的，显示开始惩罚按钮
 						showPunish();
 						baseBtn.setClickable(false);
 //						baseTable.addView(restartBtn);
@@ -97,7 +96,8 @@ public class QuestionAnswer extends Activity {
 			}
 		});
 	}
-	//接受时间
+
+	// 接受时间
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
 			if(!isOver){
@@ -106,7 +106,7 @@ public class QuestionAnswer extends Activity {
 			super.handleMessage(msg);
 		}
 	};
-	//传递时间
+	// 传递时间
 	TimerTask timetask = new TimerTask() {
 		public void run() {
 			Message message = new Message();
@@ -119,7 +119,7 @@ public class QuestionAnswer extends Activity {
 	 * 游戏结束，显示惩罚操作
 	 */
 	private void showPunish(){
-		//0默认可见，1不可见但是在页面上留有位置，2移除
+		// 0默认可见，1不可见但是在页面上留有位置，2移除
 		
 		int[] num	= MathUtil.getInstance().check(73, 6);
 		String[] str	= new String[6];
@@ -133,13 +133,14 @@ public class QuestionAnswer extends Activity {
 		punish_4.setText("5"+str[4]);
 		punish_5.setText("6"+str[5]);
 	}
+	
 	/**
 	 * 计时加10毫秒
 	 */
 	private void addTenMMS(){
 		timeLimit	-=1;
 		if(timeLimit<=0){
-			//游戏结束后的操作
+			// 游戏结束后的操作
 			isOver	= true;
 			baseBtn.setBackgroundResource(R.drawable.ic_launcher);
 			punish_0.setText("");
@@ -150,7 +151,7 @@ public class QuestionAnswer extends Activity {
 	}
 	
 	private void updateTime(){
-		//textView.setText("剩余时间:"+(double)timeLimit/100);
+		// textView.setText("剩余时间:"+(double)timeLimit/100);
 	}
 	
 	/**
@@ -158,7 +159,7 @@ public class QuestionAnswer extends Activity {
 	 */
 	private void  getNextQuestion(){
 		int hardQuestion	= (int)Math.floor(Math.random()*45);
-		punish_0.setText("1、"+PunishProps.getQestionHard(hardQuestion));
+		punish_0.setText("1、" + PunishProps.getQestionHard(hardQuestion));
 	}
 	
 }

@@ -3,10 +3,13 @@
     package="com.example.undercover"
     android:versionCode="1"
     android:versionName="1.04" >
-
+    
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="9" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -46,6 +49,8 @@
         </activity>
         <activity  android:name="com.example.undercover.MakeActivity" >
         </activity>
+        <meta-data android:value="YOUR_APP_KEY" android:name="5206311756240b10f70a9558"></meta-data>
+		<meta-data android:value="Channel ID" android:name="TEST"/>
     </application>
 
 </manifest>

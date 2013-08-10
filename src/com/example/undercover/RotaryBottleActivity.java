@@ -1,7 +1,6 @@
 package com.example.undercover;
 
 import android.R.interpolator;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -13,7 +12,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class RotaryBottleActivity extends Activity{
+public class RotaryBottleActivity extends BaseActivity {
 	int bottleWidth;
 	int bottleHeight;
 	float fromDe;

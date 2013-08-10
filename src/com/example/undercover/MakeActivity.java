@@ -1,12 +1,11 @@
 package com.example.undercover;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MakeActivity extends Activity {
+public class MakeActivity extends BaseActivity {
 	private Button btnreturn;
 	private TextView txtContent;
 	private TextView txtTitle;
