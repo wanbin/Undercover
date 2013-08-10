@@ -91,7 +91,7 @@ public class Setting extends BaseActivity {
 			public void onClick(View v) {
 				if (underCount < 4) {
 					underCount++;
-					peopleCount += 5;
+					peopleCount = Math.min(peopleCount + 5, 20);
 				}
 				setPeople();
 				setUnder();
