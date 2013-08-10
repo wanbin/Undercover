@@ -1,6 +1,5 @@
 package com.example.undercover;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class fanpai extends Activity {
+public class fanpai extends BaseActivity {
 	private int soncount;
 	private String son;
 	private String[] content;
@@ -47,6 +46,9 @@ public class fanpai extends Activity {
 			@Override
 			public void onClick(View v) {
 				if (nowIndex < content.length) {
+					if (nowIndex == 1) {
+						uMengClick("click_undercover_pai_first");
+					}
 					nowIndex++;
 					initPan(nowIndex);
 				} else {
@@ -58,6 +60,7 @@ public class fanpai extends Activity {
 					goMain.putExtras(bundle);
 					goMain.setClass(fanpai.this, guess.class);
 					startActivity(goMain);
+					uMengClick("click_undercover_pai_last");
 					finish();
 				}
 			}

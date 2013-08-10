@@ -29,6 +29,7 @@ public class guess extends BaseActivity {
 	private String[] content;
 	private TextView txtTitle;
 	private Button punishBtn;
+	private int totalcount;
 	private boolean isOver;
 	private boolean flag;
 	private boolean isGetRestart;
@@ -49,6 +50,7 @@ public class guess extends BaseActivity {
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
+		totalcount = content.length;
 		txtTitle.setText("快去猜猜谁是卧底吧(长按选择)~");
 		int temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
@@ -93,6 +95,9 @@ public class guess extends BaseActivity {
 		}
 	}
 	protected void tapIndex(int tag) {
+		if (soncount + fathercount == totalcount) {
+			uMengClick("click_guess_first");
+		}
 		if (content[tag - 1].equals(son)) {
 			soncount--;
 		} else {
@@ -103,12 +108,14 @@ public class guess extends BaseActivity {
 				Log("任务完成");
 				txtTitle.setText("完成任务，卧底为" + son);
 				isOver = true;
+				uMengClick("click_guess_last");
 				refash();
 				setAllButton(false);
 			} else if (fathercount <= soncount) {
 				Log("卧底胜利");
 				txtTitle.setText("卧底胜利，卧底为" + son);
 				isOver = true;
+				uMengClick("click_guess_last");
 				refash();
 				setAllButton(false);
 			} else {
@@ -127,6 +134,7 @@ public class guess extends BaseActivity {
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				getPunish();
+				uMengClick("game_undercover_punish");
 				if(!isGetRestart){
 					isGetRestart	= true;
 					getRestartButton();
@@ -169,11 +177,11 @@ public class guess extends BaseActivity {
 		restartBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				 Intent goMain = new Intent();
-				 goMain.setClass(guess.this, Setting.class);
-				uMengClick("game_undercover");
-				 startActivity(goMain);
-				 finish();
+				Intent goMain = new Intent();
+				uMengClick("game_undercover_resert");
+				goMain.setClass(guess.this, Setting.class);
+				startActivity(goMain);
+				finish();
 			}
 		});
 		contentTable.addView(restartBtn);

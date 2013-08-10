@@ -13,7 +13,7 @@ public class BaseActivity extends Activity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		MobclickAgent.setDebugMode(true);
 		MobclickAgent.onError(this);
-		MobclickAgent.setSessionContinueMillis(60000);
+		// MobclickAgent.setSessionContinueMillis(60000);
 	}
 
 	public void onResume() {

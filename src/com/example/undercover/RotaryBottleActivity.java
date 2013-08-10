@@ -46,6 +46,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				startAnimation();
+				uMengClick("count_bottle");
 		       }
 		});	
 		
