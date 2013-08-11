@@ -17,7 +17,7 @@ public class RotaryBottleActivity extends BaseActivity {
 	int bottleHeight;
 	float fromDe;
 	float toDe;
-	Button restartBtn;
+	// Button restartBtn;
 	ImageView bottle;
 	
 	
@@ -29,7 +29,7 @@ public class RotaryBottleActivity extends BaseActivity {
 		toDe = getDegrees();
 		
 		bottle = (ImageView)findViewById(R.id.imageView1);
-		restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
+		// restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
 
 
 
@@ -41,18 +41,18 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 
-		restartBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				startAnimation();
-				uMengClick("count_bottle");
-		       }
-		});	
+		// restartBtn.setOnClickListener(new Button.OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// // TODO Auto-generated method stub
+		// startAnimation();
+		// uMengClick("count_bottle");
+		// }
+		// });
 		
 		
 		
-		final Button returnBtn = (Button)findViewById(R.id.rotarybottle_returnBtn);
+		final ImageView returnBtn = (ImageView) findViewById(R.id.rotarybottle_returnBtn);
 		returnBtn.setClickable(false);
 		returnBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -108,7 +108,7 @@ public class RotaryBottleActivity extends BaseActivity {
 		a.setFillAfter(true);
 		
 		bottle.setClickable(false);
-		restartBtn.setClickable(false);
+		// restartBtn.setClickable(false);
 		bottle.startAnimation(a);
         a.setAnimationListener(new AnimationListener() {
 			
@@ -127,7 +127,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				// TODO Auto-generated method stub
-				restartBtn.setClickable(true);
+				// restartBtn.setClickable(true);
 				bottle.setClickable(true);
 			}
 		});

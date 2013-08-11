@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#99C842"
+        android:gravity="center_horizontal|left" >
+
+        <ImageView
+            android:id="@+id/popo_who"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/popo_who" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="17dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title_en"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/content_en" />
+
+            <TextView
+                android:id="@+id/title_zn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textScaleX="1.5"
+                android:text="@string/app_name" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

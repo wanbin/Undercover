@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 public class weixin extends BaseActivity {
-	private Button btnreturn;
+	private ImageView btnreturn;
 	private ImageView weixin;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.weixin);
-		btnreturn = (Button) findViewById(R.id.btnreturn);
+		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		weixin = (ImageView) findViewById(R.id.imageView1);
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override

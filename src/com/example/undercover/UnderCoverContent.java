@@ -1,22 +1,33 @@
 package com.example.undercover;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
  * @author liuchunlong 谁是卧底 游戏简介
  */
 public class UnderCoverContent extends BaseActivity {
+	private ImageView btnreturn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.undercover_content);
+		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		TextView ruleText	= (TextView) findViewById(R.id.ruleText);
 		TextView winText	= (TextView) findViewById(R.id.winText);
 		ruleText.setText("游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号"
 				+ "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
 		winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
-		
+		btnreturn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		/**
 		 * 下面注释的代码，请勿动，谢谢
 		 * 
