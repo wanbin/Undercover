@@ -73,8 +73,8 @@ public class QuestionAnswer extends BaseActivity {
 		baseTable.addView(punish_4);
 		baseTable.addView(punish_5);
 		baseTable.addView(restartLayout);
-//		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
-		timeLimit	= 1000;
+		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+//		timeLimit	= 1000;
 		final FrameLayout frame	= (FrameLayout)findViewById(R.id.question_frame);
 		imageNext	= (ImageView)findViewById(R.id.question_image);
 		imageNext.setBackground(getResources().getDrawable(R.drawable.popo152));
@@ -90,8 +90,8 @@ public class QuestionAnswer extends BaseActivity {
 				isOver	= false;
 				isBegin	= false;
 				isShowBar	= false;
-//				timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
-				timeLimit	= 1000;
+				timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+//				timeLimit	= 1000;
 				imageNext.setClickable(true);
 				questionNext.setText("Ready Go !");
 				imageNext.setBackgroundResource(R.drawable.popo152);
