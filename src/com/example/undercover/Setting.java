@@ -18,7 +18,7 @@ public class Setting extends BaseActivity {
 	private ImageView btnAddUnder;
 	private ImageView btnCostUnder;
 	private ImageView btnStart;
-	private Button moregame;
+	private ImageView moregame;
 	private TextView people;
 	private TextView under;
 	private TextView title;
@@ -40,7 +40,7 @@ public class Setting extends BaseActivity {
 		btnCost = (ImageView) findViewById(R.id.btnCost);
 		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
 		btnStart = (ImageView) findViewById(R.id.btnStart);
-		moregame = (Button) findViewById(R.id.moregame);
+		moregame = (ImageView) findViewById(R.id.moregame);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
