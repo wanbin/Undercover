@@ -1,2 +1,6 @@
 haha
 asdfghfg
+sdf
+javascript:
+ fun()
+{main()}
