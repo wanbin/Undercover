@@ -16,8 +16,8 @@ public class random_50 extends BaseActivity {
 	int click_times = 50;
 	private Button punishBtn;
 	private ImageView click_button;
+	private ImageView btnreturn;
 	private Button restart_button;
-	private Button punishment_button;
 	private TextView Probability;
 	private TextView clicktimes;
 	private TextView preference;
@@ -29,8 +29,9 @@ public class random_50 extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
 		click_button = (ImageView) findViewById(R.id.imageBtnMain);
+		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
-		punishment_button = (Button) findViewById(R.id.button3);
+		// punishment_button = (Button) findViewById(R.id.button3);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);
 		lose = (TextView) findViewById(R.id.textView5);
 		click_button.setBackgroundResource(R.drawable.click);
@@ -38,7 +39,7 @@ public class random_50 extends BaseActivity {
 		// v.setVisibility(View.INVISIBLE);
 		// punishBtn.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
-		punishment_button.setVisibility(View.INVISIBLE);
+		// punishment_button.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
 		final AnimationSet aniSet = new AnimationSet(true);
@@ -83,6 +84,14 @@ public class random_50 extends BaseActivity {
 				DisplayParameter(50-click_times);
 			}
 		});
+		btnreturn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+
 		// punishBtn.setOnClickListener(new Button.OnClickListener() {
 		// @Override
 		// public void onClick(View v) {
@@ -94,13 +103,13 @@ public class random_50 extends BaseActivity {
 		// }
 		// });
 		//
-		punishment_button.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// 进入村龙单独的惩罚页面
-				finish();
-			}
-		});
+		// punishment_button.setOnClickListener(new Button.OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// // 进入村龙单独的惩罚页面
+		// finish();
+		// }
+		// });
 		// 显示概率和点击次数
 
 	}
@@ -110,7 +119,7 @@ public class random_50 extends BaseActivity {
 		click_button.setBackgroundResource(R.drawable.over);
 		lose.setVisibility(View.VISIBLE);
 		restart_button.setVisibility(View.VISIBLE);
-		punishment_button.setVisibility(View.VISIBLE);
+		// punishment_button.setVisibility(View.VISIBLE);
 	}
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);

@@ -3,10 +3,11 @@ package com.example.undercover;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MakeActivity extends BaseActivity {
-	private Button btnreturn;
+	private ImageView btnreturn;
 	private TextView txtContent;
 	private TextView txtTitle;
 	@Override
@@ -15,7 +16,7 @@ public class MakeActivity extends BaseActivity {
 		setContentView(R.layout.activity_make);
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		btnreturn = (Button) findViewById(R.id.btnreturn);
+		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		txtTitle.setText("【谁是卧底】1.04版本");
 		String emailaddr = this.getString(R.string.emailaddr);
 		txtContent

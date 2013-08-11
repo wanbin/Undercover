@@ -6,7 +6,7 @@
    
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/popo_who"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -44,7 +44,7 @@
         </activity>
         
  		<meta-data android:value="5206311756240b10f70a9558" android:name="UMENG_APPKEY"></meta-data>
-		<meta-data android:value="Market360" android:name="UMENG_CHANNEL"/>
+		<meta-data android:value="MarketSamsung" android:name="UMENG_CHANNEL"/>
     </application>
     
     <uses-sdk
