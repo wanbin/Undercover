@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">谁是卧底</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="textPeople">参与人数</string>
+    <string name="startGame">开始游戏</string>
+    <string name="cost">-</string>
+    <string name="add">+</string>
+    <string name="remamber">记住了,传给下一位</string>
+    <string name="one">1</string>
+    <string name="guesscontent">快去猜谁是卧底吧~</string>
+    <string name="txtUndex">卧底人数</string>
+    <string name="tip">注：为保证游戏趣味性，对卧底最大比例进行了限制</string>
+    <string name="title_activity_chat_room">ChatRoomActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="chatroom">打开聊天室</string>
+    <string name="question_jump">进入头脑风暴</string>
+    <string name="question_title">开始头脑风暴啦,嘎嘎</string>
+    <string name="givetoother">请避免被别的玩家看到</string>
+    <string name="more">更多</string>
+    <string name="lose">点背不能怨别人</string>
+    <string name="punish_adventure">大冒险</string>
+    <string name="punish_true">真心话</string>
+    <string name="punish_tips">可以选择真心话或者大冒险</string>
+    <string name="punish_other">点我还有机会换题目哦</string>
+    <string name="random_punish">接受惩罚</string>
+    <string name="clickme">有胆量就点</string>
+    <string name="askme">有胆量就问</string>
+    <string name="circleme">有胆量就转</string>
+    <string name="truethings">真心话大冒险</string>
+    <string name="strreturn">返回</string>
+    <string name="start">开始</string>
+    <string name="clicksay">"有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！"</string>
+    <string name="about">关于</string>
+    <string name="strweixin">没玩过【微信】版谁是卧底?</string>
+    <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
+    <string name="saoma">扫描二维码，快速进入</string>
+    <string name="content_en">who is undercover ?</string>
+    <string name="content_zn">谁 是 卧 底</string>
+    <string name="content_title">玩 法 介 绍</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="strwhoisundercover">谁是卧底</string>
+    <string name="strplayrule">玩法简介</string>
+    <string name="strweixinhao">微信账号</string>
+    <string name="strmake">关于游戏</string>
+    <string name="moregame">更多游戏</string>
+    <string name="home_page">主页</string>
+    <string name="contentmake">【谁是卧底】v1.04</string>
+    <string name="strmack">谁是卧底 1.04</string>
+    <string name="emailaddr">centurywar@163.com</string>
+</resources>
