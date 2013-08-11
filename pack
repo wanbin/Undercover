@@ -1,0 +1,1 @@
+find  ./AndroidManifest.xml |xargs perl -pi -e "s|TEST|Market360|g"
