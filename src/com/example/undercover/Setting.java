@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +31,11 @@ public class Setting extends BaseActivity {
 	private Random random;
 	private String son;
 	private String father;
+	private CheckBox afterShow;
+	//是否添加 冤死 提示，在投票后
+	private boolean isShow;
+	//是否添加空白词
+	private boolean isBlank;
 
 	// private int soncount = 1;
 	@Override
@@ -45,7 +52,30 @@ public class Setting extends BaseActivity {
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
-
+		//添加 冤死 提示按钮
+		afterShow	= (CheckBox)findViewById(R.id.afterShow);
+		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					isShow	= true;
+				}else{
+					isShow	= false;
+				}
+			}
+		});
+		//添加 空白词 按钮
+		CheckBox blank	= (CheckBox)findViewById(R.id.isBlank);
+		blank.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					isBlank	= true;
+				}else{
+					isBlank	= false;
+				}
+			}
+		});
 		random = new Random();
 		content = getResources().getStringArray(R.array.content);
 		
@@ -116,6 +146,8 @@ public class Setting extends BaseActivity {
 				bundle.putStringArray("content", tem);
 				bundle.putString("son", son);
 				bundle.putInt("sonCount", underCount);
+				bundle.putBoolean("isShow", isShow);
+				bundle.putBoolean("isBlank", isBlank);
 				Intent goMain = new Intent();
 				goMain.putExtras(bundle);
 				goMain.setClass(Setting.this, fanpai.class);

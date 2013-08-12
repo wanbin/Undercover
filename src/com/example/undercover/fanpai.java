@@ -1,5 +1,7 @@
 package com.example.undercover;
 
+import java.util.Random;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -19,6 +21,9 @@ public class fanpai extends BaseActivity {
 	private ImageView imagePan;
 	private Button btnOK;
 	private int nowIndex = 1;
+	private boolean isShow;
+	private boolean isBlank;
+	private boolean isChecked;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,7 @@ public class fanpai extends BaseActivity {
 		setContentView(R.layout.activity_pai);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+		isChecked	= false;
 		btnOK = (Button) findViewById(R.id.btnOk);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
@@ -33,10 +39,22 @@ public class fanpai extends BaseActivity {
 		imagePan = (ImageView) findViewById(R.id.imagePan);
 
 		Bundle bundle = this.getIntent().getExtras();
+		isBlank	= bundle.getBoolean("isBlank");
+		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
-		for (int i = 0; i < content.length; i++) {
+		int blandStr	= Math.abs(new Random().nextInt()); 
+		for (int i = 0, len	=content.length; i < len; i++,blandStr++) {
+			if(isBlank){
+				
+				if(!isChecked){
+					if(content[(i+blandStr)%len]!=son){
+						isChecked	= true;
+						content[(i+blandStr)%len]	= "空白";
+					}
+				}
+			}
 			Log(content[i]);
 		}
 
@@ -56,6 +74,7 @@ public class fanpai extends BaseActivity {
 					bundle.putStringArray("content", content);
 					bundle.putString("son", son);
 					bundle.putInt("sonCount", soncount);
+					bundle.putBoolean("isShow", isShow);
 					Intent goMain = new Intent();
 					goMain.putExtras(bundle);
 					goMain.setClass(fanpai.this, guess.class);

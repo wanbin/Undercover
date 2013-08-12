@@ -2,6 +2,7 @@ package com.example.undercover;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,7 +34,8 @@ public class guess extends BaseActivity {
 	private boolean isOver;
 	private boolean flag;
 	private boolean isGetRestart;
-//	private int temindex = 0;
+	private boolean isShow;
+	private int temindex;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,13 +48,14 @@ public class guess extends BaseActivity {
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		punishBtn = new Button(this);
 		Bundle bundle = this.getIntent().getExtras();
+		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		totalcount = content.length;
 		txtTitle.setText("快去猜猜谁是卧底吧(长按选择)~");
-		int temindex = 0;
+		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
@@ -62,10 +65,10 @@ public class guess extends BaseActivity {
 				}
 				FrameLayout fl = new FrameLayout(this);
 				ImageView select = new ImageView(this);
-				TextView temtext = new TextView(this);
-				temtext.setText("" + temindex);
-				temtext.setGravity(Gravity.CENTER);
-				temtext.setTextSize(30);
+				final TextView text	= new TextView(this);
+				text.setText("" + temindex);
+				text.setGravity(Gravity.CENTER);
+				text.setTextSize(30);
 				select.setTag(temindex);
 				select.setBackgroundResource(R.drawable.popo72);
 				select.setOnLongClickListener(new Button.OnLongClickListener() {
@@ -75,12 +78,26 @@ public class guess extends BaseActivity {
 						v.setClickable(false);
 						ImageView tt = (ImageView) v;
 						tt.setBackgroundResource(R.drawable.popogray72);
+						if(isShow){
+							text.setTextSize(20);
+							if (content[(Integer) v.getTag() - 1].equals(son)) {
+								text.setText("卧底");
+								text.setTextColor(getResources().getColor(R.color.RED));
+							} else {
+								if (content[(Integer) v.getTag() - 1].equals("空白")) {
+									text.setText("空白");
+									text.setTextColor(getResources().getColor(R.color.BLUE));
+								}else{
+									text.setText("冤死");
+								}
+							}
+						}
 						// tt.setText("*");
 						return true;
 					}
 				});
 				fl.addView(select);
-				fl.addView(temtext);
+				fl.addView(text);
 				newrow.addView(fl, 120, 120);
 			}
 			contentTable.addView(newrow);

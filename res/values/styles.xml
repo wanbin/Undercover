@@ -18,5 +18,7 @@
     </style>
     <color name="content_head">#99C842</color>
     <color name="bgcolorgree">#CBE5A8</color>
+    <color name="RED">#FF0000</color>
+    <color name="BLUE">#00FF00</color>
 
 </resources>

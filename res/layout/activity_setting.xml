@@ -18,7 +18,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -197,5 +197,26 @@
          android:layout_centerHorizontal="true"
          android:background="@drawable/start"
          />
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/btnStart"
+         android:layout_centerHorizontal="true"
+         android:orientation="vertical" >
+
+         <CheckBox
+             android:id="@+id/afterShow"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/setting_afterShow" />
+
+         <CheckBox
+             android:id="@+id/isBlank"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/setting_blank" />
+
+     </LinearLayout>
 
 </RelativeLayout>

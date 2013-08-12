@@ -6,6 +6,8 @@
     <string name="menu_settings">Settings</string>
     <string name="textPeople">参与人数</string>
     <string name="startGame">开始游戏</string>
+    <string name="setting_afterShow">是否在每轮投票后显示是否冤死</string>
+    <string name="setting_blank">是否添加空白词平民</string>
     <string name="cost">-</string>
     <string name="add">+</string>
     <string name="remamber">记住了,传给下一位</string>
