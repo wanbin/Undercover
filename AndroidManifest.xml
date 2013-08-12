@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.undercover"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="1.04" >
    
     <application
@@ -42,9 +42,10 @@
         </activity>
         <activity  android:name="com.example.undercover.MakeActivity" >
         </activity>
-        
+        <activity android:name="com.umeng.fb.ConversationActivity"/>
+		<activity android:name="com.umeng.fb.ContactActivity"/>
  		<meta-data android:value="5206311756240b10f70a9558" android:name="UMENG_APPKEY"></meta-data>
-		<meta-data android:value="MarketSamsung" android:name="UMENG_CHANNEL"/>
+		<meta-data android:value="TEST" android:name="UMENG_CHANNEL"/>
     </application>
     
     <uses-sdk
