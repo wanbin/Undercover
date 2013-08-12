@@ -6,7 +6,6 @@ import java.util.TimerTask;
 import com.example.util.MathUtil;
 import com.example.util.PunishProps;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,9 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
-
-import com.example.util.MathUtil;
-import com.example.util.PunishProps;
 
 public class QuestionAnswer extends BaseActivity {
 	
@@ -49,6 +45,9 @@ public class QuestionAnswer extends BaseActivity {
 	private boolean isShowBar;
 	/** 是否加载过TimeTask */
 	private boolean isTimeRun;
+	/**  惩罚页面跳转按钮 */
+//	private Button intentPunish;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,6 +62,8 @@ public class QuestionAnswer extends BaseActivity {
 		baseTable	= (TableLayout)findViewById(R.id.questionTable);
 		restartBtn.setText("重新开始");
 		restartBtn.setVisibility(View.INVISIBLE);
+//		intentPunish	= new Button(this);
+//		intentPunish.setText("惩罚页面");
 		LinearLayout restartLayout	= new LinearLayout(this);
 		restartLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 		restartLayout.addView(restartBtn);
@@ -73,6 +74,7 @@ public class QuestionAnswer extends BaseActivity {
 		baseTable.addView(punish_4);
 		baseTable.addView(punish_5);
 		baseTable.addView(restartLayout);
+//		baseTable.addView(intentPunish);
 		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
 //		timeLimit	= 1000;
 		final FrameLayout frame	= (FrameLayout)findViewById(R.id.question_frame);
@@ -151,6 +153,16 @@ public class QuestionAnswer extends BaseActivity {
 				frame.startAnimation(aniSet);
 			}
 		});
+		
+//		//惩罚页面跳转
+//		intentPunish.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent intentPun	= new Intent();
+//				intentPun.setClass(QuestionAnswer.this, PunishActivity.class);
+//				startActivity(intentPun);
+//			}
+//		});
 	}
 
 	// 接受时间

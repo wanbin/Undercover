@@ -19,6 +19,7 @@ public class PunishActivity extends BaseActivity {
 	private TextView punish_4;
 	private TextView punish_5;
 	private TextView punish_6;
+	private Button backBtn;
 	private boolean flag;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +35,14 @@ public class PunishActivity extends BaseActivity {
 		punish_4	= (TextView)findViewById(R.id.punish_4);
 		punish_5	= (TextView)findViewById(R.id.punish_5);
 		punish_6	= (TextView)findViewById(R.id.punish_6);
-		
+		backBtn		= (Button) findViewById(R.id.punish_backBtn);
 		changeBtn.setVisibility(View.INVISIBLE);
 		// 用户选择真心话
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				trueBtn.setClickable(false);
-				advenBtn.setClickable(false);
+				trueBtn.setEnabled(false);
+				advenBtn.setEnabled(false);
 				changeBtn.setVisibility(View.VISIBLE);
 				// 获取惩罚
 				getTruePunish();
@@ -52,8 +53,8 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				flag	= true;
-				trueBtn.setClickable(false);
-				advenBtn.setClickable(false);
+				trueBtn.setEnabled(false);
+				advenBtn.setEnabled(false);
 				changeBtn.setVisibility(View.VISIBLE);
 				
 				// 获取惩罚
@@ -69,7 +70,15 @@ public class PunishActivity extends BaseActivity {
 				}else{
 					getTruePunish();
 				}
-				changeBtn.setClickable(false);
+				changeBtn.setEnabled(false);
+			}
+		});
+		
+		//用户点击 返回 按钮
+		backBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
 			}
 		});
 	}
@@ -84,7 +93,7 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void getAdvenPunish(){
-		int[] intArr = MathUtil.getInstance().check(88, 6);
+		int[] intArr = MathUtil.getInstance().check(73, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
 			str[i] = PunishProps.getPunish(intArr[i]);

@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgcolorgree"
     android:gravity="center_horizontal"
-    android:orientation="vertical" 
-    android:background="@color/bgcolorgree" >
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
@@ -90,5 +90,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/punish_other" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|right">
+
+        <Button
+            android:id="@+id/punish_backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strreturn" />
+
+    </LinearLayout>
 
 </LinearLayout>
