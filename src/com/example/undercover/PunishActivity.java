@@ -41,8 +41,8 @@ public class PunishActivity extends BaseActivity {
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				trueBtn.setEnabled(false);
-				advenBtn.setEnabled(false);
+				trueBtn.setVisibility(View.INVISIBLE);
+				advenBtn.setVisibility(View.INVISIBLE);
 				changeBtn.setVisibility(View.VISIBLE);
 				// 获取惩罚
 				getTruePunish();
@@ -53,8 +53,8 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				flag	= true;
-				trueBtn.setEnabled(false);
-				advenBtn.setEnabled(false);
+				trueBtn.setVisibility(View.INVISIBLE);
+				advenBtn.setVisibility(View.INVISIBLE);
 				changeBtn.setVisibility(View.VISIBLE);
 				
 				// 获取惩罚

@@ -1,6 +1,7 @@
 package com.example.undercover;
 
 import android.R.interpolator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -17,21 +18,23 @@ public class RotaryBottleActivity extends BaseActivity {
 	int bottleHeight;
 	float fromDe;
 	float toDe;
-	// Button restartBtn;
+
+	//Button restartBtn;
+	private Button punishment;
+
 	ImageView bottle;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.rotarybottle);
 		toDe = getDegrees();
-		
-		bottle = (ImageView)findViewById(R.id.imageView1);
-		// restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
 
+		bottle = (ImageView) findViewById(R.id.imageView1);
 
+		//restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
+		punishment = (Button) findViewById(R.id.button1);
 
 		bottle.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -41,27 +44,37 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 
-		// restartBtn.setOnClickListener(new Button.OnClickListener() {
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// startAnimation();
-		// uMengClick("count_bottle");
-		// }
-		// });
-		
-		
-		
-		final ImageView returnBtn = (ImageView) findViewById(R.id.rotarybottle_returnBtn);
-		returnBtn.setClickable(false);
-		returnBtn.setOnClickListener(new Button.OnClickListener() {
+//		restartBtn.setOnClickListener(new Button.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				startAnimation();
+//				uMengClick("count_bottle");
+//			}
+//		});
+		// 惩罚
+		punishment.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				Intent intentGo = new Intent();
+				intentGo.setClass(RotaryBottleActivity.this,
+						PunishActivity.class);
+				startActivity(intentGo);
 				finish();
 			}
-		});	
-		
+		});
+
+//		final ImageView returnBtn = (ImageView) findViewById(R.id.rotarybottle_returnBtn);
+//		returnBtn.setClickable(false);
+//		returnBtn.setOnClickListener(new Button.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				finish();
+//			}
+//		});
+
 		ViewTreeObserver vto2 = bottle.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 			@Override
@@ -72,19 +85,17 @@ public class RotaryBottleActivity extends BaseActivity {
 				bottleHeight = bottle.getHeight();
 			}
 		});
-		
-		
+
 	}
-	
-	private float getDegrees()
-	{
-		return (float)Math.round(Math.random()*360);
+
+	private float getDegrees() {
+		return (float) Math.round(Math.random() * 360);
 	}
-	
-	private Animation getAnimation(float fromDegrees,float toDegrees)
-	{
-		AnimationSet as=new AnimationSet(true);  
-		RotateAnimation rt = new RotateAnimation(fromDegrees,2880+toDegrees,bottleWidth/2,bottleHeight*4/7);
+
+	private Animation getAnimation(float fromDegrees, float toDegrees) {
+		AnimationSet as = new AnimationSet(true);
+		RotateAnimation rt = new RotateAnimation(fromDegrees, 2880 + toDegrees,
+				bottleWidth / 2, bottleHeight * 4 / 7);
 		rt.setDuration(6000);
 		rt.setFillAfter(true);
 		rt.setInterpolator(new Interpolator() {
@@ -96,34 +107,33 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 		as.addAnimation(rt);
-		
-		fromDe = toDegrees%360;
+
+		fromDe = toDegrees % 360;
 		return as;
 	}
-	
-	private void startAnimation()
-	{
+
+	private void startAnimation() {
 		toDe = getDegrees();
 		Animation a = getAnimation(fromDe, toDe);
 		a.setFillAfter(true);
-		
+
 		bottle.setClickable(false);
 		// restartBtn.setClickable(false);
 		bottle.startAnimation(a);
-        a.setAnimationListener(new AnimationListener() {
-			
+		a.setAnimationListener(new AnimationListener() {
+
 			@Override
 			public void onAnimationStart(Animation animation) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void onAnimationRepeat(Animation animation) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void onAnimationEnd(Animation animation) {
 				// TODO Auto-generated method stub
@@ -131,6 +141,6 @@ public class RotaryBottleActivity extends BaseActivity {
 				bottle.setClickable(true);
 			}
 		});
-	
+
 	}
 }

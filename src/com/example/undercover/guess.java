@@ -150,16 +150,10 @@ public class guess extends BaseActivity {
 		punishBtn.setText("开始惩罚");
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				getPunish();
-				uMengClick("game_undercover_punish");
-				if(!isGetRestart){
-					isGetRestart	= true;
-					getRestartButton();
-				}
-				// Intent goMain = new Intent();
-				// goMain.setClass(guess.this, Setting.class);
-				// startActivity(goMain);
-				// finish();
+				 Intent goMain = new Intent();
+				 goMain.setClass(guess.this, PunishActivity.class);
+				 startActivity(goMain);
+				 finish();
 			}
 		});
 		contentTable.addView(punishBtn);
@@ -170,23 +164,23 @@ public class guess extends BaseActivity {
 	 * 
 	 * @return
 	 */
-	private void getPunish() {
-		if (!flag) {
-			flag 			= true;
-			int arr[]		= MathUtil.getInstance().check(73,6);
-			TextView text 	= null;
-			String temp 	= null;
-			for (int i = 0; i < 6; i++) {
-				text 		= new TextView(this);
-				temp 		= PunishProps.getPunish(arr[i]);
-				if (null == temp) {
-					temp = "请执行第一条";
-				}
-				text.setText((i + 1) + "、" + temp);
-				contentTable.addView(text);
-			}
-		}
-	}
+//	private void getPunish() {
+//		if (!flag) {
+//			flag 			= true;
+//			int arr[]		= MathUtil.getInstance().check(73,6);
+//			TextView text 	= null;
+//			String temp 	= null;
+//			for (int i = 0; i < 6; i++) {
+//				text 		= new TextView(this);
+//				temp 		= PunishProps.getPunish(arr[i]);
+//				if (null == temp) {
+//					temp = "请执行第一条";
+//				}
+//				text.setText((i + 1) + "、" + temp);
+//				contentTable.addView(text);
+//			}
+//		}
+//	}
 	
 	private void getRestartButton(){
 		Button restartBtn = new Button(this);

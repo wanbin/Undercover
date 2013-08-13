@@ -63,7 +63,7 @@ public class QuestionAnswer extends BaseActivity {
 		restartBtn.setText("重新开始");
 		restartBtn.setVisibility(View.INVISIBLE);
 //		intentPunish	= new Button(this);
-//		intentPunish.setText("惩罚页面");
+//		intentPunish.setText("惩罚");
 		LinearLayout restartLayout	= new LinearLayout(this);
 		restartLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 		restartLayout.addView(restartBtn);
@@ -154,13 +154,15 @@ public class QuestionAnswer extends BaseActivity {
 			}
 		});
 		
-//		//惩罚页面跳转
+		//惩罚页面跳转
 //		intentPunish.setOnClickListener(new OnClickListener() {
 //			@Override
 //			public void onClick(View v) {
-//				Intent intentPun	= new Intent();
-//				intentPun.setClass(QuestionAnswer.this, PunishActivity.class);
-//				startActivity(intentPun);
+//				// TODO Auto-generated method stub
+//				Intent intentGo = new Intent();
+//				intentGo.setClass(QuestionAnswer.this, PunishActivity.class);
+//				startActivity(intentGo);
+//				finish();
 //			}
 //		});
 	}

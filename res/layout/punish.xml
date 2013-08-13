@@ -1,107 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolorgree"
-    android:gravity="center_horizontal"
+    android:gravity="end"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_margin="10dp"
-        android:text="@string/punish_tips" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/linear1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" >
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/trueBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
+            android:gravity="center_vertical|center"
             android:text="@string/punish_true" />
 
         <Button
             android:id="@+id/advenBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:text="@string/punish_adventure" />
-
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/FrameLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
 
-        <TextView
-            android:id="@+id/punish_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/punish_2"
+        <Button
+            android:id="@+id/changeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/punish_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/punish_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/punish_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-        <TextView
-            android:id="@+id/punish_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_margin="10dp"/>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/changeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/punish_other" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|right">
+            android:text="@string/punish_other" />
 
         <Button
             android:id="@+id/punish_backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:text="@string/strreturn" />
+    </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/itemLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/punish_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/punish_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/punish_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/punish_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/punish_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/punish_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

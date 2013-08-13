@@ -2,6 +2,7 @@ package com.example.undercover;
 
 import java.util.Random;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,6 +19,10 @@ public class random_50 extends BaseActivity {
 	private ImageView click_button;
 	private ImageView btnreturn;
 	private Button restart_button;
+
+	private Button punishment_button;
+	private Button back_button;
+
 	private TextView Probability;
 	private TextView clicktimes;
 	private TextView preference;
@@ -31,7 +36,9 @@ public class random_50 extends BaseActivity {
 		click_button = (ImageView) findViewById(R.id.imageBtnMain);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
-		// punishment_button = (Button) findViewById(R.id.button3);
+
+		punishment_button = (Button) findViewById(R.id.button1);
+		//back_button = (Button) findViewById(R.id.button3);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);
 		lose = (TextView) findViewById(R.id.textView5);
 		click_button.setBackgroundResource(R.drawable.click);
@@ -43,9 +50,9 @@ public class random_50 extends BaseActivity {
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
 		final AnimationSet aniSet = new AnimationSet(true);
-		final ScaleAnimation scaleAn = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
-				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-				0.5f);
+		final ScaleAnimation scaleAn = new ScaleAnimation(1.0f, 1.02f, 1.0f,
+				1.02f, Animation.RELATIVE_TO_SELF, 0.5f,
+				Animation.RELATIVE_TO_SELF, 0.5f);
 		final ScaleAnimation scaleAni = new ScaleAnimation(1.02f, 1.0f, 1.02f,
 				1.02f);
 
@@ -61,7 +68,7 @@ public class random_50 extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				click_times--;
-				DisplayParameter(50-click_times);
+				DisplayParameter(50 - click_times);
 				preference.setVisibility(View.INVISIBLE);
 				if (click_times <= random_times) {
 					setFinish();
@@ -81,9 +88,10 @@ public class random_50 extends BaseActivity {
 				click_button.setBackgroundResource(R.drawable.click);
 				lose.setVisibility(View.INVISIBLE);
 				restart_button.setVisibility(View.INVISIBLE);
-				DisplayParameter(50-click_times);
+				DisplayParameter(50 - click_times);
 			}
 		});
+
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -91,6 +99,7 @@ public class random_50 extends BaseActivity {
 				finish();
 			}
 		});
+	}
 
 		// punishBtn.setOnClickListener(new Button.OnClickListener() {
 		// @Override
@@ -112,7 +121,6 @@ public class random_50 extends BaseActivity {
 		// });
 		// 显示概率和点击次数
 
-	}
 
 	protected void setFinish() {
 		click_button.setClickable(false);
@@ -121,6 +129,7 @@ public class random_50 extends BaseActivity {
 		restart_button.setVisibility(View.VISIBLE);
 		// punishment_button.setVisibility(View.VISIBLE);
 	}
+
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);
 		Probability.setText("危险级数：" + Math.min((time + 1) * 2, 100) + "%\n点击了"
