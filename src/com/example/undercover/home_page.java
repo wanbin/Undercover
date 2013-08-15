@@ -20,6 +20,7 @@ public class home_page extends BaseActivity {
 	private Button btncricleme;
 	private Button btntruethings;
 	private Button btnQuestion;
+	private Button jumpFingerPull;
 	
 	
 	@Override
@@ -33,8 +34,8 @@ public class home_page extends BaseActivity {
 		// btnaskme = (Button) findViewById(R.id.btnaskme);
 		btncricleme = (Button) findViewById(R.id.btncricleme);
 		btnQuestion = (Button) findViewById(R.id.jumpQuestion_Btn);
-		// btntruethings = (Button) findViewById(R.id.btntruethings);
-		
+		jumpFingerPull = (Button) findViewById(R.id.jumpFingerPull);
+		jumpFingerPull.setVisibility(View.INVISIBLE);
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -99,5 +100,16 @@ public class home_page extends BaseActivity {
 				startActivity(goChat);
 			}
 		});
+		//手指拔河模块跳转 lcl 20130810 00:08:56
+		jumpFingerPull.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent goChat = new Intent();
+				goChat.setClass(home_page.this, PullFingerActivity.class);
+				startActivity(goChat);
+			}
+		});
+		
 	}
 }

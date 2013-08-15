@@ -36,6 +36,8 @@
         </activity>
         <activity android:name="com.example.undercover.home_page" >
         </activity>
+        <activity android:name="com.example.undercover.PullFingerActivity" >
+        </activity>
         <activity android:name="com.example.undercover.weixin" >
         </activity>
         <activity  android:name="com.example.undercover.Setting" >
