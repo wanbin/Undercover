@@ -84,7 +84,7 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void getTruePunish(){
-		int[] intArr = MathUtil.getInstance().check(73, 6);
+		int[] intArr = MathUtil.getInstance().check(190, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
 			str[i] = PunishProps.getQestionHard(intArr[i]);
@@ -93,7 +93,7 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void getAdvenPunish(){
-		int[] intArr = MathUtil.getInstance().check(73, 6);
+		int[] intArr = MathUtil.getInstance().check(93, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
 			str[i] = PunishProps.getPunish(intArr[i]);

@@ -46,9 +46,10 @@ public class QuestionAnswer extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.question);
 		punish_0	= (TextView)findViewById(R.id.question);
 		punish_0.setPadding(10, 0, 0, 0);
-		intentPunish	= (Button)findViewById(R.id.intentPunish);
+		intentPunish	= (Button)findViewById(R.id.intent_punish);
 		intentPunish.setVisibility(View.INVISIBLE);
 		
 		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);

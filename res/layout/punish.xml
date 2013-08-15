@@ -29,29 +29,6 @@
             android:text="@string/punish_adventure" />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/FrameLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" >
-
-        <Button
-            android:id="@+id/changeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/punish_other" />
-
-        <Button
-            android:id="@+id/punish_backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="@string/strreturn" />
-    </FrameLayout>
-
     <LinearLayout
         android:id="@+id/itemLayout"
         android:layout_width="wrap_content"
@@ -103,5 +80,27 @@
             android:layout_margin="10dp"
             android:padding="5dp" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" >
+
+        <Button
+            android:id="@+id/changeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/punish_other" />
+
+        <Button
+            android:id="@+id/punish_backBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right"
+            android:background="@drawable/backblue"
+            android:text="@string/strreturn" />
+    </FrameLayout>
 
 </RelativeLayout>
