@@ -56,4 +56,6 @@
     <string name="strmack">谁是卧底 1.04</string>
     <string name="emailaddr">centurywar@163.com</string>
     <string name="feedback">反馈</string>
+    <string name="title_activity_select_game">SelectGameActivity</string>
+
 </resources>

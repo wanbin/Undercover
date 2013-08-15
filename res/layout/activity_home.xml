@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/startButton"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_below="@+id/linearLayout1"

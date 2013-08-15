@@ -24,7 +24,7 @@ public class HomeActivity extends BaseActivity {
 		btnWeixin = (Button) findViewById(R.id.btnWeixin);
 		btnMake = (Button) findViewById(R.id.btnMake);
 		btnMore = (Button) findViewById(R.id.btnMore);
-		imgPlay = (ImageView) findViewById(R.id.imageView2);
+		imgPlay = (ImageView) findViewById(R.id.startButton);
 
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
