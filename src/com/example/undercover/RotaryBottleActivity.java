@@ -19,7 +19,7 @@ public class RotaryBottleActivity extends BaseActivity {
 	float fromDe;
 	float toDe;
 
-	//Button restartBtn;
+	Button restartBtn;
 	private Button punishment;
 
 	ImageView bottle;
@@ -35,12 +35,14 @@ public class RotaryBottleActivity extends BaseActivity {
 
 		//restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
 		punishment = (Button) findViewById(R.id.button1);
+		punishment.setVisibility(View.INVISIBLE);
 
 		bottle.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startAnimation();
 				uMengClick("count_bottle");
+				
 			}
 		});
 
@@ -65,15 +67,15 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 
-//		final ImageView returnBtn = (ImageView) findViewById(R.id.rotarybottle_returnBtn);
+		ImageView returnBtn = (ImageView) findViewById(R.id.btnreturn);
 //		returnBtn.setClickable(false);
-//		returnBtn.setOnClickListener(new Button.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				finish();
-//			}
-//		});
+		returnBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 
 		ViewTreeObserver vto2 = bottle.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -119,6 +121,7 @@ public class RotaryBottleActivity extends BaseActivity {
 
 		bottle.setClickable(false);
 		// restartBtn.setClickable(false);
+		punishment.setVisibility(View.INVISIBLE);
 		bottle.startAnimation(a);
 		a.setAnimationListener(new AnimationListener() {
 
@@ -139,6 +142,7 @@ public class RotaryBottleActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				// restartBtn.setClickable(true);
 				bottle.setClickable(true);
+				punishment.setVisibility(View.VISIBLE);
 			}
 		});
 

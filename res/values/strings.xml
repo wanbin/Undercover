@@ -47,10 +47,10 @@
     <string name="content_title">玩 法 介 绍</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="strwhoisundercover">谁是卧底</string>
-    <string name="strplayrule">玩法简介</string>
-    <string name="strweixinhao">微信账号</string>
-    <string name="strmake">关于游戏</string>
-    <string name="moregame">更多游戏</string>
+    <string name="strplayrule">简介</string>
+    <string name="strweixinhao">微信</string>
+    <string name="strmake">关于</string>
+    <string name="moregame">更多</string>
     <string name="home_page">主页</string>
     <string name="contentmake">【谁是卧底】v1.04</string>
     <string name="strmack">谁是卧底 1.04</string>

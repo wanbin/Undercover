@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class random_50 extends BaseActivity {
 	// int random_times;
 	int click_times = 50;
-	private Button punishBtn;
 	private ImageView click_button;
 	private ImageView btnreturn;
 	private Button restart_button;
@@ -38,7 +37,7 @@ public class random_50 extends BaseActivity {
 		restart_button = (Button) findViewById(R.id.button2);
 
 		punishment_button = (Button) findViewById(R.id.button1);
-		//back_button = (Button) findViewById(R.id.button3);
+		// back_button = (Button) findViewById(R.id.button3);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);
 		lose = (TextView) findViewById(R.id.textView5);
 		click_button.setBackgroundResource(R.drawable.click);
@@ -46,7 +45,7 @@ public class random_50 extends BaseActivity {
 		// v.setVisibility(View.INVISIBLE);
 		// punishBtn.setVisibility(View.INVISIBLE);
 		restart_button.setVisibility(View.INVISIBLE);
-		// punishment_button.setVisibility(View.INVISIBLE);
+		punishment_button.setVisibility(View.INVISIBLE);
 		preference = (TextView) findViewById(R.id.textView3);
 		DisplayParameter(0);
 		final AnimationSet aniSet = new AnimationSet(true);
@@ -99,34 +98,25 @@ public class random_50 extends BaseActivity {
 				finish();
 			}
 		});
+
+		punishment_button.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intentGo = new Intent();
+				intentGo.setClass(random_50.this, PunishActivity.class);
+				startActivity(intentGo);
+				finish();
+			}
+		});
 	}
-
-		// punishBtn.setOnClickListener(new Button.OnClickListener() {
-		// @Override
-		// public void onClick(View v) {
-		// // TODO Auto-generated method stub
-		// Intent intentGo = new Intent();
-		// intentGo.setClass(random_50.this, PunishActivity.class);
-		// startActivity(intentGo);
-		// finish();
-		// }
-		// });
-		//
-		// punishment_button.setOnClickListener(new Button.OnClickListener() {
-		// @Override
-		// public void onClick(View v) {
-		// // 进入村龙单独的惩罚页面
-		// finish();
-		// }
-		// });
-		// 显示概率和点击次数
-
 
 	protected void setFinish() {
 		click_button.setClickable(false);
 		click_button.setBackgroundResource(R.drawable.over);
 		lose.setVisibility(View.VISIBLE);
 		restart_button.setVisibility(View.VISIBLE);
+		punishment_button.setVisibility(View.VISIBLE);
 		// punishment_button.setVisibility(View.VISIBLE);
 	}
 

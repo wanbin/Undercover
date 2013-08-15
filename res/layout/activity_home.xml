@@ -51,8 +51,7 @@
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:background="@drawable/play"
-     	 />
+        android:background="@drawable/play" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -89,7 +88,6 @@
             android:layout_height="wrap_content"
             android:text="@string/moregame"
             android:textSize="@dimen/sizehome" />
-
     </LinearLayout>
 
 </RelativeLayout>

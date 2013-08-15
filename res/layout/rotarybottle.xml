@@ -20,4 +20,12 @@
         android:layout_marginBottom="20dp"
         android:text="@string/punishmen" />
 
+    <ImageView
+        android:id="@+id/btnreturn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:background="@drawable/backblue" />
+
 </FrameLayout>

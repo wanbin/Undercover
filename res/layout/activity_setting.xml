@@ -191,8 +191,8 @@
 
      <ImageView
          android:id="@+id/btnStart"
-         android:layout_width="150dp"
-         android:layout_height="150dp"
+         android:layout_width="125dp"
+         android:layout_height="125dp"
          android:layout_below="@+id/LinearLayout1"
          android:layout_centerHorizontal="true"
          android:background="@drawable/start"
