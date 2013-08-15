@@ -3,8 +3,6 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -17,28 +15,30 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SelectGameActivity extends BaseActivity {
-	//viewPager 滑动
+	// viewPager 滑动
 	private ViewPager viewPager;
 	
-	//把需要滑动的页卡添加到这个list中  
+	// 把需要滑动的页卡添加到这个list中
 	private List<View> viewList;
 	
-	 // 包裹小圆点的LinearLayout
+	// 包裹小圆点的LinearLayout
     private ViewGroup pointContainer;
     
-    //包含滑动ViewPager的Layout
+	// 包含滑动ViewPager的Layout
     private ViewGroup mainContainer;
     
-    //将小圆点ImageView放入该List
+	// 将小圆点ImageView放入该List
     private ImageView[] imageViews;
     
-    private Button helpButton,clickmeButton,circlemeButton,questionButton,weixinButton,appmakerbButton;
+	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
+			appmakerbButton, btnStart;
     private ImageView startButton;
     
 	@Override
@@ -46,11 +46,11 @@ public class SelectGameActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
 		
-		//Welcome 的Layout
+		// Welcome 的Layout
 		View welcomeView = mInflater.inflate(R.layout.activity_welcome, null);
-		//帮助页面的layout
-		View helpView = mInflater.inflate(R.layout.activity_help,null);
-		//更多游戏的Layout
+		// 帮助页面的layout
+		View helpView = mInflater.inflate(R.layout.undercover_content, null);
+		// 更多游戏的Layout
 		View moreView = mInflater.inflate(R.layout.activity_more, null);
 				
         viewList = new ArrayList<View>();
@@ -64,12 +64,12 @@ public class SelectGameActivity extends BaseActivity {
         
         imageViews = new ImageView[viewList.size()];
         Log.d("imageView length", String.valueOf(imageViews.length));
-        //将小圆点放到Layout中
-        for (int i = 0; i < imageViews.length; i++) {
+		// 将小圆点放到Layout中
+		for (int i = 0; i < imageViews.length; i++) {
 			ImageView image = new ImageView(SelectGameActivity.this);
 			image.setLayoutParams(new LayoutParams(15, 15));
 			image.setPadding(20, 0, 20, 0);
-			//默认为第一小圆点
+			// 默认为第一小圆点
 			if (i==0) {
 				image.setBackgroundResource(R.drawable.page_indicator_focused);
 			}else{
@@ -81,14 +81,28 @@ public class SelectGameActivity extends BaseActivity {
 		}
         setContentView(mainContainer);
         
-        helpButton = (Button) helpView.findViewById(R.id.helpButton);
-        helpButton.setOnClickListener(new MyClickListener());
+		// helpButton = (Button) helpView.findViewById(R.id.helpButton);
+		// helpButton.setOnClickListener(new MyClickListener());
         startButton = (ImageView) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
-        weixinButton = (Button) welcomeView.findViewById(R.id.Weixin);
+
+
+		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
+				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+				0.5f);
+		scaleAni.setRepeatMode(Animation.REVERSE);
+		scaleAni.setRepeatCount(-1);
+		scaleAni.setDuration(1000);
+		startButton.startAnimation(scaleAni);
+
+		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
+		btnStart.setOnClickListener(new MyClickListener());
+
+		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
         weixinButton.setOnClickListener(new MyClickListener());
-        appmakerbButton = (Button) welcomeView.findViewById(R.id.appMaker);
+		appmakerbButton = (Button) helpView.findViewById(R.id.appMaker);
         appmakerbButton.setOnClickListener(new MyClickListener());
+
         clickmeButton = (Button) moreView.findViewById(R.id.clickme);
         clickmeButton.setOnClickListener(new MyClickListener());
         circlemeButton = (Button) moreView.findViewById(R.id.circleme);
@@ -100,6 +114,12 @@ public class SelectGameActivity extends BaseActivity {
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
         viewPager.setCurrentItem(1);
         
+		TextView ruleText = (TextView) helpView.findViewById(R.id.ruleText);
+		TextView winText = (TextView) helpView.findViewById(R.id.winText);
+		ruleText.setText("游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号"
+				+ "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
+		winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
+
 	}
 	
 	private class MyClickListener implements android.view.View.OnClickListener{
@@ -109,26 +129,34 @@ public class SelectGameActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			Intent mIntent = new Intent();
 			switch (v.getId()) {
-			case R.id.helpButton:
-				mIntent.setClass(SelectGameActivity.this, UnderCoverContent.class);
-				break;
+			// case R.id.helpButton:
+			// mIntent.setClass(SelectGameActivity.this,
+			// UnderCoverContent.class);
+			// break;
 			case R.id.startButton:
+			case R.id.btnStart:
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				break;
 			case R.id.Weixin:
+				uMengClick("click_weixin");
 				mIntent.setClass(SelectGameActivity.this, weixin.class);
 				break;
 			case R.id.appMaker:
 				mIntent.setClass(SelectGameActivity.this, MakeActivity.class);
+				uMengClick("click_about");
 				break;
 			case R.id.clickme:
-				mIntent.setClass(SelectGameActivity.this, PunishActivity.class);
+				mIntent.setClass(SelectGameActivity.this, random_50.class);
+				uMengClick("game_click");
 				break;
 			case R.id.circleme:
-				mIntent.setClass(SelectGameActivity.this, RotaryBottleActivity.class);
+				mIntent.setClass(SelectGameActivity.this,
+						RotaryBottleActivity.class);
+				uMengClick("game_bottle");
 				break;
 			case R.id.jumpQuestion:
 				mIntent.setClass(SelectGameActivity.this, QuestionAnswer.class);
+				uMengClick("game_ask");
 				break;
 			default:
 				break;
@@ -139,7 +167,7 @@ public class SelectGameActivity extends BaseActivity {
 		
 	}
 	
-	 // 滑动页面的的适配器啊，主要把ViewList中的View传给ViewPager
+	// 滑动页面的的适配器啊，主要把ViewList中的View传给ViewPager
     private class MyPageAdapter extends PagerAdapter {  
   	  
         @Override  
@@ -197,7 +225,7 @@ public class SelectGameActivity extends BaseActivity {
     } 
     
     
-    //监听页面切换，切换时把小圆点变更
+	// 监听页面切换，切换时把小圆点变更
     class MyPageChangeListener implements OnPageChangeListener{
 
 		@Override

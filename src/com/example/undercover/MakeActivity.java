@@ -28,7 +28,7 @@ public class MakeActivity extends BaseActivity {
 		txtContent
 				.setText("意见及建议："
 						+ emailaddr
-						+ "\n\n\nv1.05版本新功能：\n\n1.更多的分辨率适配\n2.添加空白身份及翻牌规则\n3.添加个小游戏【有胆你就问】\n");
+						+ "\n\n\nv1.05版本新功能：\n\n1.更多的分辨率适配\n2.添加空白身份及翻牌规则\n3.添加个小游戏【有胆量就问】\n");
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -33,10 +33,17 @@
         android:id="@+id/itemLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="100dp"
         android:orientation="vertical" >
 
+          <TextView
+            android:id="@+id/punish_guize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp" />
         <TextView
             android:id="@+id/punish_1"
             android:layout_width="wrap_content"
@@ -94,13 +101,13 @@
             android:layout_height="wrap_content"
             android:text="@string/punish_other" />
 
-        <Button
+        <ImageView
             android:id="@+id/punish_backBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="right"
             android:background="@drawable/backblue"
-            android:text="@string/strreturn" />
+            />
     </FrameLayout>
 
 </RelativeLayout>

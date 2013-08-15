@@ -63,7 +63,6 @@ public class RotaryBottleActivity extends BaseActivity {
 				intentGo.setClass(RotaryBottleActivity.this,
 						PunishActivity.class);
 				startActivity(intentGo);
-				finish();
 			}
 		});
 

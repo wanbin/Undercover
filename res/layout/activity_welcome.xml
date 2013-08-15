@@ -11,8 +11,7 @@
             android:id="@+id/startButton"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="134dp"
             android:background="@drawable/play" />
 
@@ -27,17 +26,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="@dimen/Large" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView1"
-            android:layout_marginBottom="33dp"
-            android:layout_marginLeft="29dp"
-            android:layout_toRightOf="@+id/imageView1"
-            android:text="is Undercover?"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="100dp"
@@ -48,24 +36,24 @@
             android:src="@drawable/popored" />
 
         <Button
-            android:id="@+id/Weixin"
-            android:layout_width="80dp"
+            android:id="@+id/btnStart"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="22dp"
-            android:text="@string/strweixinhao"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="74dp"
+            android:text="@string/strBgn"
             android:textSize="@dimen/sizehome" />
 
-        <Button
-            android:id="@+id/appMaker"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/Weixin"
-            android:layout_alignBottom="@+id/Weixin"
-            android:layout_alignRight="@+id/textView2"
-            android:text="@string/strmake"
-            android:textSize="@dimen/sizehome" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/imageView1"
+            android:layout_marginBottom="17dp"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="is Undercover?"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
 

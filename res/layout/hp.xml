@@ -28,20 +28,13 @@
             android:layout_margin="10dp"
             android:text="@string/circleme" />
 
-
         <Button
             android:id="@+id/jumpQuestion_Btn"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/punish_true" />
-
-
-    <Button android:id="@+id/jumpFingerPull" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-        android:layout_marginTop="20dp" 
-        android:text="@string/pull_jump" /></LinearLayout>
+            android:text="@string/strasktitle" />
+</LinearLayout>
 
    <ImageView
        android:id="@+id/btnreturn"
