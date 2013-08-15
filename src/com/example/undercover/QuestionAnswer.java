@@ -6,6 +6,7 @@ import java.util.TimerTask;
 import com.example.util.MathUtil;
 import com.example.util.PunishProps;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,13 +32,7 @@ public class QuestionAnswer extends BaseActivity {
 	// 标志位，游戏是否结束，默认否
 	private boolean isOver	= false;
 	private TextView punish_0;
-	private TextView punish_1;
-	private TextView punish_2;
-	private TextView punish_3;
-	private TextView punish_4;
-	private TextView punish_5;
 	private int timeLimit;
-	private Button restartBtn;
 	private ImageView imageNext;
 	private TextView questionNext;
 	private ProgressBar proBar;
@@ -46,35 +41,16 @@ public class QuestionAnswer extends BaseActivity {
 	/** 是否加载过TimeTask */
 	private boolean isTimeRun;
 	/**  惩罚页面跳转按钮 */
-//	private Button intentPunish;
+	private Button intentPunish;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.question);
-		punish_0	= new TextView(this);
-		punish_1	= new TextView(this);
-		punish_2	= new TextView(this);
-		punish_3	= new TextView(this);
-		punish_4	= new TextView(this);
-		punish_5	= new TextView(this);
-		restartBtn	= new Button(this);
-		baseTable	= (TableLayout)findViewById(R.id.questionTable);
-		restartBtn.setText("重新开始");
-		restartBtn.setVisibility(View.INVISIBLE);
-//		intentPunish	= new Button(this);
-//		intentPunish.setText("惩罚");
-		LinearLayout restartLayout	= new LinearLayout(this);
-		restartLayout.setGravity(Gravity.CENTER_HORIZONTAL);
-		restartLayout.addView(restartBtn);
-		baseTable.addView(punish_0);
-		baseTable.addView(punish_1);
-		baseTable.addView(punish_2);
-		baseTable.addView(punish_3);
-		baseTable.addView(punish_4);
-		baseTable.addView(punish_5);
-		baseTable.addView(restartLayout);
-//		baseTable.addView(intentPunish);
+		punish_0	= (TextView)findViewById(R.id.question);
+		punish_0.setPadding(10, 0, 0, 0);
+		intentPunish	= (Button)findViewById(R.id.intentPunish);
+		intentPunish.setVisibility(View.INVISIBLE);
+		
 		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
 //		timeLimit	= 1000;
 		final FrameLayout frame	= (FrameLayout)findViewById(R.id.question_frame);
@@ -86,42 +62,18 @@ public class QuestionAnswer extends BaseActivity {
 		proBar	= (ProgressBar)findViewById(R.id.question_proar);
 		proBar.setMax(3000);
 		proBar.setVisibility(View.INVISIBLE);
-		restartBtn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				isOver	= false;
-				isBegin	= false;
-				isShowBar	= false;
-				timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
-//				timeLimit	= 1000;
-				imageNext.setClickable(true);
-				questionNext.setText("Ready Go !");
-				imageNext.setBackgroundResource(R.drawable.popo152);
-				proBar.setVisibility(View.INVISIBLE);
-				punish_0.setText("");
-				punish_1.setText("");
-				punish_2.setText("");
-				punish_3.setText("");
-				punish_4.setText("");
-				punish_5.setText("");
-				restartBtn.setVisibility(View.INVISIBLE);
-//				timetask.cancel();
-				
-			}
-		});
+		
 		//动画效果
 		final AnimationSet aniSet = new AnimationSet(true);
 		final ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f,1.02f);
 		final ScaleAnimation scaleAn = new ScaleAnimation(1.02f, 1f, 1.02f, 1f);
-		final Drawable popoGray	= getResources().getDrawable(R.drawable.popogray);
 		scaleAni.setDuration(10);
 		scaleAn.setDuration(10);
-//		scaleAn.setStartOffset(10);
 		aniSet.addAnimation(scaleAni);
 		aniSet.addAnimation(scaleAn);
+		
 		//imageView（下一题按钮所在ImageView）点击事件
 		imageNext.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// 第一次进入游戏
@@ -134,37 +86,52 @@ public class QuestionAnswer extends BaseActivity {
 					}
 					questionNext.setText("下一题");
 					getNextQuestion();
+					
+					proBar.setVisibility(View.VISIBLE);
+					proBar.incrementProgressBy(3000);
+					isShowBar = true;
+					imageNext.setClickable(false);
+					imageNext.setBackgroundResource(R.drawable.popogray152);
+					frame.startAnimation(aniSet);
 				}else{
 					// 游戏未结束，继续下一题目,结束后的操作由时间控制，
 					if(!isOver){
 						getNextQuestion();
+						
+						proBar.setVisibility(View.VISIBLE);
+						proBar.incrementProgressBy(3000);
+						isShowBar = true;
+						imageNext.setClickable(false);
+						imageNext.setBackgroundResource(R.drawable.popogray152);
+						frame.startAnimation(aniSet);
 					}else{
 						// 游戏结束后的，显示开始惩罚按钮
-						showPunish();
-						questionNext.setText("接受惩罚");
+//						showPunish();
 						imageNext.setBackgroundResource(R.drawable.popogray152);
-						imageNext.setClickable(false);
+//						restartActivity();
 					}
 				}
-				proBar.setVisibility(View.VISIBLE);
-				proBar.incrementProgressBy(3000);
-				isShowBar = true;
-				imageNext.setClickable(false);
-				frame.startAnimation(aniSet);
 			}
 		});
 		
 		//惩罚页面跳转
-//		intentPunish.setOnClickListener(new OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				Intent intentGo = new Intent();
-//				intentGo.setClass(QuestionAnswer.this, PunishActivity.class);
-//				startActivity(intentGo);
-//				finish();
-//			}
-//		});
+		intentPunish.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				jumpPunish();
+				restartActivity();
+			}
+		});
+		
+		//返回按钮
+		ImageView backView	= (ImageView)findViewById(R.id.question_forBack);
+		backView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 	}
 
 	// 接受时间
@@ -186,38 +153,22 @@ public class QuestionAnswer extends BaseActivity {
 	};
 	
 	/**
-	 * 游戏结束，显示惩罚操作
-	 */
-	private void showPunish(){
-		// 0默认可见，1不可见但是在页面上留有位置，2移除
-		
-		int[] num	= MathUtil.getInstance().check(73, 6);
-		String[] str	= new String[6];
-		for(int i=0;i<num.length;i++){
-			str[i]	=PunishProps.getPunish(num[i]);
-		}
-		punish_0.setText("1"+str[0]);
-		punish_1.setText("2"+str[1]);
-		punish_2.setText("3"+str[2]);
-		punish_3.setText("4"+str[3]);
-		punish_4.setText("5"+str[4]);
-		punish_5.setText("6"+str[5]);
-		restartBtn.setVisibility(View.VISIBLE);
-	}
-	
-	/**
 	 * 计时加10毫秒
 	 */
 	private void addTenMMS(){
 		timeLimit	-=1;
+		
 		//控制游戏
 		if(timeLimit<=0){
 			// 游戏结束后的操作
 			isOver	= true;
-			showPunish();
-			questionNext.setText("接受惩罚");
+			isShowBar	= false;
+			intentPunish.setVisibility(View.VISIBLE);
 			imageNext.setBackgroundResource(R.drawable.popogray152);
 			imageNext.setClickable(false);
+			punish_0.setText("");
+			questionNext.setText("游戏结束");
+			
 		}
 		
 		//控制进度条
@@ -226,6 +177,8 @@ public class QuestionAnswer extends BaseActivity {
 				isShowBar	= false;
 				proBar.setVisibility(View.INVISIBLE);
 				imageNext.setClickable(true);
+				imageNext.setBackgroundResource(R.drawable.popo152);
+				
 			}
 			proBar.incrementProgressBy(-10);
 		}
@@ -239,4 +192,27 @@ public class QuestionAnswer extends BaseActivity {
 		punish_0.setText("1、" + PunishProps.getQestionHard(hardQuestion));
 	}
 	
+	private void restartActivity(){
+		isOver	= false;
+		isBegin	= false;
+		isShowBar	= false;
+		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+//		timeLimit	= 1000;
+		imageNext.setClickable(true);
+		questionNext.setText("Ready Go !");
+		imageNext.setBackgroundResource(R.drawable.popo152);
+//		proBar.incrementProgressBy(-3000);
+		proBar.setVisibility(View.INVISIBLE);
+		punish_0.setText("");
+		proBar.incrementProgressBy(-(proBar.getProgress()));
+		intentPunish.setVisibility(View.INVISIBLE);
+//		timetask.cancel();
+	}
+	
+	//跳转至开始惩罚页面
+	private void jumpPunish(){
+		Intent goChat = new Intent();
+		goChat.setClass(QuestionAnswer.this, PunishActivity.class);
+		startActivity(goChat);
+	}
 }

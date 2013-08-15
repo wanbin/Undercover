@@ -45,11 +45,11 @@ public class fanpai extends BaseActivity {
 		soncount = bundle.getInt("sonCount");
 		content = bundle.getStringArray("content");
 		int blandStr	= Math.abs(new Random().nextInt()); 
-		for (int i = 0, len	=content.length; i < len; i++,blandStr++) {
+		for (int i = 0, len	=content.length; i < len; i++) {
 			if(isBlank){
 				
 				if(!isChecked){
-					if(content[(i+blandStr)%len]!=son){
+					if(!content[(i+blandStr)%len].equals(son)){
 						isChecked	= true;
 						content[(i+blandStr)%len]	= "空白";
 					}

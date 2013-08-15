@@ -46,5 +46,37 @@
             android:layout_gravity="center" />
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/intentPunish"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="@string/random_punish" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/question_forBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/backblue" />
+
+    </RelativeLayout>
 	
 </TableLayout>
