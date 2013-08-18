@@ -39,7 +39,7 @@
     <string name="start">开始</string>
     <string name="clicksay">"有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！"</string>
     <string name="about">关于</string>
-    <string name="strweixin">没玩过【微信】版谁是卧底?</string>
+    <string name="strweixin">没玩过【谁是卧底-微信版】?</string>
     <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
     <string name="saoma">扫描二维码，快速进入</string>
     <string name="content_en">who is undercover ?</string>
@@ -64,4 +64,5 @@
     <string name="strToWeixin">微信版本</string>
     <string name="strAbout">关于游戏</string>
     <string name="strBgn">开始游戏</string>
+    <string name="weixinrule">【谁是卧底-微信版】游戏规则\n【人数】：\n\t法官1人，玩家4至15人\n【开局】：\n\t法官回复参与人数，返回平民及卧底身份及编号，以及房间号\n【参与】：\n\t把房间号通过群告诉所有玩家，参与者向我发送房间号，我会给他们发送身份及说明编号\n【进行】：\n\t法官组织每位玩家依次发言，每位玩家说自己编号及简短的描述自己的身份以\n【投票】：\n\t描述一轮结束后，玩家投票选择卧底，票数较多的玩家身亡。分出结果后，法官公布结果（冤死或卧底）\n【胜利】：\n\t卧底全被揪出，则平民胜利，卧底数大于等于平民数，卧底胜利\n【惩罚】：\n\t回复2或3返回真心话大冒险，输的玩家掷骰子选择惩罚</string>
 </resources>
