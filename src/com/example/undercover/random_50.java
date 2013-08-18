@@ -73,6 +73,7 @@ public class random_50 extends BaseActivity {
 					setFinish();
 				} else {
 					click_button.startAnimation(aniSet);
+					SoundPlayer.playball();
 				}
 			}
 		});
@@ -95,6 +96,7 @@ public class random_50 extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				SoundPlayer.playball();
 				finish();
 			}
 		});

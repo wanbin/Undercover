@@ -51,7 +51,7 @@ public class fanpai extends BaseActivity {
 				if(!isChecked){
 					if(!content[(i+blandStr)%len].equals(son)){
 						isChecked	= true;
-						content[(i+blandStr)%len]	= "空白";
+						content[(i + blandStr) % len] = "空白";
 					}
 				}
 			}
@@ -91,12 +91,14 @@ public class fanpai extends BaseActivity {
 				v.setVisibility(View.INVISIBLE);
 				txtIndex.setVisibility(View.INVISIBLE);
 				setContentVis(true);
+				SoundPlayer.playball();
 			}
 		});
 
 	}
 
 	protected void initPan(int index) {
+
 		imagePan.setVisibility(View.VISIBLE);
 		txtIndex.setVisibility(View.VISIBLE);
 		txtIndex.setText("" + index);

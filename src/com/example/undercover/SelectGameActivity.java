@@ -134,6 +134,7 @@ public class SelectGameActivity extends BaseActivity {
 			// UnderCoverContent.class);
 			// break;
 			case R.id.startButton:
+				SoundPlayer.playball();
 			case R.id.btnStart:
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				break;

@@ -82,6 +82,7 @@ public class guess extends BaseActivity {
 						v.setClickable(false);
 						ImageView tt = (ImageView) v;
 						tt.setBackgroundResource(R.drawable.popogray72);
+						SoundPlayer.playball();
 						if(isShow){
 							text.setTextSize(20);
 							if (content[(Integer) v.getTag() - 1].equals(son)) {

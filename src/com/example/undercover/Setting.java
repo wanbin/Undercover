@@ -95,9 +95,11 @@ public class Setting extends BaseActivity {
 		btnAdd.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (peopleCount < maxPeople)
-				peopleCount++;
-				underCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+				if (peopleCount < maxPeople) {
+					SoundPlayer.playball();
+					peopleCount++;
+					underCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+				}
 				setPeople();
 				setUnder();
 			}
@@ -107,6 +109,7 @@ public class Setting extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				if (peopleCount > 4) {
+					SoundPlayer.playball();
 					peopleCount--;
 					underCount = Math.min(
 							Math.max((int) Math.floor(peopleCount / 4), 1),
@@ -121,6 +124,7 @@ public class Setting extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				if (underCount < 4) {
+					SoundPlayer.playball();
 					underCount++;
 					peopleCount = Math.min(peopleCount + 4, 16);
 				}
@@ -133,6 +137,7 @@ public class Setting extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				if (underCount > 1) {
+					SoundPlayer.playball();
 					underCount--;
 				}
 				setUnder();
@@ -154,6 +159,7 @@ public class Setting extends BaseActivity {
 				goMain.setClass(Setting.this, fanpai.class);
 				startActivity(goMain);
 				uMengClick("game_undercover_start");
+				SoundPlayer.playball();
 				finish();
 			}
 		});
@@ -164,8 +170,8 @@ public class Setting extends BaseActivity {
 			@Override
 			
 			public void onClick(View v) {
-				
 				if (true){
+					SoundPlayer.playball();
 					finish();
 				}
 			}

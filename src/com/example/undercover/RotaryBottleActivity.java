@@ -72,6 +72,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				SoundPlayer.playball();
 				finish();
 			}
 		});

@@ -14,6 +14,8 @@ public class BaseActivity extends Activity {
 		MobclickAgent.setDebugMode(true);
 		MobclickAgent.onError(this);
 		// MobclickAgent.setSessionContinueMillis(60000);
+		SoundPlayer.init(this);
+		SoundPlayer.pushSound(R.raw.ball);
 	}
 
 	public void onResume() {
