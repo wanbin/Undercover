@@ -2,7 +2,6 @@ package com.example.undercover;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -13,9 +12,6 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.example.util.MathUtil;
-import com.example.util.PunishProps;
 
 public class guess extends BaseActivity {
 	private TableLayout contentTable;
@@ -36,6 +32,7 @@ public class guess extends BaseActivity {
 	private boolean isGetRestart;
 	private boolean isShow;
 	private int temindex;
+	private TextView txtLong;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,7 +51,7 @@ public class guess extends BaseActivity {
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		totalcount = content.length;
-		txtTitle.setText("快去猜猜谁是卧底吧(长按选择)~");
+		txtTitle.setText("快去猜猜谁是卧底吧~");
 		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
@@ -84,7 +81,8 @@ public class guess extends BaseActivity {
 								text.setText("卧底");
 								text.setTextColor(getResources().getColor(R.color.RED));
 							} else {
-								if (content[(Integer) v.getTag() - 1].equals("空白")) {
+								if (content[(Integer) v.getTag() - 1]
+										.equals("空白")) {
 									text.setText("空白");
 									text.setTextColor(getResources().getColor(R.color.BLUE));
 								}else{
@@ -99,8 +97,14 @@ public class guess extends BaseActivity {
 				fl.addView(select);
 				fl.addView(text);
 				newrow.addView(fl, 120, 120);
+
+
 			}
 			contentTable.addView(newrow);
+			txtLong = new TextView(this);
+			txtLong.setText("长按选择");
+			txtLong.setTag(100099);
+			contentTable.addView(txtLong);
 		}
 
 	}
@@ -112,6 +116,7 @@ public class guess extends BaseActivity {
 		}
 	}
 	protected void tapIndex(int tag) {
+		txtLong.setVisibility(View.INVISIBLE);
 		if (soncount + fathercount == totalcount) {
 			uMengClick("click_guess_first");
 		}
@@ -174,9 +179,9 @@ public class guess extends BaseActivity {
 //				text 		= new TextView(this);
 //				temp 		= PunishProps.getPunish(arr[i]);
 //				if (null == temp) {
-//					temp = "请执行第一条";
+	// temp = "请执行第一条";
 //				}
-//				text.setText((i + 1) + "、" + temp);
+	// text.setText((i + 1) + "、" + temp);
 //				contentTable.addView(text);
 //			}
 //		}
