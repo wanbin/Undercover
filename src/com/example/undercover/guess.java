@@ -1,5 +1,7 @@
 package com.example.undercover;
 
+import java.util.Random;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -26,13 +28,17 @@ public class guess extends BaseActivity {
 	private String[] content;
 	private TextView txtTitle;
 	private Button punishBtn;
+	private Button startBtn;
 	private int totalcount;
 	private boolean isOver;
 	private boolean flag;
 	private boolean isGetRestart;
 	private boolean isShow;
 	private int temindex;
+	private Random random = new Random();
 	private TextView txtLong;
+	private String[] overString = { "没找到全部卧底，游戏继续", "卧底隐藏很深噢！", "快去把卧底给投出来吧~",
+			"平民可要小心噢!", "卧底这是要逆天了吗？", "投错一个就少一个战友~", "卧底卧底，你在哪里！", "卧底，你是想怎样~" };
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class guess extends BaseActivity {
 		contentTable = (TableLayout) findViewById(R.id.contentTable);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		punishBtn = new Button(this);
+		startBtn = new Button(this);
 		Bundle bundle = this.getIntent().getExtras();
 		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
@@ -97,16 +104,13 @@ public class guess extends BaseActivity {
 				fl.addView(select);
 				fl.addView(text);
 				newrow.addView(fl, 120, 120);
-
-
 			}
 			contentTable.addView(newrow);
-			txtLong = new TextView(this);
-			txtLong.setText("长按选择");
-			txtLong.setTag(100099);
-			contentTable.addView(txtLong);
 		}
-
+		txtLong = new TextView(this);
+		txtLong.setText("长按选择");
+		txtLong.setTag(100099);
+		contentTable.addView(txtLong);
 	}
 
 	protected void setAllButton(boolean useable) {
@@ -128,19 +132,22 @@ public class guess extends BaseActivity {
 		if (!isOver) {
 			if (soncount <= 0) {
 				Log("任务完成");
-				txtTitle.setText("完成任务，卧底为" + son);
+				txtTitle.setText("完成任务，卧底为【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				refash();
 				setAllButton(false);
 			} else if (fathercount <= soncount) {
 				Log("卧底胜利");
-				txtTitle.setText("卧底胜利，卧底为" + son);
+				txtTitle.setText("卧底胜利，卧底为【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				refash();
 				setAllButton(false);
 			} else {
+				int stringcount = overString.length;
+				int stringindex = Math.abs(random.nextInt()) % stringcount;
+				txtTitle.setText(overString[stringindex]);
 				Log("还有" + soncount + "个");
 			}
 		}
@@ -162,6 +169,16 @@ public class guess extends BaseActivity {
 			}
 		});
 		contentTable.addView(punishBtn);
+		startBtn.setText("重新开始");
+		startBtn.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				Intent goMain = new Intent();
+				goMain.setClass(guess.this, Setting.class);
+				startActivity(goMain);
+				finish();
+			}
+		});
+		contentTable.addView(startBtn);
 	}
 
 	/**

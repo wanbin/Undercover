@@ -24,6 +24,7 @@ public class Setting extends BaseActivity {
 	private TextView people;
 	private TextView under;
 	private TextView title;
+	private int maxPeople = 16;
 	// 说明
 	private int peopleCount = 4;
 	private int underCount = 1;
@@ -32,9 +33,9 @@ public class Setting extends BaseActivity {
 	private String son;
 	private String father;
 	private CheckBox afterShow;
-	//是否添加 冤死 提示，在投票后
+	// 是否添加 冤死 提示，在投票后
 	private boolean isShow;
-	//是否添加空白词
+	// 是否添加空白词
 	private boolean isBlank;
 
 	// private int soncount = 1;
@@ -52,7 +53,7 @@ public class Setting extends BaseActivity {
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
-		//添加 冤死 提示按钮
+		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
@@ -64,7 +65,7 @@ public class Setting extends BaseActivity {
 				}
 			}
 		});
-		//添加 空白词 按钮
+		// 添加 空白词 按钮
 		CheckBox blank	= (CheckBox)findViewById(R.id.isBlank);
 		blank.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
@@ -94,9 +95,9 @@ public class Setting extends BaseActivity {
 		btnAdd.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (peopleCount < 20)
+				if (peopleCount < maxPeople)
 				peopleCount++;
-				underCount = Math.max((int) Math.floor(peopleCount / 5), 1);
+				underCount = Math.max((int) Math.floor(peopleCount / 4), 1);
 				setPeople();
 				setUnder();
 			}
@@ -108,7 +109,7 @@ public class Setting extends BaseActivity {
 				if (peopleCount > 4) {
 					peopleCount--;
 					underCount = Math.min(
-							Math.max((int) Math.floor(peopleCount / 5), 1),
+							Math.max((int) Math.floor(peopleCount / 4), 1),
 							underCount);
 				}
 				setPeople();
@@ -121,7 +122,7 @@ public class Setting extends BaseActivity {
 			public void onClick(View v) {
 				if (underCount < 4) {
 					underCount++;
-					peopleCount = Math.min(peopleCount + 5, 20);
+					peopleCount = Math.min(peopleCount + 4, 16);
 				}
 				setPeople();
 				setUnder();
@@ -173,7 +174,7 @@ public class Setting extends BaseActivity {
 	}
 
 	private void setPeople() {
-		if (peopleCount == 20) {
+		if (peopleCount == maxPeople) {
 			btnAdd.setBackgroundResource(R.drawable.popogray72);
 			btnAdd.setClickable(false);
 		} else {
