@@ -47,7 +47,7 @@ public class guess extends BaseActivity {
 		isOver = false;
 		flag = false;
 		isGetRestart = false;
-		contentTable = (TableLayout) findViewById(R.id.contentTable);
+		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		punishBtn = new Button(this);
 		startBtn = new Button(this);
@@ -104,7 +104,7 @@ public class guess extends BaseActivity {
 				});
 				fl.addView(select);
 				fl.addView(text);
-				newrow.addView(fl, 120, 120);
+				newrow.addView(fl, disWidth / 4, disWidth / 4);
 			}
 			contentTable.addView(newrow);
 		}
@@ -136,6 +136,7 @@ public class guess extends BaseActivity {
 				txtTitle.setText("完成任务，卧底为【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
+				SoundPlayer.playclaps();
 				refash();
 				setAllButton(false);
 			} else if (fathercount <= soncount) {

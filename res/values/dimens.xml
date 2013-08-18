@@ -8,5 +8,6 @@
     <dimen name="sizehome">18px</dimen>
     <dimen name="large60">60dp</dimen>
     <dimen name="large80">80dp</dimen>
+    <dimen name="size20">20dp</dimen>
 
 </resources>

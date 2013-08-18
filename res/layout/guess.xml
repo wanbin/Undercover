@@ -11,6 +11,14 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/guesscontent"
-        android:textSize="@dimen/index" />
+        android:textSize="@dimen/size20" />
+
+    <TableLayout
+        android:id="@+id/tableContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical" >
+
+    </TableLayout>
 
 </TableLayout>

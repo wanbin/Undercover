@@ -70,6 +70,7 @@ public class random_50 extends BaseActivity {
 				DisplayParameter(50 - click_times);
 				preference.setVisibility(View.INVISIBLE);
 				if (click_times <= random_times) {
+					SoundPlayer.playclaps();
 					setFinish();
 				} else {
 					click_button.startAnimation(aniSet);

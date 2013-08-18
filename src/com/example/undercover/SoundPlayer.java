@@ -137,6 +137,9 @@ public class SoundPlayer{
 	/**
 	 * 播放鼓掌音效
 	 */
+	public static void playclaps() {
+		playSound(R.raw.claps3);
+	}
 	public static void playball() {
 		playSound(R.raw.ball);
 	}
