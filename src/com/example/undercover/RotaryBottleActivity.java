@@ -41,6 +41,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				startAnimation();
+				SoundPlayer.playbottle();
 				uMengClick("count_bottle");
 				
 			}
@@ -143,6 +144,7 @@ public class RotaryBottleActivity extends BaseActivity {
 				// restartBtn.setClickable(true);
 				bottle.setClickable(true);
 				punishment.setVisibility(View.VISIBLE);
+				SoundPlayer.playclaps();
 			}
 		});
 

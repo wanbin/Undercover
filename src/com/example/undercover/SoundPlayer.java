@@ -143,4 +143,8 @@ public class SoundPlayer{
 	public static void playball() {
 		playSound(R.raw.ball);
 	}
+
+	public static void playbottle() {
+		playSound(R.raw.bottle);
+	}
 }

@@ -27,6 +27,7 @@ public class BaseActivity extends Activity {
 		SoundPlayer.pushSound(R.raw.ball);
 		SoundPlayer.pushSound(R.raw.claps3);
 		SoundPlayer.pushSound(R.raw.jishi_2);
+		SoundPlayer.pushSound(R.raw.bottle);
 	}
 
 	public void onResume() {
