@@ -67,8 +67,8 @@ public class SelectGameActivity extends BaseActivity {
 		// 将小圆点放到Layout中
 		for (int i = 0; i < imageViews.length; i++) {
 			ImageView image = new ImageView(SelectGameActivity.this);
-			image.setLayoutParams(new LayoutParams(15, 15));
-			image.setPadding(20, 0, 20, 0);
+			image.setLayoutParams(new LayoutParams(30, 30));
+			image.setPadding(20, 20, 20, 20);
 			// 默认为第一小圆点
 			if (i==0) {
 				image.setBackgroundResource(R.drawable.page_indicator_focused);
