@@ -155,7 +155,7 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void setTextView(String[] str){
-		punish_guize.setText("请输的同学依次回答以下问题");
+		punish_guize.setText("请输的同学依次接受惩罚");
 		punish_1.setText("1、" + str[0]);
 		punish_2.setText("2、" + str[1]);
 		punish_3.setText("3、" + str[2]);

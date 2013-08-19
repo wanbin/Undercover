@@ -72,9 +72,12 @@ public class SelectGameActivity extends BaseActivity {
 		boolean soundon = SoundPlayer.getSoundSt();
 		if (soundon) {
 			sound.setChecked(true);
+			sound.setText("音效：开");
 		} else {
 			sound.setChecked(false);
+			sound.setText("音效：关");
 		}
+
 		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,

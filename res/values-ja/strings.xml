@@ -29,6 +29,7 @@
     <string name="punish_adventure">大冒险</string>
     <string name="punish_true">真心话</string>
     <string name="punish_tips">可以选择真心话或者大冒险</string>
+    <string name="punish_random_btn">随机惩罚</string>
     <string name="punish_other">换题</string>
     <string name="random_punish">接受</string>
     <string name="clickme">有胆量就点</string>
