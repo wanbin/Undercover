@@ -39,6 +39,8 @@ public class QuestionAnswer extends BaseActivity {
 	private boolean isTimeRun;
 	/** 惩罚页面跳转按钮 */
 	private Button intentPunish;
+	private int startSec = 2000;
+	private int endSec = 6000;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class QuestionAnswer extends BaseActivity {
 		intentPunish	= (Button)findViewById(R.id.intent_punish);
 		intentPunish.setVisibility(View.INVISIBLE);
 		
-		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 //		timeLimit	= 1000;
 		final FrameLayout frame	= (FrameLayout)findViewById(R.id.question_frame);
 		imageNext	= (ImageView)findViewById(R.id.question_image);
@@ -195,7 +197,7 @@ public class QuestionAnswer extends BaseActivity {
 		isOver	= false;
 		isBegin	= false;
 		isShowBar	= false;
-		timeLimit	= MathUtil.getInstance().getRondom(3000, 12000);
+		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 //		timeLimit	= 1000;
 		imageNext.setClickable(true);
 		questionNext.setText("Ready Go !");
