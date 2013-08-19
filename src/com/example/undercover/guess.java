@@ -29,6 +29,8 @@ public class guess extends BaseActivity {
 	private TextView txtTitle;
 	private Button punishBtn;
 	private Button startBtn;
+	private Button quickStartBtn;
+	
 	private int totalcount;
 	private boolean isOver;
 	private boolean flag;
@@ -49,8 +51,11 @@ public class guess extends BaseActivity {
 		isGetRestart = false;
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		punishBtn = new Button(this);
-		startBtn = new Button(this);
+//		punishBtn = new Button(this);
+//		startBtn = new Button(this);
+		punishBtn = (Button) findViewById(R.id.btn_punish);
+		startBtn = (Button) findViewById(R.id.btn_restart);
+		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
 		Bundle bundle = this.getIntent().getExtras();
 		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
@@ -161,7 +166,11 @@ public class guess extends BaseActivity {
 
 	private void refash() {
 		//Button punishBtn = new Button(this);
-		punishBtn.setText("开始惩罚");
+//		punishBtn.setVisibility(View.VISIBLE);
+//		startBtn.setVisibility(View.VISIBLE);
+//		quickStartBtn.setVisibility(View.VISIBLE);
+		TableLayout btn_wrapper = (TableLayout) findViewById(R.id.btn_wrapper);
+		btn_wrapper.setVisibility(View.VISIBLE);
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				 Intent goMain = new Intent();
@@ -170,8 +179,8 @@ public class guess extends BaseActivity {
 				 finish();
 			}
 		});
-		contentTable.addView(punishBtn);
-		startBtn.setText("重新开始");
+//		contentTable.addView(punishBtn);
+//		startBtn.setText("重新开始");
 		startBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
@@ -180,7 +189,17 @@ public class guess extends BaseActivity {
 				finish();
 			}
 		});
-		contentTable.addView(startBtn);
+		
+		
+		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				Intent goMain = new Intent();
+				goMain.setClass(guess.this, fanpai.class);
+				startActivity(goMain);
+				finish();
+			}
+		});
+//		contentTable.addView(startBtn);
 	}
 
 	/**
