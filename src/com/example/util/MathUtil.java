@@ -9,6 +9,8 @@ public class MathUtil {
 	}
 	private int num;
 	private boolean flag;
+	private String[] random = {"1","2","3","4","5","6",};
+	private int random_num	= 0;
 	
 	/**
 	 * @param max	最大值
@@ -52,5 +54,10 @@ public class MathUtil {
 		}else{
 			return 0;
 		}
+	}
+	
+	public String getRandomNum(){
+		int i	= random_num++%6;
+		return random[i];
 	}
 }

@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.util.MathUtil;
@@ -23,7 +22,6 @@ import com.example.util.PunishProps;
 
 public class QuestionAnswer extends BaseActivity {
 	
-	private TableLayout baseTable;
 	// 标志位，游戏是否开始，默认否
 	private boolean isBegin = false;
 	// 标志位，游戏是否结束，默认否

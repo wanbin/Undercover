@@ -104,4 +104,16 @@
             android:layout_height="wrap_content"
             android:background="@drawable/popo72"
             android:text="@string/punish_other" />
+
+
+        <Button
+            android:id="@+id/punish_random"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/changeBtn"
+            android:layout_alignBottom="@+id/changeBtn"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/popo72"
+            android:text="@string/punish_random_btn" />
+        
 </RelativeLayout>
