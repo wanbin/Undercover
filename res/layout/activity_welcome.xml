@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/startButton"
             android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
             android:src="@drawable/mainundercover" />
 
     </RelativeLayout>

@@ -118,6 +118,7 @@ public class PunishActivity extends BaseActivity {
 				Intent goMain = new Intent();
 				goMain.setClass(PunishActivity.this, Setting.class);
 				startActivity(goMain);
+				finish();
 			}
 		});
 		
