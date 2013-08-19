@@ -3,6 +3,7 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +38,9 @@ public class Setting extends BaseActivity {
 	private boolean isShow;
 	// 是否添加空白词
 	private boolean isBlank;
+	
+	//共享的参与和卧底数
+	private SharedPreferences gameInfo;
 
 	// private int soncount = 1;
 	@Override
@@ -55,6 +59,10 @@ public class Setting extends BaseActivity {
 		title = (TextView) findViewById(R.id.txtPeopleTitle);
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
+		
+		//共享数据
+		gameInfo = getSharedPreferences("gameInfo", 0);
+		
 		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -78,7 +86,6 @@ public class Setting extends BaseActivity {
 			}
 		});
 		random = new Random();
-		content = getResources().getStringArray(R.array.content);
 		
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -146,16 +153,22 @@ public class Setting extends BaseActivity {
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				int selectindex = Math.abs(random.nextInt()) % content.length;
-				String[] tem = getRandomString(content[selectindex]);
-				Bundle bundle = new Bundle();
-				bundle.putStringArray("content", tem);
-				bundle.putString("son", son);
-				bundle.putInt("sonCount", underCount);
-				bundle.putBoolean("isShow", isShow);
-				bundle.putBoolean("isBlank", isBlank);
+//				int selectindex = Math.abs(random.nextInt()) % content.length;
+//				String[] tem = getRandomString(content[selectindex]);
+				gameInfo.edit().putInt("peopleCount", peopleCount).commit(); 
+				gameInfo.edit().putInt("underCount", underCount).commit(); 
+				gameInfo.edit().putBoolean("isShow", isShow).commit(); 
+				gameInfo.edit().putBoolean("isBlank", isBlank).commit(); 
+//				Bundle bundle = new Bundle();
+//				bundle.putStringArray("content", tem);
+//				bundle.putString("son", son);
+//				bundle.putInt("sonCount", underCount);
+//				bundle.putInt("peopleCount", peopleCount);
+//				bundle.putInt("underCount", underCount);
+//				bundle.putBoolean("isShow", isShow);
+//				bundle.putBoolean("isBlank", isBlank);
 				Intent goMain = new Intent();
-				goMain.putExtras(bundle);
+//				goMain.putExtras(bundle);
 				goMain.setClass(Setting.this, fanpai.class);
 				startActivity(goMain);
 				uMengClick("game_undercover_start");
@@ -195,6 +208,7 @@ public class Setting extends BaseActivity {
 			btnCost.setClickable(true);
 		}
 		people.setText(Integer.toString(peopleCount));
+		
 	}
 
 	private void setUnder() {
@@ -212,37 +226,36 @@ public class Setting extends BaseActivity {
 			btnCostUnder.setBackgroundResource(R.drawable.popo72);
 			btnCostUnder.setClickable(true);
 		}
-
 		under.setText(Integer.toString(underCount));
 	}
 
-	private String[] getRandomString(String contnettxt)
-	{
-		// if (peopleCount > 15) {
-		// soncount = 4;
-		// } else if (peopleCount > 10) {
-		// soncount = 3;
-		// } else if (peopleCount > 5) {
-		// soncount = 2;
-		// }
-		String[] children  =new String[2];
-		children = contnettxt.split("_");
-		int sonindex = Math.abs(random.nextInt()) % 2;
-		son = children[sonindex];
-		father = children[Math.abs(sonindex - 1)];
-		String[] ret = new String[peopleCount];
-		for (int n = 0; n < ret.length; n++) {
-			ret[n] = father;
-		}
-		for (int i = 0; i < underCount; i++) {
-			int tem;
-			do {
-				tem = Math.abs(random.nextInt()) % peopleCount;
-			} while (ret[tem].equals(son));
-			ret[tem] = son;
-		}
-		return ret;
-	}
+//	private String[] getRandomString(String contnettxt)
+//	{
+//		// if (peopleCount > 15) {
+//		// soncount = 4;
+//		// } else if (peopleCount > 10) {
+//		// soncount = 3;
+//		// } else if (peopleCount > 5) {
+//		// soncount = 2;
+//		// }
+//		String[] children  =new String[2];
+//		children = contnettxt.split("_");
+//		int sonindex = Math.abs(random.nextInt()) % 2;
+//		son = children[sonindex];
+//		father = children[Math.abs(sonindex - 1)];
+//		String[] ret = new String[peopleCount];
+//		for (int n = 0; n < ret.length; n++) {
+//			ret[n] = father;
+//		}
+//		for (int i = 0; i < underCount; i++) {
+//			int tem;
+//			do {
+//				tem = Math.abs(random.nextInt()) % peopleCount;
+//			} while (ret[tem].equals(son));
+//			ret[tem] = son;
+//		}
+//		return ret;
+//	}
 
 	protected void Log(String string) {
 		Log.v("tag", string);

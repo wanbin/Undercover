@@ -3,6 +3,7 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,18 +13,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class fanpai extends BaseActivity {
-	private int soncount;
 	private String son;
 	private String[] content;
+	private String[] libary;
 	private TextView txtShenfen;
 	private TextView txtIndex;
 	private TextView textViewab;
 	private ImageView imagePan;
 	private Button btnOK;
+	private Random random;
 	private int nowIndex = 1;
 	private boolean isShow;
 	private boolean isBlank;
 	private boolean isChecked;
+	//
+	private int peopleCount ;
+	private int underCount;
+	
+	private SharedPreferences gameInfo;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +46,30 @@ public class fanpai extends BaseActivity {
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (ImageView) findViewById(R.id.imagePan);
 
-		Bundle bundle = this.getIntent().getExtras();
-		isBlank	= bundle.getBoolean("isBlank");
-		isShow	= bundle.getBoolean("isShow");
-		son = bundle.getString("son");
-		soncount = bundle.getInt("sonCount");
-		content = bundle.getStringArray("content");
+		random = new Random();
+		gameInfo = getSharedPreferences("gameInfo", 0);
+		isBlank = gameInfo.getBoolean("isBlank", false);
+		isShow = gameInfo.getBoolean("isShow", false);
+		peopleCount = gameInfo.getInt("peopleCount", 4);
+		underCount = gameInfo.getInt("underCount", 1);
+		
+//		Bundle bundle = this.getIntent().getExtras();
+//		isBlank	= bundle.getBoolean("isBlank");
+//		isShow	= bundle.getBoolean("isShow");
+//		peopleCount = bundle.getInt("peopleCount");
+//		underCount  = bundle.getInt("underCount");
+		
+		String[] libary = getResources().getStringArray(R.array.content);
+		int selectindex = Math.abs(random.nextInt()) % libary.length;
+		content = getRandomString(libary[selectindex]);
+		
+		Log(content[0]);
+		
+		random = new Random();
+		
 		int blandStr	= Math.abs(new Random().nextInt()); 
-		for (int i = 0, len	=content.length; i < len; i++) {
+		for (int i = 0, len	= peopleCount; i < len; i++) {
 			if(isBlank){
-				
 				if(!isChecked){
 					if(!content[(i+blandStr)%len].equals(son)){
 						isChecked	= true;
@@ -71,9 +93,10 @@ public class fanpai extends BaseActivity {
 					initPan(nowIndex);
 				} else {
 					Bundle bundle = new Bundle();
+//					bundle.putInt("peopleCount", peopleCount);
 					bundle.putStringArray("content", content);
 					bundle.putString("son", son);
-					bundle.putInt("sonCount", soncount);
+					bundle.putInt("underCount", underCount);
 					bundle.putBoolean("isShow", isShow);
 					Intent goMain = new Intent();
 					goMain.putExtras(bundle);
@@ -123,5 +146,31 @@ public class fanpai extends BaseActivity {
 			txtShenfen.setVisibility(View.INVISIBLE);
 			textViewab.setVisibility(View.INVISIBLE);
 		}
+	}
+	
+	/**
+	 * 获取随机的一堆词条
+	 * @param contnettxt
+	 * @return
+	 */
+	private String[] getRandomString(String contnettxt)
+	{
+		String[] children  =new String[2];
+		children = contnettxt.split("_");
+		int sonindex = Math.abs(random.nextInt()) % 2;
+		son = children[sonindex];
+		String father = children[Math.abs(sonindex - 1)];
+		String[] ret = new String[peopleCount];
+		for (int n = 0; n < ret.length; n++) {
+			ret[n] = father;
+		}
+		for (int i = 0; i < underCount; i++) {
+			int tem;
+			do {
+				tem = Math.abs(random.nextInt()) % peopleCount;
+			} while (ret[tem].equals(son));
+			ret[tem] = son;
+		}
+		return ret;
 	}
 }

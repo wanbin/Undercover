@@ -54,7 +54,7 @@ public class guess extends BaseActivity {
 		Bundle bundle = this.getIntent().getExtras();
 		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
-		soncount = bundle.getInt("sonCount");
+		soncount = bundle.getInt("underCount");
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		totalcount = content.length;
