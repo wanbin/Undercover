@@ -22,13 +22,13 @@ public class MakeActivity extends BaseActivity {
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		btnfb = (Button) findViewById(R.id.btnfb);
-		txtTitle.setText("【谁是卧底】1.05版本");
+		txtTitle.setText("【谁是卧底】1.06版本");
 		agent = new FeedbackAgent(this);
 		String emailaddr = this.getString(R.string.emailaddr);
 		txtContent
 				.setText("意见及建议："
 						+ emailaddr
-						+ "\n\n\nv1.05版本新功能：\n\n1.更多的分辨率适配\n2.添加空白身份及翻牌规则\n3.添加个小游戏【有胆量就问】\n");
+						+ "\n\n\nv1.06版本新功能：\n\n1.添加好玩有趣的音效\n2.优化背景页面\n3.把【有胆量就问】节奏加快\n4.修改了上版本中的BUG");
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
