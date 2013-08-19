@@ -97,13 +97,6 @@
             android:background="@drawable/backblue"
             />
 
-        <Button
-            android:id="@+id/quickStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/large60"
-            android:text="@string/quickStart" />
-
     </FrameLayout>
         <Button
             android:id="@+id/changeBtn"

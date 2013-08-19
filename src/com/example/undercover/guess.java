@@ -175,17 +175,18 @@ public class guess extends BaseActivity {
 			public void onClick(View v) {
 				 Intent goMain = new Intent();
 				 goMain.setClass(guess.this, PunishActivity.class);
+				uMengClick("game_undercover_punish");
 				 startActivity(goMain);
-				 finish();
 			}
 		});
 //		contentTable.addView(punishBtn);
-//		startBtn.setText("重新开始");
+		// startBtn.setText("重新开始");
 		startBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
 				goMain.setClass(guess.this, Setting.class);
 				startActivity(goMain);
+				uMengClick("game_undercover_resert");
 				finish();
 			}
 		});
@@ -196,6 +197,7 @@ public class guess extends BaseActivity {
 				Intent goMain = new Intent();
 				goMain.setClass(guess.this, fanpai.class);
 				startActivity(goMain);
+				uMengClick("game_undercover_quickresert");
 				finish();
 			}
 		});
@@ -224,22 +226,6 @@ public class guess extends BaseActivity {
 //			}
 //		}
 //	}
-	
-	private void getRestartButton(){
-		Button restartBtn = new Button(this);
-		restartBtn.setText("重新开始");
-		restartBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent goMain = new Intent();
-				uMengClick("game_undercover_resert");
-				goMain.setClass(guess.this, Setting.class);
-				startActivity(goMain);
-				finish();
-			}
-		});
-		contentTable.addView(restartBtn);
-	}
 //	private void frozenBtn()
 //	{
 //		for(int i = 1 ;i < temindex+1 ; i++)

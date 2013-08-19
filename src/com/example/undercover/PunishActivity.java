@@ -15,7 +15,6 @@ public class PunishActivity extends BaseActivity {
 	private Button trueBtn;
 	private Button advenBtn;
 	private Button changeBtn;
-	private Button quickStart;
 	private TextView punish_guize;
 	private TextView punish_1;
 	private TextView punish_2;
@@ -33,7 +32,6 @@ public class PunishActivity extends BaseActivity {
 		trueBtn		= (Button)findViewById(R.id.trueBtn);
 		advenBtn	= (Button)findViewById(R.id.advenBtn);
 		changeBtn	= (Button)findViewById(R.id.changeBtn);
-		quickStart = (Button) findViewById(R.id.quickStart);
 		punish_guize = (TextView) findViewById(R.id.punish_guize);
 		punish_1	= (TextView)findViewById(R.id.punish_1);
 		punish_2	= (TextView)findViewById(R.id.punish_2);
@@ -79,17 +77,6 @@ public class PunishActivity extends BaseActivity {
 				}
 				changeBtn.setBackgroundResource(R.drawable.popogray72);
 				changeBtn.setEnabled(false);
-			}
-		});
-		
-		// 快速开始
-		quickStart.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				uMengClick("game_undercover_quickStart");
-				Intent goMain = new Intent();
-				goMain.setClass(PunishActivity.this, fanpai.class);
-				startActivity(goMain);
 			}
 		});
 		
