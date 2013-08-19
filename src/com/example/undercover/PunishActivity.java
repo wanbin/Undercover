@@ -3,7 +3,6 @@ package com.example.undercover;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -33,7 +32,7 @@ public class PunishActivity extends BaseActivity {
 	// 是否开始 随机数字的计算；
 	private boolean isRandom;
 	private long number;
-	//是否 点击过 随机按钮；
+	// 是否 点击过 随机按钮；
 	private boolean isTouch;
 	private TextView[] punish;
 	private String num;
@@ -74,7 +73,7 @@ public class PunishActivity extends BaseActivity {
 			public void onClick(View v) {
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
-				//暂时，先隐藏 换题 按钮
+				// 暂时，先隐藏 换题 按钮
 //				changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
 				uMengClick("game_zhenxinhua");
@@ -89,7 +88,7 @@ public class PunishActivity extends BaseActivity {
 				flag	= true;
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
-				//暂时，先隐藏 换题 按钮
+				// 暂时，先隐藏 换题 按钮
 //				changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
 				uMengClick("game_damaoxian");
@@ -115,9 +114,9 @@ public class PunishActivity extends BaseActivity {
 		backBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent goMain = new Intent();
-				goMain.setClass(PunishActivity.this, Setting.class);
-				startActivity(goMain);
+				// Intent goMain = new Intent();
+				// goMain.setClass(PunishActivity.this, Setting.class);
+				// startActivity(goMain);
 				finish();
 			}
 		});
@@ -135,7 +134,7 @@ public class PunishActivity extends BaseActivity {
 				isRandom = !isRandom;
 			}
 		});
-	}//onCreat 方法结束
+	}// onCreat 方法结束
 	
 	private void getTruePunish(){
 		int[] intArr = MathUtil.getInstance().check(190, 6);
@@ -198,7 +197,7 @@ public class PunishActivity extends BaseActivity {
 		punish_4.setTextColor(getResources().getColor(R.color.BLACK));
 		punish_5.setTextColor(getResources().getColor(R.color.BLACK));
 		punish_6.setTextColor(getResources().getColor(R.color.BLACK));
-//		punish_1.setTextSize(14); //默认字体
+		// punish_1.setTextSize(14); //默认字体
 //		punish_2.setTextSize(14);
 //		punish_3.setTextSize(14);
 //		punish_4.setTextSize(14);
