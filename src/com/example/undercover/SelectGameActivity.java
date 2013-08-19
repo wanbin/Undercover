@@ -18,6 +18,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,27 +42,53 @@ public class SelectGameActivity extends BaseActivity {
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
 			appmakerbButton, btnStart;
     private ImageView startButton;
+	private CheckBox sound;
+	private boolean soundon = true;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
-		
+
 		// Welcome 的Layout
 		View welcomeView = mInflater.inflate(R.layout.activity_welcome, null);
 		// 帮助页面的layout
 		View helpView = mInflater.inflate(R.layout.undercover_content, null);
 		// 更多游戏的Layout
 		View moreView = mInflater.inflate(R.layout.activity_more, null);
-				
-        viewList = new ArrayList<View>();
-        viewList.add(helpView);
-        viewList.add(welcomeView);
-        viewList.add(moreView);
+
+		viewList = new ArrayList<View>();
+		viewList.add(helpView);
+		viewList.add(welcomeView);
+		viewList.add(moreView);
+
+		mainContainer = (ViewGroup) mInflater.inflate(
+				R.layout.activity_select_game, null);
+		pointContainer = (ViewGroup) mainContainer
+				.findViewById(R.id.pointGroup);
+		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
+
+		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
+		boolean soundon = SoundPlayer.getSoundSt();
+		if (soundon) {
+			sound.setChecked(true);
+		} else {
+			sound.setChecked(false);
+		}
+		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				if (isChecked) {
+					SoundPlayer.setSoundSt(true);
+					sound.setText("音效：开");
+				} else {
+					sound.setText("音效：关");
+					SoundPlayer.setSoundSt(false);
+				}
+			}
+		});
         
-        mainContainer = (ViewGroup) mInflater.inflate(R.layout.activity_select_game, null);
-        pointContainer = (ViewGroup) mainContainer.findViewById(R.id.pointGroup);
-        viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
         
         imageViews = new ImageView[viewList.size()];
         Log.d("imageView length", String.valueOf(imageViews.length));

@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
      android:background="@drawable/mainbg"  >
 
+    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -35,5 +37,12 @@
             android:src="@drawable/mainundercover" />
 
     </RelativeLayout>
+
+<CheckBox
+    android:id="@+id/sound"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:text="@string/strSound" />
 
 </FrameLayout>
