@@ -77,11 +77,12 @@ public class PunishActivity extends BaseActivity {
 				}else{
 					getTruePunish();
 				}
+				changeBtn.setBackgroundResource(R.drawable.popogray72);
 				changeBtn.setEnabled(false);
 			}
 		});
 		
-		//快速开始
+		// 快速开始
 		quickStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -16,6 +16,4 @@
     <string name="umeng_fb_notification_content_formatter_single_msg">新回复: %s</string>
     <string name="umeng_fb_notification_content_formatter_multiple_msg">收到来自开发者的 %d 条回复。</string>
     
-    
-
 </resources>
