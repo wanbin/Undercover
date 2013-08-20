@@ -30,23 +30,26 @@
             android:id="@+id/btn_punish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/btnbg"
             android:text="@string/punishmen" />
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
              >
 
             <Button
                 android:id="@+id/btn_restart"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btnbg"
                 android:text="@string/restart" />
 
             <Button
                 android:id="@+id/btn_quickstart"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/btnbg"
                 android:text="@string/quickStart" />
 
         </TableRow>

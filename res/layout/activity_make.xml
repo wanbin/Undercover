@@ -39,6 +39,7 @@
          android:layout_below="@+id/txtContent"
          android:layout_centerHorizontal="true"
          android:layout_marginTop="90dp"
+         android:background="@drawable/btnbg"
          android:text="@string/feedback" />
 
 </RelativeLayout>

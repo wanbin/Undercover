@@ -127,18 +127,24 @@ public class SelectGameActivity extends BaseActivity {
 		startButton.startAnimation(scaleAni);
 
 		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
+		btnStart.setBackgroundResource(R.drawable.btnbg);
 		btnStart.setOnClickListener(new MyClickListener());
 
 		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
+		weixinButton.setBackgroundResource(R.drawable.btnbg);
         weixinButton.setOnClickListener(new MyClickListener());
 		appmakerbButton = (Button) helpView.findViewById(R.id.appMaker);
+		appmakerbButton.setBackgroundResource(R.drawable.btnbg);
         appmakerbButton.setOnClickListener(new MyClickListener());
 
         clickmeButton = (Button) moreView.findViewById(R.id.clickme);
+        clickmeButton.setBackgroundResource(R.drawable.btnbg);
         clickmeButton.setOnClickListener(new MyClickListener());
         circlemeButton = (Button) moreView.findViewById(R.id.circleme);
+        circlemeButton.setBackgroundResource(R.drawable.btnbg);
         circlemeButton.setOnClickListener(new MyClickListener());
         questionButton = (Button) moreView.findViewById(R.id.jumpQuestion);
+        questionButton.setBackgroundResource(R.drawable.btnbg);
         questionButton.setOnClickListener(new MyClickListener());
         
         viewPager.setAdapter(new MyPageAdapter());

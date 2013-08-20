@@ -56,6 +56,7 @@ public class guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
+		quickStartBtn.setBackgroundResource(R.drawable.btnbg);
 		Bundle bundle = this.getIntent().getExtras();
 		isShow	= bundle.getBoolean("isShow");
 		son = bundle.getString("son");
@@ -117,6 +118,7 @@ public class guess extends BaseActivity {
 		txtLong.setText("长按选择");
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
+		
 	}
 
 	protected void setAllButton(boolean useable) {
@@ -191,7 +193,7 @@ public class guess extends BaseActivity {
 			}
 		});
 		
-		
+		 
 		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
