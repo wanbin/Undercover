@@ -53,7 +53,7 @@ public class QuestionAnswer extends BaseActivity {
 //		timeLimit	= 1000;
 		final FrameLayout frame	= (FrameLayout)findViewById(R.id.question_frame);
 		imageNext	= (ImageView)findViewById(R.id.question_image);
-		imageNext.setBackground(getResources().getDrawable(R.drawable.popo152));
+		imageNext.setBackgroundResource(R.drawable.popo152);
 		questionNext	= (TextView)findViewById(R.id.questionNext);
 		questionNext.setText("Ready Go !");
 		
