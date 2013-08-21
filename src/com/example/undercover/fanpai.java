@@ -61,7 +61,7 @@ public class fanpai extends BaseActivity {
 //		peopleCount = bundle.getInt("peopleCount");
 //		underCount  = bundle.getInt("underCount");
 		
-		String[] libary = getResources().getStringArray(R.array.content);
+		String[] libary = getResources().getStringArray(R.array.people);
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
 		
@@ -153,6 +153,7 @@ public class fanpai extends BaseActivity {
 	
 	/**
 	 * 获取随机的一堆词条
+	 * 
 	 * @param contnettxt
 	 * @return
 	 */
