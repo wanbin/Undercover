@@ -79,6 +79,14 @@ public class guess extends BaseActivity {
 				text.setText("" + temindex);
 				text.setGravity(Gravity.CENTER);
 				text.setTextSize(30);
+
+				final TextView shenfen = new TextView(this);
+				shenfen.setText(content[temindex - 1]);
+				shenfen.setGravity(Gravity.BOTTOM);
+				shenfen.setTextSize(15);
+				shenfen.setTag(999);
+				shenfen.setVisibility(View.INVISIBLE);
+
 				select.setTag(temindex);
 				select.setBackgroundResource(R.drawable.popo72);
 				select.setOnLongClickListener(new Button.OnLongClickListener() {
@@ -110,6 +118,7 @@ public class guess extends BaseActivity {
 				});
 				fl.addView(select);
 				fl.addView(text);
+				fl.addView(shenfen);
 				newrow.addView(fl, disWidth / 4, disWidth / 4);
 			}
 			contentTable.addView(newrow);
@@ -167,12 +176,30 @@ public class guess extends BaseActivity {
 	}
 
 	private void refash() {
+		// 所有身份亮明
+
+
 		//Button punishBtn = new Button(this);
 //		punishBtn.setVisibility(View.VISIBLE);
 //		startBtn.setVisibility(View.VISIBLE);
 //		quickStartBtn.setVisibility(View.VISIBLE);
 		TableLayout btn_wrapper = (TableLayout) findViewById(R.id.btn_wrapper);
 		btn_wrapper.setVisibility(View.VISIBLE);
+
+		for (int i = 0; i < contentTable.getChildCount(); i++) {
+			if (contentTable.getChildAt(i) instanceof TableRow) {
+				TableRow v = (TableRow) contentTable.getChildAt(i);
+				for (int m = 0; m < v.getChildCount(); m++) {
+					if (v.getChildAt(m) instanceof FrameLayout) {
+						FrameLayout imageTem = (FrameLayout) v.getChildAt(m);
+						TextView temtext = (TextView) imageTem
+								.findViewWithTag(999);
+						temtext.setVisibility(View.VISIBLE);
+					}
+				}
+			}
+
+		}
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				 Intent goMain = new Intent();
@@ -206,6 +233,9 @@ public class guess extends BaseActivity {
 //		contentTable.addView(startBtn);
 	}
 
+	protected void fanpai() {
+
+	}
 	/**
 	 * 获取惩罚内容数组
 	 * 
