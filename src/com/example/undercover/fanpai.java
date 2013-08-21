@@ -36,6 +36,8 @@ public class fanpai extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		
 		setContentView(R.layout.activity_pai);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
@@ -47,25 +49,30 @@ public class fanpai extends BaseActivity {
 		imagePan = (ImageView) findViewById(R.id.imagePan);
 
 		random = new Random();
-		gameInfo = getSharedPreferences("gameInfo", 0);
-		isBlank = gameInfo.getBoolean("isBlank", false);
-		isShow = gameInfo.getBoolean("isShow", false);
-		peopleCount = gameInfo.getInt("peopleCount", 4);
-		underCount = gameInfo.getInt("underCount", 1);
+		if(savedInstanceState == null){
+			gameInfo = getSharedPreferences("gameInfo", 0);
+			isBlank = gameInfo.getBoolean("isBlank", false);
+			isShow = gameInfo.getBoolean("isShow", false);
+			peopleCount = gameInfo.getInt("peopleCount", 4);
+			underCount = gameInfo.getInt("underCount", 1);
+			String[] libary = getResources().getStringArray(R.array.content);
+			int selectindex = Math.abs(random.nextInt()) % libary.length;
+			content = getRandomString(libary[selectindex]);
+		}else{
+			isBlank = savedInstanceState.getBoolean("isBlank");
+			isShow = savedInstanceState.getBoolean("isShow");
+			peopleCount = savedInstanceState.getInt("peopleCount");
+			underCount = savedInstanceState.getInt("underCount");
+			content = savedInstanceState.getStringArray("content");
+			nowIndex = savedInstanceState.getInt("nowIndex");
+		}
+		
 		
 //		Bundle bundle = this.getIntent().getExtras();
 //		isBlank	= bundle.getBoolean("isBlank");
 //		isShow	= bundle.getBoolean("isShow");
 //		peopleCount = bundle.getInt("peopleCount");
 //		underCount  = bundle.getInt("underCount");
-		
-		String[] libary = getResources().getStringArray(R.array.people);
-		int selectindex = Math.abs(random.nextInt()) % libary.length;
-		content = getRandomString(libary[selectindex]);
-		
-		Log(content[0]);
-		
-		random = new Random();
 		
 		int blandStr	= Math.abs(new Random().nextInt()); 
 		for (int i = 0, len	= peopleCount; i < len; i++) {
@@ -89,7 +96,7 @@ public class fanpai extends BaseActivity {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
 					}
-					nowIndex++;
+					
 					initPan(nowIndex);
 				} else {
 					Bundle bundle = new Bundle();
@@ -114,6 +121,8 @@ public class fanpai extends BaseActivity {
 				v.setVisibility(View.INVISIBLE);
 				txtIndex.setVisibility(View.INVISIBLE);
 				setContentVis(true);
+				//在这里更新nowIndex，不至于呀恢复时错开一个
+				nowIndex++;
 				SoundPlayer.playball();
 			}
 		});
@@ -173,5 +182,17 @@ public class fanpai extends BaseActivity {
 			ret[tem] = son;
 		}
 		return ret;
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putBoolean("isBlank", isBlank);
+		savedInstanceState.putBoolean("isShow", isShow);
+		savedInstanceState.putInt("peopleCount", peopleCount);
+		savedInstanceState.putInt("underCount", underCount);
+		savedInstanceState.putStringArray("content", content);
+		savedInstanceState.putInt("nowIndex", nowIndex);
+		Log.d("saved","onSaveInstanceState");
 	}
 }
