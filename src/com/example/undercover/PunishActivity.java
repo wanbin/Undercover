@@ -36,12 +36,14 @@ public class PunishActivity extends BaseActivity {
 	private boolean isTouch;
 	private TextView[] punish;
 	private String num;
+	private String PunishInTurn;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.punish);
+		PunishInTurn = getResources().getString(R.string.PunishInTurn);
 		num	= "7";
 		isRandom	= false;
 		isTouch	= false;
@@ -155,7 +157,7 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void setTextView(String[] str){
-		punish_guize.setText("请输的同学依次接受惩罚");
+		punish_guize.setText(PunishInTurn);
 		punish_1.setText("1、" + str[0]);
 		punish_2.setText("2、" + str[1]);
 		punish_3.setText("3、" + str[2]);

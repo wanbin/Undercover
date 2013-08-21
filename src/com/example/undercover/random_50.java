@@ -26,12 +26,19 @@ public class random_50 extends BaseActivity {
 	private TextView clicktimes;
 	private TextView preference;
 	private TextView lose;
+	private String dangerrate;
+	private String click;
+	private String ci;
+	
 	Random random = new Random();
 	int random_times = Math.abs(random.nextInt()) % 50;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
+		dangerrate = getResources().getString(R.string.dangerrate);
+		click = getResources().getString(R.string.click);
+		ci = getResources().getString(R.string.ci);
 		click_button = (ImageView) findViewById(R.id.imageBtnMain);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
@@ -125,7 +132,7 @@ public class random_50 extends BaseActivity {
 
 	protected void DisplayParameter(int time) {
 		Probability = (TextView) findViewById(R.id.textView2);
-		Probability.setText("危险级数：" + Math.min((time + 1) * 2, 100) + "%\n点击了"
-				+ time + "次");
+		Probability.setText(dangerrate + Math.min((time + 1) * 2, 100) +click 
+				+ time + ci);
 	}
 }

@@ -39,11 +39,15 @@ public class QuestionAnswer extends BaseActivity {
 	private Button intentPunish;
 	private int startSec = 2000;
 	private int endSec = 6000;
+	private String nextQuestion;
+	private String GameOver;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.question);
+		nextQuestion = getResources().getString(R.string.nextQuestion);
+		GameOver = getResources().getString(R.string.GameOver);
 		punish_0	= (TextView)findViewById(R.id.question);
 		punish_0.setPadding(10, 0, 0, 0);
 		intentPunish	= (Button)findViewById(R.id.intent_punish);
@@ -82,7 +86,7 @@ public class QuestionAnswer extends BaseActivity {
 						timer.schedule(timetask, 0, 10);
 						isTimeRun = true;
 					}
-					questionNext.setText("下一题");
+					questionNext.setText(nextQuestion);
 					getNextQuestion();
 					SoundPlayer.playball();
 					proBar.setVisibility(View.VISIBLE);
@@ -166,7 +170,7 @@ public class QuestionAnswer extends BaseActivity {
 			imageNext.setBackgroundResource(R.drawable.popogray152);
 			imageNext.setClickable(false);
 			punish_0.setText("");
-			questionNext.setText("游戏结束");
+			questionNext.setText(GameOver);
 			
 		}
 		

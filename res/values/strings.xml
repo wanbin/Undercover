@@ -69,4 +69,35 @@
     <string name="quickStart">快速开始</string>
     <string name="strSound">声音</string>
     <string name="restart">重新开始</string>
+    <string name="blank">空白</string>
+    <string name="gusswhoisspy">快去猜猜谁是卧底吧~</string>
+    <string name="undercover">卧底</string>
+    <string name="aggrieved">冤死</string>
+    <string name="taplong">长按选择</string>
+    <string name="gameOver">完成任务，卧底为</string>
+    <string name="undercoverwin">卧底胜利</string>
+    <string name="gameoverspy"> 卧底胜利，卧底为</string>
+    <string name="hy">还有</string>
+    <string name="ge">个</string>
+    <string name="dangerousrate">危险概率：</string>
+    <string name="overString1">没找到全部卧底，游戏继续</string>
+    <string name="overString2">卧底隐藏很深噢！</string>
+    <string name="overString3">快去把卧底给投出来吧~</string>
+    <string name="overString4">平民可要小心噢!</string>
+    <string name="overString5">卧底这是要逆天了吗？</string>
+    <string name="overString6">投错一个就少一个战友~</string>
+    <string name="overString7">卧底卧底，你在哪里！</string>
+    <string name="overString8">卧底，你是想怎样~</string>
+    <string name="Version">【谁是卧底】1.06版本</string>
+    <string name="suggest">意见及建议：</string>
+    <string name="suggest1">\n\n\nv1.06版本新功能：\n\n1.添加好玩有趣的音效\n2.优化背景页面\n3.把【有胆量就问】节奏加快\n4.修改了上版本中的BUG</string>
+    <string name="PunishInTurn">请输的同学依次接受惩罚</string>
+    <string name="nextQuestion">下一题</string>
+    <string name="GameOver">游戏结束</string>
+    <string name="dangerrate">危险级数：</string>
+    <string name="click">%\n点击了</string>
+    <string name="ci">次</string>
+    <string name="GameRule">游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述</string>
+    <string name="Vrequir">胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利</string>
+
 </resources>

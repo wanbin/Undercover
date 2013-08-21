@@ -39,13 +39,51 @@ public class guess extends BaseActivity {
 	private int temindex;
 	private Random random = new Random();
 	private TextView txtLong;
-	private String[] overString = { "没找到全部卧底，游戏继续", "卧底隐藏很深噢！", "快去把卧底给投出来吧~",
-			"平民可要小心噢!", "卧底这是要逆天了吗？", "投错一个就少一个战友~", "卧底卧底，你在哪里！", "卧底，你是想怎样~" };
-
+	
+	private String overString1; 
+	private String overString2; 
+	private String overString3; 
+	private String overString4; 
+	private String overString5; 
+	private String overString6; 
+	private String overString7; 
+	private String overString8; 
+	private String[] overString={overString1,overString2,overString3,overString4,overString5,overString6,overString7,overString8};
+	private String gusswhoisspy;
+	private String undercover;
+	private String blank;
+	private String aggrieved;
+	private String taplong;
+	private String gameOver;
+	private String gameoverspy;
+	private String hy;
+	private String ge;
 	protected void onCreate(Bundle savedInstanceState) {
+		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guess);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+		//string_start
+		overString1 = getResources().getString(R.string.overString1);  
+		overString2 = getResources().getString(R.string.overString2);  
+		overString3 = getResources().getString(R.string.overString3);  
+		overString4 = getResources().getString(R.string.overString4);  
+		overString5 = getResources().getString(R.string.overString5);  
+		overString6 = getResources().getString(R.string.overString6);  
+		overString7 = getResources().getString(R.string.overString7);  
+		overString8 = getResources().getString(R.string.overString8);  
+		gusswhoisspy=getResources().getString(R.string.gusswhoisspy); 
+		undercover=getResources().getString(R.string.undercover);
+		blank=getResources().getString(R.string.blank);                
+		aggrieved=getResources().getString(R.string.aggrieved);        
+		taplong=getResources().getString(R.string.taplong);            
+		gameOver=getResources().getString(R.string.gameOver);          
+		gameoverspy=getResources().getString(R.string.gameoverspy);    
+		hy=getResources().getString(R.string.hy);                      
+		ge=getResources().getString(R.string.ge);
+		
+		//string_end
+		
 		isOver = false;
 		flag = false;
 		isGetRestart = false;
@@ -64,7 +102,7 @@ public class guess extends BaseActivity {
 		content = bundle.getStringArray("content");
 		fathercount = content.length - soncount;
 		totalcount = content.length;
-		txtTitle.setText("快去猜猜谁是卧底吧~");
+		txtTitle.setText(gusswhoisspy);
 		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
@@ -92,15 +130,15 @@ public class guess extends BaseActivity {
 						if(isShow){
 							text.setTextSize(20);
 							if (content[(Integer) v.getTag() - 1].equals(son)) {
-								text.setText("卧底");
+								text.setText(undercover);
 								text.setTextColor(getResources().getColor(R.color.RED));
 							} else {
 								if (content[(Integer) v.getTag() - 1]
-										.equals("空白")) {
-									text.setText("空白");
+										.equals(blank)) {
+									text.setText(blank);
 									text.setTextColor(getResources().getColor(R.color.BLUE));
 								}else{
-									text.setText("冤死");
+									text.setText(aggrieved);
 								}
 							}
 						}
@@ -115,7 +153,7 @@ public class guess extends BaseActivity {
 			contentTable.addView(newrow);
 		}
 		txtLong = new TextView(this);
-		txtLong.setText("长按选择");
+		txtLong.setText(taplong);
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
@@ -140,7 +178,7 @@ public class guess extends BaseActivity {
 		if (!isOver) {
 			if (soncount <= 0) {
 				Log("任务完成");
-				txtTitle.setText("完成任务，卧底为【" + son + "】");
+				txtTitle.setText(gameOver+"【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				SoundPlayer.playclaps();
@@ -148,7 +186,7 @@ public class guess extends BaseActivity {
 				setAllButton(false);
 			} else if (fathercount <= soncount) {
 				Log("卧底胜利");
-				txtTitle.setText("卧底胜利，卧底为【" + son + "】");
+				txtTitle.setText(gameoverspy+"【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				refash();
@@ -157,7 +195,7 @@ public class guess extends BaseActivity {
 				int stringcount = overString.length;
 				int stringindex = Math.abs(random.nextInt()) % stringcount;
 				txtTitle.setText(overString[stringindex]);
-				Log("还有" + soncount + "个");
+				Log(hy + soncount + ge);
 			}
 		}
 	}

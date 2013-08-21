@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="危险概率："
+        android:text="@string/dangerousrate"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageBtnMain"
         android:layout_centerHorizontal="true"
-        android:text="重新开始" />
+        android:text="@string/restart" />
 
    <TextView
        android:id="@+id/textView5"

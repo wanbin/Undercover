@@ -31,6 +31,7 @@ public class fanpai extends BaseActivity {
 	private int underCount;
 	
 	private SharedPreferences gameInfo;
+	private String blank;
 	
 
 	@Override
@@ -45,6 +46,7 @@ public class fanpai extends BaseActivity {
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (ImageView) findViewById(R.id.imagePan);
+		blank = getResources().getString(R.string.blank);
 
 		random = new Random();
 		gameInfo = getSharedPreferences("gameInfo", 0);
@@ -73,7 +75,8 @@ public class fanpai extends BaseActivity {
 				if(!isChecked){
 					if(!content[(i+blandStr)%len].equals(son)){
 						isChecked	= true;
-						content[(i + blandStr) % len] = "空白";
+						
+						content[(i + blandStr) % len] = blank;
 					}
 				}
 			}

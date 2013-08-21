@@ -14,21 +14,26 @@ public class MakeActivity extends BaseActivity {
 	private TextView txtTitle;
 	private Button btnfb;
 	private FeedbackAgent agent;
+	private String Version;
+	private String suggest;
+	private String suggest1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_make);
+		Version = getResources().getString(R.string.Version);
+		suggest = getResources().getString(R.string.suggest);
+		suggest1 = getResources().getString(R.string.suggest1);
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		btnfb = (Button) findViewById(R.id.btnfb);
-		txtTitle.setText("【谁是卧底】1.06版本");
+		txtTitle.setText(Version);
 		agent = new FeedbackAgent(this);
 		String emailaddr = this.getString(R.string.emailaddr);
 		txtContent
-				.setText("意见及建议："
-						+ emailaddr
-						+ "\n\n\nv1.06版本新功能：\n\n1.添加好玩有趣的音效\n2.优化背景页面\n3.把【有胆量就问】节奏加快\n4.修改了上版本中的BUG");
+				.setText(suggest+ emailaddr
+						+ suggest1);
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
