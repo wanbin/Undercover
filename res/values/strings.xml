@@ -109,7 +109,9 @@
     <string name="setting_word_pard">品牌</string>
     <string name="setting_word_hard">高手</string>
     <string name="setting_word_big">重口味</string>
-    <string name="setting_word_wenyi">文艺小青年</string>
+    <string name="setting_word_wenyi">文艺青年</string>
     <string name="setting_word_people">人物角色</string>
     <string name="setting_word_city">城市地区</string>
+    <string name="setting_word_all">全部分类</string>
+    <string name="setting_word">长按选择分类</string>
 </resources>

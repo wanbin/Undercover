@@ -209,6 +209,7 @@
                  android:id="@+id/afterShow"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
+                 android:checked="true"
                  android:text="@string/setting_afterShow" />
 
              <CheckBox
@@ -216,7 +217,7 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="@string/setting_blank" />
-
+			<!-- 
              <CheckBox
                  android:id="@+id/wordEat"
                  android:layout_width="wrap_content"
@@ -258,7 +259,25 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:text="@string/setting_word_people" />
-             
+              -->
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content" >
+
+                 <Button
+                     android:id="@+id/popo_button"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/setting_word" />
+
+                 <TextView
+                     android:id="@+id/wordText"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"/>
+
+             </LinearLayout>
+
          </LinearLayout>
          </LinearLayout>
      </ScrollView>

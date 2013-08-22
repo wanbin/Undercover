@@ -23,6 +23,7 @@ public class fanpai extends BaseActivity {
 	private TextView txtIndex;
 	private TextView textViewab;
 	private ImageView imagePan;
+	/** 按钮--记住了，传给下一位  */
 	private Button btnOK;
 	private Random random;
 	private int nowIndex = 1;
@@ -53,28 +54,18 @@ public class fanpai extends BaseActivity {
 		blank = getResources().getString(R.string.blank);
 
 		random = new Random();
-		if (savedInstanceState == null) {
+		if(savedInstanceState == null){
+			//游戏一轮结束后，快速开始用。
 			gameInfo = getSharedPreferences("gameInfo", 0);
 			isBlank = gameInfo.getBoolean("isBlank", false);
 			isShow = gameInfo.getBoolean("isShow", false);
 			peopleCount = gameInfo.getInt("peopleCount", 4);
 			underCount = gameInfo.getInt("underCount", 1);
-			word	= gameInfo.getString("word", "").trim().split(",");
-			if(word.length==1){
-				if(word[0].equals("")){
-					//默认为 吃货选项
-					libary = getResources().getStringArray(R.array.eat);
-				}else{
-					
-					libary = getResources().getStringArray(getWords(word[0]));
-				}
-			}else{
-				//word.length>1
-				int num	= new Random().nextInt()%word.length;
-				libary	= getResources().getStringArray(getWords(word[num]));
-			}
+			word	= gameInfo.getString("word", "eat").trim().split(",");
 			
-			
+			Log.i("fanpai","***************获得的词组为："+gameInfo.getString("word", "").trim());
+			int num	= Math.abs(random.nextInt())%word.length;
+			libary	= getResources().getStringArray(getWords(word[num]));
 			int selectindex = Math.abs(random.nextInt()) % libary.length;
 			content = getRandomString(libary[selectindex]);
 
@@ -85,6 +76,12 @@ public class fanpai extends BaseActivity {
 			underCount = savedInstanceState.getInt("underCount");
 			content = savedInstanceState.getStringArray("content");
 			nowIndex = savedInstanceState.getInt("nowIndex");
+			word	= savedInstanceState.getString("word", "eat").trim().split(",");
+			
+			Log.i("fanpai","***************获得的词组为："+gameInfo.getString("word", "").trim());
+			libary = getResources().getStringArray(getWords(word[0]));
+			int num	= Math.abs(new Random().nextInt()%word.length);
+			libary	= getResources().getStringArray(getWords(word[num]));
 		}
 
 		// Bundle bundle = this.getIntent().getExtras();

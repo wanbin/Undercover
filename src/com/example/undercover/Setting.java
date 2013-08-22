@@ -1,19 +1,19 @@
 package com.example.undercover;
 
-import java.util.Random;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Setting extends BaseActivity {
@@ -25,27 +25,24 @@ public class Setting extends BaseActivity {
 	private ImageView moregame;
 	private TextView people;
 	private TextView under;
-	private TextView title;
+	private TextView wordText;
 	private int maxPeople = 12;
 	// 说明
 	private int peopleCount = 4;
 	private int underCount = 1;
-	private String[] content;
-	private Random random;
-	private String son;
-	private String father;
 	private CheckBox afterShow;
 	// 是否添加 冤死 提示，在投票后
 	private boolean isShow = true;
 	// 是否添加空白词
 	private boolean isBlank = false;
 	//分类词组
-	private StringBuffer word=new StringBuffer();
+//	private StringBuffer word=new StringBuffer();
 	// 共享的参与和卧底数
 	private SharedPreferences gameInfo;
-
-	private RelativeLayout contentview;
-	// private int soncount = 1;
+	//长按触发菜单的按钮
+	private Button popoBtn;
+//	private int itemChecked;
+	private String wordStr	= "eat,pard,hard,big,people,city,wenyi";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,10 +56,20 @@ public class Setting extends BaseActivity {
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
-		title = (TextView) findViewById(R.id.txtPeopleTitle);
+		wordText = (TextView) findViewById(R.id.wordText);
+		wordText.setText("当前词组类别：全部分类");
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
-		
+		popoBtn	= (Button)findViewById(R.id.popo_button);
+		popoBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+//				onPopupButtonclick(popoBtn);
+			}
+		});
+		registerForContextMenu(popoBtn);
+		// 共享数据
+		gameInfo = getSharedPreferences("gameInfo", 0);
 		
 		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
@@ -86,7 +93,6 @@ public class Setting extends BaseActivity {
 				}
 			}
 		});
-		random = new Random();
 		
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
@@ -161,15 +167,7 @@ public class Setting extends BaseActivity {
 				gameInfo.edit().putInt("underCount", underCount).commit(); 
 				gameInfo.edit().putBoolean("isShow", isShow).commit(); 
 				gameInfo.edit().putBoolean("isBlank", isBlank).commit(); 
-				gameInfo.edit().putString("word", word.toString()).commit();
-//				Bundle bundle = new Bundle();
-//				bundle.putStringArray("content", tem);
-//				bundle.putString("son", son);
-//				bundle.putInt("sonCount", underCount);
-//				bundle.putInt("peopleCount", peopleCount);
-//				bundle.putInt("underCount", underCount);
-//				bundle.putBoolean("isShow", isShow);
-//				bundle.putBoolean("isBlank", isBlank);
+				gameInfo.edit().putString("word", wordStr).commit();
 				Intent goMain = new Intent();
 //				goMain.putExtras(bundle);
 				goMain.setClass(Setting.this, fanpai.class);
@@ -193,82 +191,6 @@ public class Setting extends BaseActivity {
 			}
 		});
 
-		// 添加 吃货 按钮
-		CheckBox wordEat	= (CheckBox)findViewById(R.id.wordEat);
-		wordEat.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("eat,");
-				}
-			}
-		});
-		
-		// 添加 高手 按钮
-		CheckBox wordHard	= (CheckBox)findViewById(R.id.wordHard);
-		wordHard.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("hard,");
-				}
-			}
-		});
-		
-		// 添加 品牌 按钮
-		CheckBox wordPard	= (CheckBox)findViewById(R.id.wordPard);
-		wordPard.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("pard,");
-				}
-			}
-		});
-		
-		// 添加 重口味 按钮
-		CheckBox wordBig	= (CheckBox)findViewById(R.id.wordBig);
-		wordBig.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("big,");
-				}
-			}
-		});
-		
-		// 添加 文艺青年 按钮
-		CheckBox wordWenyi	= (CheckBox)findViewById(R.id.wordWenyi);
-		wordWenyi.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("wenyi,");
-				}
-			}
-		});
-		
-		// 添加 城市地区 按钮
-		CheckBox wordCity	= (CheckBox)findViewById(R.id.wordCity);
-		wordCity.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("city,");
-				}
-			}
-		});
-		
-		// 添加 人物角色 按钮
-		CheckBox wordPeople	= (CheckBox)findViewById(R.id.wordPeople);
-		wordPeople.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked){
-					word.append("people,");
-				}
-			}
-		});
 	}
 
 	private void setPeople() {
@@ -308,33 +230,6 @@ public class Setting extends BaseActivity {
 		under.setText(Integer.toString(underCount));
 	}
 
-//	private String[] getRandomString(String contnettxt)
-//	{
-//		// if (peopleCount > 15) {
-//		// soncount = 4;
-//		// } else if (peopleCount > 10) {
-//		// soncount = 3;
-//		// } else if (peopleCount > 5) {
-//		// soncount = 2;
-//		// }
-//		String[] children  =new String[2];
-//		children = contnettxt.split("_");
-//		int sonindex = Math.abs(random.nextInt()) % 2;
-//		son = children[sonindex];
-//		father = children[Math.abs(sonindex - 1)];
-//		String[] ret = new String[peopleCount];
-//		for (int n = 0; n < ret.length; n++) {
-//			ret[n] = father;
-//		}
-//		for (int i = 0; i < underCount; i++) {
-//			int tem;
-//			do {
-//				tem = Math.abs(random.nextInt()) % peopleCount;
-//			} while (ret[tem].equals(son));
-//			ret[tem] = son;
-//		}
-//		return ret;
-//	}
 
 	protected void Log(String string) {
 		Log.v("tag", string);
@@ -348,5 +243,55 @@ public class Setting extends BaseActivity {
 	// + "\t 2.当卧底数大于等于平民数则卧底胜利");
 	// }
 	
-
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		getMenuInflater().inflate(R.menu.popo_menu, menu);
+		menu.setHeaderTitle("设置词语");
+//		menu.getItem(itemChecked).geti;
+//		menu.setGroupCheckable(R.id.popo_word_group, true, false);
+		super.onCreateContextMenu(menu, v, menuInfo);
+	}
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		item.setChecked(true);
+//		itemChecked	= item.getItemId(); //记录被选中的菜单项的ID
+		switch (item.getItemId()) {
+			case R.id.word_eat:
+				wordStr="eat";
+				wordText.setText("当前词组类别：吃货");
+				break;
+			case R.id.word_pard:
+				wordStr="pard";
+				wordText.setText("当前词组类别：品牌");
+				break;
+			case R.id.word_hard:
+				wordStr="hard";
+				wordText.setText("当前词组类别：高手");
+				break;
+			case R.id.word_big:
+				wordStr="big";
+				wordText.setText("当前词组类别：重口味");
+				break;
+			case R.id.word_people:
+				wordStr="people";
+				wordText.setText("当前词组类别：人物角色");
+				break;
+			case R.id.word_city:
+				wordStr="city";
+				wordText.setText("当前词组类别：城市地区");
+				break;
+			case R.id.word_wenyi:
+				wordStr="wenyi";
+				wordText.setText("当前词组类别：文艺青年");
+				break;
+			case R.id.word_all:
+				wordText.setText("当前词组类别：全部分类");
+				break;
+			default:
+				break;
+		  }
+		return super.onContextItemSelected(item);
+	}
 }
