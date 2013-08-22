@@ -51,29 +51,31 @@
         android:layout_centerInParent="true"
         android:background="@drawable/backblue" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageBtnMain"
-        android:layout_centerHorizontal="true"
-        android:text="@string/restart" />
+   <Button
+       android:id="@+id/button1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignBaseline="@+id/button2"
+       android:layout_alignBottom="@+id/button2"
+       android:layout_alignParentLeft="true"
+       android:background="@drawable/btnbg"
+       android:text="@string/punishmen" />
+
+   <Button
+       android:id="@+id/button2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/btnreturn"
+       android:layout_alignParentRight="true"
+       android:background="@drawable/btnbg"
+       android:text="@string/restart" />
 
    <TextView
        android:id="@+id/textView5"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/button2"
+       android:layout_alignTop="@+id/btnreturn"
        android:layout_centerHorizontal="true"
        android:text="@string/lose" />
-
-   <Button
-       android:id="@+id/button1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentLeft="true"
-       android:layout_marginLeft="20dp"
-       android:text="@string/punishmen" />
 
 </RelativeLayout>
