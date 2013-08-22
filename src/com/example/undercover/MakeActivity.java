@@ -47,6 +47,7 @@ public class MakeActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				SoundPlayer.playball();
 				agent.startFeedbackActivity();
 			}
 		});

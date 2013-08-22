@@ -230,16 +230,16 @@ public class guess extends BaseActivity {
 		Log("CheeckGameOver");
 //		if (!isOver) {
 			if (soncount <= 0) {
-				Log("任务完成");
-				txtTitle.setText(gameOver + "【" + son + "】");
+			Log("任务完成");
+			txtTitle.setText(gameOver + "【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				SoundPlayer.playclaps();
 				refash();
 				setAllButton(false);
 			} else if (fathercount <= soncount) {
-				Log("卧底胜利");
-				txtTitle.setText(gameoverspy + "【" + son + "】");
+			Log("卧底胜利");
+			txtTitle.setText(gameoverspy + "【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				refash();
@@ -286,6 +286,7 @@ public class guess extends BaseActivity {
 		}
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+				SoundPlayer.playball();
 				 Intent goMain = new Intent();
 				 goMain.setClass(guess.this, PunishActivity.class);
 				uMengClick("game_undercover_punish");
@@ -296,6 +297,7 @@ public class guess extends BaseActivity {
 		// startBtn.setText("重新开始");
 		startBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+				SoundPlayer.playball();
 				Intent goMain = new Intent();
 				goMain.setClass(guess.this, Setting.class);
 				startActivity(goMain);
@@ -308,6 +310,7 @@ public class guess extends BaseActivity {
 		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
+				SoundPlayer.playball();
 				goMain.setClass(guess.this, fanpai.class);
 				startActivity(goMain);
 				uMengClick("game_undercover_quickresert");

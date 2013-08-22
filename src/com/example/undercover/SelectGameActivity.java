@@ -173,26 +173,32 @@ public class SelectGameActivity extends BaseActivity {
 			case R.id.startButton:
 				SoundPlayer.playball();
 			case R.id.btnStart:
+				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				break;
 			case R.id.Weixin:
+				SoundPlayer.playball();
 				uMengClick("click_weixin");
 				mIntent.setClass(SelectGameActivity.this, weixin.class);
 				break;
 			case R.id.appMaker:
+				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, MakeActivity.class);
 				uMengClick("click_about");
 				break;
 			case R.id.clickme:
+				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, random_50.class);
 				uMengClick("game_click");
 				break;
 			case R.id.circleme:
+				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this,
 						RotaryBottleActivity.class);
 				uMengClick("game_bottle");
 				break;
 			case R.id.jumpQuestion:
+				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, QuestionAnswer.class);
 				uMengClick("game_ask");
 				break;

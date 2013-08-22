@@ -97,6 +97,7 @@ public class random_50 extends BaseActivity {
 				lose.setVisibility(View.INVISIBLE);
 				restart_button.setVisibility(View.INVISIBLE);
 				DisplayParameter(50 - click_times);
+				SoundPlayer.playball();
 			}
 		});
 
@@ -116,6 +117,7 @@ public class random_50 extends BaseActivity {
 				Intent intentGo = new Intent();
 				intentGo.setClass(random_50.this, PunishActivity.class);
 				startActivity(intentGo);
+				SoundPlayer.playball();
 				finish();
 			}
 		});

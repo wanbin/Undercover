@@ -73,6 +73,7 @@ public class PunishActivity extends BaseActivity {
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				SoundPlayer.playball();
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
 				// 暂时，先隐藏 换题 按钮
@@ -88,6 +89,7 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				flag	= true;
+				SoundPlayer.playball();
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
 				// 暂时，先隐藏 换题 按钮

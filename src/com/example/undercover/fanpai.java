@@ -94,6 +94,7 @@ public class fanpai extends BaseActivity {
 		btnOK.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				SoundPlayer.playball();
 				if (nowIndex <= content.length) {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
