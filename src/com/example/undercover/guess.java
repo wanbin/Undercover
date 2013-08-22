@@ -64,9 +64,6 @@ public class guess extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
-		
-		
-		
 		setContentView(R.layout.guess);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
@@ -128,7 +125,7 @@ public class guess extends BaseActivity {
 		
 		Log.d("isover", String.valueOf(isOver));
 		Log.d("soncount", String.valueOf(soncount));
-		Log.d("soncount", content.toString());
+		Log.d("content", String.valueOf(content.length));
 		fathercount = content.length - soncount;
 		totalcount = content.length;
 		txtTitle.setText(gusswhoisspy);
@@ -136,26 +133,26 @@ public class guess extends BaseActivity {
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
-//				temindex++;
-				if (temindex > content.length) {
+				
+				if (temindex >= content.length) {
 					break;
 				}
 				FrameLayout fl = new FrameLayout(this);
 				ImageView select = new ImageView(this);
 				final TextView text	= new TextView(this);
-				text.setText(String.valueOf(m+1));
+				text.setText(String.valueOf(temindex+1));
 				text.setGravity(Gravity.CENTER);
 				text.setTextSize(30);
 
 				final TextView shenfen = new TextView(this);
-				shenfen.setText(content[m]);
+				shenfen.setText(content[temindex]);
 				shenfen.setGravity(Gravity.BOTTOM);
 				shenfen.setTextSize(15);
 				shenfen.setTag(999);
 				shenfen.setVisibility(View.INVISIBLE);
 
-				select.setTag(m);
-				if (hasClicked[m]) {
+				select.setTag(temindex);
+				if (hasClicked[temindex]) {
 					select.setBackgroundResource(R.drawable.popogray72);
 					select.setClickable(false);
 				}else{
@@ -189,7 +186,7 @@ public class guess extends BaseActivity {
 						}
 					});
 				}
-				
+				temindex ++;
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfen);
