@@ -30,6 +30,7 @@ public class guess extends BaseActivity {
 	private Button punishBtn;
 	private Button startBtn;
 	private Button quickStartBtn;
+	private ImageView home;
 	
 	private int totalcount;
 	private boolean isOver;
@@ -96,6 +97,7 @@ public class guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
+		home = (ImageView) findViewById(R.id.btnhome);
 		quickStartBtn.setBackgroundResource(R.drawable.btnbg);
 		Bundle bundle = this.getIntent().getExtras();
 		isShow	= bundle.getBoolean("isShow");
@@ -168,6 +170,11 @@ public class guess extends BaseActivity {
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
+		home.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
 	}
 
 	protected void setAllButton(boolean useable) {
@@ -189,7 +196,7 @@ public class guess extends BaseActivity {
 		if (!isOver) {
 			if (soncount <= 0) {
 				Log("任务完成");
-				txtTitle.setText(gameOver+"【" + son + "】");
+				txtTitle.setText(gameOver + "【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				SoundPlayer.playclaps();
@@ -197,7 +204,7 @@ public class guess extends BaseActivity {
 				setAllButton(false);
 			} else if (fathercount <= soncount) {
 				Log("卧底胜利");
-				txtTitle.setText(gameoverspy+"【" + son + "】");
+				txtTitle.setText(gameoverspy + "【" + son + "】");
 				isOver = true;
 				uMengClick("click_guess_last");
 				refash();
