@@ -4,6 +4,7 @@ import java.util.Random;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -34,6 +35,7 @@ public class fanpai extends BaseActivity {
 
 	private SharedPreferences gameInfo;
 	private String blank;
+	private String[] word;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,22 @@ public class fanpai extends BaseActivity {
 			isShow = gameInfo.getBoolean("isShow", false);
 			peopleCount = gameInfo.getInt("peopleCount", 4);
 			underCount = gameInfo.getInt("underCount", 1);
-			String[] libary = getResources().getStringArray(R.array.people);
+			word	= gameInfo.getString("word", "").trim().split(",");
+			if(word.length==1){
+				if(word[0].equals("")){
+					//默认为 吃货选项
+					libary = getResources().getStringArray(R.array.eat);
+				}else{
+					
+					libary = getResources().getStringArray(getWords(word[0]));
+				}
+			}else{
+				//word.length>1
+				int num	= new Random().nextInt()%word.length;
+				libary	= getResources().getStringArray(getWords(word[num]));
+			}
+			
+			
 			int selectindex = Math.abs(random.nextInt()) % libary.length;
 			content = getRandomString(libary[selectindex]);
 
@@ -207,5 +224,9 @@ public class fanpai extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onStop();
 		onBackPressed();
+	}
+	
+	private int getWords(String str){
+		return getResources().getIdentifier("com.example.undercover:array/"+str, null, null);
 	}
 }

@@ -58,10 +58,17 @@ public class QuestionAnswer extends BaseActivity {
 		final FrameLayout frame = (FrameLayout) findViewById(R.id.question_frame);
 		imageNext = (ImageView) findViewById(R.id.question_image);
 		imageNext.setBackgroundResource(R.drawable.popo152);
+<<<<<<< HEAD
 		questionNext = (TextView) findViewById(R.id.questionNext);
 		questionNext.setText("开始游戏");
 
 		proBar = (ProgressBar) findViewById(R.id.question_proar);
+=======
+		questionNext	= (TextView)findViewById(R.id.questionNext);
+		questionNext.setText("开始游戏");
+		
+		proBar	= (ProgressBar)findViewById(R.id.question_proar);
+>>>>>>> 词组分类
 		proBar.setMax(3000);
 		proBar.setVisibility(View.INVISIBLE);
 
@@ -205,7 +212,7 @@ public class QuestionAnswer extends BaseActivity {
 		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 		// timeLimit = 1000;
 		imageNext.setClickable(true);
-		questionNext.setText("Ready Go !");
+		questionNext.setText("开始游戏");
 		imageNext.setBackgroundResource(R.drawable.popo152);
 		// proBar.incrementProgressBy(-3000);
 		proBar.setVisibility(View.INVISIBLE);

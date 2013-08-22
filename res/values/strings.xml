@@ -105,4 +105,11 @@
     <string name="thankyou">因为有你们，游戏才变的更精彩！谢谢你们</string>
     <string name="playdisc">摇骰子</string>
     <string name="zhenxin">真心话大冒险</string>
+    <string name="setting_word_eat">吃货</string>
+    <string name="setting_word_pard">品牌</string>
+    <string name="setting_word_hard">高手</string>
+    <string name="setting_word_big">重口味</string>
+    <string name="setting_word_wenyi">文艺小青年</string>
+    <string name="setting_word_people">人物角色</string>
+    <string name="setting_word_city">城市地区</string>
 </resources>

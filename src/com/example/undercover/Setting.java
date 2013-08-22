@@ -3,6 +3,7 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,7 +39,10 @@ public class Setting extends BaseActivity {
 	private boolean isShow = true;
 	// 是否添加空白词
 	private boolean isBlank = false;
-	
+	//分类词组
+	private StringBuffer word=new StringBuffer();
+	// 共享的参与和卧底数
+	private SharedPreferences gameInfo;
 
 	private RelativeLayout contentview;
 	// private int soncount = 1;
@@ -157,6 +161,7 @@ public class Setting extends BaseActivity {
 				gameInfo.edit().putInt("underCount", underCount).commit(); 
 				gameInfo.edit().putBoolean("isShow", isShow).commit(); 
 				gameInfo.edit().putBoolean("isBlank", isBlank).commit(); 
+				gameInfo.edit().putString("word", word.toString()).commit();
 //				Bundle bundle = new Bundle();
 //				bundle.putStringArray("content", tem);
 //				bundle.putString("son", son);
@@ -188,6 +193,82 @@ public class Setting extends BaseActivity {
 			}
 		});
 
+		// 添加 吃货 按钮
+		CheckBox wordEat	= (CheckBox)findViewById(R.id.wordEat);
+		wordEat.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("eat,");
+				}
+			}
+		});
+		
+		// 添加 高手 按钮
+		CheckBox wordHard	= (CheckBox)findViewById(R.id.wordHard);
+		wordHard.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("hard,");
+				}
+			}
+		});
+		
+		// 添加 品牌 按钮
+		CheckBox wordPard	= (CheckBox)findViewById(R.id.wordPard);
+		wordPard.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("pard,");
+				}
+			}
+		});
+		
+		// 添加 重口味 按钮
+		CheckBox wordBig	= (CheckBox)findViewById(R.id.wordBig);
+		wordBig.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("big,");
+				}
+			}
+		});
+		
+		// 添加 文艺青年 按钮
+		CheckBox wordWenyi	= (CheckBox)findViewById(R.id.wordWenyi);
+		wordWenyi.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("wenyi,");
+				}
+			}
+		});
+		
+		// 添加 城市地区 按钮
+		CheckBox wordCity	= (CheckBox)findViewById(R.id.wordCity);
+		wordCity.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("city,");
+				}
+			}
+		});
+		
+		// 添加 人物角色 按钮
+		CheckBox wordPeople	= (CheckBox)findViewById(R.id.wordPeople);
+		wordPeople.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if(isChecked){
+					word.append("people,");
+				}
+			}
+		});
 	}
 
 	private void setPeople() {
