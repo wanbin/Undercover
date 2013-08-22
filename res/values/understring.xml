@@ -31,8 +31,6 @@
 <item>军人_警察</item>
 <item>皇帝_黄帝</item>
 <item>陛下_皇上</item>
-</string-array>
-<string-array name="eat">
 <item>牛奶_豆浆</item>
 <item>白菜_生菜</item>
 <item>辣椒_芥末</item>
@@ -62,8 +60,6 @@
 <item>麻辣烫_串串香</item>
 <item>汉堡包_肉夹馍</item>
 <item>冰激淋_冰淇淋</item>
-</string-array>
-<string-array name="big">
 <item>太监_人妖</item>
 <item>小姨子_小舅子</item>
 <item>安全套_杜蕾斯</item>
@@ -88,8 +84,6 @@
 <item>想她_念他</item>
 <item>猥琐_卑鄙</item>
 <item>纸尿裤_尿不湿</item>
-</string-array>
-<string-array name="weiyi">
 <item>小品_话剧</item>
 <item>吉他_琵琶</item>
 <item>童话_神话</item>
@@ -160,8 +154,6 @@
 <item>置物箱_收纳柜</item>
 <item>状元_冠军</item>
 <item>字母_单词</item>
-</string-array>
-<string-array name="hard">
 <item>勇往直前_全力以赴</item>
 <item>语无伦次_词不达意</item>
 <item>鼠目寸光_井底之蛙</item>
@@ -178,8 +170,6 @@
 <item>仙人掌_仙人球</item>
 <item>复式楼_别墅</item>
 <item>谁是卧底_抓鬼游戏</item>
-</string-array>
-<string-array name="pard">
 <item>戴尔_惠普</item>
 <item>蒙牛_伊利</item>
 <item>腾讯_QQ</item>
@@ -187,14 +177,10 @@
 <item>可口_可乐</item>
 <item>麦当劳_肯德基</item>
 <item>招行_交行</item>
-</string-array>
-<string-array name="city">
 <item>杭州_苏州</item>
 <item>香港_台湾</item>
 <item>首尔_东京</item>
 <item>广东_广州</item>
-</string-array>
-<string-array name="overstring">
 <item>没找到全部卧底，游戏继续</item>
 <item>卧底隐藏很深噢！</item>
 <item>快去把卧底给投出来吧~</item>
