@@ -87,9 +87,9 @@
     <string name="overString6">投错一个就少一个战友~</string>
     <string name="overString7">卧底卧底，你在哪里！</string>
     <string name="overString8">卧底，你是想怎样~</string>
-    <string name="Version">【谁是卧底】1.06版本</string>
+    <string name="Version">【谁是卧底】1.07版本</string>
     <string name="suggest">意见及建议：</string>
-    <string name="suggest1">\n\n\nv1.06版本新功能：\n\n1.添加好玩有趣的音效\n2.优化背景页面\n3.把【有胆量就问】节奏加快\n4.修改了上版本中的BUG</string>
+    <string name="suggest1">\n\n\nv1.07版本新功能：\n\n1.游戏结束之后亮明身份\n2.游戏过程中中断了，不用怕，还可接着玩\n3.把【有胆量就问】优化的更好玩了</string>
     <string name="PunishInTurn">请输的同学依次接受惩罚</string>
     <string name="nextQuestion">下一题</string>
     <string name="GameOver">游戏结束</string>
