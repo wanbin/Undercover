@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-
     <string name="app_name">谁是卧底</string>
     <string name="punishmen">开始惩罚</string>
     <string name="hello_world">Hello world!</string>
@@ -99,5 +98,4 @@
     <string name="ci">次</string>
     <string name="GameRule">游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述</string>
     <string name="Vrequir">胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利</string>
-
 </resources>

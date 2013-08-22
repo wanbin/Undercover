@@ -57,7 +57,7 @@ public class fanpai extends BaseActivity {
 			isShow = gameInfo.getBoolean("isShow", false);
 			peopleCount = gameInfo.getInt("peopleCount", 4);
 			underCount = gameInfo.getInt("underCount", 1);
-			String[] libary = getResources().getStringArray(R.array.content);
+			String[] libary = getResources().getStringArray(R.array.people);
 			int selectindex = Math.abs(random.nextInt()) % libary.length;
 			content = getRandomString(libary[selectindex]);
 		}else{
@@ -124,7 +124,7 @@ public class fanpai extends BaseActivity {
 				v.setVisibility(View.INVISIBLE);
 				txtIndex.setVisibility(View.INVISIBLE);
 				setContentVis(true);
-				//在这里更新nowIndex，不至于呀恢复时错开一个
+				// 在这里更新nowIndex，不至于呀恢复时错开一个
 				nowIndex++;
 				SoundPlayer.playball();
 			}

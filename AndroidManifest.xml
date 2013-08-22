@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.undercover"
-    android:versionCode="6"
-    android:versionName="1.06" >
+    android:versionCode="7"
+    android:versionName="1.07" >
 
     <application
         android:allowBackup="true"
@@ -56,7 +56,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="MarketSamsung" />
+            android:value="MarketTEST" />
 
        
     </application>
