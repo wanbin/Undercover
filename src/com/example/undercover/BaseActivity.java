@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Window;
 
 import com.umeng.analytics.MobclickAgent;
 
@@ -14,6 +15,7 @@ public class BaseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		MobclickAgent.setDebugMode(true);
 		MobclickAgent.onError(this);
 
