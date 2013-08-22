@@ -130,10 +130,10 @@ public class Setting extends BaseActivity {
 		btnAddUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (underCount < 4) {
+				if (underCount < 3) {
 					SoundPlayer.playball();
 					underCount++;
-					peopleCount = Math.min(peopleCount + 4, 16);
+					peopleCount = Math.min(peopleCount + 4, maxPeople);
 				}
 				setPeople();
 				setUnder();
@@ -212,7 +212,7 @@ public class Setting extends BaseActivity {
 	}
 
 	private void setUnder() {
-		if (underCount == 4) {
+		if (underCount == 3) {
 			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
 			btnAddUnder.setClickable(false);
 		} else {
