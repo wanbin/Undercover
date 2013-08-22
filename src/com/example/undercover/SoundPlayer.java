@@ -60,6 +60,14 @@ public class SoundPlayer{
 		}
 	}
 	
+	public static void playSoundRepate(int resId) {
+		if (soundSt) {
+			Integer soundId = soundMap.get(resId);
+			if (soundId != null)
+				soundPool.play(soundId, 1, 1, 1, -1, 1);
+		}
+	}
+
 	/**
 	 * 加载音效
 	 * 
@@ -146,5 +154,13 @@ public class SoundPlayer{
 
 	public static void playbottle() {
 		playSound(R.raw.bottle);
+	}
+
+	public static void playJishi() {
+		playMusic(R.raw.jishi, true);
+	}
+
+	public static void stopJishi() {
+		pauseMusic();
 	}
 }

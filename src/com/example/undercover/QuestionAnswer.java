@@ -80,6 +80,7 @@ public class QuestionAnswer extends BaseActivity {
 			public void onClick(View v) {
 				// 第一次进入游戏
 				if (!isBegin) {
+					SoundPlayer.playJishi();
 					isBegin	= true;
 					if(!isTimeRun){
 						Timer timer	= new Timer();
@@ -171,7 +172,7 @@ public class QuestionAnswer extends BaseActivity {
 			imageNext.setClickable(false);
 			punish_0.setText("");
 			questionNext.setText(GameOver);
-			
+			SoundPlayer.stopJishi();
 		}
 		
 		// 控制进度条
