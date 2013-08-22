@@ -1,206 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string-array name="people">
-<item>董永_许仙</item>
-<item>飞轮海_五月天</item>
-<item>孟非_乐嘉</item>
-<item>保安_保镖</item>
-<item>金庸_古龙</item>
-<item>赵敏_黄蓉</item>
-<item>警察_捕快</item>
-<item>剩女_御姐</item>
-<item>那英_韩红</item>
-<item>同学_同桌</item>
-<item>老佛爷_老天爷</item>
-<item>小沈阳_宋小宝</item>
-<item>张韶涵_王心凌</item>
-<item>刘诗诗_刘亦菲</item>
-<item>甄子丹_李连杰</item>
-<item>包青天_狄仁杰</item>
-<item>班主任_辅导员</item>
-<item>皇帝_太子</item>
-<item>叔叔_伯伯</item>
-<item>女儿_闺女</item>
-<item>夫人_太太</item>
-<item>何炅_维嘉</item>
-<item>元芳_展昭</item>
-<item>总统_首相</item>
-<item>蜂蜜_糖汁</item>
-<item>大人_老爷</item>
-<item>观音_如来</item>
-<item>军人_警察</item>
-<item>皇帝_黄帝</item>
-<item>陛下_皇上</item>
-</string-array>
-<string-array name="eat">
-<item>牛奶_豆浆</item>
-<item>白菜_生菜</item>
-<item>辣椒_芥末</item>
-<item>橙子_橘子</item>
-<item>葡萄_提子</item>
-<item>烤肉_涮肉</item>
-<item>油条_麻花</item>
-<item>面包_蛋糕</item>
-<item>牛肉干_猪肉脯</item>
-<item>泡泡糖_棒棒糖</item>
-<item>土豆粉_酸辣粉</item>
-<item>口香糖_木糖醇</item>
-<item>酸菜鱼_水煮鱼</item>
-<item>小笼包_灌汤包</item>
-<item>大白兔_金丝猴</item>
-<item>果粒橙_鲜橙多</item>
-<item>鱼香肉丝_四喜丸子</item>
-<item>麻婆豆腐_皮蛋豆腐</item>
-<item>红烧牛肉面_香辣牛肉面</item>
-<item>鸭脖_鸡爪</item>
-<item>果汁_汽水</item>
-<item>火锅_涮锅</item>
-<item>烧烤_烤串</item>
-<item>红豆_绿豆</item>
-<item>小葱_蒜苗</item>
-<item>电灯_壁灯</item>
-<item>麻辣烫_串串香</item>
-<item>汉堡包_肉夹馍</item>
-<item>冰激淋_冰淇淋</item>
-</string-array>
-<string-array name="big">
-<item>太监_人妖</item>
-<item>小姨子_小舅子</item>
-<item>安全套_杜蕾斯</item>
-<item>胖子_肥肉</item>
-<item>diao丝_穷鬼</item>
-<item>凤姐_芙蓉姐姐</item>
-<item>AV_女优</item>
-<item>紫葡萄_黑木耳</item>
-<item>TMD_NND</item>
-<item>僵尸_幽灵</item>
-<item>太平间_墓地</item>
-<item>黑丝_蕾丝</item>
-<item>丝袜_裤袜</item>
-<item>长腿_美腿</item>
-<item>豪车_宝马</item>
-<item>跑车_法拉利</item>
-<item>美女_女神</item>
-<item>富二代_高富帅</item>
-<item>离婚_失恋</item>
-<item>一夜情_一见钟情</item>
-<item>恶心_想吐</item>
-<item>想她_念他</item>
-<item>猥琐_卑鄙</item>
-<item>纸尿裤_尿不湿</item>
-</string-array>
-<string-array name="weiyi">
-<item>小品_话剧</item>
-<item>吉他_琵琶</item>
-<item>童话_神话</item>
-<item>作家_编剧</item>
-<item>奖牌_金牌</item>
-<item>江南style_最炫民族风</item>
-<item>作文_论文</item>
-<item>壁纸_贴画</item>
-<item>魔术师_魔法师</item>
-<item>双胞胎_龙凤胎</item>
-<item>丑小鸭_灰姑娘</item>
-<item>情人节_七夕</item>
-<item>富二代_高富帅</item>
-<item>生活费_零花钱</item>
-<item>麦克风_扩音器</item>
-<item>郭德纲_周立波</item>
-<item>图书馆_图书店</item>
-<item>男朋友_前男友</item>
-<item>蜘蛛侠_蝙蝠侠</item>
-<item>薰衣草_满天星</item>
-<item>甄嬛传_红楼梦</item>
-<item>海豚_海狮</item>
-<item>玫瑰_月季</item>
-<item>蝴蝶_蜜蜂</item>
-<item>十面埋伏_四面楚歌</item>
-<item>福尔摩斯_工藤新一</item>
-<item>贵妃醉酒_黛玉葬花</item>
-<item>流星花园_花样男子</item>
-<item>神雕侠侣_天龙八部</item>
-<item>天天向上_非诚勿扰</item>
-<item>过山车_碰碰车</item>
-<item>mp3_音频</item>
-<item>鞭炮_礼炮</item>
-<item>别动_表动</item>
-<item>程序员_编程</item>
-<item>大头贴_照片</item>
-<item>高傲_冷傲</item>
-<item>高跟鞋_增高鞋</item>
-<item>挂历_台历</item>
-<item>家乡_故乡</item>
-<item>降龙十八掌_九阴白骨爪</item>
-<item>剧院_影院</item>
-<item>可爱_卡哇伊</item>
-<item>恐怖片_惊悚片</item>
-<item>老家_家乡</item>
-<item>绿色_青色</item>
-<item>美人心计_倾世皇妃</item>
-<item>美人痣_青春痘</item>
-<item>密码_号码</item>
-<item>女神_剩女</item>
-<item>青春_青年</item>
-<item>三国演义_三国志</item>
-<item>书包_背包</item>
-<item>水杯_茶杯</item>
-<item>淘宝_天猫</item>
-<item>天平座_双子座</item>
-<item>推理_侦探</item>
-<item>王语嫣_小龙女</item>
-<item>微博_博客</item>
-<item>夏家三千金_爱情睡醒了</item>
-<item>宴会_酒席</item>
-<item>一周_星期</item>
-<item>伊丽莎白_蒙娜丽莎</item>
-<item>衣服_服装</item>
-<item>泳衣_泳裤</item>
-<item>游戏_娱乐</item>
-<item>晕倒_休克</item>
-<item>置物箱_收纳柜</item>
-<item>状元_冠军</item>
-<item>字母_单词</item>
-</string-array>
-<string-array name="hard">
-<item>勇往直前_全力以赴</item>
-<item>语无伦次_词不达意</item>
-<item>鼠目寸光_井底之蛙</item>
-<item>摇摇椅_转转椅</item>
-<item>地铁_轻轨</item>
-<item>口_嘴</item>
-<item>粥_汤</item>
-<item>爸_爹</item>
-<item>妈_娘</item>
-<item>鸡_鸭</item>
-<item>快速_迅速</item>
-<item>红彤彤_红通通</item>
-<item>软绵绵_蓬松松</item>
-<item>仙人掌_仙人球</item>
-<item>复式楼_别墅</item>
-<item>谁是卧底_抓鬼游戏</item>
-</string-array>
-<string-array name="pard">
-<item>戴尔_惠普</item>
-<item>蒙牛_伊利</item>
-<item>腾讯_QQ</item>
-<item>雪弗兰_大黄蜂</item>
-<item>可口_可乐</item>
-<item>麦当劳_肯德基</item>
-<item>招行_交行</item>
-</string-array>
-<string-array name="city">
-<item>杭州_苏州</item>
-<item>香港_台湾</item>
-<item>首尔_东京</item>
-<item>广东_广州</item>
-</string-array>
-<string-array name="overstring">
-<item>没找到全部卧底，游戏继续</item>
-<item>卧底隐藏很深噢！</item>
-<item>快去把卧底给投出来吧~</item>
-<item>卧底这是要逆天了吗？</item>
-<item>投错一个就少一个战友~</item>
-<item>卧底卧底，你在哪里！</item>
-<item>卧底，你是想怎样~</item>
-</string-array>
+	<string-array name="people">
+	<item>董永_许仙</item>
+	<item>飞轮海_五月天</item>
+	<item>孟非_乐嘉</item>
+	<item>保安_保镖</item>
+	<item>金庸_古龙</item>
+	<item>赵敏_黄蓉</item>
+	<item>警察_捕快</item>
+	<item>剩女_御姐</item>
+	<item>那英_韩红</item>
+	<item>同学_同桌</item>
+	<item>老佛爷_老天爷</item>
+	<item>小沈阳_宋小宝</item>
+	<item>张韶涵_王心凌</item>
+	<item>刘诗诗_刘亦菲</item>
+	<item>甄子丹_李连杰</item>
+	<item>包青天_狄仁杰</item>
+	<item>班主任_辅导员</item>
+	<item>皇帝_太子</item>
+	<item>叔叔_伯伯</item>
+	<item>女儿_闺女</item>
+	<item>夫人_太太</item>
+	<item>何炅_维嘉</item>
+	<item>元芳_展昭</item>
+	<item>总统_首相</item>
+	<item>蜂蜜_糖汁</item>
+	<item>大人_老爷</item>
+	<item>观音_如来</item>
+	<item>军人_警察</item>
+	<item>皇帝_黄帝</item>
+	<item>陛下_皇上</item>
+	</string-array>
+	<string-array name="eat">
+	<item>牛奶_豆浆</item>
+	<item>白菜_生菜</item>
+	<item>辣椒_芥末</item>
+	<item>橙子_橘子</item>
+	<item>葡萄_提子</item>
+	<item>烤肉_涮肉</item>
+	<item>油条_麻花</item>
+	<item>面包_蛋糕</item>
+	<item>牛肉干_猪肉脯</item>
+	<item>泡泡糖_棒棒糖</item>
+	<item>土豆粉_酸辣粉</item>
+	<item>口香糖_木糖醇</item>
+	<item>酸菜鱼_水煮鱼</item>
+	<item>小笼包_灌汤包</item>
+	<item>大白兔_金丝猴</item>
+	<item>果粒橙_鲜橙多</item>
+	<item>鱼香肉丝_四喜丸子</item>
+	<item>麻婆豆腐_皮蛋豆腐</item>
+	<item>红烧牛肉面_香辣牛肉面</item>
+	<item>鸭脖_鸡爪</item>
+	<item>果汁_汽水</item>
+	<item>火锅_涮锅</item>
+	<item>烧烤_烤串</item>
+	<item>红豆_绿豆</item>
+	<item>小葱_蒜苗</item>
+	<item>电灯_壁灯</item>
+	<item>麻辣烫_串串香</item>
+	<item>汉堡包_肉夹馍</item>
+	<item>冰激淋_冰淇淋</item>
+	</string-array>
+	<string-array name="big">
+	<item>太监_人妖</item>
+	<item>小姨子_小舅子</item>
+	<item>安全套_杜蕾斯</item>
+	<item>胖子_肥肉</item>
+	<item>diao丝_穷鬼</item>
+	<item>凤姐_芙蓉姐姐</item>
+	<item>AV_女优</item>
+	<item>紫葡萄_黑木耳</item>
+	<item>TMD_NND</item>
+	<item>僵尸_幽灵</item>
+	<item>太平间_墓地</item>
+	<item>黑丝_蕾丝</item>
+	<item>丝袜_裤袜</item>
+	<item>长腿_美腿</item>
+	<item>豪车_宝马</item>
+	<item>跑车_法拉利</item>
+	<item>美女_女神</item>
+	<item>富二代_高富帅</item>
+	<item>离婚_失恋</item>
+	<item>一夜情_一见钟情</item>
+	<item>恶心_想吐</item>
+	<item>想她_念他</item>
+	<item>猥琐_卑鄙</item>
+	<item>纸尿裤_尿不湿</item>
+	</string-array>
+	<string-array name="weiyi">
+	<item>小品_话剧</item>
+	<item>吉他_琵琶</item>
+	<item>童话_神话</item>
+	<item>作家_编剧</item>
+	<item>奖牌_金牌</item>
+	<item>江南style_最炫民族风</item>
+	<item>作文_论文</item>
+	<item>壁纸_贴画</item>
+	<item>魔术师_魔法师</item>
+	<item>双胞胎_龙凤胎</item>
+	<item>丑小鸭_灰姑娘</item>
+	<item>情人节_七夕</item>
+	<item>富二代_高富帅</item>
+	<item>生活费_零花钱</item>
+	<item>麦克风_扩音器</item>
+	<item>郭德纲_周立波</item>
+	<item>图书馆_图书店</item>
+	<item>男朋友_前男友</item>
+	<item>蜘蛛侠_蝙蝠侠</item>
+	<item>薰衣草_满天星</item>
+	<item>甄嬛传_红楼梦</item>
+	<item>海豚_海狮</item>
+	<item>玫瑰_月季</item>
+	<item>蝴蝶_蜜蜂</item>
+	<item>十面埋伏_四面楚歌</item>
+	<item>福尔摩斯_工藤新一</item>
+	<item>贵妃醉酒_黛玉葬花</item>
+	<item>流星花园_花样男子</item>
+	<item>神雕侠侣_天龙八部</item>
+	<item>天天向上_非诚勿扰</item>
+	<item>过山车_碰碰车</item>
+	<item>mp3_音频</item>
+	<item>鞭炮_礼炮</item>
+	<item>别动_表动</item>
+	<item>程序员_编程</item>
+	<item>大头贴_照片</item>
+	<item>高傲_冷傲</item>
+	<item>高跟鞋_增高鞋</item>
+	<item>挂历_台历</item>
+	<item>家乡_故乡</item>
+	<item>降龙十八掌_九阴白骨爪</item>
+	<item>剧院_影院</item>
+	<item>可爱_卡哇伊</item>
+	<item>恐怖片_惊悚片</item>
+	<item>老家_家乡</item>
+	<item>绿色_青色</item>
+	<item>美人心计_倾世皇妃</item>
+	<item>美人痣_青春痘</item>
+	<item>密码_号码</item>
+	<item>女神_剩女</item>
+	<item>青春_青年</item>
+	<item>三国演义_三国志</item>
+	<item>书包_背包</item>
+	<item>水杯_茶杯</item>
+	<item>淘宝_天猫</item>
+	<item>天平座_双子座</item>
+	<item>推理_侦探</item>
+	<item>王语嫣_小龙女</item>
+	<item>微博_博客</item>
+	<item>夏家三千金_爱情睡醒了</item>
+	<item>宴会_酒席</item>
+	<item>一周_星期</item>
+	<item>伊丽莎白_蒙娜丽莎</item>
+	<item>衣服_服装</item>
+	<item>泳衣_泳裤</item>
+	<item>游戏_娱乐</item>
+	<item>晕倒_休克</item>
+	<item>置物箱_收纳柜</item>
+	<item>状元_冠军</item>
+	<item>字母_单词</item>
+	</string-array>
+	<string-array name="hard">
+	<item>勇往直前_全力以赴</item>
+	<item>语无伦次_词不达意</item>
+	<item>鼠目寸光_井底之蛙</item>
+	<item>摇摇椅_转转椅</item>
+	<item>地铁_轻轨</item>
+	<item>口_嘴</item>
+	<item>粥_汤</item>
+	<item>爸_爹</item>
+	<item>妈_娘</item>
+	<item>鸡_鸭</item>
+	<item>快速_迅速</item>
+	<item>红彤彤_红通通</item>
+	<item>软绵绵_蓬松松</item>
+	<item>仙人掌_仙人球</item>
+	<item>复式楼_别墅</item>
+	<item>谁是卧底_抓鬼游戏</item>
+	</string-array>
+	<string-array name="pard">
+	<item>戴尔_惠普</item>
+	<item>蒙牛_伊利</item>
+	<item>腾讯_QQ</item>
+	<item>雪弗兰_大黄蜂</item>
+	<item>可口_可乐</item>
+	<item>麦当劳_肯德基</item>
+	<item>招行_交行</item>
+	</string-array>
+	<string-array name="city">
+	<item>杭州_苏州</item>
+	<item>香港_台湾</item>
+	<item>首尔_东京</item>
+	<item>广东_广州</item>
+	</string-array>
+	<string-array name="overstring">
+	<item>没找到全部卧底，游戏继续</item>
+	<item>卧底隐藏很深噢！</item>
+	<item>快去把卧底给投出来吧~</item>
+	<item>卧底这是要逆天了吗？</item>
+	<item>投错一个就少一个战友~</item>
+	<item>卧底卧底，你在哪里！</item>
+	<item>卧底，你是想怎样~</item>
+	</string-array>
+    <string-array name="content">
+        <item>母鸡_公鸡</item>
+		<item>台灯_电灯</item>
+		<item>玫瑰_月季</item>
+		<item>董永_许仙</item>
+		<item>孟非_乐嘉</item>
+		<item>牛奶_豆浆</item>
+		<item>保安_保镖</item>
+		<item>白菜_生菜</item>
+		<item>辣椒_芥末</item>
+		<item>金庸_古龙</item>
+		<item>赵敏_黄蓉</item>
+		<item>海豚_海狮</item>
+		<item>水盆_水桶</item>
+		<item>唇膏_口红</item>
+		<item>森马_以纯</item>
+		<item>烤肉_涮肉</item>
+		<item>气泡_水泡</item>
+		<item>纸巾_手帕</item>
+		<item>杭州_苏州</item>
+		<item>香港_台湾</item>
+		<item>首尔_东京</item>
+		<item>橙子_橘子</item>
+		<item>葡萄_提子</item>
+		<item>太监_人妖</item>
+		<item>蝴蝶_蜜蜂</item>
+		<item>小品_话剧</item>
+		<item>裸婚_闪婚</item>
+		<item>吉他_琵琶</item>
+		<item>公交_地铁</item>
+		<item>剩女_御姐</item>
+		<item>童话_神话</item>
+		<item>作家_编剧</item>
+		<item>警察_捕快</item>
+		<item>结婚_订婚</item>
+		<item>奖牌_金牌</item>
+		<item>孟飞_乐嘉</item>
+		<item>那英_韩红</item>
+		<item>面包_蛋糕</item>
+		<item>作文_论文</item>
+		<item>油条_麻花</item>
+		<item>壁纸_贴画</item>
+		<item>枕头_抱枕</item>
+		<item>手机_座机</item>
+		<item>同学_同桌</item>
+		<item>老佛爷_老天爷</item>
+		<item>魔术师_魔法师</item>
+		<item>鸭舌帽_遮阳帽</item>
+		<item>双胞胎_龙凤胎</item>
+		<item>情人节_光棍节</item>
+		<item>丑小鸭_灰姑娘</item>
+		<item>富二代_高富帅</item>
+		<item>生活费_零花钱</item>
+		<item>麦克风_扩音器</item>
+		<item>郭德纲_周立波</item>
+		<item>图书馆_图书店</item>
+		<item>男朋友_前男友</item>
+		<item>洗衣粉_皂角粉</item>
+		<item>牛肉干_猪肉脯</item>
+		<item>泡泡糖_棒棒糖</item>
+		<item>小沈阳_宋小宝</item>
+		<item>土豆粉_酸辣粉</item>
+		<item>蜘蛛侠_蝙蝠侠</item>
+		<item>口香糖_木糖醇</item>
+		<item>酸菜鱼_水煮鱼</item>
+		<item>小笼包_灌汤包</item>
+		<item>薰衣草_满天星</item>
+		<item>张韶涵_王心凌</item>
+		<item>刘诗诗_刘亦菲</item>
+		<item>甄嬛传_红楼梦</item>
+		<item>甄子丹_李连杰</item>
+		<item>包青天_狄仁杰</item>
+		<item>大白兔_金丝猴</item>
+		<item>果粒橙_鲜橙多</item>
+		<item>沐浴露_沐浴盐</item>
+		<item>洗发露_护发素</item>
+		<item>自行车_电动车</item>
+		<item>班主任_辅导员</item>
+		<item>过山车_碰碰车</item>
+		<item>铁观音_碧螺春</item>
+		<item>十面埋伏_四面楚歌</item>
+		<item>福尔摩斯_工藤新一</item>
+		<item>贵妃醉酒_黛玉葬花</item>
+		<item>流星花园_花样男子</item>
+		<item>神雕侠侣_天龙八部</item>
+		<item>天天向上_非诚勿扰</item>
+		<item>勇往直前_全力以赴</item>
+		<item>鱼香肉丝_四喜丸子</item>
+		<item>麻婆豆腐_皮蛋豆腐</item>
+		<item>语无伦次_词不达意</item>
+		<item>鼠目寸光_井底之蛙</item>
+		<item>近视眼镜_隐形眼镜</item>
+		<item>美人心计_倾世皇妃</item>
+		<item>夏家三千金_爱情睡醒了</item>
+		<item>降龙十八掌_九阴白骨爪</item>
+		<item>红烧牛肉面_香辣牛肉面</item>
+		<item>江南style_最炫民族风</item>
+    </string-array>
 </resources>

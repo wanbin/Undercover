@@ -60,9 +60,13 @@ public class guess extends BaseActivity {
 	private String gameoverspy;
 	private String hy;
 	private String ge;
+	private boolean[] hasClicked;
 	protected void onCreate(Bundle savedInstanceState) {
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
+		
+		
+		
 		setContentView(R.layout.guess);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
@@ -99,11 +103,32 @@ public class guess extends BaseActivity {
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
 		home = (ImageView) findViewById(R.id.btnhome);
 		quickStartBtn.setBackgroundResource(R.drawable.btnbg);
-		Bundle bundle = this.getIntent().getExtras();
-		isShow	= bundle.getBoolean("isShow");
-		son = bundle.getString("son");
-		soncount = bundle.getInt("underCount");
-		content = bundle.getStringArray("content");
+		
+//		Bundle bundle = this.getIntent().getExtras();
+//		isShow	= bundle.getBoolean("isShow");
+//		son = bundle.getString("son");
+//		soncount = bundle.getInt("underCount");
+//		content = bundle.getStringArray("content");
+		
+		if (savedInstanceState == null) {
+			Bundle bundle = this.getIntent().getExtras();
+			isShow	= bundle.getBoolean("isShow");
+			son = bundle.getString("son");
+			soncount = bundle.getInt("underCount");
+			content = bundle.getStringArray("content");
+			hasClicked = new boolean[content.length];
+		}else{
+			content = savedInstanceState.getStringArray("content");
+			isShow  = savedInstanceState.getBoolean("isShow");
+			son     = savedInstanceState.getString("son");
+			soncount = savedInstanceState.getInt("soncount");
+			isOver  = savedInstanceState.getBoolean("isOver");
+			hasClicked = savedInstanceState.getBooleanArray("hasClicked");
+		}
+		
+		Log.d("isover", String.valueOf(isOver));
+		Log.d("soncount", String.valueOf(soncount));
+		Log.d("soncount", content.toString());
 		fathercount = content.length - soncount;
 		totalcount = content.length;
 		txtTitle.setText(gusswhoisspy);
@@ -111,53 +136,60 @@ public class guess extends BaseActivity {
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
-				temindex++;
+//				temindex++;
 				if (temindex > content.length) {
 					break;
 				}
 				FrameLayout fl = new FrameLayout(this);
 				ImageView select = new ImageView(this);
 				final TextView text	= new TextView(this);
-				text.setText("" + temindex);
+				text.setText(String.valueOf(m+1));
 				text.setGravity(Gravity.CENTER);
 				text.setTextSize(30);
 
 				final TextView shenfen = new TextView(this);
-				shenfen.setText(content[temindex - 1]);
+				shenfen.setText(content[m]);
 				shenfen.setGravity(Gravity.BOTTOM);
 				shenfen.setTextSize(15);
 				shenfen.setTag(999);
 				shenfen.setVisibility(View.INVISIBLE);
 
-				select.setTag(temindex);
-				select.setBackgroundResource(R.drawable.popo72);
-				select.setOnLongClickListener(new Button.OnLongClickListener() {
-					@Override
-					public boolean onLongClick(View v) {
-						tapIndex((Integer) v.getTag());
-						v.setClickable(false);
-						ImageView tt = (ImageView) v;
-						tt.setBackgroundResource(R.drawable.popogray72);
-						SoundPlayer.playball();
-						if(isShow){
-							text.setTextSize(20);
-							if (content[(Integer) v.getTag() - 1].equals(son)) {
-								text.setText(undercover);
-								text.setTextColor(getResources().getColor(R.color.RED));
-							} else {
-								if (content[(Integer) v.getTag() - 1]
-										.equals(blank)) {
-									text.setText(blank);
-									text.setTextColor(getResources().getColor(R.color.BLUE));
-								}else{
-									text.setText(aggrieved);
+				select.setTag(m);
+				if (hasClicked[m]) {
+					select.setBackgroundResource(R.drawable.popogray72);
+					select.setClickable(false);
+				}else{
+					select.setBackgroundResource(R.drawable.popo72);
+					select.setOnLongClickListener(new Button.OnLongClickListener() {
+						@Override
+						public boolean onLongClick(View v) {
+							tapIndex((Integer) v.getTag());
+							hasClicked[(Integer)v.getTag()] = true;
+							v.setClickable(false);
+							ImageView tt = (ImageView) v;
+							tt.setBackgroundResource(R.drawable.popogray72);
+							SoundPlayer.playball();
+							if(isShow){
+								text.setTextSize(20);
+								if (content[(Integer) v.getTag()].equals(son)) {
+									text.setText(undercover);
+									text.setTextColor(getResources().getColor(R.color.RED));
+								} else {
+									if (content[(Integer) v.getTag()]
+											.equals(blank)) {
+										text.setText(blank);
+										text.setTextColor(getResources().getColor(R.color.BLUE));
+									}else{
+										text.setText(aggrieved);
+									}
 								}
 							}
+							// tt.setText("*");
+							return true;
 						}
-						// tt.setText("*");
-						return true;
-					}
-				});
+					});
+				}
+				
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfen);
@@ -175,10 +207,11 @@ public class guess extends BaseActivity {
 				finish();
 			}
 		});
+		checkGameOver();
 	}
 
 	protected void setAllButton(boolean useable) {
-		for (int i = 1; i <= content.length; i++) {
+		for (int i = 0; i < content.length; i++) {
 			ImageView tem = (ImageView) contentTable.findViewWithTag(i);
 			tem.setClickable(useable);
 		}
@@ -188,12 +221,17 @@ public class guess extends BaseActivity {
 		if (soncount + fathercount == totalcount) {
 			uMengClick("click_guess_first");
 		}
-		if (content[tag - 1].equals(son)) {
+		if (content[tag].equals(son)) {
 			soncount--;
 		} else {
 			fathercount--;
 		}
-		if (!isOver) {
+		checkGameOver();
+	}
+	
+	protected void checkGameOver(){
+		Log("CheeckGameOver");
+//		if (!isOver) {
 			if (soncount <= 0) {
 				Log("任务完成");
 				txtTitle.setText(gameOver + "【" + son + "】");
@@ -215,7 +253,9 @@ public class guess extends BaseActivity {
 				txtTitle.setText(overString[stringindex]);
 				Log(hy + soncount + ge);
 			}
-		}
+//		}else{
+//			
+//		}
 	}
 
 	protected void Log(String string) {
@@ -280,43 +320,16 @@ public class guess extends BaseActivity {
 //		contentTable.addView(startBtn);
 	}
 
-	protected void fanpai() {
-
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+		super.onSaveInstanceState(savedInstanceState);
+		savedInstanceState.putBoolean("isShow", isShow);
+		savedInstanceState.putInt("soncount", soncount);
+		savedInstanceState.putStringArray("content", content);
+		savedInstanceState.putString("son", son);
+		savedInstanceState.putBoolean("isOver", isOver);
+		savedInstanceState.putBooleanArray("hasClicked",hasClicked);
+		Log.d("saved","onSaveInstanceState");
 	}
-	/**
-	 * 获取惩罚内容数组
-	 * 
-	 * @return
-	 */
-//	private void getPunish() {
-//		if (!flag) {
-//			flag 			= true;
-//			int arr[]		= MathUtil.getInstance().check(73,6);
-//			TextView text 	= null;
-//			String temp 	= null;
-//			for (int i = 0; i < 6; i++) {
-//				text 		= new TextView(this);
-//				temp 		= PunishProps.getPunish(arr[i]);
-//				if (null == temp) {
-	// temp = "请执行第一条";
-//				}
-	// text.setText((i + 1) + "、" + temp);
-//				contentTable.addView(text);
-//			}
-//		}
-//	}
-//	private void frozenBtn()
-//	{
-//		for(int i = 1 ;i < temindex+1 ; i++)
-//		{
-//			Button btn = (Button)contentTable.findViewWithTag(i);
-//			if(btn == null)
-//			{
-//			    continue ;	
-//			}
-//			
-//			btn.setClickable(false);
-//		}
-//	}
 
 }

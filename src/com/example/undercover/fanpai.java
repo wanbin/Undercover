@@ -68,8 +68,7 @@ public class fanpai extends BaseActivity {
 			content = savedInstanceState.getStringArray("content");
 			nowIndex = savedInstanceState.getInt("nowIndex");
 		}
-		
-		
+	
 //		Bundle bundle = this.getIntent().getExtras();
 //		isBlank	= bundle.getBoolean("isBlank");
 //		isShow	= bundle.getBoolean("isShow");
@@ -95,7 +94,7 @@ public class fanpai extends BaseActivity {
 		btnOK.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (nowIndex < content.length) {
+				if (nowIndex <= content.length) {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
 					}
