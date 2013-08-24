@@ -134,8 +134,11 @@ public class PunishActivity extends BaseActivity {
 					timer.schedule(timetask, 0, 68);
 					randomBtn.setTextSize(25);
 					isTouch	= true;
-				}
+				}else {
+					SoundPlayer.playclaps();
+					  }
 				isRandom = !isRandom;
+				
 			}
 		});
 	}// onCreat 方法结束
