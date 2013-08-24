@@ -66,6 +66,7 @@ public class BaseActivity extends Activity {
 		}
 	}
 
+	@Override
 	public void onPause() {
 		super.onPause();
 		MobclickAgent.onPause(this);
@@ -132,9 +133,12 @@ public class BaseActivity extends Activity {
 	};
 
 	public void shackAction() {
-		Toast.makeText(BaseActivity.this, "检测到摇晃，执行操作！", Toast.LENGTH_SHORT)
-				.show();
+		siampleTitle("检测到摇晃，执行操作！");
 		Log.i(TAG, "检测到摇晃，执行操作！");
+	}
+
+	public void siampleTitle(String title) {
+		Toast.makeText(BaseActivity.this, title, Toast.LENGTH_SHORT).show();
 	}
 }
 
