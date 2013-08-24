@@ -60,6 +60,7 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="MarketTEST" />
+        <activity android:name="ContributionActivity"></activity>
 
        
     </application>

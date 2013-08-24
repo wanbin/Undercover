@@ -40,7 +40,7 @@ public class SelectGameActivity extends BaseActivity {
     private ImageView[] imageViews;
     
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
-			appmakerbButton, btnStart;
+			appmakerbButton, btnStart, usercontribution;
     private ImageView startButton;
 	private CheckBox sound;
 	private boolean soundon = true;
@@ -132,7 +132,12 @@ public class SelectGameActivity extends BaseActivity {
 
 		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
 		weixinButton.setBackgroundResource(R.drawable.btnbg);
-        weixinButton.setOnClickListener(new MyClickListener());
+		weixinButton.setOnClickListener(new MyClickListener());
+		// 用户贡献
+		usercontribution = (Button) helpView
+				.findViewById(R.id.usercontribution);
+		usercontribution.setBackgroundResource(R.drawable.btnbg);
+		usercontribution.setOnClickListener(new MyClickListener());
 		appmakerbButton = (Button) helpView.findViewById(R.id.appMaker);
 		appmakerbButton.setBackgroundResource(R.drawable.btnbg);
         appmakerbButton.setOnClickListener(new MyClickListener());
@@ -180,6 +185,12 @@ public class SelectGameActivity extends BaseActivity {
 				SoundPlayer.playball();
 				uMengClick("click_weixin");
 				mIntent.setClass(SelectGameActivity.this, weixin.class);
+				break;
+			case R.id.usercontribution:
+				SoundPlayer.playball();
+				uMengClick("click_usercontribution");
+				mIntent.setClass(SelectGameActivity.this,
+						ContributionActivity.class);
 				break;
 			case R.id.appMaker:
 				SoundPlayer.playball();
