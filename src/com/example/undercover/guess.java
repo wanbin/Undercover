@@ -62,7 +62,14 @@ public class guess extends BaseActivity {
 	private String gameoverspy;
 	private String hy;
 	private String ge;
+
+	private String shibaizhe;
+	private String fayan;
+	private String hao;
+
 	private boolean[] hasClicked;
+	private boolean[] hasAliave;// 玩家是否还存活
+
 	protected void onCreate(Bundle savedInstanceState) {
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
@@ -85,6 +92,9 @@ public class guess extends BaseActivity {
 		taplong=getResources().getString(R.string.taplong);            
 		gameOver=getResources().getString(R.string.gameOver);          
 		gameoverspy=getResources().getString(R.string.gameoverspy);    
+		shibaizhe = getResources().getString(R.string.shibaizhe);
+		fayan = getResources().getString(R.string.fayan);
+		hao = getResources().getString(R.string.hao);
 		hy=getResources().getString(R.string.hy);                      
 		ge=getResources().getString(R.string.ge);
 		
@@ -197,7 +207,7 @@ public class guess extends BaseActivity {
 			contentTable.addView(newrow);
 		}
 		txtLong = new TextView(this);
-		txtLong.setText(taplong);
+		txtLong.setText(updateSaySeq() + "(" + taplong + ")");
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
@@ -216,7 +226,7 @@ public class guess extends BaseActivity {
 		}
 	}
 	protected void tapIndex(int tag) {
-		txtLong.setVisibility(View.INVISIBLE);
+		hasClicked[tag] = true;
 		if (soncount + fathercount == totalcount) {
 			uMengClick("click_guess_first");
 		}
@@ -226,35 +236,73 @@ public class guess extends BaseActivity {
 			fathercount--;
 		}
 		checkGameOver();
+		// txtLong.setVisibility(View.INVISIBLE);
 	}
 	
-	protected void checkGameOver(){
+	protected String updateSaySeq() {
+		int seq = Math.abs(random.nextInt()) % content.length;
+		String strSeq = fayan;
+		for (int i = 0; i < content.length; i++) {
+			int temindex = seq % content.length + 1;
+			if (!hasClicked[temindex - 1]) {
+				strSeq += temindex + "号\t";
+			}
+			seq++;
+		}
+		return strSeq;
+	}
+
+	protected void checkGameOver() {
 		Log("CheeckGameOver");
-//		if (!isOver) {
-			if (soncount <= 0) {
+		// if (!isOver) {
+		if (soncount <= 0) {
 			Log("任务完成");
 			txtTitle.setText(gameOver + "【" + son + "】");
-				isOver = true;
-				uMengClick("click_guess_last");
-				SoundPlayer.playclaps();
-				refash();
-				setAllButton(false);
-			} else if (fathercount <= soncount) {
+			isOver = true;
+			uMengClick("click_guess_last");
+			SoundPlayer.playclaps();
+			refash();
+			setAllButton(false);
+			txtLong.setText(getSonStr());
+		} else if (fathercount <= soncount) {
 			Log("卧底胜利");
 			txtTitle.setText(gameoverspy + "【" + son + "】");
-				isOver = true;
-				uMengClick("click_guess_last");
-				refash();
-				setAllButton(false);
-			} else {
-				int stringcount = overString.length;
-				int stringindex = Math.abs(random.nextInt()) % stringcount;
-				txtTitle.setText(overString[stringindex]);
-				Log(hy + soncount + ge);
+			isOver = true;
+			uMengClick("click_guess_last");
+			refash();
+			setAllButton(false);
+			txtLong.setText(getFatherStr());
+		} else {
+			int stringcount = overString.length;
+			int stringindex = Math.abs(random.nextInt()) % stringcount;
+			txtTitle.setText(overString[stringindex]);
+			Log(hy + soncount + ge);
+			txtLong.setText(updateSaySeq());
+		}
+		// }else{
+		//
+		// }
+	}
+
+	protected String getSonStr() {
+		String str = shibaizhe;
+		for (int i = 0; i < content.length; i++) {
+			if (content[i].equals(son)) {
+				str += i + hao + "\t";
 			}
-//		}else{
-//			
-//		}
+		}
+		return str;
+	}
+
+	protected String getFatherStr() {
+		String str = shibaizhe;
+		for (int i = 0; i < content.length; i++) {
+			if (content[i].equals(son)) {
+				continue;
+			}
+			str += i + hao + "\t";
+		}
+		return str;
 	}
 
 	protected void Log(String string) {

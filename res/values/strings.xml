@@ -75,7 +75,7 @@
     <string name="taplong">长按选择</string>
     <string name="gameOver">完成任务，卧底为</string>
     <string name="undercoverwin">卧底胜利</string>
-    <string name="gameoverspy"> 卧底胜利，卧底为</string>
+    <string name="gameoverspy"> 游戏失败，卧底胜利，卧底为</string>
     <string name="hy">还有</string>
     <string name="ge">个</string>
     <string name="dangerousrate">危险概率：</string>
@@ -96,6 +96,9 @@
     <string name="dangerrate">危险级数：</string>
     <string name="click">%\n点击了</string>
     <string name="ci">次</string>
+    <string name="shibaizhe">接受惩罚:</string>
+    <string name="fayan">发言顺序:</string>
+    <string name="hao">号</string>
     <string name="GameRule">游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述</string>
     <string name="Vrequir">胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利</string>
 </resources>

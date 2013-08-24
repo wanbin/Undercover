@@ -43,6 +43,8 @@ public class PunishActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.punish);
+		// 注册摇动事件
+		showShack = true;
 		PunishInTurn = getResources().getString(R.string.PunishInTurn);
 		num	= "7";
 		isRandom	= false;
@@ -139,10 +141,20 @@ public class PunishActivity extends BaseActivity {
 					  }
 				isRandom = !isRandom;
 				
+				btnTapRandom();
 			}
 		});
 	}// onCreat 方法结束
 	
+	private void btnTapRandom() {
+		if (!isTouch) {
+			Timer timer = new Timer();
+			timer.schedule(timetask, 0, 68);
+			randomBtn.setTextSize(25);
+			isTouch = true;
+		}
+		isRandom = !isRandom;
+	}
 	private void getTruePunish(){
 		int[] intArr = MathUtil.getInstance().check(190, 6);
 		String[] str	= new String[6];
@@ -213,4 +225,11 @@ public class PunishActivity extends BaseActivity {
 		punish[Integer.valueOf(num)-1].setTextColor(getResources().getColor(R.color.RED));
 //		punish[Integer.valueOf(num)-1].setTextSize(16);
 	}
+
+	// 重写摇动事件
+	@Override
+	public void shackAction() {
+		btnTapRandom();
+	}
+	
 }
