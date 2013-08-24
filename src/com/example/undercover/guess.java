@@ -179,17 +179,22 @@ public class guess extends BaseActivity {
 							if(isShow){
 								text.setTextSize(20);
 								if (content[(Integer) v.getTag()].equals(son)) {
+									SoundPlayer.playChuiShao();
 									text.setText(undercover);
 									text.setTextColor(getResources().getColor(R.color.RED));
 								} else {
+									SoundPlayer.playA();
 									if (content[(Integer) v.getTag()]
 											.equals(blank)) {
 										text.setText(blank);
-										text.setTextColor(getResources().getColor(R.color.BLUE));
-									}else{
+										text.setTextColor(getResources()
+												.getColor(R.color.BLUE));
+									} else {
 										text.setText(aggrieved);
 									}
 								}
+							} else {
+								SoundPlayer.playChuiShao();
 							}
 							// tt.setText("*");
 							return true;
@@ -258,12 +263,13 @@ public class guess extends BaseActivity {
 			txtTitle.setText(gameOver + "【" + son + "】");
 			isOver = true;
 			uMengClick("click_guess_last");
-			SoundPlayer.playclaps();
+			SoundPlayer.playHighSoure();
 			refash();
 			setAllButton(false);
 			txtLong.setText(getSonStr());
 		} else if (fathercount <= soncount) {
 			Log("卧底胜利");
+			SoundPlayer.playNormalSoure();
 			txtTitle.setText(gameoverspy + "【" + son + "】");
 			isOver = true;
 			uMengClick("click_guess_last");

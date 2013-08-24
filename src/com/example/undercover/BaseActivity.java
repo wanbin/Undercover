@@ -48,6 +48,10 @@ public class BaseActivity extends Activity {
 		SoundPlayer.pushSound(R.raw.claps3);
 		SoundPlayer.pushSound(R.raw.bottle);
 		SoundPlayer.pushSound(R.raw.jishi);
+		SoundPlayer.pushSound(R.raw.failshout);
+		SoundPlayer.pushSound(R.raw.hiscore02);
+		SoundPlayer.pushSound(R.raw.whistle);
+		SoundPlayer.pushSound(R.raw.normalscore);
 
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
