@@ -394,17 +394,17 @@ public class guess extends BaseActivity {
 //		contentTable.addView(startBtn);
 	}
 
-	@Override
-	protected void onSaveInstanceState(Bundle savedInstanceState) {
-		super.onSaveInstanceState(savedInstanceState);
-		savedInstanceState.putBoolean("isShow", isShow);
-		savedInstanceState.putInt("soncount", soncount);
-		savedInstanceState.putStringArray("content", content);
-		savedInstanceState.putString("son", son);
-		savedInstanceState.putBoolean("isOver", isOver);
-		savedInstanceState.putBooleanArray("hasClicked",hasClicked);
-		Log.d("saved","onSaveInstanceState");
-	}
+//	@Override
+//	protected void onSaveInstanceState(Bundle savedInstanceState) {
+//		super.onSaveInstanceState(savedInstanceState);
+//		savedInstanceState.putBoolean("isShow", isShow);
+//		savedInstanceState.putInt("soncount", soncount);
+//		savedInstanceState.putStringArray("content", content);
+//		savedInstanceState.putString("son", son);
+//		savedInstanceState.putBoolean("isOver", isOver);
+//		savedInstanceState.putBooleanArray("hasClicked",hasClicked);
+//		Log.d("saved","onSaveInstanceState");
+//	}
 //	//退出确认
 //	public void onBackPressed() {  
 //		new AlertDialog.Builder(this).setTitle("确认退出吗？")  

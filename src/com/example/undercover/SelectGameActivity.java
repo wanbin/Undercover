@@ -183,6 +183,7 @@ public class SelectGameActivity extends BaseActivity {
 			// break;
 			case R.id.startButton:
 				SoundPlayer.playball();
+				cleanStatus();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				break;
 			case R.id.btnStart:
@@ -190,6 +191,7 @@ public class SelectGameActivity extends BaseActivity {
 				if (getStatus()) {
 					mIntent.setClass(SelectGameActivity.this, guess.class);
 				} else {
+				    cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);
 				}
 				break;
