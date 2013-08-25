@@ -98,8 +98,10 @@ public class SoundPlayer{
 	 */
 	public static void pauseMusic()
 	{
-		if(music.isPlaying())
-			music.pause();
+		if( music!=null){
+			if(music.isPlaying())
+				music.pause();
+		}
 	}
 	
 	/**
