@@ -35,9 +35,9 @@ public class Setting extends BaseActivity {
 	private String father;
 	private CheckBox afterShow;
 	// 是否添加 冤死 提示，在投票后
-	private boolean isShow;
+	private boolean isShow = true;
 	// 是否添加空白词
-	private boolean isBlank;
+	private boolean isBlank = false;
 	
 
 	private RelativeLayout contentview;
