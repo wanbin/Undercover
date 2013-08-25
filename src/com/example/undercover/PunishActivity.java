@@ -319,4 +319,8 @@ public class PunishActivity extends BaseActivity {
 				null);
 	}
 
+	public void onPause() {
+		super.onPause();
+		SoundPlayer.stopRolling();
+	}
 }
