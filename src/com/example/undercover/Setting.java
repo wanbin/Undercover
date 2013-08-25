@@ -107,7 +107,7 @@ public class Setting extends BaseActivity {
 				if (peopleCount < maxPeople) {
 					SoundPlayer.playball();
 					peopleCount++;
-					underCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+					underCount = Math.max((int) Math.floor(peopleCount / 3), 1);
 				}
 				setPeople();
 				setUnder();
@@ -121,7 +121,7 @@ public class Setting extends BaseActivity {
 					SoundPlayer.playball();
 					peopleCount--;
 					underCount = Math.min(
-							Math.max((int) Math.floor(peopleCount / 4), 1),
+							Math.max((int) Math.floor(peopleCount / 3), 1),
 							underCount);
 				}
 				setPeople();
@@ -132,10 +132,11 @@ public class Setting extends BaseActivity {
 		btnAddUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (underCount < 3) {
+				if (underCount < 4) {
 					SoundPlayer.playball();
 					underCount++;
-					peopleCount = Math.min(peopleCount + 4, maxPeople);
+					peopleCount = Math.min(
+							Math.max(underCount * 3, peopleCount), maxPeople);
 				}
 				setPeople();
 				setUnder();
@@ -214,7 +215,7 @@ public class Setting extends BaseActivity {
 	}
 
 	private void setUnder() {
-		if (underCount == 3) {
+		if (underCount >= 4) {
 			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
 			btnAddUnder.setClickable(false);
 		} else {
