@@ -3,7 +3,6 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Setting extends BaseActivity {
@@ -35,13 +35,12 @@ public class Setting extends BaseActivity {
 	private String father;
 	private CheckBox afterShow;
 	// 是否添加 冤死 提示，在投票后
-	private boolean isShow;
+	private boolean isShow = true;
 	// 是否添加空白词
-	private boolean isBlank;
+	private boolean isBlank = false;
 	
-	// 共享的参与和卧底数
-	private SharedPreferences gameInfo;
 
+	private RelativeLayout contentview;
 	// private int soncount = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +59,6 @@ public class Setting extends BaseActivity {
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		
-		// 共享数据
-		gameInfo = getSharedPreferences("gameInfo", 0);
 		
 		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
@@ -105,7 +102,7 @@ public class Setting extends BaseActivity {
 				if (peopleCount < maxPeople) {
 					SoundPlayer.playball();
 					peopleCount++;
-					underCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+					underCount = Math.max((int) Math.floor(peopleCount / 3), 1);
 				}
 				setPeople();
 				setUnder();
@@ -119,7 +116,7 @@ public class Setting extends BaseActivity {
 					SoundPlayer.playball();
 					peopleCount--;
 					underCount = Math.min(
-							Math.max((int) Math.floor(peopleCount / 4), 1),
+							Math.max((int) Math.floor(peopleCount / 3), 1),
 							underCount);
 				}
 				setPeople();
@@ -130,10 +127,11 @@ public class Setting extends BaseActivity {
 		btnAddUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (underCount < 3) {
+				if (underCount < 4) {
 					SoundPlayer.playball();
 					underCount++;
-					peopleCount = Math.min(peopleCount + 4, maxPeople);
+					peopleCount = Math.min(
+							Math.max(underCount * 3, peopleCount), maxPeople);
 				}
 				setPeople();
 				setUnder();
@@ -212,7 +210,7 @@ public class Setting extends BaseActivity {
 	}
 
 	private void setUnder() {
-		if (underCount == 3) {
+		if (underCount >= 4) {
 			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
 			btnAddUnder.setClickable(false);
 		} else {

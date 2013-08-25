@@ -51,6 +51,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/strAbout" />
+        
+        <Button
+            android:id="@+id/usercontribution"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/usercontribution" />
 
     </LinearLayout>
 

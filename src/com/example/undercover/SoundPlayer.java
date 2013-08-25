@@ -38,7 +38,7 @@ public class SoundPlayer{
 	public static void init(Context pContext) {
 		context = pContext;
 		if (!inited) {
-			soundPool = new SoundPool(6, AudioManager.STREAM_MUSIC, 100);
+			soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 100);
 			soundMap = new HashMap<Integer, Integer>();
 			inited = true;
 		}
@@ -162,5 +162,21 @@ public class SoundPlayer{
 
 	public static void stopJishi() {
 		pauseMusic();
+	}
+
+	public static void playHighSoure() {
+		playSound(R.raw.hiscore02);
+	}
+
+	public static void playNormalSoure() {
+		playSound(R.raw.normalscore);
+	}
+
+	public static void playChuiShao() {
+		playSound(R.raw.whistle);
+	}
+
+	public static void playA() {
+		playSound(R.raw.failshout);
 	}
 }

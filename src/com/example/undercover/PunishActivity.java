@@ -1,12 +1,16 @@
 package com.example.undercover;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +24,7 @@ public class PunishActivity extends BaseActivity {
 	private Button advenBtn;
 	private Button changeBtn;
 	private Button randomBtn;
+	private Button punish_disc;
 	private TextView punish_guize;
 	private TextView punish_1;
 	private TextView punish_2;
@@ -37,8 +42,9 @@ public class PunishActivity extends BaseActivity {
 	private TextView[] punish;
 	private String num;
 	private String PunishInTurn;
-	
-	
+	private ImageView imagedice;
+	private boolean discStart = false;
+	private Random random = new Random();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,6 +60,7 @@ public class PunishActivity extends BaseActivity {
 		advenBtn	= (Button)findViewById(R.id.advenBtn);
 		changeBtn	= (Button)findViewById(R.id.changeBtn);
 		randomBtn	= (Button)findViewById(R.id.punish_random);
+		punish_disc = (Button) findViewById(R.id.punish_disc);
 		punish_guize = (TextView) findViewById(R.id.punish_guize);
 		punish_1	= (TextView)findViewById(R.id.punish_1);
 		punish_2	= (TextView)findViewById(R.id.punish_2);
@@ -71,6 +78,10 @@ public class PunishActivity extends BaseActivity {
 		backBtn = (ImageView) findViewById(R.id.punish_backBtn);
 		changeBtn.setVisibility(View.INVISIBLE);
 		randomBtn.setVisibility(View.INVISIBLE);
+		punish_disc.setVisibility(View.INVISIBLE);
+		// 骰子动画
+		imagedice = (ImageView) findViewById(R.id.imagedice);
+		imagedice.setVisibility(View.INVISIBLE);
 		// 用户选择真心话
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -81,6 +92,7 @@ public class PunishActivity extends BaseActivity {
 				// 暂时，先隐藏 换题 按钮
 //				changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
+				punish_disc.setVisibility(View.VISIBLE);
 				uMengClick("game_zhenxinhua");
 				// 获取惩罚
 				getTruePunish();
@@ -97,6 +109,7 @@ public class PunishActivity extends BaseActivity {
 				// 暂时，先隐藏 换题 按钮
 //				changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
+				punish_disc.setVisibility(View.VISIBLE);
 				uMengClick("game_damaoxian");
 				// 获取惩罚
 				getAdvenPunish();
@@ -144,6 +157,22 @@ public class PunishActivity extends BaseActivity {
 				btnTapRandom();
 			}
 		});
+
+		imagedice.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				discstop();
+			}
+		});
+
+
+		punish_disc.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				shackAction();
+
+			}
+		});
 	}// onCreat 方法结束
 	
 	private void btnTapRandom() {
@@ -154,6 +183,47 @@ public class PunishActivity extends BaseActivity {
 			isTouch = true;
 		}
 		isRandom = !isRandom;
+	}
+
+	private void discstart() {
+		imagedice.setBackgroundResource(0);
+		imagedice.setVisibility(View.VISIBLE);
+		imagedice.clearAnimation();
+		imagedice.setBackgroundResource(R.anim.dics);
+		
+		AnimationSet as=new AnimationSet(true);  
+		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, -500, 0,
+				0);
+		al.setDuration(1000);
+		// al.setRepeatMode(Animation.REVERSE);
+		// al.setRepeatCount(-1);
+		as.addAnimation(al);
+		imagedice.startAnimation(as);
+
+		AnimationDrawable animDrawable = (AnimationDrawable) imagedice
+				.getBackground();
+
+		
+
+		animDrawable.stop();
+		animDrawable.start();
+		discStart = true;
+	}
+
+	private void discstop() {
+		imagedice.clearAnimation();
+		discStart = false;
+		imagedice.setBackgroundResource(randomDisc());
+		AnimationSet as = new AnimationSet(true);
+		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, 0, 0, 500);
+		al.setDuration(1000);
+		al.setStartOffset(500);
+		// al.setRepeatMode(Animation.REVERSE);
+		// al.setRepeatCount(-1);
+		as.addAnimation(al);
+		as.setFillAfter(true);
+		imagedice.startAnimation(as);
+
 	}
 	private void getTruePunish(){
 		int[] intArr = MathUtil.getInstance().check(190, 6);
@@ -229,7 +299,22 @@ public class PunishActivity extends BaseActivity {
 	// 重写摇动事件
 	@Override
 	public void shackAction() {
-		btnTapRandom();
+		if (discStart) {
+			discstop();
+		} else {
+			discstart();
+		}
 	}
 	
+	private int randomDisc() {
+		String[] colorArr = { "dice1", "dice2", "dice3", "dice4", "dice5",
+				"dice6" };
+		int discIndex = Math.abs(random.nextInt()) % 6 + 1;
+		returnColors("" + discIndex);
+		return getResources().getIdentifier(
+				"com.example.undercover:drawable/" + colorArr[discIndex - 1],
+				null,
+				null);
+	}
+
 }
