@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Setting extends BaseActivity {
@@ -42,6 +43,7 @@ public class Setting extends BaseActivity {
 	// 共享的参与和卧底数
 	private SharedPreferences gameInfo;
 
+	private RelativeLayout contentview;
 	// private int soncount = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

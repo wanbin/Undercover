@@ -103,4 +103,5 @@
     <string name="Vrequir">胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利</string>
     <string name="usercontribution">用户贡献</string>
     <string name="thankyou">因为有你们，游戏才变的更精彩！谢谢你们</string>
+    <string name="playdisc">摇骰子</string>
 </resources>

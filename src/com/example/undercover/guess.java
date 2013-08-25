@@ -32,6 +32,7 @@ public class guess extends BaseActivity {
 	private Button quickStartBtn;
 	private ImageView home;
 	
+
 	private int totalcount;
 	private boolean isOver;
 	private boolean flag;
@@ -109,8 +110,11 @@ public class guess extends BaseActivity {
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
 		home = (ImageView) findViewById(R.id.btnhome);
+
+
 		quickStartBtn.setBackgroundResource(R.drawable.btnbg);
 		
+
 //		Bundle bundle = this.getIntent().getExtras();
 //		isShow	= bundle.getBoolean("isShow");
 //		son = bundle.getString("son");
