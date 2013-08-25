@@ -151,10 +151,13 @@ public class PunishActivity extends BaseActivity {
 					isTouch	= true;
 				}else {
 					SoundPlayer.playclaps();
-					  }
+				}
+				if (!isTouch) {
+					Timer timer = new Timer();
+					timer.schedule(timetask, 0, 68);
+					isTouch = true;
+				}
 				isRandom = !isRandom;
-				
-				btnTapRandom();
 			}
 		});
 
@@ -175,15 +178,6 @@ public class PunishActivity extends BaseActivity {
 		});
 	}// onCreat 方法结束
 	
-	private void btnTapRandom() {
-		if (!isTouch) {
-			Timer timer = new Timer();
-			timer.schedule(timetask, 0, 68);
-			randomBtn.setTextSize(25);
-			isTouch = true;
-		}
-		isRandom = !isRandom;
-	}
 
 	private void discstart() {
 		imagedice.setBackgroundResource(0);
@@ -274,8 +268,8 @@ public class PunishActivity extends BaseActivity {
 	};
 	
 	private void addTenMMS(){
-//		number	= System.currentTimeMillis()%6+1;
-//		randomBtn.setText(number+"");
+		number = System.currentTimeMillis() % 6 + 1;
+		randomBtn.setText(number + "");
 		num	= MathUtil.getInstance().getRandomNum();
 		randomBtn.setText(num);
 		returnColors(num);

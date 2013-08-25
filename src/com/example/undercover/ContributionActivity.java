@@ -15,19 +15,27 @@ public class ContributionActivity extends BaseActivity {
 	private LinearLayout content;
 	private String[] contribution;
 	private ImageView btnreturn;
+	private TextView email;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contribution);
 		content = (LinearLayout) findViewById(R.id.content);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
+		email = (TextView) findViewById(R.id.txtEmail);
 		contribution = getResources().getStringArray(R.array.contribution);
+
+
 		for (int i = 0; i < contribution.length; i++) {
 			TextView temText = new TextView(this);
 			temText.setText(contribution[i]);
 			temText.setPadding(5, 5, 5, 5);
 			content.addView(temText);
 		}
+
+		String emailaddr = this.getString(R.string.emailaddr);
+		String suggest = getResources().getString(R.string.suggest);
+		email.setText(suggest + emailaddr);
 		// // btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		// // TextView ruleText = (TextView) findViewById(R.id.ruleText);
 		// // TextView winText = (TextView) findViewById(R.id.winText);

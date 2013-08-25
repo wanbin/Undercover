@@ -22,8 +22,6 @@ public class MakeActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_make);
 		Version = getResources().getString(R.string.Version);
-		suggest = getResources().getString(R.string.suggest);
-		suggest1 = getResources().getString(R.string.suggest1);
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
@@ -31,6 +29,8 @@ public class MakeActivity extends BaseActivity {
 		txtTitle.setText(Version);
 		agent = new FeedbackAgent(this);
 		String emailaddr = this.getString(R.string.emailaddr);
+		suggest = getResources().getString(R.string.suggest);
+		suggest1 = getResources().getString(R.string.suggest1);
 		txtContent
 				.setText(suggest+ emailaddr
 						+ suggest1);
