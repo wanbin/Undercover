@@ -130,6 +130,10 @@ public class SelectGameActivity extends BaseActivity {
 		btnStart.setBackgroundResource(R.drawable.btnbg);
 		btnStart.setOnClickListener(new MyClickListener());
 
+		if (getStatus()) {
+			btnStart.setText("接着上局玩");
+		}
+
 		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
 		weixinButton.setBackgroundResource(R.drawable.btnbg);
 		weixinButton.setOnClickListener(new MyClickListener());
@@ -177,9 +181,15 @@ public class SelectGameActivity extends BaseActivity {
 			// break;
 			case R.id.startButton:
 				SoundPlayer.playball();
+				mIntent.setClass(SelectGameActivity.this, Setting.class);
+				break;
 			case R.id.btnStart:
 				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this, Setting.class);
+				if (getStatus()) {
+					mIntent.setClass(SelectGameActivity.this, guess.class);
+				} else {
+					mIntent.setClass(SelectGameActivity.this, Setting.class);
+				}
 				break;
 			case R.id.Weixin:
 				SoundPlayer.playball();
@@ -315,4 +325,12 @@ public class SelectGameActivity extends BaseActivity {
 		return true;
 	}
 
+	public void onResume() {
+		super.onResume();
+		if (!getStatus()) {
+			btnStart.setText("开始游戏");
+		} else {
+			btnStart.setText("接着上局玩");
+		}
+	}
 }

@@ -27,22 +27,20 @@ public class fanpai extends BaseActivity {
 	private boolean isBlank;
 	private boolean isChecked;
 	//
-	private int peopleCount ;
+	private int peopleCount;
 	private int underCount;
-	
+
 	private SharedPreferences gameInfo;
 	private String blank;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		
+
 		setContentView(R.layout.activity_pai);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		isChecked	= false;
+		isChecked = false;
 		btnOK = (Button) findViewById(R.id.btnOk);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
@@ -51,7 +49,7 @@ public class fanpai extends BaseActivity {
 		blank = getResources().getString(R.string.blank);
 
 		random = new Random();
-		if(savedInstanceState == null){
+		if (savedInstanceState == null) {
 			gameInfo = getSharedPreferences("gameInfo", 0);
 			isBlank = gameInfo.getBoolean("isBlank", false);
 			isShow = gameInfo.getBoolean("isShow", false);
@@ -60,7 +58,8 @@ public class fanpai extends BaseActivity {
 			String[] libary = getResources().getStringArray(R.array.people);
 			int selectindex = Math.abs(random.nextInt()) % libary.length;
 			content = getRandomString(libary[selectindex]);
-		}else{
+
+		} else {
 			isBlank = savedInstanceState.getBoolean("isBlank");
 			isShow = savedInstanceState.getBoolean("isShow");
 			peopleCount = savedInstanceState.getInt("peopleCount");
@@ -68,20 +67,20 @@ public class fanpai extends BaseActivity {
 			content = savedInstanceState.getStringArray("content");
 			nowIndex = savedInstanceState.getInt("nowIndex");
 		}
-	
-//		Bundle bundle = this.getIntent().getExtras();
-//		isBlank	= bundle.getBoolean("isBlank");
-//		isShow	= bundle.getBoolean("isShow");
-//		peopleCount = bundle.getInt("peopleCount");
-//		underCount  = bundle.getInt("underCount");
-		
-		int blandStr	= Math.abs(new Random().nextInt()); 
-		for (int i = 0, len	= peopleCount; i < len; i++) {
-			if(isBlank){
-				if(!isChecked){
-					if(!content[(i+blandStr)%len].equals(son)){
-						isChecked	= true;
-						
+
+		// Bundle bundle = this.getIntent().getExtras();
+		// isBlank = bundle.getBoolean("isBlank");
+		// isShow = bundle.getBoolean("isShow");
+		// peopleCount = bundle.getInt("peopleCount");
+		// underCount = bundle.getInt("underCount");
+
+		int blandStr = Math.abs(new Random().nextInt());
+		for (int i = 0, len = peopleCount; i < len; i++) {
+			if (isBlank) {
+				if (!isChecked) {
+					if (!content[(i + blandStr) % len].equals(son)) {
+						isChecked = true;
+
 						content[(i + blandStr) % len] = blank;
 					}
 				}
@@ -99,11 +98,11 @@ public class fanpai extends BaseActivity {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
 					}
-					
+
 					initPan(nowIndex);
 				} else {
 					Bundle bundle = new Bundle();
-//					bundle.putInt("peopleCount", peopleCount);
+					// bundle.putInt("peopleCount", peopleCount);
 					bundle.putStringArray("content", content);
 					bundle.putString("son", son);
 					bundle.putInt("underCount", underCount);
@@ -159,16 +158,15 @@ public class fanpai extends BaseActivity {
 			textViewab.setVisibility(View.INVISIBLE);
 		}
 	}
-	
+
 	/**
 	 * 获取随机的一堆词条
 	 * 
 	 * @param contnettxt
 	 * @return
 	 */
-	private String[] getRandomString(String contnettxt)
-	{
-		String[] children  =new String[2];
+	private String[] getRandomString(String contnettxt) {
+		String[] children = new String[2];
 		children = contnettxt.split("_");
 		int sonindex = Math.abs(random.nextInt()) % 2;
 		son = children[sonindex];
@@ -184,9 +182,12 @@ public class fanpai extends BaseActivity {
 			} while (ret[tem].equals(son));
 			ret[tem] = son;
 		}
+		// 设置content
+		setContent(ret);
+		setSon(son);
 		return ret;
 	}
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);
@@ -196,6 +197,6 @@ public class fanpai extends BaseActivity {
 		savedInstanceState.putInt("underCount", underCount);
 		savedInstanceState.putStringArray("content", content);
 		savedInstanceState.putInt("nowIndex", nowIndex);
-		Log.d("saved","onSaveInstanceState");
+		Log.d("saved", "onSaveInstanceState");
 	}
 }

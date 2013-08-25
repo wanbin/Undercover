@@ -121,26 +121,34 @@ public class guess extends BaseActivity {
 //		soncount = bundle.getInt("underCount");
 //		content = bundle.getStringArray("content");
 		
-		if (savedInstanceState == null) {
-			Bundle bundle = this.getIntent().getExtras();
-			isShow	= bundle.getBoolean("isShow");
-			son = bundle.getString("son");
-			soncount = bundle.getInt("underCount");
-			content = bundle.getStringArray("content");
+		content = getGuessContent();
+		isOver = gameInfo.getBoolean("isBlank", false);
+		son = gameInfo.getString("son", "");
+		isShow = gameInfo.getBoolean("isShow", false);
+		soncount = gameInfo.getInt("underCount", 1);
+
+		hasClicked = getClickedContent();
+
+		if (hasClicked.length < 4) {
 			hasClicked = new boolean[content.length];
-		}else{
-			content = savedInstanceState.getStringArray("content");
-			isShow  = savedInstanceState.getBoolean("isShow");
-			son     = savedInstanceState.getString("son");
-			soncount = savedInstanceState.getInt("soncount");
-			isOver  = savedInstanceState.getBoolean("isOver");
-			hasClicked = savedInstanceState.getBooleanArray("hasClicked");
+			for (int i = 0; i < content.length; i++) {
+				hasClicked[i] = false;
+			}
+		}
+
+		fathercount = content.length - soncount;
+		for (int i = 0; i < hasClicked.length; i++) {
+			if (hasClicked[i] == true) {
+				if (content[i].equals(son)) {
+					soncount--;
+				} else {
+					fathercount--;
+				}
+			}
 		}
 		
-		Log.d("isover", String.valueOf(isOver));
-		Log.d("soncount", String.valueOf(soncount));
-		Log.d("content", String.valueOf(content.length));
-		fathercount = content.length - soncount;
+
+
 		totalcount = content.length;
 		txtTitle.setText(gusswhoisspy);
 		temindex = 0;
@@ -233,7 +241,9 @@ public class guess extends BaseActivity {
 		}
 	}
 	protected void tapIndex(int tag) {
+		// 记录点状态
 		hasClicked[tag] = true;
+		updateClicked(hasClicked);
 		if (soncount + fathercount == totalcount) {
 			uMengClick("click_guess_first");
 		}
@@ -271,6 +281,7 @@ public class guess extends BaseActivity {
 			refash();
 			setAllButton(false);
 			txtLong.setText(getSonStr());
+			cleanStatus();
 		} else if (fathercount <= soncount) {
 			Log("卧底胜利");
 			SoundPlayer.playNormalSoure();
@@ -280,6 +291,7 @@ public class guess extends BaseActivity {
 			refash();
 			setAllButton(false);
 			txtLong.setText(getFatherStr());
+			cleanStatus();
 		} else {
 			int stringcount = overString.length;
 			int stringindex = Math.abs(random.nextInt()) % stringcount;
@@ -296,7 +308,8 @@ public class guess extends BaseActivity {
 		String str = shibaizhe;
 		for (int i = 0; i < content.length; i++) {
 			if (content[i].equals(son)) {
-				str += i + hao + "\t";
+				int temhao = i + 1;
+				str += temhao + hao + "\t";
 			}
 		}
 		return str;
@@ -308,7 +321,8 @@ public class guess extends BaseActivity {
 			if (content[i].equals(son)) {
 				continue;
 			}
-			str += i + hao + "\t";
+			int temhao = i + 1;
+			str += temhao + hao + "\t";
 		}
 		return str;
 	}

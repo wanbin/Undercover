@@ -3,7 +3,6 @@ package com.example.undercover;
 import java.util.Random;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -40,8 +39,6 @@ public class Setting extends BaseActivity {
 	// 是否添加空白词
 	private boolean isBlank;
 	
-	// 共享的参与和卧底数
-	private SharedPreferences gameInfo;
 
 	private RelativeLayout contentview;
 	// private int soncount = 1;
@@ -62,8 +59,6 @@ public class Setting extends BaseActivity {
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		
-		// 共享数据
-		gameInfo = getSharedPreferences("gameInfo", 0);
 		
 		afterShow.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override

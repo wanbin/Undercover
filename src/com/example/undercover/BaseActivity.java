@@ -1,6 +1,7 @@
 package com.example.undercover;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -26,7 +27,8 @@ public class BaseActivity extends Activity {
 
 	private static final String TAG = "TestSensorActivity";
 	private static final int SENSOR_SHAKE = 10;
-
+	// 共同存储单元
+	protected SharedPreferences gameInfo;
 	protected float initTime, duration, curTime, lastTime = 0, shake,
 			totalShake, last_x = 0.0f, last_y = 0.0f, last_z = 0.0f;
 	@Override
@@ -41,6 +43,9 @@ public class BaseActivity extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		disWidth = (int) dm.widthPixels;
 		disHeight = (int) dm.heightPixels;
+
+		// 共享数据
+		gameInfo = getSharedPreferences("gameInfo", 0);
 
 		// MobclickAgent.setSessionContinueMillis(60000);
 		SoundPlayer.init(this);
@@ -143,6 +148,63 @@ public class BaseActivity extends Activity {
 
 	public void siampleTitle(String title) {
 		Toast.makeText(BaseActivity.this, title, Toast.LENGTH_SHORT).show();
+	}
+
+
+	// 以下为存取中断时状态信息的地方
+	protected String[] getGuessContent() {
+		String temContent = gameInfo.getString("contentStr", "");
+		return temContent.split("_");
+	}
+
+	protected boolean[] getClickedContent() {
+		String temContent = gameInfo.getString("clickedStr", "");
+		String[] tem = temContent.split("_");
+		Log.v("boolean str", temContent);
+		boolean[] cliceked = new boolean[tem.length];
+		for (int i = 0; i < tem.length; i++) {
+			boolean temboolean = false;
+			if (tem[i].equals("1")) {
+				temboolean = true;
+			}
+			cliceked[i] = temboolean;
+		}
+
+		return cliceked;
+	}
+
+	protected void setContent(String[] content) {
+		String contentStr = "";
+		for (int i = 0; i < content.length; i++) {
+			contentStr += content[i] + "_";
+		}
+		contentStr = contentStr.substring(0, contentStr.length() - 1);
+		gameInfo.edit().putString("contentStr", contentStr).commit();
+	}
+
+	protected void updateClicked(boolean[] boolClick) {
+		String clickedStr = "";
+		for (int i = 0; i < boolClick.length; i++) {
+			int tem = 0;
+			if (boolClick[i]) {
+				tem = 1;
+			}
+			clickedStr += tem + "_";
+		}
+		clickedStr = clickedStr.substring(0, clickedStr.length() - 1);
+		gameInfo.edit().putString("clickedStr", clickedStr).commit();
+	}
+
+	protected void setSon(String son) {
+		gameInfo.edit().putString("son", son).commit();
+	}
+
+	protected boolean getStatus() {
+		return getClickedContent().length > 3;
+	}
+
+	protected void cleanStatus() {
+		gameInfo.edit().putString("clickedStr", "").commit();
 	}
 }
 
