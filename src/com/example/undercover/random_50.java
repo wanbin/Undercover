@@ -165,6 +165,6 @@ public class random_50 extends BaseActivity {
 	public void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		onBackPressed();
+//		onBackPressed();
 	}
 }

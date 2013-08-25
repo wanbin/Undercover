@@ -177,6 +177,6 @@ public class RotaryBottleActivity extends BaseActivity {
 		public void onStop() {
 			// TODO Auto-generated method stub
 			super.onStop();
-			onBackPressed();
+//			onBackPressed();
 		}
 }
