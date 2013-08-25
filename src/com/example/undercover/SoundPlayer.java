@@ -166,6 +166,14 @@ public class SoundPlayer{
 		pauseMusic();
 	}
 
+	public static void playRolling() {
+		playMusic(R.raw.rolling, true);
+	}
+
+	public static void stopRolling() {
+		pauseMusic();
+	}
+
 	public static void playHighSoure() {
 		playSound(R.raw.hiscore02);
 	}

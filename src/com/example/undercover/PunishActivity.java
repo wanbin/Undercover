@@ -208,6 +208,7 @@ public class PunishActivity extends BaseActivity {
 		animDrawable.stop();
 		animDrawable.start();
 		discStart = true;
+		SoundPlayer.playRolling();
 	}
 
 	private void discstop() {
@@ -222,6 +223,7 @@ public class PunishActivity extends BaseActivity {
 		// al.setRepeatCount(-1);
 		as.addAnimation(al);
 		as.setFillAfter(true);
+		SoundPlayer.stopRolling();
 		imagedice.startAnimation(as);
 
 	}
