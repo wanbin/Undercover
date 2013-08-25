@@ -59,7 +59,7 @@ public class QuestionAnswer extends BaseActivity {
 		imageNext = (ImageView) findViewById(R.id.question_image);
 		imageNext.setBackgroundResource(R.drawable.popo152);
 		questionNext = (TextView) findViewById(R.id.questionNext);
-		questionNext.setText("Ready Go !");
+		questionNext.setText("开始游戏");
 
 		proBar = (ProgressBar) findViewById(R.id.question_proar);
 		proBar.setMax(3000);
