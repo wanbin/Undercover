@@ -10,9 +10,8 @@
         android:layout_width="230dp"
         android:layout_height="230dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/click" />
-
- 
+        android:background="@drawable/click"
+        android:visibility="invisible" />
 
     <FrameLayout
         android:id="@+id/warpclick"
@@ -30,17 +29,6 @@
         android:layout_alignParentTop="true"
         android:text="@string/dangerousrate"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:gravity="left|center"
-        android:padding="5dp"
-        android:text="@string/clicksay" />
 
     <ImageView
         android:id="@+id/btnreturn"
@@ -77,5 +65,73 @@
        android:layout_alignTop="@+id/btnreturn"
        android:layout_centerHorizontal="true"
        android:text="@string/lose" />
+
+   <TextView
+       android:id="@+id/textView3"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/imageBtnMain"
+       android:layout_alignParentLeft="true"
+       android:gravity="left|center"
+       android:padding="5dp"
+       android:text="@string/clicksay" />
+
+   <RelativeLayout
+       android:id="@+id/setPeopleCount"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true" >
+
+       <Button
+           android:id="@+id/startClickme"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/subPeople"
+           android:layout_centerHorizontal="true"
+           android:background="@drawable/btnbg"
+           android:text="@string/startGame" />
+
+       <Button
+           android:id="@+id/subPeople"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_centerVertical="true"
+           android:layout_toLeftOf="@+id/startClickme"
+           android:background="@drawable/popo72"
+           android:text="-" />
+
+       <Button
+           android:id="@+id/addPeople"
+           android:layout_width="50dp"
+           android:layout_height="50dp"
+           android:layout_below="@+id/textView1"
+           android:layout_toRightOf="@+id/startClickme"
+           android:background="@drawable/popo72"
+           android:text="+" />
+
+       <TextView
+           android:id="@+id/textView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_above="@+id/subPeople"
+           android:layout_alignParentLeft="true"
+           android:layout_marginBottom="20dp"
+           android:layout_marginLeft="16dp"
+           android:text="@string/textPeople"
+           android:textAppearance="?android:attr/textAppearanceLarge" />
+
+       <TextView
+           android:id="@+id/peopleCount"
+           android:layout_width="80dp"
+           android:layout_height="80dp"
+           android:layout_above="@+id/startClickme"
+           android:layout_centerHorizontal="true"
+           android:background="@drawable/popo72"
+           android:gravity="center"
+           android:text="6"
+           android:textAppearance="?android:attr/textAppearanceLarge" />
+
+   </RelativeLayout>
 
 </RelativeLayout>
