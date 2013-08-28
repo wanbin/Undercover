@@ -336,7 +336,7 @@ public class SelectGameActivity extends BaseActivity {
 		new AlertDialog.Builder(this)
 				.setTitle(strFromId("exit"))
             .setIcon(android.R.drawable.ic_dialog_info)  
-				.setPositiveButton(strFromId("do"),
+				.setPositiveButton(strFromId("doit"),
 						new DialogInterface.OnClickListener() {
           
                 @Override  
@@ -346,7 +346,7 @@ public class SelectGameActivity extends BaseActivity {
           
                 }  
             })  
-				.setNegativeButton(strFromId("return"),
+				.setNegativeButton(strFromId("returnit"),
 						new DialogInterface.OnClickListener() {
           
                 @Override  
