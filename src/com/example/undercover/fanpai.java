@@ -1,10 +1,6 @@
 package com.example.undercover;
 
 import java.util.Random;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
