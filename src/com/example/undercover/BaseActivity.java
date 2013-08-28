@@ -207,5 +207,11 @@ public class BaseActivity extends Activity {
 	protected void cleanStatus() {
 		gameInfo.edit().putString("clickedStr", "").commit();
 	}
+
+	protected String strFromId(String strid) {
+		int id = getResources().getIdentifier(
+				"com.example.undercover:string/" + strid, null, null);
+		return getResources().getString(id);
+	}
 }
 

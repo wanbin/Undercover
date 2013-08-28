@@ -74,10 +74,10 @@ public class SelectGameActivity extends BaseActivity {
 		boolean soundon = SoundPlayer.getSoundSt();
 		if (soundon) {
 			sound.setChecked(true);
-			sound.setText("音效：开");
+			sound.setText(strFromId("soundon"));
 		} else {
 			sound.setChecked(false);
-			sound.setText("音效：关");
+			sound.setText(strFromId("soundoff"));
 		}
 
 		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
@@ -86,9 +86,9 @@ public class SelectGameActivity extends BaseActivity {
 					boolean isChecked) {
 				if (isChecked) {
 					SoundPlayer.setSoundSt(true);
-					sound.setText("音效：开");
+					sound.setText(strFromId("soundon"));
 				} else {
-					sound.setText("音效：关");
+					sound.setText(strFromId("soundoff"));
 					SoundPlayer.setSoundSt(false);
 				}
 			}
@@ -133,7 +133,7 @@ public class SelectGameActivity extends BaseActivity {
 		btnStart.setOnClickListener(new MyClickListener());
 
 		if (getStatus()) {
-			btnStart.setText("接着上局玩");
+			btnStart.setText(strFromId("strcontinue"));
 		}
 
 		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
@@ -333,23 +333,26 @@ public class SelectGameActivity extends BaseActivity {
     
 	// 退出确认
     public void onBackPressed() {  
-		new AlertDialog.Builder(this).setTitle("确认退出吗？")
+		new AlertDialog.Builder(this)
+				.setTitle(strFromId("exit"))
             .setIcon(android.R.drawable.ic_dialog_info)  
-				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				.setPositiveButton(strFromId("do"),
+						new DialogInterface.OnClickListener() {
           
                 @Override  
                 public void onClick(DialogInterface dialog, int which) {  
-						// 点击“确认”后的操作
+								// 点击“确认”后的操作
                 SelectGameActivity.this.finish();  
           
                 }  
             })  
-				.setNegativeButton("返回", new DialogInterface.OnClickListener() {
+				.setNegativeButton(strFromId("return"),
+						new DialogInterface.OnClickListener() {
           
                 @Override  
                 public void onClick(DialogInterface dialog, int which) {  
-						// 点击“返回”后的操作,这里不设置没有任何操作
-					}
+								// 点击“返回”后的操作,这里不设置没有任何操作
+							}
             }).show();  
         // super.onBackPressed();  
     }  
@@ -364,9 +367,9 @@ public class SelectGameActivity extends BaseActivity {
 	public void onResume() {
 		super.onResume();
 		if (!getStatus()) {
-			btnStart.setText("开始游戏");
+			btnStart.setText(strFromId("strBgn"));
 		} else {
-			btnStart.setText("接着上局玩");
+			btnStart.setText(strFromId("strcontinue"));
 		}
 	}
 }

@@ -262,7 +262,7 @@ public class guess extends BaseActivity {
 		for (int i = 0; i < content.length; i++) {
 			int temindex = seq % content.length + 1;
 			if (!hasClicked[temindex - 1]) {
-				strSeq += temindex + "号\t";
+				strSeq += temindex + strFromId("hao");
 			}
 			seq++;
 		}
