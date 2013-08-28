@@ -42,7 +42,7 @@ public class SelectGameActivity extends BaseActivity {
     private ImageView[] imageViews;
     
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
-			appmakerbButton, btnStart, usercontribution;
+			appmakerbButton, btnStart, usercontribution, zhenxin;
     private ImageView startButton;
 	private CheckBox sound;
 	private boolean soundon = true;
@@ -158,6 +158,10 @@ public class SelectGameActivity extends BaseActivity {
         questionButton.setBackgroundResource(R.drawable.btnbg);
         questionButton.setOnClickListener(new MyClickListener());
         
+		zhenxin = (Button) moreView.findViewById(R.id.zhenxin);
+		zhenxin.setBackgroundResource(R.drawable.btnbg);
+		zhenxin.setOnClickListener(new MyClickListener());
+
         viewPager.setAdapter(new MyPageAdapter());
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
         viewPager.setCurrentItem(1);
@@ -226,6 +230,11 @@ public class SelectGameActivity extends BaseActivity {
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, QuestionAnswer.class);
 				uMengClick("game_ask");
+				break;
+			case R.id.zhenxin:
+				SoundPlayer.playball();
+				mIntent.setClass(SelectGameActivity.this, PunishActivity.class);
+				uMengClick("game_zhenxinhua_damaoxian");
 				break;
 			default:
 				break;
@@ -322,25 +331,25 @@ public class SelectGameActivity extends BaseActivity {
     	
     }
     
-  //退出确认
+	// 退出确认
     public void onBackPressed() {  
-        new AlertDialog.Builder(this).setTitle("确认退出吗？")  
+		new AlertDialog.Builder(this).setTitle("确认退出吗？")
             .setIcon(android.R.drawable.ic_dialog_info)  
-            .setPositiveButton("确定", new DialogInterface.OnClickListener() {  
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
           
                 @Override  
                 public void onClick(DialogInterface dialog, int which) {  
-                // 点击“确认”后的操作  
+						// 点击“确认”后的操作
                 SelectGameActivity.this.finish();  
           
                 }  
             })  
-            .setNegativeButton("返回", new DialogInterface.OnClickListener() {  
+				.setNegativeButton("返回", new DialogInterface.OnClickListener() {
           
                 @Override  
                 public void onClick(DialogInterface dialog, int which) {  
-                // 点击“返回”后的操作,这里不设置没有任何操作  
-                }  
+						// 点击“返回”后的操作,这里不设置没有任何操作
+					}
             }).show();  
         // super.onBackPressed();  
     }  
