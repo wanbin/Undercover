@@ -34,4 +34,13 @@ public class PunishProps {
 	public static String getQestionEasy(int str){
 		return questionBundle.getString("question_easy_"+str+"");
 	}
+	
+	/**
+	 * 获得绕口令
+	 * @param str
+	 * @return
+	 */
+	public static String getRaoKouLing(int str){
+		return questionBundle.getString("raokouling_"+str+"");
+	}
 }

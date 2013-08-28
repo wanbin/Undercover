@@ -132,7 +132,6 @@ public class QuestionAnswer extends BaseActivity {
 		backView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				SoundPlayer.playball();
 				SoundPlayer.stopJishi();
 				finish();
@@ -194,8 +193,8 @@ public class QuestionAnswer extends BaseActivity {
 	 * 进入下一题（每次取两道题目）
 	 */
 	private void getNextQuestion() {
-		int hardQuestion = (int) Math.floor(Math.random() * 45);
-		punish_0.setText("1、" + PunishProps.getQestionHard(hardQuestion));
+		int hardQuestion = (int) Math.floor(Math.random() * 13);
+		punish_0.setText("快速说出绕口令：\n" + PunishProps.getRaoKouLing(hardQuestion));
 	}
 
 	private void restartActivity() {
