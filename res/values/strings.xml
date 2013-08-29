@@ -120,4 +120,5 @@
 <string name="setting_word_city">城市地区</string>
 <string name="setting_word_all">全部分类</string>
 <string name="setting_word">长按选择分类</string>
+<string name="setting_word_new">当前词组类别：</string>
 </resources>

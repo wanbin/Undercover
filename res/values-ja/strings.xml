@@ -120,4 +120,5 @@
 <string name="setting_word_city">都市部</string>
 <string name="setting_word_all">すべてのカテゴリ</string>
 <string name="setting_word">長押し選択カテゴリ</string>
+<string name="setting_word_new">現在のフレーズカテゴリ：</string>
 </resources>

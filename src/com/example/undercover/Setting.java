@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
@@ -35,11 +35,11 @@ public class Setting extends BaseActivity {
 	private boolean isShow = true;
 	// 是否添加空白词
 	private boolean isBlank = false;
-	//分类词组
+	// 分类词组
 //	private StringBuffer word=new StringBuffer();
 	// 共享的参与和卧底数
 	private SharedPreferences gameInfo;
-	//长按触发菜单的按钮
+	// 长按触发菜单的按钮
 	private Button popoBtn;
 //	private int itemChecked;
 	private String wordStr	= "eat,pard,hard,big,people,city,wenyi";
@@ -57,7 +57,9 @@ public class Setting extends BaseActivity {
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
 		wordText = (TextView) findViewById(R.id.wordText);
-		wordText.setText("当前词组类别：全部分类");
+
+		wordText.setText(strFromId("setting_word_new")
+				+ strFromId("setting_word_all"));
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		popoBtn	= (Button)findViewById(R.id.popo_button);
@@ -256,38 +258,46 @@ public class Setting extends BaseActivity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		item.setChecked(true);
-//		itemChecked	= item.getItemId(); //记录被选中的菜单项的ID
+		// itemChecked = item.getItemId(); //记录被选中的菜单项的ID
 		switch (item.getItemId()) {
 			case R.id.word_eat:
 				wordStr="eat";
-				wordText.setText("当前词组类别：吃货");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_eat"));
 				break;
 			case R.id.word_pard:
 				wordStr="pard";
-				wordText.setText("当前词组类别：品牌");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_pard"));
 				break;
 			case R.id.word_hard:
 				wordStr="hard";
-				wordText.setText("当前词组类别：高手");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_hard"));
 				break;
 			case R.id.word_big:
 				wordStr="big";
-				wordText.setText("当前词组类别：重口味");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_big"));
 				break;
 			case R.id.word_people:
 				wordStr="people";
-				wordText.setText("当前词组类别：人物角色");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_people"));
 				break;
 			case R.id.word_city:
 				wordStr="city";
-				wordText.setText("当前词组类别：城市地区");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_city"));
 				break;
 			case R.id.word_wenyi:
 				wordStr="wenyi";
-				wordText.setText("当前词组类别：文艺青年");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_wenyi"));
 				break;
 			case R.id.word_all:
-				wordText.setText("当前词组类别：全部分类");
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_all"));
 				break;
 			default:
 				break;
