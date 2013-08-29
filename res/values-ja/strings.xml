@@ -98,7 +98,7 @@
 <string name="ci">二次</string>
 <string name="shibaizhe">罰を受け入れる：</string>
 <string name="fayan">話す順序：</string>
-<string name="hao">数</string>
+<string name="hao">数\t</string>
 <string name="GameRule">ゲームのルール：\ n1は、参加者の数を選択して、アンダーカバーの数はゲーム\ N2を起動すると、一人一人がおとりに投票するには、各ラウンドの説明\ N5、終了後、自分の言葉\ n4のを説明するためには、言葉や数字\ n3のを覚えておく必要があります残りの選手は記述していき</string>
 <string name="Vrequir">勝利条件：\ n1は、おとりすべて疑惑の民間人の勝利を認識\ n2は、民間人のより大きいおとり番号または同数、おとり勝利</string>
 <string name="usercontribution">ユーザーの投稿記録</string>
@@ -111,4 +111,13 @@
 <string name="soundoff">サウンド：オフ</string>
 <string name="doit">決定する</string>
 <string name="returnit">復帰</string>
+<string name="setting_word_eat">食料品</string>
+<string name="setting_word_pard">ブランド</string>
+<string name="setting_word_hard">エース</string>
+<string name="setting_word_big">フレーバー</string>
+<string name="setting_word_wenyi">若いアーティスト</string>
+<string name="setting_word_people">文字</string>
+<string name="setting_word_city">都市部</string>
+<string name="setting_word_all">すべてのカテゴリ</string>
+<string name="setting_word">長押し選択カテゴリ</string>
 </resources>

@@ -111,4 +111,13 @@
 <string name="soundoff">Sound: OFF</string>
 <string name="doit">Determine</string>
 <string name="returnit">Return</string>
+<string name="setting_word_eat">Food goods</string>
+<string name="setting_word_pard">Brands</string>
+<string name="setting_word_hard">Ace</string>
+<string name="setting_word_big">Flavors</string>
+<string name="setting_word_wenyi">Young artists</string>
+<string name="setting_word_people">Characters</string>
+<string name="setting_word_city">Urban areas</string>
+<string name="setting_word_all">All Categories</string>
+<string name="setting_word">Long press Select Category</string>
 </resources>

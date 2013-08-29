@@ -71,7 +71,7 @@ public class SelectGameActivity extends BaseActivity {
 		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
 
 		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
-		boolean soundon = SoundPlayer.getSoundSt();
+		soundon = SoundPlayer.getSoundSt();
 		if (soundon) {
 			sound.setChecked(true);
 			sound.setText(strFromId("soundon"));
