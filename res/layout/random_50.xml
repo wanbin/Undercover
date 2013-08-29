@@ -93,8 +93,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/textPeople"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:text="@string/textPeople"/>
 
             <Button
                 android:id="@+id/subPeople"

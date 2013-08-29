@@ -61,13 +61,15 @@ public class random_50 extends BaseActivity {
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
 		
+		peopleCount = gameInfo.getInt("peopleCount", 4);
+
 		// 设置人数的相关按钮和层
 		addPeopleButton = (Button) findViewById(R.id.addPeople);
 		subPeopleButton = (Button) findViewById(R.id.subPeople);
 		startClickme = (Button) findViewById(R.id.startClickme);
 		countTextView = (TextView) findViewById(R.id.peopleCount);
 		setPeople = (RelativeLayout) findViewById(R.id.setPeopleCount);
-
+		countTextView.setText(Integer.toString(peopleCount));
 		punishment_button = (Button) findViewById(R.id.button1);
 		// back_button = (Button) findViewById(R.id.button3);
 		// punishBtn = (Button) findViewById(R.id.punishBtn);

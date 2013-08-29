@@ -37,8 +37,8 @@ public class QuestionAnswer extends BaseActivity {
 	private boolean isTimeRun;
 	/** 惩罚页面跳转按钮 */
 	private Button intentPunish;
-	private int startSec = 2000;
-	private int endSec = 6000;
+	private int startSec = 4000;
+	private int endSec = 12000;
 	private String nextQuestion;
 	private String GameOver;
 
