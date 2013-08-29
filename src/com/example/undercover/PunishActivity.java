@@ -147,15 +147,9 @@ public class PunishActivity extends BaseActivity {
 				if(!isTouch){
 					Timer timer	= new Timer();
 					timer.schedule(timetask, 0, 68);
-					randomBtn.setTextSize(25);
 					isTouch	= true;
 				}else {
 					SoundPlayer.playclaps();
-				}
-				if (!isTouch) {
-					Timer timer = new Timer();
-					timer.schedule(timetask, 0, 68);
-					isTouch = true;
 				}
 				isRandom = !isRandom;
 			}
@@ -218,6 +212,7 @@ public class PunishActivity extends BaseActivity {
 		as.addAnimation(al);
 		as.setFillAfter(true);
 		SoundPlayer.stopRolling();
+		SoundPlayer.playclaps();
 		imagedice.startAnimation(as);
 
 	}
