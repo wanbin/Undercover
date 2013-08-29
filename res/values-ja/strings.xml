@@ -89,7 +89,7 @@
 <string name="overString8">アンダーカバー、あなたはどのように考えている〜</string>
 <string name="Version">覆面] [バージョン1.08は誰ですか</string>
 <string name="suggest">コメントと提案：</string>
-<string name="suggest1">\ N \ Nの新機能\ nv1.08バージョン：。ん\ n \ n1のゲームが、より強力な割り込みがあり、その後、機能を果たして〜\ n2は、いくつかの興味深い音\ n3はみんなのコメントが追加！ユーザーの投稿に加え、壁のモジュール</string>
+<string name="suggest1">\ N \ Nの新機能\ nv1.09バージョン：。ん\ n \ n1のゲームが、より強力な割り込みがあり、その後、機能を果たして〜\ n2は、いくつかの興味深い音\ n3はみんなのコメントが追加！ユーザーの投稿に加え、壁のモジュール</string>
 <string name="PunishInTurn">罰を受け入れるために学生を入力してください</string>
 <string name="nextQuestion">次の質問</string>
 <string name="GameOver">ゲームオーバー</string>
@@ -98,7 +98,7 @@
 <string name="ci">二次</string>
 <string name="shibaizhe">罰を受け入れる：</string>
 <string name="fayan">話す順序：</string>
-<string name="hao">数:%d\t</string>
+<string name="hao">数%s\t</string>
 <string name="GameRule">ゲームのルール：\ n1は、参加者の数を選択して、アンダーカバーの数はゲーム\ N2を起動すると、一人一人がおとりに投票するには、各ラウンドの説明\ N5、終了後、自分の言葉\ n4のを説明するためには、言葉や数字\ n3のを覚えておく必要があります残りの選手は記述していき</string>
 <string name="Vrequir">勝利条件：\ n1は、おとりすべて疑惑の民間人の勝利を認識\ n2は、民間人のより大きいおとり番号または同数、おとり勝利</string>
 <string name="usercontribution">ユーザーの投稿記録</string>

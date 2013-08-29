@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">谁是卧底</string>
+<string name="app_name">谁是卧底</string>
 <string name="punishmen">开始惩罚</string>
 <string name="hello_world">Hello world!</string>
 <string name="menu_settings">Settings</string>
@@ -87,9 +87,9 @@
 <string name="overString6">投错一个就少一个战友~</string>
 <string name="overString7">卧底卧底，你在哪里！</string>
 <string name="overString8">卧底，你是想怎样~</string>
-<string name="Version">【谁是卧底】1.08版本</string>
+<string name="Version">【谁是卧底】1.09版本</string>
 <string name="suggest">意见及建议：</string>
-<string name="suggest1">\n\n\nv1.08版本新功能：\n\n1.游戏拥有更强大的中断接着玩的功能了~\n2.加了一些有意思的音效\n3.每人都提意见！加了用户贡献墙模块</string>
+<string name="suggest1">\n4.更多优化细节等你来发现~</string>
 <string name="PunishInTurn">请输的同学依次接受惩罚</string>
 <string name="nextQuestion">下一题</string>
 <string name="GameOver">游戏结束</string>
@@ -98,7 +98,7 @@
 <string name="ci">次</string>
 <string name="shibaizhe">接受惩罚:</string>
 <string name="fayan">发言顺序:</string>
-<string name="hao">号\t</string>
+<string name="hao">%s号\t</string>
 <string name="GameRule">游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述</string>
 <string name="Vrequir">胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利</string>
 <string name="usercontribution">用户贡献</string>

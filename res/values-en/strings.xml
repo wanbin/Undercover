@@ -20,7 +20,7 @@
 <string name="chatroom">Open the chat room</string>
 <string name="question_jump">Enter brainstorming</string>
 <string name="question_title">Start brainstorming friends, quack</string>
-<string name="givetoother">Please avoid being seen other players</string>
+<string name="givetoother">Avoid being seen</string>
 <string name="question_rule"></string>
 <string name="question_next">Next question</string>
 <string name="more">More</string>
@@ -87,9 +87,9 @@
 <string name="overString6">Cast the wrong one less a comrade ~</string>
 <string name="overString7">Undercover undercover, where are you!</string>
 <string name="overString8">Undercover, you are thinking of how ~</string>
-<string name="Version">Who is the undercover] [version 1.08</string>
+<string name="Version">Who is the undercover V1.08</string>
 <string name="suggest">Comments and suggestions:</string>
-<string name="suggest1">\ N \ n \ nv1.08 version of the new features: \ n \ n1. Game has a more powerful interrupt and then play the function ~ \ n2. Added some interesting sound \ n3. Everyone comments! User contributions plus wall module</string>
+<string name="suggest1">\ N \ n \ nv1.09 version of the new features: \ n \ n1. Game has a more powerful interrupt and then play the function ~ \ n2. Added some interesting sound \ n3. Everyone comments! User contributions plus wall module</string>
 <string name="PunishInTurn">Please enter the students in order to accept punishment</string>
 <string name="nextQuestion">Next question</string>
 <string name="GameOver">Game Over</string>
