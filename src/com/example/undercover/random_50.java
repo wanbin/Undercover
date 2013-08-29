@@ -2,8 +2,6 @@ package com.example.undercover;
 
 import java.util.Random;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,20 +23,20 @@ public class random_50 extends BaseActivity {
 
 	private Button punishment_button;
 	private Button back_button;
-	//添加和减少人数按钮
-	private Button addPeopleButton,subPeopleButton;
+	// 添加和减少人数按钮
+	private Button addPeopleButton, subPeopleButton;
 
-	//开始游戏按钮
+	// 开始游戏按钮
 	private Button startClickme;
 	
-	//设置人数的 层
+	// 设置人数的 层
 	private RelativeLayout setPeople;
 	
 	private TextView Probability;
 	private TextView clicktimes;
 	private TextView preference;
 	
-	//显示人数的textView
+	// 显示人数的textView
 	private TextView countTextView;
 	
 	private TextView lose;
@@ -46,7 +44,7 @@ public class random_50 extends BaseActivity {
 	private String click;
 	private String ci;
 	
-	//参与人数，默认为 6
+	// 参与人数，默认为 6
 	private int peopleCount = 6;
 	private static int randomLimit;
 	
@@ -63,7 +61,7 @@ public class random_50 extends BaseActivity {
 		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
 		
-		//设置人数的相关按钮和层
+		// 设置人数的相关按钮和层
 		addPeopleButton = (Button) findViewById(R.id.addPeople);
 		subPeopleButton = (Button) findViewById(R.id.subPeople);
 		startClickme = (Button) findViewById(R.id.startClickme);
@@ -96,7 +94,7 @@ public class random_50 extends BaseActivity {
 		aniSet.addAnimation(scaleAn);
 		aniSet.addAnimation(scaleAni);
 
-		//设置添加和减少按钮的监听
+		// 设置添加和减少按钮的监听
 		addPeopleButton.setOnClickListener(new Button.OnClickListener(){
 			@Override
 			public void onClick(View v){
@@ -134,6 +132,7 @@ public class random_50 extends BaseActivity {
 				click_times = randomLimit;
 				random_times = Math.abs(random.nextInt()) % randomLimit;
 				DisplayParameter(0);
+				preference.setVisibility(View.INVISIBLE);
 				Log.d("Tag",String.valueOf(randomLimit));
 				Log.d("Tag",String.valueOf(random_times));
 			}
@@ -147,7 +146,6 @@ public class random_50 extends BaseActivity {
 				
 				click_times--;
 				DisplayParameter(randomLimit - click_times);
-				preference.setVisibility(View.INVISIBLE);
 				if (click_times <= random_times) {
 					SoundPlayer.playclaps();
 					setFinish();
@@ -212,25 +210,26 @@ public class random_50 extends BaseActivity {
 		Probability.setText(dangerrate + Math.floor(((float)time/(float)randomLimit)*100) +click 
 				+ time + ci);
 	}
-//退出确认
+
+	// 退出确认
 //	public void onBackPressed() {  
-//    	new AlertDialog.Builder(this).setTitle("确认退出吗？")  
+	// new AlertDialog.Builder(this).setTitle("确认退出吗？")
 //    	    .setIcon(android.R.drawable.ic_dialog_info)  
-//    	    .setPositiveButton("确定", new DialogInterface.OnClickListener() {  
+	// .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 //    	  
 //    	        @Override  
 //    	        public void onClick(DialogInterface dialog, int which) {  
-//    	        // 点击“确认”后的操作  
+	// // 点击“确认”后的操作
 //    	        random_50.this.finish();  
 //    	  
 //    	        }  
 //    	    })  
-//    	    .setNegativeButton("返回", new DialogInterface.OnClickListener() {  
+	// .setNegativeButton("返回", new DialogInterface.OnClickListener() {
 //    	  
 //    	        @Override  
 //    	        public void onClick(DialogInterface dialog, int which) {  
-//    	        // 点击“返回”后的操作,这里不设置没有任何操作  
-//    	        }  
+	// // 点击“返回”后的操作,这里不设置没有任何操作
+	// }
 //    	    }).show();  
 //    	// super.onBackPressed();  
 //	}  

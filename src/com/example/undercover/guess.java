@@ -189,7 +189,7 @@ public class guess extends BaseActivity {
 							tt.setBackgroundResource(R.drawable.popogray72);
 							SoundPlayer.playball();
 							if(isShow){
-								text.setTextSize(20);
+								text.setTextSize(13);
 								if (content[(Integer) v.getTag()].equals(son)) {
 									SoundPlayer.playChuiShao();
 									text.setText(undercover);
