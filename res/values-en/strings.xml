@@ -98,7 +98,7 @@
 <string name="ci">Secondary</string>
 <string name="shibaizhe">Accept the punishment:</string>
 <string name="fayan">Speaking order:</string>
-<string name="hao">Number\t</string>
+<string name="hao">NO.%s\t</string>
 <string name="GameRule">Rules of the game: \ n1, select the number of participants and the number of undercover start the game \ n2, each person must remember the words and numbers \ n3, in order to describe their own words \ n4, after the end of each round description to vote for undercover \ n5, the remaining players continue to describe</string>
 <string name="Vrequir">Victory Conditions: \ n1, undercover recognize all alleged civilian victory \ n2, undercover number greater than or equal number of civilians, the undercover victory</string>
 <string name="usercontribution">User contributions</string>

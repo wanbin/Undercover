@@ -262,7 +262,8 @@ public class guess extends BaseActivity {
 		for (int i = 0; i < content.length; i++) {
 			int temindex = seq % content.length + 1;
 			if (!hasClicked[temindex - 1]) {
-				strSeq += temindex + strFromId("hao");
+				String tem = String.format(hao, temindex);
+				strSeq += tem;
 			}
 			seq++;
 		}
@@ -309,7 +310,8 @@ public class guess extends BaseActivity {
 		for (int i = 0; i < content.length; i++) {
 			if (content[i].equals(son)) {
 				int temhao = i + 1;
-				str += temhao + hao + "\t";
+				String tem = String.format(hao, temhao);
+				str += tem;
 			}
 		}
 		return str;
@@ -322,7 +324,8 @@ public class guess extends BaseActivity {
 				continue;
 			}
 			int temhao = i + 1;
-			str += temhao + hao + "\t";
+			String tem = String.format(hao, temhao);
+			str += tem;
 		}
 		return str;
 	}
