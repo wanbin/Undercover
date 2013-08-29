@@ -14,6 +14,7 @@ import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
@@ -38,7 +39,7 @@ public class BaseActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		MobclickAgent.setDebugMode(true);
 		MobclickAgent.onError(this);
-
+		
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		disWidth = (int) dm.widthPixels;
@@ -61,6 +62,8 @@ public class BaseActivity extends Activity {
 
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		//保持屏幕常亮，仅此一句
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); 
 	}
 
 	public void onResume() {
