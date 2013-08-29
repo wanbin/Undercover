@@ -148,7 +148,11 @@ public class PunishActivity extends BaseActivity {
 					Timer timer	= new Timer();
 					timer.schedule(timetask, 0, 68);
 					isTouch	= true;
+					punish_disc.setClickable(false);
+					punish_disc.setBackgroundResource(R.drawable.btnbggray);
 				}else {
+					punish_disc.setClickable(true);
+					punish_disc.setBackgroundResource(R.drawable.btnbg);
 					SoundPlayer.playclaps();
 				}
 				isRandom = !isRandom;
@@ -167,20 +171,20 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				shackAction();
-
 			}
 		});
 	}// onCreat 方法结束
 	
 
 	private void discstart() {
+		randomBtn.setClickable(false);
+		randomBtn.setBackgroundResource(R.drawable.btnbggray);
 		imagedice.setBackgroundResource(0);
 		imagedice.setVisibility(View.VISIBLE);
 		imagedice.clearAnimation();
 		imagedice.setBackgroundResource(R.anim.dics);
-		
 		AnimationSet as=new AnimationSet(true);  
-		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, -500, 0,
+		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, -1000, 0,
 				0);
 		al.setDuration(1000);
 		// al.setRepeatMode(Animation.REVERSE);
@@ -190,9 +194,6 @@ public class PunishActivity extends BaseActivity {
 
 		AnimationDrawable animDrawable = (AnimationDrawable) imagedice
 				.getBackground();
-
-		
-
 		animDrawable.stop();
 		animDrawable.start();
 		discStart = true;
@@ -200,11 +201,14 @@ public class PunishActivity extends BaseActivity {
 	}
 
 	private void discstop() {
+		randomBtn.setClickable(true);
+		randomBtn.setBackgroundResource(R.drawable.btnbg);
 		imagedice.clearAnimation();
 		discStart = false;
 		imagedice.setBackgroundResource(randomDisc());
 		AnimationSet as = new AnimationSet(true);
-		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, 0, 0, 500);
+		TranslateAnimation al = new TranslateAnimation(0, 0, 0, 0, 0, 0, 0,
+				1000);
 		al.setDuration(1000);
 		al.setStartOffset(500);
 		// al.setRepeatMode(Animation.REVERSE);
@@ -290,10 +294,15 @@ public class PunishActivity extends BaseActivity {
 	// 重写摇动事件
 	@Override
 	public void shackAction() {
+		if (isRandom)
+			return;
 		if (discStart) {
 			discstop();
 		} else {
+			randomBtn.setText(getResources().getString(
+					R.string.punish_random_btn));
 			discstart();
+
 		}
 	}
 	
