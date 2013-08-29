@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="contribution">
+        <item>huianl**@163.com</item>
+        <item>有胆量就问的问题修改，读绕口令之类趣味的问题_1.09</item>
         <item>cjl_20**@163.com</item>
         <item>卧底失败和平民失败用不同的声音_10.8</item>
         <item>huianl**@163.com</item>
@@ -8,6 +10,6 @@
         <item>TY-K-Touch_E619+</item>
         <item>可以增加一个从谁先发言的功能_1.08</item>
         <item>huaxialiuchunlo**@gmail.com</item>
-        <item>卧底词汇应该进行分类，比如：吃货，地点，重口味等_1.08</item>
+        <item>卧底词汇应该进行分类，比如：吃货，地点，重口味等_1.09</item>
     </string-array>
 </resources>

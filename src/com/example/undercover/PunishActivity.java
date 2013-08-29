@@ -148,9 +148,11 @@ public class PunishActivity extends BaseActivity {
 					Timer timer	= new Timer();
 					timer.schedule(timetask, 0, 68);
 					isTouch	= true;
+				}
+				if (!isRandom) {
 					punish_disc.setClickable(false);
 					punish_disc.setBackgroundResource(R.drawable.btnbggray);
-				}else {
+				} else {
 					punish_disc.setClickable(true);
 					punish_disc.setBackgroundResource(R.drawable.btnbg);
 					SoundPlayer.playclaps();
