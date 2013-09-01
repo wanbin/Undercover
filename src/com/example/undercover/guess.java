@@ -175,8 +175,12 @@ public class guess extends BaseActivity {
 
 				select.setTag(temindex);
 				if (hasClicked[temindex]) {
+					// 身份进行确认
 					select.setBackgroundResource(R.drawable.popogray72);
 					select.setClickable(false);
+					if (isShow) {
+						initShenfen(text, temindex);
+					}
 				}else{
 					select.setBackgroundResource(R.drawable.popo72);
 					select.setOnLongClickListener(new Button.OnLongClickListener() {
@@ -232,6 +236,21 @@ public class guess extends BaseActivity {
 			}
 		});
 		checkGameOver();
+	}
+
+	private void initShenfen(TextView text, int index) {
+			text.setTextSize(13);
+			if (content[index].equals(son)) {
+				text.setText(undercover);
+				text.setTextColor(getResources().getColor(R.color.RED));
+			} else {
+				if (content[index].equals(blank)) {
+					text.setText(blank);
+					text.setTextColor(getResources().getColor(R.color.BLUE));
+				} else {
+					text.setText(aggrieved);
+				}
+			}
 	}
 
 	protected void setAllButton(boolean useable) {
