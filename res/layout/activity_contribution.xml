@@ -27,18 +27,10 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/thankyou" />
 
-        <TextView
-            android:id="@+id/txtEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-             android:autoLink="email"
-            android:text="@string/thankyou" />
-
         <ScrollView
             android:id="@+id/contentscroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="300dp"
             android:layout_margin="10dp" >
 
             <LinearLayout
@@ -50,6 +42,22 @@
             </LinearLayout>
 
         </ScrollView>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:autoLink="email"
+            android:text="@string/thankyou" />
+
+        <Button
+            android:id="@+id/btnfb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btnbg"
+            android:text="@string/feedback"  />
 
     </LinearLayout>
     
