@@ -1,6 +1,7 @@
 package com.example.undercover;
 
 import java.util.Random;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class fanpai extends BaseActivity {
@@ -18,8 +20,10 @@ public class fanpai extends BaseActivity {
 	private TextView txtShenfen;
 	private TextView txtIndex;
 	private TextView textViewab;
+	private Button btnchangeword;
+	private LinearLayout changeword;
 	private ImageView imagePan;
-	/** 按钮--记住了，传给下一位  */
+	/** 按钮--记住了，传给下一位 */
 	private Button btnOK;
 	private Random random;
 	private int nowIndex = 1;
@@ -43,6 +47,8 @@ public class fanpai extends BaseActivity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		isChecked = false;
 		btnOK = (Button) findViewById(R.id.btnOk);
+		btnchangeword = (Button) findViewById(R.id.btnchangeword);
+		changeword = (LinearLayout) findViewById(R.id.changeword);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		textViewab = (TextView) findViewById(R.id.textViewab);
@@ -50,35 +56,20 @@ public class fanpai extends BaseActivity {
 		blank = getResources().getString(R.string.blank);
 
 		random = new Random();
-		if(savedInstanceState == null){
-			//游戏一轮结束后，快速开始用。
-			gameInfo = getSharedPreferences("gameInfo", 0);
-			isBlank = gameInfo.getBoolean("isBlank", false);
-			isShow = gameInfo.getBoolean("isShow", false);
-			peopleCount = gameInfo.getInt("peopleCount", 4);
-			underCount = gameInfo.getInt("underCount", 1);
-			word	= gameInfo.getString("word", "eat").trim().split(",");
-			
-			Log.i("fanpai","***************获得的词组为："+gameInfo.getString("word", "").trim());
-			int num	= Math.abs(random.nextInt())%word.length;
-			libary	= getResources().getStringArray(getWords(word[num]));
-			int selectindex = Math.abs(random.nextInt()) % libary.length;
-			content = getRandomString(libary[selectindex]);
 
-		} else {
-			isBlank = savedInstanceState.getBoolean("isBlank");
-			isShow = savedInstanceState.getBoolean("isShow");
-			peopleCount = savedInstanceState.getInt("peopleCount");
-			underCount = savedInstanceState.getInt("underCount");
-			content = savedInstanceState.getStringArray("content");
-			nowIndex = savedInstanceState.getInt("nowIndex");
-			word	= savedInstanceState.getString("word", "eat").trim().split(",");
-			
-			Log.i("fanpai","***************获得的词组为："+gameInfo.getString("word", "").trim());
-			libary = getResources().getStringArray(getWords(word[0]));
-			int num	= Math.abs(new Random().nextInt()%word.length);
-			libary	= getResources().getStringArray(getWords(word[num]));
-		}
+		// 游戏一轮结束后，快速开始用。
+		gameInfo = getSharedPreferences("gameInfo", 0);
+		isBlank = gameInfo.getBoolean("isBlank", false);
+		isShow = gameInfo.getBoolean("isShow", false);
+		peopleCount = gameInfo.getInt("peopleCount", 4);
+		underCount = gameInfo.getInt("underCount", 1);
+		word = gameInfo.getString("word", "eat").trim().split(",");
+
+		Log.i("fanpai",
+				"***************获得的词组为："
+						+ gameInfo.getString("word", "").trim());
+		initFanpai();
+
 
 		// Bundle bundle = this.getIntent().getExtras();
 		// isBlank = bundle.getBoolean("isBlank");
@@ -92,7 +83,6 @@ public class fanpai extends BaseActivity {
 				if (!isChecked) {
 					if (!content[(i + blandStr) % len].equals(son)) {
 						isChecked = true;
-
 						content[(i + blandStr) % len] = blank;
 					}
 				}
@@ -106,6 +96,9 @@ public class fanpai extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				SoundPlayer.playball();
+				if (nowIndex >= 1) {
+					changeword.setVisibility(View.INVISIBLE);
+				}
 				if (nowIndex <= content.length) {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
@@ -140,11 +133,31 @@ public class fanpai extends BaseActivity {
 				SoundPlayer.playball();
 			}
 		});
+		// 刷新换词
+		btnchangeword.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// v.setVisibility(View.INVISIBLE);
+				initFanpai();
+			}
+		});
 
 	}
 
-	protected void initPan(int index) {
+	// 重新翻牌
+	protected void initFanpai() {
+		int num = Math.abs(random.nextInt()) % word.length;
+		libary = getResources().getStringArray(getWords(word[num]));
+		int selectindex = Math.abs(random.nextInt()) % libary.length;
+		content = getRandomString(libary[selectindex]);
+		nowIndex = 1;
+		txtIndex.setVisibility(View.VISIBLE);
+		imagePan.setVisibility(View.VISIBLE);
+		setContentVis(false);
+		initPan(nowIndex);
+	}
 
+	protected void initPan(int index) {
 		imagePan.setVisibility(View.VISIBLE);
 		txtIndex.setVisibility(View.VISIBLE);
 		txtIndex.setText("" + index);

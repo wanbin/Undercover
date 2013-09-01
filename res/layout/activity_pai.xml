@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-     android:background="@drawable/mainbg"  >
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbg" >
 
     <FrameLayout
+        android:id="@+id/frameLayout1"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:text="@string/givetoother" />
-        
+
         <Button
             android:id="@+id/btnOk"
             android:layout_width="220dp"
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/popo512" />
-        
+
         <TextView
             android:id="@+id/txtIndex"
             android:layout_width="wrap_content"
@@ -49,9 +50,27 @@
             android:layout_gravity="center"
             android:text="@string/one"
             android:textSize="@dimen/large80" />
-
-        
-
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/changeword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="right" >
+
+        <Button
+            android:id="@+id/btnchangeword"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/update" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/changeword" />
+    </LinearLayout>
 
 </RelativeLayout>

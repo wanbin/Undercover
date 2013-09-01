@@ -121,4 +121,5 @@
 <string name="setting_word_all">全部分类</string>
 <string name="setting_word">长按选择分类</string>
 <string name="setting_word_new">当前词组类别：</string>
+<string name="changeword">更换题目</string>
 </resources>
