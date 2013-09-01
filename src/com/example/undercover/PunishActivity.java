@@ -45,6 +45,8 @@ public class PunishActivity extends BaseActivity {
 	private ImageView imagedice;
 	private boolean discStart = false;
 	private Random random = new Random();
+	// 是否刚才按了摇骰子
+	private int isShackOneMinit = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -144,11 +146,7 @@ public class PunishActivity extends BaseActivity {
 		randomBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(!isTouch){
-					Timer timer	= new Timer();
-					timer.schedule(timetask, 0, 68);
-					isTouch	= true;
-				}
+				initTimer();
 				if (!isRandom) {
 					punish_disc.setClickable(false);
 					punish_disc.setBackgroundResource(R.drawable.btnbggray);
@@ -177,6 +175,14 @@ public class PunishActivity extends BaseActivity {
 		});
 	}// onCreat 方法结束
 	
+	// 初始化时间函数
+	private void initTimer() {
+		if (!isTouch) {
+			Timer timer = new Timer();
+			timer.schedule(timetask, 0, 68);
+			isTouch = true;
+		}
+	}
 
 	private void discstart() {
 		randomBtn.setClickable(false);
@@ -256,6 +262,7 @@ public class PunishActivity extends BaseActivity {
 			if(isRandom){
 				addTenMMS();
 			}
+			costMMS();
 			super.handleMessage(msg);
 		}
 	};
@@ -268,6 +275,11 @@ public class PunishActivity extends BaseActivity {
 		}
 	};
 	
+	private void costMMS() {
+		if (isShackOneMinit > 0) {
+			isShackOneMinit--;
+		}
+	}
 	private void addTenMMS(){
 		number = System.currentTimeMillis() % 6 + 1;
 		randomBtn.setText(number + "");
@@ -296,7 +308,8 @@ public class PunishActivity extends BaseActivity {
 	// 重写摇动事件
 	@Override
 	public void shackAction() {
-		if (isRandom)
+		initTimer();
+		if (isRandom || isShackOneMinit > 0)
 			return;
 		if (discStart) {
 			discstop();
@@ -304,8 +317,8 @@ public class PunishActivity extends BaseActivity {
 			randomBtn.setText(getResources().getString(
 					R.string.punish_random_btn));
 			discstart();
-
 		}
+		isShackOneMinit = 20;
 	}
 	
 	private int randomDisc() {
