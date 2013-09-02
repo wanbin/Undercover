@@ -3,6 +3,9 @@ package com.example.undercover;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,6 +35,9 @@ public class BaseActivity extends Activity {
 	protected SharedPreferences gameInfo;
 	protected float initTime, duration, curTime, lastTime = 0, shake,
 			totalShake, last_x = 0.0f, last_y = 0.0f, last_z = 0.0f;
+	
+	protected String VersionName = "1.00";
+	protected int versionType = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -39,7 +45,12 @@ public class BaseActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		MobclickAgent.setDebugMode(true);
 		MobclickAgent.onError(this);
-		
+		try {
+			VersionName = GetVersion();
+			// 初始化版本号信息,在替换界面元素时候使用
+			versionType = VersionName.charAt(0) - 48;
+		} catch (Exception e) {
+		}
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		disWidth = (int) dm.widthPixels;
@@ -62,8 +73,8 @@ public class BaseActivity extends Activity {
 
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		//保持屏幕常亮，仅此一句
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); 
+		// 保持屏幕常亮，仅此一句
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	}
 
 	public void onResume() {
@@ -215,6 +226,14 @@ public class BaseActivity extends Activity {
 		int id = getResources().getIdentifier(
 				"com.example.undercover:string/" + strid, null, null);
 		return getResources().getString(id);
+	}
+
+	protected String GetVersion() throws NameNotFoundException {
+		PackageManager packageManager = getPackageManager();
+		// getPackageName()是你当前类的包名，0代表是获取版本信息
+		PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),
+				0);
+		return packInfo.versionName;
 	}
 }
 
