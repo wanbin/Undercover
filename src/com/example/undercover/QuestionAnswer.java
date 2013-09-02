@@ -18,7 +18,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.util.MathUtil;
-import com.example.util.PunishProps;
 
 public class QuestionAnswer extends BaseActivity {
 
@@ -194,7 +193,8 @@ public class QuestionAnswer extends BaseActivity {
 	 */
 	private void getNextQuestion() {
 		int hardQuestion = (int) Math.floor(Math.random() * 23);
-		punish_0.setText("快速说出绕口令：\n" + PunishProps.getRaoKouLing(hardQuestion));
+		// psunish_0.setText("快速说出绕口令：\n" +
+		// PunishProps.getRaoKouLing(hardQuestion));
 	}
 
 	private void restartActivity() {

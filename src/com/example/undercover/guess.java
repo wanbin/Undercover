@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -111,9 +112,8 @@ public class guess extends BaseActivity {
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
 		home = (ImageView) findViewById(R.id.btnhome);
 
-
-		quickStartBtn.setBackgroundResource(R.drawable.btnbg);
-		
+		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
+		btn_wrapper.setVisibility(View.INVISIBLE);
 
 //		Bundle bundle = this.getIntent().getExtras();
 //		isShow	= bundle.getBoolean("isShow");
@@ -162,9 +162,9 @@ public class guess extends BaseActivity {
 				FrameLayout fl = new FrameLayout(this);
 				ImageView select = new ImageView(this);
 				final TextView text	= new TextView(this);
-				text.setText(String.valueOf(temindex+1));
-				text.setGravity(Gravity.CENTER);
-				text.setTextSize(30);
+				// text.setText(String.valueOf(temindex+1));
+				// text.setGravity(Gravity.CENTER);
+				// text.setTextSize(30);
 
 				final TextView shenfen = new TextView(this);
 				shenfen.setText(content[temindex]);
@@ -176,13 +176,15 @@ public class guess extends BaseActivity {
 				select.setTag(temindex);
 				if (hasClicked[temindex]) {
 					// 身份进行确认
-					select.setBackgroundResource(R.drawable.popogray72);
+					select.setBackgroundResource(stringToId("btnun_"
+							+ (temindex + 1), "drawable"));
 					select.setClickable(false);
 					if (isShow) {
 						initShenfen(text, temindex);
 					}
 				}else{
-					select.setBackgroundResource(R.drawable.popo72);
+					select.setBackgroundResource(stringToId("btn_"
+							+ (temindex + 1), "drawable"));
 					select.setOnLongClickListener(new Button.OnLongClickListener() {
 						@Override
 						public boolean onLongClick(View v) {
@@ -190,7 +192,9 @@ public class guess extends BaseActivity {
 							hasClicked[(Integer)v.getTag()] = true;
 							v.setClickable(false);
 							ImageView tt = (ImageView) v;
-							tt.setBackgroundResource(R.drawable.popogray72);
+							tt.setBackgroundResource(stringToId("btnun_"
+									+ ((Integer) v.getTag() + 1), "drawable"));
+
 							SoundPlayer.playball();
 							if(isShow){
 								text.setTextSize(13);
@@ -361,7 +365,7 @@ public class guess extends BaseActivity {
 //		punishBtn.setVisibility(View.VISIBLE);
 //		startBtn.setVisibility(View.VISIBLE);
 //		quickStartBtn.setVisibility(View.VISIBLE);
-		TableLayout btn_wrapper = (TableLayout) findViewById(R.id.btn_wrapper);
+		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.VISIBLE);
 
 		for (int i = 0; i < contentTable.getChildCount(); i++) {

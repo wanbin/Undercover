@@ -2,18 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/guess_bg" >
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="400dp"
+        android:layout_centerVertical="true" >
 
         <TableLayout
             android:id="@+id/contentTable"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/mainbg" >
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/txtTitle"
@@ -21,7 +22,8 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/guesscontent"
-                android:textSize="@dimen/size20" />
+                android:textSize="@dimen/size20"
+                android:visibility="invisible" />
 
             <TableLayout
                 android:id="@+id/tableContent"
@@ -29,40 +31,31 @@
                 android:layout_height="wrap_content" >
             </TableLayout>
 
-            <TableLayout
-                android:id="@+id/btn_wrapper"
+            <LinearLayout
+                android:id="@+id/an"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:stretchColumns="*"
-                android:visibility="invisible" >
+                android:layout_height="wrap_content" >
 
                 <Button
                     android:id="@+id/btn_punish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/btnbg"
-                    android:text="@string/punishmen" />
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/btn_punish" />
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                <Button
+                    android:id="@+id/btn_restart"
+                     android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/btn_restart"
+                    android:text="" />
 
-                    <Button
-                        android:id="@+id/btn_restart"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/btnbg"
-                        android:text="@string/restart" />
-
-                    <Button
-                        android:id="@+id/btn_quickstart"
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/btnbg"
-                        android:text="@string/quickStart" />
-                </TableRow>
-            </TableLayout>
+                <Button
+                    android:id="@+id/btn_quickstart"
+                     android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/btn_startquick"
+                    android:text=""/>
+            </LinearLayout>
         </TableLayout>
     </ScrollView>
 
