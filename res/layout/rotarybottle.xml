@@ -3,14 +3,20 @@
     android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg" >
+    android:background="@drawable/bottle_backgroud" >
 
+     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/bottle_outer" />
+     
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
-        android:src="@drawable/bottle" />
+        android:src="@drawable/bottle1" />
 
     <Button
         android:id="@+id/button1"

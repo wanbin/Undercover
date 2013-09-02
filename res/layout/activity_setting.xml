@@ -3,7 +3,7 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg" >
+    android:background="@drawable/underconver_guess_backgroud" >
 
     <ImageView
         android:id="@+id/moregame"
@@ -44,7 +44,7 @@
                     android:id="@+id/btnCost"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/popo72" />
+                    android:background="@drawable/underconver_count_reduce" />
                 
                  <TextView
                      android:id="@+id/txtcost1"
@@ -52,7 +52,6 @@
                      android:layout_height="wrap_content"
                      android:layout_gravity="center"
                      android:gravity="center"
-                     android:text="-"
                      android:textSize="@dimen/index" />
 
             </FrameLayout>
@@ -63,13 +62,13 @@
 
                 <ImageView
                     android:id="@+id/imageViewAddBg"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-					android:background="@drawable/popo72"/>
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:background="@drawable/undercover_count_backgroud" />
 
                 <TextView
                     android:id="@+id/txtPeople"
-                    android:layout_width="50dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -88,7 +87,7 @@
                   android:layout_width="50dp"
                   android:layout_height="50dp"
                   android:layout_gravity="center_vertical"
-                  android:background="@drawable/popo72"
+                  android:background="@drawable/underconver_count_add"
                   />
 
               <TextView
@@ -97,7 +96,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="+"
                     android:textSize="@dimen/index" />
               </FrameLayout>
         </LinearLayout>

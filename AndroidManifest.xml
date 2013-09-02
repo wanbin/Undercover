@@ -6,13 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/iconnew"
+        android:icon="@drawable/icon_yxq"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.undercover.SelectGameActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -31,6 +31,7 @@
         <activity android:name="com.example.undercover.random_50" >
         </activity>
         <activity android:name="com.example.undercover.RotaryBottleActivity" >
+           
         </activity>
         <activity android:name="com.example.undercover.PunishActivity" >
         </activity>
