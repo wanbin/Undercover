@@ -24,7 +24,7 @@ public class fanpai extends BaseActivity {
 	private LinearLayout changeword;
 	private ImageView imagePan;
 	/** 按钮--记住了，传给下一位 */
-	private Button btnOK;
+	private ImageView btnOK;
 	private Random random;
 	private int nowIndex = 1;
 	private boolean isShow;
@@ -46,7 +46,7 @@ public class fanpai extends BaseActivity {
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		isChecked = false;
-		btnOK = (Button) findViewById(R.id.btnOk);
+		btnOK = (ImageView) findViewById(R.id.btnOk);
 		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		changeword = (LinearLayout) findViewById(R.id.changeword);
 		txtIndex = (TextView) findViewById(R.id.txtIndex);
@@ -54,6 +54,7 @@ public class fanpai extends BaseActivity {
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (ImageView) findViewById(R.id.imagePan);
 		blank = getResources().getString(R.string.blank);
+
 
 		random = new Random();
 
@@ -103,7 +104,6 @@ public class fanpai extends BaseActivity {
 					if (nowIndex == 1) {
 						uMengClick("click_undercover_pai_first");
 					}
-
 					initPan(nowIndex);
 				} else {
 					Bundle bundle = new Bundle();
@@ -152,17 +152,24 @@ public class fanpai extends BaseActivity {
 		content = getRandomString(libary[selectindex]);
 		nowIndex = 1;
 		txtIndex.setVisibility(View.VISIBLE);
-		imagePan.setVisibility(View.VISIBLE);
+
 		setContentVis(false);
 		initPan(nowIndex);
 	}
 
 	protected void initPan(int index) {
-		imagePan.setVisibility(View.VISIBLE);
-		txtIndex.setVisibility(View.VISIBLE);
-		txtIndex.setText("" + index);
-		txtShenfen.setText(content[index - 1]);
 		setContentVis(false);
+		if (versionType == 1) {
+			txtIndex.setVisibility(View.VISIBLE);
+			txtIndex.setText("" + index);
+		} else if (versionType == 2) {
+			txtIndex.setVisibility(View.INVISIBLE);
+			if (index > 12)
+				index = 12;
+			imagePan.setBackgroundResource(stringToId("btn_" + index,
+					"drawable"));
+		}
+		txtShenfen.setText(content[index - 1]);
 	}
 
 	protected void Log(String string) {
@@ -175,12 +182,13 @@ public class fanpai extends BaseActivity {
 			txtIndex.setVisibility(View.INVISIBLE);
 			txtShenfen.setVisibility(View.VISIBLE);
 			textViewab.setVisibility(View.VISIBLE);
-
+			imagePan.setVisibility(View.INVISIBLE);
 		} else {
 			btnOK.setVisibility(View.INVISIBLE);
-			txtIndex.setVisibility(View.VISIBLE);
+			txtIndex.setVisibility(View.INVISIBLE);
 			txtShenfen.setVisibility(View.INVISIBLE);
 			textViewab.setVisibility(View.INVISIBLE);
+			imagePan.setVisibility(View.VISIBLE);
 		}
 	}
 

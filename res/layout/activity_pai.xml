@@ -2,55 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbg" >
-
-    <FrameLayout
-        android:id="@+id/frameLayout1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="224dp" >
-
-        <TextView
-            android:id="@+id/txtShenfen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="30dp"
-            android:text="TextView"
-            android:textSize="@dimen/index" />
-
-        <TextView
-            android:id="@+id/textViewab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="@string/givetoother" />
-
-        <Button
-            android:id="@+id/btnOk"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/btnbg"
-            android:text="@string/remamber" />
-
-        <ImageView
-            android:id="@+id/imagePan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/popo512" />
-
-        <TextView
-            android:id="@+id/txtIndex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/one"
-            android:textSize="@dimen/large80" />
-    </FrameLayout>
+    android:background="@drawable/fanpai_bg" >
 
     <LinearLayout
         android:id="@+id/changeword"
@@ -58,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="54dp"
         android:gravity="right" >
 
         <Button
@@ -72,5 +25,51 @@
             android:layout_height="wrap_content"
             android:text="@string/changeword" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp" >
+
+        <TextView
+            android:id="@+id/txtShenfen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="词组"
+            android:textSize="@dimen/index" />
+
+        <TextView
+            android:id="@+id/textViewab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:text="@string/givetoother" />
+
+        <ImageView
+            android:id="@+id/btnOk"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_nextone" />
+
+        <ImageView
+            android:id="@+id/imagePan"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/txtIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/one"
+            android:textSize="@dimen/large80"
+            android:visibility="invisible" />
+    </FrameLayout>
 
 </RelativeLayout>

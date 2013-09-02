@@ -223,9 +223,13 @@ public class BaseActivity extends Activity {
 	}
 
 	protected String strFromId(String strid) {
-		int id = getResources().getIdentifier(
-				"com.example.undercover:string/" + strid, null, null);
+		int id = stringToId(strid, "string");
 		return getResources().getString(id);
+	}
+
+	protected int stringToId(String strid, String type) {
+		return getResources().getIdentifier(
+				"com.example.undercover:" + type + "/" + strid, null, null);
 	}
 
 	protected String GetVersion() throws NameNotFoundException {
@@ -235,5 +239,6 @@ public class BaseActivity extends Activity {
 				0);
 		return packInfo.versionName;
 	}
+
 }
 

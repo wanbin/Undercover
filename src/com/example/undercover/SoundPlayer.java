@@ -151,7 +151,7 @@ public class SoundPlayer{
 		playSound(R.raw.claps3);
 	}
 	public static void playball() {
-		playSound(R.raw.ball);
+		// playSound(R.raw.ball);
 	}
 
 	public static void playbottle() {
