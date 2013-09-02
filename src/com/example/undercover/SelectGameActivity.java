@@ -129,7 +129,7 @@ public class SelectGameActivity extends BaseActivity {
 		startButton.startAnimation(scaleAni);
 
 		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
-		btnStart.setBackgroundResource(R.drawable.btnbg);
+		btnStart.setBackgroundResource(R.drawable.undercover_start_yxq);
 		btnStart.setOnClickListener(new MyClickListener());
 
 		if (getStatus()) {
