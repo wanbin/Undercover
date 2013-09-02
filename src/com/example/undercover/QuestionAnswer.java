@@ -15,10 +15,12 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.util.MathUtil;
 import com.example.util.PunishProps;
+import com.example.util.StrUtil;
 
 public class QuestionAnswer extends BaseActivity {
 
@@ -52,7 +54,6 @@ public class QuestionAnswer extends BaseActivity {
 		punish_0.setPadding(10, 0, 0, 0);
 		intentPunish = (Button) findViewById(R.id.intent_punish);
 		intentPunish.setVisibility(View.INVISIBLE);
-
 		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 		// timeLimit = 1000;
 		final FrameLayout frame = (FrameLayout) findViewById(R.id.question_frame);
@@ -194,7 +195,8 @@ public class QuestionAnswer extends BaseActivity {
 	 */
 	private void getNextQuestion() {
 		int hardQuestion = (int) Math.floor(Math.random() * 23);
-		punish_0.setText("快速说出绕口令：\n" + PunishProps.getRaoKouLing(hardQuestion));
+		punish_0.setText("快速说出绕口令：\n\n" + 
+				StrUtil.fromatString(PunishProps.getRaoKouLing(hardQuestion)));
 	}
 
 	private void restartActivity() {
