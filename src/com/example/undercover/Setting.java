@@ -192,17 +192,17 @@ public class Setting extends BaseActivity {
 
 	private void setPeople() {
 		if (peopleCount == maxPeople) {
-			btnAdd.setBackgroundResource(R.drawable.popogray72);
+//			btnAdd.setBackgroundResource(R.drawable.popogray72);
 			btnAdd.setClickable(false);
 		} else {
-			btnAdd.setBackgroundResource(R.drawable.popo72);
+//			btnAdd.setBackgroundResource(R.drawable.popo72);
 			btnAdd.setClickable(true);
 		}
 		if (peopleCount == 4) {
-			btnCost.setBackgroundResource(R.drawable.popogray72);
+//			btnCost.setBackgroundResource(R.drawable.popogray72);
 			btnCost.setClickable(false);
 		} else {
-			btnCost.setBackgroundResource(R.drawable.popo72);
+//			btnCost.setBackgroundResource(R.drawable.popo72);
 			btnCost.setClickable(true);
 		}
 		people.setText(Integer.toString(peopleCount));
@@ -211,17 +211,17 @@ public class Setting extends BaseActivity {
 
 	private void setUnder() {
 		if (underCount >= 4) {
-			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
+//			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
 			btnAddUnder.setClickable(false);
 		} else {
-			btnAddUnder.setBackgroundResource(R.drawable.popo72);
+//			btnAddUnder.setBackgroundResource(R.drawable.popo72);
 			btnAddUnder.setClickable(true);
 		}
 		if (underCount == 1) {
-			btnCostUnder.setBackgroundResource(R.drawable.popogray72);
+//			btnCostUnder.setBackgroundResource(R.drawable.popogray72);
 			btnCostUnder.setClickable(false);
 		} else {
-			btnCostUnder.setBackgroundResource(R.drawable.popo72);
+//			btnCostUnder.setBackgroundResource(R.drawable.popo72);
 			btnCostUnder.setClickable(true);
 		}
 		under.setText(Integer.toString(underCount));

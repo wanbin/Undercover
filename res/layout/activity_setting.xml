@@ -7,12 +7,12 @@
 
     <ImageView
         android:id="@+id/moregame"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:background="@drawable/homeblue" />
+        android:background="@drawable/underconver_return" />
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
@@ -121,7 +121,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
-                 android:background="@drawable/popo72"
+                 android:background="@drawable/underconver_count_reduce"
                 />
              
              <TextView
@@ -130,7 +130,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="-"
                     android:textSize="@dimen/index" />
             
              </FrameLayout>
@@ -143,7 +142,7 @@
                     android:id="@+id/imageViewUnderBg"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/popo72" />
+                    android:background="@drawable/undercover_count_backgroud" />
 
                 <TextView
                     android:id="@+id/txtUnder"
@@ -166,7 +165,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
-                 android:background="@drawable/popo72"
+                 android:background="@drawable/underconver_count_add"
                 />
             <TextView
                     android:id="@+id/txtadd2"
@@ -174,7 +173,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="+"
                     android:textSize="@dimen/index" />
             </FrameLayout>
         </LinearLayout>
@@ -194,7 +192,7 @@
          android:layout_height="125dp"
          android:layout_below="@+id/LinearLayout1"
          android:layout_centerHorizontal="true"
-         android:background="@drawable/start"
+         android:background="@drawable/underconver_guess_start"
          />
 
      <LinearLayout
