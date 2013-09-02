@@ -189,6 +189,7 @@ public class fanpai extends BaseActivity {
 	 * @return
 	 */
 	private String[] getRandomString(String contnettxt) {
+		Log.i("CONTENT","获取随机的一堆词条");
 		String[] children = new String[2];
 		children = contnettxt.split("_");
 		int sonindex = Math.abs(random.nextInt()) % 2;
@@ -208,6 +209,9 @@ public class fanpai extends BaseActivity {
 		// 设置content
 		setContent(ret);
 		setSon(son);
+		for(String string:ret){
+			Log.d("CONTENT", string);
+		}
 		return ret;
 	}
 
