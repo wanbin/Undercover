@@ -121,5 +121,5 @@
 <string name="setting_word_all">All Categories</string>
 <string name="setting_word">Long press Select Category</string>
 <string name="setting_word_new">Current phrases Category:</string>
-<string name="changeword">更换题目</string>
+<string name="changeword">change word</string>
 </resources>
