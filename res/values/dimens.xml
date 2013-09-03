@@ -9,5 +9,7 @@
     <dimen name="large60">60dp</dimen>
     <dimen name="large80">80dp</dimen>
     <dimen name="size20">20dp</dimen>
-
+    <dimen name="screenwidth">720px</dimen>
+ 	<dimen name="screenhight">1280px</dimen>
+ 	<dimen name="s100">100px</dimen>
 </resources>
