@@ -211,9 +211,8 @@
              <Button
                  android:id="@+id/popo_button"
                  android:layout_width="100dp"
-                 android:layout_height="wrap_content"
-                 android:src="@drawable/btn_long"
-                 android:text="@string/setting_word" />
+                 android:layout_height="50dp"
+                 android:background="@drawable/btn_long"/>
 
              <TextView
                  android:id="@+id/wordText"
