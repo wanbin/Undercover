@@ -6,6 +6,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
+
+    <ImageView
+        android:id="@+id/imagebg"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/imagefanpai" />
     
     <LinearLayout
         android:id="@+id/changeword"
@@ -38,18 +46,10 @@
         android:layout_marginBottom="25dp" >
 
         <TextView
-            android:id="@+id/txtShenfen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="词组"
-            android:textSize="@dimen/index" />
-
-        <TextView
             android:id="@+id/textViewab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
+            android:layout_gravity="top|center_horizontal"
             android:text="@string/givetoother" />
 
         <ImageView
@@ -64,15 +64,13 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
-
-        <TextView
-            android:id="@+id/txtIndex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/one"
-            android:textSize="@dimen/large80"
-            android:visibility="invisible" />
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtShenfen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/index" />
 
 </RelativeLayout>

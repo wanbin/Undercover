@@ -18,13 +18,13 @@ public class fanpai extends BaseActivity {
 	private String[] content;
 	private String[] libary;
 	private TextView txtShenfen;
-	private TextView txtIndex;
 	private TextView textViewab;
 	private Button btnchangeword;
 	private LinearLayout changeword;
 	private ImageView imagePan;
 	/** 按钮--记住了，传给下一位 */
 	private ImageView btnOK;
+	private ImageView imagebg;
 	private Random random;
 	private int nowIndex = 1;
 	private boolean isShow;
@@ -49,12 +49,11 @@ public class fanpai extends BaseActivity {
 		btnOK = (ImageView) findViewById(R.id.btnOk);
 		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		changeword = (LinearLayout) findViewById(R.id.changeword);
-		txtIndex = (TextView) findViewById(R.id.txtIndex);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (ImageView) findViewById(R.id.imagePan);
+		imagebg = (ImageView) findViewById(R.id.imagebg);
 		blank = getResources().getString(R.string.blank);
-
 
 		random = new Random();
 
@@ -126,7 +125,6 @@ public class fanpai extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				v.setVisibility(View.INVISIBLE);
-				txtIndex.setVisibility(View.INVISIBLE);
 				setContentVis(true);
 				// 在这里更新nowIndex，不至于呀恢复时错开一个
 				nowIndex++;
@@ -151,7 +149,6 @@ public class fanpai extends BaseActivity {
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
 		nowIndex = 1;
-		txtIndex.setVisibility(View.VISIBLE);
 
 		setContentVis(false);
 		initPan(nowIndex);
@@ -159,16 +156,9 @@ public class fanpai extends BaseActivity {
 
 	protected void initPan(int index) {
 		setContentVis(false);
-		if (versionType == 1) {
-			txtIndex.setVisibility(View.VISIBLE);
-			txtIndex.setText("" + index);
-		} else if (versionType == 2) {
-			txtIndex.setVisibility(View.INVISIBLE);
-			if (index > 12)
-				index = 12;
-			imagePan.setBackgroundResource(stringToId("btn_" + index,
-					"drawable"));
-		}
+		if (index > 12)
+			index = 12;
+		imagePan.setBackgroundResource(stringToId("btn_" + index, "drawable"));
 		txtShenfen.setText(content[index - 1]);
 	}
 
@@ -179,13 +169,13 @@ public class fanpai extends BaseActivity {
 	protected void setContentVis(boolean show) {
 		if (show) {
 			btnOK.setVisibility(View.VISIBLE);
-			txtIndex.setVisibility(View.INVISIBLE);
 			txtShenfen.setVisibility(View.VISIBLE);
 			textViewab.setVisibility(View.VISIBLE);
 			imagePan.setVisibility(View.INVISIBLE);
+			imagebg.setVisibility(View.INVISIBLE);
 		} else {
 			btnOK.setVisibility(View.INVISIBLE);
-			txtIndex.setVisibility(View.INVISIBLE);
+			imagebg.setVisibility(View.VISIBLE);
 			txtShenfen.setVisibility(View.INVISIBLE);
 			textViewab.setVisibility(View.INVISIBLE);
 			imagePan.setVisibility(View.VISIBLE);
