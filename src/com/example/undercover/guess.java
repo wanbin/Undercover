@@ -31,7 +31,6 @@ public class guess extends BaseActivity {
 	private Button punishBtn;
 	private Button startBtn;
 	private Button quickStartBtn;
-	private ImageView home;
 	
 
 	private int totalcount;
@@ -110,7 +109,6 @@ public class guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
-		home = (ImageView) findViewById(R.id.btnhome);
 
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
@@ -234,11 +232,6 @@ public class guess extends BaseActivity {
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
-		home.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				finish();
-			}
-		});
 		checkGameOver();
 	}
 

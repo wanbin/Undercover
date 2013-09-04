@@ -202,12 +202,6 @@
              android:checked="true"
              android:text="@string/setting_afterShow" />
 
-         <CheckBox
-             android:id="@+id/isBlank"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/setting_blank" />
-
          <LinearLayout
              android:id="@+id/warp"
              android:layout_width="wrap_content"
@@ -216,8 +210,9 @@
 
              <Button
                  android:id="@+id/popo_button"
-                 android:layout_width="wrap_content"
+                 android:layout_width="100dp"
                  android:layout_height="wrap_content"
+                 android:src="@drawable/btn_long"
                  android:text="@string/setting_word" />
 
              <TextView
@@ -225,6 +220,13 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content" />
          </LinearLayout>
+
+         <CheckBox
+             android:id="@+id/isBlank"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/setting_blank"
+             android:visibility="invisible" />
 
      </LinearLayout>
 
