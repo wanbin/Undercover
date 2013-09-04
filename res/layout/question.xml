@@ -3,12 +3,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_bg" />
     <TableLayout
         android:id="@+id/questionTable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/mainbg" >
+        android:layout_height="match_parent" >
 
         <TextView
             android:id="@+id/gameRule"

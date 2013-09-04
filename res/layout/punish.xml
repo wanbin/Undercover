@@ -3,10 +3,12 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     android:background="@drawable/mainbg" 
     android:gravity="end"
     android:orientation="vertical" >
-
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_bg" />
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="200dp"
@@ -24,25 +26,23 @@
 
         <Button
             android:id="@+id/trueBtn"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center"
-            android:background="@drawable/btnbg"
-            android:text="@string/punish_true" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/btnzhenxin"
+            android:gravity="center_vertical|center" />
 
         <Button
             android:id="@+id/advenBtn"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnbg"
-            android:text="@string/punish_adventure" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/btn_maoxian" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/itemLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
 
@@ -123,19 +123,17 @@
         <Button
             android:id="@+id/punish_disc"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/linear1"
-            android:background="@drawable/btnbg"
-            android:text="@string/playdisc" />
+            android:background="@drawable/btnshaizi"/>
 
         <Button
             android:id="@+id/punish_random"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/linear1"
-            android:background="@drawable/btnbg"
-            android:text="@string/punish_random_btn" />
+            android:background="@drawable/btn_suiji"/>
         
 </RelativeLayout>

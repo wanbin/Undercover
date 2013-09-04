@@ -149,10 +149,10 @@ public class PunishActivity extends BaseActivity {
 				initTimer();
 				if (!isRandom) {
 					punish_disc.setClickable(false);
-					punish_disc.setBackgroundResource(R.drawable.btnbggray);
+					// punish_disc.setBackgroundResource(R.drawable.btnbggray);
 				} else {
 					punish_disc.setClickable(true);
-					punish_disc.setBackgroundResource(R.drawable.btnbg);
+					// punish_disc.setBackgroundResource(R.drawable.btnbg);
 					SoundPlayer.playclaps();
 				}
 				isRandom = !isRandom;
@@ -186,7 +186,7 @@ public class PunishActivity extends BaseActivity {
 
 	private void discstart() {
 		randomBtn.setClickable(false);
-		randomBtn.setBackgroundResource(R.drawable.btnbggray);
+		// randomBtn.setBackgroundResource(R.drawable.btnbggray);
 		imagedice.setBackgroundResource(0);
 		imagedice.setVisibility(View.VISIBLE);
 		imagedice.clearAnimation();
@@ -210,7 +210,7 @@ public class PunishActivity extends BaseActivity {
 
 	private void discstop() {
 		randomBtn.setClickable(true);
-		randomBtn.setBackgroundResource(R.drawable.btnbg);
+		// randomBtn.setBackgroundResource(R.drawable.btnbg);
 		imagedice.clearAnimation();
 		discStart = false;
 		imagedice.setBackgroundResource(randomDisc());
@@ -282,9 +282,9 @@ public class PunishActivity extends BaseActivity {
 	}
 	private void addTenMMS(){
 		number = System.currentTimeMillis() % 6 + 1;
-		randomBtn.setText(number + "");
-		num	= MathUtil.getInstance().getRandomNum();
-		randomBtn.setText(num);
+		// randomBtn.setText(number + "");
+		num = MathUtil.getInstance().getRandomNum();
+		// randomBtn.setText(num);
 		returnColors(num);
 	}
 		
@@ -314,8 +314,8 @@ public class PunishActivity extends BaseActivity {
 		if (discStart) {
 			discstop();
 		} else {
-			randomBtn.setText(getResources().getString(
-					R.string.punish_random_btn));
+			// randomBtn.setText(getResources().getString(
+			// R.string.punish_random_btn));
 			discstart();
 		}
 		isShackOneMinit = 20;
