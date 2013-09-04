@@ -77,7 +77,7 @@ public class PunishActivity extends BaseActivity {
 		punish[3]	= punish_4;
 		punish[4]	= punish_5;
 		punish[5]	= punish_6;
-		backBtn = (ImageView) findViewById(R.id.punish_backBtn);
+		backBtn = (ImageView) findViewById(R.id.btnreturn);
 		changeBtn.setVisibility(View.INVISIBLE);
 		randomBtn.setVisibility(View.INVISIBLE);
 		punish_disc.setVisibility(View.INVISIBLE);

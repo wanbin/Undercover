@@ -3,7 +3,6 @@ package com.example.undercover;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,7 +15,6 @@ import com.umeng.fb.FeedbackAgent;
 public class ContributionActivity extends BaseActivity {
 	private LinearLayout content;
 	private String[] contribution;
-	private ImageView btnreturn;
 	private TextView email;
 	private Button btnfb;
 	private FeedbackAgent agent;
@@ -25,7 +23,6 @@ public class ContributionActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contribution);
 		content = (LinearLayout) findViewById(R.id.content);
-		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		btnfb = (Button) findViewById(R.id.btnfb);
 		email = (TextView) findViewById(R.id.txtEmail);
 		contribution = getResources().getStringArray(R.array.contribution);
@@ -53,14 +50,6 @@ public class ContributionActivity extends BaseActivity {
 		// finish();
 		// }
 		// });
-		btnreturn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				finish();
-			}
-		});
 		btnfb.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

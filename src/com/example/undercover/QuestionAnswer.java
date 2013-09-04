@@ -127,7 +127,7 @@ public class QuestionAnswer extends BaseActivity {
 		});
 
 		// 返回按钮
-		ImageView backView = (ImageView) findViewById(R.id.question_forBack);
+		ImageView backView = (ImageView) findViewById(R.id.btnreturn);
 		backView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

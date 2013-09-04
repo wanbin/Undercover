@@ -16,8 +16,11 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
@@ -38,6 +41,7 @@ public class BaseActivity extends Activity {
 	
 	protected String VersionName = "1.00";
 	protected int versionType = 1;
+	private ImageView btnreturn;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,8 +79,20 @@ public class BaseActivity extends Activity {
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		btnreturn = (ImageView) findViewById(R.id.btnreturn);
+		btnreturn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				SoundPlayer.playball();
+				finish();
+			}
+		});
 	}
 
+
+	
 	public void onResume() {
 		super.onResume();
 		MobclickAgent.onResume(this);
