@@ -183,11 +183,10 @@
      <ImageView
          android:id="@+id/btnStart"
          android:layout_width="125dp"
-         android:layout_height="125dp"
+         android:layout_height="80dp"
          android:layout_below="@+id/LinearLayout1"
          android:layout_centerHorizontal="true"
-         android:background="@drawable/underconver_guess_start"
-         />
+         android:background="@drawable/underconver_guess_start" />
 
      <LinearLayout
          android:layout_width="wrap_content"

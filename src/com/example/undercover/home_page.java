@@ -7,14 +7,12 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class home_page extends BaseActivity {
 
 	//private Button game5;
 
 	
-	private ImageView btnreturn;
 	private Button btnclickme;
 	private Button btnaskme;
 	private Button btncricleme;
@@ -28,19 +26,10 @@ public class home_page extends BaseActivity {
 		setContentView(R.layout.hp);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		
-		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		btnclickme = (Button) findViewById(R.id.btnclickme);
 		// btnaskme = (Button) findViewById(R.id.btnaskme);
 		btncricleme = (Button) findViewById(R.id.btncricleme);
 		btnQuestion = (Button) findViewById(R.id.jumpQuestion_Btn);
-		btnreturn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (true){
-					finish();
-				} 
-			}
-		});
 		
 		btnclickme.setOnClickListener(new Button.OnClickListener() {
 			@Override

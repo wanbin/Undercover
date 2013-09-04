@@ -1,8 +1,6 @@
 package com.example.undercover;
 
 import android.R.interpolator;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -69,16 +67,6 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 
-		ImageView returnBtn = (ImageView) findViewById(R.id.btnreturn);
-//		returnBtn.setClickable(false);
-		returnBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				finish();
-			}
-		});
 
 		ViewTreeObserver vto2 = bottle.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -151,24 +139,25 @@ public class RotaryBottleActivity extends BaseActivity {
 		});
 
 	}
-//	//退出确认
+
+	// //退出确认
 //		public void onBackPressed() {  
-//			new AlertDialog.Builder(this).setTitle("确认退出吗？")  
+	// new AlertDialog.Builder(this).setTitle("确认退出吗？")
 //			    .setIcon(android.R.drawable.ic_dialog_info)  
-//			    .setPositiveButton("确定", new DialogInterface.OnClickListener() {  
+	// .setPositiveButton("确定", new DialogInterface.OnClickListener() {
 //			  
 //			        @Override  
 //			        public void onClick(DialogInterface dialog, int which) {  
-//			        // 点击“确认”后的操作  
+	// // 点击“确认”后的操作
 //			        RotaryBottleActivity.this.finish();  
 //			  
 //			        }  
 //			    })  
-//			    .setNegativeButton("返回", new DialogInterface.OnClickListener() {  
+	// .setNegativeButton("返回", new DialogInterface.OnClickListener() {
 //			  
 //			        @Override  
 //			        public void onClick(DialogInterface dialog, int which) {  
-//			        // 点击“返回”后的操作,这里不设置没有任何操作  
+	// // 点击“返回”后的操作,这里不设置没有任何操作
 //			        }  
 //			    }).show();  
 //			// super.onBackPressed();  

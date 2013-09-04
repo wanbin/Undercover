@@ -22,7 +22,6 @@ public class Setting extends BaseActivity {
 	private ImageView btnAddUnder;
 	private ImageView btnCostUnder;
 	private ImageView btnStart;
-	private ImageView moregame;
 	private TextView people;
 	private TextView under;
 	private TextView wordText;
@@ -52,7 +51,6 @@ public class Setting extends BaseActivity {
 		btnCost = (ImageView) findViewById(R.id.btnCost);
 		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
 		btnStart = (ImageView) findViewById(R.id.btnStart);
-		moregame = (ImageView) findViewById(R.id.btnreturn);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
@@ -181,17 +179,6 @@ public class Setting extends BaseActivity {
 		});
 		
 		
-
-		moregame.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			
-			public void onClick(View v) {
-				if (true){
-					SoundPlayer.playball();
-					finish();
-				}
-			}
-		});
 
 	}
 

@@ -18,7 +18,6 @@ public class random_50 extends BaseActivity {
 	// int random_times;
 	int click_times;
 	private ImageView click_button;
-	private ImageView btnreturn;
 	private Button restart_button;
 
 	private Button punishment_button;
@@ -58,7 +57,6 @@ public class random_50 extends BaseActivity {
 		click = getResources().getString(R.string.click);
 		ci = getResources().getString(R.string.ci);
 		click_button = (ImageView) findViewById(R.id.imageBtnMain);
-		btnreturn = (ImageView) findViewById(R.id.btnreturn);
 		restart_button = (Button) findViewById(R.id.button2);
 		
 		peopleCount = gameInfo.getInt("peopleCount", 4);
@@ -173,15 +171,6 @@ public class random_50 extends BaseActivity {
 				Log.d("Tag",String.valueOf(random_times));
 				DisplayParameter(randomLimit - click_times);
 				SoundPlayer.playball();
-			}
-		});
-
-		btnreturn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				finish();
 			}
 		});
 

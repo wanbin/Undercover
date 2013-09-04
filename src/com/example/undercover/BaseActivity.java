@@ -80,7 +80,14 @@ public class BaseActivity extends Activity {
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		btnreturn = (ImageView) findViewById(R.id.btnreturn);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onResume();
+	}
+
+	protected void initBtnReturn() {
 		btnreturn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -89,8 +96,8 @@ public class BaseActivity extends Activity {
 				finish();
 			}
 		});
+		btnreturn.setVisibility(View.VISIBLE);
 	}
-
 
 	
 	public void onResume() {

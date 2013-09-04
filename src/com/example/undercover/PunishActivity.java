@@ -32,7 +32,6 @@ public class PunishActivity extends BaseActivity {
 	private TextView punish_4;
 	private TextView punish_5;
 	private TextView punish_6;
-	private ImageView backBtn;
 	private boolean flag;
 	// 是否开始 随机数字的计算；
 	private boolean isRandom;
@@ -77,7 +76,6 @@ public class PunishActivity extends BaseActivity {
 		punish[3]	= punish_4;
 		punish[4]	= punish_5;
 		punish[5]	= punish_6;
-		backBtn = (ImageView) findViewById(R.id.btnreturn);
 		changeBtn.setVisibility(View.INVISIBLE);
 		randomBtn.setVisibility(View.INVISIBLE);
 		punish_disc.setVisibility(View.INVISIBLE);
@@ -131,16 +129,6 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 		
-		// 用户点击 返回 按钮
-		backBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// Intent goMain = new Intent();
-				// goMain.setClass(PunishActivity.this, Setting.class);
-				// startActivity(goMain);
-				finish();
-			}
-		});
 		
 		// 用户点击 随机 按钮
 		randomBtn.setOnClickListener(new Button.OnClickListener() {
