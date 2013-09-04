@@ -68,14 +68,5 @@
         </LinearLayout>
 
     </TableLayout>
-       <ImageView
-        android:id="@+id/question_forBack"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/homeblue" />
 
 </RelativeLayout>

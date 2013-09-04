@@ -30,12 +30,5 @@
         android:background="@drawable/btnbg"
         android:text="@string/punishmen" />
 
-    <ImageView
-        android:id="@+id/btnreturn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="10dp"
-        android:background="@drawable/backblue" />
 
 </FrameLayout>

@@ -63,12 +63,10 @@
 
     <ImageView
         android:id="@+id/btnhome"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/homeblue" />
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/btn_back" />
 
 </RelativeLayout>

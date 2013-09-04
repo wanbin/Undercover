@@ -7,6 +7,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
+	<include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/btn_return" />
 
     <LinearLayout
         android:id="@+id/linearlayout"
@@ -65,12 +69,4 @@
 
     </LinearLayout>
     
-       <ImageView
-       android:id="@+id/btnreturn"
-       android:layout_width="50dp"
-       android:layout_height="50dp"
-       android:layout_alignParentBottom="true"
-       android:layout_alignParentRight="true"
-       android:layout_centerInParent="true"
-       android:background="@drawable/backblue" />
 </RelativeLayout>

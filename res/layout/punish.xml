@@ -88,25 +88,6 @@
             android:layout_height="wrap_content"
             android:padding="5dp" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/FrameLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" >
-
-
-
-        <ImageView
-            android:id="@+id/punish_backBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right"
-            android:background="@drawable/backblue"
-            />
-
-    </FrameLayout>
         <Button
             android:id="@+id/changeBtn"
             android:layout_width="wrap_content"
@@ -135,5 +116,6 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/btn_suiji"/>
+
         
 </RelativeLayout>

@@ -21,5 +21,11 @@
         android:layout_alignParentLeft="true"
         android:scaleType="fitEnd"
         android:src="@drawable/bg_bottom" />
+      <ImageView
+     android:id="@+id/btnreturn"
+     android:layout_width="70dp"
+     android:layout_height="70dp"
+     android:background="@drawable/btn_back" />
+    
 
 </RelativeLayout>

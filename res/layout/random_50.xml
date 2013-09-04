@@ -33,12 +33,12 @@
 
     <ImageView
         android:id="@+id/btnreturn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
-        android:background="@drawable/backblue" />
+        android:background="@drawable/btn_back" />
 
     <Button
         android:id="@+id/button1"
