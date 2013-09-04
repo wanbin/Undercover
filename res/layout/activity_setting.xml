@@ -2,8 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/underconver_guess_backgroud" >
+    android:layout_height="match_parent" >
+     <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_bg" />
 
     <ImageView
         android:id="@+id/moregame"
@@ -19,7 +22,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -61,8 +64,8 @@
 
                 <ImageView
                     android:id="@+id/imageViewAddBg"
-                    android:layout_width="82dp"
-                    android:layout_height="82dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:background="@drawable/undercover_count_backgroud" />
 
                 <TextView
@@ -136,8 +139,8 @@
 
                 <ImageView
                     android:id="@+id/imageViewUnderBg"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:background="@drawable/undercover_count_backgroud" />
 
                 <TextView
@@ -180,8 +183,8 @@
 
     <ImageView
         android:id="@+id/btnStart"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
         android:layout_below="@+id/LinearLayout1"
         android:layout_centerHorizontal="true"
         android:background="@drawable/underconver_guess_start" />
@@ -219,9 +222,10 @@
 
                 <Button
                     android:id="@+id/popo_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/setting_word" />
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:text="" 
+                    android:background="@drawable/btn_long"/>
 
                 <TextView
                     android:id="@+id/wordText"
