@@ -43,6 +43,7 @@ public class PunishActivity extends BaseActivity {
 	private String num;
 	private String PunishInTurn;
 	private ImageView imagedice;
+	//是否开始摇色子
 	private boolean discStart = false;
 	private Random random = new Random();
 	// 是否刚才按了摇骰子
@@ -51,13 +52,12 @@ public class PunishActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.punish);
-		// 注册摇动事件
-		showShack = true;
+		
 		PunishInTurn = getResources().getString(R.string.PunishInTurn);
 		num	= "7";
-		isRandom	= false;
-		isTouch	= false;
 		flag	= false;
+		isTouch	= false;
+		isRandom= false;
 		trueBtn		= (Button)findViewById(R.id.trueBtn);
 		advenBtn	= (Button)findViewById(R.id.advenBtn);
 		changeBtn	= (Button)findViewById(R.id.changeBtn);
@@ -135,14 +135,11 @@ public class PunishActivity extends BaseActivity {
 		backBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// Intent goMain = new Intent();
-				// goMain.setClass(PunishActivity.this, Setting.class);
-				// startActivity(goMain);
 				finish();
 			}
 		});
 		
-		// 用户点击 随机 按钮
+		// 用户点击 随机惩罚 按钮
 		randomBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -158,15 +155,16 @@ public class PunishActivity extends BaseActivity {
 				isRandom = !isRandom;
 			}
 		});
-
+		//用户点击 骰子图片 按钮
 		imagedice.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				//骰子处于旋转的状态才可以点击
 				discstop();
 			}
 		});
 
-
+		//用户点击 摇骰子 按钮
 		punish_disc.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -184,6 +182,7 @@ public class PunishActivity extends BaseActivity {
 		}
 	}
 
+	//开始摇色子
 	private void discstart() {
 		randomBtn.setClickable(false);
 		randomBtn.setBackgroundResource(R.drawable.btnbggray);
@@ -206,8 +205,10 @@ public class PunishActivity extends BaseActivity {
 		animDrawable.start();
 		discStart = true;
 		SoundPlayer.playRolling();
+		imagedice.setClickable(true);
 	}
 
+	//结束摇色子
 	private void discstop() {
 		randomBtn.setClickable(true);
 		randomBtn.setBackgroundResource(R.drawable.btnbg);
@@ -226,7 +227,7 @@ public class PunishActivity extends BaseActivity {
 		SoundPlayer.stopRolling();
 		SoundPlayer.playclaps();
 		imagedice.startAnimation(as);
-
+		imagedice.setClickable(false);
 	}
 	private void getTruePunish(){
 		int[] intArr = MathUtil.getInstance().check(190, 6);
@@ -245,8 +246,12 @@ public class PunishActivity extends BaseActivity {
 		}
 		setTextView(str);
 	}
-	
+	//设置惩罚项目或问题
 	private void setTextView(String[] str){
+		// 注册摇动事件
+		showShack = true;
+		//注册监听
+		super.registerShake();
 		punish_guize.setText(PunishInTurn);
 		punish_1.setText("1、" + str[0]);
 		punish_2.setText("2、" + str[1]);
@@ -287,7 +292,7 @@ public class PunishActivity extends BaseActivity {
 		randomBtn.setText(num);
 		returnColors(num);
 	}
-		
+	/**滚动字体颜色*/
 	private void returnColors(String num){
 		punish_1.setTextColor(getResources().getColor(R.color.BLACK));
 		punish_2.setTextColor(getResources().getColor(R.color.BLACK));
@@ -295,14 +300,7 @@ public class PunishActivity extends BaseActivity {
 		punish_4.setTextColor(getResources().getColor(R.color.BLACK));
 		punish_5.setTextColor(getResources().getColor(R.color.BLACK));
 		punish_6.setTextColor(getResources().getColor(R.color.BLACK));
-		// punish_1.setTextSize(14); //默认字体
-//		punish_2.setTextSize(14);
-//		punish_3.setTextSize(14);
-//		punish_4.setTextSize(14);
-//		punish_5.setTextSize(14);
-//		punish_6.setTextSize(14);
 		punish[Integer.valueOf(num)-1].setTextColor(getResources().getColor(R.color.RED));
-//		punish[Integer.valueOf(num)-1].setTextSize(16);
 	}
 
 	// 重写摇动事件
@@ -311,14 +309,17 @@ public class PunishActivity extends BaseActivity {
 		initTimer();
 		if (isRandom || isShackOneMinit > 0)
 			return;
-		if (discStart) {
-			discstop();
-		} else {
-			randomBtn.setText(getResources().getString(
-					R.string.punish_random_btn));
-			discstart();
+		if(showShack){
+			//已经选择了真心话或者大冒险
+			if (discStart) {
+				discstop();
+			} else {
+				randomBtn.setText(getResources().getString(
+						R.string.punish_random_btn));
+				discstart();
+			}
+			isShackOneMinit = 20;
 		}
-		isShackOneMinit = 20;
 	}
 	
 	private int randomDisc() {

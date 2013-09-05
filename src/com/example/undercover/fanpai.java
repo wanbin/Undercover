@@ -208,6 +208,14 @@ public class fanpai extends BaseActivity {
 			} while (ret[tem].equals(son));
 			ret[tem] = son;
 		}
+		//设置空白词
+		if(isBlank) {
+			int tem;
+			do {
+				tem = Math.abs(random.nextInt()) % peopleCount;
+			} while (ret[tem].equals(son));
+			ret[tem] = blank;
+		}
 		// 设置content
 		setContent(ret);
 		setSon(son);

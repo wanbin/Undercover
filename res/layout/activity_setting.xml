@@ -211,50 +211,13 @@
                     android:checked="true"
                     android:text="@string/setting_afterShow" />
 
-                <!--
+                <CheckBox
+                    android:id="@+id/isBlank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/setting_blank"/>
 
-             <CheckBox
-                 android:id="@+id/wordEat"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_eat" />
-
-             <CheckBox
-                 android:id="@+id/wordPard"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_pard" />
-
-             <CheckBox
-                 android:id="@+id/wordHard"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_hard" />
-
-             <CheckBox
-                 android:id="@+id/wordBig"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_big" />
-
-             <CheckBox
-                 android:id="@+id/wordWenyi"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_wenyi" />
-
-             <CheckBox
-                 android:id="@+id/wordCity"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_city" />
-
-             <CheckBox
-                 android:id="@+id/wordPeople"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:text="@string/setting_word_people" />
-                --><LinearLayout
+				<LinearLayout
                     android:id="@+id/warp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -272,12 +235,6 @@
                         android:layout_height="wrap_content" />
                       
                     </LinearLayout>
-                    <CheckBox
-                    android:id="@+id/isBlank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/setting_blank" 
-                    android:visibility="invisible"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

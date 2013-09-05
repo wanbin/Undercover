@@ -69,16 +69,17 @@ public class BaseActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		MobclickAgent.onResume(this);
-		
+		registerShake();
+	}
+	//注册摇动的监听器
+	void registerShake(){
 		if (sensorManager != null && showShack) {// 注册监听器
 			sensorManager.registerListener(sensorEventListener,
-					sensorManager
-							.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+					sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 					SensorManager.SENSOR_DELAY_NORMAL);
 			// 第一个参数是Listener，第二个参数是所得传感器类型，第三个参数值获取传感器信息的频率
 		}
 	}
-
 	@Override
 	public void onPause() {
 		super.onPause();
