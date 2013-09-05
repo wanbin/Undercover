@@ -87,9 +87,9 @@
 <string name="overString6">投错一个就少一个战友~</string>
 <string name="overString7">卧底卧底，你在哪里！</string>
 <string name="overString8">卧底，你是想怎样~</string>
-<string name="Version">【谁是卧底】1.10版本</string>
+<string name="Version">【谁是卧底】1.11版本</string>
 <string name="suggest">意见及建议：</string>
-<string name="suggest1">\n\n\nv1.10版本新功能：\n\n1.卧底游戏开始后，首位玩家可以刷新卧底词语\n优化摇色子功能\n3.优化真心话大冒险摇一摇选择\n</string>
+<string name="suggest1">\n\n\nv1.11版本新功能：\n\n1.谁是卧底游戏，添加空白身份~\n2.优化惩罚界面的摇骰子功能~\n3.优化游戏体验，速度更流畅~</string>
 <string name="PunishInTurn">请输的同学依次接受惩罚</string>
 <string name="nextQuestion">下一题</string>
 <string name="GameOver">游戏结束</string>
@@ -121,5 +121,4 @@
 <string name="setting_word_all">全部分类</string>
 <string name="setting_word">长按选择分类</string>
 <string name="setting_word_new">当前词组类别：</string>
-<string name="changeword">更换题目</string>
 </resources>
