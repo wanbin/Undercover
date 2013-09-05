@@ -113,7 +113,7 @@
 <string name="returnit">返回</string>
 <string name="setting_word_eat">吃货</string>
 <string name="setting_word_pard">品牌</string>
-<string name="setting_word_hard">高手</string>
+<string name="setting_word_hard">高难度</string>
 <string name="setting_word_big">重口味</string>
 <string name="setting_word_wenyi">文艺青年</string>
 <string name="setting_word_people">人物角色</string>
@@ -122,4 +122,6 @@
 <string name="setting_word">长按选择分类</string>
 <string name="setting_word_new">当前词组类别：</string>
 <string name="changeword">更换题目</string>
+<string name="setting_word_daily">日常</string>
+<string name="setting_word_fresh">小清新</string>
 </resources>

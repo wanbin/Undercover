@@ -5,26 +5,23 @@
 		    android:checkableBehavior="all"
 		    android:id="@+id/popo_word_group">
 		    <item 
+		        android:id="@+id/word_people"
+		        android:title="@string/setting_word_people"/>
+		    <item 
+		        android:id="@+id/word_daily"
+		        android:title="@string/setting_word_daily"/>
+		    <item 
 		        android:id="@+id/word_eat"
 		        android:title="@string/setting_word_eat"/>
-		    <item 
-		        android:id="@+id/word_pard"
-		        android:title="@string/setting_word_pard"/>
-		    <item 
-		        android:id="@+id/word_hard"
-		        android:title="@string/setting_word_hard"/>
 		    <item 
 		        android:id="@+id/word_big"
 		        android:title="@string/setting_word_big"/>
 		    <item 
-		        android:id="@+id/word_people"
-		        android:title="@string/setting_word_people"/>
+		        android:id="@+id/word_fresh"
+		        android:title="@string/setting_word_fresh"/>
 		    <item 
-		        android:id="@+id/word_city"
-		        android:title="@string/setting_word_city"/>
-		    <item 
-		        android:id="@+id/word_wenyi"
-		        android:title="@string/setting_word_wenyi"/>
+		        android:id="@+id/word_hard"
+		        android:title="@string/setting_word_hard"/>
 		    <item 
 		        android:id="@+id/word_all"
 		        android:title="@string/setting_word_all"/>

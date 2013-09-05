@@ -247,40 +247,38 @@ public class Setting extends BaseActivity {
 		item.setChecked(true);
 		// itemChecked = item.getItemId(); //记录被选中的菜单项的ID
 		switch (item.getItemId()) {
-			case R.id.word_eat:
+		case R.id.word_people:
+			wordStr = "people";
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_people"));
+			break;
+		case R.id.word_daily:
+			wordStr = "daily";
+			wordText.setText(strFromId("setting_word_new")
+					+ strFromId("setting_word_wenyi"));
+			break;
+
+		case R.id.word_eat:
 				wordStr="eat";
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_eat"));
 				break;
-			case R.id.word_pard:
-				wordStr="pard";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_pard"));
-				break;
-			case R.id.word_hard:
-				wordStr="hard";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_hard"));
-				break;
-			case R.id.word_big:
-				wordStr="big";
+		case R.id.word_big:
+			wordStr = "big";
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_big"));
-				break;
-			case R.id.word_people:
-				wordStr="people";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_people"));
-				break;
-			case R.id.word_city:
-				wordStr="city";
+			break;
+
+		case R.id.word_fresh:
+			wordStr = "fresh";
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_city"));
-				break;
-			case R.id.word_wenyi:
-				wordStr="wenyi";
+			break;
+
+		case R.id.word_hard:
+			wordStr = "hard";
 			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_wenyi"));
+					+ strFromId("setting_word_hard"));
 				break;
 			case R.id.word_all:
 			wordText.setText(strFromId("setting_word_new")
