@@ -27,14 +27,14 @@
         <Button
             android:id="@+id/trueBtn"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="93dp"
             android:background="@drawable/btnzhenxin"
             android:gravity="center_vertical|center" />
 
         <Button
             android:id="@+id/advenBtn"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="93dp"
             android:background="@drawable/btn_maoxian" />
     </LinearLayout>
 
@@ -104,7 +104,7 @@
         <Button
             android:id="@+id/punish_disc"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="93dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@drawable/btnshaizi"/>
@@ -112,7 +112,7 @@
         <Button
             android:id="@+id/punish_random"
             android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_height="93dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/btn_suiji"/>

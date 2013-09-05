@@ -14,7 +14,9 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
@@ -42,8 +44,7 @@ public class SelectGameActivity extends BaseActivity {
     private ImageView[] imageViews;
     
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
-			appmakerbButton, btnStart, usercontribution, zhenxin;
-    private ImageView startButton;
+			appmakerbButton, btnStart, usercontribution, zhenxin, startButton;
 	private CheckBox sound;
 	private boolean soundon = true;
     
@@ -116,10 +117,22 @@ public class SelectGameActivity extends BaseActivity {
         
 		// helpButton = (Button) helpView.findViewById(R.id.helpButton);
 		// helpButton.setOnClickListener(new MyClickListener());
-        startButton = (ImageView) welcomeView.findViewById(R.id.startButton);
+		startButton = (Button) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
 
-
+		startButton.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btnstart2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btnstart);
+				}
+				return false;
+			}
+		});
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
@@ -129,7 +142,6 @@ public class SelectGameActivity extends BaseActivity {
 		startButton.startAnimation(scaleAni);
 
 		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
-		btnStart.setBackgroundResource(R.drawable.undercover_start_yxq);
 		btnStart.setOnClickListener(new MyClickListener());
 
 		if (getStatus()) {

@@ -8,7 +8,9 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -115,6 +117,35 @@ public class PunishActivity extends BaseActivity {
 				getAdvenPunish();
 			}
 		});
+
+		trueBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btnzhenxin2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btnzhenxin);
+				}
+				return false;
+			}
+		});
+
+		advenBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_maoxin2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_maoxian);
+				}
+				return false;
+			}
+		});
+
 		// 用户选择换题目
 		changeBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -147,6 +178,20 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 
+		randomBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_suiji2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_suiji);
+				}
+				return false;
+			}
+		});
+
 		imagedice.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -154,6 +199,19 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 
+		punish_disc.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btnshaizi2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btnshaizi);
+				}
+				return false;
+			}
+		});
 
 		punish_disc.setOnClickListener(new Button.OnClickListener() {
 			@Override

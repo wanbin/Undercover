@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,9 +23,9 @@ public class fanpai extends BaseActivity {
 	private TextView textViewab;
 	private Button btnchangeword;
 	private LinearLayout changeword;
-	private ImageView imagePan;
+	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
-	private ImageView btnOK;
+	private Button btnOK;
 	private ImageView imagebg;
 	private Random random;
 	private int nowIndex = 1;
@@ -46,12 +48,12 @@ public class fanpai extends BaseActivity {
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		isChecked = false;
-		btnOK = (ImageView) findViewById(R.id.btnOk);
+		btnOK = (Button) findViewById(R.id.btnOk);
 		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		changeword = (LinearLayout) findViewById(R.id.changeword);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		textViewab = (TextView) findViewById(R.id.textViewab);
-		imagePan = (ImageView) findViewById(R.id.imagePan);
+		imagePan = (Button) findViewById(R.id.imagePan);
 		imagebg = (ImageView) findViewById(R.id.imagebg);
 		blank = getResources().getString(R.string.blank);
 
@@ -121,6 +123,20 @@ public class fanpai extends BaseActivity {
 			}
 		});
 
+		btnOK.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_nextont_un);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_nextone);
+				}
+				return false;
+			}
+		});
+
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -131,6 +147,26 @@ public class fanpai extends BaseActivity {
 				SoundPlayer.playball();
 			}
 		});
+
+		imagePan.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					imagePan.setBackgroundResource(stringToId("btnun_"
+							+ nowIndex,
+							"drawable"));
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					imagePan.setBackgroundResource(stringToId(
+							"btn_"
+							+ nowIndex,
+							"drawable"));
+				}
+				return false;
+			}
+		});
+
 		// 刷新换词
 		btnchangeword.setOnClickListener(new Button.OnClickListener() {
 			@Override

@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
@@ -21,7 +23,7 @@ public class Setting extends BaseActivity {
 	private ImageView btnCost;
 	private ImageView btnAddUnder;
 	private ImageView btnCostUnder;
-	private ImageView btnStart;
+	private Button btnStart;
 	private TextView people;
 	private TextView under;
 	private TextView wordText;
@@ -50,7 +52,7 @@ public class Setting extends BaseActivity {
 		btnAddUnder = (ImageView) findViewById(R.id.btnAddUnder);
 		btnCost = (ImageView) findViewById(R.id.btnCost);
 		btnCostUnder = (ImageView) findViewById(R.id.btnCostUnder);
-		btnStart = (ImageView) findViewById(R.id.btnStart);
+		btnStart = (Button) findViewById(R.id.btnStart);
 		//Button startChatRoom =(Button) findViewById(R.id.startChatRoom);
 		people = (TextView) findViewById(R.id.txtPeople);
 		under = (TextView) findViewById(R.id.txtUnder);
@@ -67,6 +69,21 @@ public class Setting extends BaseActivity {
 //				onPopupButtonclick(popoBtn);
 			}
 		});
+
+		popoBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_popo2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_popo);
+				}
+				return false;
+			}
+		});
+
 		registerForContextMenu(popoBtn);
 		// 共享数据
 		gameInfo = getSharedPreferences("gameInfo", 0);
@@ -177,7 +194,19 @@ public class Setting extends BaseActivity {
 				finish();
 			}
 		});
-		
+		btnStart.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_start2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_start);
+				}
+				return false;
+			}
+		});
 		
 
 	}

@@ -7,7 +7,9 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -225,7 +227,7 @@ public class guess extends BaseActivity {
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfen);
-				newrow.addView(fl, disWidth / 4, disWidth / 4);
+				newrow.addView(fl, disWidth / 4, disWidth / 7);
 			}
 			contentTable.addView(newrow);
 		}
@@ -386,6 +388,20 @@ public class guess extends BaseActivity {
 				 startActivity(goMain);
 			}
 		});
+		punishBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_punish2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_punish);
+				}
+				return false;
+			}
+		});
+
 //		contentTable.addView(punishBtn);
 		// startBtn.setText("重新开始");
 		startBtn.setOnClickListener(new Button.OnClickListener() {
@@ -399,6 +415,19 @@ public class guess extends BaseActivity {
 			}
 		});
 		
+		startBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_restart2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_restart);
+				}
+				return false;
+			}
+		});
 		 
 		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -408,6 +437,19 @@ public class guess extends BaseActivity {
 				startActivity(goMain);
 				uMengClick("game_undercover_quickresert");
 				finish();
+			}
+		});
+		quickStartBtn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.btn_startquick2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(R.drawable.btn_startquick);
+				}
+				return false;
 			}
 		});
 //		contentTable.addView(startBtn);
