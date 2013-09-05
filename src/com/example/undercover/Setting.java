@@ -41,7 +41,7 @@ public class Setting extends BaseActivity {
 	// 长按触发菜单的按钮
 	private Button popoBtn;
 //	private int itemChecked;
-	private String wordStr	= "eat,pard,hard,big,people,city,wenyi";
+	private String wordStr = "eat,hard,big,people,fresh,daily";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -259,10 +259,10 @@ public class Setting extends BaseActivity {
 			break;
 
 		case R.id.word_eat:
-				wordStr="eat";
+			wordStr = "eat";
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_eat"));
-				break;
+			break;
 		case R.id.word_big:
 			wordStr = "big";
 			wordText.setText(strFromId("setting_word_new")
@@ -279,14 +279,14 @@ public class Setting extends BaseActivity {
 			wordStr = "hard";
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_hard"));
-				break;
-			case R.id.word_all:
+			break;
+		case R.id.word_all:
 			wordText.setText(strFromId("setting_word_new")
 					+ strFromId("setting_word_all"));
-				break;
-			default:
-				break;
-		  }
+			break;
+		default:
+			break;
+		}
 		return super.onContextItemSelected(item);
 	}
 }

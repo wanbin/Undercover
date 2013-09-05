@@ -148,7 +148,7 @@ public class guess extends BaseActivity {
 
 
 		totalcount = content.length;
-		txtTitle.setText(gusswhoisspy);
+		txtTitle.setText(taplong);
 		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
@@ -230,7 +230,7 @@ public class guess extends BaseActivity {
 			contentTable.addView(newrow);
 		}
 		txtLong = new TextView(this);
-		txtLong.setText(updateSaySeq() + "(" + taplong + ")");
+		txtLong.setText(updateSaySeq());
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
@@ -316,7 +316,7 @@ public class guess extends BaseActivity {
 			int stringindex = Math.abs(random.nextInt()) % stringcount;
 			txtTitle.setText(overString[stringindex]);
 			Log(hy + soncount + ge);
-			txtLong.setText(updateSaySeq());
+			txtLong.setText(updateSaySeq() + "(" + taplong + ")");
 		}
 		// }else{
 		//
