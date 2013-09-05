@@ -186,13 +186,15 @@ public class guess extends BaseActivity {
 					select.setOnLongClickListener(new Button.OnLongClickListener() {
 						@Override
 						public boolean onLongClick(View v) {
+							if (hasClicked[(Integer) v.getTag()] == true) {
+								return true;
+							}
 							tapIndex((Integer) v.getTag());
 							hasClicked[(Integer)v.getTag()] = true;
 							v.setClickable(false);
 							ImageView tt = (ImageView) v;
 							tt.setBackgroundResource(stringToId("btnun_"
 									+ ((Integer) v.getTag() + 1), "drawable"));
-
 							SoundPlayer.playball();
 							if(isShow){
 								text.setTextSize(13);
