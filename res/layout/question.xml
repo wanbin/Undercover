@@ -7,10 +7,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
+
     <TableLayout
         android:id="@+id/questionTable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="350dp"
+        android:layout_centerVertical="true" >
 
         <TextView
             android:id="@+id/gameRule"

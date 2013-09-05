@@ -3,69 +3,79 @@
     android:id="@+id/fath"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
-    <LinearLayout
+
+    <ScrollView
+        android:id="@+id/sc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/content_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/content_title"
-            android:textSize="20sp" />
+        android:layout_height="350dp"
+        android:layout_centerVertical="true" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical" >
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:scrollbarStyle="insideOverlay" >
 
             <TextView
-                android:id="@+id/ruleText"
+                android:id="@+id/content_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/content_title"
+                android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/winText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/ruleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/winText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tem"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|right"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/Weixin"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/strToWeixin" />
+
+                <Button
+                    android:id="@+id/appMaker"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/strAbout" />
+
+                <Button
+                    android:id="@+id/usercontribution"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/usercontribution" />
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tem"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|right"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/Weixin"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/strToWeixin" />
-
-            <Button
-                android:id="@+id/appMaker"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/strAbout" />
-
-            <Button
-                android:id="@+id/usercontribution"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/usercontribution" />
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

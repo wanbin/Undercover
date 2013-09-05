@@ -2,41 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout_rotarybottle"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-   
-   
-   <include
+    android:layout_height="match_parent" >
+
+    <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
-        
 
-     <TextView
-         android:id="@+id/txtTitle"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentTop="true"
-         android:layout_centerHorizontal="true"
-         android:text="@string/strweixin"
-         android:textAppearance="?android:attr/textAppearanceLarge" />
+    <RelativeLayout
+        android:id="@+id/re"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_centerVertical="true" >
 
-     <TextView
-         android:id="@+id/txtContent"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="30dp"
-         android:autoLink="email"
-         android:padding="10dp"
-         android:text="@string/cametogether" />
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/strweixin"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-     <Button
-         android:id="@+id/btnfb"
-         android:layout_width="200dp"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/txtContent"
-         android:layout_centerHorizontal="true"
-         android:layout_marginTop="90dp"
-         android:background="@drawable/btnbg"
-         android:text="@string/feedback" />
+        <TextView
+            android:id="@+id/txtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:autoLink="email"
+            android:padding="10dp"
+            android:text="@string/cametogether" />
+
+        <Button
+            android:id="@+id/btnfb"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtContent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/btnbg"
+            android:text="@string/feedback" />
+    </RelativeLayout>
 
 </RelativeLayout>

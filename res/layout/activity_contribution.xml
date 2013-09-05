@@ -3,66 +3,70 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+
     <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
 
-    <LinearLayout
-        android:id="@+id/linearlayout"
+    <ScrollView
+        android:id="@+id/scc"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_centerVertical="true"
-        android:orientation="vertical" >
+        android:layout_height="350dp"
+        android:layout_centerVertical="true" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_margin="10dp"
-            android:text="@string/usercontribution"
-            android:textSize="@dimen/size20" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/thankyou" />
-
-        <ScrollView
-            android:id="@+id/contentscroll"
+        <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_margin="10dp" >
+            android:layout_height="350dp"
+            android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/content"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="10dp"
+                android:text="@string/usercontribution"
+                android:textSize="@dimen/size20" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/thankyou" />
+
+            <ScrollView
+                android:id="@+id/contentscroll"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
+                android:layout_height="250dp"
+                android:layout_margin="10dp" >
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </ScrollView>
 
-        </ScrollView>
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:autoLink="email"
+                android:text="@string/thankyou" />
 
-        <TextView
-            android:id="@+id/txtEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:autoLink="email"
-            android:text="@string/thankyou" />
+            <Button
+                android:id="@+id/btnfb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/btnbg"
+                android:text="@string/feedback" />
+        </LinearLayout>
+    </ScrollView>
 
-        <Button
-            android:id="@+id/btnfb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btnbg"
-            android:text="@string/feedback"  />
-
-    </LinearLayout>
-    
 </RelativeLayout>
