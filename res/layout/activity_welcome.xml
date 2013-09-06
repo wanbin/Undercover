@@ -10,24 +10,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" > 
+        android:layout_height="match_parent" >
 
-        <Button android:visibility="gone"
-            android:id="@+id/btnStart"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="85dp"/>
-            
-       <ImageView 
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/startButton"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="50dp"
-            android:src="@drawable/image_first" />
+       <ImageView
+           android:id="@+id/imageView2"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="20dp"
+           android:src="@drawable/btn_title" />
+
+       <ImageView
+           android:id="@+id/imageView1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_centerVertical="true"
+           android:layout_margin="50dp"
+           android:src="@drawable/image_first" />
 
        <Button
            android:id="@+id/startButton"
@@ -35,8 +36,18 @@
            android:layout_height="93dp"
            android:layout_alignParentBottom="true"
            android:layout_centerHorizontal="true"
-           android:layout_marginBottom="100dp"
+           android:layout_marginBottom="32dp"
            android:background="@drawable/btnstart" />
+       
+               <Button
+                   android:id="@+id/btnStart"
+                   android:layout_width="200dp"
+                   android:layout_height="50dp"
+                   android:layout_alignParentBottom="true"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginBottom="85dp"
+                   android:text="开始游戏"
+                   android:visibility="invisible" />
 
     </RelativeLayout>
 

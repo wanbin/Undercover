@@ -380,7 +380,9 @@ public class SelectGameActivity extends BaseActivity {
 		super.onResume();
 		if (!getStatus()) {
 			btnStart.setText(strFromId("strBgn"));
+			btnStart.setVisibility(View.INVISIBLE);
 		} else {
+			btnStart.setVisibility(View.VISIBLE);
 			btnStart.setText(strFromId("strcontinue"));
 		}
 	}

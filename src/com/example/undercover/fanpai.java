@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +41,9 @@ public class fanpai extends BaseActivity {
 
 	private SharedPreferences gameInfo;
 	private String blank;
+	private boolean canchangeword = true;
 	private String[] word;
+	private Animation animation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,9 @@ public class fanpai extends BaseActivity {
 		peopleCount = gameInfo.getInt("peopleCount", 4);
 		underCount = gameInfo.getInt("underCount", 1);
 		word = gameInfo.getString("word", "eat").trim().split(",");
+
+		animation = (AnimationSet) AnimationUtils.loadAnimation(this,
+				R.anim.reflash);
 
 		Log.i("fanpai",
 				"***************获得的词组为："
@@ -99,7 +107,9 @@ public class fanpai extends BaseActivity {
 			public void onClick(View v) {
 				SoundPlayer.playball();
 				if (nowIndex >= 1) {
-					changeword.setVisibility(View.INVISIBLE);
+					canchangeword = false;
+					btnchangeword.setBackgroundResource(R.drawable.update);
+					// changeword.setVisibility(View.INVISIBLE);
 				}
 				if (nowIndex <= content.length) {
 					if (nowIndex == 1) {
@@ -172,7 +182,14 @@ public class fanpai extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// v.setVisibility(View.INVISIBLE);
-				initFanpai();
+				if (!canchangeword) {
+					siampleTitle("第一位玩家才可以换词呀~");
+				} else {
+					initFanpai();
+					btnchangeword.startAnimation(animation);
+				}
+
+				// 添加变化动画
 			}
 		});
 
@@ -180,6 +197,7 @@ public class fanpai extends BaseActivity {
 
 	// 重新翻牌
 	protected void initFanpai() {
+
 		int num = Math.abs(random.nextInt()) % word.length;
 		libary = getResources().getStringArray(getWords(word[num]));
 		int selectindex = Math.abs(random.nextInt()) % libary.length;

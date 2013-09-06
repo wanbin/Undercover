@@ -28,7 +28,7 @@
             android:id="@+id/btnchangeword"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/update" />
+            android:background="@drawable/update2" />
 
         <TextView
             android:id="@+id/textView1"
