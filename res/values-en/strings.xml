@@ -124,4 +124,5 @@
 <string name="changeword">更换题目</string>
 <string name="setting_word_daily">日常</string>
 <string name="setting_word_fresh">小清新</string>
+<string name="sound">Sound：</string>
 </resources>
