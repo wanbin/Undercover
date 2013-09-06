@@ -18,18 +18,19 @@
         android:orientation="vertical" >
 
         <Button
+            android:id="@+id/jumpQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/strasktitle"
+            android:visibility="invisible" />
+
+        <Button
             android:id="@+id/clickme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/clickme" />
-
-        <Button
-            android:id="@+id/jumpQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/strasktitle" />
         
         <Button
             android:id="@+id/zhenxin"
