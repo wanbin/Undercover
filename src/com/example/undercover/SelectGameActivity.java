@@ -44,7 +44,8 @@ public class SelectGameActivity extends BaseActivity {
     private ImageView[] imageViews;
     
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
-			appmakerbButton, btnStart, usercontribution, zhenxin, startButton;
+			appmakerbButton, btnStart, usercontribution, zhenxin, startButton,
+			btnSound;
 	private CheckBox sound;
 	private boolean soundon = true;
     
@@ -72,26 +73,16 @@ public class SelectGameActivity extends BaseActivity {
 		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
 
 		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
+		btnSound = (Button) welcomeView.findViewById(R.id.switchbtn);
 		soundon = SoundPlayer.getSoundSt();
-		if (soundon) {
-			sound.setChecked(true);
-			sound.setText(strFromId("soundon"));
-		} else {
-			sound.setChecked(false);
-			sound.setText(strFromId("soundoff"));
-		}
+
+		setSwithSound(soundon);
 
 		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
-				if (isChecked) {
-					SoundPlayer.setSoundSt(true);
-					sound.setText(strFromId("soundon"));
-				} else {
-					sound.setText(strFromId("soundoff"));
-					SoundPlayer.setSoundSt(false);
-				}
+				setSwithSound(isChecked);
 			}
 		});
         
@@ -184,8 +175,28 @@ public class SelectGameActivity extends BaseActivity {
 				+ "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
 		winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
 
+		btnSound.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				soundon = !soundon;
+				setSwithSound(soundon);
+			}
+		});
 	}
 	
+
+
+	private void setSwithSound(boolean isChecked) {
+		if (isChecked) {
+			SoundPlayer.setSoundSt(true);
+			sound.setText(strFromId("soundon"));
+			btnSound.setBackgroundResource(R.drawable.btn_select_true);
+		} else {
+			sound.setText(strFromId("soundoff"));
+			SoundPlayer.setSoundSt(false);
+			btnSound.setBackgroundResource(R.drawable.btn_select_false);
+		}
+	}
 	private class MyClickListener implements android.view.View.OnClickListener{
 
 		@Override

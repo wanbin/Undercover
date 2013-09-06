@@ -2,60 +2,87 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-     <include
+
+    <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
-    
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-       <ImageView
-           android:id="@+id/imageView2"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentTop="true"
-           android:layout_centerHorizontal="true"
-           android:layout_marginTop="20dp"
-           android:src="@drawable/btn_title" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/btn_title" />
 
-       <ImageView
-           android:id="@+id/imageView1"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_centerHorizontal="true"
-           android:layout_centerVertical="true"
-           android:layout_margin="50dp"
-           android:src="@drawable/image_first" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="50dp"
+            android:src="@drawable/image_first" />
 
-       <Button
-           android:id="@+id/startButton"
-           android:layout_width="150dp"
-           android:layout_height="93dp"
-           android:layout_alignParentBottom="true"
-           android:layout_centerHorizontal="true"
-           android:layout_marginBottom="32dp"
-           android:background="@drawable/btnstart" />
-       
-               <Button
-                   android:id="@+id/btnStart"
-                   android:layout_width="200dp"
-                   android:layout_height="50dp"
-                   android:layout_alignParentBottom="true"
-                   android:layout_centerHorizontal="true"
-                   android:layout_marginBottom="85dp"
-                   android:text="开始游戏"
-                   android:visibility="invisible" />
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/btnstart" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="85dp"
+            android:text="开始游戏"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:id="@+id/soundlin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="3dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sound"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/WRITE" />
+
+            <Button
+                android:id="@+id/switchbtn"
+                android:layout_width="81dp"
+                android:layout_height="29dp"
+                android:layout_alignLeft="@+id/btnStart"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/btn_select_true" />
+        </LinearLayout>
 
     </RelativeLayout>
 
-<CheckBox
-    android:id="@+id/sound"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
-    android:text="@string/strSound" />
+    <CheckBox
+        android:id="@+id/sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/strSound"
+        android:visibility="gone" />
 
 </FrameLayout>
