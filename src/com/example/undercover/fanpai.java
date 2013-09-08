@@ -112,9 +112,6 @@ public class fanpai extends BaseActivity {
 					// changeword.setVisibility(View.INVISIBLE);
 				}
 				if (nowIndex <= content.length) {
-					if (nowIndex == 1) {
-						uMengClick("click_undercover_pai_first");
-					}
 					initPan(nowIndex);
 				} else {
 					Bundle bundle = new Bundle();
@@ -150,6 +147,9 @@ public class fanpai extends BaseActivity {
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				if (nowIndex == 1) {
+					uMengClick("click_undercover_pai_first");
+				}
 				v.setVisibility(View.INVISIBLE);
 				setContentVis(true);
 				// 在这里更新nowIndex，不至于呀恢复时错开一个

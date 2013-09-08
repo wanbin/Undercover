@@ -212,6 +212,7 @@ public class SelectGameActivity extends BaseActivity {
 				SoundPlayer.playball();
 				cleanStatus();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
+				uMengClick("game_undercover");
 				break;
 			case R.id.btnStart:
 				SoundPlayer.playball();
@@ -221,6 +222,7 @@ public class SelectGameActivity extends BaseActivity {
 				    cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);
 				}
+				uMengClick("game_undercover");
 				break;
 			case R.id.Weixin:
 				SoundPlayer.playball();
