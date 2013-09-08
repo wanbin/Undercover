@@ -43,6 +43,10 @@ public class guess extends BaseActivity {
 	private int temindex;
 	private Random random = new Random();
 	private TextView txtLong;
+	/**
+	 * 判断游戏是否结束
+	 */
+	private boolean gamefinish = false;
 	
 //	private String overString1; 
 //	private String overString2; 
@@ -297,7 +301,10 @@ public class guess extends BaseActivity {
 			Log("任务完成");
 			txtTitle.setText(gameOver + "【" + son + "】");
 			isOver = true;
-			uMengClick("click_guess_last");
+			if (!gamefinish) {
+				uMengClick("click_guess_last");
+				gamefinish = true;
+			}
 			SoundPlayer.playHighSoure();
 			refash();
 			setAllButton(false);
@@ -308,7 +315,10 @@ public class guess extends BaseActivity {
 			SoundPlayer.playNormalSoure();
 			txtTitle.setText(gameoverspy + "【" + son + "】");
 			isOver = true;
-			uMengClick("click_guess_last");
+			if (!gamefinish) {
+				uMengClick("click_guess_last");
+				gamefinish = true;
+			}
 			refash();
 			setAllButton(false);
 			txtLong.setText(getFatherStr());
@@ -455,6 +465,14 @@ public class guess extends BaseActivity {
 //		contentTable.addView(startBtn);
 	}
 
+	@Override
+	public void finish() {
+		// TODO Auto-generated method stub
+		// game_guess_finish
+		uMengClick("game_guess_finish");
+		super.finish();
+	}
+
 //	@Override
 //	protected void onSaveInstanceState(Bundle savedInstanceState) {
 //		super.onSaveInstanceState(savedInstanceState);
@@ -488,4 +506,5 @@ public class guess extends BaseActivity {
 //		    }).show();  
 //		// super.onBackPressed();  
 //	}  
+	
 }
