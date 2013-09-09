@@ -3,6 +3,7 @@ package com.example.undercover;
 import android.R.interpolator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -44,6 +45,24 @@ public class RotaryBottleActivity extends BaseActivity {
 				SoundPlayer.playbottle();
 				uMengClick("count_bottle");
 				
+			}
+		});
+		
+		punishment.setOnTouchListener(new Button.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				
+				if(event.getAction() == MotionEvent.ACTION_DOWN)
+				{
+					punishment.setBackgroundResource(R.drawable.btn_punish2);
+				}else if(event.getAction() == MotionEvent.ACTION_UP)
+				{
+					punishment.setBackgroundResource(R.drawable.btn_punish);
+				}
+				
+				return false;
 			}
 		});
 

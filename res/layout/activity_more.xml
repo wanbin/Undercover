@@ -22,8 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/strasktitle"
-            android:visibility="invisible" />
+            android:text="@string/strasktitle" />
 
         <Button
             android:id="@+id/clickme"
@@ -44,8 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/circleme"
-            android:visibility="invisible" />
+            android:text="@string/circleme" />
 
     </LinearLayout>
 
