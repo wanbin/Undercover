@@ -33,6 +33,7 @@ public class guess extends BaseActivity {
 	private Button punishBtn;
 	private Button startBtn;
 	private Button quickStartBtn;
+	private Button btnShare;
 	
 
 	private int totalcount;
@@ -115,6 +116,7 @@ public class guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
+		btnShare = (Button) findViewById(R.id.btnshare);
 
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
@@ -241,6 +243,12 @@ public class guess extends BaseActivity {
 		contentTable.addView(txtLong);
 		
 		checkGameOver();
+
+		btnShare.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				openShareEdit("我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695");
+			}
+		});
 	}
 
 	private void initShenfen(TextView text, int index) {

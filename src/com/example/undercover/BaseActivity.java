@@ -1,6 +1,7 @@
 package com.example.undercover;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -24,6 +25,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.controller.RequestType;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.controller.UMSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
 
 public class BaseActivity extends Activity {
 	int disWidth;
@@ -42,6 +48,7 @@ public class BaseActivity extends Activity {
 	protected String VersionName = "1.00";
 	protected int versionType = 1;
 	private ImageView btnreturn;
+	private UMSocialService controller;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,6 +87,33 @@ public class BaseActivity extends Activity {
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		initShare();
+
+	}
+
+	private void initShare() {
+		// 设置新浪SSO handler
+		controller = UMServiceFactory.getUMSocialService("adfads",
+				RequestType.SOCIAL);
+		controller.getConfig().setSinaSsoHandler(new SinaSsoHandler());
+	}
+
+	protected void openShareEdit(String share) {
+		UMServiceFactory.shareTo(BaseActivity.this, share, null);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		/**
+		 * 使用SSO必须添加，指定获取授权信息的回调页面，并传给SDK进行处理
+		 */
+		UMSsoHandler sinaSsoHandler = controller.getConfig()
+				.getSinaSsoHandler();
+		if (sinaSsoHandler != null
+				&& requestCode == UMSsoHandler.DEFAULT_AUTH_ACTIVITY_CODE) {
+			sinaSsoHandler.authorizeCallBack(requestCode, resultCode, data);
+		}
 	}
 
 	@Override

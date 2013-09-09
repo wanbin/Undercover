@@ -48,11 +48,12 @@ public class SelectGameActivity extends BaseActivity {
 			btnSound;
 	private CheckBox sound;
 	private boolean soundon = true;
-    
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
+
 
 		// Welcome 的Layout
 		View welcomeView = mInflater.inflate(R.layout.activity_welcome, null);
@@ -197,6 +198,9 @@ public class SelectGameActivity extends BaseActivity {
 			btnSound.setBackgroundResource(R.drawable.btn_select_false);
 		}
 	}
+
+
+
 	private class MyClickListener implements android.view.View.OnClickListener{
 
 		@Override
