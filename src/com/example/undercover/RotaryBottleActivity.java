@@ -31,13 +31,13 @@ public class RotaryBottleActivity extends BaseActivity {
 		setContentView(R.layout.rotarybottle);
 		toDe = getDegrees();
 
-		bottle = (ImageView) findViewById(R.id.imageView1);
+		bottle = (ImageView) findViewById(R.id.bottle_imageView);
 
 		//restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
 		punishment = (Button) findViewById(R.id.button1);
 		punishment.setVisibility(View.INVISIBLE);
 
-		bottle.setOnClickListener(new Button.OnClickListener() {
+		bottle.setOnClickListener(new ImageView.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startAnimation();

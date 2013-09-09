@@ -8,18 +8,18 @@
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
 
-     <ImageView
+     <ImageView android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
         android:src="@drawable/bottle_outer" />
      
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/bottle_imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="70dp"
-        android:src="@drawable/bottle1" />
+        android:src="@drawable/bottle" />
 
     <Button
         android:id="@+id/button1"
