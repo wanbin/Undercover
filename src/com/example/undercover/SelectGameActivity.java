@@ -115,6 +115,7 @@ public class SelectGameActivity extends BaseActivity {
 		startButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
+				
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
 					v.setBackgroundResource(R.drawable.btnstart2);
@@ -122,9 +123,16 @@ public class SelectGameActivity extends BaseActivity {
 					// 改为抬起时的图片
 					v.setBackgroundResource(R.drawable.btnstart);
 				}
+				
+				if(event.getAction() == MotionEvent.ACTION_MOVE)
+				{
+					v.setBackgroundResource(R.drawable.btnstart);
+				}
+				
 				return false;
 			}
 		});
+		
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
