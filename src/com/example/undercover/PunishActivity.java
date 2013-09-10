@@ -48,6 +48,8 @@ public class PunishActivity extends BaseActivity {
 	private Random random = new Random();
 	// 是否刚才按了摇骰子
 	private int isShackOneMinit = 0;
+	// 如果一直在摇，不断加时间
+	private boolean isshacked = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -165,16 +167,17 @@ public class PunishActivity extends BaseActivity {
 		randomBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				initTimer();
-				if (!isRandom) {
-					punish_disc.setClickable(false);
-					// punish_disc.setBackgroundResource(R.drawable.btnbggray);
-				} else {
-					punish_disc.setClickable(true);
-					// punish_disc.setBackgroundResource(R.drawable.btnbg);
-					SoundPlayer.playclaps();
-				}
-				isRandom = !isRandom;
+				return;
+				// initTimer();
+				// if (!isRandom) {
+				// punish_disc.setClickable(false);
+				// // punish_disc.setBackgroundResource(R.drawable.btnbggray);
+				// } else {
+				// punish_disc.setClickable(true);
+				// // punish_disc.setBackgroundResource(R.drawable.btnbg);
+				// SoundPlayer.playclaps();
+				// }
+				// isRandom = !isRandom;
 			}
 		});
 
@@ -184,8 +187,10 @@ public class PunishActivity extends BaseActivity {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
 					v.setBackgroundResource(R.drawable.btn_suiji2);
+					randomBtnTouch();
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
+					randomBtnTouch();
 					v.setBackgroundResource(R.drawable.btn_suiji);
 				}
 				return false;
@@ -195,7 +200,7 @@ public class PunishActivity extends BaseActivity {
 		imagedice.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				discstop();
+				// discstop();
 			}
 		});
 
@@ -203,11 +208,17 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					if (isRandom || isShackOneMinit > 0)
+						return false;
 					// 更改为按下时的背景图片
 					v.setBackgroundResource(R.drawable.btnshaizi2);
+					discstart();
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					if (isRandom || isShackOneMinit > 0)
+						return false;
 					// 改为抬起时的图片
 					v.setBackgroundResource(R.drawable.btnshaizi);
+					discstop();
 				}
 				return false;
 			}
@@ -216,10 +227,23 @@ public class PunishActivity extends BaseActivity {
 		punish_disc.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				shackAction();
+				// shackAction();
 			}
 		});
 	}// onCreat 方法结束
+
+	private void randomBtnTouch() {
+		initTimer();
+		if (!isRandom) {
+			punish_disc.setClickable(false);
+			// punish_disc.setBackgroundResource(R.drawable.btnbggray);
+		} else {
+			punish_disc.setClickable(true);
+			// punish_disc.setBackgroundResource(R.drawable.btnbg);
+			SoundPlayer.playclaps();
+		}
+		isRandom = !isRandom;
+	}
 	
 	// 初始化时间函数
 	private void initTimer() {
@@ -252,6 +276,7 @@ public class PunishActivity extends BaseActivity {
 		animDrawable.start();
 		discStart = true;
 		SoundPlayer.playRolling();
+		imagedice.setClickable(true);
 	}
 
 	private void discstop() {
@@ -272,7 +297,7 @@ public class PunishActivity extends BaseActivity {
 		SoundPlayer.stopRolling();
 		SoundPlayer.playclaps();
 		imagedice.startAnimation(as);
-
+		imagedice.setClickable(false);
 	}
 	private void getTruePunish(){
 		int[] intArr = MathUtil.getInstance().check(190, 6);
@@ -325,6 +350,10 @@ public class PunishActivity extends BaseActivity {
 		if (isShackOneMinit > 0) {
 			isShackOneMinit--;
 		}
+		if (isshacked == true && isShackOneMinit == 0) {
+			discstop();
+			isshacked = false;
+		}
 	}
 	private void addTenMMS(){
 		number = System.currentTimeMillis() % 6 + 1;
@@ -355,16 +384,13 @@ public class PunishActivity extends BaseActivity {
 	@Override
 	public void shackAction() {
 		initTimer();
-		if (isRandom || isShackOneMinit > 0)
+		if (isRandom)
 			return;
-		if (discStart) {
-			discstop();
-		} else {
-			// randomBtn.setText(getResources().getString(
-			// R.string.punish_random_btn));
+		if (isshacked == false) {
 			discstart();
+			isshacked = true;
 		}
-		isShackOneMinit = 20;
+		isShackOneMinit = 10;
 	}
 	
 	private int randomDisc() {
