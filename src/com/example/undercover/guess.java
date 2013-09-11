@@ -247,6 +247,10 @@ public class guess extends BaseActivity {
 		
 		txtRemain = new TextView(this);
 		contentTable.addView(txtRemain);
+		// 如果不亮明身份，则不显示
+		if (!isShow) {
+			txtRemain.setVisibility(View.INVISIBLE);
+		}
 		checkGameOver();
 	}
 
