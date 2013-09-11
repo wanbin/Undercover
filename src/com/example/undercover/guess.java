@@ -176,10 +176,20 @@ public class guess extends BaseActivity {
 
 				final TextView shenfen = new TextView(this);
 				shenfen.setText(content[temindex]);
-				shenfen.setGravity(Gravity.BOTTOM);
-				shenfen.setTextSize(15);
+				shenfen.setGravity(Gravity.CENTER);
+				shenfen.setTextSize(13);
+				shenfen.setTextColor(getResources().getColor(R.color.WRITE));
 				shenfen.setTag(999);
 				shenfen.setVisibility(View.INVISIBLE);
+
+				final ImageView shenfenimage = new ImageView(this);
+				shenfenimage.setBackgroundResource(R.drawable.wodi);
+				shenfenimage.setVisibility(View.INVISIBLE);
+
+				// ImageView mohu = new ImageView(this);
+				// mohu.setBackgroundResource(R.drawable.mohu);
+				// mohu.setVisibility(View.INVISIBLE);
+				// mohu.setTag(998);
 
 				select.setTag(temindex);
 				if (hasClicked[temindex]) {
@@ -187,8 +197,9 @@ public class guess extends BaseActivity {
 					select.setBackgroundResource(stringToId("btnun_"
 							+ (temindex + 1), "drawable"));
 					select.setClickable(false);
+					// 接着上局玩里面
 					if (isShow) {
-						initShenfen(text, temindex);
+						initShenfen(shenfenimage, temindex);
 					}
 				}else{
 					select.setBackgroundResource(stringToId("btn_"
@@ -207,22 +218,7 @@ public class guess extends BaseActivity {
 									+ ((Integer) v.getTag() + 1), "drawable"));
 							SoundPlayer.playball();
 							if(isShow){
-								text.setTextSize(13);
-								if (content[(Integer) v.getTag()].equals(son)) {
-									SoundPlayer.playChuiShao();
-									text.setText(undercover);
-									text.setTextColor(getResources().getColor(R.color.RED));
-								} else {
-									SoundPlayer.playA();
-									if (content[(Integer) v.getTag()]
-											.equals(blank)) {
-										text.setText(blank);
-										text.setTextColor(getResources()
-												.getColor(R.color.BLUE));
-									} else {
-										text.setText(aggrieved);
-									}
-								}
+								initShenfen(shenfenimage, (Integer) v.getTag());
 							} else {
 								SoundPlayer.playChuiShao();
 							}
@@ -234,6 +230,8 @@ public class guess extends BaseActivity {
 				temindex ++;
 				fl.addView(select);
 				fl.addView(text);
+				fl.addView(shenfenimage);
+				// fl.addView(mohu);
 				fl.addView(shenfen);
 				newrow.addView(fl, disWidth / 4, disWidth / 7);
 			}
@@ -247,19 +245,13 @@ public class guess extends BaseActivity {
 		checkGameOver();
 	}
 
-	private void initShenfen(TextView text, int index) {
-			text.setTextSize(13);
-			if (content[index].equals(son)) {
-				text.setText(undercover);
-				text.setTextColor(getResources().getColor(R.color.RED));
-			} else {
-				if (content[index].equals(blank)) {
-					text.setText(blank);
-					text.setTextColor(getResources().getColor(R.color.BLUE));
-				} else {
-					text.setText(aggrieved);
-				}
-			}
+	private void initShenfen(ImageView shenfenimage, int index) {
+		if (content[index].equals(son)) {
+			shenfenimage.setBackgroundResource(R.drawable.wodi);
+		} else {
+			shenfenimage.setBackgroundResource(R.drawable.yuan);
+		}
+		shenfenimage.setVisibility(View.VISIBLE);
 	}
 
 	protected void setAllButton(boolean useable) {
@@ -388,6 +380,9 @@ public class guess extends BaseActivity {
 						TextView temtext = (TextView) imageTem
 								.findViewWithTag(999);
 						temtext.setVisibility(View.VISIBLE);
+						// ImageView mohu = (ImageView) imageTem
+						// .findViewWithTag(998);
+						// mohu.setVisibility(View.VISIBLE);
 					}
 				}
 			}
