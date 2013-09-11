@@ -44,6 +44,8 @@ public class guess extends BaseActivity {
 	private int temindex;
 	private Random random = new Random();
 	private TextView txtLong;
+	// 还有人员分配
+	private TextView txtRemain;
 	/**
 	 * 判断游戏是否结束
 	 */
@@ -199,7 +201,7 @@ public class guess extends BaseActivity {
 					select.setClickable(false);
 					// 接着上局玩里面
 					if (isShow) {
-						initShenfen(shenfenimage, temindex);
+						initShenfen(shenfenimage, temindex, false);
 					}
 				}else{
 					select.setBackgroundResource(stringToId("btn_"
@@ -218,7 +220,8 @@ public class guess extends BaseActivity {
 									+ ((Integer) v.getTag() + 1), "drawable"));
 							SoundPlayer.playball();
 							if(isShow){
-								initShenfen(shenfenimage, (Integer) v.getTag());
+								initShenfen(shenfenimage, (Integer) v.getTag(),
+										true);
 							} else {
 								SoundPlayer.playChuiShao();
 							}
@@ -242,13 +245,18 @@ public class guess extends BaseActivity {
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
 		
+		txtRemain = new TextView(this);
+		contentTable.addView(txtRemain);
 		checkGameOver();
 	}
 
-	private void initShenfen(ImageView shenfenimage, int index) {
+	private void initShenfen(ImageView shenfenimage, int index,
+			boolean playsound) {
 		if (content[index].equals(son)) {
+			SoundPlayer.playChuiShao();
 			shenfenimage.setBackgroundResource(R.drawable.wodi);
 		} else {
+			SoundPlayer.playA();
 			shenfenimage.setBackgroundResource(R.drawable.yuan);
 		}
 		shenfenimage.setVisibility(View.VISIBLE);
@@ -290,6 +298,16 @@ public class guess extends BaseActivity {
 		return strSeq;
 	}
 
+	/**
+	 * 返回剩余人员配置
+	 * 
+	 * @return
+	 */
+	protected String getRemain() {
+		// return "剩余卧底:";
+		return "剩余卧底:" + soncount + "个  剩余平民:" + fathercount + "个";
+	}
+
 	protected void checkGameOver() {
 		Log("CheeckGameOver");
 		// if (!isOver) {
@@ -306,6 +324,7 @@ public class guess extends BaseActivity {
 			setAllButton(false);
 			txtLong.setText(getSonStr());
 			cleanStatus();
+			txtRemain.setVisibility(View.INVISIBLE);
 		} else if (fathercount <= soncount) {
 			Log("卧底胜利");
 			SoundPlayer.playNormalSoure();
@@ -318,6 +337,7 @@ public class guess extends BaseActivity {
 			refash();
 			setAllButton(false);
 			txtLong.setText(getFatherStr());
+			txtRemain.setVisibility(View.INVISIBLE);
 			cleanStatus();
 		} else {
 			int stringcount = overString.length;
@@ -325,6 +345,7 @@ public class guess extends BaseActivity {
 			txtTitle.setText(overString[stringindex]);
 			Log(hy + soncount + ge);
 			txtLong.setText(updateSaySeq() + "(" + taplong + ")");
+			txtRemain.setText(getRemain());
 		}
 		// }else{
 		//
