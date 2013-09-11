@@ -12,7 +12,7 @@
     <RelativeLayout
         android:id="@+id/re"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:layout_centerVertical="true" >
 
         <TextView
