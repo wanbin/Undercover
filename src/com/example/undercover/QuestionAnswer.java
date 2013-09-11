@@ -46,6 +46,7 @@ public class QuestionAnswer extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.question);
 		initBtnBack(R.id.btnback);
+		initShare(R.id.btnshare);
 		nextQuestion = getResources().getString(R.string.nextQuestion);
 		GameOver = getResources().getString(R.string.GameOver);
 		punish_0 = (TextView) findViewById(R.id.question);

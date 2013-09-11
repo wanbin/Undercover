@@ -79,8 +79,9 @@ public class guess extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
-		initBtnBack(R.id.btnback);
 		setContentView(R.layout.guess);
+		initBtnBack(R.id.btnback);
+		initShare(R.id.btnshare);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
 //		overString1 = getResources().getString(R.string.overString1);  
@@ -117,7 +118,7 @@ public class guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
-		btnShare = (Button) findViewById(R.id.btnshare);
+
 
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
@@ -244,12 +245,6 @@ public class guess extends BaseActivity {
 		contentTable.addView(txtLong);
 		
 		checkGameOver();
-
-		btnShare.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-				openShareEdit("我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695");
-			}
-		});
 	}
 
 	private void initShenfen(TextView text, int index) {

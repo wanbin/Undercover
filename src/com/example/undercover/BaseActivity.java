@@ -49,7 +49,6 @@ public class BaseActivity extends Activity {
 	protected int versionType = 1;
 	private ImageView btnreturn;
 	private UMSocialService controller;
-	private Button btnBack;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,12 +87,21 @@ public class BaseActivity extends Activity {
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		initShare();
 
 	}
 
+	protected void initShare(int id) {
+		Button btnShare = (Button) findViewById(id);
+		btnShare.setVisibility(View.VISIBLE);
+		btnShare.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) {
+				openShareEdit("我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695");
+			}
+		});
+	}
+
 	protected void initBtnBack(int id) {
-		btnBack = (Button) findViewById(id);
+		Button btnBack = (Button) findViewById(id);
 		btnBack.setVisibility(View.VISIBLE);
 		btnBack.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -102,6 +110,7 @@ public class BaseActivity extends Activity {
 			}
 		});
 	}
+
 	private void initShare() {
 		// 设置新浪SSO handler
 		controller = UMServiceFactory.getUMSocialService("adfads",

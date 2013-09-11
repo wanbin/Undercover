@@ -15,6 +15,7 @@ public class weixin extends BaseActivity {
 		setContentView(R.layout.weixin);
 		weixin = (ImageView) findViewById(R.id.imageView1);
 		initBtnBack(R.id.btnback);
+		initShare(R.id.btnshare);
 		weixin.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

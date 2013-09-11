@@ -77,12 +77,4 @@
         android:layout_centerInParent="true"
         android:textSize="@dimen/index" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/changeword"
-        android:background="@drawable/back"/>
-
 </RelativeLayout>

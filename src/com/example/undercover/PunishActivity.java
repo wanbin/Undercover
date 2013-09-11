@@ -55,6 +55,7 @@ public class PunishActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.punish);
 		initBtnBack(R.id.btnback);
+		initShare(R.id.btnshare);
 		// 注册摇动事件
 		showShack = true;
 		PunishInTurn = getResources().getString(R.string.PunishInTurn);

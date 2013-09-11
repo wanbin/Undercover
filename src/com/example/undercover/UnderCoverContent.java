@@ -15,6 +15,7 @@ public class UnderCoverContent extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.undercover_content);
 		initBtnBack(R.id.btnback);
+		initShare(R.id.btnshare);
 		GameRule = getResources().getString(R.string.GameRule);
 		Vrequir = getResources().getString(R.string.Vrequir);
 		TextView ruleText	= (TextView) findViewById(R.id.ruleText);
