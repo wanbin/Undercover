@@ -54,6 +54,7 @@ public class PunishActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.punish);
+		initBtnBack(R.id.btnback);
 		// 注册摇动事件
 		showShack = true;
 		PunishInTurn = getResources().getString(R.string.PunishInTurn);

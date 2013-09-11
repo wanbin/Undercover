@@ -28,10 +28,9 @@ public class RotaryBottleActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.rotarybottle);
+		initBtnBack(R.id.btnback);
 		toDe = getDegrees();
-
 		bottle = (ImageView) findViewById(R.id.bottle_imageView);
 
 		//restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
@@ -177,7 +176,7 @@ public class RotaryBottleActivity extends BaseActivity {
 //			        @Override  
 //			        public void onClick(DialogInterface dialog, int which) {  
 	// // 点击“返回”后的操作,这里不设置没有任何操作
-//			        }  
+	// }
 //			    }).show();  
 //			// super.onBackPressed();  
 //			   }  

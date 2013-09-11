@@ -53,6 +53,7 @@ public class random_50 extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
+		initBtnBack(R.id.btnback);
 		dangerrate = getResources().getString(R.string.dangerrate);
 		click = getResources().getString(R.string.click);
 		ci = getResources().getString(R.string.ci);

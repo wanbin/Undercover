@@ -22,6 +22,7 @@ public class ContributionActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contribution);
+		initBtnBack(R.id.btnback);
 		content = (LinearLayout) findViewById(R.id.content);
 		btnfb = (Button) findViewById(R.id.btnfb);
 		email = (TextView) findViewById(R.id.txtEmail);

@@ -19,6 +19,7 @@ public class MakeActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_make);
+		initBtnBack(R.id.btnback);
 		Version = getResources().getString(R.string.Version);
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);

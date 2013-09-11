@@ -50,6 +50,7 @@ public class fanpai extends BaseActivity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_pai);
+		initBtnBack(R.id.btnback);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		isChecked = false;

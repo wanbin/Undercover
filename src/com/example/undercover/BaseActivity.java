@@ -49,6 +49,7 @@ public class BaseActivity extends Activity {
 	protected int versionType = 1;
 	private ImageView btnreturn;
 	private UMSocialService controller;
+	private Button btnBack;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,6 +92,16 @@ public class BaseActivity extends Activity {
 
 	}
 
+	protected void initBtnBack(int id) {
+		btnBack = (Button) findViewById(id);
+		btnBack.setVisibility(View.VISIBLE);
+		btnBack.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+	}
 	private void initShare() {
 		// 设置新浪SSO handler
 		controller = UMServiceFactory.getUMSocialService("adfads",
