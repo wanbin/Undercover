@@ -34,6 +34,7 @@ public class PunishActivity extends BaseActivity {
 	private TextView punish_4;
 	private TextView punish_5;
 	private TextView punish_6;
+	private TextView txtLong;
 	private boolean flag;
 	// 是否开始 随机数字的计算；
 	private boolean isRandom;
@@ -75,6 +76,12 @@ public class PunishActivity extends BaseActivity {
 		punish_4	= (TextView)findViewById(R.id.punish_4);
 		punish_5	= (TextView)findViewById(R.id.punish_5);
 		punish_6	= (TextView)findViewById(R.id.punish_6);
+
+		// 长按选择按键
+		txtLong = (TextView) findViewById(R.id.txtLong);
+		txtLong.setText(strFromId("longclicekdisc"));
+		txtLong.setVisibility(View.INVISIBLE);
+
 		punish		= new TextView[6];
 		punish[0]	= punish_1;
 		punish[1]	= punish_2;
@@ -102,6 +109,7 @@ public class PunishActivity extends BaseActivity {
 				uMengClick("game_zhenxinhua");
 				// 获取惩罚
 				getTruePunish();
+				txtLong.setVisibility(View.VISIBLE);
 			}
 		});
 		// 用户选择大冒险
@@ -119,6 +127,7 @@ public class PunishActivity extends BaseActivity {
 				uMengClick("game_damaoxian");
 				// 获取惩罚
 				getAdvenPunish();
+				txtLong.setVisibility(View.VISIBLE);
 			}
 		});
 

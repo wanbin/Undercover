@@ -57,7 +57,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="MarketQQ" />
+            android:value="MarketTEST" />
         <activity android:name="com.example.undercover.ContributionActivity"></activity>
 
         

@@ -101,6 +101,13 @@
             android:layout_height="200dp"
             android:layout_centerInParent="true"/>
 
+        <TextView
+            android:id="@+id/txtLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="10dp" />
+
         <Button
             android:id="@+id/punish_disc"
             android:layout_width="150dp"
@@ -116,6 +123,5 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/btn_suiji"/>
-
         
 </RelativeLayout>
