@@ -54,7 +54,7 @@ public class BaseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		MobclickAgent.setDebugMode(true);
+		MobclickAgent.setDebugMode(false);
 		MobclickAgent.onError(this);
 		try {
 			VersionName = GetVersion();
