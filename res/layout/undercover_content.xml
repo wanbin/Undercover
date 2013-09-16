@@ -12,8 +12,7 @@
     <ScrollView
         android:id="@+id/sc"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_centerVertical="true" >
+        android:layout_height="400dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,36 +45,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tem"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|right"
-                android:orientation="vertical" >
-
-                <Button
-                    android:id="@+id/Weixin"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/strToWeixin" />
-
-                <Button
-                    android:id="@+id/appMaker"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/strAbout" />
-
-                <Button
-                    android:id="@+id/usercontribution"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/usercontribution" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/tem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+           <Button
+            android:id="@+id/btnfb"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/fankui" />
+
+        <Button
+            android:id="@+id/btnweixin"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/weixin" />
+        
+        <Button
+            android:id="@+id/btnyonghu"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/yonghu" />
+        
+        <Button
+            android:id="@+id/btnguanyu"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/guanyu" />
+    </LinearLayout>
 
 </RelativeLayout>

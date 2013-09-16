@@ -32,16 +32,40 @@
             android:autoLink="email"
             android:padding="10dp"
             android:text="@string/cametogether" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/cont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" >
 
         <Button
             android:id="@+id/btnfb"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtContent"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/btnbg"
-            android:text="@string/feedback" />
-    </RelativeLayout>
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/fankui" />
+
+        <Button
+            android:id="@+id/btnweixin"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/weixin" />
+        
+        <Button
+            android:id="@+id/btnyonghu"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/yonghu" />
+        
+        <Button
+            android:id="@+id/btnguanyu"
+            android:layout_width="75dp"
+            android:layout_height="46dp"
+            android:background="@drawable/guanyu" />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.undercover;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ public class MakeActivity extends BaseActivity {
 	private TextView txtContent;
 	private TextView txtTitle;
 	private Button btnfb;
+	private Button btnwx;
 	private FeedbackAgent agent;
 	private String Version;
 	private String suggest;
@@ -25,6 +27,7 @@ public class MakeActivity extends BaseActivity {
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		btnfb = (Button) findViewById(R.id.btnfb);
+		btnwx = (Button) findViewById(R.id.btnweixin);
 		txtTitle.setText(Version);
 		agent = new FeedbackAgent(this);
 		String emailaddr = this.getString(R.string.emailaddr);
@@ -40,6 +43,17 @@ public class MakeActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				SoundPlayer.playball();
 				agent.startFeedbackActivity();
+			}
+		});
+
+		btnwx.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				SoundPlayer.playball();
+				uMengClick("click_weixin");
+				Intent mIntent = new Intent();
+				mIntent.setClass(MakeActivity.this, weixin.class);
 			}
 		});
 

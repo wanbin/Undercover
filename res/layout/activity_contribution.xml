@@ -40,7 +40,7 @@
             <ScrollView
                 android:id="@+id/contentscroll"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="230dp"
                 android:layout_margin="10dp" >
 
                 <LinearLayout
@@ -58,15 +58,16 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:autoLink="email"
                 android:text="@string/thankyou" />
-
-            <Button
-                android:id="@+id/btnfb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/btnbg"
-                android:text="@string/feedback" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnfb"
+        android:layout_width="150dp"
+        android:layout_height="93dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/fankui"
+         />
 
 </RelativeLayout>

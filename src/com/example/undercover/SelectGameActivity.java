@@ -27,6 +27,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.umeng.fb.FeedbackAgent;
+
 public class SelectGameActivity extends BaseActivity {
 	// viewPager 滑动
 	private ViewPager viewPager;
@@ -42,10 +44,11 @@ public class SelectGameActivity extends BaseActivity {
     
 	// 将小圆点ImageView放入该List
     private ImageView[] imageViews;
-    
+	private FeedbackAgent agent;
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
+			gongxianbtn, guanyubtn,
 			appmakerbButton, btnStart, usercontribution, zhenxin, startButton,
-			btnSound;
+ btnSound, btnfb;
 	private CheckBox sound;
 	private boolean soundon = true;
 
@@ -148,30 +151,26 @@ public class SelectGameActivity extends BaseActivity {
 			btnStart.setText(strFromId("strcontinue"));
 		}
 
-		weixinButton = (Button) helpView.findViewById(R.id.Weixin);
-		weixinButton.setBackgroundResource(R.drawable.btnbg);
+		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
 		weixinButton.setOnClickListener(new MyClickListener());
+
+		gongxianbtn = (Button) helpView.findViewById(R.id.btnyonghu);
+		gongxianbtn.setOnClickListener(new MyClickListener());
+		guanyubtn = (Button) helpView.findViewById(R.id.btnguanyu);
+		guanyubtn.setOnClickListener(new MyClickListener());
+
+		btnfb = (Button) helpView.findViewById(R.id.btnfb);
+		btnfb.setOnClickListener(new MyClickListener());
 		// 用户贡献
-		usercontribution = (Button) helpView
-				.findViewById(R.id.usercontribution);
-		usercontribution.setBackgroundResource(R.drawable.btnbg);
-		usercontribution.setOnClickListener(new MyClickListener());
-		appmakerbButton = (Button) helpView.findViewById(R.id.appMaker);
-		appmakerbButton.setBackgroundResource(R.drawable.btnbg);
-        appmakerbButton.setOnClickListener(new MyClickListener());
 
         clickmeButton = (Button) moreView.findViewById(R.id.clickme);
-        clickmeButton.setBackgroundResource(R.drawable.btnbg);
         clickmeButton.setOnClickListener(new MyClickListener());
         circlemeButton = (Button) moreView.findViewById(R.id.circleme);
-        circlemeButton.setBackgroundResource(R.drawable.btnbg);
         circlemeButton.setOnClickListener(new MyClickListener());
         questionButton = (Button) moreView.findViewById(R.id.jumpQuestion);
-        questionButton.setBackgroundResource(R.drawable.btnbg);
         questionButton.setOnClickListener(new MyClickListener());
         
 		zhenxin = (Button) moreView.findViewById(R.id.zhenxin);
-		zhenxin.setBackgroundResource(R.drawable.btnbg);
 		zhenxin.setOnClickListener(new MyClickListener());
 
         viewPager.setAdapter(new MyPageAdapter());
@@ -191,6 +190,7 @@ public class SelectGameActivity extends BaseActivity {
 				setSwithSound(soundon);
 			}
 		});
+		agent = new FeedbackAgent(this);
 	}
 	
 
@@ -236,18 +236,20 @@ public class SelectGameActivity extends BaseActivity {
 				}
 				uMengClick("game_undercover");
 				break;
-			case R.id.Weixin:
+			case R.id.btnweixin:
 				SoundPlayer.playball();
 				uMengClick("click_weixin");
 				mIntent.setClass(SelectGameActivity.this, weixin.class);
 				break;
-			case R.id.usercontribution:
+
+			case R.id.btnyonghu:
 				SoundPlayer.playball();
 				uMengClick("click_usercontribution");
 				mIntent.setClass(SelectGameActivity.this,
 						ContributionActivity.class);
 				break;
-			case R.id.appMaker:
+
+			case R.id.btnguanyu:
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, MakeActivity.class);
 				uMengClick("click_about");
@@ -273,6 +275,10 @@ public class SelectGameActivity extends BaseActivity {
 				mIntent.setClass(SelectGameActivity.this, PunishActivity.class);
 				uMengClick("game_zhenxinhua_damaoxian");
 				break;
+			case R.id.btnfb:
+				SoundPlayer.playball();
+				agent.startFeedbackActivity();
+				return;
 			default:
 				break;
 			}
