@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:paddingBottom="3dp" >
+            android:layout_marginBottom="8dp" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -68,10 +68,14 @@
                 android:id="@+id/switchbtn"
                 android:layout_width="81dp"
                 android:layout_height="29dp"
-                android:layout_alignLeft="@+id/btnStart"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/btn_select_true" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/temmaoxian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 

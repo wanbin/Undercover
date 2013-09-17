@@ -51,6 +51,7 @@ public class SelectGameActivity extends BaseActivity {
  btnSound, btnfb;
 	private CheckBox sound;
 	private boolean soundon = true;
+	private TextView maoxian;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +97,8 @@ public class SelectGameActivity extends BaseActivity {
 		// 将小圆点放到Layout中
 		for (int i = 0; i < imageViews.length; i++) {
 			ImageView image = new ImageView(SelectGameActivity.this);
-			image.setLayoutParams(new LayoutParams(30, 30));
-			image.setPadding(20, 20, 20, 20);
+			image.setLayoutParams(new LayoutParams(55, 6));
+			// image.setPadding(0, 20, 20, 0);
 			// 默认为第一小圆点
 			if (i==0) {
 				image.setBackgroundResource(R.drawable.page_indicator_focused);
@@ -114,6 +115,8 @@ public class SelectGameActivity extends BaseActivity {
 		// helpButton.setOnClickListener(new MyClickListener());
 		startButton = (Button) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
+
+		maoxian = (TextView) welcomeView.findViewById(R.id.temmaoxian);
 
 		startButton.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -221,6 +224,8 @@ public class SelectGameActivity extends BaseActivity {
 			// UnderCoverContent.class);
 			// break;
 			case R.id.startButton:
+				// maoxian.setText(getRandomMaoxian("start"));
+				// return;
 				SoundPlayer.playball();
 				cleanStatus();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);

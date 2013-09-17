@@ -1,5 +1,9 @@
 package com.example.undercover;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -315,6 +319,93 @@ public class BaseActivity extends Activity {
 		PackageInfo packInfo = packageManager.getPackageInfo(getPackageName(),
 				0);
 		return packInfo.versionName;
+	}
+
+	// libary = getResources().getStringArray(getWords(word[num]));
+	// int selectindex = Math.abs(random.nextInt()) % libary.length;
+	// content = getRandomString(libary[selectindex]);
+	// String[] children = new String[2];
+	// children = contnettxt.split("_");
+	// int sonindex = Math.abs(random.nextInt()) % 2;
+	// son = children[sonindex];
+	// String father = children[Math.abs(sonindex - 1)];
+	// String[] ret = new String[peopleCount];
+	// for (int n = 0; n < ret.length; n++) {
+	// ret[n] = father;
+	// }
+	// for (int i = 0; i < underCount; i++) {
+	// int tem;
+	// do {
+	// tem = Math.abs(random.nextInt()) % peopleCount;
+	// } while (ret[tem].equals(son));
+	// ret[tem] = son;
+	// }
+	// // 设置content
+	// setContent(ret);
+	// setSon(son);
+	// return ret;
+
+	protected Map<String, StringBuffer> map;
+
+	protected void getMaoxian() {
+		String[] zhenxin = getResources().getStringArray(R.array.damaoxian);
+		map = new HashMap<String, StringBuffer>();
+		for (int n = 0; n < zhenxin.length; n++) {
+			String[] children = zhenxin[n].split("_");
+			if (children.length == 2) {
+				StringBuffer temstr = map.get("start");
+				if (temstr == null) {
+					temstr = new StringBuffer();
+				}
+				temstr.append(zhenxin[n] + "&");
+				map.put("start", temstr);
+			} else {
+				StringBuffer temstr = map.get(children[0]);
+				if (temstr == null) {
+					temstr = new StringBuffer();
+				}
+				temstr.append(children[1] + "_" + children[2] + "&");
+				map.put(children[0], temstr);
+			}
+		}
+	}
+
+	protected StringBuffer appendString(StringBuffer temstr, String stradd) {
+		if (temstr == null) {
+			temstr = new StringBuffer();
+		}
+		return temstr.append(stradd + ",");
+	}
+
+	protected String getRandomMaoxian(String strkey) {
+		if (map == null) {
+			getMaoxian();
+		}
+		StringBuffer temstr = map.get(strkey);
+		if (temstr == null) {
+			return "";
+		}
+		String[] children = temstr.toString().split("&");
+		Random random = new Random();
+		int randomindex = 0;
+		if (children.length > 1) {
+			randomindex = Math.abs(random.nextInt()) % (children.length - 1);
+		}
+		String temmaoxian = children[randomindex];
+		String[] tem = temmaoxian.split("_");
+		String strReturn = tem[0];
+		if (tem.length <= 1) {
+			return strReturn;
+		}
+		if (!tem[1].equals("end")) {
+			strReturn = strReturn + getRandomMaoxian(tem[1]);
+			// Log.v(strReturn, tem[1]);
+		}
+		return strReturn;
+	}
+
+	public String getDamaoxian() {
+		return getRandomMaoxian("start");
 	}
 
 }

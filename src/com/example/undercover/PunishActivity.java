@@ -51,6 +51,7 @@ public class PunishActivity extends BaseActivity {
 	private int isShackOneMinit = 0;
 	// 如果一直在摇，不断加时间
 	private boolean isshacked = false;
+	private boolean canshacked = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,6 +111,7 @@ public class PunishActivity extends BaseActivity {
 				// 获取惩罚
 				getTruePunish();
 				txtLong.setVisibility(View.VISIBLE);
+				canshacked = true;
 			}
 		});
 		// 用户选择大冒险
@@ -128,6 +130,7 @@ public class PunishActivity extends BaseActivity {
 				// 获取惩罚
 				getAdvenPunish();
 				txtLong.setVisibility(View.VISIBLE);
+				canshacked = true;
 			}
 		});
 
@@ -266,6 +269,9 @@ public class PunishActivity extends BaseActivity {
 	}
 
 	private void discstart() {
+		if (!canshacked) {
+			return;
+		}
 		randomBtn.setClickable(false);
 		// randomBtn.setBackgroundResource(R.drawable.btnbggray);
 		imagedice.setBackgroundResource(0);
@@ -291,6 +297,9 @@ public class PunishActivity extends BaseActivity {
 	}
 
 	private void discstop() {
+		if (!canshacked) {
+			return;
+		}
 		randomBtn.setClickable(true);
 		// randomBtn.setBackgroundResource(R.drawable.btnbg);
 		imagedice.clearAnimation();
@@ -320,10 +329,9 @@ public class PunishActivity extends BaseActivity {
 	}
 	
 	private void getAdvenPunish(){
-		int[] intArr = MathUtil.getInstance().check(93, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
-			str[i] = PunishProps.getPunish(intArr[i]);
+			str[i] = getDamaoxian();
 		}
 		setTextView(str);
 	}
