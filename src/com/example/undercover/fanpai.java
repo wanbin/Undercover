@@ -81,6 +81,8 @@ public class fanpai extends BaseActivity {
 						+ gameInfo.getString("word", "").trim());
 		initFanpai();
 
+		initBtnInfo(R.id.btninfo,
+				"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n2.第一个翻牌的玩家有机会更新词汇");
 
 		// Bundle bundle = this.getIntent().getExtras();
 		// isBlank = bundle.getBoolean("isBlank");

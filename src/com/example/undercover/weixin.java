@@ -16,6 +16,7 @@ public class weixin extends BaseActivity {
 		weixin = (ImageView) findViewById(R.id.imageView1);
 		initBtnBack(R.id.btnback);
 		initShare(R.id.btnshare);
+		initBtnInfo(R.id.btninfo, "微信帮助信息");
 		weixin.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

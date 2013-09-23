@@ -87,14 +87,14 @@
                     android:id="@+id/subPeople"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/popo72"
-                    android:text="-" />
+                     android:background="@drawable/underconver_count_reduce"
+                    />
 
                 <TextView
                     android:id="@+id/peopleCount"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:background="@drawable/popo72"
+                    android:background="@drawable/undercover_count_backgroud" 
                     android:gravity="center"
                     android:text="6"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -103,18 +103,17 @@
                     android:id="@+id/addPeople"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/popo72"
-                    android:text="+" />
+                     android:background="@drawable/underconver_count_add"
+                     />
             </LinearLayout>
 
             <Button
                 android:id="@+id/startClickme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="93dp"
                 android:layout_below="@+id/selectpeoplelinear"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/btnbg"
-                android:text="@string/startGame" />
+                 android:background="@drawable/btnstart"/>
 
 
         </RelativeLayout>
@@ -129,17 +128,15 @@
 
         <Button
             android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnbg"
-            android:text="@string/punishmen" />
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:background="@drawable/btn_punish"  />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btnbg"
-            android:text="@string/restart" />
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:background="@drawable/btn_restart"/>
     </LinearLayout>
 
 </RelativeLayout>

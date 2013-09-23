@@ -108,6 +108,8 @@ public class guess extends BaseActivity {
 		hy=getResources().getString(R.string.hy);                      
 		ge=getResources().getString(R.string.ge);
 		
+		initBtnInfo(R.id.btninfo,
+				"长按投出卧底，胜利条件\n1.卧底数大于等于平民时：卧底胜\n2.卧底被全部投出：平民胜");
 		//string_end
 		
 		isOver = false;

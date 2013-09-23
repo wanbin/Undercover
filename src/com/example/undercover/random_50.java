@@ -187,6 +187,8 @@ public class random_50 extends BaseActivity {
 				finish();
 			}
 		});
+		showHelp();
+		siampleTitle(strFromId("clicksay"));
 	}
 
 	protected void setFinish() {
@@ -231,5 +233,10 @@ public class random_50 extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onStop();
 //		onBackPressed();
+	}
+
+
+	public void showHelp() {
+		initBtnInfo(R.id.btninfo, strFromId("clicksay"));
 	}
 }

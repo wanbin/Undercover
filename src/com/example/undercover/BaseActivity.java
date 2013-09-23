@@ -104,6 +104,7 @@ public class BaseActivity extends Activity {
 		});
 	}
 
+
 	protected void initBtnBack(int id) {
 		Button btnBack = (Button) findViewById(id);
 		btnBack.setVisibility(View.VISIBLE);
@@ -111,6 +112,18 @@ public class BaseActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				finish();
+			}
+		});
+	}
+
+	protected void initBtnInfo(int id, final String infostr) {
+		Button btnInfo = (Button) findViewById(id);
+		btnInfo.setVisibility(View.VISIBLE);
+		btnInfo.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(BaseActivity.this, infostr, Toast.LENGTH_LONG)
+						.show();
 			}
 		});
 	}

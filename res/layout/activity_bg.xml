@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg" >
 
-    <!-- <ImageView
+    <!--
+    <ImageView
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,25 +26,39 @@
      android:id="@+id/btnreturn"
      android:layout_width="70dp"
      android:layout_height="70dp"
-     android:background="@drawable/btn_back" /> -->
-    
+     android:background="@drawable/btn_back" />
+    -->
+
     <Button
         android:id="@+id/btnback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/back"
         android:layout_margin="10dp"
+        android:background="@drawable/back"
         android:visibility="invisible" />
 
-    <Button
-        android:id="@+id/btnshare"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/share_unpress"
-        android:visibility="invisible" />
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/btninfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/help"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnshare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/share_unpress"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </RelativeLayout>
