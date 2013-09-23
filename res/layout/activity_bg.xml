@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:background="@drawable/back"
+        android:layout_margin="10dp"
         android:visibility="invisible" />
 
     <Button
@@ -41,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
         android:background="@drawable/share_unpress"
         android:visibility="invisible" />
 

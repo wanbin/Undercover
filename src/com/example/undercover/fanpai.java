@@ -109,7 +109,7 @@ public class fanpai extends BaseActivity {
 				SoundPlayer.playball();
 				if (nowIndex >= 1) {
 					canchangeword = false;
-					btnchangeword.setBackgroundResource(R.drawable.update);
+					btnchangeword.setBackgroundResource(R.drawable.update2);
 					// changeword.setVisibility(View.INVISIBLE);
 				}
 				if (nowIndex <= content.length) {
