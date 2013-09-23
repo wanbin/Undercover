@@ -42,7 +42,7 @@ public class fanpai extends BaseActivity {
 	private SharedPreferences gameInfo;
 	private String blank;
 	private boolean canchangeword = true;
-	private String[] word;
+	private String word;
 	private Animation animation;
 
 	@Override
@@ -71,7 +71,7 @@ public class fanpai extends BaseActivity {
 		isShow = gameInfo.getBoolean("isShow", false);
 		peopleCount = gameInfo.getInt("peopleCount", 4);
 		underCount = gameInfo.getInt("underCount", 1);
-		word = gameInfo.getString("word", "eat").trim().split(",");
+		word = gameInfo.getString("word", "全部");
 
 		animation = (AnimationSet) AnimationUtils.loadAnimation(this,
 				R.anim.reflash);
@@ -200,9 +200,7 @@ public class fanpai extends BaseActivity {
 
 	// 重新翻牌
 	protected void initFanpai() {
-
-		int num = Math.abs(random.nextInt()) % word.length;
-		libary = getResources().getStringArray(getWords(word[num]));
+		libary = getUnderWords(word);
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
 		nowIndex = 1;

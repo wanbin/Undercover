@@ -1,8 +1,10 @@
 package com.example.undercover;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -419,6 +421,52 @@ public class BaseActivity extends Activity {
 
 	public String getDamaoxian() {
 		return getRandomMaoxian("start");
+	}
+
+	protected Map<String, StringBuffer> mapWords;
+
+	protected void initUndercoverWords() {
+		// words 所有谁是卧底词汇,包括分类
+		mapWords = new HashMap<String, StringBuffer>();
+		String[] words = getResources().getStringArray(R.array.undercoverword);
+		for (int n = 0; n < words.length; n++) {
+			String[] children = words[n].split("_");
+			StringBuffer temstr = mapWords.get(children[0]);
+			if (temstr == null) {
+				temstr = new StringBuffer();
+			}
+			temstr.append(children[1] + "_" + children[2] + ",");
+			mapWords.put(children[0], temstr);
+		}
+	}
+
+	protected String[] getUnderWords(String wordstype) {
+		initUndercoverWords();
+		StringBuffer returnstr = mapWords.get(wordstype);
+		Set<String> stringSet = null;
+		if (returnstr == null) {
+			returnstr = new StringBuffer();
+			stringSet = mapWords.keySet();
+			Iterator iterator = stringSet.iterator();
+			while (iterator.hasNext()) {
+				String temStr = (String) iterator.next();
+				returnstr.append(mapWords.get(temStr).toString());
+			}
+		}
+		return returnstr.toString()
+				.substring(0, returnstr.toString().length() - 1).split(",");
+	}
+
+	protected String[] getUnderKind() {
+		initUndercoverWords();
+		StringBuffer returnstr = new StringBuffer();
+		Set<String> stringSet = mapWords.keySet();
+		Iterator iterator = stringSet.iterator();
+		while (iterator.hasNext()) {
+			returnstr.append((String) iterator.next() + "_");
+		}
+		returnstr.append("全部");
+		return returnstr.toString().split("_");
 	}
 
 }

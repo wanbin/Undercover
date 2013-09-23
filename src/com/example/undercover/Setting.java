@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,11 +44,14 @@ public class Setting extends BaseActivity {
 	// 长按触发菜单的按钮
 	private Button popoBtn;
 //	private int itemChecked;
-	private String wordStr = "eat,hard,big,people,fresh,daily";
+	private String wordStr;
+	// 词汇分类
+	private String[] UnderKind;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
+		UnderKind = getUnderKind();
 		btnAdd = (ImageView) findViewById(R.id.btnAdd);
 		btnAddUnder = (ImageView) findViewById(R.id.btnAddUnder);
 		btnCost = (ImageView) findViewById(R.id.btnCost);
@@ -263,12 +267,15 @@ public class Setting extends BaseActivity {
 	// + "胜利条件； \n" + "\t 1.当卧底全部被指出则平民胜利 \n"
 	// + "\t 2.当卧底数大于等于平民数则卧底胜利");
 	// }
-	
+	private static final int ITEM1 = Menu.FIRST;
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		getMenuInflater().inflate(R.menu.popo_menu, menu);
 		menu.setHeaderTitle("设置词语");
+		for (int i = 0; i < UnderKind.length; i++) {
+			menu.add(0, ITEM1 + i, 0, UnderKind[i]);
+		}
 //		menu.getItem(itemChecked).geti;
 //		menu.setGroupCheckable(R.id.popo_word_group, true, false);
 		super.onCreateContextMenu(menu, v, menuInfo);
@@ -278,47 +285,9 @@ public class Setting extends BaseActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		item.setChecked(true);
 		// itemChecked = item.getItemId(); //记录被选中的菜单项的ID
-		switch (item.getItemId()) {
-		case R.id.word_people:
-			wordStr = "people";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_people"));
-			break;
-		case R.id.word_daily:
-			wordStr = "daily";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_wenyi"));
-			break;
-
-		case R.id.word_eat:
-			wordStr = "eat";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_eat"));
-			break;
-		case R.id.word_big:
-			wordStr = "big";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_big"));
-			break;
-
-		case R.id.word_fresh:
-			wordStr = "fresh";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_city"));
-			break;
-
-		case R.id.word_hard:
-			wordStr = "hard";
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_hard"));
-			break;
-		case R.id.word_all:
-			wordText.setText(strFromId("setting_word_new")
-					+ strFromId("setting_word_all"));
-			break;
-		default:
-			break;
-		}
+		int temi=item.getItemId()-ITEM1;
+		wordStr = UnderKind[temi];
+		wordText.setText(strFromId("setting_word_new") + wordStr);
 		return super.onContextItemSelected(item);
 	}
 }
