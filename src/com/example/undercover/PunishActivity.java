@@ -409,7 +409,7 @@ public class PunishActivity extends BaseActivity {
 			discstart();
 			isshacked = true;
 		}
-		isShackOneMinit = 10;
+		isShackOneMinit = 20;
 	}
 	
 	private int randomDisc() {
