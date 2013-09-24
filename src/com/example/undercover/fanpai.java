@@ -90,19 +90,6 @@ public class fanpai extends BaseActivity {
 		// peopleCount = bundle.getInt("peopleCount");
 		// underCount = bundle.getInt("underCount");
 
-		int blandStr = Math.abs(new Random().nextInt());
-		for (int i = 0, len = peopleCount; i < len; i++) {
-			if (isBlank) {
-				if (!isChecked) {
-					if (!content[(i + blandStr) % len].equals(son)) {
-						isChecked = true;
-						content[(i + blandStr) % len] = blank;
-					}
-				}
-			}
-			Log(content[i]);
-		}
-
 		initPan(nowIndex);
 
 		btnOK.setOnClickListener(new Button.OnClickListener() {
@@ -203,6 +190,21 @@ public class fanpai extends BaseActivity {
 		libary = getUnderWords(word);
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
+		//设置空白词
+		int blandStr = Math.abs(new Random().nextInt());
+		for (int i = 0, len = peopleCount; i < len; i++) {
+			if (isBlank) {
+				if (!isChecked) {
+					if (!content[(i + blandStr) % len].equals(son)) {
+						isChecked = true;
+						content[(i + blandStr) % len] = blank;
+					}
+				}
+			}
+			Log(content[i]);
+		}
+		// 设置content
+		setContent(content);
 		nowIndex = 1;
 
 		setContentVis(false);
@@ -260,8 +262,6 @@ public class fanpai extends BaseActivity {
 			} while (ret[tem].equals(son));
 			ret[tem] = son;
 		}
-		// 设置content
-		setContent(ret);
 		setSon(son);
 		return ret;
 	}
