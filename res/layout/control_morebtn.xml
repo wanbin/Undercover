@@ -1,0 +1,42 @@
+
+   <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_margin="10dp"
+       android:minWidth="120dp" >
+
+                <Button
+                    android:id="@+id/btnBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.6"
+                    android:background="@color/BLACK"
+                    android:minHeight="@dimen/moreBtnMinHeight" />
+
+                <ImageView
+                    android:id="@+id/imageIcon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/bottle" />
+			<TextView
+                    android:id="@+id/txtPeopleCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="3dp"
+                    android:text="适合人数：4~8"
+                    android:textColor="@color/WRITE" />
+                
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="3dp"
+                    android:text="有胆量就转"
+                    android:textColor="@color/WRITE" />
+
+            </FrameLayout>
+

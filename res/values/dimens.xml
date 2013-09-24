@@ -12,4 +12,6 @@
     <dimen name="screenwidth">720px</dimen>
  	<dimen name="screenhight">1280px</dimen>
  	<dimen name="s100">100px</dimen>
+ 	<dimen name="btnMoreBottom">20dp</dimen>
+ 	<dimen name="moreBtnMinHeight">100dp</dimen>
 </resources>

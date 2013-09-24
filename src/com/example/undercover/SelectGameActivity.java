@@ -24,6 +24,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,11 +48,13 @@ public class SelectGameActivity extends BaseActivity {
 	private FeedbackAgent agent;
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
 			gongxianbtn, guanyubtn,
-			appmakerbButton, btnStart, usercontribution, zhenxin, startButton,
+ appmakerbButton, btnStart,
+			usercontribution, zhenxin, startButton,
  btnSound, btnfb;
 	private CheckBox sound;
 	private boolean soundon = true;
 	private TextView maoxian;
+	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +124,7 @@ public class SelectGameActivity extends BaseActivity {
 		startButton.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				
+
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
 					v.setBackgroundResource(R.drawable.btnstart2);
@@ -129,16 +132,15 @@ public class SelectGameActivity extends BaseActivity {
 					// 改为抬起时的图片
 					v.setBackgroundResource(R.drawable.btnstart);
 				}
-				
-				if(event.getAction() == MotionEvent.ACTION_MOVE)
-				{
+
+				if (event.getAction() == MotionEvent.ACTION_MOVE) {
 					v.setBackgroundResource(R.drawable.btnstart);
 				}
-				
+
 				return false;
 			}
 		});
-		
+
 		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
 				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
 				0.5f);
@@ -155,6 +157,24 @@ public class SelectGameActivity extends BaseActivity {
 		}
 
 		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
+		weixinButton.setOnClickListener(new MyClickListener());
+
+		framPing = (FrameLayout) moreView.findViewById(R.id.btnPing);
+		frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
+		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
+		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
+		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
+		initFrame(framPing, "有胆量就转", 3, 6, R.drawable.icon_bottle,
+				RotaryBottleActivity.class);
+		initFrame(frameAsk, "有胆量就问", 4, 8, R.drawable.icon_ask,
+				QuestionAnswer.class);
+		initFrame(framTrue, "真心话大冒险", 2, 8, R.drawable.icon_true,
+				PunishActivity.class);
+		initFrame(framClick, "有胆量就点", 2, 8, R.drawable.icon_click,
+				random_50.class);
+		initFrame(frameKill, "杀人游戏", 6, 12, R.drawable.icon_kill,
+				random_50.class);
+
 		weixinButton.setOnClickListener(new MyClickListener());
 
 		gongxianbtn = (Button) helpView.findViewById(R.id.btnyonghu);
@@ -197,6 +217,30 @@ public class SelectGameActivity extends BaseActivity {
 	}
 	
 
+
+	private void initFrame(FrameLayout fram, String title, int min, int max,
+			int imageid,
+			final Class classname) {
+		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
+		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
+		imageIcon.setImageResource(imageid);
+		Button btn = (Button) fram.findViewById(R.id.btnBg);
+		title2.setText(title);
+		TextView titlePeople = (TextView) fram
+				.findViewById(R.id.txtPeopleCount);
+		titlePeople.setText("适合人数:" + min + "~" + max);
+		if (classname != null) {
+			btn.setOnClickListener(new Button.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent mIntent = new Intent();
+					mIntent.setClass(SelectGameActivity.this, classname);
+					startActivity(mIntent);
+				}
+			});
+
+		}
+	}
 
 	private void setSwithSound(boolean isChecked) {
 		if (isChecked) {

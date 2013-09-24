@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        layout="@layout/activity_bg" />
+
+    <ImageView
+        android:id="@+id/imagebg"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/imagefanpai" />
+    
+    <LinearLayout
+        android:id="@+id/changeword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="right" >
+
+        <Button
+            android:id="@+id/btnchangeword"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/update2" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/changeword" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp" >
+
+        <TextView
+            android:id="@+id/textViewab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:text="@string/givetoother" />
+
+        <Button 
+            android:id="@+id/btnOk"
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_nextone" />
+
+        <Button
+            android:id="@+id/imagePan"
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_1"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtShenfen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/index" />
+
+</RelativeLayout>

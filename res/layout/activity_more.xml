@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/BLACK" >
+
         <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,33 +19,111 @@
         android:gravity="center"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/jumpQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/strasktitle"
-            android:visibility="gone" />
-
-        <Button
-            android:id="@+id/clickme"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:background="@drawable/dian"
-           />
-        
-        <Button
-            android:id="@+id/zhenxin"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:background="@drawable/zhen" />
-
-        <Button
-            android:id="@+id/circleme"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:background="@drawable/zhuan" />
-
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="24dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/clickme"
+                android:layout_width="150dp"
+                android:layout_height="93dp"
+                android:background="@drawable/dian"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/zhenxin"
+                android:layout_width="150dp"
+                android:layout_height="93dp"
+                android:visibility="gone"
+                android:background="@drawable/zhen" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/circleme"
+                android:layout_width="150dp"
+                android:visibility="gone"
+                android:layout_height="93dp"
+                android:background="@drawable/zhuan" />
+
+            <Button
+                android:id="@+id/jumpQuestion"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/strasktitle" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <include
+                android:id="@+id/btnPing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/control_morebtn" />
+
+             <include
+                 android:id="@+id/btnTrue"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dp"
+                 layout="@layout/control_morebtn" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+             
+             <include
+                 android:id="@+id/btnClick"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dp"
+                 layout="@layout/control_morebtn" />
+
+             <include
+                 android:id="@+id/btnAsk"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dp"
+                 layout="@layout/control_morebtn" />
+            
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+             
+            <include
+                 android:id="@+id/btnKill"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dp"
+                 layout="@layout/control_morebtn" />
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
