@@ -111,10 +111,11 @@
             
         </TableRow>
 
-        <TableRow
+        <!-- <TableRow
             android:id="@+id/tableRow5"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
              
              <include
                  android:id="@+id/btnAsk"
@@ -123,7 +124,7 @@
                  android:layout_margin="5dp"
                  layout="@layout/control_morebtn" />
         </TableRow>
-
+ -->
     </TableLayout>
 
 </RelativeLayout>

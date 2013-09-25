@@ -160,14 +160,14 @@ public class SelectGameActivity extends BaseActivity {
 		weixinButton.setOnClickListener(new MyClickListener());
 
 		framPing = (FrameLayout) moreView.findViewById(R.id.btnPing);
-		frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
+		// frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
 		initFrame(framPing, "有胆量就转", 3, 6, R.drawable.icon_bottle,
 				RotaryBottleActivity.class, "game_bottle");
-		initFrame(frameAsk, "有胆量就问", 4, 8, R.drawable.icon_ask,
-				QuestionAnswer.class, "game_ask");
+		// initFrame(frameAsk, "有胆量就问", 4, 8, R.drawable.icon_ask,
+		// QuestionAnswer.class, "game_ask");
 		initFrame(framTrue, "真心话大冒险", 2, 8, R.drawable.icon_true,
 				PunishActivity.class, "game_zhenxinhua_damaoxian");
 		initFrame(framClick, "有胆量就点", 2, 8, R.drawable.icon_click,

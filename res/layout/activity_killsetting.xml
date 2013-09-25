@@ -3,147 +3,149 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-   <include
+
+    <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_bg" />
 
-    <LinearLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="300dp"
+    <RelativeLayout
+        android:id="@+id/t"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical" >
+        android:layout_centerInParent="true" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:id="@+id/LinearLayout1"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/TextView01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingRight="15dp"
-                android:text="@string/textPeople"
-                android:textSize="@dimen/index" />
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
-
-                <ImageView
-                    android:id="@+id/btnCost"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/underconver_count_reduce" />
-                
-                 <TextView
-                     android:id="@+id/txtcost1"
-                     android:layout_width="50dp"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:gravity="center"
-                     android:textSize="@dimen/index" />
-
-            </FrameLayout>
-            
-            <FrameLayout
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <ImageView
-                    android:id="@+id/imageViewAddBg"
-                    android:layout_width="82dp"
-                    android:layout_height="82dp"
-                    android:background="@drawable/undercover_count_backgroud" />
-
                 <TextView
-                    android:id="@+id/txtPeople"
+                    android:id="@+id/TextView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:paddingRight="15dp"
+                    android:text="@string/textPeople"
                     android:textSize="@dimen/index" />
 
-            </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" >
 
-            
-            <FrameLayout
+                    <ImageView
+                        android:id="@+id/btnCost"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/underconver_count_reduce" />
+
+                    <TextView
+                        android:id="@+id/txtcost1"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/index" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <ImageView
+                        android:id="@+id/imageViewAddBg"
+                        android:layout_width="82dp"
+                        android:layout_height="82dp"
+                        android:background="@drawable/undercover_count_backgroud" />
+
+                    <TextView
+                        android:id="@+id/txtPeople"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/index" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" >
+
+                    <ImageView
+                        android:id="@+id/btnAdd"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/underconver_count_add" />
+
+                    <TextView
+                        android:id="@+id/txtadd1"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="@dimen/index" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
-
-              <ImageView
-                  android:id="@+id/btnAdd"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_gravity="center_vertical"
-                  android:background="@drawable/underconver_count_add"
-                  />
-
-              <TextView
-                    android:id="@+id/txtadd1"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textSize="@dimen/index" />
-              </FrameLayout>
+                android:text="@string/tipkill" />
         </LinearLayout>
 
-        
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="150dp"
+            android:layout_height="93dp"
+            android:layout_below="@+id/LinearLayout1"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/btn_start" />
 
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tipkill" />
-    </LinearLayout>
+            android:layout_below="@+id/btnStart"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:visibility="gone" >
 
-     <Button
-         android:id="@+id/btnStart"
-         android:layout_width="150dp"
-         android:layout_height="93dp"
-         android:layout_below="@+id/LinearLayout1"
-         android:layout_centerHorizontal="true"
-         android:background="@drawable/btn_start" />
+            <CheckBox
+                android:id="@+id/afterShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/setting_afterShow" />
 
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/btnStart"
-         android:layout_centerHorizontal="true"
-         android:orientation="vertical" >
+            <LinearLayout
+                android:id="@+id/warp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-         <CheckBox
-             android:id="@+id/afterShow"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:checked="true"
-             android:text="@string/setting_afterShow" />
+                <TextView
+                    android:id="@+id/wordText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-         <LinearLayout
-             android:id="@+id/warp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="vertical" >
-
-             <TextView
-                 android:id="@+id/wordText"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content" />
-         </LinearLayout>
-
-         <CheckBox
-             android:id="@+id/isBlank"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/setting_blank"
-             android:visibility="invisible" />
-
-     </LinearLayout>
+            <CheckBox
+                android:id="@+id/isBlank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/setting_blank"
+                android:visibility="invisible" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
