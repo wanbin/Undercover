@@ -172,8 +172,8 @@ public class SelectGameActivity extends BaseActivity {
 				PunishActivity.class);
 		initFrame(framClick, "有胆量就点", 2, 8, R.drawable.icon_click,
 				random_50.class);
-		initFrame(frameKill, "杀人游戏", 6, 12, R.drawable.icon_kill,
-				random_50.class);
+		initFrame(frameKill, "杀人游戏", 6, 16, R.drawable.icon_kill,
+				KillSetting.class);
 
 		weixinButton.setOnClickListener(new MyClickListener());
 

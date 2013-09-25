@@ -75,7 +75,7 @@ public class Setting extends BaseActivity {
 		});
 
 		initBtnInfo(R.id.btninfo,
-				"参与人数：总玩家数\n卧底人数：一般为总玩家人安1/4\n显示冤死：结束的时候会亮名玩家身份（简单）\n词汇分类：选择相应分类出现不同的词汇");
+				"参与人数：总玩家数\n卧底人数：一般为总玩家人数1/4\n显示冤死：结束的时候会亮名玩家身份（简单）\n词汇分类：选择相应分类出现不同的词汇");
 
 		popoBtn.setOnTouchListener(new OnTouchListener() {
 			@Override

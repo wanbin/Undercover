@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_bg" />
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_centerVertical="true" >
+
+        <LinearLayout
+            android:id="@+id/contentTable"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/guesscontent"
+                android:textSize="@dimen/size20" />
+
+            <TableLayout
+                android:id="@+id/tableContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableLayout>
+
+            <LinearLayout
+                android:id="@+id/an"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+
+                <Button
+                    android:id="@+id/btn_punish"
+                    android:layout_width="100dp"
+                    android:layout_height="63dp"
+                    android:background="@drawable/btn_punish" />
+
+                <Button
+                    android:id="@+id/btn_restart"
+                    android:layout_width="100dp"
+                    android:layout_height="63dp"
+                    android:background="@drawable/btn_restart"
+                    android:text="" />
+
+                <Button
+                    android:id="@+id/btn_quickstart"
+                    android:layout_width="100dp"
+                    android:layout_height="63dp"
+                    android:background="@drawable/btn_startquick"
+                    android:text="" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
