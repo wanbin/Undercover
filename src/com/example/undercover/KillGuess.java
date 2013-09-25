@@ -323,7 +323,7 @@ public class KillGuess extends BaseActivity {
 			SoundPlayer.playHighSoure();
 			refash();
 			setAllButton(false);
-			txtLong.setText(getSonStr());
+			txtLong.setText(getPoliceWinStr());
 			cleanStatus();
 			txtRemain.setVisibility(View.INVISIBLE);
 		} else if (policeCount <= 0 || otherCount <= 0) {
@@ -336,7 +336,7 @@ public class KillGuess extends BaseActivity {
 			}
 			refash();
 			setAllButton(false);
-			txtLong.setText(getFatherStr());
+			txtLong.setText(getKillerWinStr());
 			txtRemain.setVisibility(View.INVISIBLE);
 			cleanStatus();
 		} else {
@@ -351,10 +351,10 @@ public class KillGuess extends BaseActivity {
 		// }
 	}
 
-	protected String getSonStr() {
+	protected String getPoliceWinStr() {
 		String str = shibaizhe;
 		for (int i = 0; i < content.length; i++) {
-			if (content[i].equals(son)) {
+			if (content[i].equals("杀手")) {
 				int temhao = i + 1;
 				String tem = String.format(hao, temhao);
 				str += tem;
@@ -363,10 +363,10 @@ public class KillGuess extends BaseActivity {
 		return str;
 	}
 
-	protected String getFatherStr() {
+	protected String getKillerWinStr() {
 		String str = shibaizhe;
 		for (int i = 0; i < content.length; i++) {
-			if (content[i].equals(son)) {
+			if (content[i].equals("杀手") || content[i].equals("法官")) {
 				continue;
 			}
 			int temhao = i + 1;
