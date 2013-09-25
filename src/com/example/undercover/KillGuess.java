@@ -76,15 +76,7 @@ public class KillGuess extends BaseActivity {
 		initShare(R.id.btnshare);
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
-//		overString1 = getResources().getString(R.string.overString1);  
-//		overString2 = getResources().getString(R.string.overString2);  
-//		overString3 = getResources().getString(R.string.overString3);  
-//		overString4 = getResources().getString(R.string.overString4);  
-//		overString5 = getResources().getString(R.string.overString5);  
-//		overString6 = getResources().getString(R.string.overString6);  
-//		overString7 = getResources().getString(R.string.overString7);  
-//		overString8 = getResources().getString(R.string.overString8);
-		overString = getResources().getStringArray(R.array.overstring);
+		overString = getResources().getStringArray(R.array.killstring);
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy); 
 		undercover=getResources().getString(R.string.undercover);
 		blank=getResources().getString(R.string.blank);                
