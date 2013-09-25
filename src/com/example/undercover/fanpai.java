@@ -187,6 +187,7 @@ public class fanpai extends BaseActivity {
 
 	// 重新翻牌
 	protected void initFanpai() {
+		isChecked = false;
 		libary = getUnderWords(word);
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
