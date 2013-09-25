@@ -284,6 +284,14 @@ public class BaseActivity extends Activity {
 		return cliceked;
 	}
 
+	protected String lastGameType(){
+		return gameInfo.getString("gametype", "");
+	}
+
+	protected void setGameType(String type) {
+		gameInfo.edit().putString("gametype", type).commit();
+	}
+
 	protected void setContent(String[] content) {
 		String contentStr = "";
 		for (int i = 0; i < content.length; i++) {

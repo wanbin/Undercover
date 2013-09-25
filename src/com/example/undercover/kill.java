@@ -79,7 +79,7 @@ public class kill extends BaseActivity {
 					Intent goMain = new Intent();
 					goMain.setClass(kill.this, KillGuess.class);
 					startActivity(goMain);
-					uMengClick("click_kill_pai_last");
+					uMengClick("game_kill_pailast");
 					finish();
 				}
 			}
@@ -103,7 +103,7 @@ public class kill extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				if (nowIndex == 1) {
-					uMengClick("click_undercover_pai_first");
+					uMengClick("game_kill_paifirst");
 				}
 				v.setVisibility(View.INVISIBLE);
 				setContentVis(true);
@@ -141,6 +141,7 @@ public class kill extends BaseActivity {
 		nowIndex = 1;
 		setContentVis(false);
 		initPan(nowIndex);
+		setContent(content);
 	}
 
 	protected void initPan(int index) {

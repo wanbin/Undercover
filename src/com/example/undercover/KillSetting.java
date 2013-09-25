@@ -20,7 +20,7 @@ public class KillSetting extends BaseActivity {
 	private Button btnStart;
 	private TextView people;
 	private TextView wordText;
-	private int maxPeople = 16;
+	private int maxPeople = 12;
 	// 说明
 	private int peopleCount = 6;
 	private int policeCount = 1;
@@ -124,7 +124,7 @@ public class KillSetting extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				gameInfo.edit().putInt("peopleCount", peopleCount).commit(); 
-				gameInfo.edit().putInt("polickCount", policeCount).commit();
+				gameInfo.edit().putInt("policeCount", policeCount).commit();
 				gameInfo.edit().putInt("killerCount", killerCount).commit();
 				gameInfo.edit().putBoolean("isShow", isShow).commit(); 
 				Intent goMain = new Intent();

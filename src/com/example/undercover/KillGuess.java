@@ -114,6 +114,8 @@ public class KillGuess extends BaseActivity {
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
 
+		// 中断回退的时候使用
+		setGameType("kill");
 
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
@@ -277,6 +279,9 @@ public class KillGuess extends BaseActivity {
 		// 记录点状态
 		hasClicked[tag] = true;
 		updateClicked(hasClicked);
+		if (otherCount + policeCount + 1 + killerCount == totalcount) {
+			uMengClick("game_kill_guessfirst");
+		}
 		if (content[tag].equals("平民")) {
 			otherCount--;
 		} else if (content[tag].equals("警察")) {
@@ -320,7 +325,7 @@ public class KillGuess extends BaseActivity {
 			txtTitle.setText("警察胜利");
 			isOver = true;
 			if (!gamefinish) {
-				uMengClick("click_guess_last");
+				uMengClick("game_kill_guesslast");
 				gamefinish = true;
 			}
 			SoundPlayer.playHighSoure();
@@ -334,7 +339,7 @@ public class KillGuess extends BaseActivity {
 			txtTitle.setText("杀手胜利");
 			isOver = true;
 			if (!gamefinish) {
-				uMengClick("click_guess_last");
+				uMengClick("game_kill_guesslast");
 				gamefinish = true;
 			}
 			refash();
@@ -414,7 +419,7 @@ public class KillGuess extends BaseActivity {
 				SoundPlayer.playball();
 				 Intent goMain = new Intent();
 				 goMain.setClass(KillGuess.this, PunishActivity.class);
-				uMengClick("game_undercover_punish");
+				uMengClick("game_kill_punish");
 				 startActivity(goMain);
 			}
 		});
@@ -438,9 +443,9 @@ public class KillGuess extends BaseActivity {
 			public void onClick(View v) {
 				SoundPlayer.playball();
 				Intent goMain = new Intent();
-				goMain.setClass(KillGuess.this, Setting.class);
+				goMain.setClass(KillGuess.this, KillSetting.class);
 				startActivity(goMain);
-				uMengClick("game_undercover_resert");
+				uMengClick("game_kill_resert");
 				finish();
 			}
 		});
@@ -463,9 +468,9 @@ public class KillGuess extends BaseActivity {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
 				SoundPlayer.playball();
-				goMain.setClass(KillGuess.this, fanpai.class);
+				goMain.setClass(KillGuess.this, kill.class);
 				startActivity(goMain);
-				uMengClick("game_undercover_quickresert");
+				uMengClick("game_kill_quickstart");
 				finish();
 			}
 		});
@@ -489,7 +494,7 @@ public class KillGuess extends BaseActivity {
 	public void finish() {
 		// TODO Auto-generated method stub
 		// game_guess_finish
-		uMengClick("game_guess_finish");
+		uMengClick("game_kill_finish");
 		super.finish();
 	}
 

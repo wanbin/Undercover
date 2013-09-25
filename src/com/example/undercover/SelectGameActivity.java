@@ -165,15 +165,15 @@ public class SelectGameActivity extends BaseActivity {
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
 		initFrame(framPing, "有胆量就转", 3, 6, R.drawable.icon_bottle,
-				RotaryBottleActivity.class);
+				RotaryBottleActivity.class, "game_bottle");
 		initFrame(frameAsk, "有胆量就问", 4, 8, R.drawable.icon_ask,
-				QuestionAnswer.class);
+				QuestionAnswer.class, "game_ask");
 		initFrame(framTrue, "真心话大冒险", 2, 8, R.drawable.icon_true,
-				PunishActivity.class);
+				PunishActivity.class, "game_zhenxinhua_damaoxian");
 		initFrame(framClick, "有胆量就点", 2, 8, R.drawable.icon_click,
-				random_50.class);
-		initFrame(frameKill, "杀人游戏", 6, 16, R.drawable.icon_kill,
-				KillSetting.class);
+				random_50.class, "game_click");
+		initFrame(frameKill, "杀人游戏", 6, 12, R.drawable.icon_kill,
+				KillSetting.class, "game_kill_select");
 
 		weixinButton.setOnClickListener(new MyClickListener());
 
@@ -220,7 +220,7 @@ public class SelectGameActivity extends BaseActivity {
 
 	private void initFrame(FrameLayout fram, String title, int min, int max,
 			int imageid,
-			final Class classname) {
+ final Class classname, final String umengclick) {
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
 		imageIcon.setImageResource(imageid);
@@ -236,6 +236,7 @@ public class SelectGameActivity extends BaseActivity {
 					Intent mIntent = new Intent();
 					mIntent.setClass(SelectGameActivity.this, classname);
 					startActivity(mIntent);
+					uMengClick(umengclick);
 				}
 			});
 
@@ -278,7 +279,12 @@ public class SelectGameActivity extends BaseActivity {
 			case R.id.btnStart:
 				SoundPlayer.playball();
 				if (getStatus()) {
-					mIntent.setClass(SelectGameActivity.this, guess.class);
+					if (lastGameType().equals("kill")) {
+						mIntent.setClass(SelectGameActivity.this,
+								KillGuess.class);
+					} else {
+						mIntent.setClass(SelectGameActivity.this, guess.class);
+					}
 				} else {
 				    cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);
