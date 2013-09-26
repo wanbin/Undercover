@@ -220,6 +220,12 @@
                  android:layout_height="62dp"
                  android:background="@drawable/btn_popo" />
 
+            <Button
+                android:id="@+id/popo_wordsetting"
+                android:layout_width="100dp"
+                android:layout_height="62dp"
+                android:text="设置分类" />
+
              <TextView
                  android:id="@+id/wordText"
                  android:layout_width="wrap_content"

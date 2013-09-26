@@ -42,7 +42,7 @@ public class Setting extends BaseActivity {
 	// 共享的参与和卧底数
 	private SharedPreferences gameInfo;
 	// 长按触发菜单的按钮
-	private Button popoBtn;
+	private Button popoBtn, popoword;
 //	private int itemChecked;
 	private String wordStr;
 	// 词汇分类
@@ -67,10 +67,20 @@ public class Setting extends BaseActivity {
 		// 添加 冤死 提示按钮
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		popoBtn	= (Button)findViewById(R.id.popo_button);
+		popoword = (Button) findViewById(R.id.popo_wordsetting);
 		popoBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 //				onPopupButtonclick(popoBtn);
+			}
+		});
+
+		popoword.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent goMain = new Intent();
+				goMain.setClass(Setting.this, WordSetting.class);
+				startActivity(goMain);
 			}
 		});
 

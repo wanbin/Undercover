@@ -449,11 +449,29 @@ public class BaseActivity extends Activity {
 			temstr.append(children[1] + "_" + children[2] + ",");
 			mapWords.put(children[0], temstr);
 		}
+
 		// 初始化网络更新词汇
 		String[] underWordVersion = MobclickAgent.getConfigParams(this,
 				"under_string_version").split("\n");
 		for (int n = 0; n < underWordVersion.length; n++) {
 			String[] children = underWordVersion[n].split("_");
+			if (children.length != 3) {
+				continue;
+			}
+			StringBuffer temstr = mapWords.get(children[0]);
+			if (temstr == null) {
+				temstr = new StringBuffer();
+			}
+			temstr.append(children[1] + "_" + children[2] + ",");
+			mapWords.put(children[0], temstr);
+		}
+
+		// 初始化用户自定义词汇
+
+		String[] userSetting = gameInfo.getString("user_setting", "")
+				.split(",");
+		for (int n = 0; n < userSetting.length; n++) {
+			String[] children = userSetting[n].split("_");
 			if (children.length != 3) {
 				continue;
 			}
