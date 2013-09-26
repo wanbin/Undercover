@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -446,7 +449,23 @@ public class BaseActivity extends Activity {
 			temstr.append(children[1] + "_" + children[2] + ",");
 			mapWords.put(children[0], temstr);
 		}
+		// 初始化网络更新词汇
+		String[] underWordVersion = MobclickAgent.getConfigParams(this,
+				"under_string_version").split("\n");
+		for (int n = 0; n < underWordVersion.length; n++) {
+			String[] children = underWordVersion[n].split("_");
+			if (children.length != 3) {
+				continue;
+			}
+			StringBuffer temstr = mapWords.get(children[0]);
+			if (temstr == null) {
+				temstr = new StringBuffer();
+			}
+			temstr.append(children[1] + "_" + children[2] + ",");
+			mapWords.put(children[0], temstr);
+		}
 	}
+
 
 	protected String[] getUnderWords(String wordstype) {
 		initUndercoverWords();
@@ -477,5 +496,28 @@ public class BaseActivity extends Activity {
 		return returnstr.toString().split("_");
 	}
 
+
+	protected Map jsonToMap(JSONObject data) {
+		Iterator keyIter = data.keys();
+		String key;
+		Object value;
+		Map valueMap = new HashMap();
+		while (keyIter.hasNext()) {
+			key = (String) keyIter.next();
+			try {
+				value = data.get(key);
+				valueMap.put(key, value);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return valueMap;
+	}
+
+	protected int importUnderCoverWord(String words) {
+
+		return 1;
+	}
 }
 

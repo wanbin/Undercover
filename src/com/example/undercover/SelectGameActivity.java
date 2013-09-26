@@ -28,6 +28,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 
 public class SelectGameActivity extends BaseActivity {
@@ -61,7 +62,6 @@ public class SelectGameActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
 
-
 		// Welcome 的Layout
 		View welcomeView = mInflater.inflate(R.layout.activity_welcome, null);
 		// 帮助页面的layout
@@ -93,7 +93,17 @@ public class SelectGameActivity extends BaseActivity {
 				setSwithSound(isChecked);
 			}
 		});
-        
+
+		MobclickAgent.updateOnlineConfig(this);
+		String underWordVersion = MobclickAgent.getConfigParams(this,
+				"under_string_version");
+		siampleTitle(underWordVersion);
+		// MobclickAgent
+		// .setOnlineConfigureListener(new UmengOnlineConfigureListener() {
+		// @Override
+		// public void onDataReceived(JSONObject data) {
+		// }
+		// });
         
         imageViews = new ImageView[viewList.size()];
         Log.d("imageView length", String.valueOf(imageViews.length));
@@ -269,13 +279,14 @@ public class SelectGameActivity extends BaseActivity {
 			// UnderCoverContent.class);
 			// break;
 			case R.id.startButton:
+
 				// maoxian.setText(getRandomMaoxian("start"));
 				// return;
-				SoundPlayer.playball();
-				cleanStatus();
-				mIntent.setClass(SelectGameActivity.this, Setting.class);
-				uMengClick("game_undercover");
-				break;
+				// SoundPlayer.playball();
+				// cleanStatus();
+				// mIntent.setClass(SelectGameActivity.this, Setting.class);
+				// uMengClick("game_undercover");
+				// break;
 			case R.id.btnStart:
 				SoundPlayer.playball();
 				if (getStatus()) {

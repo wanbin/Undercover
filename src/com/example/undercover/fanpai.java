@@ -191,7 +191,7 @@ public class fanpai extends BaseActivity {
 		libary = getUnderWords(word);
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		content = getRandomString(libary[selectindex]);
-		//设置空白词
+		// 设置空白词
 		int blandStr = Math.abs(new Random().nextInt());
 		for (int i = 0, len = peopleCount; i < len; i++) {
 			if (isBlank) {
@@ -267,17 +267,6 @@ public class fanpai extends BaseActivity {
 		return ret;
 	}
 
-	@Override
-	protected void onSaveInstanceState(Bundle savedInstanceState) {
-		super.onSaveInstanceState(savedInstanceState);
-		savedInstanceState.putBoolean("isBlank", isBlank);
-		savedInstanceState.putBoolean("isShow", isShow);
-		savedInstanceState.putInt("peopleCount", peopleCount);
-		savedInstanceState.putInt("underCount", underCount);
-		savedInstanceState.putStringArray("content", content);
-		savedInstanceState.putInt("nowIndex", nowIndex);
-		Log.d("saved", "onSaveInstanceState");
-	}
 	
 	@Override
 	public void onStop() {
