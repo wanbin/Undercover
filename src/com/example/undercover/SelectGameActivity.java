@@ -95,15 +95,6 @@ public class SelectGameActivity extends BaseActivity {
 		});
 
 		MobclickAgent.updateOnlineConfig(this);
-		String underWordVersion = MobclickAgent.getConfigParams(this,
-				"under_string_version");
-		siampleTitle(underWordVersion);
-		// MobclickAgent
-		// .setOnlineConfigureListener(new UmengOnlineConfigureListener() {
-		// @Override
-		// public void onDataReceived(JSONObject data) {
-		// }
-		// });
         
         imageViews = new ImageView[viewList.size()];
         Log.d("imageView length", String.valueOf(imageViews.length));

@@ -274,7 +274,6 @@ public class PunishActivity extends BaseActivity {
 		}
 		randomBtn.setClickable(false);
 		// randomBtn.setBackgroundResource(R.drawable.btnbggray);
-		imagedice.setBackgroundResource(0);
 		imagedice.setVisibility(View.VISIBLE);
 		imagedice.clearAnimation();
 		imagedice.setBackgroundResource(R.anim.dics);
