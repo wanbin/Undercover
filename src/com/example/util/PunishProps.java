@@ -3,6 +3,8 @@ package com.example.util;
 import java.util.ResourceBundle;
 
 public class PunishProps {
+	/** 绕口令的数目 */
+	private static int raokouling = 55;
 	//加载punish.properties文件
 	private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("punish");
 	//加载question.properties文件
@@ -42,5 +44,13 @@ public class PunishProps {
 	 */
 	public static String getRaoKouLing(int str){
 		return questionBundle.getString("raokouling_"+str+"");
+	}
+	/**
+	 * 获得一条绕口令
+	 * @return
+	 */
+	public static String getRaoKouLing(){
+		
+		return getRaoKouLing((int) Math.floor(Math.random() * raokouling));
 	}
 }

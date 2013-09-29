@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.util.MathUtil;
+import com.example.util.PunishProps;
 
 public class QuestionAnswer extends BaseActivity {
 
@@ -40,6 +41,8 @@ public class QuestionAnswer extends BaseActivity {
 	private int endSec = 12000;
 	private String nextQuestion;
 	private String GameOver;
+	//问答页面倒计时时间3000毫秒
+	private final static int TIME = 3000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,7 @@ public class QuestionAnswer extends BaseActivity {
 		questionNext.setText("开始游戏");
 		
 		proBar	= (ProgressBar)findViewById(R.id.question_proar);
-		proBar.setMax(3000);
+		proBar.setMax(TIME);
 		proBar.setVisibility(View.INVISIBLE);
 
 		// 动画效果
@@ -93,7 +96,7 @@ public class QuestionAnswer extends BaseActivity {
 					getNextQuestion();
 					SoundPlayer.playball();
 					proBar.setVisibility(View.VISIBLE);
-					proBar.incrementProgressBy(3000);
+					proBar.incrementProgressBy(TIME);
 					isShowBar = true;
 					imageNext.setClickable(false);
 					imageNext.setBackgroundResource(R.drawable.popogray152);
@@ -104,7 +107,7 @@ public class QuestionAnswer extends BaseActivity {
 						getNextQuestion();
 
 						proBar.setVisibility(View.VISIBLE);
-						proBar.incrementProgressBy(3000);
+						proBar.incrementProgressBy(TIME);
 						isShowBar = true;
 						imageNext.setClickable(false);
 						imageNext.setBackgroundResource(R.drawable.popogray152);
@@ -127,8 +130,8 @@ public class QuestionAnswer extends BaseActivity {
 				restartActivity();
 			}
 		});
-
-		// 返回按钮
+		//显示帮助
+		showHelp();
 	}
 
 	// 接受时间
@@ -185,9 +188,8 @@ public class QuestionAnswer extends BaseActivity {
 	 * 进入下一题（每次取两道题目）
 	 */
 	private void getNextQuestion() {
-		int hardQuestion = (int) Math.floor(Math.random() * 23);
-		// psunish_0.setText("快速说出绕口令：\n"
-		// + PunishProps.getRaoKouLing(hardQuestion));
+		 punish_0.setText("快速说出绕口令：\n\n"
+				 + PunishProps.getRaoKouLing());
 	}
 
 	private void restartActivity() {
@@ -199,7 +201,7 @@ public class QuestionAnswer extends BaseActivity {
 		imageNext.setClickable(true);
 		questionNext.setText("开始游戏");
 		imageNext.setBackgroundResource(R.drawable.popo152);
-		// proBar.incrementProgressBy(-3000);
+		// proBar.incrementProgressBy(-TIME);
 		proBar.setVisibility(View.INVISIBLE);
 		punish_0.setText("");
 		proBar.incrementProgressBy(-(proBar.getProgress()));
@@ -222,5 +224,8 @@ public class QuestionAnswer extends BaseActivity {
 	public void onPause() {
 		super.onPause();
 		SoundPlayer.stopJishi();
+	}
+	public void showHelp() {
+		initBtnInfo(R.id.btninfo, strFromId("question_rule"));
 	}
 }
