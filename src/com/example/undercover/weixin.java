@@ -16,7 +16,7 @@ public class weixin extends BaseActivity {
 		setContentView(R.layout.weixin);
 		weixin = (ImageView) findViewById(R.id.imageView1);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		initBtnInfo(R.id.btninfo, "微信帮助信息");
 
 		WindowManager.LayoutParams lp = getWindow().getAttributes();

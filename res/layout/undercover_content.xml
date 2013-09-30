@@ -5,48 +5,9 @@
     android:layout_height="match_parent" >
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_bg" />
-
-    <ScrollView
-        android:id="@+id/sc"
         android:layout_width="match_parent"
-        android:layout_height="400dp" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:scrollbarStyle="insideOverlay" >
-
-            <TextView
-                android:id="@+id/content_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/content_title"
-                android:textSize="20sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/ruleText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/winText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"
+        layout="@layout/activity_bg" />
 
     <LinearLayout
         android:id="@+id/tem"
@@ -58,28 +19,36 @@
         android:orientation="horizontal" >
 
            <Button
-            android:id="@+id/btnfb"
-            android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/fankui" />
+               android:id="@+id/btnfb"
+               android:layout_width="75dp"
+               android:layout_height="30dp"
+               android:background="@drawable/pinkbtn1"
+               android:text="@string/feedback"
+               android:textColor="@color/WRITE" />
 
         <Button
             android:id="@+id/btnweixin"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/weixin" />
+            android:layout_height="30dp"
+            android:background="@drawable/pinkbtn1"
+            android:textColor="@color/WRITE"
+            android:text="@string/strToWeixin" />
         
         <Button
             android:id="@+id/btnyonghu"
-            android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/yonghu" />
+           android:layout_width="75dp"
+               android:layout_height="30dp"
+               android:textColor="@color/WRITE"
+               android:text="@string/usercontribution" 
+               android:background="@drawable/pinkbtn1"/>
         
         <Button
             android:id="@+id/btnguanyu"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/guanyu" />
+               android:layout_height="30dp"
+               android:textColor="@color/WRITE"
+               android:text="@string/strAbout" 
+               android:background="@drawable/pinkbtn1" />
     </LinearLayout>
 
 </RelativeLayout>

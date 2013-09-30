@@ -73,7 +73,7 @@ public class KillGuess extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_killguess);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
 		overString = getResources().getStringArray(R.array.killstring);

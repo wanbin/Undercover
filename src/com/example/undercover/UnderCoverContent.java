@@ -1,7 +1,6 @@
 package com.example.undercover;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
 /**
  * @author liuchunlong 谁是卧底 游戏简介
@@ -15,13 +14,13 @@ public class UnderCoverContent extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.undercover_content);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		GameRule = getResources().getString(R.string.GameRule);
 		Vrequir = getResources().getString(R.string.Vrequir);
-		TextView ruleText	= (TextView) findViewById(R.id.ruleText);
-		TextView winText	= (TextView) findViewById(R.id.winText);
-		ruleText.setText(GameRule);
-		winText.setText(Vrequir);
+		// TextView ruleText = (TextView) findViewById(R.id.ruleText);
+		// TextView winText = (TextView) findViewById(R.id.winText);
+		// ruleText.setText(GameRule);
+		// winText.setText(Vrequir);
 		/**
 		 * 下面注释的代码，请勿动，谢谢
 		 * 

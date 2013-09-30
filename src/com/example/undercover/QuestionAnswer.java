@@ -41,7 +41,7 @@ public class QuestionAnswer extends BaseActivity {
 	private int endSec = 12000;
 	private String nextQuestion;
 	private String GameOver;
-	//问答页面倒计时时间3000毫秒
+	// 问答页面倒计时时间3000毫秒
 	private final static int TIME = 3000;
 
 	@Override
@@ -49,7 +49,7 @@ public class QuestionAnswer extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.question);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		nextQuestion = getResources().getString(R.string.nextQuestion);
 		GameOver = getResources().getString(R.string.GameOver);
 		punish_0 = (TextView) findViewById(R.id.question);
@@ -130,7 +130,7 @@ public class QuestionAnswer extends BaseActivity {
 				restartActivity();
 			}
 		});
-		//显示帮助
+		// 显示帮助
 		showHelp();
 	}
 
@@ -188,7 +188,7 @@ public class QuestionAnswer extends BaseActivity {
 	 * 进入下一题（每次取两道题目）
 	 */
 	private void getNextQuestion() {
-		 punish_0.setText("快速说出绕口令：\n\n"
+		punish_0.setText("快速说出绕口令：\n\n"
 				 + PunishProps.getRaoKouLing());
 	}
 

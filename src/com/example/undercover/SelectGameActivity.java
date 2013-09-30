@@ -14,13 +14,9 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -74,6 +70,7 @@ public class SelectGameActivity extends BaseActivity {
 		viewList.add(welcomeView);
 		viewList.add(moreView);
 
+
 		mainContainer = (ViewGroup) mInflater.inflate(
 				R.layout.activity_select_game, null);
 		pointContainer = (ViewGroup) mainContainer
@@ -122,33 +119,15 @@ public class SelectGameActivity extends BaseActivity {
 
 		maoxian = (TextView) welcomeView.findViewById(R.id.temmaoxian);
 
-		startButton.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
 
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btnstart2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btnstart);
-				}
-
-				if (event.getAction() == MotionEvent.ACTION_MOVE) {
-					v.setBackgroundResource(R.drawable.btnstart);
-				}
-
-				return false;
-			}
-		});
-
-		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
-				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-				0.5f);
-		scaleAni.setRepeatMode(Animation.REVERSE);
-		scaleAni.setRepeatCount(-1);
-		scaleAni.setDuration(1000);
-		startButton.startAnimation(scaleAni);
+		// ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f,
+		// 1.02f,
+		// Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+		// 0.5f);
+		// scaleAni.setRepeatMode(Animation.REVERSE);
+		// scaleAni.setRepeatCount(-1);
+		// scaleAni.setDuration(1000);
+		// startButton.startAnimation(scaleAni);
 
 		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
 		btnStart.setOnClickListener(new MyClickListener());
@@ -159,7 +138,6 @@ public class SelectGameActivity extends BaseActivity {
 
 		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
 		weixinButton.setOnClickListener(new MyClickListener());
-
 		framPing = (FrameLayout) moreView.findViewById(R.id.btnPing);
 		frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
@@ -176,36 +154,45 @@ public class SelectGameActivity extends BaseActivity {
 		initFrame(frameKill, "杀人游戏", 6, 12, R.drawable.icon_kill,
 				KillSetting.class, "game_kill_select");
 
-		weixinButton.setOnClickListener(new MyClickListener());
 
 		gongxianbtn = (Button) helpView.findViewById(R.id.btnyonghu);
 		gongxianbtn.setOnClickListener(new MyClickListener());
 		guanyubtn = (Button) helpView.findViewById(R.id.btnguanyu);
 		guanyubtn.setOnClickListener(new MyClickListener());
 
+
 		btnfb = (Button) helpView.findViewById(R.id.btnfb);
 		btnfb.setOnClickListener(new MyClickListener());
 		// 用户贡献
 
-        clickmeButton = (Button) moreView.findViewById(R.id.clickme);
-        clickmeButton.setOnClickListener(new MyClickListener());
-        circlemeButton = (Button) moreView.findViewById(R.id.circleme);
-        circlemeButton.setOnClickListener(new MyClickListener());
-        questionButton = (Button) moreView.findViewById(R.id.jumpQuestion);
-        questionButton.setOnClickListener(new MyClickListener());
-        
-		zhenxin = (Button) moreView.findViewById(R.id.zhenxin);
-		zhenxin.setOnClickListener(new MyClickListener());
+		TextView temmore = (TextView) welcomeView.findViewById(R.id.txtTitle);
+		temmore.setVisibility(View.VISIBLE);
+		temmore.setText(strFromId("strwhoisundercover"));
+
+		TextView temwelcome = (TextView) moreView.findViewById(R.id.txtTitle);
+		temwelcome.setVisibility(View.VISIBLE);
+		temwelcome.setText(strFromId("moregame"));
+
+		TextView temhelp = (TextView) helpView.findViewById(R.id.txtTitle);
+		temhelp.setVisibility(View.VISIBLE);
+		temhelp.setText(strFromId("txtgamerolu"));
 
         viewPager.setAdapter(new MyPageAdapter());
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
         viewPager.setCurrentItem(1);
+
         
-		TextView ruleText = (TextView) helpView.findViewById(R.id.ruleText);
-		TextView winText = (TextView) helpView.findViewById(R.id.winText);
-		ruleText.setText("游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号"
-				+ "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
-		winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
+        setBtnPink(weixinButton);
+		setBtnPink(btnfb);
+		setBtnPink(guanyubtn);
+		setBtnPink(gongxianbtn);
+        setBtnGreen(startButton);
+        
+		// TextView ruleText = (TextView) helpView.findViewById(R.id.ruleText);
+		// TextView winText = (TextView) helpView.findViewById(R.id.winText);
+		// ruleText.setText("游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号"
+		// + "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
+		// winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
 
 		btnSound.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -215,6 +202,8 @@ public class SelectGameActivity extends BaseActivity {
 			}
 		});
 		agent = new FeedbackAgent(this);
+
+
 	}
 	
 
@@ -310,27 +299,6 @@ public class SelectGameActivity extends BaseActivity {
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, MakeActivity.class);
 				uMengClick("click_about");
-				break;
-			case R.id.clickme:
-				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this, random_50.class);
-				uMengClick("game_click");
-				break;
-			case R.id.circleme:
-				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this,
-						RotaryBottleActivity.class);
-				uMengClick("game_bottle");
-				break;
-			case R.id.jumpQuestion:
-				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this, QuestionAnswer.class);
-				uMengClick("game_ask");
-				break;
-			case R.id.zhenxin:
-				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this, PunishActivity.class);
-				uMengClick("game_zhenxinhua_damaoxian");
 				break;
 			case R.id.btnfb:
 				SoundPlayer.playball();

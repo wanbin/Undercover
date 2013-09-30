@@ -129,4 +129,5 @@
 <string name="tipkill">注：为保证游戏趣味性，对游戏中人数进行限制</string>
 <string name="setting_afterShow_kill">投票之后是否显示玩家身份</string>
 <string name="txtwordsetting">设置分类</string>
+<string name="txtgamerolu">游戏规则 </string>
 </resources>

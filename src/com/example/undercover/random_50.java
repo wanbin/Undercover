@@ -54,7 +54,7 @@ public class random_50 extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.random_50);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		dangerrate = getResources().getString(R.string.dangerrate);
 		click = getResources().getString(R.string.click);
 		ci = getResources().getString(R.string.ci);

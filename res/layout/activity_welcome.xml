@@ -4,40 +4,25 @@
     android:layout_height="fill_parent" >
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/btn_title" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="50dp"
-            android:src="@drawable/image_first" />
-
         <Button
             android:id="@+id/startButton"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="32dp"
-            android:background="@drawable/btnstart" />
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/greenbtn1"
+            android:hint="@string/strBgn"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
 
         <Button
             android:id="@+id/btnStart"
@@ -62,20 +47,30 @@
                 android:layout_gravity="center"
                 android:text="@string/sound"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/WRITE" />
+                android:textColor="@color/WRITE"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/switchbtn"
                 android:layout_width="81dp"
                 android:layout_height="29dp"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/btn_select_true" />
+                android:background="@drawable/btn_select_true"
+                android:visibility="gone" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/temmaoxian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/bg_image" />
 
     </RelativeLayout>
 

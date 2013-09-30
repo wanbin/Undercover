@@ -45,26 +45,22 @@
         <Button
             android:id="@+id/btnfb"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/fankui" />
+            android:layout_height="46dp" />
 
         <Button
             android:id="@+id/btnweixin"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/weixin" />
+            android:layout_height="46dp" />
         
         <Button
             android:id="@+id/btnyonghu"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/yonghu" />
+            android:layout_height="46dp" />
         
         <Button
             android:id="@+id/btnguanyu"
             android:layout_width="75dp"
-            android:layout_height="46dp"
-            android:background="@drawable/guanyu" />
+            android:layout_height="46dp"/>
 
     </LinearLayout>
 

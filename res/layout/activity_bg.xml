@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg" >
+    android:background="@drawable/bg_gray" >
 
     <!--
     <ImageView
@@ -60,5 +60,17 @@
             android:background="@drawable/share_unpress"
             android:visibility="gone" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnback"
+        android:layout_alignTop="@+id/btnback"
+        android:text="@string/strwhoisundercover"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/BigTitle"
+        android:textSize="@dimen/large60"
+        android:visibility="invisible" />
 
 </RelativeLayout>

@@ -83,7 +83,7 @@ public class guess extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guess);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		//string_start
 //		overString1 = getResources().getString(R.string.overString1);  

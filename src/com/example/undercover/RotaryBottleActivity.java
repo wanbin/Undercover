@@ -30,7 +30,7 @@ public class RotaryBottleActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rotarybottle);
 		initBtnBack(R.id.btnback);
-		initShare(R.id.btnshare);
+		initShareBtn();
 		toDe = getDegrees();
 		bottle = (ImageView) findViewById(R.id.bottle_imageView);
 

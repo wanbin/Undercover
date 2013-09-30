@@ -26,11 +26,14 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
@@ -99,8 +102,8 @@ public class BaseActivity extends Activity {
 
 	}
 
-	protected void initShare(int id) {
-		Button btnShare = (Button) findViewById(id);
+	protected void initShareBtn() {
+		Button btnShare = (Button) findViewById(R.id.btnback);
 		btnShare.setVisibility(View.VISIBLE);
 		btnShare.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -109,6 +112,10 @@ public class BaseActivity extends Activity {
 		});
 	}
 
+	protected void initTitle(String title) {
+		TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
+		txtTitle.setVisibility(View.VISIBLE);
+	}
 
 	protected void initBtnBack(int id) {
 		Button btnBack = (Button) findViewById(id);
@@ -536,6 +543,36 @@ public class BaseActivity extends Activity {
 	protected int importUnderCoverWord(String words) {
 
 		return 1;
+	}
+
+	protected void setBtnGreen(Button btn) {
+		setTouchActionFactory(btn, R.drawable.greenbtn1, R.drawable.greenbtn2);
+	}
+
+	protected void setBtnPink(Button btn) {
+		setTouchActionFactory(btn, R.drawable.pinkbtn1, R.drawable.pinbtn2);
+	}
+
+	private void setTouchActionFactory(Button btn, final int id1, final int id2) {
+		btn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(id2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(id1);
+				}
+
+				if (event.getAction() == MotionEvent.ACTION_MOVE) {
+					v.setBackgroundResource(id1);
+				}
+
+				return false;
+			}
+		});
 	}
 }
 
