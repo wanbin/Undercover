@@ -5,8 +5,8 @@
     android:layout_height="match_parent" >
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
 
     <ScrollView
@@ -44,22 +44,30 @@
                 <Button
                     android:id="@+id/btn_punish"
                     android:layout_width="100dp"
-                    android:layout_height="63dp"
-                    android:background="@drawable/btn_punish" />
+                    android:layout_height="40dp"
+                    android:background="@drawable/pinkbtn1"
+                    android:text="@string/punishmen"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/WRITE"
+                    android:textSize="@dimen/size20" />
 
                 <Button
                     android:id="@+id/btn_restart"
                     android:layout_width="100dp"
-                    android:layout_height="63dp"
-                    android:background="@drawable/btn_restart"
-                    android:text="" />
+                    android:layout_height="40dp"
+                    android:background="@drawable/pinkbtn1"
+                    android:text="@string/restart"
+                    android:textColor="@color/WRITE"
+                    android:textSize="@dimen/size20"  />
 
                 <Button
                     android:id="@+id/btn_quickstart"
                     android:layout_width="100dp"
-                    android:layout_height="63dp"
-                    android:background="@drawable/btn_startquick"
-                    android:text="" />
+                    android:layout_height="40dp"
+                    android:background="@drawable/pinkbtn1"
+                    android:text="@string/quickStart"
+                    android:textColor="@color/WRITE"
+                    android:textSize="@dimen/size20" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

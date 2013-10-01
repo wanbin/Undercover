@@ -354,29 +354,6 @@ public class BaseActivity extends Activity {
 		return packInfo.versionName;
 	}
 
-	// libary = getResources().getStringArray(getWords(word[num]));
-	// int selectindex = Math.abs(random.nextInt()) % libary.length;
-	// content = getRandomString(libary[selectindex]);
-	// String[] children = new String[2];
-	// children = contnettxt.split("_");
-	// int sonindex = Math.abs(random.nextInt()) % 2;
-	// son = children[sonindex];
-	// String father = children[Math.abs(sonindex - 1)];
-	// String[] ret = new String[peopleCount];
-	// for (int n = 0; n < ret.length; n++) {
-	// ret[n] = father;
-	// }
-	// for (int i = 0; i < underCount; i++) {
-	// int tem;
-	// do {
-	// tem = Math.abs(random.nextInt()) % peopleCount;
-	// } while (ret[tem].equals(son));
-	// ret[tem] = son;
-	// }
-	// // 设置content
-	// setContent(ret);
-	// setSon(son);
-	// return ret;
 
 	protected Map<String, StringBuffer> map;
 
@@ -549,11 +526,73 @@ public class BaseActivity extends Activity {
 		setTouchActionFactory(btn, R.drawable.greenbtn1, R.drawable.greenbtn2);
 	}
 
+	protected void setBtnPinkCer(Button btn) {
+		setTouchActionFactory(btn, R.drawable.cerpink01, R.drawable.cerpink02);
+	}
+
+	protected void setBtnPinkCer(ImageView btn) {
+		setTouchActionFactory(btn, R.drawable.cerpink01,
+				R.drawable.cerpink02);
+	}
+
 	protected void setBtnPink(Button btn) {
-		setTouchActionFactory(btn, R.drawable.pinkbtn1, R.drawable.pinbtn2);
+		setTouchActionFactory(btn, R.drawable.pinkbtn1, R.drawable.pinkbtn2);
+	}
+
+	protected void setBtnYellow(Button btn) {
+		setTouchActionFactory(btn, R.drawable.yellowbtn1, R.drawable.yellowbtn2);
+	}
+
+	protected void setBtnBlue(Button btn) {
+		setTouchActionFactory(btn, R.drawable.bluebtn1, R.drawable.bluebtn2);
+	}
+
+	protected void setBtnBlue(ImageView btn) {
+		setTouchActionFactory(btn, R.drawable.bluebtn1, R.drawable.bluebtn2);
+	}
+
+	protected void setBtnLightBlue(Button btn) {
+		setTouchActionFactory(btn, R.drawable.lightbluebtn1,
+				R.drawable.lightbluebtn2);
+	}
+
+	protected void setBtnBrown(Button btn) {
+		setTouchActionFactory(btn, R.drawable.brownbtn1, R.drawable.brownbtn2);
+	}
+
+	protected void setBtnPurple(Button btn) {
+		setTouchActionFactory(btn, R.drawable.purplebtn1, R.drawable.purplebtn2);
+	}
+
+	protected void setBtnGray(Button btn) {
+		setTouchActionFactory(btn, R.drawable.graybtn1, R.drawable.graybtn2);
 	}
 
 	private void setTouchActionFactory(Button btn, final int id1, final int id2) {
+		btn.setBackgroundResource(id1);
+		btn.setOnTouchListener(new OnTouchListener() {
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					// 更改为按下时的背景图片
+					v.setBackgroundResource(id2);
+				} else if (event.getAction() == MotionEvent.ACTION_UP) {
+					// 改为抬起时的图片
+					v.setBackgroundResource(id1);
+				}
+
+				if (event.getAction() == MotionEvent.ACTION_MOVE) {
+					v.setBackgroundResource(id1);
+				}
+
+				return false;
+			}
+		});
+	}
+
+	private void setTouchActionFactory(ImageView btn, final int id1,
+			final int id2) {
 		btn.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {

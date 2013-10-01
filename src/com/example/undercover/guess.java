@@ -7,9 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -173,14 +171,15 @@ public class guess extends BaseActivity {
 					break;
 				}
 				FrameLayout fl = new FrameLayout(this);
-				ImageView select = new ImageView(this);
+				Button select = new Button(this);
 				final TextView text	= new TextView(this);
 				// text.setText(String.valueOf(temindex+1));
 				// text.setGravity(Gravity.CENTER);
 				// text.setTextSize(30);
 
 				final TextView shenfen = new TextView(this);
-				shenfen.setText(content[temindex]);
+				int temshenf = temindex + 1;
+				shenfen.setText(temshenf + "." + content[temindex]);
 				shenfen.setGravity(Gravity.CENTER);
 				shenfen.setTextSize(13);
 				shenfen.setTextColor(getResources().getColor(R.color.WRITE));
@@ -188,27 +187,26 @@ public class guess extends BaseActivity {
 				shenfen.setVisibility(View.INVISIBLE);
 
 				final ImageView shenfenimage = new ImageView(this);
-				shenfenimage.setBackgroundResource(R.drawable.wodi);
+				shenfenimage.setBackgroundResource(R.drawable.bluebtn1);
 				shenfenimage.setVisibility(View.INVISIBLE);
-
-				// ImageView mohu = new ImageView(this);
-				// mohu.setBackgroundResource(R.drawable.mohu);
-				// mohu.setVisibility(View.INVISIBLE);
-				// mohu.setTag(998);
+				setBtnBlue(shenfenimage);
 
 				select.setTag(temindex);
+				int te = temindex + 1;
+				select.setText("" + te);
+				select.setTextColor(getResources().getColor(R.color.Writegray));
+				select.setTextSize(20);
+				select.setBackgroundResource(R.drawable.bluebtn1);
+				setBtnBlue(select);
+
 				if (hasClicked[temindex]) {
 					// 身份进行确认
-					select.setBackgroundResource(stringToId("btnun_"
-							+ (temindex + 1), "drawable"));
 					select.setClickable(false);
 					// 接着上局玩里面
 					if (isShow) {
 						initShenfen(shenfenimage, temindex, false);
 					}
 				}else{
-					select.setBackgroundResource(stringToId("btn_"
-							+ (temindex + 1), "drawable"));
 					select.setOnLongClickListener(new Button.OnLongClickListener() {
 						@Override
 						public boolean onLongClick(View v) {
@@ -218,9 +216,8 @@ public class guess extends BaseActivity {
 							tapIndex((Integer) v.getTag());
 							hasClicked[(Integer)v.getTag()] = true;
 							v.setClickable(false);
-							ImageView tt = (ImageView) v;
-							tt.setBackgroundResource(stringToId("btnun_"
-									+ ((Integer) v.getTag() + 1), "drawable"));
+							Button tt = (Button) v;
+							tt.setBackgroundResource(R.drawable.bluebtn1);
 							SoundPlayer.playball();
 							if(isShow){
 								initShenfen(shenfenimage, (Integer) v.getTag(),
@@ -271,7 +268,7 @@ public class guess extends BaseActivity {
 
 	protected void setAllButton(boolean useable) {
 		for (int i = 0; i < content.length; i++) {
-			ImageView tem = (ImageView) contentTable.findViewWithTag(i);
+			Button tem = (Button) contentTable.findViewWithTag(i);
 			tem.setClickable(useable);
 		}
 	}
@@ -390,12 +387,6 @@ public class guess extends BaseActivity {
 
 	private void refash() {
 		// 所有身份亮明
-
-
-		//Button punishBtn = new Button(this);
-//		punishBtn.setVisibility(View.VISIBLE);
-//		startBtn.setVisibility(View.VISIBLE);
-//		quickStartBtn.setVisibility(View.VISIBLE);
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.VISIBLE);
 
@@ -408,9 +399,6 @@ public class guess extends BaseActivity {
 						TextView temtext = (TextView) imageTem
 								.findViewWithTag(999);
 						temtext.setVisibility(View.VISIBLE);
-						// ImageView mohu = (ImageView) imageTem
-						// .findViewWithTag(998);
-						// mohu.setVisibility(View.VISIBLE);
 					}
 				}
 			}
@@ -425,22 +413,6 @@ public class guess extends BaseActivity {
 				 startActivity(goMain);
 			}
 		});
-		punishBtn.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_punish2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_punish);
-				}
-				return false;
-			}
-		});
-
-//		contentTable.addView(punishBtn);
-		// startBtn.setText("重新开始");
 		startBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				SoundPlayer.playball();
@@ -451,20 +423,9 @@ public class guess extends BaseActivity {
 				finish();
 			}
 		});
-		
-		startBtn.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_restart2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_restart);
-				}
-				return false;
-			}
-		});
+		setBtnGreen(startBtn);
+		setBtnGreen(quickStartBtn);
+		setBtnGreen(punishBtn);
 		 
 		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -474,19 +435,6 @@ public class guess extends BaseActivity {
 				startActivity(goMain);
 				uMengClick("game_undercover_quickresert");
 				finish();
-			}
-		});
-		quickStartBtn.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_startquick2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_startquick);
-				}
-				return false;
 			}
 		});
 //		contentTable.addView(startBtn);
@@ -499,39 +447,4 @@ public class guess extends BaseActivity {
 		uMengClick("game_guess_finish");
 		super.finish();
 	}
-
-//	@Override
-//	protected void onSaveInstanceState(Bundle savedInstanceState) {
-//		super.onSaveInstanceState(savedInstanceState);
-//		savedInstanceState.putBoolean("isShow", isShow);
-//		savedInstanceState.putInt("soncount", soncount);
-//		savedInstanceState.putStringArray("content", content);
-//		savedInstanceState.putString("son", son);
-//		savedInstanceState.putBoolean("isOver", isOver);
-//		savedInstanceState.putBooleanArray("hasClicked",hasClicked);
-//		Log.d("saved","onSaveInstanceState");
-//	}
-	// //退出确认
-//	public void onBackPressed() {  
-	// new AlertDialog.Builder(this).setTitle("确认退出吗？")
-//		    .setIcon(android.R.drawable.ic_dialog_info)  
-	// .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//		  
-//		        @Override  
-//		        public void onClick(DialogInterface dialog, int which) {  
-	// // 点击“确认”后的操作
-//		        guess.this.finish();  
-//		  
-//		        }  
-//		    })  
-	// .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-//		  
-//		        @Override  
-//		        public void onClick(DialogInterface dialog, int which) {  
-	// // 点击“返回”后的操作,这里不设置没有任何操作
-	// }
-//		    }).show();  
-//		// super.onBackPressed();  
-//	}  
-	
 }

@@ -7,15 +7,12 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class fanpai extends BaseActivity {
@@ -25,7 +22,6 @@ public class fanpai extends BaseActivity {
 	private TextView txtShenfen;
 	private TextView textViewab;
 	private Button btnchangeword;
-	private LinearLayout changeword;
 	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
 	private Button btnOK;
@@ -56,7 +52,6 @@ public class fanpai extends BaseActivity {
 		isChecked = false;
 		btnOK = (Button) findViewById(R.id.btnOk);
 		btnchangeword = (Button) findViewById(R.id.btnchangeword);
-		changeword = (LinearLayout) findViewById(R.id.changeword);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (Button) findViewById(R.id.imagePan);
@@ -83,12 +78,6 @@ public class fanpai extends BaseActivity {
 
 		initBtnInfo(R.id.btninfo,
 				"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n2.第一个翻牌的玩家有机会更新词汇");
-
-		// Bundle bundle = this.getIntent().getExtras();
-		// isBlank = bundle.getBoolean("isBlank");
-		// isShow = bundle.getBoolean("isShow");
-		// peopleCount = bundle.getInt("peopleCount");
-		// underCount = bundle.getInt("underCount");
 
 		initPan(nowIndex);
 
@@ -120,20 +109,6 @@ public class fanpai extends BaseActivity {
 			}
 		});
 
-		btnOK.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_nextont_un);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_nextone);
-				}
-				return false;
-			}
-		});
-
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -148,24 +123,8 @@ public class fanpai extends BaseActivity {
 			}
 		});
 
-		imagePan.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					imagePan.setBackgroundResource(stringToId("btnun_"
-							+ nowIndex,
-							"drawable"));
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					imagePan.setBackgroundResource(stringToId(
-							"btn_"
-							+ nowIndex,
-							"drawable"));
-				}
-				return false;
-			}
-		});
+		setBtnGreen(imagePan);
+		setBtnBlue(btnOK);
 
 		// 刷新换词
 		btnchangeword.setOnClickListener(new Button.OnClickListener() {
@@ -214,9 +173,11 @@ public class fanpai extends BaseActivity {
 
 	protected void initPan(int index) {
 		setContentVis(false);
-		if (index > 12)
-			index = 12;
-		imagePan.setBackgroundResource(stringToId("btn_" + index, "drawable"));
+		// if (index > 12)
+		// index = 12;
+//		 imagePan.setBackgroundResource(stringToId("btn_" + index,
+		// "drawable"));
+		imagePan.setText("" + index);
 		txtShenfen.setText(content[index - 1]);
 	}
 
@@ -273,9 +234,5 @@ public class fanpai extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onStop();
 		onBackPressed();
-	}
-	
-	private int getWords(String str){
-		return getResources().getIdentifier("com.example.undercover:array/"+str, null, null);
 	}
 }

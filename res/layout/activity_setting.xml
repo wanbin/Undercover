@@ -3,9 +3,10 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-   <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
 
     <LinearLayout
@@ -38,27 +39,31 @@
                     android:id="@+id/btnCost"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/underconver_count_reduce" />
-                
-                 <TextView
-                     android:id="@+id/txtcost1"
-                     android:layout_width="50dp"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"
-                     android:gravity="center"
-                     android:textSize="@dimen/index" />
+                    android:background="@drawable/cerpink01" />
 
+                <TextView
+                    android:id="@+id/txtcost1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/cost"
+                    android:textColor="@color/WRITE"
+                    android:textSize="@dimen/index" />
             </FrameLayout>
-            
+
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_weight="30" >
 
                 <ImageView
                     android:id="@+id/imageViewAddBg"
-                    android:layout_width="82dp"
-                    android:layout_height="82dp"
-                    android:background="@drawable/undercover_count_backgroud" />
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/pinkbtn1" />
 
                 <TextView
                     android:id="@+id/txtPeople"
@@ -66,32 +71,33 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:textColor="@color/WRITE"
                     android:textSize="@dimen/index" />
 
             </FrameLayout>
 
-            
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" >
 
-              <ImageView
-                  android:id="@+id/btnAdd"
-                  android:layout_width="50dp"
-                  android:layout_height="50dp"
-                  android:layout_gravity="center_vertical"
-                  android:background="@drawable/underconver_count_add"
-                  />
+                <ImageView
+                    android:id="@+id/btnAdd"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/cerpink01" />
 
-              <TextView
+                <TextView
                     android:id="@+id/txtadd1"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text="@string/add"
+                    android:textColor="@color/WRITE"
                     android:textSize="@dimen/index" />
-              </FrameLayout>
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -106,37 +112,42 @@
                 android:paddingRight="15dp"
                 android:text="@string/txtUndex"
                 android:textSize="@dimen/index" />
-<FrameLayout
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" >
-             <ImageView
-                android:id="@+id/btnCostUnder"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                 android:background="@drawable/underconver_count_reduce"
-                />
-             
-             <TextView
+
+                <ImageView
+                    android:id="@+id/btnCostUnder"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/cerpink01" />
+
+                <TextView
                     android:id="@+id/txtcost2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text="@string/cost"
+                    android:textColor="@color/WRITE"
                     android:textSize="@dimen/index" />
-            
-             </FrameLayout>
-             
-             <FrameLayout
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="30" >
 
                 <ImageView
                     android:id="@+id/imageViewUnderBg"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:background="@drawable/undercover_count_backgroud" />
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/pinkbtn1" />
 
                 <TextView
                     android:id="@+id/txtUnder"
@@ -144,34 +155,34 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:textColor="@color/WRITE"
                     android:textSize="@dimen/index" />
 
             </FrameLayout>
-             
-             
-            
-<FrameLayout
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" >
-            <ImageView
-                android:id="@+id/btnAddUnder"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
-                 android:background="@drawable/underconver_count_add"
-                />
-            <TextView
+
+                <ImageView
+                    android:id="@+id/btnAddUnder"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/cerpink01" />
+
+                <TextView
                     android:id="@+id/txtadd2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:text="@string/add"
+                    android:textColor="@color/WRITE"
                     android:textSize="@dimen/index" />
             </FrameLayout>
         </LinearLayout>
-
-        
 
         <TextView
             android:id="@+id/textView1"
@@ -180,58 +191,70 @@
             android:text="@string/tip" />
     </LinearLayout>
 
-     <Button
-         android:id="@+id/btnStart"
-         android:layout_width="150dp"
-         android:layout_height="93dp"
-         android:layout_below="@+id/LinearLayout1"
-         android:layout_centerHorizontal="true"
-         android:background="@drawable/btn_start" />
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/LinearLayout1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/greenbtn1"
+        android:text="@string/strBgn"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/index" />
 
-     <LinearLayout
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/btnStart"
-         android:layout_centerHorizontal="true"
-         android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
 
-         <CheckBox
-             android:id="@+id/afterShow"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:checked="true"
-             android:text="@string/setting_afterShow" />
+        <CheckBox
+            android:id="@+id/afterShow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/setting_afterShow" />
 
-         <CheckBox
-             android:id="@+id/isBlank"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="@string/setting_blank"/>
+        <CheckBox
+            android:id="@+id/isBlank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/setting_blank" />
 
-         <LinearLayout
-             android:id="@+id/warp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/warp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-             <Button
-                 android:id="@+id/popo_button"
-                 android:layout_width="100dp"
-                 android:layout_height="62dp"
-                 android:background="@drawable/btn_popo" />
+            <LinearLayout
+                android:id="@+id/te"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
 
-            <Button
-                android:id="@+id/popo_wordsetting"
-                android:layout_width="100dp"
-                android:layout_height="62dp"
-                android:text="设置分类" />
+                <Button
+                    android:id="@+id/popo_button"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/greenbtn1"
+                    android:text="@string/setting_word"
+                    android:textColor="@color/WRITE" />
 
-             <TextView
-                 android:id="@+id/wordText"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content" />
-         </LinearLayout>
+                <Button
+                    android:id="@+id/popo_wordsetting"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/greenbtn1"
+                    android:text="设置分类"
+                    android:textColor="@color/WRITE" />
+            </LinearLayout>
 
-     </LinearLayout>
+            <TextView
+                android:id="@+id/wordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

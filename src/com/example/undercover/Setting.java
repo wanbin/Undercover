@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -47,6 +45,7 @@ public class Setting extends BaseActivity {
 	private String wordStr;
 	// 词汇分类
 	private String[] UnderKind;
+	private boolean beginSetting = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,12 +67,6 @@ public class Setting extends BaseActivity {
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 		popoBtn	= (Button)findViewById(R.id.popo_button);
 		popoword = (Button) findViewById(R.id.popo_wordsetting);
-		popoBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-//				onPopupButtonclick(popoBtn);
-			}
-		});
 
 		popoword.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -127,41 +120,39 @@ public class Setting extends BaseActivity {
 				}
 			}
 		});
-		
-		ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f, 1.02f,
-				Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-				0.5f);
-		scaleAni.setRepeatMode(Animation.REVERSE);
-		scaleAni.setRepeatCount(-1);
-		scaleAni.setDuration(1000);
-		btnStart.startAnimation(scaleAni);
-
-		// 注释掉chat room
-		//startChatRoom.setVisibility(View.INVISIBLE);
-		setPeople();
-		setUnder();
 		btnAdd.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				beginSetting = true;
 				if (peopleCount < maxPeople) {
 					SoundPlayer.playball();
 					peopleCount++;
 					underCount = Math.max((int) Math.floor(peopleCount / 3), 1);
 				}
+ else {
+					siampleTitle("人太多了，分两波玩更有意思啊");
+				}
 				setPeople();
 				setUnder();
 			}
 		});
-
+		setBtnPinkCer(btnAdd);
+		setBtnPinkCer(btnAddUnder);
+		setBtnPinkCer(btnCostUnder);
+		setBtnPinkCer(btnCost);
 		btnCost.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				beginSetting = true;
 				if (peopleCount > 4) {
 					SoundPlayer.playball();
 					peopleCount--;
 					underCount = Math.min(
 							Math.max((int) Math.floor(peopleCount / 3), 1),
 							underCount);
+				}
+ else {
+					siampleTitle("人太少了，试试适合2-3人的游戏吧~");
 				}
 				setPeople();
 				setUnder();
@@ -171,11 +162,15 @@ public class Setting extends BaseActivity {
 		btnAddUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				beginSetting = true;
 				if (underCount < 4) {
 					SoundPlayer.playball();
 					underCount++;
 					peopleCount = Math.min(
 							Math.max(underCount * 3, peopleCount), maxPeople);
+				}
+ else {
+					siampleTitle("全民卧底，可不好玩~");
 				}
 				setPeople();
 				setUnder();
@@ -185,18 +180,21 @@ public class Setting extends BaseActivity {
 		btnCostUnder.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				beginSetting = true;
 				if (underCount > 1) {
 					SoundPlayer.playball();
 					underCount--;
 				}
+ else {
+					siampleTitle("至少要留个卧底吧~");
+				}
 				setUnder();
+				setPeople();
 			}
 		});
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				int selectindex = Math.abs(random.nextInt()) % content.length;
-//				String[] tem = getRandomString(content[selectindex]);
 				gameInfo.edit().putInt("peopleCount", peopleCount).commit(); 
 				gameInfo.edit().putInt("underCount", underCount).commit(); 
 				gameInfo.edit().putBoolean("isShow", isShow).commit(); 
@@ -211,37 +209,27 @@ public class Setting extends BaseActivity {
 				finish();
 			}
 		});
-		btnStart.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_start2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_start);
-				}
-				return false;
-			}
-		});
-		
-
+		setBtnGreen(btnStart);
+		setBtnGreen(popoBtn);
+		setBtnGreen(popoword);
+		setUnder();
+		setPeople();
 	}
 
 	private void setPeople() {
-		if (peopleCount == maxPeople) {
-//			btnAdd.setBackgroundResource(R.drawable.popogray72);
-			btnAdd.setClickable(false);
+		if (peopleCount >= maxPeople) {
+			// btnAdd.setBackgroundResource(R.drawable.cergray01);
+			// btnAdd.setClickable(false);
 		} else {
-//			btnAdd.setBackgroundResource(R.drawable.popo72);
-			btnAdd.setClickable(true);
+			// btnAdd.setBackgroundResource(R.drawable.cerpink01);
+			// btnAdd.setClickable(true);
 		}
-		if (peopleCount == 4) {
-//			btnCost.setBackgroundResource(R.drawable.popogray72);
-			btnCost.setClickable(false);
+		if (peopleCount <= 4) {
+			// btnCost.setBackgroundResource(R.drawable.cergray01);
+			// btnCost.setClickable(false);
 		} else {
-//			btnCost.setBackgroundResource(R.drawable.popo72);
-			btnCost.setClickable(true);
+			// btnCost.setBackgroundResource(R.drawable.cerpink01);
+			// btnCost.setClickable(true);
 		}
 		people.setText(Integer.toString(peopleCount));
 		
@@ -249,18 +237,18 @@ public class Setting extends BaseActivity {
 
 	private void setUnder() {
 		if (underCount >= 4) {
-//			btnAddUnder.setBackgroundResource(R.drawable.popogray72);
-			btnAddUnder.setClickable(false);
+			// btnAddUnder.setBackgroundResource(R.drawable.cergray01);
+			// btnAddUnder.setClickable(false);
 		} else {
-//			btnAddUnder.setBackgroundResource(R.drawable.popo72);
-			btnAddUnder.setClickable(true);
+			// btnAddUnder.setBackgroundResource(R.drawable.cerpink01);
+			// btnAddUnder.setClickable(true);
 		}
-		if (underCount == 1) {
-//			btnCostUnder.setBackgroundResource(R.drawable.popogray72);
-			btnCostUnder.setClickable(false);
+		if (underCount <= 1) {
+			// btnCostUnder.setBackgroundResource(R.drawable.cergray01);
+			// btnCostUnder.setClickable(false);
 		} else {
-//			btnCostUnder.setBackgroundResource(R.drawable.popo72);
-			btnCostUnder.setClickable(true);
+			// btnCostUnder.setBackgroundResource(R.drawable.cerpink01);
+			// btnCostUnder.setClickable(true);
 		}
 		under.setText(Integer.toString(underCount));
 	}
