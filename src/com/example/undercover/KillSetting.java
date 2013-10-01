@@ -51,11 +51,10 @@ public class KillSetting extends BaseActivity {
 
 		wordText.setText(strFromId("setting_word_new")
 				+ strFromId("setting_word_all"));
-		// 添加 冤死 提示按钮
+		// 添加 冤死 提示按钮h
 		afterShow	= (CheckBox)findViewById(R.id.afterShow);
 
-		initBtnInfo(R.id.btninfo,
-				"参与人数：总玩家数(包括法官)\n平民人数：总玩家人数1/2\n警察人数：总玩家人数1/4\n杀手人数：总玩家人数1/4");
+		initBtnInfo(R.id.btninfo, strFromId("txtKillerHelp"));
 
 		// 共享数据
 		gameInfo = getSharedPreferences("gameInfo", 0);

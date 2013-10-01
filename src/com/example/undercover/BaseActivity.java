@@ -61,6 +61,10 @@ public class BaseActivity extends Activity {
 	protected int versionType = 1;
 	private ImageView btnreturn;
 	private UMSocialService controller;
+	protected String faguan;
+	protected String police;
+	protected String killer;
+	protected String nomalpeople;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +72,11 @@ public class BaseActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		MobclickAgent.setDebugMode(false);
 		MobclickAgent.onError(this);
+		faguan = strFromId("txtFaGuan");
+		police = strFromId("txtPolice");
+		killer = strFromId("txtKiller");
+		nomalpeople = strFromId("txtNormal");
+
 		try {
 			VersionName = GetVersion();
 			// 初始化版本号信息,在替换界面元素时候使用
@@ -103,11 +112,11 @@ public class BaseActivity extends Activity {
 	}
 
 	protected void initShareBtn() {
-		Button btnShare = (Button) findViewById(R.id.btnback);
+		Button btnShare = (Button) findViewById(R.id.btnshare);
 		btnShare.setVisibility(View.VISIBLE);
 		btnShare.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				openShareEdit("我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695");
+				openShareEdit(strFromId("txtShareSay"));
 			}
 		});
 	}

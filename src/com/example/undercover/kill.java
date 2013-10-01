@@ -64,7 +64,7 @@ public class kill extends BaseActivity {
 				R.anim.reflash);
 
 		initFanpai();
-		initBtnInfo(R.id.btninfo, "请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n");
+		initBtnInfo(R.id.btninfo, strFromId("txtKillHelp"));
 
 
 		initPan(nowIndex);
@@ -181,22 +181,22 @@ public class kill extends BaseActivity {
 	private String[] getRandomString() {
 		String[] ret = new String[peopleCount];
 		for (int n = 0; n < ret.length; n++) {
-			ret[n] = "平民";
+			ret[n] = nomalpeople;
 		}
-		ret[Math.abs(random.nextInt()) % peopleCount] = "法官";
+		ret[Math.abs(random.nextInt()) % peopleCount] = faguan;
 		for (int i = 0; i < policeCount; i++) {
 			int tem;
 			do {
 				tem = Math.abs(random.nextInt()) % peopleCount;
-			} while (!ret[tem].equals("平民"));
-			ret[tem] = "警察";
+			} while (!ret[tem].equals(nomalpeople));
+			ret[tem] = police;
 		}
 		for (int i = 0; i < killerCount; i++) {
 			int tem;
 			do {
 				tem = Math.abs(random.nextInt()) % peopleCount;
-			} while (!ret[tem].equals("平民"));
-			ret[tem] = "杀手";
+			} while (!ret[tem].equals(nomalpeople));
+			ret[tem] = killer;
 		}
 		// 设置content
 		setContent(ret);

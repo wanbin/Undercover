@@ -143,15 +143,18 @@ public class SelectGameActivity extends BaseActivity {
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
-		initFrame(framPing, "有胆量就转", 3, 6, R.drawable.icon_bottle,
+		initFrame(framPing, strFromId("circleme"), 3, 6,
+				R.drawable.icon_bottle,
 				RotaryBottleActivity.class, "game_bottle");
-		initFrame(frameAsk, "有胆量就问", 4, 8, R.drawable.icon_ask,
+		initFrame(frameAsk, strFromId("askme"), 4, 8, R.drawable.icon_ask,
 		QuestionAnswer.class, "game_ask");
-		initFrame(framTrue, "真心话大冒险", 2, 8, R.drawable.icon_true,
+		initFrame(framTrue, strFromId("truethings"), 2, 8,
+				R.drawable.icon_true,
 				PunishActivity.class, "game_zhenxinhua_damaoxian");
-		initFrame(framClick, "有胆量就点", 2, 8, R.drawable.icon_click,
+		initFrame(framClick, strFromId("clickme"), 2, 8, R.drawable.icon_click,
 				random_50.class, "game_click");
-		initFrame(frameKill, "杀人游戏", 6, 12, R.drawable.icon_kill,
+		initFrame(frameKill, strFromId("txtKillerGameName"), 6, 12,
+				R.drawable.icon_kill,
 				KillSetting.class, "game_kill_select");
 
 

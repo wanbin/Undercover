@@ -1,19 +1,11 @@
 package com.example.undercover;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import com.umeng.fb.FeedbackAgent;
 
 public class MakeActivity extends BaseActivity {
 	private TextView txtContent;
 	private TextView txtTitle;
-	private Button btnfb;
-	private Button btnwx;
-	private FeedbackAgent agent;
 	private String Version;
 	private String suggest;
 	private String suggest1;
@@ -26,37 +18,13 @@ public class MakeActivity extends BaseActivity {
 		Version = getResources().getString(R.string.Version);
 		txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		btnfb = (Button) findViewById(R.id.btnfb);
-		btnwx = (Button) findViewById(R.id.btnweixin);
 		txtTitle.setText(Version);
-		agent = new FeedbackAgent(this);
 		String emailaddr = this.getString(R.string.emailaddr);
 		suggest = getResources().getString(R.string.suggest);
 		suggest1 = getResources().getString(R.string.suggest1);
 		txtContent
 				.setText(suggest+ emailaddr
 						+ suggest1);
-
-		btnfb.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				agent.startFeedbackActivity();
-			}
-		});
-
-		btnwx.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				uMengClick("click_weixin");
-				Intent mIntent = new Intent();
-				mIntent.setClass(MakeActivity.this, weixin.class);
-			}
-		});
-
 	}
 
 

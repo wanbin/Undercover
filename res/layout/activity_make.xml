@@ -5,8 +5,8 @@
     android:layout_height="match_parent" >
 
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
 
     <RelativeLayout
@@ -33,35 +33,5 @@
             android:padding="10dp"
             android:text="@string/cametogether" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/cont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone" >
-
-        <Button
-            android:id="@+id/btnfb"
-            android:layout_width="75dp"
-            android:layout_height="46dp" />
-
-        <Button
-            android:id="@+id/btnweixin"
-            android:layout_width="75dp"
-            android:layout_height="46dp" />
-        
-        <Button
-            android:id="@+id/btnyonghu"
-            android:layout_width="75dp"
-            android:layout_height="46dp" />
-        
-        <Button
-            android:id="@+id/btnguanyu"
-            android:layout_width="75dp"
-            android:layout_height="46dp"/>
-
-    </LinearLayout>
 
 </RelativeLayout>

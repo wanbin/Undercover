@@ -77,8 +77,7 @@ public class Setting extends BaseActivity {
 			}
 		});
 
-		initBtnInfo(R.id.btninfo,
-				"参与人数：总玩家数\n卧底人数：一般为总玩家人数1/4\n显示冤死：结束的时候会亮名玩家身份（简单）\n词汇分类：选择相应分类出现不同的词汇");
+		initBtnInfo(R.id.btninfo, strFromId("txtSettingHelp"));
 
 		popoBtn.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -130,7 +129,7 @@ public class Setting extends BaseActivity {
 					underCount = Math.max((int) Math.floor(peopleCount / 3), 1);
 				}
  else {
-					siampleTitle("人太多了，分两波玩更有意思啊");
+					siampleTitle(strFromId("txtTooMuchPeople"));
 				}
 				setPeople();
 				setUnder();
@@ -152,7 +151,7 @@ public class Setting extends BaseActivity {
 							underCount);
 				}
  else {
-					siampleTitle("人太少了，试试适合2-3人的游戏吧~");
+					siampleTitle(strFromId("txtTooLittlePeople"));
 				}
 				setPeople();
 				setUnder();
@@ -170,7 +169,7 @@ public class Setting extends BaseActivity {
 							Math.max(underCount * 3, peopleCount), maxPeople);
 				}
  else {
-					siampleTitle("全民卧底，可不好玩~");
+					siampleTitle(strFromId("txtTooMuchUnderCover"));
 				}
 				setPeople();
 				setUnder();
@@ -186,7 +185,7 @@ public class Setting extends BaseActivity {
 					underCount--;
 				}
  else {
-					siampleTitle("至少要留个卧底吧~");
+					siampleTitle(strFromId("txtTooLitterUnderCover"));
 				}
 				setUnder();
 				setPeople();
@@ -270,7 +269,7 @@ public class Setting extends BaseActivity {
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		getMenuInflater().inflate(R.menu.popo_menu, menu);
-		menu.setHeaderTitle("设置词语");
+		menu.setHeaderTitle(strFromId("txtSettingWords"));
 		for (int i = 0; i < UnderKind.length; i++) {
 			menu.add(0, ITEM1 + i, 0, UnderKind[i]);
 		}

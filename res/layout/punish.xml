@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     android:gravity="end"
     android:orientation="vertical" >
+
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="200dp"
@@ -26,16 +28,24 @@
 
         <Button
             android:id="@+id/trueBtn"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:background="@drawable/btnzhenxin"
-            android:gravity="center_vertical|center" />
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bluebtn1"
+            android:gravity="center_vertical|center"
+            android:text="@string/punish_true"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
 
         <Button
             android:id="@+id/advenBtn"
-            android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:background="@drawable/btn_maoxian" />
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/bluebtn1"
+            android:text="@string/punish_adventure"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,12 +56,13 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
 
-          <TextView
+        <TextView
             android:id="@+id/punish_guize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="5dp" />
+
         <TextView
             android:id="@+id/punish_1"
             android:layout_width="wrap_content"
@@ -88,40 +99,52 @@
             android:layout_height="wrap_content"
             android:padding="5dp" />
     </LinearLayout>
-        <Button
-            android:id="@+id/changeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/popo72"
-            android:text="@string/punish_other" />
 
-        <ImageView
-            android:id="@+id/imagedice"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/changeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popo72"
+        android:text="@string/punish_other" />
 
-        <TextView
-            android:id="@+id/txtLong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:paddingTop="10dp" />
+    <ImageView
+        android:id="@+id/imagedice"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/txtLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp" />
+
+    <LinearLayout
+        android:id="@+id/tb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" >
 
         <Button
             android:id="@+id/punish_disc"
             android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/btnshaizi"/>
+            android:layout_height="60dp"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index"
+            android:text="@string/playdisc"
+            android:background="@drawable/greenbtn1" />
 
         <Button
             android:id="@+id/punish_random"
+            android:text="@string/punish_random_btn"
             android:layout_width="150dp"
-            android:layout_height="93dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/btn_suiji"/>
-        
+            android:layout_height="60dp"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index"
+            android:background="@drawable/greenbtn1" />
+    </LinearLayout>
+
 </RelativeLayout>

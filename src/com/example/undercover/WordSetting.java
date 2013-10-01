@@ -29,28 +29,30 @@ public class WordSetting extends BaseActivity {
 			public void onClick(View v) {
 				if (text1.getText().toString()
 						.equals(text2.getText().toString())) {
-					siampleTitle("词汇不能相同");
+					siampleTitle(strFromId("txtWordsCantSame"));
 					return;
 				}
 				if (text1.getText().toString().indexOf("_") > 0
 						|| text1.getText().toString().indexOf(",") > 0
 						|| text2.getText().toString().indexOf("_") > 0
 						|| text2.getText().toString().indexOf(",") > 0) {
-					siampleTitle("不能输入'_',','");
+					siampleTitle(strFromId("txtWordsCantSpecial"));
 					return;
 				}
 				
 				String strtem = gameInfo.getString("user_setting", "");
 				if (strtem.length() > 0) {
-					strtem = strtem + ",自定义_" + text1.getText().toString()
+					strtem = strtem + "," + strFromId("txtWordsPeopleInput")
+							+ text1.getText().toString()
 							+ "_" + text2.getText().toString();
 				} else {
-					strtem = strtem + "自定义_" + text1.getText().toString() + "_"
+					strtem = strtem + strFromId("txtWordsPeopleInput")
+							+ text1.getText().toString() + "_"
 							+ text2.getText().toString();
 				}
 				strtem = strtem.trim();
 				gameInfo.edit().putString("user_setting", strtem).commit();
-				siampleTitle("添加成功");
+				siampleTitle(strFromId("txtWordsAddSuccess"));
 				text1.setText("");
 				text2.setText("");
 			}

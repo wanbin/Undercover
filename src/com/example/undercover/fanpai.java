@@ -76,8 +76,7 @@ public class fanpai extends BaseActivity {
 						+ gameInfo.getString("word", "").trim());
 		initFanpai();
 
-		initBtnInfo(R.id.btninfo,
-				"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n2.第一个翻牌的玩家有机会更新词汇");
+		initBtnInfo(R.id.btninfo, strFromId("txtPaiHelp"));
 
 		initPan(nowIndex);
 
@@ -132,7 +131,7 @@ public class fanpai extends BaseActivity {
 			public void onClick(View v) {
 				// v.setVisibility(View.INVISIBLE);
 				if (!canchangeword) {
-					siampleTitle("第一位玩家才可以换词呀~");
+					siampleTitle(strFromId("txtPaiFirstPeople"));
 				} else {
 					initFanpai();
 					btnchangeword.startAnimation(animation);

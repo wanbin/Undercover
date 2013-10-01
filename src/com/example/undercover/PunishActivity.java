@@ -134,34 +134,8 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 
-		trueBtn.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btnzhenxin2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btnzhenxin);
-				}
-				return false;
-			}
-		});
-
-		advenBtn.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_maoxin2);
-				} else if (event.getAction() == MotionEvent.ACTION_UP) {
-					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_maoxian);
-				}
-				return false;
-			}
-		});
-
+		setBtnGreen(trueBtn);
+		setBtnGreen(advenBtn);
 		// 用户选择换题目
 		changeBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -200,50 +174,38 @@ public class PunishActivity extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_suiji2);
+					v.setBackgroundResource(R.drawable.greenbtn2);
 					randomBtnTouch();
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
 					randomBtnTouch();
-					v.setBackgroundResource(R.drawable.btn_suiji);
+					v.setBackgroundResource(R.drawable.greenbtn1);
 				}
 				return false;
 			}
 		});
 
-		imagedice.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// discstop();
-			}
-		});
 
 		punish_disc.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					if (isRandom || isShackOneMinit > 0)
-						return false;
-					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btnshaizi2);
+					// if (isRandom || isShackOneMinit > 0)
+					// return false;
+					// // 更改为按下时的背景图片
+					v.setBackgroundResource(R.drawable.greenbtn2);
 					discstart();
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					if (isRandom || isShackOneMinit > 0)
 						return false;
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btnshaizi);
+					v.setBackgroundResource(R.drawable.greenbtn1);
 					discstop();
 				}
 				return false;
 			}
 		});
 
-		punish_disc.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// shackAction();
-			}
-		});
 	}// onCreat 方法结束
 
 	private void randomBtnTouch() {

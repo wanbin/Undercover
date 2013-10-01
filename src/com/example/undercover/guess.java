@@ -48,17 +48,7 @@ public class guess extends BaseActivity {
 	 * 判断游戏是否结束
 	 */
 	private boolean gamefinish = false;
-	
-//	private String overString1; 
-//	private String overString2; 
-//	private String overString3; 
-//	private String overString4; 
-//	private String overString5; 
-//	private String overString6; 
-//	private String overString7; 
-//	private String overString8; 
 	private String[] overString;
-//	={overString1,overString2,overString3,overString4,overString5,overString6,overString7,overString8};
 	private String gusswhoisspy;
 	private String undercover;
 	private String blank;
@@ -72,9 +62,7 @@ public class guess extends BaseActivity {
 	private String shibaizhe;
 	private String fayan;
 	private String hao;
-
 	private boolean[] hasClicked;
-	private boolean[] hasAliave;// 玩家是否还存活
 
 	protected void onCreate(Bundle savedInstanceState) {
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
@@ -83,15 +71,6 @@ public class guess extends BaseActivity {
 		initBtnBack(R.id.btnback);
 		initShareBtn();
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		//string_start
-//		overString1 = getResources().getString(R.string.overString1);  
-//		overString2 = getResources().getString(R.string.overString2);  
-//		overString3 = getResources().getString(R.string.overString3);  
-//		overString4 = getResources().getString(R.string.overString4);  
-//		overString5 = getResources().getString(R.string.overString5);  
-//		overString6 = getResources().getString(R.string.overString6);  
-//		overString7 = getResources().getString(R.string.overString7);  
-//		overString8 = getResources().getString(R.string.overString8);
 		overString = getResources().getStringArray(R.array.overstring);
 		gusswhoisspy=getResources().getString(R.string.gusswhoisspy); 
 		undercover=getResources().getString(R.string.undercover);
@@ -106,17 +85,12 @@ public class guess extends BaseActivity {
 		hy=getResources().getString(R.string.hy);                      
 		ge=getResources().getString(R.string.ge);
 		
-		initBtnInfo(R.id.btninfo,
-				"长按投出卧底，胜利条件\n1.卧底数大于等于平民时：卧底胜\n2.卧底被全部投出：平民胜");
-		//string_end
-		
+		initBtnInfo(R.id.btninfo, strFromId("txtGuessHelp"));
 		isOver = false;
 		flag = false;
 		isGetRestart = false;
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-//		punishBtn = new Button(this);
-//		startBtn = new Button(this);
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
@@ -126,12 +100,6 @@ public class guess extends BaseActivity {
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
 
-//		Bundle bundle = this.getIntent().getExtras();
-//		isShow	= bundle.getBoolean("isShow");
-//		son = bundle.getString("son");
-//		soncount = bundle.getInt("underCount");
-//		content = bundle.getStringArray("content");
-		
 		content = getGuessContent();
 		isOver = gameInfo.getBoolean("isBlank", false);
 		son = gameInfo.getString("son", "");
@@ -157,9 +125,6 @@ public class guess extends BaseActivity {
 				}
 			}
 		}
-		
-
-
 		totalcount = content.length;
 		txtTitle.setText(taplong);
 		temindex = 0;
@@ -173,10 +138,6 @@ public class guess extends BaseActivity {
 				FrameLayout fl = new FrameLayout(this);
 				Button select = new Button(this);
 				final TextView text	= new TextView(this);
-				// text.setText(String.valueOf(temindex+1));
-				// text.setGravity(Gravity.CENTER);
-				// text.setTextSize(30);
-
 				final TextView shenfen = new TextView(this);
 				int temshenf = temindex + 1;
 				shenfen.setText(temshenf + "." + content[temindex]);
@@ -190,7 +151,6 @@ public class guess extends BaseActivity {
 				shenfenimage.setBackgroundResource(R.drawable.bluebtn1);
 				shenfenimage.setVisibility(View.INVISIBLE);
 				setBtnBlue(shenfenimage);
-
 				select.setTag(temindex);
 				int te = temindex + 1;
 				select.setText("" + te);
@@ -225,7 +185,6 @@ public class guess extends BaseActivity {
 							} else {
 								SoundPlayer.playChuiShao();
 							}
-							// tt.setText("*");
 							return true;
 						}
 					});
@@ -234,7 +193,6 @@ public class guess extends BaseActivity {
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfenimage);
-				// fl.addView(mohu);
 				fl.addView(shenfen);
 				newrow.addView(fl, disWidth / 4, disWidth / 7);
 			}
@@ -351,9 +309,6 @@ public class guess extends BaseActivity {
 			txtLong.setText(updateSaySeq() + "(" + taplong + ")");
 			txtRemain.setText(getRemain());
 		}
-		// }else{
-		//
-		// }
 	}
 
 	protected String getSonStr() {
@@ -389,7 +344,6 @@ public class guess extends BaseActivity {
 		// 所有身份亮明
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.VISIBLE);
-
 		for (int i = 0; i < contentTable.getChildCount(); i++) {
 			if (contentTable.getChildAt(i) instanceof TableRow) {
 				TableRow v = (TableRow) contentTable.getChildAt(i);
@@ -399,6 +353,9 @@ public class guess extends BaseActivity {
 						TextView temtext = (TextView) imageTem
 								.findViewWithTag(999);
 						temtext.setVisibility(View.VISIBLE);
+						Button btnbg = (Button) imageTem.getChildAt(0);
+						btnbg.setClickable(false);
+						btnbg.setText("");
 					}
 				}
 			}

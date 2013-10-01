@@ -91,8 +91,7 @@ public class KillGuess extends BaseActivity {
 		ge=getResources().getString(R.string.ge);
 		killerCount = gameInfo.getInt("killerCount", 1);
 		policeCount = gameInfo.getInt("policeCount", 1);
-		initBtnInfo(R.id.btninfo,
- "长按玩家出局，胜利条件\n1.警察全部死光：杀手胜\n2.杀手全部死光：平民和警察胜");
+		initBtnInfo(R.id.btninfo, strFromId("txtKillerSucces"));
 		//string_end
 		
 		isOver = false;
@@ -129,7 +128,7 @@ public class KillGuess extends BaseActivity {
 		if (hasClicked.length < 4) {
 			hasClicked = new boolean[content.length];
 			for (int i = 0; i < content.length; i++) {
-				if (content[i].equals("法官")) {
+				if (content[i].equals(faguan)) {
 					hasClicked[i] = true;
 				} else {
 					hasClicked[i] = false;
@@ -141,11 +140,11 @@ public class KillGuess extends BaseActivity {
 
 		for (int i = 0; i < hasClicked.length; i++) {
 			if (hasClicked[i] == true) {
-				if (content[i].equals("平民")) {
+				if (content[i].equals(nomalpeople)) {
 					otherCount--;
-				} else if (content[i].equals("警察")) {
+				} else if (content[i].equals(police)) {
 					policeCount--;
-				} else if (content[i].equals("杀手")) {
+				} else if (content[i].equals(killer)) {
 					killerCount--;
 				}
 			}
@@ -274,9 +273,9 @@ public class KillGuess extends BaseActivity {
 		if (otherCount + policeCount + 1 + killerCount == totalcount) {
 			uMengClick("game_kill_guessfirst");
 		}
-		if (content[tag].equals("平民")) {
+		if (content[tag].equals(nomalpeople)) {
 			otherCount--;
-		} else if (content[tag].equals("警察")) {
+		} else if (content[tag].equals(police)) {
 			policeCount--;
 		} else {
 			killerCount--;
@@ -314,7 +313,7 @@ public class KillGuess extends BaseActivity {
 		Log("CheeckGameOver");
 		// if (!isOver) {
 		if (killerCount <= 0) {
-			txtTitle.setText("警察胜利");
+			txtTitle.setText(strFromId("txtKillerPoliceSucces"));
 			isOver = true;
 			if (!gamefinish) {
 				uMengClick("game_kill_guesslast");
@@ -328,7 +327,7 @@ public class KillGuess extends BaseActivity {
 			txtRemain.setVisibility(View.INVISIBLE);
 		} else if (policeCount <= 0 || otherCount <= 0) {
 			SoundPlayer.playNormalSoure();
-			txtTitle.setText("杀手胜利");
+			txtTitle.setText(strFromId("txtKillerKillerSucces"));
 			isOver = true;
 			if (!gamefinish) {
 				uMengClick("game_kill_guesslast");
@@ -354,7 +353,7 @@ public class KillGuess extends BaseActivity {
 	protected String getPoliceWinStr() {
 		String str = shibaizhe;
 		for (int i = 0; i < content.length; i++) {
-			if (content[i].equals("杀手")) {
+			if (content[i].equals(killer)) {
 				int temhao = i + 1;
 				String tem = String.format(hao, temhao);
 				str += tem;
@@ -366,7 +365,7 @@ public class KillGuess extends BaseActivity {
 	protected String getKillerWinStr() {
 		String str = shibaizhe;
 		for (int i = 0; i < content.length; i++) {
-			if (content[i].equals("杀手") || content[i].equals("法官")) {
+			if (content[i].equals(killer) || content[i].equals(faguan)) {
 				continue;
 			}
 			int temhao = i + 1;
@@ -489,39 +488,5 @@ public class KillGuess extends BaseActivity {
 		uMengClick("game_kill_finish");
 		super.finish();
 	}
-
-//	@Override
-//	protected void onSaveInstanceState(Bundle savedInstanceState) {
-//		super.onSaveInstanceState(savedInstanceState);
-//		savedInstanceState.putBoolean("isShow", isShow);
-//		savedInstanceState.putInt("soncount", soncount);
-//		savedInstanceState.putStringArray("content", content);
-//		savedInstanceState.putString("son", son);
-//		savedInstanceState.putBoolean("isOver", isOver);
-//		savedInstanceState.putBooleanArray("hasClicked",hasClicked);
-//		Log.d("saved","onSaveInstanceState");
-//	}
-	// //退出确认
-//	public void onBackPressed() {  
-	// new AlertDialog.Builder(this).setTitle("确认退出吗？")
-//		    .setIcon(android.R.drawable.ic_dialog_info)  
-	// .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//		  
-//		        @Override  
-//		        public void onClick(DialogInterface dialog, int which) {  
-	// // 点击“确认”后的操作
-//		        guess.this.finish();  
-//		  
-//		        }  
-//		    })  
-	// .setNegativeButton("返回", new DialogInterface.OnClickListener() {
-//		  
-//		        @Override  
-//		        public void onClick(DialogInterface dialog, int which) {  
-	// // 点击“返回”后的操作,这里不设置没有任何操作
-	// }
-//		    }).show();  
-//		// super.onBackPressed();  
-//	}  
 	
 }

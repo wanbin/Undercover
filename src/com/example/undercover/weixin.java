@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -17,15 +16,16 @@ public class weixin extends BaseActivity {
 		weixin = (ImageView) findViewById(R.id.imageView1);
 		initBtnBack(R.id.btnback);
 		initShareBtn();
-		initBtnInfo(R.id.btninfo, "微信帮助信息");
+		initBtnInfo(R.id.btninfo, strFromId("txtWeixinHelp"));
 
-		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		lp.alpha = 0.3f;
-		getWindow().setAttributes(lp);
-
-		lp.dimAmount = 0.5f;
-		getWindow().setAttributes(lp);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+		// 屏幕变黑
+		// WindowManager.LayoutParams lp = getWindow().getAttributes();
+		// lp.alpha = 0.3f;
+		// getWindow().setAttributes(lp);
+		//
+		// lp.dimAmount = 0.5f;
+		// getWindow().setAttributes(lp);
+		// getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
 
 		weixin.setOnClickListener(new Button.OnClickListener() {
 			@Override

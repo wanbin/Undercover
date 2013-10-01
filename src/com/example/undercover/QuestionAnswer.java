@@ -188,7 +188,7 @@ public class QuestionAnswer extends BaseActivity {
 	 * 进入下一题（每次取两道题目）
 	 */
 	private void getNextQuestion() {
-		punish_0.setText("快速说出绕口令：\n\n"
+		punish_0.setText(strFromId("txtQuictAsk")
 				 + PunishProps.getRaoKouLing());
 	}
 
@@ -199,7 +199,7 @@ public class QuestionAnswer extends BaseActivity {
 		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 		// timeLimit = 1000;
 		imageNext.setClickable(true);
-		questionNext.setText("开始游戏");
+		questionNext.setText(strFromId("startGame"));
 		imageNext.setBackgroundResource(R.drawable.popo152);
 		// proBar.incrementProgressBy(-TIME);
 		proBar.setVisibility(View.INVISIBLE);

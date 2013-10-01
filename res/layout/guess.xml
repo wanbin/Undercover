@@ -12,7 +12,7 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="350dp"
         android:layout_centerVertical="true" >
 
         <LinearLayout
@@ -35,41 +35,49 @@
                 android:layout_height="wrap_content" >
             </TableLayout>
 
-            <LinearLayout
-                android:id="@+id/an"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" >
-
-                <Button
-                    android:id="@+id/btn_punish"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/pinkbtn1"
-                    android:text="@string/punishmen"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/size20" />
-
-                <Button
-                    android:id="@+id/btn_restart"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/pinkbtn1"
-                    android:text="@string/restart"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/size20"  />
-
-                <Button
-                    android:id="@+id/btn_quickstart"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/pinkbtn1"
-                    android:text="@string/quickStart"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/size20" />
-            </LinearLayout>
+            
         </LinearLayout>
     </ScrollView>
+
+<LinearLayout
+    android:id="@+id/an"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginBottom="20dp"
+    android:layout_toEndOf="@id/parent" >
+
+    <Button
+        android:id="@+id/btn_punish"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_weight="30"
+        android:background="@drawable/pinkbtn1"
+        android:text="@string/punishmen"
+        android:textAlignment="viewStart"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/size20" />
+
+    <Button
+        android:id="@+id/btn_restart"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_weight="30"
+        android:background="@drawable/pinkbtn1"
+        android:text="@string/restart"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/size20" />
+
+    <Button
+        android:id="@+id/btn_quickstart"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_weight="30"
+        android:background="@drawable/pinkbtn1"
+        android:text="@string/quickStart"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/size20" />
+</LinearLayout>
 
 </RelativeLayout>
