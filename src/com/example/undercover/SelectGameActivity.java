@@ -22,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
@@ -41,17 +42,15 @@ public class SelectGameActivity extends BaseActivity {
     private ViewGroup mainContainer;
     
 	// 将小圆点ImageView放入该List
-    private ImageView[] imageViews;
+	private ImageView[] imageViews;
 	private FeedbackAgent agent;
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
-			gongxianbtn, guanyubtn,
- appmakerbButton, btnStart,
-			usercontribution, zhenxin, startButton,
- btnSound, btnfb;
+			gongxianbtn, guanyubtn, appmakerbButton, btnReStart,
+			usercontribution, zhenxin, startButton, btnSound, btnfb;
 	private CheckBox sound;
 	private boolean soundon = true;
-	private TextView maoxian;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill;
+	private LinearLayout scrollHelpContent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +116,6 @@ public class SelectGameActivity extends BaseActivity {
 		startButton = (Button) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
 
-		maoxian = (TextView) welcomeView.findViewById(R.id.temmaoxian);
 
 
 		// ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f,
@@ -129,12 +127,9 @@ public class SelectGameActivity extends BaseActivity {
 		// scaleAni.setDuration(1000);
 		// startButton.startAnimation(scaleAni);
 
-		btnStart = (Button) welcomeView.findViewById(R.id.btnStart);
-		btnStart.setOnClickListener(new MyClickListener());
+		btnReStart = (Button) welcomeView.findViewById(R.id.btnReStartLast);
+		btnReStart.setOnClickListener(new MyClickListener());
 
-		if (getStatus()) {
-			btnStart.setText(strFromId("strcontinue"));
-		}
 
 		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
 		weixinButton.setOnClickListener(new MyClickListener());
@@ -143,6 +138,12 @@ public class SelectGameActivity extends BaseActivity {
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
+		
+		
+
+		scrollHelpContent = (LinearLayout) helpView
+				.findViewById(R.id.linearContent);
+		
 		initFrame(framPing, strFromId("circleme"), 3, 6,
 				R.drawable.icon_bottle,
 				RotaryBottleActivity.class, "game_bottle");
@@ -157,6 +158,30 @@ public class SelectGameActivity extends BaseActivity {
 				R.drawable.icon_kill,
 				KillSetting.class, "game_kill_select");
 
+
+		String[] HelpConfig = { strFromId("app_name"),
+				strFromId("txtKillerGameName"), strFromId("clickme") };
+		for (int i = 0; i < scrollHelpContent.getChildCount(); i++) {
+			FrameLayout temFra = (FrameLayout) scrollHelpContent.getChildAt(i);
+			if (temFra == null) {
+				continue;
+			}
+			if (i > HelpConfig.length - 1) {
+				temFra.setVisibility(View.GONE);
+				continue;
+			}
+			if (HelpConfig[i].equals(strFromId("app_name"))) {
+				initHelp(temFra, R.drawable.cerblue01, strFromId("app_name"),
+						strFromId("GameRule"), "07/09/2013|万斌");
+			} else if (HelpConfig[i].equals(strFromId("txtKillerGameName"))) {
+				initHelp(temFra, R.drawable.ceryellow01,
+						strFromId("txtKillerGameName"),
+						strFromId("txtKillerRule"), "07/09/2013|万斌");
+			} else if (HelpConfig[i].equals(strFromId("clickme"))) {
+				initHelp(temFra, R.drawable.cerpink01, strFromId("clickme"),
+						strFromId("clicksay"), "30/09/2013|万斌");
+			}
+		}
 
 		gongxianbtn = (Button) helpView.findViewById(R.id.btnyonghu);
 		gongxianbtn.setOnClickListener(new MyClickListener());
@@ -190,13 +215,7 @@ public class SelectGameActivity extends BaseActivity {
 		setBtnPink(guanyubtn);
 		setBtnPink(gongxianbtn);
         setBtnGreen(startButton);
-        
-		// TextView ruleText = (TextView) helpView.findViewById(R.id.ruleText);
-		// TextView winText = (TextView) helpView.findViewById(R.id.winText);
-		// ruleText.setText("游戏规则:\n1、选择参与人数与卧底人数开始游戏\n2、每人需记得自己的词语和编号"
-		// + "\n3、依次描述自己的词语\n4、每轮描述结束后，投票选出卧底\n5、剩余玩家继续描述");
-		// winText.setText("胜利条件：\n1、卧底全部被指认出，平民胜利\n2、卧底人数大于等于平民数目时，卧底胜利");
-
+		setBtnBlue(btnReStart);
 		btnSound.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -208,16 +227,14 @@ public class SelectGameActivity extends BaseActivity {
 
 
 	}
-	
-
 
 	private void initFrame(FrameLayout fram, String title, int min, int max,
-			int imageid,
- final Class classname, final String umengclick) {
+			int imageid, final Class classname, final String umengclick) {
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
 		imageIcon.setImageResource(imageid);
 		Button btn = (Button) fram.findViewById(R.id.btnBg);
+		setBtnMoreGame(btn);
 		title2.setText(title);
 		TextView titlePeople = (TextView) fram
 				.findViewById(R.id.txtPeopleCount);
@@ -234,6 +251,19 @@ public class SelectGameActivity extends BaseActivity {
 			});
 
 		}
+	}
+
+	
+	private void initHelp(FrameLayout fram, int imageid, String helpTitle,
+			String helpContent, String helpother) {
+		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageHelpIcon);
+		imageIcon.setImageResource(imageid);
+		TextView title = (TextView) fram.findViewById(R.id.txtHelpTitle);
+		title.setText(helpTitle);
+		TextView content = (TextView) fram.findViewById(R.id.txtHelpContent);
+		content.setText(helpContent);
+		TextView other = (TextView) fram.findViewById(R.id.txtHerlpOther);
+		other.setText(helpother);
 	}
 
 	private void setSwithSound(boolean isChecked) {
@@ -272,6 +302,15 @@ public class SelectGameActivity extends BaseActivity {
 				// break;
 			case R.id.btnStart:
 				SoundPlayer.playball();
+				mIntent.setClass(SelectGameActivity.this, Setting.class);
+				uMengClick("game_undercover");
+				break;
+			case R.id.btnweixin:
+				SoundPlayer.playball();
+				uMengClick("click_weixin");
+				mIntent.setClass(SelectGameActivity.this, weixin.class);
+				break;
+			case R.id.btnReStartLast:
 				if (getStatus()) {
 					if (lastGameType().equals("kill")) {
 						mIntent.setClass(SelectGameActivity.this,
@@ -280,17 +319,10 @@ public class SelectGameActivity extends BaseActivity {
 						mIntent.setClass(SelectGameActivity.this, guess.class);
 					}
 				} else {
-				    cleanStatus();
+					cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);
 				}
-				uMengClick("game_undercover");
 				break;
-			case R.id.btnweixin:
-				SoundPlayer.playball();
-				uMengClick("click_weixin");
-				mIntent.setClass(SelectGameActivity.this, weixin.class);
-				break;
-
 			case R.id.btnyonghu:
 				SoundPlayer.playball();
 				uMengClick("click_usercontribution");
@@ -438,11 +470,9 @@ public class SelectGameActivity extends BaseActivity {
 	public void onResume() {
 		super.onResume();
 		if (!getStatus()) {
-			btnStart.setText(strFromId("strBgn"));
-			btnStart.setVisibility(View.INVISIBLE);
+			btnReStart.setVisibility(View.GONE);
 		} else {
-			btnStart.setVisibility(View.VISIBLE);
-			btnStart.setText(strFromId("strcontinue"));
+			btnReStart.setVisibility(View.VISIBLE);
 		}
 	}
 }

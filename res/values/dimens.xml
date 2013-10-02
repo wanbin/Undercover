@@ -15,4 +15,7 @@
  	<dimen name="btnMoreBottom">20dp</dimen>
  	<dimen name="moreBtnMinHeight">100dp</dimen>
  	<dimen name="bitTitleSize">50dp</dimen>
+ 	<dimen name="txtSmail14">14dp</dimen>
+ 	<dimen name="txtSmall12">12dp</dimen>
+ 	<dimen name="imageHelpMax">50dp</dimen>
 </resources>

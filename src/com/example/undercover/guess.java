@@ -148,16 +148,17 @@ public class guess extends BaseActivity {
 				shenfen.setVisibility(View.INVISIBLE);
 
 				final ImageView shenfenimage = new ImageView(this);
-				shenfenimage.setBackgroundResource(R.drawable.bluebtn1);
+				shenfenimage.setBackgroundResource(R.drawable.tag_new);
 				shenfenimage.setVisibility(View.INVISIBLE);
+
+
 				setBtnBlue(shenfenimage);
 				select.setTag(temindex);
 				int te = temindex + 1;
 				select.setText("" + te);
 				select.setTextColor(getResources().getColor(R.color.Writegray));
 				select.setTextSize(20);
-				select.setBackgroundResource(R.drawable.bluebtn1);
-				setBtnBlue(select);
+				setBtnBlueColor(select);
 
 				if (hasClicked[temindex]) {
 					// 身份进行确认
@@ -176,8 +177,6 @@ public class guess extends BaseActivity {
 							tapIndex((Integer) v.getTag());
 							hasClicked[(Integer)v.getTag()] = true;
 							v.setClickable(false);
-							Button tt = (Button) v;
-							tt.setBackgroundResource(R.drawable.bluebtn1);
 							SoundPlayer.playball();
 							if(isShow){
 								initShenfen(shenfenimage, (Integer) v.getTag(),
@@ -192,8 +191,9 @@ public class guess extends BaseActivity {
 				temindex ++;
 				fl.addView(select);
 				fl.addView(text);
-				fl.addView(shenfenimage);
+				fl.addView(shenfenimage, disWidth / 12, disWidth / 12);
 				fl.addView(shenfen);
+				fl.setPadding(4, 4, 4, 4);
 				newrow.addView(fl, disWidth / 4, disWidth / 7);
 			}
 			contentTable.addView(newrow);
@@ -216,10 +216,10 @@ public class guess extends BaseActivity {
 			boolean playsound) {
 		if (content[index].equals(son)) {
 			SoundPlayer.playChuiShao();
-			shenfenimage.setBackgroundResource(R.drawable.wodi);
+			shenfenimage.setBackgroundResource(R.drawable.tag_right);
 		} else {
 			SoundPlayer.playA();
-			shenfenimage.setBackgroundResource(R.drawable.yuan);
+			shenfenimage.setBackgroundResource(R.drawable.tag_error);
 		}
 		shenfenimage.setVisibility(View.VISIBLE);
 	}

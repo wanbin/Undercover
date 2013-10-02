@@ -156,4 +156,5 @@
 <string name="txtWordsCantSpecial">"不能输入'_',','"</string>
 <string name="txtWordsAddSuccess">"添加成功"</string>
 <string name="txtWordsPeopleInput">"自定义_"</string>
+<string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民"</string>
 </resources>

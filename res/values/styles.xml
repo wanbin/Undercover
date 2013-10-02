@@ -24,6 +24,8 @@
     <color name="BigTitle">#7e8c8d</color>
     <color name="title2">#a5aaaa</color>
     <color name="title1">#7e8c8d</color>
+    <color name="bluebtn1">#90d8e8</color>
+    <color name="bluebtn2">#52c2db</color>
 <color name="WRITE">#ffffff</color>
 <color name="Writegray">#ffffff</color>
 </resources>

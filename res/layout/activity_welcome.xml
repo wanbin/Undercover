@@ -12,33 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <Button
-            android:id="@+id/startButton"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/greenbtn1"
-            android:hint="@string/strBgn"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/index" />
-
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
-            android:visibility="invisible" />
-
         <LinearLayout
             android:id="@+id/soundlin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="8dp" >
+            android:layout_marginBottom="20dp" >
 
             <TextView
                 android:id="@+id/textView1"
@@ -54,16 +34,9 @@
                 android:id="@+id/switchbtn"
                 android:layout_width="81dp"
                 android:layout_height="29dp"
-                android:layout_alignParentBottom="true"
                 android:background="@drawable/btn_select_true"
                 android:visibility="gone" />
-
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/temmaoxian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -71,6 +44,39 @@
             android:layout_height="300dp"
             android:layout_centerVertical="true"
             android:src="@drawable/bg_image" />
+
+        <LinearLayout
+            android:id="@+id/star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp" 
+            android:layout_alignParentLeft="true" >
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_weight="80"
+                android:background="@drawable/greenbtn1"
+                android:maxWidth="200dp"
+                android:text="@string/strBgn"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index" />
+
+            <Button
+                android:id="@+id/btnReStartLast"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_weight="80"
+                android:background="@drawable/bluebtn1"
+                android:text="@string/strcontinue"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
