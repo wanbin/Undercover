@@ -3,7 +3,6 @@ package com.example.undercover;
 import android.R.interpolator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
@@ -19,12 +18,9 @@ public class RotaryBottleActivity extends BaseActivity {
 	int bottleHeight;
 	float fromDe;
 	float toDe;
-
 	Button restartBtn;
 	private Button punishment;
-
 	ImageView bottle;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,8 +29,6 @@ public class RotaryBottleActivity extends BaseActivity {
 		initShareBtn();
 		toDe = getDegrees();
 		bottle = (ImageView) findViewById(R.id.bottle_imageView);
-
-		//restartBtn = (Button) findViewById(R.id.startRotaryBottleBtn);
 		punishment = (Button) findViewById(R.id.button1);
 		punishment.setVisibility(View.INVISIBLE);
 
@@ -48,32 +42,6 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 		
-		punishment.setOnTouchListener(new Button.OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				
-				if(event.getAction() == MotionEvent.ACTION_DOWN)
-				{
-					punishment.setBackgroundResource(R.drawable.btn_punish2);
-				}else if(event.getAction() == MotionEvent.ACTION_UP)
-				{
-					punishment.setBackgroundResource(R.drawable.btn_punish);
-				}
-				
-				return false;
-			}
-		});
-
-//		restartBtn.setOnClickListener(new Button.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				startAnimation();
-//				uMengClick("count_bottle");
-//			}
-//		});
 		// 惩罚
 		punishment.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -86,6 +54,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			}
 		});
 
+		setBtnPink(punishment);
 
 		ViewTreeObserver vto2 = bottle.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

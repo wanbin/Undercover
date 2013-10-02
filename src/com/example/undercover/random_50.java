@@ -75,6 +75,8 @@ public class random_50 extends BaseActivity {
 			}
 		});
 		initStart();
+		setBtnPink(restart_button);
+		setBtnPink(punishment_button);
 	}
 
 	protected void initStart() {
@@ -100,7 +102,7 @@ public class random_50 extends BaseActivity {
 	protected void DisplayParameter(int time) {
 		int loseRate = (int) ((double) time * 10 / (double) randomLimit) + 1;
 		lose.setText(strFromId("click") + time + strFromId("ci"));
-		loseRate = Math.max(9, loseRate);
+		loseRate = Math.min(9, loseRate);
 		int tem1 = stringToId("clickbt_" + loseRate + "1", "color");
 		int tem2 = stringToId("clickbt_" + loseRate + "2", "color");
 		setTouchActionFactory(click_button, tem1, tem2);
