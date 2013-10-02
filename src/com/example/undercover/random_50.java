@@ -4,49 +4,22 @@ import java.util.Random;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class random_50 extends BaseActivity {
-	// int random_times;
 	int click_times;
-	private ImageView click_button;
+	private Button click_button;
 	private Button restart_button;
 
 	private Button punishment_button;
-	private Button back_button;
-	// 添加和减少人数按钮
-	private Button addPeopleButton, subPeopleButton;
 
-	// 开始游戏按钮
-	private Button startClickme;
-	
-	// 设置人数的 层
-	private RelativeLayout setPeople;
-	
-	private TextView Probability;
-	private TextView clicktimes;
-	private TextView preference;
-	
-	// 显示人数的textView
-	private TextView countTextView;
-	
 	private TextView lose;
-	private String dangerrate;
-	private String click;
-	private String ci;
-	
 	// 参与人数，默认为 6
 	private int peopleCount = 6;
 	private static int randomLimit;
-	
+
 	Random random = new Random();
 	int random_times;
 
@@ -55,104 +28,29 @@ public class random_50 extends BaseActivity {
 		setContentView(R.layout.random_50);
 		initBtnBack(R.id.btnback);
 		initShareBtn();
-		dangerrate = getResources().getString(R.string.dangerrate);
-		click = getResources().getString(R.string.click);
-		ci = getResources().getString(R.string.ci);
-		click_button = (ImageView) findViewById(R.id.imageBtnMain);
-		restart_button = (Button) findViewById(R.id.button2);
-		
+
+		click_button = (Button) findViewById(R.id.imageBtnMain);
 		peopleCount = gameInfo.getInt("peopleCount", 4);
+		initBtnInfo(R.id.btninfo, strFromId("clicksay"));
 
 		// 设置人数的相关按钮和层
-		addPeopleButton = (Button) findViewById(R.id.addPeople);
-		subPeopleButton = (Button) findViewById(R.id.subPeople);
-		startClickme = (Button) findViewById(R.id.startClickme);
-		countTextView = (TextView) findViewById(R.id.peopleCount);
-		setPeople = (RelativeLayout) findViewById(R.id.setPeopleCount);
-		countTextView.setText(Integer.toString(peopleCount));
-		punishment_button = (Button) findViewById(R.id.button1);
-		// back_button = (Button) findViewById(R.id.button3);
-		// punishBtn = (Button) findViewById(R.id.punishBtn);
-		lose = (TextView) findViewById(R.id.textView5);
-		click_button.setBackgroundResource(R.drawable.click);
-
-		// v.setVisibility(View.INVISIBLE);
-		// punishBtn.setVisibility(View.INVISIBLE);
-		restart_button.setVisibility(View.INVISIBLE);
+		punishment_button = (Button) findViewById(R.id.btn_punish);
 		punishment_button.setVisibility(View.INVISIBLE);
-		preference = (TextView) findViewById(R.id.textView3);
+		restart_button = (Button) findViewById(R.id.btn_restart);
+		restart_button.setVisibility(View.INVISIBLE);
 
-		final AnimationSet aniSet = new AnimationSet(true);
-		final ScaleAnimation scaleAn = new ScaleAnimation(1.0f, 1.02f, 1.0f,
-				1.02f, Animation.RELATIVE_TO_SELF, 0.5f,
-				Animation.RELATIVE_TO_SELF, 0.5f);
-		final ScaleAnimation scaleAni = new ScaleAnimation(1.02f, 1.0f, 1.02f,
-				1.02f);
+		lose = (TextView) findViewById(R.id.textView5);
+		setBtnBlueColor(click_button);
 
-		scaleAni.setDuration(20);
-		scaleAn.setDuration(20);
-		scaleAni.setStartOffset(20);
-
-		aniSet.addAnimation(scaleAn);
-		aniSet.addAnimation(scaleAni);
-
-		// 设置添加和减少按钮的监听
-		addPeopleButton.setOnClickListener(new Button.OnClickListener(){
-			@Override
-			public void onClick(View v){
-				SoundPlayer.playball();
-				if(peopleCount == 2){
-					subPeopleButton.setBackgroundResource(R.drawable.popo72);
-					subPeopleButton.setClickable(true);
-				}
-				peopleCount ++;
-				countTextView.setText(Integer.toString(peopleCount));
-			}
-		});
-		
-		subPeopleButton.setOnClickListener(new Button.OnClickListener(){
-			@Override
-			public void onClick(View v){
-				SoundPlayer.playball();
-				if(peopleCount > 2){
-					peopleCount--;
-				}else{
-					v.setBackgroundResource(R.drawable.popogray72);
-					v.setClickable(false);
-				}
-				countTextView.setText(Integer.toString(peopleCount));
-			}
-		});
-		
-		startClickme.setOnClickListener(new Button.OnClickListener(){
-			@Override
-			public void onClick(View v){
-				SoundPlayer.playball();
-				setPeople.setVisibility(View.INVISIBLE);
-				click_button.setVisibility(View.VISIBLE);
-				randomLimit = peopleCount * 5;
-				click_times = randomLimit;
-				random_times = Math.abs(random.nextInt()) % randomLimit;
-				DisplayParameter(0);
-				preference.setVisibility(View.INVISIBLE);
-				Log.d("Tag",String.valueOf(randomLimit));
-				Log.d("Tag",String.valueOf(random_times));
-			}
-		});
-		
-		
-		lose.setVisibility(View.INVISIBLE);
 		click_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
 				click_times--;
 				DisplayParameter(randomLimit - click_times);
 				if (click_times <= random_times) {
 					SoundPlayer.playclaps();
 					setFinish();
 				} else {
-					click_button.startAnimation(aniSet);
 					SoundPlayer.playball();
 				}
 			}
@@ -161,18 +59,8 @@ public class random_50 extends BaseActivity {
 		restart_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				uMengClick("count_game_click");
-				random_times = Math.abs(random.nextInt()) % randomLimit;
-				click_times = randomLimit;
-				click_button.setClickable(true);
-				click_button.setBackgroundResource(R.drawable.click);
-				lose.setVisibility(View.INVISIBLE);
-				restart_button.setVisibility(View.INVISIBLE);
-				punishment_button.setVisibility(View.INVISIBLE);
-				Log.d("Tag",String.valueOf(randomLimit));
-				Log.d("Tag",String.valueOf(random_times));
-				DisplayParameter(randomLimit - click_times);
-				SoundPlayer.playball();
+
+				initStart();
 			}
 		});
 
@@ -184,37 +72,38 @@ public class random_50 extends BaseActivity {
 				intentGo.setClass(random_50.this, PunishActivity.class);
 				startActivity(intentGo);
 				SoundPlayer.playball();
-				finish();
 			}
 		});
-		showHelp();
-		siampleTitle(strFromId("clicksay"));
+		initStart();
+	}
+
+	protected void initStart() {
+		uMengClick("count_game_click");
+		randomLimit = peopleCount * 5;
+		click_times = randomLimit;
+		random_times = Math.abs(random.nextInt()) % randomLimit;
+		click_button.setClickable(true);
+		click_button.setBackgroundResource(R.color.bluebtn1);
+		restart_button.setVisibility(View.INVISIBLE);
+		punishment_button.setVisibility(View.INVISIBLE);
+		DisplayParameter(0);
 	}
 
 	protected void setFinish() {
 		click_button.setClickable(false);
-		click_button.setBackgroundResource(R.drawable.over);
-		lose.setVisibility(View.VISIBLE);
 		restart_button.setVisibility(View.VISIBLE);
 		punishment_button.setVisibility(View.VISIBLE);
-		// punishment_button.setVisibility(View.VISIBLE);
+		lose.setText(strFromId("lose"));
+		setTouchActionFactory(click_button, R.color.graybtn, R.color.graybtn);
 	}
 
 	protected void DisplayParameter(int time) {
-		Probability = (TextView) findViewById(R.id.textView2);
-		Probability.setText(dangerrate + Math.floor(((float)time/(float)randomLimit)*100) +click 
-				+ time + ci);
+		int loseRate = (int) ((double) time * 10 / (double) randomLimit) + 1;
+		lose.setText(strFromId("click") + time + strFromId("ci"));
+		loseRate = Math.max(9, loseRate);
+		int tem1 = stringToId("clickbt_" + loseRate + "1", "color");
+		int tem2 = stringToId("clickbt_" + loseRate + "2", "color");
+		setTouchActionFactory(click_button, tem1, tem2);
 	}
 
-	@Override
-	public void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-//		onBackPressed();
-	}
-
-
-	public void showHelp() {
-		initBtnInfo(R.id.btninfo, strFromId("clicksay"));
-	}
 }

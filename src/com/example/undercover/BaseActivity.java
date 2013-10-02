@@ -586,7 +586,8 @@ public class BaseActivity extends Activity {
 		setTouchActionFactory(btn, R.color.bluebtn1, R.color.bluebtn2);
 	}
 
-	private void setTouchActionFactory(Button btn, final int id1, final int id2) {
+	protected void setTouchActionFactory(Button btn, final int id1,
+			final int id2) {
 		btn.setBackgroundResource(id1);
 		btn.setOnTouchListener(new OnTouchListener() {
 			@Override
