@@ -13,6 +13,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class fanpai extends BaseActivity {
@@ -40,11 +41,11 @@ public class fanpai extends BaseActivity {
 	private boolean canchangeword = true;
 	private String word;
 	private Animation animation;
+	private LinearLayout linChangeword;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_pai);
 		initBtnBack(R.id.btnback);
 		//
@@ -56,9 +57,13 @@ public class fanpai extends BaseActivity {
 		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (Button) findViewById(R.id.imagePan);
 		imagebg = (ImageView) findViewById(R.id.imagebg);
+		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
 		blank = getResources().getString(R.string.blank);
-
 		random = new Random();
+
+		if (lastGameType().equals("kill")) {
+			linChangeword.setVisibility(View.INVISIBLE);
+		}
 
 		// 游戏一轮结束后，快速开始用。
 		gameInfo = getSharedPreferences("gameInfo", 0);
@@ -145,37 +150,21 @@ public class fanpai extends BaseActivity {
 
 	// 重新翻牌
 	protected void initFanpai() {
-		isChecked = false;
-		libary = getUnderWords(word);
-		int selectindex = Math.abs(random.nextInt()) % libary.length;
-		content = getRandomString(libary[selectindex]);
-		// 设置空白词
-		int blandStr = Math.abs(new Random().nextInt());
-		for (int i = 0, len = peopleCount; i < len; i++) {
-			if (isBlank) {
-				if (!isChecked) {
-					if (!content[(i + blandStr) % len].equals(son)) {
-						isChecked = true;
-						content[(i + blandStr) % len] = blank;
-					}
-				}
-			}
-			Log(content[i]);
+		// 如果是杀人游戏，界面显示去掉一些东西
+		if (lastGameType().equals("kill")) {
+			content = getRandomString();
+		} else {
+			content = getRandomStringUnderCover();
 		}
 		// 设置content
 		setContent(content);
 		nowIndex = 1;
-
 		setContentVis(false);
 		initPan(nowIndex);
 	}
 
 	protected void initPan(int index) {
 		setContentVis(false);
-		// if (index > 12)
-		// index = 12;
-//		 imagePan.setBackgroundResource(stringToId("btn_" + index,
-		// "drawable"));
 		imagePan.setText("" + index);
 		txtShenfen.setText(content[index - 1]);
 	}
@@ -206,9 +195,11 @@ public class fanpai extends BaseActivity {
 	 * @param contnettxt
 	 * @return
 	 */
-	private String[] getRandomString(String contnettxt) {
+	private String[] getRandomStringUnderCover() {
+		libary = getUnderWords(word);
+		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		String[] children = new String[2];
-		children = contnettxt.split("_");
+		children = libary[selectindex].split("_");
 		int sonindex = Math.abs(random.nextInt()) % 2;
 		son = children[sonindex];
 		String father = children[Math.abs(sonindex - 1)];
@@ -223,11 +214,56 @@ public class fanpai extends BaseActivity {
 			} while (ret[tem].equals(son));
 			ret[tem] = son;
 		}
+
+		if (isBlank) {
+			for (int i = 0; i < underCount; i++) {
+				int tem;
+				do {
+					tem = Math.abs(random.nextInt()) % peopleCount;
+				} while (ret[tem].equals(son));
+				ret[tem] = blank;
+			}
+		}
 		setSon(son);
 		return ret;
 	}
 
 	
+	/**
+	 * 获取随机的一堆词条
+	 * 
+	 * @param contnettxt
+	 * @return
+	 */
+	private String[] getRandomString() {
+		peopleCount = gameInfo.getInt("peopleCount", 4);
+		int policeCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+		int killerCount = Math.max((int) Math.floor(peopleCount / 4), 1);
+		String[] ret = new String[peopleCount];
+		for (int n = 0; n < ret.length; n++) {
+			ret[n] = nomalpeople;
+		}
+		ret[Math.abs(random.nextInt()) % peopleCount] = faguan;
+		for (int i = 0; i < policeCount; i++) {
+			int tem;
+			do {
+				tem = Math.abs(random.nextInt()) % peopleCount;
+			} while (!ret[tem].equals(nomalpeople));
+			ret[tem] = police;
+		}
+		for (int i = 0; i < killerCount; i++) {
+			int tem;
+			do {
+				tem = Math.abs(random.nextInt()) % peopleCount;
+			} while (!ret[tem].equals(nomalpeople));
+			ret[tem] = killer;
+		}
+		// 设置content
+		setContent(ret);
+		setSon(son);
+		return ret;
+	}
+
 	@Override
 	public void onStop() {
 		// TODO Auto-generated method stub

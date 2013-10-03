@@ -11,15 +11,17 @@
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="20" >
 
             <TextView
                 android:id="@+id/TextView01"
@@ -30,79 +32,42 @@
                 android:text="@string/textPeople"
                 android:textSize="@dimen/index" />
 
-            <FrameLayout
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnCost"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cerpink01"
+                android:text="@string/cost"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index" />
+
+            <TextView
+                android:id="@+id/txtPeople"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="10"
+                android:textSize="@dimen/index" />
 
-                <ImageView
-                    android:id="@+id/btnCost"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/cerpink01" />
-
-                <TextView
-                    android:id="@+id/txtcost1"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/cost"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_weight="30" >
-
-                <ImageView
-                    android:id="@+id/imageViewAddBg"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/pinkbtn1" />
-
-                <TextView
-                    android:id="@+id/txtPeople"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
-
-                <ImageView
-                    android:id="@+id/btnAdd"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/cerpink01" />
-
-                <TextView
-                    android:id="@+id/txtadd1"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/add"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-            </FrameLayout>
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cerpink01"
+                android:text="@string/add"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:id="@+id/settingUnderCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="20" >
 
             <TextView
                 android:id="@+id/txtPeopleTitle"
@@ -113,148 +78,107 @@
                 android:text="@string/txtUndex"
                 android:textSize="@dimen/index" />
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
+            <Button
+                android:id="@+id/btnCostUnder"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cerpink01"
+                android:text="@string/cost"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index" />
 
-                <ImageView
-                    android:id="@+id/btnCostUnder"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/cerpink01" />
-
-                <TextView
-                    android:id="@+id/txtcost2"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/cost"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txtUnder"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="30" >
+                android:gravity="center"
+                android:text="10"
+                android:textSize="@dimen/index" />
 
-                <ImageView
-                    android:id="@+id/imageViewUnderBg"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/pinkbtn1" />
-
-                <TextView
-                    android:id="@+id/txtUnder"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical" >
-
-                <ImageView
-                    android:id="@+id/btnAddUnder"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/cerpink01" />
-
-                <TextView
-                    android:id="@+id/txtadd2"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="@string/add"
-                    android:textColor="@color/WRITE"
-                    android:textSize="@dimen/index" />
-            </FrameLayout>
+            <Button
+                android:id="@+id/btnAddUnder"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cerpink01"
+                android:text="@string/add"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/index" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="20"
             android:text="@string/tip" />
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/LinearLayout1"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/greenbtn1"
-        android:text="@string/strBgn"
-        android:textColor="@color/WRITE"
-        android:textSize="@dimen/index" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnStart"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical" >
-
-        <CheckBox
-            android:id="@+id/afterShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/setting_afterShow" />
-
-        <CheckBox
-            android:id="@+id/isBlank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_blank" />
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/greenbtn1"
+            android:text="@string/strBgn"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
 
         <LinearLayout
-            android:id="@+id/warp"
+            android:id="@+id/tc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+                android:layout_gravity="center"
             android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/te"
+            <CheckBox
+                android:id="@+id/afterShow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:checked="true"
+                android:text="@string/setting_afterShow" />
 
-                <Button
-                    android:id="@+id/popo_button"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/greenbtn1"
-                    android:text="@string/setting_word"
-                    android:textColor="@color/WRITE" />
-
-                <Button
-                    android:id="@+id/popo_wordsetting"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/greenbtn1"
-                    android:text="设置分类"
-                    android:textColor="@color/WRITE" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/wordText"
+            <CheckBox
+                android:id="@+id/isBlank"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:text="@string/setting_blank" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/settingKind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20" >
+
+            <Button
+                android:id="@+id/popo_button"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_weight="50"
+                android:background="@drawable/greenbtn1"
+                android:text="@string/setting_word"
+                android:textColor="@color/WRITE" />
+
+            <Button
+                android:id="@+id/popo_wordsetting"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_weight="50"
+                android:background="@drawable/greenbtn1"
+                android:text="设置分类"
+                android:textColor="@color/WRITE" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/wordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20" />
     </LinearLayout>
 
 </RelativeLayout>

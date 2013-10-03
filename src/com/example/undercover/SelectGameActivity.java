@@ -117,20 +117,8 @@ public class SelectGameActivity extends BaseActivity {
         startButton.setOnClickListener(new MyClickListener());
 
 
-
-		// ScaleAnimation scaleAni = new ScaleAnimation(1.0f, 1.02f, 1.0f,
-		// 1.02f,
-		// Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-		// 0.5f);
-		// scaleAni.setRepeatMode(Animation.REVERSE);
-		// scaleAni.setRepeatCount(-1);
-		// scaleAni.setDuration(1000);
-		// startButton.startAnimation(scaleAni);
-
 		btnReStart = (Button) welcomeView.findViewById(R.id.btnReStartLast);
 		btnReStart.setOnClickListener(new MyClickListener());
-
-
 		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
 		weixinButton.setOnClickListener(new MyClickListener());
 		framPing = (FrameLayout) moreView.findViewById(R.id.btnPing);
@@ -143,20 +131,18 @@ public class SelectGameActivity extends BaseActivity {
 
 		scrollHelpContent = (LinearLayout) helpView
 				.findViewById(R.id.linearContent);
-		
 		initFrame(framPing, strFromId("circleme"), 3, 6,
-				R.drawable.icon_bottle,
-				RotaryBottleActivity.class, "game_bottle");
+				R.drawable.icon_bottle, RotaryBottleActivity.class,
+				"game_bottle", "bottle");
 		initFrame(frameAsk, strFromId("askme"), 4, 8, R.drawable.icon_ask,
-		QuestionAnswer.class, "game_ask");
+				QuestionAnswer.class, "game_ask", "ask");
 		initFrame(framTrue, strFromId("truethings"), 2, 8,
-				R.drawable.icon_true,
-				PunishActivity.class, "game_zhenxinhua_damaoxian");
+				R.drawable.icon_true, PunishActivity.class,
+				"game_zhenxinhua_damaoxian", "true");
 		initFrame(framClick, strFromId("clickme"), 2, 8, R.drawable.icon_click,
-				random_50.class, "game_click");
+				random_50.class, "game_click", "click");
 		initFrame(frameKill, strFromId("txtKillerGameName"), 6, 12,
-				R.drawable.icon_kill,
-				KillSetting.class, "game_kill_select");
+				R.drawable.icon_kill, Setting.class, "game_kill_select", "kill");
 
 
 		String[] HelpConfig = { strFromId("app_name"),
@@ -229,7 +215,8 @@ public class SelectGameActivity extends BaseActivity {
 	}
 
 	private void initFrame(FrameLayout fram, String title, int min, int max,
-			int imageid, final Class classname, final String umengclick) {
+			int imageid, final Class classname, final String umengclick,
+			final String gamename) {
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
 		imageIcon.setImageResource(imageid);
@@ -247,13 +234,12 @@ public class SelectGameActivity extends BaseActivity {
 					mIntent.setClass(SelectGameActivity.this, classname);
 					startActivity(mIntent);
 					uMengClick(umengclick);
+					setGameType(gamename);
+					cleanStatus();
 				}
 			});
-
 		}
 	}
-
-	
 	private void initHelp(FrameLayout fram, int imageid, String helpTitle,
 			String helpContent, String helpother) {
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageHelpIcon);
@@ -292,18 +278,11 @@ public class SelectGameActivity extends BaseActivity {
 			// UnderCoverContent.class);
 			// break;
 			case R.id.startButton:
-
-				// maoxian.setText(getRandomMaoxian("start"));
-				// return;
-				// SoundPlayer.playball();
-				// cleanStatus();
-				// mIntent.setClass(SelectGameActivity.this, Setting.class);
-				// uMengClick("game_undercover");
-				// break;
 			case R.id.btnStart:
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				uMengClick("game_undercover");
+				setGameType("undercover");
 				break;
 			case R.id.btnweixin:
 				SoundPlayer.playball();
@@ -312,12 +291,7 @@ public class SelectGameActivity extends BaseActivity {
 				break;
 			case R.id.btnReStartLast:
 				if (getStatus()) {
-					if (lastGameType().equals("kill")) {
-						mIntent.setClass(SelectGameActivity.this,
-								KillGuess.class);
-					} else {
 						mIntent.setClass(SelectGameActivity.this, guess.class);
-					}
 				} else {
 					cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);

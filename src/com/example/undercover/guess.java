@@ -23,6 +23,9 @@ public class guess extends BaseActivity {
 	private int soncount;
 	// 平民人数
 	private int fathercount;
+	private int policeCount;
+	private int killerCount;
+	private int otherCount;
 	// 卧底的词语
 	private String son;
 	// 0-n人数的词语数组
@@ -31,13 +34,8 @@ public class guess extends BaseActivity {
 	private Button punishBtn;
 	private Button startBtn;
 	private Button quickStartBtn;
-	private Button btnShare;
-	
 
-	private int totalcount;
 	private boolean isOver;
-	private boolean flag;
-	private boolean isGetRestart;
 	private boolean isShow;
 	private int temindex;
 	private Random random = new Random();
@@ -49,95 +47,46 @@ public class guess extends BaseActivity {
 	 */
 	private boolean gamefinish = false;
 	private String[] overString;
-	private String gusswhoisspy;
-	private String undercover;
-	private String blank;
-	private String aggrieved;
-	private String taplong;
-	private String gameOver;
-	private String gameoverspy;
-	private String hy;
-	private String ge;
-
-	private String shibaizhe;
-	private String fayan;
-	private String hao;
 	private boolean[] hasClicked;
 
 	protected void onCreate(Bundle savedInstanceState) {
-		gusswhoisspy=getResources().getString(R.string.gusswhoisspy);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guess);
 		initBtnBack(R.id.btnback);
 		initShareBtn();
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		overString = getResources().getStringArray(R.array.overstring);
-		gusswhoisspy=getResources().getString(R.string.gusswhoisspy); 
-		undercover=getResources().getString(R.string.undercover);
-		blank=getResources().getString(R.string.blank);                
-		aggrieved=getResources().getString(R.string.aggrieved);        
-		taplong=getResources().getString(R.string.taplong);            
-		gameOver=getResources().getString(R.string.gameOver);          
-		gameoverspy=getResources().getString(R.string.gameoverspy);    
-		shibaizhe = getResources().getString(R.string.shibaizhe);
-		fayan = getResources().getString(R.string.fayan);
-		hao = getResources().getString(R.string.hao);
-		hy=getResources().getString(R.string.hy);                      
-		ge=getResources().getString(R.string.ge);
-		
+
 		initBtnInfo(R.id.btninfo, strFromId("txtGuessHelp"));
-		isOver = false;
-		flag = false;
-		isGetRestart = false;
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
-		txtTitle = (TextView) findViewById(R.id.txtTitle);
+		txtTitle = (TextView) findViewById(R.id.txtTitleFaile);
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		startBtn = (Button) findViewById(R.id.btn_restart);
 		quickStartBtn = (Button) findViewById(R.id.btn_quickstart);
-
-		setGameType("spy");
-
 		LinearLayout btn_wrapper = (LinearLayout) findViewById(R.id.an);
 		btn_wrapper.setVisibility(View.INVISIBLE);
-
 		content = getGuessContent();
-		isOver = gameInfo.getBoolean("isBlank", false);
-		son = gameInfo.getString("son", "");
-		isShow = gameInfo.getBoolean("isShow", false);
-		soncount = gameInfo.getInt("underCount", 1);
-
 		hasClicked = getClickedContent();
 
-		if (hasClicked.length < 4) {
-			hasClicked = new boolean[content.length];
-			for (int i = 0; i < content.length; i++) {
-				hasClicked[i] = false;
-			}
+
+
+		if (lastGameType().equals("kill")) {
+			initKill();
+		} else {
+			initUnderCover();
 		}
 
-		fathercount = content.length - soncount;
-		for (int i = 0; i < hasClicked.length; i++) {
-			if (hasClicked[i] == true) {
-				if (content[i].equals(son)) {
-					soncount--;
-				} else {
-					fathercount--;
-				}
-			}
-		}
-		totalcount = content.length;
-		txtTitle.setText(taplong);
 		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
-				
+
 				if (temindex >= content.length) {
 					break;
 				}
 				FrameLayout fl = new FrameLayout(this);
 				Button select = new Button(this);
-				final TextView text	= new TextView(this);
+				final TextView text = new TextView(this);
 				final TextView shenfen = new TextView(this);
 				int temshenf = temindex + 1;
 				shenfen.setText(temshenf + "." + content[temindex]);
@@ -151,7 +100,6 @@ public class guess extends BaseActivity {
 				shenfenimage.setBackgroundResource(R.drawable.tag_new);
 				shenfenimage.setVisibility(View.INVISIBLE);
 
-
 				setBtnBlue(shenfenimage);
 				select.setTag(temindex);
 				int te = temindex + 1;
@@ -164,21 +112,32 @@ public class guess extends BaseActivity {
 					// 身份进行确认
 					select.setClickable(false);
 					// 接着上局玩里面
+					if (lastGameType().equals("kill")) {
+						shenfen.setVisibility(View.VISIBLE);
+						select.setText("");
+					}
 					if (isShow) {
 						initShenfen(shenfenimage, temindex, false);
 					}
-				}else{
+					setBtnGrayColor(select);
+				} else {
 					select.setOnLongClickListener(new Button.OnLongClickListener() {
 						@Override
 						public boolean onLongClick(View v) {
 							if (hasClicked[(Integer) v.getTag()] == true) {
 								return true;
 							}
-							tapIndex((Integer) v.getTag());
-							hasClicked[(Integer)v.getTag()] = true;
+							// 如果是杀人游戏，界面显示去掉一些东西
+							if (lastGameType().equals("kill")) {
+								tapIndexKiller((Integer) v.getTag());
+							} else {
+								tapIndex((Integer) v.getTag());
+							}
+							setBtnGrayColor((Button) v);
+							hasClicked[(Integer) v.getTag()] = true;
 							v.setClickable(false);
 							SoundPlayer.playball();
-							if(isShow){
+							if (isShow) {
 								initShenfen(shenfenimage, (Integer) v.getTag(),
 										true);
 							} else {
@@ -188,7 +147,7 @@ public class guess extends BaseActivity {
 						}
 					});
 				}
-				temindex ++;
+				temindex++;
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfenimage, disWidth / 12, disWidth / 12);
@@ -202,24 +161,89 @@ public class guess extends BaseActivity {
 		txtLong.setText(updateSaySeq());
 		txtLong.setTag(100099);
 		contentTable.addView(txtLong);
-		
+
 		txtRemain = new TextView(this);
 		contentTable.addView(txtRemain);
 		// 如果不亮明身份，则不显示
 		if (!isShow) {
 			txtRemain.setVisibility(View.INVISIBLE);
 		}
-		checkGameOver();
+		if (lastGameType().equals("kill")) {
+			checkGameOverKiller();
+		} else {
+			checkGameOver();
+		}
+	}
+
+	private void initKill() {
+		if (hasClicked.length < 4) {
+			hasClicked = new boolean[content.length];
+			for (int i = 0; i < content.length; i++) {
+				if (content[i].equals(faguan)) {
+					hasClicked[i] = true;
+				} else {
+					hasClicked[i] = false;
+				}
+			}
+		}
+		policeCount = Math.max((int) Math.floor(content.length / 4), 1);
+		killerCount = Math.max((int) Math.floor(content.length / 4), 1);
+		otherCount = content.length - policeCount - killerCount - 1;
+		for (int i = 0; i < hasClicked.length; i++) {
+			if (hasClicked[i] == true) {
+				if (content[i].equals(nomalpeople)) {
+					otherCount--;
+				} else if (content[i].equals(police)) {
+					policeCount--;
+				} else if (content[i].equals(killer)) {
+					killerCount--;
+				}
+			}
+		}
+	}
+
+	private void initUnderCover() {
+		if (hasClicked.length < 4) {
+			hasClicked = new boolean[content.length];
+			for (int i = 0; i < content.length; i++) {
+				hasClicked[i] = false;
+			}
+		}
+		isOver = gameInfo.getBoolean("isBlank", false);
+		son = gameInfo.getString("son", "");
+		isShow = gameInfo.getBoolean("isShow", false);
+		soncount = gameInfo.getInt("underCount", 1);
+		fathercount = content.length - soncount;
+		for (int i = 0; i < hasClicked.length; i++) {
+			if (hasClicked[i] == true) {
+				if (content[i].equals(son)) {
+					soncount--;
+				} else {
+					fathercount--;
+				}
+			}
+		}
 	}
 
 	private void initShenfen(ImageView shenfenimage, int index,
 			boolean playsound) {
-		if (content[index].equals(son)) {
-			SoundPlayer.playChuiShao();
-			shenfenimage.setBackgroundResource(R.drawable.tag_right);
+		if (lastGameType().equals("kill")) {
+			if (content[index].equals(killer)) {
+				SoundPlayer.playChuiShao();
+				shenfenimage.setBackgroundResource(R.drawable.tag_right);
+			} else {
+				SoundPlayer.playA();
+				shenfenimage.setBackgroundResource(R.drawable.tag_error);
+			}
 		} else {
-			SoundPlayer.playA();
-			shenfenimage.setBackgroundResource(R.drawable.tag_error);
+
+			if (content[index].equals(son)) {
+				SoundPlayer.playChuiShao();
+				shenfenimage.setBackgroundResource(R.drawable.tag_right);
+			} else {
+				SoundPlayer.playA();
+				shenfenimage.setBackgroundResource(R.drawable.tag_error);
+			}
 		}
 		shenfenimage.setVisibility(View.VISIBLE);
 	}
@@ -230,11 +254,12 @@ public class guess extends BaseActivity {
 			tem.setClickable(useable);
 		}
 	}
+
 	protected void tapIndex(int tag) {
 		// 记录点状态
 		hasClicked[tag] = true;
 		updateClicked(hasClicked);
-		if (soncount + fathercount == totalcount) {
+		if (soncount + fathercount == content.length) {
 			uMengClick("click_guess_first");
 		}
 		if (content[tag].equals(son)) {
@@ -242,17 +267,100 @@ public class guess extends BaseActivity {
 		} else {
 			fathercount--;
 		}
+
 		checkGameOver();
-		// txtLong.setVisibility(View.INVISIBLE);
 	}
-	
+
+	protected void tapIndexKiller(int tag) {
+		// 记录点状态
+		hasClicked[tag] = true;
+		updateClicked(hasClicked);
+		if (otherCount + policeCount + 1 + killerCount == content.length) {
+			uMengClick("game_kill_guessfirst");
+		}
+		if (content[tag].equals(nomalpeople)) {
+			otherCount--;
+		} else if (content[tag].equals(police)) {
+			policeCount--;
+		} else {
+			killerCount--;
+		}
+		checkGameOverKiller();
+	}
+
+	protected void checkGameOverKiller() {
+		Log("CheeckGameOver");
+		// if (!isOver) {
+		if (killerCount <= 0) {
+			txtTitle.setText(strFromId("txtKillerPoliceSucces"));
+			isOver = true;
+			if (!gamefinish) {
+				uMengClick("game_kill_guesslast");
+				gamefinish = true;
+			}
+			SoundPlayer.playHighSoure();
+			refash();
+			setAllButton(false);
+			txtLong.setText(getPoliceWinStr());
+			cleanStatus();
+			txtRemain.setVisibility(View.INVISIBLE);
+		} else if (policeCount <= 0 || otherCount <= 0) {
+			SoundPlayer.playNormalSoure();
+			txtTitle.setText(strFromId("txtKillerKillerSucces"));
+			isOver = true;
+			if (!gamefinish) {
+				uMengClick("game_kill_guesslast");
+				gamefinish = true;
+			}
+			refash();
+			setAllButton(false);
+			txtLong.setText(getKillerWinStr());
+			txtRemain.setVisibility(View.INVISIBLE);
+			cleanStatus();
+		} else {
+			int stringcount = overString.length;
+			int stringindex = Math.abs(random.nextInt()) % stringcount;
+			txtTitle.setText(overString[stringindex]);
+			txtLong.setText(updateSaySeq() + "(" + strFromId("taplong") + ")");
+			txtRemain.setText(getKillerCoverRemain());
+		}
+		// }else{
+		//
+		// }
+	}
+
+	protected String getPoliceWinStr() {
+		String str = strFromId("shibaizhe");
+		for (int i = 0; i < content.length; i++) {
+			if (content[i].equals(killer)) {
+				int temhao = i + 1;
+				String tem = String.format(strFromId("hao"), temhao);
+				str += tem;
+			}
+		}
+		return str;
+	}
+
+	protected String getKillerWinStr() {
+		String str = strFromId("shibaizhe");
+		for (int i = 0; i < content.length; i++) {
+			if (content[i].equals(killer) || content[i].equals(faguan)) {
+				continue;
+			}
+			int temhao = i + 1;
+			String tem = String.format(strFromId("hao"), temhao);
+			str += tem;
+		}
+		return str;
+	}
+
 	protected String updateSaySeq() {
 		int seq = Math.abs(random.nextInt()) % content.length;
-		String strSeq = fayan;
+		String strSeq = strFromId("fayan");
 		for (int i = 0; i < content.length; i++) {
 			int temindex = seq % content.length + 1;
 			if (!hasClicked[temindex - 1]) {
-				String tem = String.format(hao, temindex);
+				String tem = String.format(strFromId("hao"), temindex);
 				strSeq += tem;
 			}
 			seq++;
@@ -265,8 +373,11 @@ public class guess extends BaseActivity {
 	 * 
 	 * @return
 	 */
-	protected String getRemain() {
-		// return "剩余卧底:";
+	protected String getUnderCoverRemain() {
+		return "剩余卧底:" + soncount + "个  剩余平民:" + fathercount + "个";
+	}
+
+	protected String getKillerCoverRemain() {
 		return "剩余卧底:" + soncount + "个  剩余平民:" + fathercount + "个";
 	}
 
@@ -274,8 +385,7 @@ public class guess extends BaseActivity {
 		Log("CheeckGameOver");
 		// if (!isOver) {
 		if (soncount <= 0) {
-			Log("任务完成");
-			txtTitle.setText(gameOver + "【" + son + "】");
+			txtTitle.setText(strFromId("gameOver") + "【" + son + "】");
 			isOver = true;
 			if (!gamefinish) {
 				uMengClick("click_guess_last");
@@ -288,9 +398,8 @@ public class guess extends BaseActivity {
 			cleanStatus();
 			txtRemain.setVisibility(View.INVISIBLE);
 		} else if (fathercount <= soncount) {
-			Log("卧底胜利");
 			SoundPlayer.playNormalSoure();
-			txtTitle.setText(gameoverspy + "【" + son + "】");
+			txtTitle.setText(strFromId("gameoverspy") + "【" + son + "】");
 			isOver = true;
 			if (!gamefinish) {
 				uMengClick("click_guess_last");
@@ -305,18 +414,22 @@ public class guess extends BaseActivity {
 			int stringcount = overString.length;
 			int stringindex = Math.abs(random.nextInt()) % stringcount;
 			txtTitle.setText(overString[stringindex]);
-			Log(hy + soncount + ge);
-			txtLong.setText(updateSaySeq() + "(" + taplong + ")");
-			txtRemain.setText(getRemain());
+			Log(strFromId("hao") + soncount + strFromId("ge"));
+			txtLong.setText(updateSaySeq() + "(" + strFromId("taplong") + ")");
+			if (lastGameType().equals("kill")) {
+				txtRemain.setText(getKillerCoverRemain());
+			} else {
+				txtRemain.setText(getUnderCoverRemain());
+			}
 		}
 	}
 
 	protected String getSonStr() {
-		String str = shibaizhe;
+		String str = strFromId("shibaizhe");
 		for (int i = 0; i < content.length; i++) {
 			if (content[i].equals(son)) {
 				int temhao = i + 1;
-				String tem = String.format(hao, temhao);
+				String tem = String.format(strFromId("hao"), temhao);
 				str += tem;
 			}
 		}
@@ -324,13 +437,13 @@ public class guess extends BaseActivity {
 	}
 
 	protected String getFatherStr() {
-		String str = shibaizhe;
+		String str = strFromId("shibaizhe");
 		for (int i = 0; i < content.length; i++) {
 			if (content[i].equals(son)) {
 				continue;
 			}
 			int temhao = i + 1;
-			String tem = String.format(hao, temhao);
+			String tem = String.format(strFromId("hao"), temhao);
 			str += tem;
 		}
 		return str;
@@ -361,13 +474,17 @@ public class guess extends BaseActivity {
 			}
 
 		}
+		initControlBtn();
+	}
+
+	private void initControlBtn() {
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				SoundPlayer.playball();
-				 Intent goMain = new Intent();
-				 goMain.setClass(guess.this, PunishActivity.class);
+				Intent goMain = new Intent();
+				goMain.setClass(guess.this, PunishActivity.class);
 				uMengClick("game_undercover_punish");
-				 startActivity(goMain);
+				startActivity(goMain);
 			}
 		});
 		startBtn.setOnClickListener(new Button.OnClickListener() {
@@ -380,10 +497,7 @@ public class guess extends BaseActivity {
 				finish();
 			}
 		});
-		setBtnGreen(startBtn);
-		setBtnGreen(quickStartBtn);
-		setBtnGreen(punishBtn);
-		 
+
 		quickStartBtn.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent goMain = new Intent();
@@ -394,7 +508,9 @@ public class guess extends BaseActivity {
 				finish();
 			}
 		});
-//		contentTable.addView(startBtn);
+		setBtnGreen(startBtn);
+		setBtnGreen(quickStartBtn);
+		setBtnGreen(punishBtn);
 	}
 
 	@Override

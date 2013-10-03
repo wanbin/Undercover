@@ -303,13 +303,14 @@ public class BaseActivity extends Activity {
 		return cliceked;
 	}
 
-	protected String lastGameType(){
-		return gameInfo.getString("gametype", "");
-	}
-
 	protected void setGameType(String type) {
 		gameInfo.edit().putString("gametype", type).commit();
 	}
+
+	protected String lastGameType() {
+		return gameInfo.getString("gametype", "");
+	}
+
 
 	protected void setContent(String[] content) {
 		String contentStr = "";
@@ -580,6 +581,10 @@ public class BaseActivity extends Activity {
 
 	protected void setBtnGray(Button btn) {
 		setTouchActionFactory(btn, R.drawable.graybtn1, R.drawable.graybtn1);
+	}
+
+	protected void setBtnGrayColor(Button btn) {
+		setTouchActionFactory(btn, R.color.graybtn, R.color.graybtn);
 	}
 
 
