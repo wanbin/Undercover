@@ -104,7 +104,6 @@
         android:id="@+id/changeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/popo72"
         android:text="@string/punish_other" />
 
     <ImageView

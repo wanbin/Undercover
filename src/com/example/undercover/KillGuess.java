@@ -178,7 +178,7 @@ public class KillGuess extends BaseActivity {
 				shenfen.setVisibility(View.INVISIBLE);
 
 				final ImageView shenfenimage = new ImageView(this);
-				shenfenimage.setBackgroundResource(R.drawable.wodi);
+				// shenfenimage.setBackgroundResource(R.drawable.wodi);
 				shenfenimage.setVisibility(View.INVISIBLE);
 
 				// ImageView mohu = new ImageView(this);
@@ -419,10 +419,10 @@ public class KillGuess extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_punish2);
+					// v.setBackgroundResource(R.drawable.btn_punish2);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_punish);
+					// v.setBackgroundResource(R.drawable.btn_punish);
 				}
 				return false;
 			}
@@ -446,10 +446,10 @@ public class KillGuess extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_restart2);
+					// v.setBackgroundResource(R.drawable.btn_restart2);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_restart);
+					// v.setBackgroundResource(R.drawable.btn_restart);
 				}
 				return false;
 			}
@@ -470,10 +470,10 @@ public class KillGuess extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_startquick2);
+					// v.setBackgroundResource(R.drawable.btn_startquick2);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_startquick);
+					// v.setBackgroundResource(R.drawable.btn_startquick);
 				}
 				return false;
 			}

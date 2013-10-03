@@ -137,18 +137,6 @@ public class PunishActivity extends BaseActivity {
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
 		// 用户选择换题目
-		changeBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if(flag){
-					getAdvenPunish();
-				}else{
-					getTruePunish();
-				}
-				changeBtn.setBackgroundResource(R.drawable.popogray72);
-				changeBtn.setEnabled(false);
-			}
-		});
 		
 		
 		// 用户点击 随机 按钮

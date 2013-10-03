@@ -270,11 +270,11 @@ public class SelectGameActivity extends BaseActivity {
 		if (isChecked) {
 			SoundPlayer.setSoundSt(true);
 			sound.setText(strFromId("soundon"));
-			btnSound.setBackgroundResource(R.drawable.btn_select_true);
+			// btnSound.setBackgroundResource(R.drawable.btn_select_true);
 		} else {
 			sound.setText(strFromId("soundoff"));
 			SoundPlayer.setSoundSt(false);
-			btnSound.setBackgroundResource(R.drawable.btn_select_false);
+			// btnSound.setBackgroundResource(R.drawable.btn_select_false);
 		}
 	}
 

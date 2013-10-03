@@ -44,22 +44,20 @@
                 <Button
                     android:id="@+id/btn_punish"
                     android:layout_width="100dp"
-                    android:layout_height="63dp"
-                    android:background="@drawable/btn_punish" />
+                    android:layout_height="63dp" />
 
                 <Button
                     android:id="@+id/btn_restart"
                     android:layout_width="100dp"
                     android:layout_height="63dp"
-                    android:background="@drawable/btn_restart"
                     android:text="" />
 
                 <Button
                     android:id="@+id/btn_quickstart"
                     android:layout_width="100dp"
                     android:layout_height="63dp"
-                    android:background="@drawable/btn_startquick"
                     android:text="" />
+                
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -139,10 +139,10 @@ public class KillSetting extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_start2);
+					// v.setBackgroundResource(R.drawable.btn_start2);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_start);
+					// v.setBackgroundResource(R.drawable.btn_start);
 				}
 				return false;
 			}

@@ -565,6 +565,7 @@ public class BaseActivity extends Activity {
 				R.drawable.lightbluebtn2);
 	}
 
+
 	protected void setBtnBrown(Button btn) {
 		setTouchActionFactory(btn, R.drawable.brownbtn1, R.drawable.brownbtn2);
 	}
@@ -578,7 +579,7 @@ public class BaseActivity extends Activity {
 	}
 
 	protected void setBtnGray(Button btn) {
-		setTouchActionFactory(btn, R.drawable.graybtn1, R.drawable.graybtn2);
+		setTouchActionFactory(btn, R.drawable.graybtn1, R.drawable.graybtn1);
 	}
 
 

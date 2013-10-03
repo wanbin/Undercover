@@ -90,10 +90,10 @@ public class kill extends BaseActivity {
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					// 更改为按下时的背景图片
-					v.setBackgroundResource(R.drawable.btn_nextont_un);
+					// v.setBackgroundResource(R.drawable.btn_nextont_un);
 				} else if (event.getAction() == MotionEvent.ACTION_UP) {
 					// 改为抬起时的图片
-					v.setBackgroundResource(R.drawable.btn_nextone);
+					// v.setBackgroundResource(R.drawable.btn_nextone);
 				}
 				return false;
 			}

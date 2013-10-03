@@ -3,73 +3,74 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+
     <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         layout="@layout/activity_bg" />
 
-    <TableLayout
-        android:id="@+id/questionTable"
+    <ProgressBar
+        android:id="@+id/question_proar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_centerVertical="true" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" />
 
-        <TextView
-            android:id="@+id/gameRule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/question_rule" 
-            android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/tx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/question_proar"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="25dp" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
+        <Button
+            android:id="@+id/question_image"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:background="@drawable/greenbtn1"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/size20" 
+            android:text="@string/startGame"/>
 
-            <ProgressBar
-                android:id="@+id/question_proar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/intent_punish"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:background="@drawable/pinkbtn1"
+            android:text="@string/punishmen"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/size20"
+            android:visibility="gone" />
 
-        <FrameLayout
-            android:id="@+id/question_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/question_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:id="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/questionNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-        </FrameLayout>
-
+		<TextView
+		    android:id="@+id/questionTitle"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/txtQuictAsk"
+		    android:textColor="@color/BigTitle"
+		    android:textSize="@dimen/index" />
+        
         <TextView
             android:id="@+id/question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal" >
+            android:layout_margin="20dp" />
 
-            <Button
-                android:id="@+id/intent_punish"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btnbg"
-                android:text="@string/punishmen" />
-        </LinearLayout>
-
-    </TableLayout>
+    </LinearLayout>
 
 </RelativeLayout>

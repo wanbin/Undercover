@@ -133,7 +133,7 @@
 <string name="txtGuessHelp">"长按投出卧底，胜利条件\n1.卧底数大于等于平民时：卧底胜\n2.卧底被全部投出：平民胜"</string>
 <string name="txtPaiHelp">"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n2.第一个翻牌的玩家有机会更新词汇"</string>
 <string name="txtPaiFirstPeople">"第一位玩家才可以换词呀~"</string>
-<string name="txtQuictAsk">"快速说出绕口令：\n\n"</string>
+<string name="txtQuictAsk">"快速说出绕口令:"</string>
 <string name="txtShareSay">"我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695"</string>
 <string name="txtKillHelp">"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n"</string>
 <string name="txtPolice">"警官"</string>
