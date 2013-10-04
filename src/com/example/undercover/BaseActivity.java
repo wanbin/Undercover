@@ -582,7 +582,7 @@ public class BaseActivity extends Activity {
 	}
 
 	protected void setBtnMoreGame(Button btn) {
-		setTouchActionFactory(btn, R.drawable.btn_game, R.drawable.bg_game2);
+		setTouchActionFactory(btn, R.color.graybtn, R.color.graybtn2);
 	}
 
 	protected void setBtnGray(Button btn) {

@@ -133,16 +133,17 @@ public class SelectGameActivity extends BaseActivity {
 				.findViewById(R.id.linearContent);
 		initFrame(framPing, strFromId("circleme"), 3, 6,
 				R.drawable.icon_bottle, RotaryBottleActivity.class,
-				"game_bottle", "bottle");
+				"game_bottle", "bottle", 0);
 		initFrame(frameAsk, strFromId("askme"), 4, 8, R.drawable.icon_ask,
-				QuestionAnswer.class, "game_ask", "ask");
+				QuestionAnswer.class, "game_ask", "ask", 0);
 		initFrame(framTrue, strFromId("truethings"), 2, 8,
 				R.drawable.icon_true, PunishActivity.class,
-				"game_zhenxinhua_damaoxian", "true");
+				"game_zhenxinhua_damaoxian", "true", 0);
 		initFrame(framClick, strFromId("clickme"), 2, 8, R.drawable.icon_click,
-				random_50.class, "game_click", "click");
+				random_50.class, "game_click", "click", 2);
 		initFrame(frameKill, strFromId("txtKillerGameName"), 6, 12,
-				R.drawable.icon_kill, Setting.class, "game_kill_select", "kill");
+				R.drawable.icon_kill, Setting.class, "game_kill_select",
+				"kill", 1);
 
 
 		String[] HelpConfig = { strFromId("app_name"),
@@ -214,9 +215,10 @@ public class SelectGameActivity extends BaseActivity {
 
 	}
 
+	// kindtype 1.为新游戏，2，热门游戏
 	private void initFrame(FrameLayout fram, String title, int min, int max,
 			int imageid, final Class classname, final String umengclick,
-			final String gamename) {
+			final String gamename, int kindtype) {
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
 		imageIcon.setImageResource(imageid);
@@ -226,6 +228,17 @@ public class SelectGameActivity extends BaseActivity {
 		TextView titlePeople = (TextView) fram
 				.findViewById(R.id.txtPeopleCount);
 		titlePeople.setText("适合人数:" + min + "~" + max);
+
+		ImageView imageType = (ImageView) fram.findViewById(R.id.imageTag);
+
+		if (kindtype == 1) {
+			imageType.setBackgroundResource(R.drawable.tag_new);
+		} else if (kindtype == 2) {
+			imageType.setBackgroundResource(R.drawable.tag_hot);
+		} else {
+			imageType.setVisibility(View.INVISIBLE);
+		}
+
 		if (classname != null) {
 			btn.setOnClickListener(new Button.OnClickListener() {
 				@Override
