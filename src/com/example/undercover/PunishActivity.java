@@ -137,25 +137,6 @@ public class PunishActivity extends BaseActivity {
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
 		// 用户选择换题目
-		
-		
-		// 用户点击 随机 按钮
-		randomBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				return;
-				// initTimer();
-				// if (!isRandom) {
-				// punish_disc.setClickable(false);
-				// // punish_disc.setBackgroundResource(R.drawable.btnbggray);
-				// } else {
-				// punish_disc.setClickable(true);
-				// // punish_disc.setBackgroundResource(R.drawable.btnbg);
-				// SoundPlayer.playclaps();
-				// }
-				// isRandom = !isRandom;
-			}
-		});
 
 		randomBtn.setOnTouchListener(new OnTouchListener() {
 			@Override

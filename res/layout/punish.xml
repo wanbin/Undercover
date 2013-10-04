@@ -3,6 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bluebtn1"
     android:gravity="end"
     android:orientation="vertical" >
 
@@ -121,7 +122,7 @@
 
     <LinearLayout
         android:id="@+id/tb"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -129,21 +130,24 @@
 
         <Button
             android:id="@+id/punish_disc"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/index"
+            android:layout_weight="50"
+            android:background="@drawable/greenbtn1"
             android:text="@string/playdisc"
-            android:background="@drawable/greenbtn1" />
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
 
         <Button
             android:id="@+id/punish_random"
             android:text="@string/punish_random_btn"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="60dp"
             android:textColor="@color/WRITE"
             android:textSize="@dimen/index"
+            android:layout_weight="50"
             android:background="@drawable/greenbtn1" />
+
     </LinearLayout>
 
 </RelativeLayout>

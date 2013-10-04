@@ -129,6 +129,7 @@ public class BaseActivity extends Activity {
 	protected void initBtnBack(int id) {
 		Button btnBack = (Button) findViewById(id);
 		btnBack.setVisibility(View.VISIBLE);
+		setBtnBlueReturn(btnBack);
 		btnBack.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -555,6 +556,11 @@ public class BaseActivity extends Activity {
 
 	protected void setBtnBlue(Button btn) {
 		setTouchActionFactory(btn, R.drawable.bluebtn1, R.drawable.bluebtn2);
+	}
+
+	protected void setBtnBlueReturn(Button btn) {
+		setTouchActionFactory(btn, R.drawable.returnblue01,
+				R.drawable.returnblue02);
 	}
 
 	protected void setBtnBlue(ImageView btn) {
