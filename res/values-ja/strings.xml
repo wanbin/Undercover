@@ -157,4 +157,5 @@
 <string name="txtWordsAddSuccess">"添加成功"</string>
 <string name="txtWordsPeopleInput">"自定义_"</string>
 <string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民"</string>
+<string name="txtLeftRight">"滑动同样精彩"</string>
 </resources>

@@ -17,6 +17,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -51,6 +54,7 @@ public class SelectGameActivity extends BaseActivity {
 	private boolean soundon = true;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill;
 	private LinearLayout scrollHelpContent;
+	private ImageView pointleft, pointright;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +120,11 @@ public class SelectGameActivity extends BaseActivity {
 		startButton = (Button) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
 
+
+		pointleft = (ImageView) welcomeView.findViewById(R.id.imagePointRight);
+		pointright = (ImageView) welcomeView.findViewById(R.id.imagePointLeft);
+		startMoveAnmi(pointleft, 1);
+		startMoveAnmi(pointright, 2);
 
 		btnReStart = (Button) welcomeView.findViewById(R.id.btnReStartLast);
 		btnReStart.setOnClickListener(new MyClickListener());
@@ -277,6 +286,22 @@ public class SelectGameActivity extends BaseActivity {
 		}
 	}
 
+	// 播放动画
+	private void startMoveAnmi(View points, int type) {
+		AnimationSet as = new AnimationSet(true);
+
+		TranslateAnimation al = null;
+		if (type == 1) {
+			al = new TranslateAnimation(0, 0, 0, 20, 0, 0, 0, 0);
+		} else {
+			al = new TranslateAnimation(0, 0, 0, -20, 0, 0, 0, 0);
+		}
+		al.setDuration(1000);
+		as.addAnimation(al);
+		al.setRepeatMode(Animation.REVERSE);
+		al.setRepeatCount(-1);
+		points.startAnimation(as);
+	}
 
 
 	private class MyClickListener implements android.view.View.OnClickListener{
