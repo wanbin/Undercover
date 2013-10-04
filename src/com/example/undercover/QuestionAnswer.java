@@ -29,17 +29,17 @@ public class QuestionAnswer extends BaseActivity {
 	/** 是否需要显示进度条 */
 	private boolean isShowBar;
 	/** 是否加载过TimeTask */
-	private boolean isTimeRun;
 	/** 惩罚页面跳转按钮 */
 	private Button intentPunish;
-	private int startSec = 3000;
+	private int startSec = 2000;
 	private int endSec = 12000;
 	private String nextQuestion;
 	private String GameOver;
 	private int peopleCount;
 	// 问答页面倒计时时间3000毫秒
-	private final static int TIME = 3000;
+	private final static int TIME = 5000;
 
+	private Timer timer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,8 +53,8 @@ public class QuestionAnswer extends BaseActivity {
 		punish_0 = (TextView) findViewById(R.id.question);
 		questionTitle = (TextView) findViewById(R.id.questionTitle);
 		intentPunish = (Button) findViewById(R.id.intent_punish);
-
 		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
+
 		// timeLimit = 1000;
 		imageNext = (Button) findViewById(R.id.question_image);
 		proBar = (ProgressBar) findViewById(R.id.question_proar);
@@ -68,18 +68,19 @@ public class QuestionAnswer extends BaseActivity {
 			public void onClick(View v) {
 				// 第一次进入游戏
 				if (!isBegin) {
+					restartActivity();
 					SoundPlayer.playJishi();
 					isBegin = true;
-					if (!isTimeRun) {
-						Timer timer = new Timer();
+					if (timer == null) {
+						timer = new Timer();
 						timer.schedule(timetask, 0, 10);
-						isTimeRun = true;
 					}
 					getNextQuestion();
 					SoundPlayer.playball();
 					proBar.setVisibility(View.VISIBLE);
 					proBar.incrementProgressBy(TIME);
 					isShowBar = true;
+					intentPunish.setVisibility(View.GONE);
 				} else {
 					// 游戏未结束，继续下一题目,结束后的操作由时间控制，
 					if (!isOver) {
@@ -90,7 +91,7 @@ public class QuestionAnswer extends BaseActivity {
 					} else {
 						// 游戏结束后的，显示开始惩罚按钮
 						// showPunish();
-						// restartActivity();
+						restartActivity();
 					}
 				}
 				imageNext.setText("下一题");
@@ -103,8 +104,9 @@ public class QuestionAnswer extends BaseActivity {
 		intentPunish.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				jumpPunish();
-				restartActivity();
+				Intent goChat = new Intent();
+				goChat.setClass(QuestionAnswer.this, PunishActivity.class);
+				startActivity(goChat);
 			}
 		});
 	}
@@ -112,12 +114,12 @@ public class QuestionAnswer extends BaseActivity {
 	// 接受时间
 	Handler handler = new Handler() {
 		public void handleMessage(Message msg) {
-			if (!isOver) {
 				addTenMMS();
-			}
 			super.handleMessage(msg);
 		}
 	};
+
+
 	// 传递时间
 	private TimerTask timetask = new TimerTask() {
 		public void run() {
@@ -131,13 +133,14 @@ public class QuestionAnswer extends BaseActivity {
 	 * 计时加10毫秒
 	 */
 	private void addTenMMS() {
-		timeLimit -= 1;
+		if (timeLimit > 0) {
+			timeLimit -= 1;
+		}
 
 		// 控制游戏
 		if (timeLimit <= 0) {
 			// 游戏结束后的操作
 			isOver = true;
-			isShowBar = false;
 			intentPunish.setVisibility(View.VISIBLE);
 			proBar.setVisibility(View.INVISIBLE);
 			imageNext.setClickable(true);
@@ -145,6 +148,7 @@ public class QuestionAnswer extends BaseActivity {
 			punish_0.setText("");
 			SoundPlayer.stopJishi();
 			isBegin = false;
+			setBtnGreen(imageNext);
 		}
 
 		// 控制进度条
@@ -171,20 +175,13 @@ public class QuestionAnswer extends BaseActivity {
 	private void restartActivity() {
 		isOver = false;
 		isBegin = false;
-		isShowBar = false;
+		isShowBar = true;
 		timeLimit = MathUtil.getInstance().getRondom(startSec, endSec);
 		imageNext.setClickable(true);
 		proBar.setVisibility(View.INVISIBLE);
 		punish_0.setText("");
 		proBar.incrementProgressBy(-(proBar.getProgress()));
 		intentPunish.setVisibility(View.GONE);
-	}
-
-	// 跳转至开始惩罚页面
-	private void jumpPunish() {
-		Intent goChat = new Intent();
-		goChat.setClass(QuestionAnswer.this, PunishActivity.class);
-		startActivity(goChat);
 	}
 
 	public void onResume() {
