@@ -147,6 +147,15 @@
             android:textSize="@dimen/index"
             android:layout_weight="50"
             android:background="@drawable/greenbtn1" />
+        <Button
+            android:id="@+id/punish_continue"
+            android:text="@string/txtContinue"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index"
+            android:layout_weight="50"
+            android:background="@drawable/bluebtn1" />
 
     </LinearLayout>
 

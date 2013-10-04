@@ -26,6 +26,7 @@ public class PunishActivity extends BaseActivity {
 	private Button advenBtn;
 	private Button changeBtn;
 	private Button randomBtn;
+	private Button conitnueBtn;
 	private Button punish_disc;
 	private TextView punish_guize;
 	private TextView punish_1;
@@ -70,6 +71,7 @@ public class PunishActivity extends BaseActivity {
 		changeBtn	= (Button)findViewById(R.id.changeBtn);
 		randomBtn	= (Button)findViewById(R.id.punish_random);
 		punish_disc = (Button) findViewById(R.id.punish_disc);
+		conitnueBtn = (Button) findViewById(R.id.punish_continue);
 		punish_guize = (TextView) findViewById(R.id.punish_guize);
 		punish_1	= (TextView)findViewById(R.id.punish_1);
 		punish_2	= (TextView)findViewById(R.id.punish_2);
@@ -83,6 +85,8 @@ public class PunishActivity extends BaseActivity {
 		txtLong.setText(strFromId("longclicekdisc"));
 		txtLong.setVisibility(View.INVISIBLE);
 
+
+
 		punish		= new TextView[6];
 		punish[0]	= punish_1;
 		punish[1]	= punish_2;
@@ -92,10 +96,12 @@ public class PunishActivity extends BaseActivity {
 		punish[5]	= punish_6;
 		changeBtn.setVisibility(View.INVISIBLE);
 		randomBtn.setVisibility(View.INVISIBLE);
+		conitnueBtn.setVisibility(View.INVISIBLE);
 		punish_disc.setVisibility(View.INVISIBLE);
 		// 骰子动画
 		imagedice = (ImageView) findViewById(R.id.imagedice);
 		imagedice.setVisibility(View.INVISIBLE);
+
 		// 用户选择真心话
 		trueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -104,9 +110,13 @@ public class PunishActivity extends BaseActivity {
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
 				// 暂时，先隐藏 换题 按钮
-//				changeBtn.setVisibility(View.VISIBLE);
+				// changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
 				punish_disc.setVisibility(View.VISIBLE);
+
+				if (!lastGameType().equals("true")) {
+					conitnueBtn.setVisibility(View.VISIBLE);
+				}
 				uMengClick("game_zhenxinhua");
 				// 获取惩罚
 				getTruePunish();
@@ -118,14 +128,17 @@ public class PunishActivity extends BaseActivity {
 		advenBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				flag	= true;
+				flag = true;
 				SoundPlayer.playball();
 				trueBtn.setVisibility(View.INVISIBLE);
 				advenBtn.setVisibility(View.INVISIBLE);
 				// 暂时，先隐藏 换题 按钮
-//				changeBtn.setVisibility(View.VISIBLE);
+				// changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
 				punish_disc.setVisibility(View.VISIBLE);
+				if (!lastGameType().equals("true")) {
+					conitnueBtn.setVisibility(View.VISIBLE);
+				}
 				uMengClick("game_damaoxian");
 				// 获取惩罚
 				getAdvenPunish();
@@ -134,8 +147,16 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 
+		conitnueBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
+		setBtnBlue(conitnueBtn);
 		// 用户选择换题目
 
 		randomBtn.setOnTouchListener(new OnTouchListener() {
@@ -174,6 +195,10 @@ public class PunishActivity extends BaseActivity {
 				return false;
 			}
 		});
+
+		if (lastGameType().equals("true")) {
+			conitnueBtn.setVisibility(View.GONE);
+		}
 
 	}// onCreat 方法结束
 
