@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:id="@+id/chengfa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" >
@@ -20,7 +20,7 @@
         <Button
             android:id="@+id/btn_punish"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_weight="30"
             android:background="@drawable/pinkbtn1"
             android:text="@string/punishmen"
@@ -30,7 +30,7 @@
         <Button
             android:id="@+id/btn_restart"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="match_parent"
             android:layout_weight="30"
             android:background="@drawable/pinkbtn1"
             android:text="@string/restart"
