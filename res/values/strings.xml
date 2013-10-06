@@ -159,4 +159,5 @@
 <string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民"</string>
 <string name="txtLeftRight">"滑动同样精彩"</string>
 <string name="txtContinue">"继续游戏"</string>
+<string name="txtPush">"挤数字"</string>
 </resources>

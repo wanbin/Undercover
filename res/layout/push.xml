@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_bg" />
+
+    <FrameLayout
+        android:id="@+id/s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <TableLayout
+            android:id="@+id/pushTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/chengfa"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" >
+
+        <Button
+            android:id="@+id/btn_punish"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@drawable/pinkbtn1"
+            android:text="@string/punishmen"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/size20" />
+
+        <Button
+            android:id="@+id/btn_restart"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@drawable/pinkbtn1"
+            android:text="@string/restart"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/size20" />
+    </LinearLayout>
+
+</RelativeLayout>

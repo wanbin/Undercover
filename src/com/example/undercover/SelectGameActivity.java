@@ -52,7 +52,8 @@ public class SelectGameActivity extends BaseActivity {
 			usercontribution, zhenxin, startButton, btnSound, btnfb;
 	private CheckBox sound;
 	private boolean soundon = true;
-	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill;
+	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill,
+			framePush;
 	private LinearLayout scrollHelpContent;
 	private ImageView pointleft, pointright;
 
@@ -135,6 +136,7 @@ public class SelectGameActivity extends BaseActivity {
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
+		framePush = (FrameLayout) moreView.findViewById(R.id.btnPush);
 		
 		
 
@@ -153,6 +155,9 @@ public class SelectGameActivity extends BaseActivity {
 		initFrame(frameKill, strFromId("txtKillerGameName"), 6, 12,
 				R.drawable.icon_kill, Setting.class, "game_kill_select",
 				"kill", 1);
+
+		initFrame(framePush, strFromId("txtPush"), 2, 8,
+				R.drawable.icon_kill, Push.class, "game_push_select", "push", 1);
 
 
 		String[] HelpConfig = { strFromId("app_name"),

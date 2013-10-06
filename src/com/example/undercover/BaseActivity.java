@@ -541,6 +541,11 @@ public class BaseActivity extends Activity {
 		setTouchActionFactory(btn, R.drawable.cerpink01, R.drawable.cerpink02);
 	}
 
+	protected void setBtnGrayCer(Button btn) {
+		setTouchActionFactory(btn, R.drawable.cergray01, R.drawable.cergray01);
+	}
+
+
 	protected void setBtnPinkCer(ImageView btn) {
 		setTouchActionFactory(btn, R.drawable.cerpink01,
 				R.drawable.cerpink02);

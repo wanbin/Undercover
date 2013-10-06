@@ -35,6 +35,8 @@
         </activity>
         <activity android:name="com.example.undercover.PunishActivity" >
         </activity>
+        <activity android:name="com.example.undercover.Push" >
+        </activity>
         <activity android:name="com.example.undercover.home_page" >
         </activity>
         <activity android:name="com.example.undercover.PullFingerActivity" >
