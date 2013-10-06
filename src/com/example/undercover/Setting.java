@@ -62,6 +62,10 @@ public class Setting extends BaseActivity {
 		wordText = (TextView) findViewById(R.id.wordText);
 		gameInfo = getSharedPreferences("gameInfo", 0);
 		peopleCount = gameInfo.getInt("peopleCount", 4);
+		// 如果是认理卧底,最小人数6人
+		if (lastGameType().equals("kill")) {
+			peopleCount = Math.max(6, peopleCount);
+		} 
 		undercoverCount = (LinearLayout) findViewById(R.id.settingUnderCover);
 		kindSetting = (LinearLayout) findViewById(R.id.settingKind);
 		wordText.setText(strFromId("setting_word_new")

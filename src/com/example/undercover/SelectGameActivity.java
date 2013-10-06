@@ -228,6 +228,7 @@ public class SelectGameActivity extends BaseActivity {
 	private void initFrame(FrameLayout fram, String title, int min, int max,
 			int imageid, final Class classname, final String umengclick,
 			final String gamename, int kindtype) {
+		// 点击游戏就把之前的状态清空
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
 		imageIcon.setImageResource(imageid);
@@ -237,9 +238,7 @@ public class SelectGameActivity extends BaseActivity {
 		TextView titlePeople = (TextView) fram
 				.findViewById(R.id.txtPeopleCount);
 		titlePeople.setText("适合人数:" + min + "~" + max);
-
 		ImageView imageType = (ImageView) fram.findViewById(R.id.imageTag);
-
 		if (kindtype == 1) {
 			imageType.setBackgroundResource(R.drawable.tag_new);
 		} else if (kindtype == 2) {
@@ -252,12 +251,12 @@ public class SelectGameActivity extends BaseActivity {
 			btn.setOnClickListener(new Button.OnClickListener() {
 				@Override
 				public void onClick(View v) {
+					cleanStatus();
 					Intent mIntent = new Intent();
 					mIntent.setClass(SelectGameActivity.this, classname);
 					startActivity(mIntent);
 					uMengClick(umengclick);
 					setGameType(gamename);
-					cleanStatus();
 				}
 			});
 		}
@@ -317,6 +316,7 @@ public class SelectGameActivity extends BaseActivity {
 			// break;
 			case R.id.startButton:
 			case R.id.btnStart:
+				cleanStatus();
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
 				uMengClick("game_undercover");

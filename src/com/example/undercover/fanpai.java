@@ -264,10 +264,4 @@ public class fanpai extends BaseActivity {
 		return ret;
 	}
 
-	@Override
-	public void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		onBackPressed();
-	}
 }
