@@ -15,7 +15,6 @@ public class Push extends BaseActivity {
 	private Button punishment_button;
 
 	private int peopleCount = 6;
-
 	private Random random = new Random();
 	private TableLayout pushLayout;
 	private int randomNum;
@@ -33,6 +32,10 @@ public class Push extends BaseActivity {
 		peopleCount = gameInfo.getInt("peopleCount", 4);
 		// initBtnInfo(R.id.btninfo, strFromId("clicksay"));
 
+		if (disWidth < 400) {
+			maxNum = 480;
+			rowcount = 6;
+		}
 		// 设置人数的相关按钮和层
 		punishment_button = (Button) findViewById(R.id.btn_punish);
 		punishment_button.setVisibility(View.INVISIBLE);
@@ -67,7 +70,7 @@ public class Push extends BaseActivity {
 		min = 0;
 		max = maxNum + 1;
 		randomNum = Math.abs(random.nextInt()) % maxNum + 1;
-		if (pushLayout.getChildCount() < 10) {
+		if (pushLayout.getChildCount() < maxNum / rowcount) {
 			int num = 1;
 			for (int i = 0; i <= Math.ceil(maxNum / rowcount); i++) {
 				if (num > maxNum) {
@@ -78,6 +81,7 @@ public class Push extends BaseActivity {
 					Button select = new Button(this);
 					select.setText("" + num);
 					select.setTag(num);
+					select.setTextSize(12);
 					select.setTextColor(getResources().getColor(
 							R.color.Writegray));
 					setBtnPinkCer(select);
