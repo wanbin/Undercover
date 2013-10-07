@@ -37,9 +37,9 @@
 <string name="truethings">真心话大冒险</string>
 <string name="strreturn">返回</string>
 <string name="start">开始</string>
-<string name="clicksay">有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击50次之内会爆!\n2，危险级数表示你下次点爆的概率！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！</string>
+<string name="clicksay">有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击一定次数之后会爆!\n2，颜色越红，表示危险级数表示越危险！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！</string>
 <string name="about">关于</string>
-<string name="strweixin">没玩过【谁是卧底-微信版】?</string>
+<string name="strweixin">谁是卧底-微信版</string>
 <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
 <string name="saoma">扫描二维码，快速进入</string>
 <string name="content_en">who is undercover ?</string>
@@ -87,9 +87,9 @@
 <string name="overString6">投错一个就少一个战友~</string>
 <string name="overString7">卧底卧底，你在哪里！</string>
 <string name="overString8">卧底，你是想怎样~</string>
-<string name="Version">【谁是卧底】2.05版本</string>
+<string name="Version">【谁是卧底】2.06版本</string>
 <string name="suggest">意见及建议：</string>
-<string name="suggest1">\n\n\nv2.05版本新功能：\n\n1.加入了杀人游戏</string>
+<string name="suggest1">\n\n\nv2.06版本新功能：\n\n1.加入了挤数字游戏\n\n2.界面布局全部替换为极简风格</string>
 <string name="PunishInTurn">请输的同学依次接受惩罚</string>
 <string name="nextQuestion">下一题</string>
 <string name="GameOver">游戏结束</string>
@@ -156,8 +156,9 @@
 <string name="txtWordsCantSpecial">"不能输入'_',','"</string>
 <string name="txtWordsAddSuccess">"添加成功"</string>
 <string name="txtWordsPeopleInput">"自定义_"</string>
-<string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民"</string>
+<string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民\n1、抽到法官的玩家引导游戏进行,引导杀手杀人、警察验人、全民投票等行为进行\n2、游戏分类天黑及天亮阶段\n3、天黑的时候，所有玩家闭眼低头，法官引导杀手杀人、警察验人。\n4、天亮的时候，法官公布被杀的人及依次全民投票\n5、被杀掉的玩家及被公投的玩家出局，直到杀手被杀光或警察被杀光，游戏结束"</string>
 <string name="txtLeftRight">"滑动同样精彩"</string>
 <string name="txtContinue">"继续游戏"</string>
 <string name="txtPush">"挤数字"</string>
+<string name="txtPushRule">"1,随机出来一个数字\n2,每位玩家依次点击数字\n3,当一个玩家点到随机的数字，游戏结束"</string>
 </resources>

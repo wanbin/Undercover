@@ -151,17 +151,17 @@ public class SelectGameActivity extends BaseActivity {
 				R.drawable.icon_true, PunishActivity.class,
 				"game_zhenxinhua_damaoxian", "true", 0);
 		initFrame(framClick, strFromId("clickme"), 2, 8, R.drawable.icon_click,
-				random_50.class, "game_click", "click", 2);
+				random_50.class, "game_click", "click", 0);
 		initFrame(frameKill, strFromId("txtKillerGameName"), 6, 12,
 				R.drawable.icon_kill, Setting.class, "game_kill_select",
-				"kill", 1);
-
-		initFrame(framePush, strFromId("txtPush"), 2, 8,
-				R.drawable.icon_kill, Push.class, "game_push_select", "push", 1);
+				"kill", 0);
+		initFrame(framePush, strFromId("txtPush"), 2, 8, R.drawable.icon_push,
+				Push.class, "game_push_select", "push", 0);
 
 
 		String[] HelpConfig = { strFromId("app_name"),
-				strFromId("txtKillerGameName"), strFromId("clickme") };
+				strFromId("txtKillerGameName"), strFromId("clickme"),
+				strFromId("txtPush") };
 		for (int i = 0; i < scrollHelpContent.getChildCount(); i++) {
 			FrameLayout temFra = (FrameLayout) scrollHelpContent.getChildAt(i);
 			if (temFra == null) {
@@ -173,14 +173,18 @@ public class SelectGameActivity extends BaseActivity {
 			}
 			if (HelpConfig[i].equals(strFromId("app_name"))) {
 				initHelp(temFra, R.drawable.cerblue01, strFromId("app_name"),
-						strFromId("GameRule"), "07/09/2013|万斌");
+						strFromId("GameRule"), "07/09/2013");
 			} else if (HelpConfig[i].equals(strFromId("txtKillerGameName"))) {
 				initHelp(temFra, R.drawable.ceryellow01,
 						strFromId("txtKillerGameName"),
-						strFromId("txtKillerRule"), "07/09/2013|万斌");
+						strFromId("txtKillerRule"), "07/09/2013");
 			} else if (HelpConfig[i].equals(strFromId("clickme"))) {
 				initHelp(temFra, R.drawable.cerpink01, strFromId("clickme"),
-						strFromId("clicksay"), "30/09/2013|万斌");
+						strFromId("clicksay"), "30/09/2013");
+			}
+ else if (HelpConfig[i].equals(strFromId("txtPush"))) {
+				initHelp(temFra, R.drawable.cergray01, strFromId("txtPush"),
+						strFromId("txtPushRule"), "06/10/2013");
 			}
 		}
 

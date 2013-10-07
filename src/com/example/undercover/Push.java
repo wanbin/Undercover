@@ -48,6 +48,7 @@ public class Push extends BaseActivity {
 				initGame();
 				restart_button.setVisibility(View.INVISIBLE);
 				punishment_button.setVisibility(View.INVISIBLE);
+
 			}
 		});
 
@@ -67,6 +68,7 @@ public class Push extends BaseActivity {
 	}
 
 	private void initGame() {
+		uMengClick("game_push_start");
 		min = 0;
 		max = maxNum + 1;
 		randomNum = Math.abs(random.nextInt()) % maxNum + 1;
@@ -140,7 +142,7 @@ public class Push extends BaseActivity {
 		} else {
 			max = index + 1;
 			min = index - 1;
-			siampleTitle("GameOver");
+			// siampleTitle("GameOver");
 			setFinish();
 			SoundPlayer.playNormalSoure();
 		}
