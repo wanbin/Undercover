@@ -173,18 +173,21 @@ public class SelectGameActivity extends BaseActivity {
 			}
 			if (HelpConfig[i].equals(strFromId("app_name"))) {
 				initHelp(temFra, R.drawable.cerblue01, strFromId("app_name"),
-						strFromId("GameRule"), "07/09/2013");
+						strFromId("GameRule"), "07/09/2013", Setting.class,
+						"game_undercover", "undercover");
 			} else if (HelpConfig[i].equals(strFromId("txtKillerGameName"))) {
 				initHelp(temFra, R.drawable.ceryellow01,
 						strFromId("txtKillerGameName"),
-						strFromId("txtKillerRule"), "07/09/2013");
+						strFromId("txtKillerRule"), "07/09/2013",
+						Setting.class, "game_kill_select", "kill");
 			} else if (HelpConfig[i].equals(strFromId("clickme"))) {
 				initHelp(temFra, R.drawable.cerpink01, strFromId("clickme"),
-						strFromId("clicksay"), "30/09/2013");
-			}
- else if (HelpConfig[i].equals(strFromId("txtPush"))) {
+						strFromId("clicksay"), "30/09/2013", random_50.class,
+						"game_click", "click");
+			} else if (HelpConfig[i].equals(strFromId("txtPush"))) {
 				initHelp(temFra, R.drawable.cergray01, strFromId("txtPush"),
-						strFromId("txtPushRule"), "06/10/2013");
+						strFromId("txtPushRule"), "06/10/2013", Push.class,
+						"game_push_select", "push");
 			}
 		}
 
@@ -271,7 +274,8 @@ public class SelectGameActivity extends BaseActivity {
 		}
 	}
 	private void initHelp(FrameLayout fram, int imageid, String helpTitle,
-			String helpContent, String helpother) {
+			String helpContent, String helpother, final Class classname,
+			final String umengclick, final String gamename) {
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageHelpIcon);
 		imageIcon.setImageResource(imageid);
 		TextView title = (TextView) fram.findViewById(R.id.txtHelpTitle);
@@ -280,6 +284,20 @@ public class SelectGameActivity extends BaseActivity {
 		content.setText(helpContent);
 		TextView other = (TextView) fram.findViewById(R.id.txtHerlpOther);
 		other.setText(helpother);
+
+		if (classname != null) {
+			imageIcon.setOnClickListener(new Button.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					cleanStatus();
+					Intent mIntent = new Intent();
+					mIntent.setClass(SelectGameActivity.this, classname);
+					startActivity(mIntent);
+					uMengClick(umengclick);
+					setGameType(gamename);
+				}
+			});
+		}
 	}
 
 	private void setSwithSound(boolean isChecked) {
