@@ -429,6 +429,13 @@ public class BaseActivity extends Activity {
 		return getRandomMaoxian("start");
 	}
 
+	public String getTurns() {
+		String[] zhenxin = getResources().getStringArray(R.array.zhenxinhua);
+		Random random = new Random();
+		int index = Math.abs(random.nextInt()) % (zhenxin.length);
+		return zhenxin[index];
+	}
+
 	protected Map<String, StringBuffer> mapWords;
 
 	protected void initUndercoverWords() {

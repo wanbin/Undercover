@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.util.MathUtil;
-import com.example.util.PunishProps;
 
 public class PunishActivity extends BaseActivity {
 	
@@ -275,10 +274,9 @@ public class PunishActivity extends BaseActivity {
 		imagedice.setClickable(false);
 	}
 	private void getTruePunish(){
-		int[] intArr = MathUtil.getInstance().check(190, 6);
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
-			str[i] = PunishProps.getQestionHard(intArr[i]);
+			str[i] = getTurns();
 		}
 		setTextView(str);
 	}
