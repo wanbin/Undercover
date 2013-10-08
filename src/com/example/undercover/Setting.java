@@ -281,4 +281,9 @@ public class Setting extends BaseActivity {
 		wordText.setText(strFromId("setting_word_new") + wordStr);
 		return super.onContextItemSelected(item);
 	}
+
+	public void onResume() {
+		super.onResume();
+		UnderKind = getUnderKind();
+	}
 }

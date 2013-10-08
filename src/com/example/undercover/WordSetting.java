@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class WordSetting extends BaseActivity {
-	private Button btnAdd;
+	private Button btnAdd, btnClear;
 	// 是否添加 冤死 提示，在投票后
 	// 是否添加空白词
 	// 分类词组
@@ -21,6 +21,7 @@ public class WordSetting extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wordsetting);
 		btnAdd = (Button) findViewById(R.id.btnAdd);
+		btnClear = (Button) findViewById(R.id.btnClear);
 		text1 = (EditText) findViewById(R.id.edit1);
 		text2 = (EditText) findViewById(R.id.edit2);
 
@@ -55,6 +56,12 @@ public class WordSetting extends BaseActivity {
 				siampleTitle(strFromId("txtWordsAddSuccess"));
 				text1.setText("");
 				text2.setText("");
+			}
+		});
+		btnClear.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				gameInfo.edit().putString("user_setting", "").commit();
 			}
 		});
 

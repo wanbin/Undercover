@@ -50,6 +50,11 @@
             android:layout_height="wrap_content" 
             android:text="添加"/>
 
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" 
+            android:text="清空"/>
         </LinearLayout>
 
 
