@@ -200,6 +200,8 @@ public class fanpai extends BaseActivity {
 		int selectindex = Math.abs(random.nextInt()) % libary.length;
 		String[] children = new String[2];
 		children = libary[selectindex].split("_");
+
+		setHasGuessed(children[0] + "_" + children[1]);
 		int sonindex = Math.abs(random.nextInt()) % 2;
 		son = children[sonindex];
 		String father = children[Math.abs(sonindex - 1)];

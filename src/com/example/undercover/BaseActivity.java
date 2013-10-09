@@ -439,17 +439,28 @@ public class BaseActivity extends Activity {
 	protected Map<String, StringBuffer> mapWords;
 
 	protected void initUndercoverWords() {
+
+		// 判断词语是否已经出现过，如果剩余词语小于20个，那个重新加载
+		String hasGuess = gameInfo.getString("user_guessed", "");
+
 		// words 所有谁是卧底词汇,包括分类
 		mapWords = new HashMap<String, StringBuffer>();
 		String[] words = getResources().getStringArray(R.array.undercoverword);
+		int wordCount = 0;
+		boolean reInit = false;
 		for (int n = 0; n < words.length; n++) {
 			String[] children = words[n].split("_");
 			StringBuffer temstr = mapWords.get(children[0]);
 			if (temstr == null) {
 				temstr = new StringBuffer();
 			}
+			if (hasGuess.lastIndexOf(children[1] + "_" + children[2]) > 0) {
+				int a = 1;
+				continue;
+			}
 			temstr.append(children[1] + "_" + children[2] + ",");
 			mapWords.put(children[0], temstr);
+			wordCount++;
 		}
 
 		// 初始化网络更新词汇
@@ -464,8 +475,12 @@ public class BaseActivity extends Activity {
 			if (temstr == null) {
 				temstr = new StringBuffer();
 			}
+			if (hasGuess.lastIndexOf(children[1] + "_" + children[2]) > 0) {
+				continue;
+			}
 			temstr.append(children[1] + "_" + children[2] + ",");
 			mapWords.put(children[0], temstr);
+			wordCount++;
 		}
 
 		// 初始化用户自定义词汇
@@ -477,15 +492,30 @@ public class BaseActivity extends Activity {
 			if (children.length != 3) {
 				continue;
 			}
+			if (hasGuess.lastIndexOf(children[1] + "_" + children[2]) > 0) {
+				continue;
+			}
 			StringBuffer temstr = mapWords.get(children[0]);
 			if (temstr == null) {
 				temstr = new StringBuffer();
 			}
 			temstr.append(children[1] + "_" + children[2] + ",");
 			mapWords.put(children[0], temstr);
+			wordCount++;
+		}
+		// 如果词汇小于20个，那个重新
+		if (wordCount < 20 && reInit == false) {
+			reInit = true;
+			gameInfo.edit().putString("user_guessed", "").commit();
+			initUndercoverWords();
 		}
 	}
 
+	protected void setHasGuessed(String content) {
+		String hasguess = gameInfo.getString("user_guessed", "");
+		gameInfo.edit().putString("user_guessed", hasguess + "," + content)
+				.commit();
+	}
 
 	protected String[] getUnderWords(String wordstype) {
 		initUndercoverWords();
