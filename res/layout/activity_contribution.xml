@@ -41,7 +41,8 @@
                 android:id="@+id/contentscroll"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                android:layout_margin="10dp" >
+                android:layout_margin="20dp"
+                android:background="@color/WRITE" >
 
                 <LinearLayout
                     android:id="@+id/content"

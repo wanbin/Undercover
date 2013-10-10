@@ -33,7 +33,11 @@ public class ContributionActivity extends BaseActivity {
 		for (int i = 0; i < contribution.length; i++) {
 			TextView temText = new TextView(this);
 			temText.setText(contribution[i]);
-			temText.setPadding(5, 5, 5, 5);
+			if (i % 2 != 0) {
+				temText.setPadding(35, 5, 5, 5);
+			} else {
+				temText.setPadding(5, 5, 5, 5);
+			}
 			content.addView(temText);
 		}
 
