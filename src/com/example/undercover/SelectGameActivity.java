@@ -243,6 +243,9 @@ public class SelectGameActivity extends BaseActivity {
 		// 点击游戏就把之前的状态清空
 		TextView title2 = (TextView) fram.findViewById(R.id.txtTitle);
 		ImageView imageIcon = (ImageView) fram.findViewById(R.id.imageIcon);
+		Button imageHeart = (Button) fram.findViewById(R.id.imageHeart);
+		
+		updateHeartStatus(imageHeart, gamename);
 		imageIcon.setImageResource(imageid);
 		Button btn = (Button) fram.findViewById(R.id.btnBg);
 		setBtnMoreGame(btn);
@@ -259,6 +262,14 @@ public class SelectGameActivity extends BaseActivity {
 			imageType.setVisibility(View.INVISIBLE);
 		}
 
+		imageHeart.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setTypeHeart(gamename, !getTypeHeart(gamename));
+				updateHeartStatus((Button) v, gamename);
+			}
+		});
+
 		if (classname != null) {
 			btn.setOnClickListener(new Button.OnClickListener() {
 				@Override
@@ -272,6 +283,22 @@ public class SelectGameActivity extends BaseActivity {
 				}
 			});
 		}
+	}
+
+	private void updateHeartStatus(Button v, String type) {
+		if (getTypeHeart(type)) {
+			setBtnPinkStar(v);
+		} else {
+			setBtnGrayStar(v);
+		}
+	}
+
+	private void setTypeHeart(String type, boolean kind) {
+		gameInfo.edit().putBoolean(type + "_heart", kind).commit();
+	}
+
+	private boolean getTypeHeart(String type) {
+		return gameInfo.getBoolean(type + "_heart", false);
 	}
 	private void initHelp(FrameLayout fram, int imageid, String helpTitle,
 			String helpContent, String helpother, final Class classname,

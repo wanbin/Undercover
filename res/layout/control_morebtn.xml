@@ -27,6 +27,12 @@
        android:layout_height="wrap_content"
        android:alpha="0.5" />
                 
+    <Button
+                    android:id="@+id/imageHeart"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top|right"
+                    android:background="@drawable/heart_gray" />
 			<TextView
 			    android:id="@+id/txtPeopleCount"
 			    android:layout_width="wrap_content"
@@ -44,6 +50,8 @@
                     android:layout_marginBottom="3dp"
                     android:text="有胆量就转"
                     android:textColor="@color/title1" />
+
+               
 
             </FrameLayout>
 

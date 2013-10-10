@@ -161,4 +161,5 @@
 <string name="txtContinue">"继续游戏"</string>
 <string name="txtPush">"挤数字"</string>
 <string name="txtPushRule">"1,随机出来一个数字\n2,每位玩家依次点击数字\n3,当一个玩家点到随机的数字，游戏结束"</string>
+<string name="txtWordSetting">"自定义词汇"</string>
 </resources>

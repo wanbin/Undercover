@@ -23,7 +23,8 @@ public class MakeActivity extends BaseActivity {
 		suggest = getResources().getString(R.string.suggest);
 		suggest1 = getResources().getString(R.string.suggest1);
 		txtContent
-				.setText(suggest+ emailaddr
+.setText(suggest + emailaddr
+				+ "\n新浪微博：@爱上聚会\n腾讯微信：centurywar\n"
 						+ suggest1);
 	}
 
