@@ -37,7 +37,7 @@
 <string name="truethings">真心话大冒险</string>
 <string name="strreturn">返回</string>
 <string name="start">开始</string>
-<string name="clicksay">有胆量你就点我吧！看谁最衰！！\n1，每人点击一次或多次，点击一定次数之后会爆!\n2，颜色越红，表示危险级数表示越危险！\n3，点击次数为合计点击的次数！\n4，大胆的你就多点吧！</string>
+<string name="clicksay">有胆量你就点我吧！看谁最衰！！\n1、每人点击一次或多次，点击一定次数之后会爆!\n2、颜色越红，表示危险级数表示越危险！\n3、点击次数为合计点击的次数！\n4、大胆的你就多点吧！</string>
 <string name="about">关于</string>
 <string name="strweixin">谁是卧底-微信版</string>
 <string name="cametogether">朋友远在千里之外?\n上线时间分散?\n这通通不能阻隔朋友间玩谁是卧底的机会~\n体验不一样的谁是卧底游戏，\n就在谁是卧底微信版？\n随时随地!随心随意!</string>
@@ -89,7 +89,7 @@
 <string name="overString8">卧底，你是想怎样~</string>
 <string name="Version">【谁是卧底】2.06版本</string>
 <string name="suggest">意见及建议：</string>
-<string name="suggest1">\n\n\nv2.06版本新功能：\n\n1.加入了挤数字游戏\n\n2.界面布局全部替换为极简风格</string>
+<string name="suggest1">\n\n\nv2.06版本新功能：\n\n1、加入了挤数字游戏\n\n2、界面布局全部替换为极简风格</string>
 <string name="PunishInTurn">请输的同学依次接受惩罚</string>
 <string name="nextQuestion">下一题</string>
 <string name="GameOver">游戏结束</string>
@@ -130,8 +130,8 @@
 <string name="setting_afterShow_kill">投票之后是否显示玩家身份</string>
 <string name="txtwordsetting">设置分类</string>
 <string name="txtgamerolu">游戏规则</string>
-<string name="txtGuessHelp">"长按投出卧底，胜利条件\n1.卧底数大于等于平民时：卧底胜\n2.卧底被全部投出：平民胜"</string>
-<string name="txtPaiHelp">"请记着自己的编号和身份，把手机交与下个玩家\n1.请避免被别的玩家看到\n2.第一个翻牌的玩家有机会更新词汇"</string>
+<string name="txtGuessHelp">"长按投出卧底，胜利条件\n1、卧底数大于等于平民时：卧底胜\n2、卧底被全部投出：平民胜"</string>
+<string name="txtPaiHelp">"请记着自己的编号和身份，把手机交与下个玩家\n1、请避免被别的玩家看到\n2、第一个翻牌的玩家有机会更新词汇"</string>
 <string name="txtPaiFirstPeople">"第一位玩家才可以换词呀~"</string>
 <string name="txtQuictAsk">"快速说出绕口令:"</string>
 <string name="txtShareSay">"我发现了个超好玩的谁是卧底游戏，大家快来玩吧 http://zhushou.360.cn/detail/index/soft_id/706695"</string>
@@ -141,7 +141,7 @@
 <string name="txtFaGuan">"法官"</string>
 <string name="txtNormal">"平民"</string>
 <string name="txtKillerHelp">"参与人数：总玩家数(包括法官)\n平民人数：总玩家人数1/2\n警察人数：总玩家人数1/4\n杀手人数：总玩家人数1/4"</string>
-<string name="txtKillerSucces">"长按玩家出局，胜利条件\n1.警察全部死光：杀手胜\n2.杀手全部死光：平民和警察胜"</string>
+<string name="txtKillerSucces">"长按玩家出局，胜利条件\n1、警察全部死光：杀手胜\n2、杀手全部死光：平民和警察胜"</string>
 <string name="txtKillerPoliceSucces">"警察胜利"</string>
 <string name="txtKillerKillerSucces">"杀手胜利"</string>
 <string name="txtKillerGameName">"杀人游戏"</string>
@@ -160,5 +160,6 @@
 <string name="txtLeftRight">"滑动同样精彩"</string>
 <string name="txtContinue">"继续游戏"</string>
 <string name="txtPush">"挤数字"</string>
-<string name="txtPushRule">"1,随机出来一个数字\n2,每位玩家依次点击数字\n3,当一个玩家点到随机的数字，游戏结束"</string>
+<string name="txtPushRule">"简单粗暴挤数字，小伙伴们快来开森一下吧！~\n1、系统会随机默认选出一个数字\n2、玩家轮流点击数字之后，系统会将不包括这个数字的那部分去掉\n3、激烈的白热化战争之后，最后点中系统选出的数字者接受惩罚"</string>
+<string name="txtWordSetting">"自定义词汇"</string>
 </resources>
