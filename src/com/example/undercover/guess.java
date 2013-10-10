@@ -357,15 +357,27 @@ public class guess extends BaseActivity {
 	protected String updateSaySeq() {
 		int seq = Math.abs(random.nextInt()) % content.length;
 		String strSeq = strFromId("fayan");
+		boolean firstsay = true;
+		String temStr = "";
 		for (int i = 0; i < content.length; i++) {
 			int temindex = seq % content.length + 1;
 			if (!hasClicked[temindex - 1]) {
 				String tem = String.format(strFromId("hao"), temindex);
-				strSeq += tem;
+				// 如果随机的第一个玩家为空白，则不第一个发言
+				if (firstsay
+						&& content[temindex - 1].equals(strFromId("blank"))) {
+					temStr = tem;
+				} else {
+					strSeq += tem;
+				}
+				firstsay = false;
+			} else {
+				// 如果有人被投死了，那么就不用再考虑是不是空白了
+				firstsay = false;
 			}
 			seq++;
 		}
-		return strSeq;
+		return strSeq + temStr;
 	}
 
 	/**
