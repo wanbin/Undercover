@@ -189,6 +189,7 @@ public class Setting extends BaseActivity {
 				Intent goMain = new Intent();
 				goMain.setClass(Setting.this, WordSetting.class);
 				startActivity(goMain);
+				uMengClick("word_setting");
 			}
 		});
 		afterShow

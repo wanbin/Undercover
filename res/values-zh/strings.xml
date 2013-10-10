@@ -150,7 +150,7 @@
 <string name="txtTooLittlePeople">"人太少了，试试适合2~3人的游戏吧~"</string>
 <string name="txtTooMuchUnderCover">"全民卧底，可不好玩~"</string>
 <string name="txtTooLitterUnderCover">"至少要留个卧底吧~"</string>
-<string name="txtSettingWords">"设置词语"</string>
+<string name="txtSettingWords">"自定义词汇"</string>
 <string name="txtWeixinHelp">"微信帮助信息"</string>
 <string name="txtWordsCantSame">"词汇不能相同"</string>
 <string name="txtWordsCantSpecial">"不能输入'_',','"</string>

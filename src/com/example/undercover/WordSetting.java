@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class WordSetting extends BaseActivity {
 	private Button btnAdd, btnClear;
+	private TextView txtWord;
 	// 是否添加 冤死 提示，在投票后
 	// 是否添加空白词
 	// 分类词组
@@ -21,10 +23,12 @@ public class WordSetting extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_wordsetting);
 		btnAdd = (Button) findViewById(R.id.btnAdd);
+		txtWord = (TextView) findViewById(R.id.textSetting);
+
 		btnClear = (Button) findViewById(R.id.btnClear);
 		text1 = (EditText) findViewById(R.id.edit1);
 		text2 = (EditText) findViewById(R.id.edit2);
-
+		updateword();
 		btnAdd.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -56,15 +60,27 @@ public class WordSetting extends BaseActivity {
 				siampleTitle(strFromId("txtWordsAddSuccess"));
 				text1.setText("");
 				text2.setText("");
+				updateword();
 			}
 		});
 		btnClear.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				gameInfo.edit().putString("user_setting", "").commit();
+				updateword();
 			}
 		});
 
+	}
+
+	private void updateword() {
+		String[] userSetting = gameInfo.getString("user_setting", "")
+				.split(",");
+		String temstr = "";
+		for (int n = 0; n < userSetting.length; n++) {
+			temstr = temstr + userSetting[n] + "\n";
+		}
+		txtWord.setText(temstr);
 	}
 
 
