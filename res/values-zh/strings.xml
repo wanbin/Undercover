@@ -156,7 +156,7 @@
 <string name="txtWordsCantSpecial">"不能输入'_',','"</string>
 <string name="txtWordsAddSuccess">"添加成功"</string>
 <string name="txtWordsPeopleInput">"自定义_"</string>
-<string name="txtKillerRule">"每局有一个法官，若干警察和杀手以及平民\n1、抽到法官的玩家引导游戏进行,引导杀手杀人、警察验人、全民投票等行为进行\n2、游戏分类天黑及天亮阶段\n3、天黑的时候，所有玩家闭眼低头，法官引导杀手杀人、警察验人。\n4、天亮的时候，法官公布被杀的人及依次全民投票\n5、被杀掉的玩家及被公投的玩家出局，直到杀手被杀光或警察被杀光，游戏结束"</string>
+<string name="txtKillerRule">"什么是杀人游戏？别担心，这里没有任何暴力或其它不良成分，只是一种纯粹斗智的游戏。\n每局有一个法官，若干警察和杀手以及平民\n1、抽到法官的玩家引导游戏进行,引导杀手杀人、警察验人、全民投票等行为进行\n2、游戏分类天黑及天亮阶段\n3、天黑的时候，所有玩家闭眼低头，法官引导杀手杀人、警察验人。\n4、天亮的时候，法官公布被杀的人及依次全民投票\n5、被杀掉的玩家及被公投的玩家出局，直到杀手被杀光或警察被杀光，游戏结束"</string>
 <string name="txtLeftRight">"滑动同样精彩"</string>
 <string name="txtContinue">"继续游戏"</string>
 <string name="txtPush">"挤数字"</string>
