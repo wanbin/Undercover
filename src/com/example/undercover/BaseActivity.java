@@ -67,6 +67,7 @@ public class BaseActivity extends Activity {
 	protected String nomalpeople;
 
 	protected UMSocialService mController;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -56,6 +56,7 @@ public class SelectGameActivity extends BaseActivity {
 			framePush;
 	private LinearLayout scrollHelpContent;
 	private ImageView pointleft, pointright;
+	protected ImageView imageIndex;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +140,8 @@ public class SelectGameActivity extends BaseActivity {
 		framePush = (FrameLayout) moreView.findViewById(R.id.btnPush);
 		
 		
+		imageIndex = (ImageView) welcomeView.findViewById(R.id.imageIndex);
+
 
 		scrollHelpContent = (LinearLayout) helpView
 				.findViewById(R.id.linearContent);
@@ -233,7 +236,27 @@ public class SelectGameActivity extends BaseActivity {
 		});
 		agent = new FeedbackAgent(this);
 
+		// 如果玩家没有玩过游戏，那么先显示多人游戏
+		setTypeHeart("indexImage", lastGameType().equals(""));
 
+		updateImageIndex();
+
+		// 首页图变化
+		imageIndex.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				setTypeHeart("indexImage", !getTypeHeart("indexImage"));
+				updateImageIndex();
+			}
+		});
+	}
+
+	private void updateImageIndex() {
+		if (getTypeHeart("indexImage")) {
+			imageIndex.setImageResource(R.drawable.index_03);
+		} else {
+			imageIndex.setImageResource(R.drawable.index_photo);
+		}
 	}
 
 	// kindtype 1.为新游戏，2，热门游戏
