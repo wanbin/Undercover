@@ -116,16 +116,17 @@ public class fanpai extends BaseActivity {
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (nowIndex == 1) {
-					uMengClick("click_undercover_pai_first");
-				}
-				v.setVisibility(View.INVISIBLE);
-				setContentVis(true);
-				// 在这里更新nowIndex，不至于呀恢复时错开一个
-				nowIndex++;
-				SoundPlayer.playball();
+				tapPai(v);
 			}
 		});
+
+		imagebg.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				tapPai(v);
+			}
+		});
+
 
 		setBtnGreen(imagePan);
 		setBtnBlue(btnOK);
@@ -146,6 +147,17 @@ public class fanpai extends BaseActivity {
 			}
 		});
 
+	}
+
+	protected void tapPai(View v) {
+		if (nowIndex == 1) {
+			uMengClick("click_undercover_pai_first");
+		}
+		v.setVisibility(View.INVISIBLE);
+		setContentVis(true);
+		// 在这里更新nowIndex，不至于呀恢复时错开一个
+		nowIndex++;
+		SoundPlayer.playball();
 	}
 
 	// 重新翻牌
