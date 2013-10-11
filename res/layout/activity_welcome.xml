@@ -40,9 +40,10 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/bg_image" />
+            android:padding="15dp"
+            android:src="@drawable/index_photo" />
 
         <LinearLayout
             android:id="@+id/star"
@@ -60,7 +61,7 @@
                 android:layout_weight="80"
                 android:background="@drawable/greenbtn1"
                 android:maxWidth="200dp"
-                android:text="@string/strBgn"
+                android:text="@string/txtStartUnderCover"
                 android:textColor="@color/WRITE"
                 android:textSize="@dimen/index" />
 

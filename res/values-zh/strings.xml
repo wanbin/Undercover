@@ -162,4 +162,6 @@
 <string name="txtPush">"挤数字"</string>
 <string name="txtPushRule">"简单粗暴挤数字，小伙伴们快来开森一下吧！~\n1、系统会随机默认选出一个数字\n2、玩家轮流点击数字之后，系统会将不包括这个数字的那部分去掉\n3、激烈的白热化战争之后，最后点中系统选出的数字者接受惩罚"</string>
 <string name="txtWordSetting">"自定义词汇"</string>
+<string name="txtAppName">"爱上聚会"</string>
+<string name="txtStartUnderCover">"开始谁是卧底"</string>
 </resources>

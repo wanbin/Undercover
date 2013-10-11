@@ -203,7 +203,7 @@ public class SelectGameActivity extends BaseActivity {
 
 		TextView temmore = (TextView) welcomeView.findViewById(R.id.txtTitle);
 		temmore.setVisibility(View.VISIBLE);
-		temmore.setText(strFromId("strwhoisundercover"));
+		temmore.setText(strFromId("txtAppName"));
 
 		TextView temwelcome = (TextView) moreView.findViewById(R.id.txtTitle);
 		temwelcome.setVisibility(View.VISIBLE);

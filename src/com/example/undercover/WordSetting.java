@@ -24,7 +24,7 @@ public class WordSetting extends BaseActivity {
 		setContentView(R.layout.activity_wordsetting);
 		btnAdd = (Button) findViewById(R.id.btnAdd);
 		txtWord = (TextView) findViewById(R.id.textSetting);
-
+		initBtnBack(R.id.btnback);
 		btnClear = (Button) findViewById(R.id.btnClear);
 		text1 = (EditText) findViewById(R.id.edit1);
 		text2 = (EditText) findViewById(R.id.edit2);
