@@ -62,7 +62,6 @@ public class SelectGameActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
-
 		// Welcome 的Layout
 		View welcomeView = mInflater.inflate(R.layout.activity_welcome, null);
 		// 帮助页面的layout

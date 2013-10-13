@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-<string name="app_name">谁是卧底</string>
+<string name="app_name">谁是卧底-爱上聚会</string>
 <string name="punishmen">开始惩罚</string>
 <string name="hello_world">Hello world!</string>
 <string name="menu_settings">Settings</string>
@@ -24,7 +24,7 @@
 <string name="question_rule"><b>游戏规则：</b>\n1、拿到手机的玩家，回答屏幕上的问题\n2、结束后下一个玩家，接过手机，点击下一题，并读出问题，游戏继续\n<b>惩罚条件：</b>\n1、游戏是有时间限制的，随机默认30-120秒\n2、当游戏结束时候，持有手机的玩家将接受惩罚</string>
 <string name="question_next">下一题</string>
 <string name="more">更多</string>
-<string name="lose">点背不能怨别人</string>
+<string name="lose">点背不能怨社会，你输了！</string>
 <string name="punish_adventure">大冒险</string>
 <string name="punish_true">真心话</string>
 <string name="punish_tips">可以选择真心话或者大冒险</string>
