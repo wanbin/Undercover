@@ -386,11 +386,11 @@ public class guess extends BaseActivity {
 	 * @return
 	 */
 	protected String getUnderCoverRemain() {
-		return "剩余卧底:" + soncount + "个  剩余平民:" + fathercount + "个";
+		return strFromId("aliveNUM") + soncount + strFromId("spyNUM") + fathercount + strFromId("unitGE");
 	}
 
 	protected String getKillerCoverRemain() {
-		return "剩余卧底:" + soncount + "个  剩余平民:" + fathercount + "个";
+		return strFromId("aliveNUM") + soncount + strFromId("spyNUM") + fathercount + strFromId("unitGE");
 	}
 
 	protected void checkGameOver() {

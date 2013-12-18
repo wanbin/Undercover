@@ -275,7 +275,7 @@ public class SelectGameActivity extends BaseActivity {
 		title2.setText(title);
 		TextView titlePeople = (TextView) fram
 				.findViewById(R.id.txtPeopleCount);
-		titlePeople.setText("适合人数:" + min + "~" + max);
+		titlePeople.setText(strFromId("AppropriateNumber") + min + "~" + max);
 		ImageView imageType = (ImageView) fram.findViewById(R.id.imageTag);
 		if (kindtype == 1) {
 			imageType.setBackgroundResource(R.drawable.tag_new);

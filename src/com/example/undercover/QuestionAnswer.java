@@ -94,7 +94,7 @@ public class QuestionAnswer extends BaseActivity {
 						restartActivity();
 					}
 				}
-				imageNext.setText("下一题");
+				imageNext.setText(strFromId("question_next"));
 				imageNext.setClickable(false);
 				setBtnGray(imageNext);
 			}
@@ -144,7 +144,7 @@ public class QuestionAnswer extends BaseActivity {
 			intentPunish.setVisibility(View.VISIBLE);
 			proBar.setVisibility(View.INVISIBLE);
 			imageNext.setClickable(true);
-			imageNext.setText("重新开始");
+			imageNext.setText(strFromId("restart"));
 			punish_0.setText("");
 			SoundPlayer.stopJishi();
 			isBegin = false;
@@ -157,7 +157,7 @@ public class QuestionAnswer extends BaseActivity {
 				isShowBar = false;
 				proBar.setVisibility(View.VISIBLE);
 				imageNext.setClickable(true);
-				imageNext.setText("下一题");
+				imageNext.setText(strFromId("nextQuestion"));
 				setBtnGreen(imageNext);
 			}
 			proBar.incrementProgressBy(-10);

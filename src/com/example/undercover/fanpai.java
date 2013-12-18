@@ -77,7 +77,7 @@ public class fanpai extends BaseActivity {
 				R.anim.reflash);
 
 		Log.i("fanpai",
-				"***************获得的词组为："
+				strFromId("TheWords")
 						+ gameInfo.getString("word", "").trim());
 		initFanpai();
 
