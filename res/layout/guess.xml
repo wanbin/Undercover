@@ -80,4 +80,13 @@
         android:textSize="@dimen/size20" />
 </LinearLayout>
 
+<LinearLayout
+    android:id="@+id/ad"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical" >
+
+</LinearLayout>
+
 </RelativeLayout>

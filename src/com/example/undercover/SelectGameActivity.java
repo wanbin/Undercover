@@ -3,6 +3,10 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.youmi.android.AdManager;
+import net.youmi.android.smart.SmartBannerManager;
+import net.youmi.android.spot.SpotManager;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -246,8 +250,14 @@ public class SelectGameActivity extends BaseActivity {
 			public void onClick(View v) {
 				setTypeHeart("indexImage", !getTypeHeart("indexImage"));
 				updateImageIndex();
+				 SmartBannerManager.show(SelectGameActivity.this);
 			}
+			
 		});
+		AdManager.getInstance(this).init("fc13c104e69f1319","bdca02f379f4f5cf", false); 
+		SmartBannerManager.init(this);
+        // 调用展示飘窗
+       
 	}
 
 	private void updateImageIndex() {

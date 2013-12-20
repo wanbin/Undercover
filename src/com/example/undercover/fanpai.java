@@ -2,6 +2,9 @@ package com.example.undercover;
 
 import java.util.Random;
 
+import net.youmi.android.smart.SmartBannerManager;
+import net.youmi.android.spot.SpotManager;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -92,6 +95,9 @@ public class fanpai extends BaseActivity {
 				if (nowIndex >= 1) {
 					canchangeword = false;
 					btnchangeword.setBackgroundResource(R.drawable.update2);
+					if (nowIndex < content.length - 1) {
+						SmartBannerManager.show(fanpai.this);
+					}
 					// changeword.setVisibility(View.INVISIBLE);
 				}
 				if (nowIndex <= content.length) {

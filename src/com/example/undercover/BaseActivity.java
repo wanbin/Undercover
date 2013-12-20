@@ -740,21 +740,5 @@ public class BaseActivity extends Activity {
 		context.sendBroadcast(shortcutIntent);
 	}
 
-	// protected void createShortCut() {
-	// Intent shortcut = new Intent(
-	// "com.android.launcher.action.INSTALL_SHORTCUT");
-	// shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, "创建快捷方式");
-	// shortcut.putExtra("duplicate", false); // 不允许重复
-	// ShortcutIconResource iconRes = Intent.ShortcutIconResource.fromContext(
-	// this, R.drawable.ic_launcher);// 设置快捷方式的图标
-	// shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconRes);
-	// // 定义shortcut点击事件
-	// String action = "com.example.undercover";
-	// Intent respondIntent = new Intent(this, this.getClass());
-	// respondIntent.setAction(action);
-	// shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, respondIntent);
-	// sendBroadcast(shortcut);
-	//
-	// }
 }
 

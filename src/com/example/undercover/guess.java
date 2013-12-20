@@ -2,6 +2,11 @@ package com.example.undercover;
 
 import java.util.Random;
 
+
+import net.youmi.android.banner.AdSize;
+import net.youmi.android.banner.AdView;
+import net.youmi.android.banner.AdViewListener;
+
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -57,6 +62,8 @@ public class guess extends BaseActivity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		overString = getResources().getStringArray(R.array.overstring);
 
+		  
+		  
 		initBtnInfo(R.id.btninfo, strFromId("txtGuessHelp"));
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		txtTitle = (TextView) findViewById(R.id.txtTitleFaile);
@@ -67,8 +74,6 @@ public class guess extends BaseActivity {
 		btn_wrapper.setVisibility(View.INVISIBLE);
 		content = getGuessContent();
 		hasClicked = getClickedContent();
-
-
 
 		if (lastGameType().equals("kill")) {
 			initKill();
@@ -173,6 +178,25 @@ public class guess extends BaseActivity {
 		} else {
 			checkGameOver();
 		}
+		
+		LinearLayout adLayout = (LinearLayout) findViewById(R.id.ad);
+		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
+		adLayout.addView(adView);
+		adView.setAdListener(new AdViewListener() {
+			@Override
+			public void onSwitchedAd(AdView arg0) {
+				Log.i("YoumiSample", "广告条切换");
+			}
+			@Override
+			public void onReceivedAd(AdView arg0) {
+				Log.i("YoumiSample", "请求广告成功");
+
+			}
+			@Override
+			public void onFailedToReceivedAd(AdView arg0) {
+				Log.i("YoumiSample", "请求广告失败");
+			}
+		});
 	}
 
 	private void initKill() {

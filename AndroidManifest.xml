@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.undercover"
-    android:versionCode="207"
-    android:versionName="2.07" >
+    android:versionCode="208"
+    android:versionName="2.08" >
 
     <application
         android:allowBackup="true"
@@ -82,7 +82,57 @@
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>        
         
-    </application>
+        
+        
+        
+        
+        
+        
+        
+        <!-- 有米广告 -->
+        <activity
+            android:name="net.youmi.android.AdBrowser"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+
+        <service
+            android:name="net.youmi.android.AdService"
+            android:exported="false" >
+        </service>
+
+        <receiver android:name="net.youmi.android.AdReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        
+        <activity
+            android:name="net.youmi.android.SmartBannerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:theme="@style/Transparent" >
+        </activity>
+
+        <service
+            android:name="net.youmi.android.SmartBannerService"
+            android:exported="false" >
+        </service>
+        
+ 	<receiver
+        android:name="net.youmi.android.offers.OffersReceiver"
+        android:exported="false" >
+    </receiver>
+    
+ 	
+ 	 <meta-data android:name="YOUMI_CHANNEL"
+                android:value="10190" >
+    </meta-data>
+ <!-- 有米配置结束 -->
+        
+        
+</application>
 
     <uses-sdk
         android:minSdkVersion="11"
@@ -103,6 +153,7 @@
     <uses-permission android:name="android.permission.INTERNET" />              <!-- 允许应用程序联网，以便向我们的服务器端发送数据。 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!-- 用于评论模块分享位置信息 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 用于评论模块分享位置信息 -->
-	
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
 	
 </manifest>

@@ -48,4 +48,12 @@
     <color name="clickbt_92">#ff0000</color>
 <color name="WRITE">#ffffff</color>
 <color name="Writegray">#ffffff</color>
+
+
+    <style name="Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
 </resources>
