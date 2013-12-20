@@ -164,4 +164,10 @@
 <string name="txtWordSetting">"自定义词汇"</string>
 <string name="txtAppName">"爱上聚会"</string>
 <string name="txtStartUnderCover">"开始谁是卧底"</string>
+<string name="AppropriateNumber">"适合人数:"</string>
+<string name="aliveNUM"> "剩余卧底:" </string>
+<string name="citizenNUM"> "个  剩余平民:"</string>
+<string name="unitGE"> "个"</string>
+<string name="connect"> "\n新浪微博：@爱上聚会\n腾讯微信：centurywar\n"</string>
+<string name="TheWords"> "***************获得的词组为："</string>
 </resources>
