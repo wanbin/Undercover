@@ -410,11 +410,11 @@ public class guess extends BaseActivity {
 	 * @return
 	 */
 	protected String getUnderCoverRemain() {
-		return strFromId("aliveNUM") + soncount + strFromId("spyNUM") + fathercount + strFromId("unitGE");
+		return strFromId("aliveNUM") + soncount + strFromId("citizenNUM") + fathercount + strFromId("unitGE");
 	}
 
 	protected String getKillerCoverRemain() {
-		return strFromId("aliveNUM") + soncount + strFromId("spyNUM") + fathercount + strFromId("unitGE");
+		return strFromId("aliveNUM") + soncount + strFromId("citizenNUM") + fathercount + strFromId("unitGE");
 	}
 
 	protected void checkGameOver() {

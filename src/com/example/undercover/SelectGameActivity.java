@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.youmi.android.AdManager;
 import net.youmi.android.smart.SmartBannerManager;
+import net.youmi.android.spot.SpotDialogListener;
 import net.youmi.android.spot.SpotManager;
 
 import android.app.AlertDialog;
@@ -254,10 +255,12 @@ public class SelectGameActivity extends BaseActivity {
 			}
 			
 		});
-		AdManager.getInstance(this).init("fc13c104e69f1319","bdca02f379f4f5cf", false); 
+		AdManager.getInstance(this).init("fc13c104e69f1319",
+				"bdca02f379f4f5cf", false);
 		SmartBannerManager.init(this);
-        // 调用展示飘窗
-       
+		// 调用展示飘窗
+//		SpotManager.getInstance(this).loadSpotAds();
+//		SpotManager.getInstance(this).setSpotTimeout(5000);// 5秒
 	}
 
 	private void updateImageIndex() {
@@ -388,6 +391,23 @@ public class SelectGameActivity extends BaseActivity {
 		points.startAnimation(as);
 	}
 
+	
+	private void chabo(){
+		SpotManager.getInstance(this).showSpotAds(this);
+		SpotManager.getInstance(this).showSpotAds(this,
+				new SpotDialogListener() {
+					@Override
+					public void onShowSuccess() {
+						Log.i("Youmi", "onShowSuccess");
+					}
+
+					@Override
+					public void onShowFailed() {
+						Log.i("Youmi", "onShowFailed");
+					}
+
+				});
+	}
 
 	private class MyClickListener implements android.view.View.OnClickListener{
 
@@ -402,6 +422,8 @@ public class SelectGameActivity extends BaseActivity {
 			// break;
 			case R.id.startButton:
 			case R.id.btnStart:
+//				chabo();
+//				return;
 				cleanStatus();
 				SoundPlayer.playball();
 				mIntent.setClass(SelectGameActivity.this, Setting.class);
@@ -440,7 +462,7 @@ public class SelectGameActivity extends BaseActivity {
 			default:
 				break;
 			}
-			
+//			 chabo();
 			startActivity(mIntent);
 		}
 		
