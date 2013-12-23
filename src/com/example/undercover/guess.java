@@ -179,6 +179,13 @@ public class guess extends BaseActivity {
 			checkGameOver();
 		}
 		
+		if (AdManage.showad) {
+			showAd();
+		}
+
+	}
+
+	private void showAd() {
 		LinearLayout adLayout = (LinearLayout) findViewById(R.id.ad);
 		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
 		adLayout.addView(adView);
@@ -187,11 +194,13 @@ public class guess extends BaseActivity {
 			public void onSwitchedAd(AdView arg0) {
 				Log.i("YoumiSample", "广告条切换");
 			}
+
 			@Override
 			public void onReceivedAd(AdView arg0) {
 				Log.i("YoumiSample", "请求广告成功");
 
 			}
+
 			@Override
 			public void onFailedToReceivedAd(AdView arg0) {
 				Log.i("YoumiSample", "请求广告失败");

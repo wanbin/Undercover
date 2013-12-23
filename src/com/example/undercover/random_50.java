@@ -101,7 +101,8 @@ public class random_50 extends BaseActivity {
 
 	protected void DisplayParameter(int time) {
 		int loseRate = (int) ((double) time * 10 / (double) randomLimit) + 1;
-		lose.setText(strFromId("click") + time + strFromId("ci"));
+		String strshow=String.format(strFromId("click"), time);
+		lose.setText( strshow);
 		loseRate = Math.min(9, loseRate);
 		int tem1 = stringToId("clickbt_" + loseRate + "1", "color");
 		int tem2 = stringToId("clickbt_" + loseRate + "2", "color");

@@ -95,9 +95,8 @@ public class fanpai extends BaseActivity {
 				if (nowIndex >= 1) {
 					canchangeword = false;
 					btnchangeword.setBackgroundResource(R.drawable.update2);
-					if (nowIndex < content.length - 1) {
-						SmartBannerManager.show(fanpai.this);
-					}
+					//用全局广告管理类来显示广告
+					AdManage.showBanner(fanpai.this);
 					// changeword.setVisibility(View.INVISIBLE);
 				}
 				if (nowIndex <= content.length) {

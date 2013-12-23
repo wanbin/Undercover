@@ -32,9 +32,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
 
 public class SelectGameActivity extends BaseActivity {
 	// viewPager 滑动
@@ -56,7 +58,7 @@ public class SelectGameActivity extends BaseActivity {
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
 			gongxianbtn, guanyubtn, appmakerbButton, btnReStart,
 			usercontribution, zhenxin, startButton,btnfb;
-//	private CheckBox sound;
+	private CheckBox sound,showad;
 	private boolean soundon = true;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill,
 			framePush;
@@ -87,8 +89,12 @@ public class SelectGameActivity extends BaseActivity {
 				.findViewById(R.id.pointGroup);
 		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
 
+
 //		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
 		btnSound = (ImageView) welcomeView.findViewById(R.id.switchbtn);
+
+		showad = (CheckBox) welcomeView.findViewById(R.id.adcheck);
+		
 		soundon = SoundPlayer.getSoundSt();
 
 		setSwithSound(soundon);
@@ -104,13 +110,29 @@ public class SelectGameActivity extends BaseActivity {
 			
 		});
 
-//		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-//			@Override
-//			public void onCheckedChanged(CompoundButton buttonView,
-//					boolean isChecked) {
-//				setSwithSound(isChecked);
-//			}
-//		});
+		showad.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				AdManage.showad = isChecked;
+				if (isChecked) {
+					Toast.makeText(SelectGameActivity.this,
+							strFromId("thankforad"), Toast.LENGTH_LONG).show();
+					uMengClick("showad");
+				} else {
+					Toast.makeText(SelectGameActivity.this,
+							strFromId("thankforhidead"), Toast.LENGTH_LONG)
+							.show();
+					uMengClick("hidead");
+				}
+				//持久化广告
+				gameInfo.edit().putBoolean("showad", isChecked).commit();
+			}
+		});
+		
+		//先设置是否显示广告
+		showad.setChecked(gameInfo.getBoolean("showad", true));
+		
 
 		MobclickAgent.updateOnlineConfig(this);
         
@@ -254,7 +276,6 @@ public class SelectGameActivity extends BaseActivity {
 
 		// 如果玩家没有玩过游戏，那么先显示多人游戏
 		setTypeHeart("indexImage", lastGameType().equals(""));
-
 		updateImageIndex();
 
 		// 首页图变化
@@ -263,16 +284,17 @@ public class SelectGameActivity extends BaseActivity {
 			public void onClick(View v) {
 				setTypeHeart("indexImage", !getTypeHeart("indexImage"));
 				updateImageIndex();
-				 SmartBannerManager.show(SelectGameActivity.this);
+				AdManage.showBanner(SelectGameActivity.this);
+//				 SmartBannerManager.show(SelectGameActivity.this);
 			}
 			
 		});
-		AdManager.getInstance(this).init("fc13c104e69f1319",
-				"bdca02f379f4f5cf", false);
-		SmartBannerManager.init(this);
+		
 		// 调用展示飘窗
 //		SpotManager.getInstance(this).loadSpotAds();
 //		SpotManager.getInstance(this).setSpotTimeout(5000);// 5秒
+		
+		UmengUpdateAgent.update(this);
 	}
 
 	private void updateImageIndex() {
@@ -407,22 +429,6 @@ public class SelectGameActivity extends BaseActivity {
 	}
 
 	
-	private void chabo(){
-		SpotManager.getInstance(this).showSpotAds(this);
-		SpotManager.getInstance(this).showSpotAds(this,
-				new SpotDialogListener() {
-					@Override
-					public void onShowSuccess() {
-						Log.i("Youmi", "onShowSuccess");
-					}
-
-					@Override
-					public void onShowFailed() {
-						Log.i("Youmi", "onShowFailed");
-					}
-
-				});
-	}
 
 	private class MyClickListener implements android.view.View.OnClickListener{
 

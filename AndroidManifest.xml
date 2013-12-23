@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.undercover"
-    android:versionCode="208"
-    android:versionName="2.08" >
+    android:versionCode="207"
+    android:versionName="2.07" >
 
     <application
         android:allowBackup="true"
@@ -130,7 +130,13 @@
                 android:value="10190" >
     </meta-data>
  <!-- 有米配置结束 -->
+ 
         
+        
+<service
+    android:name="com.umeng.common.net.DownloadingService"
+    android:process=":DownloadingService" >
+</service>
         
 </application>
 
@@ -155,5 +161,4 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 用于评论模块分享位置信息 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
-	
 </manifest>
