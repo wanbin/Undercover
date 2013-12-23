@@ -35,6 +35,7 @@ import android.widget.TextView;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
 
 public class SelectGameActivity extends BaseActivity {
 	// viewPager 滑动
@@ -242,7 +243,6 @@ public class SelectGameActivity extends BaseActivity {
 
 		// 如果玩家没有玩过游戏，那么先显示多人游戏
 		setTypeHeart("indexImage", lastGameType().equals(""));
-
 		updateImageIndex();
 
 		// 首页图变化
@@ -251,16 +251,17 @@ public class SelectGameActivity extends BaseActivity {
 			public void onClick(View v) {
 				setTypeHeart("indexImage", !getTypeHeart("indexImage"));
 				updateImageIndex();
-				 SmartBannerManager.show(SelectGameActivity.this);
+				AdManage.showBanner(SelectGameActivity.this);
+//				 SmartBannerManager.show(SelectGameActivity.this);
 			}
 			
 		});
-		AdManager.getInstance(this).init("fc13c104e69f1319",
-				"bdca02f379f4f5cf", false);
-		SmartBannerManager.init(this);
+		
 		// 调用展示飘窗
 //		SpotManager.getInstance(this).loadSpotAds();
 //		SpotManager.getInstance(this).setSpotTimeout(5000);// 5秒
+		
+		UmengUpdateAgent.update(this);
 	}
 
 	private void updateImageIndex() {
@@ -392,22 +393,6 @@ public class SelectGameActivity extends BaseActivity {
 	}
 
 	
-	private void chabo(){
-		SpotManager.getInstance(this).showSpotAds(this);
-		SpotManager.getInstance(this).showSpotAds(this,
-				new SpotDialogListener() {
-					@Override
-					public void onShowSuccess() {
-						Log.i("Youmi", "onShowSuccess");
-					}
-
-					@Override
-					public void onShowFailed() {
-						Log.i("Youmi", "onShowFailed");
-					}
-
-				});
-	}
 
 	private class MyClickListener implements android.view.View.OnClickListener{
 
