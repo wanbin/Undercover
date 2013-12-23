@@ -66,6 +66,9 @@ public class SelectGameActivity extends BaseActivity {
 	private ImageView pointleft, pointright;
 	protected ImageView imageIndex;
 
+	/* (non-Javadoc)
+	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -129,6 +132,15 @@ public class SelectGameActivity extends BaseActivity {
 				gameInfo.edit().putBoolean("showad", isChecked).commit();
 			}
 		});
+		
+		
+		//如果友盟设置为0，不显示广告，那么把按键也隐掉
+		if (getConfigFromIntent("showad").equals("0")) {
+			showad.setVisibility(View.GONE);
+			AdManage.showad = false;
+		} else {
+			showad.setVisibility(View.VISIBLE);
+		}
 		
 		//先设置是否显示广告
 		showad.setChecked(gameInfo.getBoolean("showad", true));

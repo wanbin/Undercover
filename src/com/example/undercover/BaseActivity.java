@@ -113,6 +113,15 @@ public class BaseActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 	}
+	
+	/**
+	 * 从友盟取得全局配置
+	 * @param configname
+	 * @return
+	 */
+	protected String getConfigFromIntent(String configname) {
+		return MobclickAgent.getConfigParams(this, configname);
+	}
 
 	protected void initShareBtn() {
 		Button btnShare = (Button) findViewById(R.id.btnshare);
