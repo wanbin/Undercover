@@ -108,8 +108,23 @@
                 android:textColor="@color/graybtn"
                 android:textSize="@dimen/index" />
         </FrameLayout>
-        
-        
+
+ <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignBottom="@+id/imageIndex"
+     android:layout_centerHorizontal="true"
+     android:layout_marginBottom="10dp"
+     android:layout_marginLeft="72dp" >
+
+     <CheckBox
+         android:id="@+id/adcheck"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:checked="@bool/chekc"
+         android:text="@string/showAd" />
+
+ </LinearLayout>
         
     </RelativeLayout>
 

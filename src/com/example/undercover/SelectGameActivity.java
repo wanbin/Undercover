@@ -32,6 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -56,7 +57,7 @@ public class SelectGameActivity extends BaseActivity {
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
 			gongxianbtn, guanyubtn, appmakerbButton, btnReStart,
 			usercontribution, zhenxin, startButton, btnSound, btnfb;
-	private CheckBox sound;
+	private CheckBox sound,showad;
 	private boolean soundon = true;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill,
 			framePush;
@@ -88,6 +89,8 @@ public class SelectGameActivity extends BaseActivity {
 		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
 
 		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
+		showad = (CheckBox) welcomeView.findViewById(R.id.adcheck);
+		
 		btnSound = (Button) welcomeView.findViewById(R.id.switchbtn);
 		soundon = SoundPlayer.getSoundSt();
 
@@ -100,6 +103,30 @@ public class SelectGameActivity extends BaseActivity {
 				setSwithSound(isChecked);
 			}
 		});
+
+		showad.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				AdManage.showad = isChecked;
+				if (isChecked) {
+					Toast.makeText(SelectGameActivity.this,
+							strFromId("thankforad"), Toast.LENGTH_LONG).show();
+					uMengClick("showad");
+				} else {
+					Toast.makeText(SelectGameActivity.this,
+							strFromId("thankforhidead"), Toast.LENGTH_LONG)
+							.show();
+					uMengClick("hidead");
+				}
+				//持久化广告
+				gameInfo.edit().putBoolean("showad", isChecked).commit();
+			}
+		});
+		
+		//先设置是否显示广告
+		showad.setChecked(gameInfo.getBoolean("showad", true));
+		
 
 		MobclickAgent.updateOnlineConfig(this);
         

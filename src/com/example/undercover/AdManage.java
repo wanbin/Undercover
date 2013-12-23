@@ -8,11 +8,15 @@ import net.youmi.android.smart.SmartBannerManager;
 
 public class AdManage {
 	private static int lasttime = 0;
+	public static boolean showad=true;
 
 	public static void main(String[] args) {
 	}
 
 	public static void showBanner(Activity ac) {
+		if (showad == false) {
+			return;
+		}
 		if (getTime() - lasttime < 10) {
 			return;
 		}
