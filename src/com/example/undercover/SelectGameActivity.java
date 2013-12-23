@@ -51,11 +51,12 @@ public class SelectGameActivity extends BaseActivity {
     
 	// 将小圆点ImageView放入该List
 	private ImageView[] imageViews;
+	private ImageView btnSound;
 	private FeedbackAgent agent;
 	private Button clickmeButton, circlemeButton, questionButton, weixinButton,
 			gongxianbtn, guanyubtn, appmakerbButton, btnReStart,
-			usercontribution, zhenxin, startButton, btnSound, btnfb;
-	private CheckBox sound;
+			usercontribution, zhenxin, startButton,btnfb;
+//	private CheckBox sound;
 	private boolean soundon = true;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill,
 			framePush;
@@ -86,19 +87,30 @@ public class SelectGameActivity extends BaseActivity {
 				.findViewById(R.id.pointGroup);
 		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
 
-		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
-		btnSound = (Button) welcomeView.findViewById(R.id.switchbtn);
+//		sound = (CheckBox) welcomeView.findViewById(R.id.sound);
+		btnSound = (ImageView) welcomeView.findViewById(R.id.switchbtn);
 		soundon = SoundPlayer.getSoundSt();
 
 		setSwithSound(soundon);
-
-		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+		
+		//获得声音开关状态
+		btnSound.setOnClickListener(new Button.OnClickListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				setSwithSound(isChecked);
+			public void onClick(View v) {
+				soundon=!soundon;
+				setSwithSound(soundon);
+				if(soundon){}
 			}
+			
 		});
+
+//		sound.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+//			@Override
+//			public void onCheckedChanged(CompoundButton buttonView,
+//					boolean isChecked) {
+//				setSwithSound(isChecked);
+//			}
+//		});
 
 		MobclickAgent.updateOnlineConfig(this);
         
@@ -365,11 +377,14 @@ public class SelectGameActivity extends BaseActivity {
 	private void setSwithSound(boolean isChecked) {
 		if (isChecked) {
 			SoundPlayer.setSoundSt(true);
-			sound.setText(strFromId("soundon"));
+//			sound.setText(strFromId("soundon"));
+//			change the voice image
+			btnSound.setImageResource(R.drawable.s2on);
 			// btnSound.setBackgroundResource(R.drawable.btn_select_true);
 		} else {
-			sound.setText(strFromId("soundoff"));
+//			sound.setText(strFromId("soundoff"));
 			SoundPlayer.setSoundSt(false);
+			btnSound.setImageResource(R.drawable.s2off);
 			// btnSound.setBackgroundResource(R.drawable.btn_select_false);
 		}
 	}

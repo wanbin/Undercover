@@ -12,31 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
-            android:id="@+id/soundlin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/sound"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/WRITE"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/switchbtn"
-                android:layout_width="81dp"
-                android:layout_height="29dp"
-                android:visibility="gone" />
-        </LinearLayout>
-
         <ImageView
             android:id="@+id/imageIndex"
             android:layout_width="match_parent"
@@ -108,17 +83,37 @@
                 android:textColor="@color/graybtn"
                 android:textSize="@dimen/index" />
         </FrameLayout>
-        
-        
+
+ <LinearLayout
+     android:id="@+id/soundlin"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentRight="true"
+     android:layout_alignParentTop="true"
+     android:layout_marginRight="87dp"
+     android:layout_marginTop="24dp" >
+
+     <TextView
+         android:id="@+id/textView1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:text="@string/sound"
+         android:textAppearance="?android:attr/textAppearanceLarge"
+         android:textColor="@color/WRITE"
+         android:visibility="gone" />
+ </LinearLayout>
+
+ <ImageView
+     android:id="@+id/switchbtn"
+     android:layout_width="40dp"
+     android:layout_height="29dp"
+     android:layout_alignParentRight="true"
+     android:layout_alignParentTop="true"
+     android:layout_marginRight="10dp"
+     android:layout_marginTop="10dp"
+     android:visibility="visible" />
         
     </RelativeLayout>
-
-    <CheckBox
-        android:id="@+id/sound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="@string/strSound"
-        android:visibility="gone" />
 
 </FrameLayout>
