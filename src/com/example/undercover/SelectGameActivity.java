@@ -269,15 +269,15 @@ public class SelectGameActivity extends BaseActivity {
 		
 		
 		
-//		soundon = SoundPlayer.getSoundSt();
-//		setSwithSound(soundon);
-//		btnSound.setOnClickListener(new Button.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				soundon = !soundon;
-//				setSwithSound(soundon);
-//			}
-//		});
+		soundon = SoundPlayer.getSoundSt();
+		setSwithSound(soundon);
+		btnSound.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				soundon = !soundon;
+				setSwithSound(soundon);
+			}
+		});
 		
 		agent = new FeedbackAgent(this);
 

@@ -16,8 +16,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.util.MathUtil;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 public class PunishActivity extends BaseActivity {
 	
@@ -27,6 +30,7 @@ public class PunishActivity extends BaseActivity {
 	private Button randomBtn;
 	private Button conitnueBtn;
 	private Button punish_disc;
+	private Button testBtn;
 	private TextView punish_guize;
 	private TextView punish_1;
 	private TextView punish_2;
@@ -52,6 +56,15 @@ public class PunishActivity extends BaseActivity {
 	// 如果一直在摇，不断加时间
 	private boolean isshacked = false;
 	private boolean canshacked = false;
+	/* (non-Javadoc)
+	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
+	 */
+	/* (non-Javadoc)
+	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
+	 */
+	/* (non-Javadoc)
+	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,6 +84,7 @@ public class PunishActivity extends BaseActivity {
 		randomBtn	= (Button)findViewById(R.id.punish_random);
 		punish_disc = (Button) findViewById(R.id.punish_disc);
 		conitnueBtn = (Button) findViewById(R.id.punish_continue);
+		testBtn = (Button) findViewById(R.id.testBtn);
 		punish_guize = (TextView) findViewById(R.id.punish_guize);
 		punish_1	= (TextView)findViewById(R.id.punish_1);
 		punish_2	= (TextView)findViewById(R.id.punish_2);
@@ -152,6 +166,16 @@ public class PunishActivity extends BaseActivity {
 				finish();
 			}
 		});
+		
+		// 测试按键,测试http网络服务
+		testBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getHttpRequest();
+				Toast.makeText(PunishActivity.this, "测试按键", Toast.LENGTH_LONG)
+				.show();
+			}
+		});
 
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
@@ -201,6 +225,20 @@ public class PunishActivity extends BaseActivity {
 
 	}// onCreat 方法结束
 
+	
+	/**
+	 * 从服务器取数据
+	 */
+	public void getHttpRequest() {
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.get(serverUrl,null, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(String response) {
+				System.out.println(response);
+			}
+		});
+	}
+	
 	private void randomBtnTouch() {
 		initTimer();
 		if (!isRandom) {
