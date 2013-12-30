@@ -246,13 +246,19 @@ public class PunishActivity extends BaseActivity {
 	 */
 	public void getHttpRequest() {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(serverUrl,null, new AsyncHttpResponseHandler() {
+		client.get(serverUrl, null, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				System.out.println(response);
 			}
 		});
 	}
+	
+	
+	
+	
+	
+	
 	
 	private void randomBtnTouch() {
 		initTimer();
