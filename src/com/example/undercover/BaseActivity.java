@@ -45,6 +45,9 @@ import com.umeng.socialize.controller.UMSsoHandler;
 import com.umeng.socialize.media.UMImage;
 
 public class BaseActivity extends Activity {
+	//这是服务器的地址
+	//	protected String serverUrl = "http://42.121.123.185/CenturyServer/command/undercover_index.php";
+	protected String serverUrl = "http://192.168.1.31/command/undercover_index.php";
 	int disWidth;
 	int disHeight;
 	private SensorManager sensorManager;

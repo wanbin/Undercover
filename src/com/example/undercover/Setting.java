@@ -50,7 +50,7 @@ public class Setting extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setting);
-		initBtnInfo(R.id.btninfo, strFromId("txtSettingHelp"));
+//		initBtnInfo(R.id.btninfo, strFromId("txtSettingHelp"));
 		UnderKind = getUnderKind();
 		btnAdd = (Button) findViewById(R.id.btnAdd);
 		btnAddUnder = (Button) findViewById(R.id.btnAddUnder);

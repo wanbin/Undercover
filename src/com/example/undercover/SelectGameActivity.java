@@ -98,20 +98,8 @@ public class SelectGameActivity extends BaseActivity {
 
 		showad = (CheckBox) welcomeView.findViewById(R.id.adcheck);
 		
-		soundon = SoundPlayer.getSoundSt();
-
-		setSwithSound(soundon);
 		
-		//获得声音开关状态
-		btnSound.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				soundon=!soundon;
-				setSwithSound(soundon);
-				if(soundon){}
-			}
-			
-		});
+		
 
 		showad.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
 			@Override
@@ -277,6 +265,12 @@ public class SelectGameActivity extends BaseActivity {
 		setBtnPink(gongxianbtn);
         setBtnGreen(startButton);
 		setBtnBlue(btnReStart);
+
+		
+		
+		
+		soundon = SoundPlayer.getSoundSt();
+		setSwithSound(soundon);
 		btnSound.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -284,6 +278,7 @@ public class SelectGameActivity extends BaseActivity {
 				setSwithSound(soundon);
 			}
 		});
+		
 		agent = new FeedbackAgent(this);
 
 		// 如果玩家没有玩过游戏，那么先显示多人游戏
