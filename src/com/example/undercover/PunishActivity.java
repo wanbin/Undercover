@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,7 @@ public class PunishActivity extends BaseActivity {
 	
 	private Button trueBtn;
 	private Button advenBtn;
+	private Button user_contribute;
 	private Button changeBtn;
 	private Button randomBtn;
 	private Button conitnueBtn;
@@ -67,6 +69,7 @@ public class PunishActivity extends BaseActivity {
 		flag	= false;
 		trueBtn		= (Button)findViewById(R.id.trueBtn);
 		advenBtn	= (Button)findViewById(R.id.advenBtn);
+		user_contribute =(Button)findViewById(R.id.contribute);//用户贡献
 		changeBtn	= (Button)findViewById(R.id.changeBtn);
 		randomBtn	= (Button)findViewById(R.id.punish_random);
 		punish_disc = (Button) findViewById(R.id.punish_disc);
@@ -145,6 +148,18 @@ public class PunishActivity extends BaseActivity {
 				canshacked = true;
 			}
 		});
+		//用户选择用户贡献
+		user_contribute.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//跳转
+				// TODO Auto-generated method stub
+				Intent intentGo = new Intent();
+				intentGo.setClass(PunishActivity.this, userContribute.class);
+				startActivity(intentGo);
+			}
+		});
+		
 
 		conitnueBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
