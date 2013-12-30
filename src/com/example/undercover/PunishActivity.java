@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import com.example.util.MathUtil;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 public class PunishActivity extends BaseActivity {
 	
@@ -187,8 +190,7 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				getHttpRequest();
-				Toast.makeText(PunishActivity.this, "测试按键", Toast.LENGTH_LONG)
-				.show();
+				
 			}
 		});
 
@@ -245,10 +247,22 @@ public class PunishActivity extends BaseActivity {
 	 * 从服务器取数据
 	 */
 	public void getHttpRequest() {
+		RequestParams param = new RequestParams();
+		param.put("cmd", "PublishNew");
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("content", "回家过年");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		param.put("data", obj.toString());
+		param.put("type", 1);
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(serverUrl, null, new AsyncHttpResponseHandler() {
+		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
+				Toast.makeText(PunishActivity.this, response, Toast.LENGTH_LONG)
+				.show();
 				System.out.println(response);
 			}
 		});
