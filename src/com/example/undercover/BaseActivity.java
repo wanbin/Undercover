@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -37,6 +38,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -70,6 +74,7 @@ public class BaseActivity extends Activity {
 	protected String killer;
 	protected String nomalpeople;
 
+	protected static String gameuid = "";
 	protected UMSocialService mController;
 
 	@Override
@@ -115,6 +120,7 @@ public class BaseActivity extends Activity {
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+		gameuid= getDeviceInfo(this);
 	}
 	
 	/**
@@ -751,6 +757,96 @@ public class BaseActivity extends Activity {
 		// 创建
 		context.sendBroadcast(shortcutIntent);
 	}
+	
 
+/**
+ * 友盟提供取得设备号的方法
+ * @param context
+ * @return
+ */
+public static String getDeviceInfo(Context context) {
+		try {
+			org.json.JSONObject json = new org.json.JSONObject();
+			android.telephony.TelephonyManager tm = (android.telephony.TelephonyManager) context
+					.getSystemService(Context.TELEPHONY_SERVICE);
+
+			String device_id = tm.getDeviceId();
+
+			android.net.wifi.WifiManager wifi = (android.net.wifi.WifiManager) context
+					.getSystemService(Context.WIFI_SERVICE);
+
+			String mac = wifi.getConnectionInfo().getMacAddress();
+			json.put("mac", mac);
+
+			if (TextUtils.isEmpty(device_id)) {
+				device_id = mac;
+			}
+
+			if (TextUtils.isEmpty(device_id)) {
+				device_id = android.provider.Settings.Secure.getString(
+						context.getContentResolver(),
+						android.provider.Settings.Secure.ANDROID_ID);
+			}
+
+			json.put("device_id", device_id);
+
+			return device_id;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+}
+
+	/**
+	 * 从服务器取数据
+	 */
+	public void getHttpRequest(JSONObject obj,String cmd) {
+		RequestParams param = new RequestParams();
+		param.put("cmd", cmd);
+		JSONObject sign = new JSONObject();
+		try {
+			sign.put("gameuid", gameuid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		param.put("data", obj.toString());
+		param.put("sign", sign.toString());
+		AsyncHttpClient client = new AsyncHttpClient();
+		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(String response) {
+				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
+				System.out.println(response);
+				try {
+					JSONObject obj = new JSONObject(response);
+					String cmd=obj.getString("cmd");
+					int code=obj.getInt("code");
+					SayWithCode(code);
+					MessageCallBack(obj,cmd);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	/* 如果需要返回值的话，在这里面进行处理
+	 * 
+	 * @param jsonobj
+	 * @throws Exception
+	 */
+	protected void MessageCallBack(JSONObject jsonobj,String cmd){
+	}
+	
+	/**
+	 * 服务器返回的编码解释
+	 * @param code
+	 */
+	protected void SayWithCode(int code) {
+		if (code == ConstantCode.SUCCESS) {
+			Toast.makeText(BaseActivity.this, "成功!!!", Toast.LENGTH_LONG).show();
+		}
+	}
+	
 }
 

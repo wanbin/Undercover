@@ -189,8 +189,9 @@ public class PunishActivity extends BaseActivity {
 		testBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				getHttpRequest();
-				
+//				sendPublish("大家新年快乐", 3);
+//				getAllPublish(0);
+				addCollect(1,1);
 			}
 		});
 
@@ -244,34 +245,58 @@ public class PunishActivity extends BaseActivity {
 
 	
 	/**
-	 * 从服务器取数据
+	 * 发布新闻
 	 */
-	public void getHttpRequest() {
-		RequestParams param = new RequestParams();
-		param.put("cmd", "PublishNew");
+	protected void sendPublish(String content, int type) {
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("content", "回家过年");
+			obj.put("content", content);
+			obj.put("type", type);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		param.put("data", obj.toString());
-		param.put("type", 1);
-		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
-			@Override
-			public void onSuccess(String response) {
-				Toast.makeText(PunishActivity.this, response, Toast.LENGTH_LONG)
-				.show();
-				System.out.println(response);
-			}
-		});
+		super.getHttpRequest(obj, ConstantControl.SEND_PUBLISH_ALL);
 	}
 	
 	
+	/**
+	 * 发布新闻
+	 */
+	protected void addCollect(int id, int type) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("id", id);
+			obj.put("type", type);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		super.getHttpRequest(obj, ConstantControl.SEND_PUBLISH_COLLECT);
+	}
 	
 	
+	/**
+	 * 取得所有新闻
+	 */
+	protected void getAllPublish( int page) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("page", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		super.getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
+	}
 	
+	/* 处理回调方法
+	 * @see com.example.undercover.BaseActivity#MessageCallBack(org.json.JSONObject)
+	 */
+	protected void MessageCallBack(JSONObject jsonobj,String cmd) {
+		super.MessageCallBack(jsonobj,cmd);
+		if(cmd.equals(ConstantControl.SHOW_PUBLISH_ALL))
+		{
+			System.out.print(jsonobj.toString());
+		}
+	}
 	
 	
 	private void randomBtnTouch() {
