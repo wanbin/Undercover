@@ -16,8 +16,8 @@ public class userContribute extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usercontribute);
 		
-		AddTureBt = (Button)findViewById(R.id.addTruth);
-		AddAdvenBt = (Button) findViewById(R.id.addAdventure);
+		AddTureBt = (Button)findViewById(R.id.addcontribute);
+		AddAdvenBt = (Button) findViewById(R.id.finish);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
 		
@@ -37,7 +37,7 @@ public class userContribute extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				finish();
 				
 			}
 		});

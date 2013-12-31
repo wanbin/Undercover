@@ -14,7 +14,7 @@
             android:id="@+id/cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="200dp"
+            android:layout_marginRight="190dp"
             android:text="Button" />
 
         <Button
