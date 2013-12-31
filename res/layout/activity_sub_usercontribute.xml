@@ -22,20 +22,20 @@
                 android:src="@drawable/umeng_socialize_action_personal_selected" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
