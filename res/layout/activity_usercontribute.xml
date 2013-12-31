@@ -4,122 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ScrollView
-        android:id="@+id/scrolltext"
-        android:layout_width="match_parent"
-        android:layout_height="400dp" >
-
-        <LinearLayout
-            android:id="@+id/text"
-            android:layout_width="match_parent"
-            android:layout_height="266dp"
-            android:orientation="vertical" >
-
-            <include
-                android:id="@+id/text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-
-            <include
-                android:id="@+id/text10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/control_help" />
-        </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/userEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center" >
-
-        <EditText
-            android:id="@+id/userConTextField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/addTruth"
-            android:layout_below="@+id/scrolltext"
-            android:ems="10"
-            android:inputType="textMultiLine" >
-
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android:id="@+id/userConSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/scrolltext"
-            android:text="@string/send" />
-    </LinearLayout>
-
     <LinearLayout
         android:id="@+id/functionBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:gravity="bottom" >
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal" >
 
         <Button
             android:id="@+id/addTruth"
@@ -133,6 +22,91 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addAdventure" />
+
     </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrolltext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp" >
+
+        <LinearLayout
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <include
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+
+            <include
+                android:id="@+id/text10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                layout="@layout/activity_sub_usercontribute" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
