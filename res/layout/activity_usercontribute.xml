@@ -25,26 +25,12 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/scrolltext"
+    <ListView
+        android:id="@+id/myList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp" >
+        android:layout_height="423dp"
+        android:layout_gravity="bottom" >
 
-        <LinearLayout
-            android:id="@+id/text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <include
-                android:id="@+id/text1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                layout="@layout/activity_sub_usercontribute" />
-
-        </LinearLayout>
-    </ScrollView>
+    </ListView>
 
 </FrameLayout>

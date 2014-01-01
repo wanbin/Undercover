@@ -50,8 +50,8 @@ import com.umeng.socialize.media.UMImage;
 
 public class BaseActivity extends Activity {
 	//这是服务器的地址
-		protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
-//	protected String serverUrl = "http://192.168.1.31/Entry.php";
+//		protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
+	protected String serverUrl = "http://192.168.1.31/Entry.php";
 	int disWidth;
 	int disHeight;
 	private SensorManager sensorManager;
@@ -815,8 +815,8 @@ public static String getDeviceInfo(Context context) {
 		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
-				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
-				System.out.println(response);
+//				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
+//				System.out.println(response);
 				try {
 					JSONObject obj = new JSONObject(response);
 					String cmd=obj.getString("cmd");
