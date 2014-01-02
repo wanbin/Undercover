@@ -8,11 +8,16 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.example.undercover.view.PublishContent;
+import com.example.undercover.view.MyAdapter;
+import com.example.undercover.view.MyAdapter.Publish;
+
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -100,50 +105,22 @@ public class userContribute extends BaseActivity {
 	 * update message 
 	 * @param obj
 	 */
-	protected void updateMessage(JSONArray obj) {
-		String[] names = new String[] { "wanbin", "wanbin", "wanbin" };
-		String[] desc = new String[] { "wanbinde", "wanbinde", "wanbinde" };
-		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+	protected void updateMessage(final JSONArray obj) {
 		
-		
-		try {
-			for (int i = 0; i < obj.length(); i++) {
+		List<Publish> temPubs = new ArrayList<Publish>();
+		for (int i = 0; i < obj.length(); i++) {
+			try {
 				JSONObject temobj = obj.getJSONObject(i);
-				Map<String, Object> listItem = new HashMap<String, Object>();
-				listItem.put("txtName", temobj.getString("gameuid"));
-				listItem.put("txtContent",temobj.getString("content"));
-				listItem.put("id",temobj.getInt("id"));
-				listItems.add(listItem);
+				temPubs.add(new Publish(100, temobj.getString("gameuid"),
+						temobj.getString("content")));
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
 		}
-		
-		SimpleAdapter temAdapter = new SimpleAdapter(this, listItems,
-				R.layout.activity_sub_usercontribute, new String[] { "txtName",
-						"txtContent" }, new int[] { R.id.txtName,
-						R.id.txtContent });
-		myList.setAdapter(temAdapter);
-		
-//		
-//		try {
-//			for (int i = 0; i < obj.length(); i++) {
-//				JSONObject temobj = obj.getJSONObject(i);
-//				String content = temobj.getString("content");
-//				int like = temobj.getInt("like");
-//				int dislike = temobj.getInt("dislike");
-//				int id = temobj.getInt("id");
-////				PublishContent con = new PublishContent(this);
-////				con.init(2, "wanbin", content, "2013", id);
-////				textLayout.addView(con);
-//			}
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//			e.printStackTrace();
-//		}
-
+		MyAdapter adapter = new MyAdapter(userContribute.this,temPubs) ;
+		myList.setAdapter(adapter);
 	}
+	
 	
 	/**
 	 * 上传真心话
