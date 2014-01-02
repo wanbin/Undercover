@@ -84,7 +84,7 @@ public class userContribute extends BaseActivity {
 	/* 处理回调方法
 	 * @see com.example.undercover.BaseActivity#MessageCallBack(org.json.JSONObject)
 	 */
-	protected void MessageCallBack(JSONObject jsonobj,String cmd) {
+	public void MessageCallBack(JSONObject jsonobj,String cmd) {
 		super.MessageCallBack(jsonobj,cmd);
 		if(cmd.equals(ConstantControl.SHOW_PUBLISH_ALL))
 		{

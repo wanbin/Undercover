@@ -40,6 +40,8 @@ public class MyAdapter extends BaseAdapter {
         public TextView title;  
         public TextView info;  
         public Button likebtn;  
+        public Button dislikebtn;
+        public Button collect;
     }
 	@Override
 	public int getCount() {
@@ -61,7 +63,6 @@ public class MyAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.activity_sub_usercontribute, null);
-
 			viewHolder = new ViewHolder();
 			viewHolder.title = (TextView) convertView
 					.findViewById(R.id.txtName);
@@ -69,6 +70,10 @@ public class MyAdapter extends BaseAdapter {
 					.findViewById(R.id.txtContent);
 			viewHolder.likebtn = (Button) convertView
 					.findViewById(R.id.buttonLike);
+			viewHolder.dislikebtn = (Button) convertView
+					.findViewById(R.id.buttonDislike);
+			viewHolder.collect = (Button) convertView
+					.findViewById(R.id.buttonCollect);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -85,8 +90,6 @@ public class MyAdapter extends BaseAdapter {
                         Toast.LENGTH_SHORT).show();  
             }  
         });  
-        
-
 		return convertView;
 	}  
 	

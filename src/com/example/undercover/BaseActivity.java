@@ -48,7 +48,7 @@ import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.UMSsoHandler;
 import com.umeng.socialize.media.UMImage;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends Activity  implements httpCallBack{
 	//这是服务器的地址
 		protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
 //	protected String serverUrl = "http://192.168.1.31/Entry.php";
@@ -797,37 +797,38 @@ public static String getDeviceInfo(Context context) {
 		return null;
 }
 
-	/**
-	 * 从服务器取数据
-	 */
+//	/**
+//	 * 从服务器取数据
+//	 */
 	public void getHttpRequest(JSONObject obj,String cmd) {
-		RequestParams param = new RequestParams();
-		param.put("cmd", cmd);
-		JSONObject sign = new JSONObject();
-		try {
-			sign.put("gameuid", gameuid);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		param.put("data", obj.toString());
-		param.put("sign", sign.toString());
-		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
-			@Override
-			public void onSuccess(String response) {
-//				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
-//				System.out.println(response);
-				try {
-					JSONObject obj = new JSONObject(response);
-					String cmd=obj.getString("cmd");
-					int code=obj.getInt("code");
-					SayWithCode(code);
-					MessageCallBack(obj,cmd);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		HttpCommand.getHttpRequest(obj, cmd,this);
+//		RequestParams param = new RequestParams();
+//		param.put("cmd", cmd);
+//		JSONObject sign = new JSONObject();
+//		try {
+//			sign.put("gameuid", gameuid);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		param.put("data", obj.toString());
+//		param.put("sign", sign.toString());
+//		AsyncHttpClient client = new AsyncHttpClient();
+//		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
+//			@Override
+//			public void onSuccess(String response) {
+////				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
+////				System.out.println(response);
+//				try {
+//					JSONObject obj = new JSONObject(response);
+//					String cmd=obj.getString("cmd");
+//					int code=obj.getInt("code");
+//					SayWithCode(code);
+//					MessageCallBack(obj,cmd);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
 	}
 	
 	/* 如果需要返回值的话，在这里面进行处理
@@ -835,18 +836,26 @@ public static String getDeviceInfo(Context context) {
 	 * @param jsonobj
 	 * @throws Exception
 	 */
-	protected void MessageCallBack(JSONObject jsonobj,String cmd){
+	public  void MessageCallBack(JSONObject jsonobj,String cmd){
+		try {
+			int code=jsonobj.getInt("code");
+			SayWithCode(code);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	/**
 	 * 服务器返回的编码解释
 	 * @param code
 	 */
-	protected void SayWithCode(int code) {
+	protected   void SayWithCode(int code) {
 		if (code == ConstantCode.SUCCESS) {
 			Toast.makeText(BaseActivity.this, "成功!!!", Toast.LENGTH_LONG).show();
 		}
 	}
+
 	
 }
 

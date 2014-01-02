@@ -54,13 +54,13 @@
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonDislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Button" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/buttonCollect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
