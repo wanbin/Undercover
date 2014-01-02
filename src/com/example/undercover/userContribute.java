@@ -1,5 +1,7 @@
 package com.example.undercover;
 
+import http.PublishHandler;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -71,14 +73,9 @@ public class userContribute extends BaseActivity {
 	/**
 	 * 取得所有新闻
 	 */
-	protected void getAllPublish( int page) {
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("page", page);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		super.getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
+	protected void getAllPublish(int page) {
+		PublishHandler publishHandler = new PublishHandler(this);
+		publishHandler.getAllPublish(page);
 	}
 	
 	/* 处理回调方法
@@ -111,13 +108,14 @@ public class userContribute extends BaseActivity {
 		for (int i = 0; i < obj.length(); i++) {
 			try {
 				JSONObject temobj = obj.getJSONObject(i);
-				temPubs.add(new Publish(100, temobj.getString("gameuid"),
+				temPubs.add(new Publish(temobj.getInt("id"), temobj.getString("gameuid"),
 						temobj.getString("content")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		MyAdapter adapter = new MyAdapter(userContribute.this,temPubs) ;
+		MyAdapter adapter = new MyAdapter(userContribute.this,temPubs,this.getUid()) ;
+		adapter.setCallBack(this);
 		myList.setAdapter(adapter);
 	}
 	

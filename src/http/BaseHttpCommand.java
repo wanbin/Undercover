@@ -1,29 +1,37 @@
-package com.example.undercover;
+package http;
 
 import org.json.JSONObject;
 
+import com.example.undercover.httpCallBack;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-public class HttpCommand {
+public class BaseHttpCommand {
 
-	public static int gameuid=0;
 	// protected String serverUrl =
 	// "http://42.121.123.185/CenturyServer/Entry.php";
 	protected static String serverUrl = "http://192.168.1.31/Entry.php";
+	 protected httpCallBack mc=null;
+	 protected String uid="";
 
-
+	public BaseHttpCommand(final httpCallBack messagecall) {
+		this.mc = messagecall;
+	}
+	
+	public void setUid(String uid){
+		this.uid=uid;
+	}
 
 	/**
 	 * 从服务器取数据
 	 */
-	public static void getHttpRequest(JSONObject obj,String cmd,final httpCallBack messagecall) {
+	public void getHttpRequest(JSONObject obj, String cmd) {
 		RequestParams param = new RequestParams();
 		param.put("cmd", cmd);
 		JSONObject sign = new JSONObject();
 		try {
-			sign.put("gameuid", gameuid);
+			sign.put("uid", mc != null ? mc.getUid() : this.uid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -33,13 +41,13 @@ public class HttpCommand {
 		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
-//				Toast.makeText(BaseActivity.this,response, Toast.LENGTH_LONG).show();
-//				System.out.println(response);
 				try {
+					System.out.println(response);
 					JSONObject obj = new JSONObject(response);
-					String cmd=obj.getString("cmd");
-					messagecall.MessageCallBack(obj, cmd);
-//					MessageCallBack(obj,cmd);
+					String cmd = obj.getString("cmd");
+					if (mc != null) {
+						mc.MessageCallBack(obj, cmd);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

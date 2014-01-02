@@ -1,10 +1,13 @@
 package com.example.undercover.view;
 
+import http.PublishHandler;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.undercover.BaseActivity;
 import com.example.undercover.R;
 
 import android.app.Activity;
@@ -18,10 +21,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * @author chenzheng_java
@@ -30,11 +30,17 @@ import android.widget.Toast;
 public class MyAdapter extends BaseAdapter {
 	private List<Publish> publishs; 
 	Context context;  
-    
-    public MyAdapter(Context context,List<Publish> publishs){  
+    private String uid;
+    private BaseActivity callBackActivity=null;
+    public MyAdapter(Context context,List<Publish> publishs,String uid){  
         this.publishs = publishs;  
         this.context = context;  
+        this.uid=uid;
     }  
+    
+    public void setCallBack(BaseActivity v){
+    	callBackActivity=v;
+    }
 	
     public final class ViewHolder {  
         public TextView title;  
@@ -85,14 +91,32 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
             @Override  
             public void onClick(View v) {  
-                Toast.makeText(context,   
-                        "[textViewItem01.setOnClickListener]点击了"+temPublish.name,   
-                        Toast.LENGTH_SHORT).show();  
+            	addcollect(temPublish.id,1);
+            }  
+        }); 
+        viewHolder.dislikebtn.setOnClickListener(new OnClickListener(){  
+            @Override  
+            public void onClick(View v) {  
+            	addcollect(temPublish.id,2);
             }  
         });  
+		viewHolder.collect.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				addcollect(temPublish.id, 3);
+			}
+		});
 		return convertView;
 	}  
 	
+	/**
+	 * 用户收藏，用户点赞
+	 */
+	public void addcollect(int id,int type){
+		PublishHandler publishHandler = new PublishHandler(callBackActivity);
+		publishHandler.setUid(uid);
+		publishHandler.addCollect(id,type);
+	}
 	
 	public static class Publish {
 		public int id;

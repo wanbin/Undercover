@@ -191,9 +191,10 @@ public class PunishActivity extends BaseActivity {
 			public void onClick(View v) {
 //				sendPublish("大家新年快乐", 3);
 //				getAllPublish(0);
-				addCollect(1,1);
 			}
 		});
+		
+		
 
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
@@ -244,48 +245,7 @@ public class PunishActivity extends BaseActivity {
 	}// onCreat 方法结束
 
 	
-	/**
-	 * 发布新闻
-	 */
-	protected void sendPublish(String content, int type) {
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("content", content);
-			obj.put("type", type);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		super.getHttpRequest(obj, ConstantControl.SEND_PUBLISH_ALL);
-	}
 	
-	
-	/**
-	 * 发布新闻
-	 */
-	protected void addCollect(int id, int type) {
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("id", id);
-			obj.put("type", type);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		super.getHttpRequest(obj, ConstantControl.SEND_PUBLISH_COLLECT);
-	}
-	
-	
-	/**
-	 * 取得所有新闻
-	 */
-	protected void getAllPublish( int page) {
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("page", page);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		super.getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
-	}
 	
 	/* 处理回调方法
 	 * @see com.example.undercover.BaseActivity#MessageCallBack(org.json.JSONObject)
