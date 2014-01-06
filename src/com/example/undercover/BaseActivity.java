@@ -21,6 +21,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -890,6 +892,38 @@ public static String getDeviceInfo(Context context) {
 		return uid;
 	}
 
+	
+	/**
+	 * 判断当前网络是否可用的功能
+	 * @param act
+	 * @return
+	 */
+	public static boolean detect(Activity act) {
+		ConnectivityManager manager = (ConnectivityManager) act
+				.getApplicationContext().getSystemService(
+						Context.CONNECTIVITY_SERVICE);
+		if (manager == null) {
+			return false;
+		}
+		NetworkInfo networkinfo = manager.getActiveNetworkInfo();
+		if (networkinfo == null || !networkinfo.isAvailable()) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 发送Toast提示
+	 * 
+	 * @param message
+	 */
+	protected void ToastMessage(String message) {
+		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_SHORT).show();
+	}
+
+	protected void ToastMessageLong(String message) {
+		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_LONG).show();
+	}
 	
 }
 

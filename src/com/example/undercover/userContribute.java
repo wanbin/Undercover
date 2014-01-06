@@ -86,6 +86,10 @@ public class userContribute extends BaseActivity {
 			}
 		});
 		
+		if (!detect(userContribute.this)) {
+			ToastMessageLong("当前网络不可用");
+		}
+		
 		getUserInfo();
 //		updateMessage(null);
 	}
