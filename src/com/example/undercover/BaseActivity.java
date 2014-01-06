@@ -77,6 +77,11 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	protected static int gameuid = 0;
 	protected static String uid = "";
 	protected UMSocialService mController;
+	
+	/**
+	 * 用户是否为GM管理员
+	 */
+	protected int isGm=0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -807,11 +812,63 @@ public static String getDeviceInfo(Context context) {
 		try {
 			int code=jsonobj.getInt("code");
 			SayWithCode(code);
+			CallBackPublicCommand(jsonobj,cmd);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 回调的公共处理类方法
+	 * @param jsonobj
+	 * @param cmd
+	 */
+	public void CallBackPublicCommand(JSONObject jsonobj,String cmd)
+	{
+		if(cmd.equals(ConstantControl.GET_USER_INFO))
+		{
+			try {
+				setUserInfo(new JSONObject(jsonobj.getString("data")));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
+	
+	/**
+	 * 设置用户基本信息
+	 * @param o
+	 */
+	protected void setUserInfo(JSONObject o) {
+		try {
+			isGm=o.getInt("isgm");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		gameInfo.edit().putString("userinfo", o.toString()).commit();
+	}
+
+	
+	/**
+	 * 从本地取得用户基本信息
+	 * @return
+	 */
+	protected JSONObject getUserInfoFromLocal() {
+		JSONObject obj = null;
+		try {
+			obj = new JSONObject(gameInfo.getString("userinfo", ""));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
 	
 	/**
 	 * 服务器返回的编码解释

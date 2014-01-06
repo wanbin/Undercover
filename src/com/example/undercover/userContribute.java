@@ -1,6 +1,7 @@
 package com.example.undercover;
 
 import http.PublishHandler;
+import http.UserHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,7 @@ import android.widget.TextView;
 public class userContribute extends BaseActivity {
 	private Button AddTureBt;
 	private Button AddAdvenBt;
+	private Button getGm;
 	private ListView myList;
 	//private Button userConSend;
 	//private EditText userConTextField; 
@@ -42,6 +44,7 @@ public class userContribute extends BaseActivity {
 		
 		AddTureBt = (Button)findViewById(R.id.addcontribute);
 		AddAdvenBt = (Button) findViewById(R.id.finish);
+		getGm = (Button) findViewById(R.id.getGM);
 		myList = (ListView) findViewById(R.id.myList);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
@@ -63,9 +66,27 @@ public class userContribute extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				//finish();
-				getAllPublish(0);
+//				getAllPublish(0);
+				getUserInfo();
 			}
 		});
+		
+		// 添加大冒险按钮
+		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				// finish();
+				if (isGm == 1) {
+					getAllPublishShenHe(0);
+				} else {
+					getAllPublish(0);
+				}
+
+			}
+		});
+		
+		getUserInfo();
 //		updateMessage(null);
 	}
 	
@@ -76,6 +97,14 @@ public class userContribute extends BaseActivity {
 	protected void getAllPublish(int page) {
 		PublishHandler publishHandler = new PublishHandler(this);
 		publishHandler.getAllPublish(page);
+	}
+	
+	/**
+	 * 取得所有需要审核新闻
+	 */
+	protected void getAllPublishShenHe(int page) {
+		PublishHandler publishHandler = new PublishHandler(this);
+		publishHandler.getAllPublishNeedShenhe(page);
 	}
 	
 	/* 处理回调方法
@@ -97,29 +126,37 @@ public class userContribute extends BaseActivity {
 		}
 	}
 	
-	
 	/**
-	 * update message 
+	 * 取得用户信息，可以判断用户当前的身份，是否显示待审核的词汇
+	 */
+	protected void getUserInfo() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.getUserInfo(getUid());
+	}
+
+	/**
+	 * update message
+	 * 
 	 * @param obj
 	 */
 	protected void updateMessage(final JSONArray obj) {
-		
 		List<Publish> temPubs = new ArrayList<Publish>();
 		for (int i = 0; i < obj.length(); i++) {
 			try {
 				JSONObject temobj = obj.getJSONObject(i);
-				temPubs.add(new Publish(temobj.getInt("id"), temobj.getString("gameuid"),
-						temobj.getString("content")));
+				temPubs.add(new Publish(temobj.getInt("id"), temobj
+						.getString("gameuid"), temobj.getString("content")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		MyAdapter adapter = new MyAdapter(userContribute.this,temPubs,this.getUid()) ;
+		MyAdapter adapter = new MyAdapter(userContribute.this, temPubs,
+				this.getUid());
 		adapter.setCallBack(this);
+		adapter.setGM(isGm);
 		myList.setAdapter(adapter);
 	}
-	
-	
+
 	/**
 	 * 上传真心话
 	 * @param content

@@ -32,6 +32,8 @@ public class MyAdapter extends BaseAdapter {
 	Context context;  
     private String uid;
     private BaseActivity callBackActivity=null;
+    private int isGM=0;
+    
     public MyAdapter(Context context,List<Publish> publishs,String uid){  
         this.publishs = publishs;  
         this.context = context;  
@@ -41,6 +43,10 @@ public class MyAdapter extends BaseAdapter {
     public void setCallBack(BaseActivity v){
     	callBackActivity=v;
     }
+    
+	public void setGM(int gm) {
+		isGM = gm;
+	}
 	
     public final class ViewHolder {  
         public TextView title;  
@@ -88,24 +94,49 @@ public class MyAdapter extends BaseAdapter {
 		viewHolder.title.setText(temPublish.name);  
         viewHolder.info.setText(temPublish.content);  
         
-        viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
-            @Override  
-            public void onClick(View v) {  
-            	addcollect(temPublish.id,1);
-            }  
-        }); 
-        viewHolder.dislikebtn.setOnClickListener(new OnClickListener(){  
-            @Override  
-            public void onClick(View v) {  
-            	addcollect(temPublish.id,2);
-            }  
-        });  
-		viewHolder.collect.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				addcollect(temPublish.id, 3);
-			}
-		});
+		if (isGM==1) {
+			viewHolder.likebtn.setText("通过");
+			viewHolder.likebtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					shenhe(temPublish.id, 1);
+				}
+			});
+			viewHolder.dislikebtn.setText("未通过");
+			viewHolder.dislikebtn.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					shenhe(temPublish.id, 2);
+				}
+			});
+			viewHolder.collect.setText("直接删除");
+			viewHolder.collect.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					shenhe(temPublish.id, 3);
+				}
+			});
+		}
+        else{
+        	 viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
+                 @Override  
+                 public void onClick(View v) {  
+                 	addcollect(temPublish.id,1);
+                 }  
+             }); 
+             viewHolder.dislikebtn.setOnClickListener(new OnClickListener(){  
+                 @Override  
+                 public void onClick(View v) {  
+                 	addcollect(temPublish.id,2);
+                 }  
+             });  
+     		viewHolder.collect.setOnClickListener(new OnClickListener() {
+     			@Override
+     			public void onClick(View v) {
+     				addcollect(temPublish.id, -1);
+     			}
+     		});
+        }
 		return convertView;
 	}  
 	
@@ -116,6 +147,13 @@ public class MyAdapter extends BaseAdapter {
 		PublishHandler publishHandler = new PublishHandler(callBackActivity);
 		publishHandler.setUid(uid);
 		publishHandler.addCollect(id,type);
+	}
+	
+	
+	public void shenhe(int id,int type){
+		PublishHandler publishHandler = new PublishHandler(callBackActivity);
+		publishHandler.setUid(uid);
+		publishHandler.shenHe(id,type);
 	}
 	
 	public static class Publish {
