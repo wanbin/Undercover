@@ -1,5 +1,8 @@
 package com.example.undercover;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import http.PublishHandler;
 
 import org.json.JSONObject;
@@ -26,6 +29,8 @@ public class editContributeActivity extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				sendPublish();
+//				sendRandom();
+				
 			}
 		});
 
@@ -46,4 +51,16 @@ public class editContributeActivity extends BaseActivity {
 		publishHandler.sendPublish(textCotent.getText().toString(), 1);
 	}
 
+	public void sendRandom() {
+		List<String> array = new ArrayList<String>();
+		PublishHandler publishHandler = new PublishHandler(this);
+		for (int i = 0; i < 2000; i++) {
+			String tem = getTurns();
+			if (array.contains(tem)) {
+				continue;
+			} else {
+				publishHandler.sendPublish(tem, 2);
+			}
+		}
+	}
 }
