@@ -61,6 +61,8 @@ public class MyAdapter extends BaseAdapter {
         public ImageView likebtn;  
         public ImageView dislikebtn;
         public ImageView collect;
+        public TextView textLike;
+        public TextView textDislike;
     }
 	@Override
 	public int getCount() {
@@ -93,6 +95,12 @@ public class MyAdapter extends BaseAdapter {
 					.findViewById(R.id.buttonDislike);
 			viewHolder.collect = (ImageView) convertView
 					.findViewById(R.id.buttonCollect);
+			
+			viewHolder.textLike = (TextView) convertView
+					.findViewById(R.id.textLike);
+			viewHolder.textDislike = (TextView) convertView
+					.findViewById(R.id.textDislike);
+			
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
@@ -100,7 +108,9 @@ public class MyAdapter extends BaseAdapter {
 		
 		//设置各控件的内容在这里
 		viewHolder.title.setText(temPublish.name);  
-        viewHolder.info.setText(temPublish.content);  
+        viewHolder.info.setText(temPublish.content);
+        viewHolder.textLike.setText(temPublish.like	);
+        viewHolder.textDislike.setText(temPublish.dislike);
         
 		if (isGM==1) {
 //			viewHolder.likebtn.setText("通过");
@@ -172,12 +182,16 @@ public class MyAdapter extends BaseAdapter {
 		public int id;
 		public String name;
 		public String content;
+		public int like;
+		public int dislike;
 
-		public Publish(int id, String name, String content) {
+		public Publish(int id, String name, String content,int like,int dislike) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.content = content;
+			this.like = like ;
+			this.dislike = dislike;
 		} 
 	}  
 }

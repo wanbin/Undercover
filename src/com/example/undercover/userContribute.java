@@ -150,7 +150,7 @@ public class userContribute extends BaseActivity {
 				JSONObject temobj = obj.getJSONObject(i);
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
 				temPubs.add(new Publish(temobj.getInt("id"), temobj
-						.getString("gameuid"), temobj.getString("content")));
+						.getString("gameuid"), temobj.getString("content"),temobj.getInt("like"),temobj.getInt("dislike")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
