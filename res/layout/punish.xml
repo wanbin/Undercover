@@ -52,19 +52,9 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_margin="5dp"
-            android:background="@drawable/bluebtn1"
-            android:text="@string/userContribute"
+            android:text="@string/IntenetTrues"
             android:textColor="@color/WRITE"
             android:textSize="@dimen/index"/>
-        <Button
-            android:id="@+id/testBtn"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/bluebtn1"
-            android:text="测试"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/index" />
     </LinearLayout>
 
     <LinearLayout

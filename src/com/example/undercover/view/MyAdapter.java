@@ -109,29 +109,29 @@ public class MyAdapter extends BaseAdapter {
 		//设置各控件的内容在这里
 		viewHolder.title.setText(temPublish.name);  
         viewHolder.info.setText(temPublish.content);
-        viewHolder.textLike.setText(temPublish.like	);
-        viewHolder.textDislike.setText(temPublish.dislike);
+        viewHolder.textLike.setText(temPublish.like+""	);
+        viewHolder.textDislike.setText(temPublish.dislike+"");
         
 		if (isGM==1) {
 //			viewHolder.likebtn.setText("通过");
 			viewHolder.likebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					shenhe(temPublish.id, 1);
+					shenhe(temPublish, 1);
 				}
 			});
 //			viewHolder.dislikebtn.setText("未通过");
 			viewHolder.dislikebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					shenhe(temPublish.id, 2);
+					shenhe(temPublish, 2);
 				}
 			});
 //			viewHolder.collect.setText("直接删除");
 			viewHolder.collect.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					shenhe(temPublish.id, 3);
+					shenhe(temPublish, 3);
 				}
 			});
 		}
@@ -139,19 +139,19 @@ public class MyAdapter extends BaseAdapter {
         	 viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
                  @Override  
                  public void onClick(View v) {  
-                 	addcollect(temPublish.id,1);
+                 	addcollect(temPublish,1);
                  }  
              }); 
              viewHolder.dislikebtn.setOnClickListener(new OnClickListener(){  
                  @Override  
                  public void onClick(View v) {  
-                 	addcollect(temPublish.id,2);
+                 	addcollect(temPublish,2);
                  }  
              });  
      		viewHolder.collect.setOnClickListener(new OnClickListener() {
      			@Override
      			public void onClick(View v) {
-     				addcollect(temPublish.id, -1);
+     				addcollect(temPublish,3);
      			}
      		});
         }
@@ -161,17 +161,25 @@ public class MyAdapter extends BaseAdapter {
 	/**
 	 * 用户收藏，用户点赞
 	 */
-	public void addcollect(int id,int type){
+	public void addcollect(Publish tempublish,int type){
 		PublishHandler publishHandler = new PublishHandler(callBackActivity);
 		publishHandler.setUid(uid);
-		publishHandler.addCollect(id,type);
+		publishHandler.addCollect(tempublish.id,type);
+		if(type==3){
+			((BaseActivity) this.context).addDamaoxian(tempublish.content);
+		}
 	}
 	
 	
-	public void shenhe(int id,int type){
+	/**
+	 * 管理员审核词条
+	 * @param id
+	 * @param type
+	 */
+	public void shenhe(Publish tempublish,int type){
 		PublishHandler publishHandler = new PublishHandler(callBackActivity);
 		publishHandler.setUid(uid);
-		publishHandler.shenHe(id,type);
+		publishHandler.shenHe(tempublish.id,type);
 	}
 	
 	/**

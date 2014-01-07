@@ -35,7 +35,6 @@ public class PunishActivity extends BaseActivity {
 	private Button randomBtn;
 	private Button conitnueBtn;
 	private Button punish_disc;
-	private Button testBtn;
 	private TextView punish_guize;
 	private TextView punish_1;
 	private TextView punish_2;
@@ -90,7 +89,6 @@ public class PunishActivity extends BaseActivity {
 		randomBtn	= (Button)findViewById(R.id.punish_random);
 		punish_disc = (Button) findViewById(R.id.punish_disc);
 		conitnueBtn = (Button) findViewById(R.id.punish_continue);
-		testBtn = (Button) findViewById(R.id.testBtn);
 		punish_guize = (TextView) findViewById(R.id.punish_guize);
 		punish_1	= (TextView)findViewById(R.id.punish_1);
 		punish_2	= (TextView)findViewById(R.id.punish_2);
@@ -126,8 +124,7 @@ public class PunishActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				SoundPlayer.playball();
-				trueBtn.setVisibility(View.INVISIBLE);
-				advenBtn.setVisibility(View.INVISIBLE);
+				userChooseBegin();
 				// 暂时，先隐藏 换题 按钮
 				// changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
@@ -149,8 +146,7 @@ public class PunishActivity extends BaseActivity {
 			public void onClick(View v) {
 				flag = true;
 				SoundPlayer.playball();
-				trueBtn.setVisibility(View.INVISIBLE);
-				advenBtn.setVisibility(View.INVISIBLE);
+				userChooseBegin();
 				// 暂时，先隐藏 换题 按钮
 				// changeBtn.setVisibility(View.VISIBLE);
 				randomBtn.setVisibility(View.VISIBLE);
@@ -185,20 +181,12 @@ public class PunishActivity extends BaseActivity {
 			}
 		});
 		
-		// 测试按键,测试http网络服务
-		testBtn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-//				sendPublish("大家新年快乐", 3);
-//				getAllPublish(0);
-			}
-		});
-		
 		
 
 		setBtnGreen(trueBtn);
 		setBtnGreen(advenBtn);
 		setBtnBlue(conitnueBtn);
+		setBtnBlue(user_contribute);
 		// 用户选择换题目
 
 		randomBtn.setOnTouchListener(new OnTouchListener() {
@@ -245,6 +233,14 @@ public class PunishActivity extends BaseActivity {
 	}// onCreat 方法结束
 
 	
+	/**
+	 * 用户点击真心话大冒险，开始游戏的时候，隐藏其它按键
+	 */
+	public void userChooseBegin(){
+		trueBtn.setVisibility(View.INVISIBLE);
+		advenBtn.setVisibility(View.INVISIBLE);
+		user_contribute.setVisibility(View.INVISIBLE);
+	}
 	
 	
 	/* 处理回调方法
@@ -342,7 +338,7 @@ public class PunishActivity extends BaseActivity {
 	private void getAdvenPunish(){
 		String[] str	= new String[6];
 		for(int i=0;i<6;i++){
-			str[i] = getDamaoxian();
+			str[i] = getRandomMaoxianFromLocate();
 		}
 		setTextView(str);
 	}

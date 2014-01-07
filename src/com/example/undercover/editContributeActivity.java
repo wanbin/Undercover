@@ -29,10 +29,11 @@ public class editContributeActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				sendPublish();
-				finish();
-//				sendRandom();
-				
+				if (sendPublish()) {
+					finish();
+				}
+				// sendRandom();
+
 			}
 		});
 
@@ -48,9 +49,9 @@ public class editContributeActivity extends BaseActivity {
 	/**
 	 * 发布新闻方法
 	 */
-	public void sendPublish() {
+	public boolean sendPublish() {
 		PublishHandler publishHandler = new PublishHandler(this);
-		publishHandler.sendPublish(textCotent.getText().toString(), 1);
+		return publishHandler.sendPublish(textCotent.getText().toString(), 1);
 	}
 
 	public void sendRandom() {

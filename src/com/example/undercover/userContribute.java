@@ -77,6 +77,9 @@ public class userContribute extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				// finish();
+				
+				
+				
 				if (isGm == 1) {
 					getAllPublishShenHe(0);
 				} else {

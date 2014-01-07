@@ -2,11 +2,12 @@ package http;
 
 import org.json.JSONObject;
 
+import com.example.undercover.BaseActivity;
 import com.example.undercover.ConstantControl;
 import com.example.undercover.httpCallBack;
+import com.example.util.KeyWordFilter;
 
 public class PublishHandler extends BaseHttpCommand {
-
 
 	public PublishHandler(httpCallBack messagecall) {
 		super(messagecall);
@@ -16,8 +17,12 @@ public class PublishHandler extends BaseHttpCommand {
 	/**
 	 * 发布新闻
 	 */
-	public void sendPublish(String content, int type) {
+	public boolean sendPublish(String content, int type) {
 		JSONObject obj = new JSONObject();
+		if (KeyWordFilter.chackContinue(content)) {
+			mc.ToastMessage("包含敏感词");
+			return false;
+		}
 		try {
 			obj.put("content", content);
 			obj.put("type", type);
@@ -25,6 +30,12 @@ public class PublishHandler extends BaseHttpCommand {
 			e.printStackTrace();
 		}
 		getHttpRequest(obj, ConstantControl.SEND_PUBLISH_ALL);
+		return true;
+	}
+	
+	public boolean checkContent(String content){
+//		if(content.contains(cs))
+		return true;
 	}
 
 	/**

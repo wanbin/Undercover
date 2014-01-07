@@ -171,7 +171,7 @@ public class SelectGameActivity extends BaseActivity {
 		weixinButton = (Button) helpView.findViewById(R.id.btnweixin);
 		weixinButton.setOnClickListener(new MyClickListener());
 		framPing = (FrameLayout) moreView.findViewById(R.id.btnPing);
-		frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
+//		frameAsk = (FrameLayout) moreView.findViewById(R.id.btnAsk);
 		framTrue = (FrameLayout) moreView.findViewById(R.id.btnTrue);
 		framClick = (FrameLayout) moreView.findViewById(R.id.btnClick);
 		frameKill = (FrameLayout) moreView.findViewById(R.id.btnKill);
@@ -186,8 +186,8 @@ public class SelectGameActivity extends BaseActivity {
 		initFrame(framPing, strFromId("circleme"), 3, 6,
 				R.drawable.icon_bottle, RotaryBottleActivity.class,
 				"game_bottle", "bottle", 0);
-		initFrame(frameAsk, strFromId("askme"), 4, 8, R.drawable.icon_ask,
-				QuestionAnswer.class, "game_ask", "ask", 0);
+//		initFrame(frameAsk, strFromId("askme"), 4, 8, R.drawable.icon_ask,
+//				QuestionAnswer.class, "game_ask", "ask", 0);
 		initFrame(framTrue, strFromId("truethings"), 2, 8,
 				R.drawable.icon_true, PunishActivity.class,
 				"game_zhenxinhua_damaoxian", "true", 0);

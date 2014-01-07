@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,6 +51,10 @@ import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.controller.UMSsoHandler;
 import com.umeng.socialize.media.UMImage;
 
+/**
+ * @author wanhin
+ *
+ */
 public class BaseActivity extends Activity  implements httpCallBack{
 	//这是服务器的地址
 		protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
@@ -437,7 +442,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		return temstr.append(stradd + ",");
 	}
 
-	protected String getRandomMaoxian(String strkey) {
+	private String getRandomMaoxian(String strkey) {
 		if (map == null) {
 			getMaoxian();
 		}
@@ -464,10 +469,96 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		return strReturn;
 	}
 
-	public String getDamaoxian() {
+	
+	
+	
+	
+	/**
+	 * 取得一条网络随机的大冒险，优先先网络，如果没有网络，那么取本地
+	 * 
+	 * @return
+	 */
+	public String getRandomMaoxianFromLocate() {
+		JSONArray jsonarray = getLocateDamaoxian();
+		Random a = new Random();
+		if (jsonarray.length() < 20) {
+			//防止词汇较少一直取相同的词汇情况
+			if (Math.abs(a.nextInt()) % 10 < 8) {
+				return getRandomMaoxian("start");
+			}
+		}
+		int index = Math.abs(a.nextInt()) % jsonarray.length();
+		try {
+			return jsonarray.getJSONObject(index).getString("data").toString();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return getRandomMaoxian("start");
 	}
 
+	
+	/**
+	 * 把网络取到的真心话保存到本地
+	 * @param objarray
+	 */
+	protected void setLocateDamaoxian(JSONArray objarray) {
+		gameInfo.edit().putString("damaoxian", objarray.toString()).commit();
+	}
+	
+	
+	/**
+	 * 添加一条大冒险，需要判断是否有重复的值
+	 * @param damaoxian
+	 */
+	public boolean addDamaoxian(String damaoxian) {
+		JSONArray jsonarray = getLocateDamaoxian();
+		for (int i = 0; i < jsonarray.length(); i++) {
+			try {
+				JSONObject tem = jsonarray.getJSONObject(i);
+				String str = tem.getString("data");
+				if (str.equals(damaoxian)) {
+					return false;
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		JSONObject newtem = new JSONObject();
+		try {
+			newtem.put("data", damaoxian);
+			jsonarray.put(newtem);
+			setLocateDamaoxian(jsonarray);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	
+	/**
+	 * 取到网络的真心话
+	 * @return
+	 */
+	protected JSONArray getLocateDamaoxian() {
+		JSONArray json = new JSONArray();
+		try {
+			json = new JSONArray(gameInfo.getString("damaoxian", ""));
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return json;
+	}
+	
+	
+	
+	/**
+	 * 取到本地的真心话
+	 * @return
+	 */
 	public String getTurns() {
 		String[] zhenxin = getResources().getStringArray(R.array.zhenxinhua);
 		Random random = new Random();
@@ -917,7 +1008,7 @@ public static String getDeviceInfo(Context context) {
 	 * 
 	 * @param message
 	 */
-	protected void ToastMessage(String message) {
+	public void ToastMessage(String message) {
 		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_SHORT).show();
 	}
 
