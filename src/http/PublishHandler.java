@@ -28,7 +28,7 @@ public class PublishHandler extends BaseHttpCommand {
 	}
 
 	/**
-	 * 发布新闻
+	 * 收藏、点赞
 	 */
 	public void addCollect(int id, int type) {
 		JSONObject obj = new JSONObject();
@@ -40,6 +40,22 @@ public class PublishHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.SEND_PUBLISH_COLLECT);
 	}
+	
+	
+	/**
+	 * 收藏、点赞
+	 */
+	public void shenHe(int id, int type) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("id", id);
+			obj.put("type", type);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.PUBLISH_SHENHE);
+	}
+
 
 	/**
 	 * 取得所有新闻
@@ -48,6 +64,20 @@ public class PublishHandler extends BaseHttpCommand {
 		JSONObject obj = new JSONObject();
 		try {
 			obj.put("page", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
+	}
+	
+	/**
+	 * 取得所有需要审核的新闻
+	 */
+	public void getAllPublishNeedShenhe(int page) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("page", page);
+			obj.put("shenhe", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

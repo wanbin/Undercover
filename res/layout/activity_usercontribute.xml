@@ -16,12 +16,20 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="190dp"
             android:text="@string/strreturn" />
-
+        
+ 		 <Button
+            android:id="@+id/getGM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GM" />
+ 		 
         <Button
             android:id="@+id/addcontribute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addcontribute" />
+        
+        
 
     </LinearLayout>
 
