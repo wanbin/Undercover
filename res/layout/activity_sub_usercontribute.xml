@@ -46,25 +46,38 @@
             android:layout_height="wrap_content"
             android:gravity="center" >
 
-            <Button
+            <ImageView
                 android:id="@+id/buttonLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"
-                android:text="Button" />
+                android:background="@drawable/icon_for_enable" />
 
-            <Button
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10" />
+
+            <ImageView
                 android:id="@+id/buttonDislike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/icon_against_enable" />
 
-            <Button
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="50dp"
+                android:text="2029" />
+
+            <ImageView
                 android:id="@+id/buttonCollect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="Button" />
+                android:background="@drawable/icon_fav_enable"
+                />
 
         </LinearLayout>
     </LinearLayout>

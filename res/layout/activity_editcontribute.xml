@@ -10,18 +10,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center" >
 
-        <Button
+        <ImageView
             android:id="@+id/cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="190dp"
-            android:text="Button" />
+            android:background="@drawable/icon_back_enable"
+            />
 
-        <Button
+        <ImageView
             android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:background="@drawable/icon_send"
+            />
+
     </LinearLayout>
 
     <EditText
