@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -34,6 +35,12 @@ public class MyAdapter extends BaseAdapter {
     private BaseActivity callBackActivity=null;
     private int isGM=0;
     
+    /**
+     * 初始化Myadapter
+     * @param context 回调函数，写上就行
+     * @param publishs 这个是返回的数据LIST
+     * @param uid
+     */
     public MyAdapter(Context context,List<Publish> publishs,String uid){  
         this.publishs = publishs;  
         this.context = context;  
@@ -51,9 +58,9 @@ public class MyAdapter extends BaseAdapter {
     public final class ViewHolder {  
         public TextView title;  
         public TextView info;  
-        public Button likebtn;  
-        public Button dislikebtn;
-        public Button collect;
+        public ImageView likebtn;  
+        public ImageView dislikebtn;
+        public ImageView collect;
     }
 	@Override
 	public int getCount() {
@@ -80,36 +87,37 @@ public class MyAdapter extends BaseAdapter {
 					.findViewById(R.id.txtName);
 			viewHolder.info = (TextView) convertView
 					.findViewById(R.id.txtContent);
-			viewHolder.likebtn = (Button) convertView
+			viewHolder.likebtn = (ImageView) convertView
 					.findViewById(R.id.buttonLike);
-			viewHolder.dislikebtn = (Button) convertView
+			viewHolder.dislikebtn = (ImageView) convertView
 					.findViewById(R.id.buttonDislike);
-			viewHolder.collect = (Button) convertView
+			viewHolder.collect = (ImageView) convertView
 					.findViewById(R.id.buttonCollect);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
+		//设置各控件的内容在这里
 		viewHolder.title.setText(temPublish.name);  
         viewHolder.info.setText(temPublish.content);  
         
 		if (isGM==1) {
-			viewHolder.likebtn.setText("通过");
+//			viewHolder.likebtn.setText("通过");
 			viewHolder.likebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					shenhe(temPublish.id, 1);
 				}
 			});
-			viewHolder.dislikebtn.setText("未通过");
+//			viewHolder.dislikebtn.setText("未通过");
 			viewHolder.dislikebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					shenhe(temPublish.id, 2);
 				}
 			});
-			viewHolder.collect.setText("直接删除");
+//			viewHolder.collect.setText("直接删除");
 			viewHolder.collect.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -156,6 +164,10 @@ public class MyAdapter extends BaseAdapter {
 		publishHandler.shenHe(id,type);
 	}
 	
+	/**
+	 * @author wanhin
+	 *真心话大冒险类，需要在里面添加like,dislike内容
+	 */
 	public static class Publish {
 		public int id;
 		public String name;
