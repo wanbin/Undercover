@@ -61,15 +61,15 @@ public class userContribute extends BaseActivity {
 			}
 		});
 		//添加大冒险按钮
-		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//finish();
-//				getAllPublish(0);
-				getUserInfo();
-			}
-		});
+//		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				//finish();
+////				getAllPublish(0);
+//				getUserInfo();
+//			}
+//		});
 		
 		// 添加大冒险按钮
 		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
