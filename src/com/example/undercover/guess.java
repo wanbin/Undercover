@@ -1,5 +1,7 @@
 package com.example.undercover;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -53,6 +55,11 @@ public class guess extends BaseActivity {
 	private boolean gamefinish = false;
 	private String[] overString;
 	private boolean[] hasClicked;
+	
+	/**
+	 * 用来注册所有的按键，用户来停用或可用
+	 */
+	private List<Button> regButton=null;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +69,7 @@ public class guess extends BaseActivity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		overString = getResources().getStringArray(R.array.overstring);
 
-		  
+		regButton=new ArrayList<Button>();
 		  
 		initBtnInfo(R.id.btninfo, strFromId("txtGuessHelp"));
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
@@ -153,6 +160,7 @@ public class guess extends BaseActivity {
 					});
 				}
 				temindex++;
+				regButton.add(select);
 				fl.addView(select);
 				fl.addView(text);
 				fl.addView(shenfenimage, disWidth / 12, disWidth / 12);
@@ -200,7 +208,6 @@ public class guess extends BaseActivity {
 				Log.i("YoumiSample", "请求广告成功");
 
 			}
-
 			@Override
 			public void onFailedToReceivedAd(AdView arg0) {
 				Log.i("YoumiSample", "请求广告失败");
@@ -282,9 +289,15 @@ public class guess extends BaseActivity {
 	}
 
 	protected void setAllButton(boolean useable) {
-		for (int i = 0; i < content.length; i++) {
-			Button tem = (Button) contentTable.findViewWithTag(i);
-			tem.setClickable(useable);
+		for (int i = 0; i < regButton.size(); i++) {
+			Button tem = (Button) regButton.get(i);
+//			tem.setClickable(false);
+			tem.setOnLongClickListener(new Button.OnLongClickListener() {
+				@Override
+				public boolean onLongClick(View v) {
+					return true;
+				}
+			});
 		}
 	}
 
