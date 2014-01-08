@@ -31,6 +31,8 @@ public class editContributeActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
+				
 				String content = textCotent.getText().toString();
 				if (sendPublish(content)) {
 					if (checkImport.isChecked()) {
@@ -38,7 +40,9 @@ public class editContributeActivity extends BaseActivity {
 					}
 					finish();
 				}
-				// sendRandom();
+				
+				
+//				 sendRandom();
 
 			}
 		});
@@ -57,7 +61,7 @@ public class editContributeActivity extends BaseActivity {
 		List<String> array = new ArrayList<String>();
 		PublishHandler publishHandler = new PublishHandler(this);
 		for (int i = 0; i < 2000; i++) {
-			String tem = getTurns();
+			String tem = getRandomMaoxian("start");
 			if (array.contains(tem)) {
 				continue;
 			} else {

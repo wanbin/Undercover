@@ -9,8 +9,8 @@ import com.loopj.android.http.RequestParams;
 
 public class BaseHttpCommand {
 
-//	protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
-	protected static String serverUrl = "http://192.168.1.31/Entry.php";
+	protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
+//	protected static String serverUrl = "http://192.168.1.31/Entry.php";
 	 protected httpCallBack mc=null;
 	 protected String uid="";
 

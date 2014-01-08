@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 
-import net.youmi.android.banner.AdSize;
-import net.youmi.android.banner.AdView;
-import net.youmi.android.banner.AdViewListener;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -194,25 +191,26 @@ public class guess extends BaseActivity {
 	}
 
 	private void showAd() {
-		LinearLayout adLayout = (LinearLayout) findViewById(R.id.ad);
-		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
-		adLayout.addView(adView);
-		adView.setAdListener(new AdViewListener() {
-			@Override
-			public void onSwitchedAd(AdView arg0) {
-				Log.i("YoumiSample", "广告条切换");
-			}
-
-			@Override
-			public void onReceivedAd(AdView arg0) {
-				Log.i("YoumiSample", "请求广告成功");
-
-			}
-			@Override
-			public void onFailedToReceivedAd(AdView arg0) {
-				Log.i("YoumiSample", "请求广告失败");
-			}
-		});
+		//TODO::YOUMI
+//		LinearLayout adLayout = (LinearLayout) findViewById(R.id.ad);
+//		AdView adView = new AdView(this, AdSize.FIT_SCREEN);
+//		adLayout.addView(adView);
+//		adView.setAdListener(new AdViewListener() {
+//			@Override
+//			public void onSwitchedAd(AdView arg0) {
+//				Log.i("YoumiSample", "广告条切换");
+//			}
+//
+//			@Override
+//			public void onReceivedAd(AdView arg0) {
+//				Log.i("YoumiSample", "请求广告成功");
+//
+//			}
+//			@Override
+//			public void onFailedToReceivedAd(AdView arg0) {
+//				Log.i("YoumiSample", "请求广告失败");
+//			}
+//		});
 	}
 
 	private void initKill() {

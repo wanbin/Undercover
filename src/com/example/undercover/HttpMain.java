@@ -150,7 +150,7 @@ public class HttpMain extends BaseActivity {
 						.getString("gameuid"), temobj.getString("content"),
 						temobj.getInt("like"), temobj.getInt("dislike")
 						, temobj.getBoolean("liked"),
-						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime")));
+						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime"), temobj.getInt("type")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}

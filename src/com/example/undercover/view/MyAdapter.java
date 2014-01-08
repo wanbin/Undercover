@@ -62,6 +62,7 @@ public class MyAdapter extends BaseAdapter {
         public Button likebtn;  
         public Button dislikebtn;
         public Button collect;
+        public ImageView imageUser;
     }
 	@Override
 	public int getCount() {
@@ -96,6 +97,8 @@ public class MyAdapter extends BaseAdapter {
 					.findViewById(R.id.buttonDislike);
 			viewHolder.collect = (Button) convertView
 					.findViewById(R.id.buttonCollect);
+			viewHolder.imageUser = (ImageView) convertView
+					.findViewById(R.id.imageUser);
 			
 			
 			convertView.setTag(viewHolder);
@@ -104,6 +107,20 @@ public class MyAdapter extends BaseAdapter {
 		}
 		
 		
+		if (temPublish.type == 1) {
+			viewHolder.imageUser.setImageResource(R.drawable.cerblue01);
+		} else if (temPublish.type == 2) {
+			viewHolder.imageUser.setImageResource(R.drawable.cerbrown01);
+		} else if (temPublish.type == 3) {
+			viewHolder.imageUser.setImageResource(R.drawable.ceryellow01);
+		} else if (temPublish.type == 4) {
+			viewHolder.imageUser.setImageResource(R.drawable.cerpink01);
+		} else if (temPublish.type == 5) {
+			viewHolder.imageUser.setImageResource(R.drawable.cerpurple01);
+		} else if (temPublish.type == 6) {
+			viewHolder.imageUser.setImageResource(R.drawable.cergray01);
+		}
+			
 		
 		//设置各控件的内容在这里
 		viewHolder.title.setText(temPublish.name);  
@@ -149,9 +166,10 @@ public class MyAdapter extends BaseAdapter {
 				((BaseActivity) this.context).setBtnPink(viewHolder.collect);
 			}
         	
+			
         	viewHolder.likebtn.setText(String.format("喜欢(%s)", temPublish.like));
         	viewHolder.dislikebtn.setText(String.format("不喜欢(%s)", temPublish.dislike));
-        	viewHolder.collect.setText("导入");
+        	viewHolder.collect.setText("导入大冒险");
         	
         	
         	 viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
@@ -230,8 +248,9 @@ public class MyAdapter extends BaseAdapter {
 		public boolean dislikeed = false;
 		public boolean collented = false;
 		public String sendtime="";
+		public int type=1;
 
-		public Publish(int id, String name, String content,int like,int dislike,boolean likeed,boolean dislikeed,boolean collented,String sendtime) {
+		public Publish(int id, String name, String content,int like,int dislike,boolean likeed,boolean dislikeed,boolean collented,String sendtime,int type) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -242,6 +261,7 @@ public class MyAdapter extends BaseAdapter {
 			this.dislikeed = dislikeed;
 			this.collented = collented;
 			this.sendtime = sendtime;
+			this.type=type;
 		} 
 	}  
 }

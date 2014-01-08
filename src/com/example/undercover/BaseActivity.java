@@ -442,7 +442,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		return temstr.append(stradd + ",");
 	}
 
-	private String getRandomMaoxian(String strkey) {
+	protected String getRandomMaoxian(String strkey) {
 		if (map == null) {
 			getMaoxian();
 		}

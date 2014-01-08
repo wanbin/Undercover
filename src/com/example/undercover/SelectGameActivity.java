@@ -3,10 +3,6 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.youmi.android.AdManager;
-import net.youmi.android.smart.SmartBannerManager;
-import net.youmi.android.spot.SpotDialogListener;
-import net.youmi.android.spot.SpotManager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
