@@ -168,7 +168,7 @@ public class PunishActivity extends BaseActivity {
 				//跳转
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
-				intentGo.setClass(PunishActivity.this, userContribute.class);
+				intentGo.setClass(PunishActivity.this, HttpMain.class);
 				startActivity(intentGo);
 			}
 		});

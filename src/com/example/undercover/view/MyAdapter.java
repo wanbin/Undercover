@@ -58,11 +58,10 @@ public class MyAdapter extends BaseAdapter {
     public final class ViewHolder {  
         public TextView title;  
         public TextView info;  
-        public ImageView likebtn;  
-        public ImageView dislikebtn;
-        public ImageView collect;
-        public TextView textLike;
-        public TextView textDislike;
+        public TextView sendtime;  
+        public Button likebtn;  
+        public Button dislikebtn;
+        public Button collect;
     }
 	@Override
 	public int getCount() {
@@ -79,7 +78,7 @@ public class MyAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final Publish temPublish = (Publish) getItem(position);
-		ViewHolder viewHolder = null;
+		final ViewHolder viewHolder;
 
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
@@ -87,31 +86,29 @@ public class MyAdapter extends BaseAdapter {
 			viewHolder = new ViewHolder();
 			viewHolder.title = (TextView) convertView
 					.findViewById(R.id.txtName);
+			viewHolder.sendtime = (TextView) convertView
+					.findViewById(R.id.txtTime);
 			viewHolder.info = (TextView) convertView
 					.findViewById(R.id.txtContent);
-			viewHolder.likebtn = (ImageView) convertView
+			viewHolder.likebtn = (Button) convertView
 					.findViewById(R.id.buttonLike);
-			viewHolder.dislikebtn = (ImageView) convertView
+			viewHolder.dislikebtn = (Button) convertView
 					.findViewById(R.id.buttonDislike);
-			viewHolder.collect = (ImageView) convertView
+			viewHolder.collect = (Button) convertView
 					.findViewById(R.id.buttonCollect);
 			
-			viewHolder.textLike = (TextView) convertView
-					.findViewById(R.id.textLike);
-			viewHolder.textDislike = (TextView) convertView
-					.findViewById(R.id.textDislike);
 			
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
+		
+		
 		//设置各控件的内容在这里
 		viewHolder.title.setText(temPublish.name);  
         viewHolder.info.setText(temPublish.content);
-        viewHolder.textLike.setText(temPublish.like+""	);
-        viewHolder.textDislike.setText(temPublish.dislike+"");
-        
+        viewHolder.sendtime.setText(temPublish.sendtime);
 		if (isGM==1) {
 //			viewHolder.likebtn.setText("通过");
 			viewHolder.likebtn.setOnClickListener(new OnClickListener() {
@@ -136,32 +133,60 @@ public class MyAdapter extends BaseAdapter {
 			});
 		}
         else{
+			if (temPublish.likeed) {
+				setDisableBtn(viewHolder.likebtn);
+			} else {
+				((BaseActivity) this.context).setBtnPink(viewHolder.likebtn);
+			}
+			if (temPublish.dislikeed) {
+				setDisableBtn(viewHolder.dislikebtn);
+			} else {
+				((BaseActivity) this.context).setBtnPink(viewHolder.dislikebtn);
+			}
+			if (temPublish.collented) {
+				setDisableBtn(viewHolder.collect);
+			} else {
+				((BaseActivity) this.context).setBtnPink(viewHolder.collect);
+			}
+        	
+        	viewHolder.likebtn.setText(String.format("喜欢(%s)", temPublish.like));
+        	viewHolder.dislikebtn.setText(String.format("不喜欢(%s)", temPublish.dislike));
+        	viewHolder.collect.setText("导入");
+        	
+        	
         	 viewHolder.likebtn.setOnClickListener(new OnClickListener(){  
                  @Override  
                  public void onClick(View v) {  
-                 	addcollect(temPublish,1);
+					temPublish.likeed = true;
+                 	addcollect(temPublish,1,viewHolder.likebtn);
+                 	viewHolder.likebtn.setText(String.format("喜欢(%d)", ++temPublish.like));
                  }  
              }); 
              viewHolder.dislikebtn.setOnClickListener(new OnClickListener(){  
                  @Override  
                  public void onClick(View v) {  
-                 	addcollect(temPublish,2);
+ 					temPublish.dislikeed = true;
+					addcollect(temPublish, 2,viewHolder.dislikebtn);
+                 	viewHolder.dislikebtn.setText(String.format("不喜欢(%d)", ++temPublish.dislike));
                  }  
              });  
      		viewHolder.collect.setOnClickListener(new OnClickListener() {
      			@Override
      			public void onClick(View v) {
-     				addcollect(temPublish,3);
+					temPublish.collented = true;
+     				addcollect(temPublish,3,viewHolder.collect);
      			}
      		});
         }
 		return convertView;
 	}  
 	
+	
 	/**
 	 * 用户收藏，用户点赞
 	 */
-	public void addcollect(Publish tempublish,int type){
+	public void addcollect(Publish tempublish,int type,Button btn){
+		setDisableBtn(btn);
 		PublishHandler publishHandler = new PublishHandler(callBackActivity);
 		publishHandler.setUid(uid);
 		publishHandler.addCollect(tempublish.id,type);
@@ -170,6 +195,14 @@ public class MyAdapter extends BaseAdapter {
 		}
 	}
 	
+	/**
+	 * 把按键状态设置为灰
+	 * @param btn
+	 */
+	public void setDisableBtn(Button btn){
+		btn.setClickable(false);
+		((BaseActivity) this.context).setBtnBrown(btn);
+	}
 	
 	/**
 	 * 管理员审核词条
@@ -193,13 +226,22 @@ public class MyAdapter extends BaseAdapter {
 		public int like;
 		public int dislike;
 
-		public Publish(int id, String name, String content,int like,int dislike) {
+		public boolean likeed = false;
+		public boolean dislikeed = false;
+		public boolean collented = false;
+		public String sendtime="";
+
+		public Publish(int id, String name, String content,int like,int dislike,boolean likeed,boolean dislikeed,boolean collented,String sendtime) {
 			super();
 			this.id = id;
 			this.name = name;
 			this.content = content;
 			this.like = like ;
 			this.dislike = dislike;
+			this.likeed = likeed;
+			this.dislikeed = dislikeed;
+			this.collented = collented;
+			this.sendtime = sendtime;
 		} 
 	}  
 }

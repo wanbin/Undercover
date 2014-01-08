@@ -718,7 +718,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 				R.drawable.cerpink02);
 	}
 
-	protected void setBtnPink(Button btn) {
+	public void setBtnPink(Button btn) {
 		setTouchActionFactory(btn, R.drawable.pinkbtn1, R.drawable.pinkbtn2);
 	}
 
@@ -745,7 +745,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	}
 
 
-	protected void setBtnBrown(Button btn) {
+	public void setBtnBrown(Button btn) {
 		setTouchActionFactory(btn, R.drawable.brownbtn1, R.drawable.brownbtn2);
 	}
 

@@ -173,4 +173,9 @@
 <string name="hideAd">HIDE AD</string>                                                                                                                                                                                                                                              
 <string name="thankforad">感谢您的支持，广告能支持我们更好的去完善游戏</string>
 <string name="thankforhidead">还您一个洁净的游戏</string>
+<string name="userContribute">用户贡献</string>
+<string name="addcontribute">ADD</string>
+<string name="addTruth">添加大冒险</string>
+<string name="send">SEND</string>
+<string name="IntenetTrues">ON LINE</string>
 </resources>

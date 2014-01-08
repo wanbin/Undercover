@@ -19,4 +19,6 @@
  	<dimen name="txtSmall12">12dp</dimen>
  	<dimen name="imageHelpMax">50dp</dimen>
  	<dimen name="paiindex">40dp</dimen>
+ 	<dimen name="like">40dp</dimen>
+ 	<dimen name="smailpadding">2dp</dimen>
 </resources>

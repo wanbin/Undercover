@@ -10,26 +10,32 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 public class editContributeActivity extends BaseActivity {
-	private ImageView send;
-	private ImageView cancle;
+	private Button send;
 	private EditText textCotent;
+	private CheckBox checkImport;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editcontribute);
-
-		send = (ImageView) findViewById(R.id.send);
-		cancle = (ImageView) findViewById(R.id.cancle);
+		initBtnBack(R.id.btnback);
+		send = (Button) findViewById(R.id.btnsend);
 		textCotent = (EditText) findViewById(R.id.editText1);
+		checkImport = (CheckBox) findViewById(R.id.checkImport);
+		setBtnGreen(send);
 		send.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (sendPublish()) {
+				String content = textCotent.getText().toString();
+				if (sendPublish(content)) {
+					if (checkImport.isChecked()) {
+						addDamaoxian(content);
+					}
 					finish();
 				}
 				// sendRandom();
@@ -37,21 +43,14 @@ public class editContributeActivity extends BaseActivity {
 			}
 		});
 
-		cancle.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		});
 	}
 
 	/**
 	 * 发布新闻方法
 	 */
-	public boolean sendPublish() {
+	public boolean sendPublish(String content) {
 		PublishHandler publishHandler = new PublishHandler(this);
-		return publishHandler.sendPublish(textCotent.getText().toString(), 1);
+		return publishHandler.sendPublish(content, 1);
 	}
 
 	public void sendRandom() {

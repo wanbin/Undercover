@@ -4,41 +4,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:id="@+id/functionBtn"
+    <include
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_horizontal" >
-
-        <Button
-            android:id="@+id/finish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="190dp"
-            android:text="@string/strreturn" />
-        
- 		 <Button
-            android:id="@+id/getGM"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GM" />
- 		 
-        <Button
-            android:id="@+id/addcontribute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/addcontribute" />
-        
-        
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        layout="@layout/activity_bg" />
 
     <ListView
         android:id="@+id/myList"
         android:layout_width="match_parent"
-        android:layout_height="423dp"
-        android:layout_gravity="bottom" >
+        android:layout_height="380dp"
+        android:layout_gravity="center" >
 
     </ListView>
+
+    <LinearLayout
+        android:id="@+id/tem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp" >
+
+        
+        <Button
+            android:id="@+id/btnChange"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:layout_weight="50"
+            android:background="@drawable/greenbtn1"
+            android:text="@string/txtChange"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index" />
+
+        <Button
+            android:id="@+id/btnSay"
+            android:text="@string/txtSay"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index"
+            android:layout_weight="50"
+            android:background="@drawable/greenbtn1" />
+        
+      
+        
+    </LinearLayout>
+    
+    
 
 </FrameLayout>

@@ -30,56 +30,45 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class userContribute extends BaseActivity {
-	private Button AddTureBt;
-	private Button AddAdvenBt;
-	private Button getGm;
+public class HttpMain extends BaseActivity {
+	private Button btnChange;
+	private Button btnSay;
 	private ListView myList;
 	//private Button userConSend;
 	//private EditText userConTextField; 
 	
+	/* (non-Javadoc)
+	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usercontribute);
-		
-		AddTureBt = (Button)findViewById(R.id.addcontribute);
-		AddAdvenBt = (Button) findViewById(R.id.finish);
-		getGm = (Button) findViewById(R.id.getGM);
+		initBtnBack(R.id.btnback);
+		btnChange = (Button)findViewById(R.id.btnChange);
+		btnSay = (Button) findViewById(R.id.btnSay);
 		myList = (ListView) findViewById(R.id.myList);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
-		
+		setBtnGreen(btnChange);
+		setBtnBlue(btnSay);
 		
 		//添加真心话按钮
-		AddTureBt.setOnClickListener(new Button.OnClickListener() {
+		btnSay.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
-				intentGo.setClass(userContribute.this, editContributeActivity.class);
+				intentGo.setClass(HttpMain.this, editContributeActivity.class);
 				startActivity(intentGo);
 			}
 		});
-		//添加大冒险按钮
-//		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// TODO Auto-generated method stub
-//				//finish();
-////				getAllPublish(0);
-//				getUserInfo();
-//			}
-//		});
 		
-		// 添加大冒险按钮
-		AddAdvenBt.setOnClickListener(new Button.OnClickListener() {
+		//换一批
+		btnChange.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				// finish();
-				
-				
-				
 				if (isGm == 1) {
 					getAllPublishShenHe(0);
 				} else {
@@ -89,10 +78,10 @@ public class userContribute extends BaseActivity {
 			}
 		});
 		
-		if (!detect(userContribute.this)) {
+		if (!detect(HttpMain.this)) {
 			ToastMessageLong("当前网络不可用");
 		}
-		
+		getAllPublish(0);
 		getUserInfo();
 //		updateMessage(null);
 	}
@@ -151,14 +140,22 @@ public class userContribute extends BaseActivity {
 		for (int i = 0; i < obj.length(); i++) {
 			try {
 				JSONObject temobj = obj.getJSONObject(i);
+				if(temobj.getInt("id")==2761)
+				{
+					int da=1;
+					da++;
+				}
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
 				temPubs.add(new Publish(temobj.getInt("id"), temobj
-						.getString("gameuid"), temobj.getString("content"),temobj.getInt("like"),temobj.getInt("dislike")));
+						.getString("gameuid"), temobj.getString("content"),
+						temobj.getInt("like"), temobj.getInt("dislike")
+						, temobj.getBoolean("liked"),
+						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime")));
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		MyAdapter adapter = new MyAdapter(userContribute.this, temPubs,
+		MyAdapter adapter = new MyAdapter(HttpMain.this, temPubs,
 				this.getUid());
 		adapter.setCallBack(this);
 		adapter.setGM(isGm);

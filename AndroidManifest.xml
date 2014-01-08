@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.undercover"
-    android:versionCode="208"
-    android:versionName="2.08" >
+    android:versionCode="209"
+    android:versionName="2.09" >
 
     <application
         android:allowBackup="true"
@@ -57,7 +57,7 @@
         </activity>
         <activity android:name="com.example.undercover.WordSetting" >
         </activity>
-        <activity android:name="com.example.undercover.userContribute">
+        <activity android:name="com.example.undercover.HttpMain">
         </activity>
         <activity android:name="com.umeng.fb.ConversationActivity" />
         <activity android:name="com.umeng.fb.ContactActivity" />

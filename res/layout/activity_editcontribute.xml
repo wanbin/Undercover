@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/FrameLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="textStart" >
+
+        <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_bg" />
+        
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
     android:orientation="vertical" >
-
-    <LinearLayout
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" >
-
-        <ImageView
-            android:id="@+id/cancle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="190dp"
-            android:background="@drawable/icon_back_enable"
-            />
-
-        <ImageView
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/icon_send"
-            />
-
-    </LinearLayout>
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" >
-
-        <requestFocus />
+        android:ems="10"
+        android:lines="@integer/lines"
+        android:textAlignment="viewStart" >
     </EditText>
 
+    <CheckBox
+        android:id="@+id/checkImport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/importInto" />
+
+    <Button
+        android:id="@+id/btnsend"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/greenbtn1"
+        android:maxWidth="200dp"
+        android:text="@string/send"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/index" />
+
 </LinearLayout>
+</FrameLayout>

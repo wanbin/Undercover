@@ -44,38 +44,32 @@
             android:id="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" >
+            android:gravity="center|right"
+            android:paddingRight="5dp" >
 
-            <ImageView
+            <Button
                 android:id="@+id/buttonLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/icon_for_enable" />
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/smailpadding"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/txtSmall12" />
 
-            <TextView
-                android:id="@+id/textLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageView
+            <Button
                 android:id="@+id/buttonDislike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/icon_against_enable" />
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/smailpadding"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/txtSmall12" />
 
-            <TextView
-                android:id="@+id/textDislike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="50dp"  />
-
-            <ImageView
+            <Button
                 android:id="@+id/buttonCollect"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/icon_fav_enable"
-                />
+                android:layout_width="75dp"
+                android:layout_height="30dp"
+                android:padding="@dimen/smailpadding"
+                android:textColor="@color/WRITE"
+                android:textSize="@dimen/txtSmall12" />
 
         </LinearLayout>
     </LinearLayout>
