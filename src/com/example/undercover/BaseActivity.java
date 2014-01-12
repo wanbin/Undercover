@@ -1,5 +1,8 @@
 package com.example.undercover;
 
+import http.BehaveHandler;
+import http.UserHandler;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -84,6 +87,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	protected static int gameuid = 0;
 	protected static String uid = "";
 	protected UMSocialService mController;
+	protected static BehaveHandler behaveHandler =null;
 	
 	/**
 	 * 用户是否为GM管理员
@@ -101,7 +105,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		police = strFromId("txtPolice");
 		killer = strFromId("txtKiller");
 		nomalpeople = strFromId("txtNormal");
-
 		try {
 			VersionName = GetVersion();
 			// 初始化版本号信息,在替换界面元素时候使用
@@ -256,8 +259,16 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		MobclickAgent.onPause(this);
 	}
 
+	/**
+	 * 用户友盟点击，发送到服务器后台
+	 * @param clickname
+	 */
 	public void uMengClick(String clickname) {
 		MobclickAgent.onEvent(this, clickname);
+		if (behaveHandler == null) {
+			behaveHandler = new BehaveHandler(this);
+		}
+		behaveHandler.addUserBehave(clickname, "");
 	}
 
 

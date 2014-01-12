@@ -17,4 +17,8 @@ public class ConstantControl {
 	
 	// 取得用户信息
 	public static String GET_USER_INFO = "UserGetInfo";
+	
+	
+	//添加用户行为LOG
+	public static String BEHAVE_ADD = "BehaveAdd";
 }

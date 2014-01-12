@@ -150,11 +150,6 @@ public class HttpMain extends BaseActivity {
 		for (int i = 0; i < obj.length(); i++) {
 			try {
 				JSONObject temobj = obj.getJSONObject(i);
-				if(temobj.getInt("id")==2761)
-				{
-					int da=1;
-					da++;
-				}
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
 				temPubs.add(new Publish(temobj.getInt("id"), temobj
 						.getString("gameuid"), temobj.getString("content"),
