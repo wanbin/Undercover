@@ -34,6 +34,10 @@ public class editContributeActivity extends BaseActivity {
 				
 				
 				String content = textCotent.getText().toString();
+				if(textCotent.getText().length()!=0)
+						{
+						
+				//判断content的内容是否为控制
 				if (sendPublish(content)) {
 					if (checkImport.isChecked()) {
 						addDamaoxian(content);
@@ -45,6 +49,8 @@ public class editContributeActivity extends BaseActivity {
 //				 sendRandom();
 
 			}
+			}
+			
 		});
 
 	}
