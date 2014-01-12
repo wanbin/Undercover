@@ -170,6 +170,7 @@ public class PunishActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
 				intentGo.setClass(PunishActivity.this, HttpMain.class);
+				uMengClick("click_intenet");
 				startActivity(intentGo);
 			}
 		});

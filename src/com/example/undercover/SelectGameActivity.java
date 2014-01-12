@@ -298,6 +298,9 @@ public class SelectGameActivity extends BaseActivity {
 //		SpotManager.getInstance(this).setSpotTimeout(5000);// 5秒
 		
 		UmengUpdateAgent.update(this);
+		
+		//初始化的时候直接登录
+		getUserInfo();
 	}
 
 	private void updateImageIndex() {

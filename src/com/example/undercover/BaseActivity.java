@@ -1027,5 +1027,13 @@ public static String getDeviceInfo(Context context) {
 		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_LONG).show();
 	}
 	
+	/**
+	 * 取得用户信息，可以判断用户当前的身份，是否显示待审核的词汇
+	 */
+	protected void getUserInfo() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.getUserInfo(getUid());
+		uMengClick("getUserInfo");
+	}
 }
 
