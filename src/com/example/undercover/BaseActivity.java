@@ -481,14 +481,15 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	public String getRandomMaoxianFromLocate() {
 		JSONArray jsonarray = getLocateDamaoxian();
 		Random a = new Random();
+		// 这里有个BUG
 		if (jsonarray.length() < 20) {
-			//防止词汇较少一直取相同的词汇情况
+			// 防止词汇较少一直取相同的词汇情况
 			if (Math.abs(a.nextInt()) % 10 < 8) {
 				return getRandomMaoxian("start");
 			}
 		}
-		int index = Math.abs(a.nextInt()) % jsonarray.length();
 		try {
+			int index = Math.abs(a.nextInt()) % jsonarray.length();
 			return jsonarray.getJSONObject(index).getString("data").toString();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -496,7 +497,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		}
 		return getRandomMaoxian("start");
 	}
-
 	
 	/**
 	 * 把网络取到的真心话保存到本地

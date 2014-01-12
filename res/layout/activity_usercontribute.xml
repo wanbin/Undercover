@@ -12,8 +12,9 @@
     <ListView
         android:id="@+id/myList"
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_gravity="center" >
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_marginBottom="70dp" >
 
     </ListView>
 
@@ -47,6 +48,17 @@
             android:background="@drawable/greenbtn1" />
         
       
+        
+          <Button
+            android:id="@+id/btnReturn"
+            android:text="@string/strreturn"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/index"
+            android:layout_weight="20"
+            android:background="@drawable/greenbtn1" />
+          
         
     </LinearLayout>
     

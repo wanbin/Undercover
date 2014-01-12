@@ -33,6 +33,7 @@ import android.widget.TextView;
 public class HttpMain extends BaseActivity {
 	private Button btnChange;
 	private Button btnSay;
+	private Button btnReturn;
 	private ListView myList;
 	//private Button userConSend;
 	//private EditText userConTextField; 
@@ -43,14 +44,16 @@ public class HttpMain extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usercontribute);
-		initBtnBack(R.id.btnback);
+//		initBtnBack(R.id.btnback);
 		btnChange = (Button)findViewById(R.id.btnChange);
 		btnSay = (Button) findViewById(R.id.btnSay);
+		btnReturn = (Button) findViewById(R.id.btnReturn);
 		myList = (ListView) findViewById(R.id.myList);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
 		setBtnGreen(btnChange);
-		setBtnBlue(btnSay);
+		setBtnGreen(btnSay);
+		setBtnBlue(btnReturn);
 		
 		//添加真心话按钮
 		btnSay.setOnClickListener(new Button.OnClickListener() {
@@ -60,6 +63,13 @@ public class HttpMain extends BaseActivity {
 				Intent intentGo = new Intent();
 				intentGo.setClass(HttpMain.this, editContributeActivity.class);
 				startActivity(intentGo);
+			}
+		});
+		//返回
+		btnReturn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
 			}
 		});
 		
