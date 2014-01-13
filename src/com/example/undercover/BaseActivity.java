@@ -44,6 +44,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.jpush.android.api.JPushInterface;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -135,7 +137,13 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		initJPUSH();
+	}
 
+	protected void initJPUSH() {
+		JPushInterface.setDebugMode(true);
+		JPushInterface.init(this);
+		JPushInterface.setAlias(this, "wanbin", null);
 	}
 	
 	/**
