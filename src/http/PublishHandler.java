@@ -17,7 +17,7 @@ public class PublishHandler extends BaseHttpCommand {
 	/**
 	 * 发布新闻
 	 */
-	public boolean sendPublish(String content, int type) {
+	public boolean sendPublish(String content,String username, int type) {
 		JSONObject obj = new JSONObject();
 		if (KeyWordFilter.chackContinue(content)) {
 			mc.ToastMessage("包含敏感词");
@@ -26,6 +26,7 @@ public class PublishHandler extends BaseHttpCommand {
 		try {
 			obj.put("content", content);
 			obj.put("type", type);
+			obj.put("username", username);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
