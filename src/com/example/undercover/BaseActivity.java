@@ -140,10 +140,13 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		initJPUSH();
 	}
 
+	/**
+	 * 初始化JPUSH推送
+	 */
 	protected void initJPUSH() {
 		JPushInterface.setDebugMode(true);
 		JPushInterface.init(this);
-		JPushInterface.setAlias(this, "wanbin", null);
+		JPushInterface.setAlias(this, getUid(), null);
 	}
 	
 	/**
