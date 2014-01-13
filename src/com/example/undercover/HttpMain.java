@@ -187,7 +187,7 @@ public class HttpMain extends BaseActivity {
 				JSONObject temobj = obj.getJSONObject(i);
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
 				temPubs.add(new Publish(temobj.getInt("id"), temobj
-						.getString("gameuid"), temobj.getString("content"),
+						.getString("username"), temobj.getString("content"),
 						temobj.getInt("like"), temobj.getInt("dislike")
 						, temobj.getBoolean("liked"),
 						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime"), temobj.getInt("type")));
