@@ -32,9 +32,9 @@ public class PublishHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.SEND_PUBLISH_ALL);
 		return true;
 	}
-	
-	public boolean checkContent(String content){
-//		if(content.contains(cs))
+
+	public boolean checkContent(String content) {
+		// if(content.contains(cs))
 		return true;
 	}
 
@@ -51,8 +51,7 @@ public class PublishHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.SEND_PUBLISH_COLLECT);
 	}
-	
-	
+
 	/**
 	 * 收藏、点赞
 	 */
@@ -67,7 +66,6 @@ public class PublishHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.PUBLISH_SHENHE);
 	}
 
-
 	/**
 	 * 取得所有新闻
 	 */
@@ -80,7 +78,7 @@ public class PublishHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
 	}
-	
+
 	/**
 	 * 取得所有需要审核的新闻
 	 */

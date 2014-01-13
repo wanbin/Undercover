@@ -30,6 +30,7 @@ public class PunishActivity extends BaseActivity {
 	
 	private Button trueBtn;
 	private Button advenBtn;
+	private Button showTimeBtn;
 	private Button user_contribute;
 	private Button changeBtn;
 	private Button randomBtn;

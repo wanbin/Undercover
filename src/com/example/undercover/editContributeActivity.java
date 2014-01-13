@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class editContributeActivity extends BaseActivity {
 	private Button send;
@@ -48,13 +49,17 @@ public class editContributeActivity extends BaseActivity {
 				
 //				 sendRandom();
 
-			}
+			} else showEditContent();	
+				
 			}
 			
 		});
 
 	}
-
+	// 弹出提示
+	void showEditContent (){
+	Toast.makeText(this,"<Please edit the content!!>", Toast.LENGTH_SHORT).show();
+	}
 	/**
 	 * 发布新闻方法
 	 */

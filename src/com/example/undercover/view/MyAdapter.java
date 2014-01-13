@@ -153,17 +153,17 @@ public class MyAdapter extends BaseAdapter {
 			if (temPublish.likeed) {
 				setDisableBtn(viewHolder.likebtn);
 			} else {
-				((BaseActivity) this.context).setBtnPink(viewHolder.likebtn);
+				((BaseActivity) this.context).setBtnBrown(viewHolder.likebtn);
 			}
 			if (temPublish.dislikeed) {
 				setDisableBtn(viewHolder.dislikebtn);
 			} else {
-				((BaseActivity) this.context).setBtnPink(viewHolder.dislikebtn);
+				((BaseActivity) this.context).setBtnBrown(viewHolder.dislikebtn);
 			}
 			if (temPublish.collented) {
 				setDisableBtn(viewHolder.collect);
 			} else {
-				((BaseActivity) this.context).setBtnPink(viewHolder.collect);
+				((BaseActivity) this.context).setBtnBrown(viewHolder.collect);
 			}
         	
 			
@@ -219,7 +219,7 @@ public class MyAdapter extends BaseAdapter {
 	 */
 	public void setDisableBtn(Button btn){
 		btn.setClickable(false);
-		((BaseActivity) this.context).setBtnBrown(btn);
+		((BaseActivity) this.context).setBtnPink(btn);
 	}
 	
 	/**
