@@ -1,5 +1,8 @@
 package com.example.undercover;
 
+import http.BehaveHandler;
+import http.UserHandler;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -40,6 +43,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import cn.jpush.android.api.JPushInterface;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -84,6 +89,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	protected static int gameuid = 0;
 	protected static String uid = "";
 	protected UMSocialService mController;
+	protected static BehaveHandler behaveHandler =null;
 	
 	/**
 	 * 用户是否为GM管理员
@@ -101,7 +107,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		police = strFromId("txtPolice");
 		killer = strFromId("txtKiller");
 		nomalpeople = strFromId("txtNormal");
-
 		try {
 			VersionName = GetVersion();
 			// 初始化版本号信息,在替换界面元素时候使用
@@ -132,7 +137,13 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		initJPUSH();
+	}
 
+	protected void initJPUSH() {
+		JPushInterface.setDebugMode(true);
+		JPushInterface.init(this);
+		JPushInterface.setAlias(this, "wanbin", null);
 	}
 	
 	/**
@@ -256,8 +267,16 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		MobclickAgent.onPause(this);
 	}
 
+	/**
+	 * 用户友盟点击，发送到服务器后台
+	 * @param clickname
+	 */
 	public void uMengClick(String clickname) {
 		MobclickAgent.onEvent(this, clickname);
+		if (behaveHandler == null) {
+			behaveHandler = new BehaveHandler(this);
+		}
+		behaveHandler.addUserBehave(clickname, "");
 	}
 
 
@@ -1016,5 +1035,12 @@ public static String getDeviceInfo(Context context) {
 		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_LONG).show();
 	}
 	
+	/**
+	 * 取得用户信息，可以判断用户当前的身份，是否显示待审核的词汇
+	 */
+	protected void getUserInfo() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.getUserInfo(getUid());
+	}
 }
 

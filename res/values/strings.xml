@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+﻿<?xml version='1.0' encoding='utf-8'?>
 <resources>
 <string name="app_name">谁是卧底-爱上聚会</string>
 <string name="punishmen">开始惩罚</string>
@@ -185,4 +185,5 @@
 <string name="adventure">大冒险</string>
 <string name="actor">演艺人生</string>
 <string name="username">昵称：</string>
+<string name="showgm">显示GM设置</string>
 </resources>

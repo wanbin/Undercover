@@ -22,6 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -29,12 +31,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HttpMain extends BaseActivity {
 	private Button btnChange;
 	private Button btnSay;
 	private Button btnReturn;
+	private CheckBox checkGm;
 	private ListView myList;
+	private boolean isGMView=false;
+	private boolean isGM=false;
 	//private Button userConSend;
 	//private EditText userConTextField; 
 	
@@ -49,11 +55,13 @@ public class HttpMain extends BaseActivity {
 		btnSay = (Button) findViewById(R.id.btnSay);
 		btnReturn = (Button) findViewById(R.id.btnReturn);
 		myList = (ListView) findViewById(R.id.myList);
+		checkGm = (CheckBox) findViewById(R.id.checkGM);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
 		setBtnGreen(btnChange);
 		setBtnGreen(btnSay);
 		setBtnBlue(btnReturn);
+		
 		
 		//添加真心话按钮
 		btnSay.setOnClickListener(new Button.OnClickListener() {
@@ -79,6 +87,7 @@ public class HttpMain extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				// finish();
+				uMengClick("click_reflash");
 				if (isGm == 1) {
 					getAllPublishShenHe(0);
 				} else {
@@ -88,11 +97,40 @@ public class HttpMain extends BaseActivity {
 			}
 		});
 		
+		JSONObject user = getUserInfoFromLocal();
+		try {
+			isGM = user.getBoolean("isgm");
+			if (isGM) {
+				checkGm.setVisibility(View.VISIBLE);
+			} else {
+				checkGm.setVisibility(View.GONE);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		if (!detect(HttpMain.this)) {
 			ToastMessageLong("当前网络不可用");
 		}
+		checkGm.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				AdManage.showad = isChecked;
+				if (isChecked) {
+					Toast.makeText(HttpMain.this, "切换为GM视图", Toast.LENGTH_SHORT)
+							.show();
+					isGMView = true;
+				} else {
+					Toast.makeText(HttpMain.this, "切换为普通视图", Toast.LENGTH_SHORT)
+							.show();
+					isGMView = false;
+				}
+				getAllPublish(0);
+			}
+		});
+
 		getAllPublish(0);
-		getUserInfo();
 //		updateMessage(null);
 	}
 	
@@ -102,7 +140,11 @@ public class HttpMain extends BaseActivity {
 	 */
 	protected void getAllPublish(int page) {
 		PublishHandler publishHandler = new PublishHandler(this);
-		publishHandler.getAllPublish(page);
+		if (isGMView) {
+			publishHandler.getAllPublishNeedShenhe(page);
+		} else {
+			publishHandler.getAllPublish(page);
+		}
 	}
 	
 	/**
@@ -132,13 +174,6 @@ public class HttpMain extends BaseActivity {
 		}
 	}
 	
-	/**
-	 * 取得用户信息，可以判断用户当前的身份，是否显示待审核的词汇
-	 */
-	protected void getUserInfo() {
-		UserHandler userHandler = new UserHandler(this);
-		userHandler.getUserInfo(getUid());
-	}
 
 	/**
 	 * update message
@@ -150,11 +185,6 @@ public class HttpMain extends BaseActivity {
 		for (int i = 0; i < obj.length(); i++) {
 			try {
 				JSONObject temobj = obj.getJSONObject(i);
-				if(temobj.getInt("id")==2761)
-				{
-					int da=1;
-					da++;
-				}
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
 				temPubs.add(new Publish(temobj.getInt("id"), temobj
 						.getString("gameuid"), temobj.getString("content"),
@@ -163,12 +193,13 @@ public class HttpMain extends BaseActivity {
 						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime"), temobj.getInt("type")));
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 		MyAdapter adapter = new MyAdapter(HttpMain.this, temPubs,
 				this.getUid());
 		adapter.setCallBack(this);
-		adapter.setGM(isGm);
+		adapter.setGM(isGMView);
 		myList.setAdapter(adapter);
 	}
 
