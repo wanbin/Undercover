@@ -181,4 +181,5 @@
 <string name="importInto">直接导入本地库</string>
 <string name="txtChange">换一批瞅瞅</string>
 <string name="txtSay">我也提一个</string>
+<string name="showgm">显示GM设置</string>
 </resources>

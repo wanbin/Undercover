@@ -18,6 +18,19 @@
 
     </ListView>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp" >
+
+        <CheckBox
+            android:id="@+id/checkGM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/showgm" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/tem"
         android:layout_width="match_parent"

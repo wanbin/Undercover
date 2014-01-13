@@ -33,7 +33,7 @@ public class MyAdapter extends BaseAdapter {
 	Context context;  
     private String uid;
     private BaseActivity callBackActivity=null;
-    private int isGM=0;
+    private boolean isGM=false;
     
     /**
      * 初始化Myadapter
@@ -51,7 +51,7 @@ public class MyAdapter extends BaseAdapter {
     	callBackActivity=v;
     }
     
-	public void setGM(int gm) {
+	public void setGM(boolean gm) {
 		isGM = gm;
 	}
 	
@@ -126,30 +126,29 @@ public class MyAdapter extends BaseAdapter {
 		viewHolder.title.setText(temPublish.name);  
         viewHolder.info.setText(temPublish.content);
         viewHolder.sendtime.setText(temPublish.sendtime);
-		if (isGM==1) {
-//			viewHolder.likebtn.setText("通过");
+		if (isGM == true) {
+			viewHolder.likebtn.setText("通过");
 			viewHolder.likebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					shenhe(temPublish, 1);
 				}
 			});
-//			viewHolder.dislikebtn.setText("未通过");
+			viewHolder.dislikebtn.setText("未通过");
 			viewHolder.dislikebtn.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					shenhe(temPublish, 2);
 				}
 			});
-//			viewHolder.collect.setText("直接删除");
+			viewHolder.collect.setText("直接删除");
 			viewHolder.collect.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					shenhe(temPublish, 3);
 				}
 			});
-		}
-        else{
+		} else {
 			if (temPublish.likeed) {
 				setDisableBtn(viewHolder.likebtn);
 			} else {
@@ -165,7 +164,6 @@ public class MyAdapter extends BaseAdapter {
 			} else {
 				((BaseActivity) this.context).setBtnBrown(viewHolder.collect);
 			}
-        	
 			
         	viewHolder.likebtn.setText(String.format("喜欢(%s)", temPublish.like));
         	viewHolder.dislikebtn.setText(String.format("不喜欢(%s)", temPublish.dislike));

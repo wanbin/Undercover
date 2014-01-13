@@ -1033,7 +1033,6 @@ public static String getDeviceInfo(Context context) {
 	protected void getUserInfo() {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.getUserInfo(getUid());
-		uMengClick("getUserInfo");
 	}
 }
 
