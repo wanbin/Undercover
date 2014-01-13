@@ -3,6 +3,9 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -58,6 +61,7 @@ public class SelectGameActivity extends BaseActivity {
 	private boolean soundon = true;
 	private FrameLayout framPing, framClick, framTrue, frameAsk, frameKill,
 			framePush;
+	private TextView textMail;
 	private LinearLayout scrollHelpContent;
 	private ImageView pointleft, pointright;
 	protected ImageView imageIndex;
@@ -153,6 +157,10 @@ public class SelectGameActivity extends BaseActivity {
         
 		// helpButton = (Button) helpView.findViewById(R.id.helpButton);
 		// helpButton.setOnClickListener(new MyClickListener());
+        
+        //用户邮件提示文字
+        textMail = (TextView) welcomeView.findViewById(R.id.textMail);
+        
 		startButton = (Button) welcomeView.findViewById(R.id.startButton);
         startButton.setOnClickListener(new MyClickListener());
 
@@ -620,6 +628,28 @@ public class SelectGameActivity extends BaseActivity {
 			btnReStart.setVisibility(View.GONE);
 		} else {
 			btnReStart.setVisibility(View.VISIBLE);
+		}
+	}
+
+	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
+		super.CallBackPublicCommand(jsonobj, cmd);
+
+		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
+			try {
+				setUserInfo(new JSONObject(jsonobj.getString("data")));
+				JSONObject obj = new JSONObject(jsonobj.getString("data"));
+				if(obj.has("isgm")){
+					isGm=obj.getInt("isgm");
+				}
+				if (obj.has("mail")) {
+					JSONArray mailArr = obj.getJSONArray("mail");
+					textMail.setText("通知："
+							+ mailArr.getJSONObject(0).getString("content"));
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		}
 	}
 }

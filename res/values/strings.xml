@@ -87,9 +87,9 @@
 <string name="overString6">投错一个就少一个战友~</string>
 <string name="overString7">卧底卧底，你在哪里！</string>
 <string name="overString8">卧底，你是想怎样~</string>
-<string name="Version">【爱上聚会】2.09版本</string>
+<string name="Version">【爱上聚会】2.10版本</string>
 <string name="suggest">意见及建议：</string>
-<string name="suggest1">\n\n\nv2.09版本新功能：\n\n1、添加了控制声音的开关\n\n2、网络版真心话大冒险</string>
+<string name="suggest1">\n\n\nv2.10版本新功能：\n\n1、修复了2.09版本里面大冒险BUG\n\n2、及时得到提交内容的反馈</string>
 <string name="PunishInTurn">请输的同学依次接受惩罚</string>
 <string name="nextQuestion">下一题</string>
 <string name="GameOver">游戏结束</string>
@@ -183,7 +183,7 @@
 <string name="txtSay">提一个</string>
 <string name="honest">真心话</string>
 <string name="adventure">大冒险</string>
-<string name="actor">演艺人生</string>
+<string name="actor">看演技</string>
 <string name="username">昵称：</string>
 <string name="showgm">显示GM设置</string>
 </resources>

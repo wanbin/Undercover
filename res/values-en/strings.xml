@@ -174,12 +174,16 @@
 <string name="thankforad">感谢您的支持，广告能支持我们更好的去完善游戏</string>
 <string name="thankforhidead">还您一个洁净的游戏</string>
 <string name="userContribute">用户贡献</string>
-<string name="addcontribute">ADD</string>
+<string name="addcontribute">添加</string>
 <string name="addTruth">添加大冒险</string>
-<string name="send">SEND</string>
-<string name="IntenetTrues">ON LINE</string>
+<string name="send">发布</string>
+<string name="IntenetTrues">网络版</string>
 <string name="importInto">直接导入本地库</string>
-<string name="txtChange">换一批瞅瞅</string>
-<string name="txtSay">我也提一个</string>
+<string name="txtChange">换一批</string>
+<string name="txtSay">提一个</string>
+<string name="honest">真心话</string>
+<string name="adventure">大冒险</string>
+<string name="actor">看演技</string>
+<string name="username">昵称：</string>
 <string name="showgm">显示GM设置</string>
 </resources>

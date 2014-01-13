@@ -9,8 +9,8 @@ import com.loopj.android.http.RequestParams;
 
 public class BaseHttpCommand {
 
-//	protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
-	protected static String serverUrl = "http://192.168.1.31/Entry.php";
+	protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
+//	protected static String serverUrl = "http://192.168.1.31/Entry.php";
 	 protected httpCallBack mc=null;
 	 protected String uid="";
 
@@ -37,6 +37,7 @@ public class BaseHttpCommand {
 		param.put("data", obj.toString());
 		param.put("sign", sign.toString());
 		AsyncHttpClient client = new AsyncHttpClient();
+		System.out.println(param.toString());
 		client.get(serverUrl, param, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
