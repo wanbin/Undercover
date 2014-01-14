@@ -40,7 +40,6 @@ public class HttpMain extends BaseActivity {
 	private CheckBox checkGm;
 	private ListView myList;
 	private boolean isGMView=false;
-	private boolean isGM=false;
 	//private Button userConSend;
 	//private EditText userConTextField; 
 	
@@ -99,8 +98,7 @@ public class HttpMain extends BaseActivity {
 		
 		JSONObject user = getUserInfoFromLocal();
 		try {
-			isGM = user.getBoolean("isgm");
-			if (isGM) {
+			if (isGm==1) {
 				checkGm.setVisibility(View.VISIBLE);
 			} else {
 				checkGm.setVisibility(View.GONE);

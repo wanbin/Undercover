@@ -94,7 +94,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	/**
 	 * 用户是否为GM管理员
 	 */
-	protected int isGm=0;
+	protected static int isGm=0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -940,15 +940,7 @@ public static String getDeviceInfo(Context context) {
 	 */
 	public void CallBackPublicCommand(JSONObject jsonobj,String cmd)
 	{
-		if(cmd.equals(ConstantControl.GET_USER_INFO))
-		{
-			try {
-				setUserInfo(new JSONObject(jsonobj.getString("data")));
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
+		
 		
 	}
 	
