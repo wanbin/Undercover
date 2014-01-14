@@ -61,6 +61,7 @@ public class PunishActivity extends BaseActivity {
 	// 如果一直在摇，不断加时间
 	private boolean isshacked = false;
 	private boolean canshacked = false;
+	protected String name1;
 	/* (non-Javadoc)
 	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
 	 */
@@ -168,10 +169,19 @@ public class PunishActivity extends BaseActivity {
 			public void onClick(View v) {
 				//跳转
 				// TODO Auto-generated method stub
-				Intent intentGo = new Intent();
-				intentGo.setClass(PunishActivity.this, HttpMain.class);
-				uMengClick("click_intenet");
-				startActivity(intentGo);
+				name1=gameInfo.getString("username", "");
+				if (!name1.equals("")) {
+					Intent intentGo = new Intent();
+					intentGo.setClass(PunishActivity.this, HttpMain.class);
+					uMengClick("click_intenet");
+					startActivity(intentGo);
+				} else {
+					Intent intentGo = new Intent();
+					intentGo.setClass(PunishActivity.this,
+							AddUserNameActivity.class);
+					uMengClick("click_intenet");
+					startActivity(intentGo);
+				}
 			}
 		});
 		

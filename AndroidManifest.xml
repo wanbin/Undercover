@@ -199,6 +199,7 @@
     android:process=":DownloadingService" >
 </service>
 <activity android:name="editContributeActivity"></activity>
+<activity android:name="AddUserNameActivity"></activity>
 
         
 </application>

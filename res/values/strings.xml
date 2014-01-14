@@ -186,4 +186,6 @@
 <string name="actor">演艺人生</string>
 <string name="username">昵称：</string>
 <string name="showgm">显示GM设置</string>
+<string name="finish">完成</string>
+<string name="pleaseInput">请输入昵称：</string>
 </resources>
