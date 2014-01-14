@@ -118,6 +118,9 @@ public class SelectGameActivity extends BaseActivity {
 				}
 				//持久化广告
 				gameInfo.edit().putBoolean("showad", isChecked).commit();
+				
+				gameInfo.edit().putString("username", "wanbin").commit();
+				
 			}
 		});
 		
@@ -300,12 +303,6 @@ public class SelectGameActivity extends BaseActivity {
 			}
 			
 		});
-		
-		// 调用展示飘窗
-//		SpotManager.getInstance(this).loadSpotAds();
-//		SpotManager.getInstance(this).setSpotTimeout(5000);// 5秒
-		
-		UmengUpdateAgent.update(this);
 		
 		//初始化的时候直接登录
 		getUserInfo();
@@ -633,7 +630,6 @@ public class SelectGameActivity extends BaseActivity {
 
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
-
 		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
 			try {
 				setUserInfo(new JSONObject(jsonobj.getString("data")));

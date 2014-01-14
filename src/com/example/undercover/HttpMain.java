@@ -87,7 +87,7 @@ public class HttpMain extends BaseActivity {
 				// TODO Auto-generated method stub
 				// finish();
 				uMengClick("click_reflash");
-				if (isGm == 1) {
+				if (isGMView == true) {
 					getAllPublishShenHe(0);
 				} else {
 					getAllPublish(0);

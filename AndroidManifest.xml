@@ -68,7 +68,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Market360" />
+            android:value="MarketWanDouJia" />
         <activity android:name="com.example.undercover.ContributionActivity"></activity>
 
         
@@ -98,6 +98,7 @@
                 <action android:name="cn.jpush.android.intent.PUSH_TIME" />
             </intent-filter>
         </service>
+        
  	<receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true" >
@@ -114,7 +115,8 @@
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <data android:scheme="package" />
             </intent-filter>
-        </receiver>
+       </receiver>
+        
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -146,92 +148,32 @@
  <!-- 极光推送配置开始 -->
         
         
-        
-        
-        <!-- 有米广告 -->
-        <activity
-            android:name="net.youmi.android.AdBrowser"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
-        </activity>
-
-        <service
-            android:name="net.youmi.android.AdService"
-            android:exported="false" >
-        </service>
-
-        <receiver android:name="net.youmi.android.AdReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
-        
-        <activity
-            android:name="net.youmi.android.SmartBannerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@style/Transparent" >
-        </activity>
-
-        <service
-            android:name="net.youmi.android.SmartBannerService"
-            android:exported="false" >
-        </service>
-        
- 	<receiver
-        android:name="net.youmi.android.offers.OffersReceiver"
-        android:exported="false" >
-    </receiver>
-    
- 	
- 	 <meta-data android:name="YOUMI_CHANNEL"
-                android:value="10190" >
-    </meta-data>
- <!-- 有米配置结束 -->
- 
- 
-
-        
-        
-<service
-    android:name="com.umeng.common.net.DownloadingService"
-    android:process=":DownloadingService" >
-</service>
 <activity android:name="editContributeActivity"></activity>
 <activity android:name="AddUserNameActivity"></activity>
 
-        
 </application>
 
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-	<uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.INTERNET" />              <!-- 允许应用程序联网，以便向我们的服务器端发送数据。 -->
+    <uses-permission android:name="android.permission.INTERNET" /><!-- 访问网络 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /><!-- 获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><!-- 取WIFI状态 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!-- 写外部存储 -->
+    <uses-permission android:name="android.permission.READ_LOGS" /><!-- 读系统日志 -->
+	<uses-permission android:name="android.permission.VIBRATE"/><!-- 使用振动 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />  <!-- 用于评论模块分享位置信息 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 用于评论模块分享位置信息 -->
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/><!-- 显示系统窗口 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/><!-- 允许一个程序获取信息有关当前或最近运行的任 -->
     <permission android:name="com.example.undercover.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="com.example.undercover.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
+     --> 
     
 </manifest>
