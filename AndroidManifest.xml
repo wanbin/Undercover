@@ -68,7 +68,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Market360" />
+            android:value="MarketWandoujia" />
         <activity android:name="com.example.undercover.ContributionActivity"></activity>
 
         

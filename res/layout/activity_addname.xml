@@ -41,10 +41,10 @@
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="130dp"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="15dp"
         android:text="@string/finish" />
 
 </RelativeLayout>
