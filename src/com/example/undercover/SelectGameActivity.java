@@ -109,12 +109,12 @@ public class SelectGameActivity extends BaseActivity {
 				if (isChecked) {
 					Toast.makeText(SelectGameActivity.this,
 							strFromId("thankforad"), Toast.LENGTH_LONG).show();
-					uMengClick("showad");
+//					uMengClick("showad");
 				} else {
 					Toast.makeText(SelectGameActivity.this,
 							strFromId("thankforhidead"), Toast.LENGTH_LONG)
 							.show();
-					uMengClick("hidead");
+//					uMengClick("hidead");
 				}
 				//持久化广告
 				gameInfo.edit().putBoolean("showad", isChecked).commit();

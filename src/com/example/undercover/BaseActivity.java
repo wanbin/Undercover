@@ -511,6 +511,9 @@ public class BaseActivity extends Activity  implements httpCallBack{
 			}
 		}
 		try {
+			if (jsonarray.length() == 0) {
+				return getRandomMaoxian("start");
+			}
 			int index = Math.abs(a.nextInt()) % jsonarray.length();
 			return jsonarray.getJSONObject(index).getString("data").toString();
 		} catch (JSONException e) {
