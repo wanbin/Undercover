@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.undercover"
-    android:versionCode="211"
-    android:versionName="2.11" >
+<manifest package="com.example.undercover"
+    android:versionCode="301"
+    android:versionName="3.01" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -12,10 +11,7 @@
         <activity
             android:name="com.example.undercover.SelectGameActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+           
         </activity>
         <activity android:name="com.example.undercover.fanpai" >
         </activity>
@@ -57,6 +53,14 @@
         <activity android:name="com.example.undercover.WordSetting" >
         </activity>
         <activity android:name="com.example.undercover.HttpMain">
+        </activity>
+        <activity android:name="com.example.undercover.homegame">
+        </activity>
+         <activity android:name="com.example.undercover.HomeNew">
+              <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="com.umeng.fb.ConversationActivity" />
         <activity android:name="com.umeng.fb.ContactActivity" />

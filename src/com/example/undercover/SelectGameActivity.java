@@ -190,6 +190,7 @@ public class SelectGameActivity extends BaseActivity {
 
 		scrollHelpContent = (LinearLayout) helpView
 				.findViewById(R.id.linearContent);
+		/*
 		initFrame(framPing, strFromId("circleme"), 3, 6,
 				R.drawable.icon_bottle, RotaryBottleActivity.class,
 				"game_bottle", "bottle", 0);
@@ -205,11 +206,13 @@ public class SelectGameActivity extends BaseActivity {
 				"kill", 0);
 		initFrame(framePush, strFromId("txtPush"), 2, 8, R.drawable.icon_push,
 				Push.class, "game_push_select", "push", 0);
-
+*/
 
 		String[] HelpConfig = { strFromId("app_name"),
 				strFromId("txtKillerGameName"), strFromId("clickme"),
 				strFromId("txtPush") };
+		
+		/*
 		for (int i = 0; i < scrollHelpContent.getChildCount(); i++) {
 			FrameLayout temFra = (FrameLayout) scrollHelpContent.getChildAt(i);
 			if (temFra == null) {
@@ -237,7 +240,7 @@ public class SelectGameActivity extends BaseActivity {
 						strFromId("txtPushRule"), "06/10/2013", Push.class,
 						"game_push_select", "push");
 			}
-		}
+		}*/
 
 		gongxianbtn = (Button) helpView.findViewById(R.id.btnyonghu);
 		gongxianbtn.setOnClickListener(new MyClickListener());

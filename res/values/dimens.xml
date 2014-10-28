@@ -21,4 +21,6 @@
  	<dimen name="paiindex">40dp</dimen>
  	<dimen name="like">40dp</dimen>
  	<dimen name="smailpadding">2dp</dimen>
+ 	<dimen name="tabIcon">30dp</dimen>
+ 	<dimen name="game_select_begin">25dp</dimen>
 </resources>
