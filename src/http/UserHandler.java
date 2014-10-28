@@ -26,4 +26,24 @@ public class UserHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.GET_USER_INFO);
 	}
 
+	
+	public void joinRoom(int roomid,String uid) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("roomid", roomid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_JOIN);
+	}
+	public void createRoom(String uid) {
+		JSONObject obj = new JSONObject();
+		try {
+//			obj.put("roomid", roomid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_CREATE);
+	}
+	
 }

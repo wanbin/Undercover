@@ -18,6 +18,10 @@ public class ConstantControl {
 	// 取得用户信息
 	public static String GET_USER_INFO = "UserGetInfo";
 	
+	//加入房间
+	public static String ROOM_JOIN = "RoomJoin";
+	//创建房间
+	public static String ROOM_CREATE = "RoomNew";
 	
 	//添加用户行为LOG
 	public static String BEHAVE_ADD = "BehaveAdd";

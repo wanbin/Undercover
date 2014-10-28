@@ -980,6 +980,8 @@ public static String getDeviceInfo(Context context) {
 	}
 	
 	
+	
+	
 	/**
 	 * 服务器返回的编码解释
 	 * @param code
@@ -1039,6 +1041,16 @@ public static String getDeviceInfo(Context context) {
 	protected void getUserInfo() {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.getUserInfo(getUid());
+	}
+	
+	
+	protected void joinRoom(int roomid) {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.joinRoom(roomid, getUid());
+	}
+	protected void createRoom() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.createRoom(getUid());
 	}
 }
 

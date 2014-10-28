@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 public class homegame extends BaseActivity {
 	// 把需要滑动的页卡添加到这个list中
@@ -46,14 +46,47 @@ public class homegame extends BaseActivity {
 		
 		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","本周热门"};
 		
+		
 		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.recom_1_2x};
   		
 		for(int i=0;i<gameCount;i++){
 			View welcomeView = mInflater.inflate(R.layout.game_select, null);
 			Button btn=(Button)welcomeView.findViewById(R.id.button);
 			btn.setText(gamename[i]);
-			btn.setBackgroundResource(imageId[i]   );	
-			
+			btn.setTag(i);
+			btn.setBackgroundResource(imageId[i]);	
+			btn.setOnClickListener(new Button.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					cleanStatus();
+					Intent mIntent = new Intent();
+					int tag=(Integer) v.getTag();
+					switch(tag){
+					case 0:
+						mIntent.setClass(homegame.this, Setting.class);
+						setGameType("game_undercover");
+						break;
+					case 1:
+						mIntent.setClass(homegame.this, Setting.class);
+						setGameType("kill");
+						break;
+					case 2:
+						mIntent.setClass(homegame.this, PunishActivity.class);
+						break;
+					case 3:
+						mIntent.setClass(homegame.this, random_50.class);
+						break;
+					case 4:
+						mIntent.setClass(homegame.this, RotaryBottleActivity.class);
+						break;
+					case 5:
+						mIntent.setClass(homegame.this, Setting.class);
+						break;
+					}
+					
+					startActivity(mIntent);
+				}
+			});
 			
 			viewList.add(welcomeView);
 		}
@@ -70,19 +103,23 @@ public class homegame extends BaseActivity {
 		// 将小圆点放到Layout中
 		for (int i = 0; i < imageViews.length; i++) {
 			ImageView image = new ImageView(homegame.this);
-			image.setLayoutParams(new LayoutParams(55, 6));
-//			image.setPadding(2, 0, 2, 30);
+			image.setLayoutParams(new LayoutParams(10, 10));
+	
+			RelativeLayout temview=new RelativeLayout(homegame.this);
+			temview.setLayoutParams(new LayoutParams(20, 10));
+			image.setPadding(5, 0, 5, 0);
+			temview.addView(image);
 			// 默认为第一小圆点
 			if (i==0) {
-				image.setBackgroundResource(R.drawable.page_indicator_focused);
+				image.setBackgroundResource(R.drawable.red_ball_2x);
 			}else{
-				image.setBackgroundResource(R.drawable.page_indicator);
+				image.setBackgroundResource(R.drawable.gray_ball_2x);
 			}
-			
 			imageViews[i] = image;
-			pointContainer.addView(image);
+			pointContainer.addView(temview);
 		}
-		pointContainer.setPadding(0, 0, 0, 20);
+		pointContainer.setPadding(5, 0, 5, 20);
+		
 		
 		viewPager.setAdapter(new PageAdapterGame());
         viewPager.setOnPageChangeListener(new GamePageChangeListener());
@@ -169,9 +206,9 @@ public class homegame extends BaseActivity {
 			// TODO Auto-generated method stub
 			for (int i = 0; i < imageViews.length; i++) {
 				if (i!=position) {
-					imageViews[i].setBackgroundResource(R.drawable.page_indicator);
+					imageViews[i].setBackgroundResource(R.drawable.gray_ball_2x);
 				}
-				imageViews[position].setBackgroundResource(R.drawable.page_indicator_focused);
+				imageViews[position].setBackgroundResource(R.drawable.red_ball_2x);
 			}
 		}
     	

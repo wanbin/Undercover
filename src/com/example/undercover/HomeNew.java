@@ -70,7 +70,7 @@ public class HomeNew extends BaseActivity {
 //		initIntent();
 		
 		mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator(getMenuItem(R.drawable.game_2x,TAB1)).setContent(new Intent(this, homegame.class)));  
-		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(getMenuItem(R.drawable.join_2x,TAB2)).setContent(R.id.tab_item2));  
+		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(getMenuItem(R.drawable.join_2x,TAB2)).setContent(new Intent(this, net_home.class)));  
 	    mTabHost.addTab(mTabHost.newTabSpec("tab3").setIndicator(getMenuItem(R.drawable.help_2x,TAB3)).setContent(R.id.tab_item3));  
 	    mTabHost.addTab(mTabHost.newTabSpec("tab4").setIndicator(getMenuItem(R.drawable.setting_2x,TAB4)).setContent(R.id.tab_item4));
 //	        mTabHost.addTab(mTabHost.newTabSpec("tab5").setIndicator(getMenuItem(R.drawable.son, TAB5)).setContent(R.id.tab5));  
