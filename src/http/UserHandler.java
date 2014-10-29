@@ -46,4 +46,33 @@ public class UserHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.ROOM_CREATE);
 	}
 	
+	
+	/**
+	 * 返回创建房间的信息
+	 */
+	public void getRoomInfo() {
+		JSONObject obj = new JSONObject();
+		try {
+//			obj.put("roomid", roomid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_GET_INFO);
+	}
+	
+	
+	/**
+	 * 返回加入房间的信息
+	 */
+	public void getRoomContent() {
+		JSONObject obj = new JSONObject();
+		try {
+//			obj.put("roomid", roomid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_GET_INFOCONTENT);
+	}
+	
+	//RoomGetInfo
 }

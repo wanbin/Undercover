@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnstart"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_fang_purple"
+        android:text="@string/开始游戏"
+        android:textColor="@color/WRITE" />
+
+    <LinearLayout
+        android:id="@+id/warpPeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btnwx"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/umeng_socialize_wechat" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/peoplethis" />
+
+        <SeekBar
+            android:id="@+id/seekSelectPeople"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:max="@integer/peopelNetMax" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnstart"
+        android:layout_below="@id/warpPeople"
+        android:layout_centerHorizontal="true" >
+
+        <AbsoluteLayout
+            android:id="@+id/viewUserRelative"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </AbsoluteLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -22,6 +22,12 @@ public class ConstantControl {
 	public static String ROOM_JOIN = "RoomJoin";
 	//创建房间
 	public static String ROOM_CREATE = "RoomNew";
+
+	// 创建房间的信息
+	public static String ROOM_GET_INFO = "RoomGetInfo";
+	
+	// 加入房间的信息
+	public static String ROOM_GET_INFOCONTENT = "RoomGetContent";
 	
 	//添加用户行为LOG
 	public static String BEHAVE_ADD = "BehaveAdd";

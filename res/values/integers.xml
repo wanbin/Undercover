@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="lines">3</integer>
+    <integer name="peopelNetMax">5</integer>
+    <integer name="peopleNetMin">1</integer>
 </resources>

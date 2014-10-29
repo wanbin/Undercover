@@ -964,6 +964,17 @@ public static String getDeviceInfo(Context context) {
 	}
 
 	
+	//设置持久化存储
+	protected boolean setToObject(String name,String value){
+		return gameInfo.edit().putString(name, value).commit();
+	}
+	
+	
+	//获取持久化存储
+	protected String getFromObject(String key){
+		return gameInfo.getString(key, "");
+	}
+	
 	/**
 	 * 从本地取得用户基本信息
 	 * @return
@@ -1051,6 +1062,10 @@ public static String getDeviceInfo(Context context) {
 	protected void createRoom() {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.createRoom(getUid());
+	}
+	protected void getRoomInfo() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.getRoomInfo();
 	}
 }
 

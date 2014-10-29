@@ -58,6 +58,8 @@
         </activity>
         <activity android:name="com.example.undercover.net_home">
         </activity>
+        <activity android:name="com.example.undercover.net_room_create">
+        </activity>
          <activity android:name="com.example.undercover.HomeNew">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

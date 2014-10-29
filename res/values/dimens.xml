@@ -25,4 +25,5 @@
  	<dimen name="game_select_begin">25dp</dimen>
  	<dimen name="btn_padding">5dp</dimen>
  	<dimen name="btn_font_size">25dp</dimen>
+ 	<dimen name="padding">10dp</dimen>
 </resources>
