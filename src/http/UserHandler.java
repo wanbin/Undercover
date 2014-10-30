@@ -74,5 +74,28 @@ public class UserHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.ROOM_GET_INFOCONTENT);
 	}
 	
+	/**
+	 * 返回加入房间的信息
+	 */
+	public void RoomStartGame(int type,int addPeople) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("type", type);
+			obj.put("addPeople", addPeople);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_START_GAME);
+	}
 	//RoomGetInfo
+	public void RoomPunish(String gameuidstr) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("gameuidstr", gameuidstr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_PUNISH);
+	}
+	
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TableLayout
+        android:id="@+id/TableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="@dimen/activity_horizontal_margin" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/alphabet_size" >
+
+                    <Button
+                        android:id="@+id/btnUndercover"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/start_undercover_2x"
+                        android:text="@string/卧"
+                        android:textColor="@color/WRITE"
+                        android:textSize="@dimen/large60" />
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/谁是卧底"
+                        android:textSize="@dimen/btnMoreBottom" />
+
+                    <TextView
+                        android:id="@+id/txtUndercoverTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/RED" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" 
+                    android:padding="@dimen/alphabet_size">
+
+                    <Button
+                        android:id="@+id/btnKiller"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/start_killer_2x"
+                        android:text="@string/杀"
+                        android:textColor="@color/WRITE"
+                        android:textSize="@dimen/large60" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/杀人游戏"
+                        android:textSize="@dimen/btnMoreBottom" />
+
+                    <TextView
+                        android:id="@+id/txtKillerTip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/RED" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/btn_fang_write"
+        android:text="@string/返回" />
+
+</RelativeLayout>

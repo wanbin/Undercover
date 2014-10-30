@@ -60,6 +60,14 @@
         </activity>
         <activity android:name="com.example.undercover.net_room_create">
         </activity>
+         <activity android:name="com.example.undercover.net_room_willstart">
+        </activity>
+         <activity android:name="com.example.undercover.net_room_game">
+        </activity>
+          <activity android:name="com.example.undercover.net_room_punish">
+        </activity>
+        <activity android:name="com.example.undercover.local_setting">
+        </activity>
          <activity android:name="com.example.undercover.HomeNew">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

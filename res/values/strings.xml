@@ -193,4 +193,21 @@
 <string name="game_create">创建房间</string>
 <string name="peoplethis">本机人数</string>
 <string name="开始游戏">开始游戏</string>
+
+<string name="返回">返回</string>
+
+<string name="谁是卧底">谁是卧底</string>
+
+<string name="杀">杀</string>
+
+<string name="卧">卧</string>
+
+<string name="杀人游戏">杀人游戏</string>
+
+<string name="身份">身份</string>
+<string name="参与人数">参与人数</string>
+<string name="num4">4</string>
+
+<string name="卧底人数">卧底人数</string>
+
 </resources>

@@ -47,11 +47,11 @@
         android:layout_below="@id/warpPeople"
         android:layout_centerHorizontal="true" >
 
-        <AbsoluteLayout
-            android:id="@+id/viewUserRelative"
+        <TableLayout
+            android:id="@+id/viewUserTable"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-        </AbsoluteLayout>
+        </TableLayout>
     </ScrollView>
 
 </RelativeLayout>

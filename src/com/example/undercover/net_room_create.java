@@ -13,14 +13,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 
 public class net_room_create extends BaseActivity {
@@ -29,10 +35,10 @@ public class net_room_create extends BaseActivity {
 	ScrollView scrollContent;
 	SeekBar selectPeople;
 	Timer timer;
-	AbsoluteLayout viewUser;
+	TableLayout viewUser;
 	
 	JSONArray roomUser;
-	
+	int addPeople=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,12 +47,17 @@ public class net_room_create extends BaseActivity {
 		btnWX = (Button) this.findViewById(R.id.btnwx);
 		scrollContent=(ScrollView)this.findViewById(R.id.scrollContent);
 		selectPeople=(SeekBar)this.findViewById(R.id.seekSelectPeople);
-		viewUser=(AbsoluteLayout)this.findViewById(R.id.viewUserRelative);
+		viewUser=(TableLayout)this.findViewById(R.id.viewUserTable);
 		
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 //				joinRoom(10001);
+				Intent mIntent = new Intent();
+				mIntent.setClass(net_room_create.this, net_room_willstart.class);
+				mIntent.putExtra("addPeople", addPeople);
+				mIntent.putExtra("PeopleCount", roomUser.length());
+				startActivity(mIntent);
 			}
 		});
 		btnWX.setOnClickListener(new Button.OnClickListener() {
@@ -58,8 +69,30 @@ public class net_room_create extends BaseActivity {
 				startActivity(mIntent);
 			}
 		});
+//		selectPeople.seton; 
+		selectPeople.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			@Override
+            public void onProgressChanged(SeekBar seekBar, int progress,
+                    boolean fromUser) {
+				addPeople=progress;
+				reflashUser();
+//	                description.setText("当前进度："+progress+"%");
+            }
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		timer = new Timer();
-		timer.schedule(timetask, 0, 3000);
+		timer.schedule(timetask, 0, 30000);
 	}
 	
 //	protected void onRestart(){
@@ -105,37 +138,31 @@ public class net_room_create extends BaseActivity {
 	 * 生成用户列表
 	 */
 	private void reflashUser(){
-		for(int i=0;i<40;i++){
-//			try {
-//				JSONObject tem=roomUser.getJSONObject(i);
-//				String name=tem.getString("username");
-//				int gameuid=tem.getInt("gameuid");
-//				String photo=tem.getString("gameuid");
-				
-				
+		int index=0;
+		viewUser.removeAllViews();
+		for (int i = 0; i < Math.ceil((float) (roomUser.length()+addPeople) / 4); i++) {
+			TableRow newrow = new TableRow(this);
+			for (int m = 0; m < 4; m++) {
+				FrameLayout fl = new FrameLayout(this);
 				Button temBtn =new Button(this);
-				int width=disWidth/4;
-				
-				RelativeLayout temview=new RelativeLayout(this);
-//				FrameLayout fl = new FrameLayout(this);
-				
-				int left=i%4*width;
-				int top=(i/4)*width;
-				temview.setLayoutParams(new LayoutParams(left, top));
-				
-				viewUser.addView(temview, width, width);
-				
-				temBtn.setPadding(5, 5, 5, 5);
-				temBtn.setText(String.valueOf(i));
-				temBtn.setWidth(width-10);
-				temBtn.setHeight(width-10);
-				temview.addView(temBtn);
-				
-//			} catch (JSONException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+				if(index<addPeople){
+					temBtn.setText("NO."+(index+1));
+					temBtn.setBackgroundResource(R.drawable.default_photo);
+				}else{
+					temBtn.setText(String.valueOf(index));
+				}
+				temBtn.setGravity(Gravity.CENTER|Gravity.BOTTOM);
+				fl.addView(temBtn);
+				fl.setPadding(4, 4, 4, 4);
+				newrow.addView(fl, disWidth / 4, disWidth / 4);
+				index++;
+				if(index>=roomUser.length()+addPeople){
+					break;
+				}
+			}
+			viewUser.addView(newrow);
 		}
+		
 	}
 	
 	

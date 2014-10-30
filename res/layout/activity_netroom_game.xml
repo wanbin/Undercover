@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btnPunish"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/btn_fang_purple"
+        android:textColor="@color/WRITE" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <TableLayout
+            android:id="@+id/tableUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/bitTitleSize" >
+
+        <Button
+            android:id="@+id/btnTip1"
+            android:layout_width="200dp"
+            android:layout_height="51dp"
+            android:background="@drawable/tag_puple_2x"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/game_select_begin"
+            android:text="@string/身份"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/btn_font_size" />
+
+        <Button
+            android:id="@+id/btnTip2"
+            android:layout_width="200dp"
+            android:layout_height="51dp"
+            android:background="@drawable/tag_green_2x"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/game_select_begin"
+            android:text="@string/身份"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/btn_font_size" />
+
+        <Button
+            android:id="@+id/btnTip3"
+            android:layout_width="200dp"
+            android:layout_height="51dp"
+            android:background="@drawable/tag_pink_2x"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/game_select_begin"
+            android:text="@string/身份"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/btn_font_size" />
+
+        <Button
+            android:id="@+id/btnTip4"
+            android:layout_width="200dp"
+            android:layout_height="51dp"
+            android:background="@drawable/tag_blue_2x"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/game_select_begin"
+            android:text="@string/身份"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/btn_font_size" />
+
+        <Button
+            android:id="@+id/btnTip5"
+            android:layout_width="200dp"
+            android:layout_height="51dp"
+            android:background="@drawable/tag_yellow"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/game_select_begin"
+            android:text="@string/身份"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/btn_font_size" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -28,6 +28,8 @@ public class ConstantControl {
 	
 	// 加入房间的信息
 	public static String ROOM_GET_INFOCONTENT = "RoomGetContent";
+	public static String ROOM_START_GAME = "RoomStartGame";
+	public static String ROOM_PUNISH = "RoomPunish";
 	
 	//添加用户行为LOG
 	public static String BEHAVE_ADD = "BehaveAdd";

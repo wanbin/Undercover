@@ -26,4 +26,7 @@
  	<dimen name="btn_padding">5dp</dimen>
  	<dimen name="btn_font_size">25dp</dimen>
  	<dimen name="padding">10dp</dimen>
+ 	<dimen name="normalSize">20dp</dimen>
+ 	<dimen name="newBtnFont">25dp</dimen>
+ 	<dimen name="newBtnPaddingBottom">20dp</dimen>
 </resources>

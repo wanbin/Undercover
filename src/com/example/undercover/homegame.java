@@ -63,11 +63,11 @@ public class homegame extends BaseActivity {
 					int tag=(Integer) v.getTag();
 					switch(tag){
 					case 0:
-						mIntent.setClass(homegame.this, Setting.class);
+						mIntent.setClass(homegame.this, local_setting.class);
 						setGameType("game_undercover");
 						break;
 					case 1:
-						mIntent.setClass(homegame.this, Setting.class);
+						mIntent.setClass(homegame.this, local_setting.class);
 						setGameType("kill");
 						break;
 					case 2:
