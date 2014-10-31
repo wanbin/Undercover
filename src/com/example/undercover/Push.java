@@ -23,6 +23,7 @@ public class Push extends BaseActivity {
 	private int max;
 	private int rowcount = 8;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.push);

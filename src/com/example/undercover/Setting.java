@@ -1,6 +1,5 @@
 package com.example.undercover;
 
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ public class setting  extends BaseActivity {
 	TextView txtUsername;
 	LinearLayout LinearSound;
 	TextView txtSound;
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.setting);

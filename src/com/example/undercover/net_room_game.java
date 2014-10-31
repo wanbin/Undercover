@@ -7,7 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,6 +42,7 @@ public class net_room_game extends BaseActivity {
 	
 	//杀人游戏用到的参数
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_netroom_game);
@@ -214,6 +214,7 @@ public class net_room_game extends BaseActivity {
 	}
 	
 	
+	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.ROOM_PUNISH)) {

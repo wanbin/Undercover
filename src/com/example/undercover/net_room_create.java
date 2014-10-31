@@ -6,7 +6,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -15,18 +14,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 
 public class net_room_create extends BaseActivity {
@@ -104,6 +97,7 @@ public class net_room_create extends BaseActivity {
 	 * 退出这个界面
 	 * @see com.example.undercover.BaseActivity#onStop()
 	 */
+	@Override
 	protected void onDestroy(){
 		super.onDestroy();
 		timer.cancel();
@@ -112,6 +106,7 @@ public class net_room_create extends BaseActivity {
 	
 	// 接受时间
 		Handler handler = new Handler() {
+			@Override
 			public void handleMessage(Message msg) {
 				getRoomContent();
 				super.handleMessage(msg);
@@ -119,6 +114,7 @@ public class net_room_create extends BaseActivity {
 		};
 		// 传递时间
 		private TimerTask timetask = new TimerTask() {
+			@Override
 			public void run() {
 				Message message = new Message();
 				message.what = 1;
@@ -166,6 +162,7 @@ public class net_room_create extends BaseActivity {
 	}
 	
 	
+	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.ROOM_GET_INFO)) {

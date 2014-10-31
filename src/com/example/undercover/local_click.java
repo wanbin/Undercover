@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class local_click extends BaseActivity {
 	int click_times;
@@ -22,6 +21,7 @@ public class local_click extends BaseActivity {
 	Random random = new Random();
 	int random_times;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.local_click);
@@ -89,7 +89,7 @@ public class local_click extends BaseActivity {
 		if(time==0){
 			click_button.setText("点");
 		}else{
-			float rate=(float) (0.5f+(float)time/15.0f*0.5f);
+			float rate=0.5f+time/15.0f*0.5f;
 			click_button.setAlpha(rate);
 		}
 	}

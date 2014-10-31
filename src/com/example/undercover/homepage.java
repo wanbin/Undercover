@@ -5,6 +5,7 @@ import android.webkit.WebView;
 
 public class homepage extends BaseActivity {
 	WebView urlPage;
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.homepage);

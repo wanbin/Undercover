@@ -69,7 +69,7 @@ public class local_bottle extends BaseActivity {
 	}
 
 	private float getDegrees() {
-		return (float) Math.round(Math.random() * 360);
+		return Math.round(Math.random() * 360);
 	}
 
 	private Animation getAnimation(float fromDegrees, float toDegrees) {

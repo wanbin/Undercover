@@ -14,11 +14,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
 public class local_guess extends BaseActivity {
 	private TableLayout contentTable;
@@ -51,6 +48,7 @@ public class local_guess extends BaseActivity {
 	 */
 	private List<Button> regButton=null;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.local_guess);
@@ -177,7 +175,7 @@ public class local_guess extends BaseActivity {
 
 	protected void setAllButton(boolean useable) {
 		for (int i = 0; i < regButton.size(); i++) {
-			Button tem = (Button) regButton.get(i);
+			Button tem = regButton.get(i);
 //			tem.setClickable(false);
 			tem.setOnLongClickListener(new Button.OnLongClickListener() {
 				@Override
@@ -370,6 +368,7 @@ public class local_guess extends BaseActivity {
 		punishBtn.setBackgroundResource(R.drawable.btn_fang_purple);
 		punishBtn.setTextColor(getResources().getColor(R.color.WRITE));
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				SoundPlayer.playball();
 				Intent goMain = new Intent();

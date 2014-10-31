@@ -283,6 +283,7 @@ public class Setting_old extends BaseActivity {
 		return super.onContextItemSelected(item);
 	}
 
+	@Override
 	public void onResume() {
 		super.onResume();
 		UnderKind = getUnderKind();

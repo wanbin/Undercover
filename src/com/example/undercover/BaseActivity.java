@@ -46,9 +46,6 @@ import android.widget.Toast;
 
 import cn.jpush.android.api.JPushInterface;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -118,8 +115,8 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		}
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
-		disWidth = (int) dm.widthPixels;
-		disHeight = (int) dm.heightPixels;
+		disWidth = dm.widthPixels;
+		disHeight = dm.heightPixels;
 
 		// 共享数据
 		gameInfo = getSharedPreferences("gameInfo", 0);
@@ -181,6 +178,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		
 		
 		btnShare.setOnClickListener(new Button.OnClickListener() {
+			@Override
 			public void onClick(View v) {
 				openShareEdit("");
 			}
@@ -254,6 +252,7 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	}
 
 	
+	@Override
 	public void onResume() {
 		super.onResume();
 		MobclickAgent.onResume(this);
@@ -927,6 +926,7 @@ public static String getDeviceInfo(Context context) {
 	 * @param jsonobj
 	 * @throws Exception
 	 */
+	@Override
 	public  void MessageCallBack(JSONObject jsonobj,String cmd){
 		try {
 			int code=jsonobj.getInt("code");
@@ -1039,6 +1039,7 @@ public static String getDeviceInfo(Context context) {
 	 * 
 	 * @param message
 	 */
+	@Override
 	public void ToastMessage(String message) {
 		Toast.makeText(BaseActivity.this, message, Toast.LENGTH_SHORT).show();
 	}

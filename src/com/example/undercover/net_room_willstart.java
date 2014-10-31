@@ -31,6 +31,7 @@ public class net_room_willstart extends BaseActivity {
 	 */
 	int gameType=1;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_netgame_select);
@@ -100,6 +101,7 @@ public class net_room_willstart extends BaseActivity {
 		}
 		
 	}
+	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.ROOM_START_GAME)) {

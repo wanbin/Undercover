@@ -1,18 +1,12 @@
 package com.example.undercover;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import http.PublishHandler;
-
-import org.json.JSONObject;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 public class editContributeActivity extends BaseActivity {
@@ -26,6 +20,7 @@ public class editContributeActivity extends BaseActivity {
 	private int sign=1;
 	
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_editcontribute);

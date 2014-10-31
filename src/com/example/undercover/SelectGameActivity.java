@@ -35,7 +35,6 @@ import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
-import com.umeng.update.UmengUpdateAgent;
 
 public class SelectGameActivity extends BaseActivity {
 	// viewPager 滑动
@@ -590,7 +589,8 @@ public class SelectGameActivity extends BaseActivity {
     }
     
 	// 退出确认
-    public void onBackPressed() {  
+    @Override
+	public void onBackPressed() {  
 		new AlertDialog.Builder(this)
 				.setTitle(strFromId("exit"))
             .setIcon(android.R.drawable.ic_dialog_info)  
@@ -622,6 +622,7 @@ public class SelectGameActivity extends BaseActivity {
 		return true;
 	}
 
+	@Override
 	public void onResume() {
 		super.onResume();
 		if (!getStatus()) {
@@ -631,6 +632,7 @@ public class SelectGameActivity extends BaseActivity {
 		}
 	}
 
+	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.GET_USER_INFO)) {

@@ -19,12 +19,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.util.MathUtil;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 public class PunishActivity extends BaseActivity {
 	
@@ -258,6 +253,7 @@ public class PunishActivity extends BaseActivity {
 	/* 处理回调方法
 	 * @see com.example.undercover.BaseActivity#MessageCallBack(org.json.JSONObject)
 	 */
+	@Override
 	public void MessageCallBack(JSONObject jsonobj,String cmd) {
 		super.MessageCallBack(jsonobj,cmd);
 		if(cmd.equals(ConstantControl.SHOW_PUBLISH_ALL))
@@ -367,6 +363,7 @@ public class PunishActivity extends BaseActivity {
 	
 	// 接受时间
 	Handler handler = new Handler() {
+		@Override
 		public void handleMessage(Message msg) {
 			if(isRandom){
 				addTenMMS();
@@ -377,6 +374,7 @@ public class PunishActivity extends BaseActivity {
 	};
 	// 传递时间
 	private TimerTask timetask = new TimerTask() {
+		@Override
 		public void run() {
 			Message message = new Message();
 			message.what = 1;
@@ -442,6 +440,7 @@ public class PunishActivity extends BaseActivity {
 				null);
 	}
 
+	@Override
 	public void onPause() {
 		super.onPause();
 		SoundPlayer.stopRolling();

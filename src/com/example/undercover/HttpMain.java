@@ -1,13 +1,8 @@
 package com.example.undercover;
 
 import http.PublishHandler;
-import http.UserHandler;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,20 +12,11 @@ import com.example.undercover.view.MyAdapter.Publish;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class HttpMain extends BaseActivity {
@@ -46,6 +32,7 @@ public class HttpMain extends BaseActivity {
 	/* (non-Javadoc)
 	 * @see com.example.undercover.BaseActivity#onCreate(android.os.Bundle)
 	 */
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_usercontribute);
@@ -156,6 +143,7 @@ public class HttpMain extends BaseActivity {
 	/* 处理回调方法
 	 * @see com.example.undercover.BaseActivity#MessageCallBack(org.json.JSONObject)
 	 */
+	@Override
 	public void MessageCallBack(JSONObject jsonobj,String cmd) {
 		super.MessageCallBack(jsonobj,cmd);
 		if(cmd.equals(ConstantControl.SHOW_PUBLISH_ALL))

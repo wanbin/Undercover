@@ -14,6 +14,7 @@ public class AddUserNameActivity extends BaseActivity {
 	private EditText username;
 	
 	protected String name2;
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addname);

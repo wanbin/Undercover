@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class net_room_punish extends BaseActivity {
 	JSONArray punish;
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		try {

@@ -18,6 +18,7 @@ public class local_setting extends BaseActivity {
 	TableRow tableUndercover;
 	int basePeople=4;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.local_setting);

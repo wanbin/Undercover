@@ -13,7 +13,6 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +37,7 @@ public class homegame extends BaseActivity {
 	// 包含滑动ViewPager的Layout
     private ViewGroup mainContainer;
     
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		LayoutInflater mInflater = getLayoutInflater();
@@ -225,6 +225,7 @@ public class homegame extends BaseActivity {
     	
     }
     
+	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.GET_USER_INFO)) {

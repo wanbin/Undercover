@@ -2,7 +2,6 @@ package http;
 
 import org.json.JSONObject;
 
-import com.example.undercover.BaseActivity;
 import com.example.undercover.ConstantControl;
 import com.example.undercover.httpCallBack;
 import com.example.util.KeyWordFilter;

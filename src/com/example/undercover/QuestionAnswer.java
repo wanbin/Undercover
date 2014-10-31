@@ -113,6 +113,7 @@ public class QuestionAnswer extends BaseActivity {
 
 	// 接受时间
 	Handler handler = new Handler() {
+		@Override
 		public void handleMessage(Message msg) {
 				addTenMMS();
 			super.handleMessage(msg);
@@ -122,6 +123,7 @@ public class QuestionAnswer extends BaseActivity {
 
 	// 传递时间
 	private TimerTask timetask = new TimerTask() {
+		@Override
 		public void run() {
 			Message message = new Message();
 			message.what = 1;
@@ -184,11 +186,13 @@ public class QuestionAnswer extends BaseActivity {
 		intentPunish.setVisibility(View.GONE);
 	}
 
+	@Override
 	public void onResume() {
 		super.onResume();
 		restartActivity();
 	}
 
+	@Override
 	public void onPause() {
 		super.onPause();
 		SoundPlayer.stopJishi();

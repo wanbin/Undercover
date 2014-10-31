@@ -68,7 +68,7 @@ public class local_fanpai extends BaseActivity {
 		underCount = gameInfo.getInt("underCount", 1);
 		word = gameInfo.getString("word", "全部");
 
-		animation = (AnimationSet) AnimationUtils.loadAnimation(this,
+		animation = AnimationUtils.loadAnimation(this,
 				R.anim.reflash);
 
 		Log.i("fanpai",
