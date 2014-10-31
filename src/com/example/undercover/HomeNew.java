@@ -6,6 +6,10 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import android.app.LocalActivityManager;
 import android.app.TabActivity;
 import android.content.Context;
@@ -79,7 +83,7 @@ public class HomeNew extends BaseActivity {
 //	        mTabHost.addTab(mTabHost.newTabSpec("tab5").setIndicator(getMenuItem(R.drawable.son, TAB5)).setContent(R.id.tab5));
 	    
 	    
-	    getUserInfo();
+	    
 	    
 	    
 	    
@@ -96,6 +100,9 @@ public class HomeNew extends BaseActivity {
 			SoundPlayer.setSoundSt(false);
 		}
 	    
+		
+
+		
 	}
     public View getMenuItem(int imgID, String textID){  
         LinearLayout ll = (LinearLayout) LayoutInflater.from(mContex).inflate(R.layout.tab_item, null);  
@@ -108,23 +115,5 @@ public class HomeNew extends BaseActivity {
     } 
     
     
-	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
-		super.CallBackPublicCommand(jsonobj, cmd);
-		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
-			try {
-				setUserInfo(new JSONObject(jsonobj.getString("data")));
-				JSONObject obj = new JSONObject(jsonobj.getString("data"));
-				if(obj.has("isgm")){
-					isGm=obj.getInt("isgm");
-				}
-				if (obj.has("mail")) {
-					JSONArray mailArr = obj.getJSONArray("mail");
-//					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-	}
+
 }

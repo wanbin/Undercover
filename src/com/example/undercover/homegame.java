@@ -3,6 +3,9 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class homegame extends BaseActivity {
 	// 把需要滑动的页卡添加到这个list中
@@ -47,14 +51,19 @@ public class homegame extends BaseActivity {
 		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","本周热门"};
 		
 		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.recom_1_2x};
+		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.week_recom_2x};
   		
 		for(int i=0;i<gameCount;i++){
 			View welcomeView = mInflater.inflate(R.layout.game_select, null);
-			Button btn=(Button)welcomeView.findViewById(R.id.button);
-			btn.setText(gamename[i]);
+			ImageView btn=(ImageView)welcomeView.findViewById(R.id.image);
+			TextView txtName=(TextView)welcomeView.findViewById(R.id.txtName);
+			txtName.setText(gamename[i]);
+			
 			btn.setTag(i);
-			btn.setBackgroundResource(imageId[i]);	
+			String imageUri = "drawable://" + imageId[i];
+			ImageFromLocal(btn,imageUri);
+			
+			
 			btn.setOnClickListener(new Button.OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -80,16 +89,17 @@ public class homegame extends BaseActivity {
 						mIntent.setClass(homegame.this, local_bottle.class);
 						break;
 					case 5:
-						mIntent.setClass(homegame.this, Setting_old.class);
+						mIntent.setClass(homegame.this, homepage.class);
+						mIntent.putExtra("type", "newGame");
 						break;
 					}
 					
 					startActivity(mIntent);
 				}
 			});
-			
 			viewList.add(welcomeView);
 		}
+		
 		
 		
 		mainContainer = (ViewGroup) mInflater.inflate(
@@ -125,6 +135,7 @@ public class homegame extends BaseActivity {
         viewPager.setOnPageChangeListener(new GamePageChangeListener());
         viewPager.setCurrentItem(0);
         setContentView(mainContainer);
+        getUserInfo();
 	}
 	
 	
@@ -213,4 +224,50 @@ public class homegame extends BaseActivity {
 		}
     	
     }
+    
+	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
+		super.CallBackPublicCommand(jsonobj, cmd);
+		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
+			try {
+				setUserInfo(new JSONObject(jsonobj.getString("data")));
+				JSONObject obj = new JSONObject(jsonobj.getString("data"));
+				//obj={"uid":"A0000043A574DC","username":"","gameuid":310,"time":1414514074,"newgameimage":"http:\/\/192.168.1.120\/CenturyServer\/www\/image\/recom_1.png","newgamename":"我爱我OR不要脸","_id":310,"newgame":1,"pushcount":"0","photo":"","channel":"ANDROID"}
+				String username=obj.getString("username");
+				String gameuid=obj.getString("gameuid");
+				String photo=obj.getString("photo");
+				
+				
+				String newgameimage=obj.getString("newgameimage");
+				String newgamename=obj.getString("newgamename");
+				String newgame=obj.getString("newgame");
+				
+				updateNewGame(newgamename,newgameimage);
+				
+				setToObject("username", username);
+				setToObject("gameuid", gameuid);
+				setToObject("photo", photo);
+				
+				
+				if(obj.has("isgm")){
+					isGm=obj.getInt("isgm");
+				}
+				if (obj.has("mail")) {
+					JSONArray mailArr = obj.getJSONArray("mail");
+//					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void updateNewGame(String newgamename,String newgameimage){
+		View temview=viewList.get(viewList.size()-1);
+		ImageView btn=(ImageView)temview.findViewById(R.id.image);
+		TextView txtName=(TextView)temview.findViewById(R.id.txtName);
+		txtName.setText(newgamename);
+		ImageFromUrl(btn,newgameimage,R.drawable.week_recom_2x);
+		
+	}
 }

@@ -28,12 +28,10 @@ public class setting  extends BaseActivity {
 		LinearSound=(LinearLayout)this.findViewById(R.id.LinearSound);
 		txtVersion.setText(getVersion());
 		
-		
 		txtUsername.setText(getFromObject("username"));
 		
 		String soundOn = getFromObject("sound");
 		if (soundOn.equals("")||soundOn.equals("on")) {
-			
 			setSwithSound(true);
 		}else{
 			setSwithSound(false);

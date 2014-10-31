@@ -49,6 +49,9 @@ import cn.jpush.android.api.JPushInterface;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.socialize.controller.RequestType;
 import com.umeng.socialize.controller.UMServiceFactory;
@@ -1091,5 +1094,31 @@ public static String getDeviceInfo(Context context) {
 	final float scale = context.getResources().getDisplayMetrics().density;
 	return (int) (pxValue / scale + 0.5f);
 	}
+	
+	
+	/**
+	 * 异步加载图片
+	 * @param imageView
+	 * @param url
+	 * @param defaultphoto
+	 */
+	protected void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
+		//第一次调用初始化
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+		ImageLoader.getInstance().init(config);
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
+		.build();//构建完成  
+		ImageLoader.getInstance().displayImage(url, imageView,options);
+	}
+	protected void ImageFromLocal(ImageView imageView,String url){
+		//第一次调用初始化
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+		ImageLoader.getInstance().init(config);
+		ImageLoader.getInstance().displayImage(url, imageView);
+	}
+	
 }
 
