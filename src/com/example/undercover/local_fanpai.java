@@ -17,22 +17,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class fanpai extends BaseActivity {
+public class local_fanpai extends BaseActivity {
 	private String son;
 	private String[] content;
 	private String[] libary;
 	private TextView txtShenfen;
-	private TextView textViewab;
 	private Button btnchangeword;
 	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
-	private Button btnOK;
 	private ImageView imagebg;
 	private Random random;
 	private int nowIndex = 1;
 	private boolean isShow;
 	private boolean isBlank;
-	private boolean isChecked;
+	private boolean isShowWords=false;
 	//
 	private int peopleCount;
 	private int underCount;
@@ -47,15 +45,11 @@ public class fanpai extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_pai);
-		initBtnBack(R.id.btnback);
+		setContentView(R.layout.local_pai);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		isChecked = false;
-		btnOK = (Button) findViewById(R.id.btnOk);
 		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
-		textViewab = (TextView) findViewById(R.id.textViewab);
 		imagePan = (Button) findViewById(R.id.imagePan);
 		imagebg = (ImageView) findViewById(R.id.imagebg);
 		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
@@ -82,39 +76,9 @@ public class fanpai extends BaseActivity {
 						+ gameInfo.getString("word", "").trim());
 		initFanpai();
 
-		initBtnInfo(R.id.btninfo, strFromId("txtPaiHelp"));
 
 		initPan(nowIndex);
 
-		btnOK.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				SoundPlayer.playball();
-				if (nowIndex >= 1) {
-					canchangeword = false;
-					btnchangeword.setBackgroundResource(R.drawable.update2);
-					//用全局广告管理类来显示广告
-					AdManage.showBanner(fanpai.this);
-					// changeword.setVisibility(View.INVISIBLE);
-				}
-				if (nowIndex <= content.length) {
-					initPan(nowIndex);
-				} else {
-					Bundle bundle = new Bundle();
-					// bundle.putInt("peopleCount", peopleCount);
-					bundle.putStringArray("content", content);
-					bundle.putString("son", son);
-					bundle.putInt("underCount", underCount);
-					bundle.putBoolean("isShow", isShow);
-					Intent goMain = new Intent();
-					goMain.putExtras(bundle);
-					goMain.setClass(fanpai.this, guess.class);
-					startActivity(goMain);
-					uMengClick("click_undercover_pai_last");
-					finish();
-				}
-			}
-		});
 
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -131,8 +95,7 @@ public class fanpai extends BaseActivity {
 		});
 
 
-		setBtnGreen(imagePan);
-		setBtnBlue(btnOK);
+//		setBtnGreen(imagePan);
 
 		// 刷新换词
 		btnchangeword.setOnClickListener(new Button.OnClickListener() {
@@ -153,20 +116,49 @@ public class fanpai extends BaseActivity {
 	}
 
 	protected void tapPai(View v) {
-		if (nowIndex == 1) {
+		setContentVis(!isShowWords);
+		// 在这里更新nowIndex，不至于呀恢复时错开一个
+		SoundPlayer.playball();
+		if (nowIndex >= 1) {
+			canchangeword = false;
+			btnchangeword.setBackgroundResource(R.drawable.update2);
+			//用全局广告管理类来显示广告
+			AdManage.showBanner(local_fanpai.this);
+			// changeword.setVisibility(View.INVISIBLE);
+		}
+		else{
 			uMengClick("click_undercover_pai_first");
 		}
-		v.setVisibility(View.INVISIBLE);
-		setContentVis(true);
-		// 在这里更新nowIndex，不至于呀恢复时错开一个
-		nowIndex++;
-		SoundPlayer.playball();
+		if (isShowWords) {
+			nowIndex++;
+			if (nowIndex <= content.length) {
+				initPan(nowIndex);
+			} else {
+				Bundle bundle = new Bundle();
+				// bundle.putInt("peopleCount", peopleCount);
+				bundle.putStringArray("content", content);
+				bundle.putString("son", son);
+				bundle.putInt("underCount", underCount);
+				bundle.putBoolean("isShow", isShow);
+				Intent goMain = new Intent();
+				goMain.putExtras(bundle);
+				goMain.setClass(local_fanpai.this, local_guess.class);
+				startActivity(goMain);
+				uMengClick("click_undercover_pai_last");
+				// finish();
+				//这一块重新初始化好了
+			}
+		}
+		else{
+			imagePan.setText("请交给下一位");
+		}
+		isShowWords=!isShowWords;
 	}
 
 	// 重新翻牌
 	protected void initFanpai() {
 		// 如果是杀人游戏，界面显示去掉一些东西
-		if (lastGameType().equals("kill")) {
+		if (lastGameType().equals("game_killer")) {
 			content = getRandomString();
 		} else {
 			content = getRandomStringUnderCover();
@@ -180,7 +172,7 @@ public class fanpai extends BaseActivity {
 
 	protected void initPan(int index) {
 		setContentVis(false);
-		imagePan.setText("" + index);
+		imagePan.setText("第" + index+"位");
 		txtShenfen.setText(content[index - 1]);
 	}
 
@@ -190,17 +182,11 @@ public class fanpai extends BaseActivity {
 
 	protected void setContentVis(boolean show) {
 		if (show) {
-			btnOK.setVisibility(View.VISIBLE);
 			txtShenfen.setVisibility(View.VISIBLE);
-			textViewab.setVisibility(View.VISIBLE);
-			imagePan.setVisibility(View.INVISIBLE);
 			imagebg.setVisibility(View.INVISIBLE);
 		} else {
-			btnOK.setVisibility(View.INVISIBLE);
 			imagebg.setVisibility(View.VISIBLE);
 			txtShenfen.setVisibility(View.INVISIBLE);
-			textViewab.setVisibility(View.INVISIBLE);
-			imagePan.setVisibility(View.VISIBLE);
 		}
 	}
 

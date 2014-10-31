@@ -472,7 +472,7 @@ public class SelectGameActivity extends BaseActivity {
 				break;
 			case R.id.btnReStartLast:
 				if (getStatus()) {
-						mIntent.setClass(SelectGameActivity.this, guess.class);
+						mIntent.setClass(SelectGameActivity.this, local_guess.class);
 				} else {
 					cleanStatus();
 					mIntent.setClass(SelectGameActivity.this, Setting.class);

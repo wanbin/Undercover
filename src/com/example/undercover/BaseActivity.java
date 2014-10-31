@@ -357,7 +357,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	protected boolean[] getClickedContent() {
 		String temContent = gameInfo.getString("clickedStr", "");
 		String[] tem = temContent.split("_");
-		Log.v("boolean str", temContent);
 		boolean[] cliceked = new boolean[tem.length];
 		for (int i = 0; i < tem.length; i++) {
 			boolean temboolean = false;
@@ -486,7 +485,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		}
 		if (!tem[1].equals("end")) {
 			strReturn = strReturn + getRandomMaoxian(tem[1]);
-			// Log.v(strReturn, tem[1]);
 		}
 		return strReturn;
 	}

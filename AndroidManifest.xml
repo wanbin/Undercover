@@ -13,7 +13,7 @@
             android:label="@string/app_name" >
            
         </activity>
-        <activity android:name="com.example.undercover.fanpai" >
+        <activity android:name="com.example.undercover.local_fanpai" >
         </activity>
         <!-- android:screenOrientation屏幕方向 -->
         <activity
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name="com.example.undercover.UnderCoverContent" >
         </activity>
-        <activity android:name="com.example.undercover.guess" >
+        <activity android:name="com.example.undercover.local_guess" >
         </activity>
         <activity android:name="com.example.undercover.random_50" >
         </activity>

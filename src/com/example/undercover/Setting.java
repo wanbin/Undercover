@@ -124,7 +124,7 @@ public class Setting extends BaseActivity {
 				gameInfo.edit().putString("word", wordStr).commit();
 				Intent goMain = new Intent();
 				// goMain.putExtras(bundle);
-				goMain.setClass(Setting.this, fanpai.class);
+				goMain.setClass(Setting.this, local_fanpai.class);
 				startActivity(goMain);
 				uMengClick("game_undercover_start");
 				SoundPlayer.playball();

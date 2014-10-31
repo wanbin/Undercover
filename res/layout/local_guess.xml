@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_punish"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <TableLayout
+            android:id="@+id/tableContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_punish"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_fang_write"
+        android:text="@string/punishmen"
+        android:textAlignment="viewStart"
+        android:textColor="@color/GREEN" />
+
+</RelativeLayout>

@@ -3,22 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        layout="@layout/activity_bg" />
-
     <ImageView
         android:id="@+id/imagebg"
-        android:layout_width="200dp"
-        android:layout_height="250dp"
+        android:layout_width="207dp"
+        android:layout_height="244dp"
         android:layout_centerInParent="true"
         android:alpha="0.8"
         android:background="@color/WRITE"
         android:padding="10dp"
         android:scaleType="centerInside"
-        android:src="@drawable/photo_fan" />
+        android:src="@drawable/tap_image_2x" />
     
     <LinearLayout
         android:id="@+id/changewordlin"
@@ -50,33 +44,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="25dp" >
 
-        <TextView
-            android:id="@+id/textViewab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:text="@string/givetoother" />
-
-        <Button
-            android:id="@+id/btnOk"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@drawable/bluebtn1"
-            android:text="@string/remamber"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/index" />
-
-        <Button
-            android:id="@+id/imagePan"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@drawable/greenbtn1"
-            android:text="@string/add"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/paiindex" />
-
     </FrameLayout>
 
     <TextView
@@ -85,5 +52,17 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textSize="@dimen/index" />
+
+    <Button
+        android:id="@+id/imagePan"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_blue_2x"
+        android:text="@string/add"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/newBtnFont" />
 
 </RelativeLayout>
