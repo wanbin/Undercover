@@ -13,7 +13,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class RotaryBottleActivity extends BaseActivity {
+public class local_bottle extends BaseActivity {
 	int bottleWidth;
 	int bottleHeight;
 	float fromDe;
@@ -21,18 +21,19 @@ public class RotaryBottleActivity extends BaseActivity {
 	Button restartBtn;
 	private Button punishment;
 	ImageView bottle;
+	ImageView quan;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.rotarybottle);
-		initBtnBack(R.id.btnback);
-		initShareBtn();
+		setContentView(R.layout.local_bottle);
 		toDe = getDegrees();
 		bottle = (ImageView) findViewById(R.id.bottle_imageView);
+		quan = (ImageView) findViewById(R.id.quan);
 		punishment = (Button) findViewById(R.id.button1);
 		punishment.setVisibility(View.INVISIBLE);
-
-		bottle.setOnClickListener(new ImageView.OnClickListener() {
+//		bottle.setPaddingRelative(110, 0, 0, 0);
+//		bottle.setPaddingRelative(start, top, end, bottom);
+		quan.setOnClickListener(new ImageView.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startAnimation();
@@ -41,20 +42,18 @@ public class RotaryBottleActivity extends BaseActivity {
 				
 			}
 		});
-		
 		// 惩罚
 		punishment.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
-				intentGo.setClass(RotaryBottleActivity.this,
+				intentGo.setClass(local_bottle.this,
 						PunishActivity.class);
 				startActivity(intentGo);
 			}
 		});
 
-		setBtnPink(punishment);
 
 		ViewTreeObserver vto2 = bottle.getViewTreeObserver();
 		vto2.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -76,7 +75,7 @@ public class RotaryBottleActivity extends BaseActivity {
 	private Animation getAnimation(float fromDegrees, float toDegrees) {
 		AnimationSet as = new AnimationSet(true);
 		RotateAnimation rt = new RotateAnimation(fromDegrees, 2880 + toDegrees,
-				bottleWidth / 2, bottleHeight * 4 / 7);
+				dip2px(this,110),dip2px(this,6));
 		rt.setDuration(6000);
 		rt.setFillAfter(true);
 		rt.setInterpolator(new Interpolator() {
@@ -98,7 +97,7 @@ public class RotaryBottleActivity extends BaseActivity {
 		Animation a = getAnimation(fromDe, toDe);
 		a.setFillAfter(true);
 
-		bottle.setClickable(false);
+		quan.setClickable(false);
 		// restartBtn.setClickable(false);
 		punishment.setVisibility(View.INVISIBLE);
 		bottle.startAnimation(a);
@@ -120,7 +119,7 @@ public class RotaryBottleActivity extends BaseActivity {
 			public void onAnimationEnd(Animation animation) {
 				// TODO Auto-generated method stub
 				// restartBtn.setClickable(true);
-				bottle.setClickable(true);
+				quan.setClickable(true);
 				punishment.setVisibility(View.VISIBLE);
 				SoundPlayer.playclaps();
 			}

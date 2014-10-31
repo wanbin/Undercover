@@ -74,10 +74,10 @@ public class homegame extends BaseActivity {
 						mIntent.setClass(homegame.this, PunishActivity.class);
 						break;
 					case 3:
-						mIntent.setClass(homegame.this, random_50.class);
+						mIntent.setClass(homegame.this, local_click.class);
 						break;
 					case 4:
-						mIntent.setClass(homegame.this, RotaryBottleActivity.class);
+						mIntent.setClass(homegame.this, local_bottle.class);
 						break;
 					case 5:
 						mIntent.setClass(homegame.this, Setting.class);

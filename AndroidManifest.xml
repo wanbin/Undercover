@@ -24,9 +24,9 @@
         </activity>
         <activity android:name="com.example.undercover.local_guess" >
         </activity>
-        <activity android:name="com.example.undercover.random_50" >
+        <activity android:name="com.example.undercover.local_click" >
         </activity>
-        <activity android:name="com.example.undercover.RotaryBottleActivity" >
+        <activity android:name="com.example.undercover.local_bottle" >
         </activity>
         <activity android:name="com.example.undercover.PunishActivity" >
         </activity>
