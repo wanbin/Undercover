@@ -142,6 +142,7 @@ public class SoundPlayer{
 	 */
 	public static void setSoundSt(boolean soundSt) {
 		SoundPlayer.soundSt = soundSt;
+		
 	}
 	
 	/**

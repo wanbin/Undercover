@@ -3,6 +3,9 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.app.LocalActivityManager;
 import android.app.TabActivity;
 import android.content.Context;
@@ -72,8 +75,27 @@ public class HomeNew extends BaseActivity {
 		mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator(getMenuItem(R.drawable.game_2x,TAB1)).setContent(new Intent(this, homegame.class)));  
 		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(getMenuItem(R.drawable.join_2x,TAB2)).setContent(new Intent(this, net_home.class)));  
 	    mTabHost.addTab(mTabHost.newTabSpec("tab3").setIndicator(getMenuItem(R.drawable.help_2x,TAB3)).setContent(R.id.tab_item3));  
-	    mTabHost.addTab(mTabHost.newTabSpec("tab4").setIndicator(getMenuItem(R.drawable.setting_2x,TAB4)).setContent(R.id.tab_item4));
-//	        mTabHost.addTab(mTabHost.newTabSpec("tab5").setIndicator(getMenuItem(R.drawable.son, TAB5)).setContent(R.id.tab5));  
+	    mTabHost.addTab(mTabHost.newTabSpec("tab4").setIndicator(getMenuItem(R.drawable.setting_2x,TAB4)).setContent(new Intent(this, setting.class)));
+//	        mTabHost.addTab(mTabHost.newTabSpec("tab5").setIndicator(getMenuItem(R.drawable.son, TAB5)).setContent(R.id.tab5));
+	    
+	    
+	    getUserInfo();
+	    
+	    
+	    
+		String soundOn = getFromObject("sound");
+		if (soundOn.equals("")) {
+			setToObject("sound", "on");
+			soundOn="on";
+		}
+		if(soundOn.equals("on")){
+//			SoundPlayer.setMusicSt(true);
+			SoundPlayer.setSoundSt(true);
+		}else{
+//			SoundPlayer.setMusicSt(false);
+			SoundPlayer.setSoundSt(false);
+		}
+	    
 	}
     public View getMenuItem(int imgID, String textID){  
         LinearLayout ll = (LinearLayout) LayoutInflater.from(mContex).inflate(R.layout.tab_item, null);  
@@ -85,4 +107,24 @@ public class HomeNew extends BaseActivity {
         return ll;  
     } 
     
+    
+	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
+		super.CallBackPublicCommand(jsonobj, cmd);
+		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
+			try {
+				setUserInfo(new JSONObject(jsonobj.getString("data")));
+				JSONObject obj = new JSONObject(jsonobj.getString("data"));
+				if(obj.has("isgm")){
+					isGm=obj.getInt("isgm");
+				}
+				if (obj.has("mail")) {
+					JSONArray mailArr = obj.getJSONArray("mail");
+//					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
 }

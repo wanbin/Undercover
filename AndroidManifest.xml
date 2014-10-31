@@ -38,7 +38,7 @@
         </activity>
         <activity android:name="com.example.undercover.weixin" >
         </activity>
-        <activity android:name="com.example.undercover.Setting" >
+        <activity android:name="com.example.undercover.Setting_old" >
         </activity>
          <activity android:name="com.example.undercover.HomeActivity" >
         </activity>
@@ -67,6 +67,8 @@
           <activity android:name="com.example.undercover.net_room_punish">
         </activity>
         <activity android:name="com.example.undercover.local_setting">
+        </activity>
+        <activity android:name="com.example.undercover.setting">
         </activity>
          <activity android:name="com.example.undercover.HomeNew">
               <intent-filter>

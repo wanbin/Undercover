@@ -210,4 +210,14 @@
 
 <string name="卧底人数">卧底人数</string>
 
+
+<string name="个人信息">个人信息</string>
+<string name="基本设置">基本设置</string>
+<string name="音效">音效</string>
+<string name="关于游戏">关于游戏</string>
+<string name="版本信息">版本信息</string>
+<string name="背景音效">背景音效</string>
+<string name="意见建议反馈">意见建议反馈</string>
+<string name="开">开</string>
+<string name="向右">></string>
 </resources>

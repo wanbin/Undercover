@@ -461,7 +461,7 @@ public class SelectGameActivity extends BaseActivity {
 //				return;
 				cleanStatus();
 				SoundPlayer.playball();
-				mIntent.setClass(SelectGameActivity.this, Setting.class);
+				mIntent.setClass(SelectGameActivity.this, Setting_old.class);
 				uMengClick("game_undercover");
 				setGameType("undercover");
 				break;
@@ -475,7 +475,7 @@ public class SelectGameActivity extends BaseActivity {
 						mIntent.setClass(SelectGameActivity.this, local_guess.class);
 				} else {
 					cleanStatus();
-					mIntent.setClass(SelectGameActivity.this, Setting.class);
+					mIntent.setClass(SelectGameActivity.this, Setting_old.class);
 				}
 				break;
 			case R.id.btnyonghu:

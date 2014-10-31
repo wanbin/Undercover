@@ -80,7 +80,7 @@ public class homegame extends BaseActivity {
 						mIntent.setClass(homegame.this, local_bottle.class);
 						break;
 					case 5:
-						mIntent.setClass(homegame.this, Setting.class);
+						mIntent.setClass(homegame.this, Setting_old.class);
 						break;
 					}
 					

@@ -49,7 +49,7 @@
     <color name="clickbt_92">#ff0000</color>
 <color name="WRITE">#ffffff</color>
 <color name="Writegray">#ffffff</color>
-
+<color name="light_gray">#eeeeee</color>
 
     <style name="Transparent">
         <item name="android:windowBackground">@android:color/transparent</item>
