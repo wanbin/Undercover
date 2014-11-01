@@ -31,7 +31,7 @@ public class AddUserNameActivity extends BaseActivity {
 				if (username.getText().length() != 0) {
 					gameInfo.edit().putString("username", name2).commit();
 					Intent intentGo = new Intent();
-					intentGo.setClass(AddUserNameActivity.this, HttpMain.class);
+					intentGo.setClass(AddUserNameActivity.this, net_punish.class);
 					// uMengClick("click_intenet");
 					startActivity(intentGo);
 					finish();

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/shake" />
+
+    <TextView
+        android:id="@+id/txtPunish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:maxLines="@integer/lines"
+        android:text="@string/真心话大冒险"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_purple_2x"
+        android:text="@string/下一条"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/newBtnFont" />
+
+    <LinearLayout
+        android:id="@+id/ddd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:orientation="vertical"
+         >
+
+        <Button
+            android:id="@+id/btnLocal"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/tag_green_2x"
+            android:text="@string/本地词汇"
+            android:textColor="@color/WRITE" />
+
+            <Button
+            android:id="@+id/btnNet"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:background="@drawable/tag_blue_2x"
+            android:text="@string/网络词汇"
+            android:textColor="@color/WRITE" />
+    </LinearLayout>
+
+</RelativeLayout>

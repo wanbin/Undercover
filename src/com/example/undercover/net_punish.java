@@ -19,7 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class HttpMain extends BaseActivity {
+public class net_punish extends BaseActivity {
 	private Button btnChange;
 	private Button btnSay;
 	private Button btnReturn;
@@ -35,7 +35,7 @@ public class HttpMain extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_usercontribute);
+		setContentView(R.layout.net_punish);
 //		initBtnBack(R.id.btnback);
 		btnChange = (Button)findViewById(R.id.btnChange);
 		btnSay = (Button) findViewById(R.id.btnSay);
@@ -44,18 +44,13 @@ public class HttpMain extends BaseActivity {
 		checkGm = (CheckBox) findViewById(R.id.checkGM);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
-		setBtnGreen(btnChange);
-		setBtnGreen(btnSay);
-		setBtnBlue(btnReturn);
-		
-		
 		//添加真心话按钮
 		btnSay.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
-				intentGo.setClass(HttpMain.this, editContributeActivity.class);
+				intentGo.setClass(net_punish.this, editContributeActivity.class);
 				startActivity(intentGo);
 			}
 		});
@@ -94,7 +89,7 @@ public class HttpMain extends BaseActivity {
 			// TODO: handle exception
 		}
 
-		if (!detect(HttpMain.this)) {
+		if (!detect(net_punish.this)) {
 			ToastMessageLong("当前网络不可用");
 		}
 		checkGm.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
@@ -103,11 +98,11 @@ public class HttpMain extends BaseActivity {
 					boolean isChecked) {
 				AdManage.showad = isChecked;
 				if (isChecked) {
-					Toast.makeText(HttpMain.this, "切换为GM视图", Toast.LENGTH_SHORT)
+					Toast.makeText(net_punish.this, "切换为GM视图", Toast.LENGTH_SHORT)
 							.show();
 					isGMView = true;
 				} else {
-					Toast.makeText(HttpMain.this, "切换为普通视图", Toast.LENGTH_SHORT)
+					Toast.makeText(net_punish.this, "切换为普通视图", Toast.LENGTH_SHORT)
 							.show();
 					isGMView = false;
 				}
@@ -176,13 +171,13 @@ public class HttpMain extends BaseActivity {
 						.getString("username"), temobj.getString("content"),
 						temobj.getInt("like"), temobj.getInt("dislike")
 						, temobj.getBoolean("liked"),
-						temobj.getBoolean("disliked"), temobj.getBoolean("collected"), temobj.getString("sendtime"), temobj.getInt("type")));
+						temobj.getBoolean("disliked"), false, "", temobj.getInt("type")));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
-		MyAdapter adapter = new MyAdapter(HttpMain.this, temPubs,
+		MyAdapter adapter = new MyAdapter(net_punish.this, temPubs,
 				this.getUid());
 		adapter.setCallBack(this);
 		adapter.setGM(isGMView);

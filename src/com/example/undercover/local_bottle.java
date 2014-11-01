@@ -49,7 +49,7 @@ public class local_bottle extends BaseActivity {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
 				intentGo.setClass(local_bottle.this,
-						PunishActivity.class);
+						local_punish.class);
 				startActivity(intentGo);
 			}
 		});

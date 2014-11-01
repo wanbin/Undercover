@@ -21,7 +21,7 @@ public class ContributionActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_contribution);
+		setContentView(R.layout.net_punish);
 		initBtnBack(R.id.btnback);
 		initShareBtn();
 		content = (LinearLayout) findViewById(R.id.content);

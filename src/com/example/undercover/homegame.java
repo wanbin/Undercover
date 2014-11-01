@@ -80,7 +80,7 @@ public class homegame extends BaseActivity {
 						setGameType("game_killer");
 						break;
 					case 2:
-						mIntent.setClass(homegame.this, PunishActivity.class);
+						mIntent.setClass(homegame.this, local_punish.class);
 						break;
 					case 3:
 						mIntent.setClass(homegame.this, local_click.class);

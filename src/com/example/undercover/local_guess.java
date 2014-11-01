@@ -372,7 +372,7 @@ public class local_guess extends BaseActivity {
 			public void onClick(View v) {
 				SoundPlayer.playball();
 				Intent goMain = new Intent();
-				goMain.setClass(local_guess.this, PunishActivity.class);
+				goMain.setClass(local_guess.this, local_punish.class);
 				uMengClick("game_undercover_punish");
 				startActivity(goMain);
 			}

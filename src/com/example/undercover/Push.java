@@ -58,7 +58,7 @@ public class Push extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intentGo = new Intent();
-				intentGo.setClass(Push.this, PunishActivity.class);
+				intentGo.setClass(Push.this, local_punish.class);
 				startActivity(intentGo);
 				SoundPlayer.playball();
 			}

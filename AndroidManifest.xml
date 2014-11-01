@@ -52,7 +52,7 @@
         </activity>
         <activity android:name="com.example.undercover.WordSetting" >
         </activity>
-        <activity android:name="com.example.undercover.HttpMain">
+        <activity android:name="com.example.undercover.net_punish">
         </activity>
         <activity android:name="com.example.undercover.homegame">
         </activity>
@@ -67,6 +67,8 @@
           <activity android:name="com.example.undercover.net_room_punish">
         </activity>
         <activity android:name="com.example.undercover.local_setting">
+        </activity>
+        <activity android:name="com.example.undercover.local_punish">
         </activity>
         <activity android:name="com.example.undercover.setting">
         </activity>

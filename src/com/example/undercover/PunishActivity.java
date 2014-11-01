@@ -167,7 +167,7 @@ public class PunishActivity extends BaseActivity {
 				name1=gameInfo.getString("username", "");
 				if (!name1.equals("")) {
 					Intent intentGo = new Intent();
-					intentGo.setClass(PunishActivity.this, HttpMain.class);
+					intentGo.setClass(PunishActivity.this, net_punish.class);
 					uMengClick("click_intenet");
 					startActivity(intentGo);
 				} else {
