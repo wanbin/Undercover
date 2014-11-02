@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
     <TabHost
         android:id="@android:id/tabhost"
@@ -11,13 +11,13 @@
         <RelativeLayout
             android:id="@+id/RelativeLayout1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@android:id/tabs"
+                android:layout_above="@+id/tabwape"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true" >
 
@@ -25,37 +25,48 @@
                     android:id="@+id/tab_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
-
                 </LinearLayout>
-<LinearLayout
+
+                <LinearLayout
                     android:id="@+id/tab_item2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
-
-
                 </LinearLayout>
-               
-<LinearLayout
+
+                <LinearLayout
                     android:id="@+id/tab_item3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                 </LinearLayout>
-                
-<LinearLayout
+
+                <LinearLayout
                     android:id="@+id/tab_item4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
                 </LinearLayout>
-
             </FrameLayout>
 
-            <TabWidget
-                android:id="@android:id/tabs"
+            <LinearLayout
+                android:id="@+id/tabwape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:layout_alignParentBottom="true"  >
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical" >
 
-            </TabWidget>
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/Writegray" >
+
+                </TabWidget>
+
+            </LinearLayout>
         </RelativeLayout>
     </TabHost>
 

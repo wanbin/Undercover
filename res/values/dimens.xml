@@ -30,4 +30,5 @@
  	<dimen name="newBtnFont">25dp</dimen>
  	<dimen name="newBtnPaddingBottom">20dp</dimen>
  	<dimen name="redball">111dp</dimen>
+ 	<dimen name="top2dp">2dp</dimen>
 </resources>
