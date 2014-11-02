@@ -25,6 +25,7 @@ public class net_room_willstart extends BaseActivity {
 	int UndercoverMax=12;
 	int KillerMin=6;
 	int KillerMax=16;
+	int add=0;
 	
 	/**
 	 * 用来标记是谁是卧底，还是杀人游戏的
@@ -38,7 +39,7 @@ public class net_room_willstart extends BaseActivity {
 		
 		final int addPeople=getIntent().getIntExtra("addPeople",0);
 		final int PeopleCount2=getIntent().getIntExtra("PeopleCount",1);
-		
+		add=addPeople;
 		PeopleCount=addPeople+PeopleCount2;
 		
 		btnBack=(Button)this.findViewById(R.id.btnBack);
@@ -118,6 +119,7 @@ public class net_room_willstart extends BaseActivity {
 				mIntent.putExtra("userJson",roomUser.toString());
 				mIntent.putExtra("gameName", gamename);
 				mIntent.putExtra("gameType", gameType);
+				mIntent.putExtra("addPeople", add);
 				mIntent.putExtra("room_contente", obj.getJSONObject("room_contente").toString());
 				
 //				mIntent.putExtra("PeopleCount", roomUser.length());

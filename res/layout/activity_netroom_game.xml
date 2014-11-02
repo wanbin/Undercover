@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:orientation="vertical"
-        android:paddingTop="@dimen/bitTitleSize" >
+        android:layout_marginTop="25dp" >
 
         <Button
             android:id="@+id/btnTip1"
@@ -49,6 +49,7 @@
             android:id="@+id/btnTip2"
             android:layout_width="200dp"
             android:layout_height="51dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/tag_green_2x"
             android:gravity="left|center_vertical"
             android:paddingLeft="@dimen/game_select_begin"
@@ -60,6 +61,7 @@
             android:id="@+id/btnTip3"
             android:layout_width="200dp"
             android:layout_height="51dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/tag_pink_2x"
             android:gravity="left|center_vertical"
             android:paddingLeft="@dimen/game_select_begin"
@@ -71,6 +73,7 @@
             android:id="@+id/btnTip4"
             android:layout_width="200dp"
             android:layout_height="51dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/tag_blue_2x"
             android:gravity="left|center_vertical"
             android:paddingLeft="@dimen/game_select_begin"
@@ -82,6 +85,7 @@
             android:id="@+id/btnTip5"
             android:layout_width="200dp"
             android:layout_height="51dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/tag_yellow"
             android:gravity="left|center_vertical"
             android:paddingLeft="@dimen/game_select_begin"

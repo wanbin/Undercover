@@ -1,7 +1,11 @@
 package com.example.undercover;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -9,6 +13,8 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -29,6 +35,7 @@ public class net_room_game extends BaseActivity {
 	JSONArray punishUser;
 	String gameName;
 	int gameType;
+	int addPeople;
 	List<Button> btnList;
 
 	JSONObject room_contente;
@@ -39,23 +46,36 @@ public class net_room_game extends BaseActivity {
 	int fathercount=0;
 	String sonstr="";
 	String fatherstr="";
+	Timer timer;
 	
 	//杀人游戏用到的参数
+	
+	
+	//正在展示的tag
+	int isShowTag=0;
+	int showLimitTime=-1; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_netroom_game);
+		
 		btnTip1=(Button)this.findViewById(R.id.btnTip1);
 		btnTip2=(Button)this.findViewById(R.id.btnTip2);
 		btnTip3=(Button)this.findViewById(R.id.btnTip3);
 		btnTip4=(Button)this.findViewById(R.id.btnTip4);
 		btnTip5=(Button)this.findViewById(R.id.btnTip5);
+		
 		btnPunish=(Button)this.findViewById(R.id.btnPunish);
 		viewUser=(TableLayout)this.findViewById(R.id.tableUser);
-		btnTip1.setX(dip2px(this,100.0f));
+		
+		//把本地用户显示正常
+		
 		gameName=getIntent().getStringExtra("gameName");
 		gameType=getIntent().getIntExtra("gameType",0);
+		addPeople=getIntent().getIntExtra("addPeople",0);
+		
+		
 		try {
 			roomUser=new JSONArray(getIntent().getStringExtra("userJson"));
 			room_contente=new JSONObject(getIntent().getStringExtra("room_contente"));
@@ -84,8 +104,114 @@ public class net_room_game extends BaseActivity {
 		});
 		
 		btnList=new ArrayList<Button>();
+		initShowShenfen();
 		reflashUser();
+		
+		timer = new Timer();
+		timer.schedule(timetask, 0, 1000);
 	}
+	
+	/**
+	 * 查看用户身份
+	 */
+	private void initShowShenfen(){
+		switch (addPeople){
+		case 0:
+			btnTip5.setVisibility(View.GONE);
+			btnTip4.setVisibility(View.GONE);
+			btnTip3.setVisibility(View.GONE);
+			btnTip2.setVisibility(View.GONE);
+			break;
+		case 1:
+			btnTip5.setVisibility(View.GONE);
+			btnTip4.setVisibility(View.GONE);
+			btnTip3.setVisibility(View.GONE);
+			break;
+		case 2:
+			btnTip5.setVisibility(View.GONE);
+			btnTip4.setVisibility(View.GONE);
+			break;
+		case 3:
+			btnTip5.setVisibility(View.GONE);
+			break;
+		case 4:
+			break;
+		}
+		btnTip5.setText("NO.4");
+		btnTip4.setText("NO.3");
+		btnTip3.setText("NO.2");
+		btnTip2.setText("NO.1");
+		int thisGameuid=Integer.parseInt(getFromObject("gameuid"));
+		btnTip1.setTag(thisGameuid);
+		btnTip2.setTag(1);
+		btnTip3.setTag(2);
+		btnTip4.setTag(3);
+		btnTip5.setTag(4);
+		btnTip1.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showShenFen(v);
+			}
+		});
+		btnTip2.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showShenFen(v);
+			}
+		});
+		btnTip3.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showShenFen(v);
+			}
+		});
+		btnTip4.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showShenFen(v);
+			}
+		});
+		btnTip5.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showShenFen(v);
+			}
+		});
+	}
+	
+	private void showShenFen(View v){
+		int tag=(Integer) v.getTag();
+		Button btn=(Button)v;
+		String shenfen=getShenfenOfGameuid(tag);
+		btn.setText(shenfen);
+		if(isShowTag!=tag&&isShowTag!=0){
+			hideBtnOfGameuid(isShowTag);
+		}
+		isShowTag=tag;
+		showLimitTime=5; 
+	}
+	
+	private void hideBtnOfGameuid(int gameuid){
+		switch(gameuid){
+		case 1:
+			btnTip2.setVisibility(View.GONE);
+			break;
+		case 2:
+			btnTip3.setVisibility(View.GONE);
+			break;
+		case 3:
+			btnTip4.setVisibility(View.GONE);
+			break;
+		case 4:
+			btnTip5.setVisibility(View.GONE);
+			break;
+		}
+		int thisgameuid=Integer.parseInt(getFromObject("gameuid"));
+		if(gameuid==thisgameuid){
+			btnTip1.setVisibility(View.GONE);
+		}
+	}
+	
 	
 	private void reflashUser(){
 		int index=0;
@@ -196,6 +322,22 @@ public class net_room_game extends BaseActivity {
 	}
 	
 	
+	private String getShenfenOfGameuid(int gameuid){
+		String ret="";
+		for(int i=0;i<roomUser.length();i++){
+			try {
+				JSONObject userinfo=roomUser.getJSONObject(i);
+				if( Math.abs(userinfo.getInt("gameuid"))==gameuid){
+					return userinfo.getString("content");
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return "";
+	}
+	
 	/**
 	 * 点击某个玩家，判断游戏是否结束,谁是卧底游戏点击
 	 * @param index
@@ -229,4 +371,40 @@ public class net_room_game extends BaseActivity {
 			
 		}
 	}
+	
+	
+	@Override
+	protected void onDestroy(){
+		super.onDestroy();
+		timer.cancel();
+	}
+	
+	private void costOneSec(){
+//		int isShowTag;
+//		int showLimitTime; 
+		if(showLimitTime>0){
+			showLimitTime--;
+		}else if(showLimitTime==0){
+			showLimitTime=-1;
+			hideBtnOfGameuid(isShowTag);
+		}
+	}
+	
+	// 接受时间
+		Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				costOneSec();
+				super.handleMessage(msg);
+			}
+		};
+		// 传递时间
+		private TimerTask timetask = new TimerTask() {
+			@Override
+			public void run() {
+				Message message = new Message();
+				message.what = 1;
+				handler.sendMessage(message);
+			}
+		};
 }
