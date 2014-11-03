@@ -32,6 +32,7 @@ public class local_guess extends BaseActivity {
 	// 0-n人数的词语数组
 	private String[] content;
 	private Button punishBtn;
+	private Button btn_restart;
 
 	private int temindex;
 	private Random random = new Random();
@@ -57,10 +58,19 @@ public class local_guess extends BaseActivity {
 		regButton=new ArrayList<Button>();
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		punishBtn = (Button) findViewById(R.id.btn_punish);
-
+		btn_restart = (Button) findViewById(R.id.btn_restart);
+		btn_restart.setVisibility(View.GONE);
 		content = getGuessContent();
 		hasClicked = getClickedContent();
 
+		
+		btn_restart.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});
+		
 		if (lastGameType().equals("game_killer")) {
 			initKill();
 		} else {
@@ -366,6 +376,7 @@ public class local_guess extends BaseActivity {
 
 	private void initControlBtn() {
 		punishBtn.setBackgroundResource(R.drawable.btn_fang_purple);
+		btn_restart.setVisibility(View.VISIBLE);
 		punishBtn.setTextColor(getResources().getColor(R.color.WRITE));
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override

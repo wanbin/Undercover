@@ -8,7 +8,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_punish"
+        android:layout_above="@+id/ss"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
 
@@ -19,15 +19,36 @@
         </TableLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_punish"
+    <LinearLayout
+        android:id="@+id/ss"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/btn_fang_write"
-        android:text="@string/punishmen"
-        android:textAlignment="viewStart"
-        android:textColor="@color/GREEN" />
+        android:layout_alignParentLeft="true" >
+
+        <Button
+            android:id="@+id/btn_punish"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="20"
+            android:background="@drawable/btn_fang_write"
+            android:text="@string/punishmen"
+            android:textAlignment="viewStart"
+            android:textColor="@color/GREEN" />
+
+        <Button
+            android:id="@+id/btn_restart"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/btn_punish"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="50"
+            android:background="@color/gamepink"
+            android:text="@string/重新开始"
+            android:textAlignment="viewStart"
+            android:textColor="@color/WRITE" />
+    </LinearLayout>
 
 </RelativeLayout>

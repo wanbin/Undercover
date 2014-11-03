@@ -22,7 +22,7 @@ public class local_fanpai extends BaseActivity {
 	private String[] content;
 	private String[] libary;
 	private TextView txtShenfen;
-	private Button btnchangeword;
+//	private Button btnchangeword;
 	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
 	private ImageView imagebg;
@@ -48,11 +48,11 @@ public class local_fanpai extends BaseActivity {
 		setContentView(R.layout.local_pai);
 		//
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		btnchangeword = (Button) findViewById(R.id.btnchangeword);
+//		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
 		imagePan = (Button) findViewById(R.id.imagePan);
 		imagebg = (ImageView) findViewById(R.id.imagebg);
-		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
+//		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
 		blank = getResources().getString(R.string.blank);
 		random = new Random();
 
@@ -75,9 +75,7 @@ public class local_fanpai extends BaseActivity {
 				strFromId("TheWords")
 						+ gameInfo.getString("word", "").trim());
 		initFanpai();
-
-
-		initPan(nowIndex);
+		
 
 
 		imagePan.setOnClickListener(new Button.OnClickListener() {
@@ -98,20 +96,20 @@ public class local_fanpai extends BaseActivity {
 //		setBtnGreen(imagePan);
 
 		// 刷新换词
-		btnchangeword.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// v.setVisibility(View.INVISIBLE);
-				if (!canchangeword) {
-					siampleTitle(strFromId("txtPaiFirstPeople"));
-				} else {
-					initFanpai();
-					btnchangeword.startAnimation(animation);
-				}
-
-				// 添加变化动画
-			}
-		});
+//		btnchangeword.setOnClickListener(new Button.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				// v.setVisibility(View.INVISIBLE);
+//				if (!canchangeword) {
+//					siampleTitle(strFromId("txtPaiFirstPeople"));
+//				} else {
+//					initFanpai();
+//					btnchangeword.startAnimation(animation);
+//				}
+//
+//				// 添加变化动画
+//			}
+//		});
 
 	}
 
@@ -121,9 +119,9 @@ public class local_fanpai extends BaseActivity {
 		SoundPlayer.playball();
 		if (nowIndex >= 1) {
 			canchangeword = false;
-			btnchangeword.setBackgroundResource(R.drawable.update2);
+//			btnchangeword.setBackgroundResource(R.drawable.update2);
 			//用全局广告管理类来显示广告
-			AdManage.showBanner(local_fanpai.this);
+//			AdManage.showBanner(local_fanpai.this);
 			// changeword.setVisibility(View.INVISIBLE);
 		}
 		else{
@@ -147,6 +145,7 @@ public class local_fanpai extends BaseActivity {
 				uMengClick("click_undercover_pai_last");
 				// finish();
 				//这一块重新初始化好了
+				initFanpai();
 			}
 		}
 		else{

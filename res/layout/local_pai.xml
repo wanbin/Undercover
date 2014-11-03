@@ -13,28 +13,6 @@
         android:padding="10dp"
         android:scaleType="centerInside"
         android:src="@drawable/tap_image_2x" />
-    
-    <LinearLayout
-        android:id="@+id/changewordlin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="right" >
-
-        <Button
-            android:id="@+id/btnchangeword"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/update2" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/changeword" />
-    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout1"
