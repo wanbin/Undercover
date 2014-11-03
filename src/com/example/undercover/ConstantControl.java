@@ -33,6 +33,8 @@ public class ConstantControl {
 
 	public static String MAIL_SEND = "MailSend";
 
+	public static String ROOM_GET_CONTENT = "RoomGetContent";
+
 
 	
 	//添加用户行为LOG

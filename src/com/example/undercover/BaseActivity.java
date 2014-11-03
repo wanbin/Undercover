@@ -1069,6 +1069,10 @@ public static String getDeviceInfo(Context context) {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.getRoomInfo();
 	}
+	protected void roomGetContent() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.RoomGetContent();
+	}
 	
 	protected void RoomStartGame(int type,int addPeople) {
 		UserHandler userHandler = new UserHandler(this);

@@ -7,20 +7,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class net_home extends BaseActivity {
 	Button btnJoin;
 	Button btnCreate;
+	EditText txtRoomid;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_net_home);
 		btnJoin = (Button) this.findViewById(R.id.btnJoin);
+		
+		txtRoomid = (EditText) this.findViewById(R.id.txtRoomid);
+		
 		btnJoin.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				joinRoom(10001);
+				int roomid=Integer.parseInt(txtRoomid.getText().toString()) ;
+				if(roomid<10000){
+					ToastMessageLong("请输入正确的房间号");
+				}
+				else{
+					joinRoom(roomid);
+				}
 			}
 		});
 		btnCreate = (Button) this.findViewById(R.id.btnCreate);
@@ -77,6 +88,9 @@ public class net_home extends BaseActivity {
 			try {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
 				setToObject("gametype","join");
+				Intent mIntent = new Intent();
+				mIntent.setClass(net_home.this, net_room_join.class);
+				startActivity(mIntent);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

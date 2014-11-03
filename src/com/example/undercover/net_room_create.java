@@ -24,6 +24,7 @@ import android.widget.TableRow;
 
 public class net_room_create extends BaseActivity {
 	Button btnStart;
+	Button btnreflash;
 	Button btnWX;
 	ScrollView scrollContent;
 	SeekBar selectPeople;
@@ -37,6 +38,7 @@ public class net_room_create extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_roomcreate);
 		btnStart = (Button) this.findViewById(R.id.btnstart);
+		btnreflash = (Button) this.findViewById(R.id.btnreflash);
 		btnWX = (Button) this.findViewById(R.id.btnwx);
 		scrollContent=(ScrollView)this.findViewById(R.id.scrollContent);
 		selectPeople=(SeekBar)this.findViewById(R.id.seekSelectPeople);
@@ -51,6 +53,13 @@ public class net_room_create extends BaseActivity {
 				mIntent.putExtra("addPeople", addPeople);
 				mIntent.putExtra("PeopleCount", roomUser.length());
 				startActivity(mIntent);
+			}
+		});
+		btnreflash.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				joinRoom(10001);
+				getRoomContent();
 			}
 		});
 		btnWX.setOnClickListener(new Button.OnClickListener() {
@@ -84,8 +93,9 @@ public class net_room_create extends BaseActivity {
 				
 			}
 		});
-		timer = new Timer();
-		timer.schedule(timetask, 0, 30000);
+//		timer = new Timer();
+//		timer.schedule(timetask, 0, 30000);
+		getRoomContent();
 	}
 	
 //	protected void onRestart(){
@@ -100,27 +110,27 @@ public class net_room_create extends BaseActivity {
 	@Override
 	protected void onDestroy(){
 		super.onDestroy();
-		timer.cancel();
+//		timer.cancel();
 	}
 	
 	
 	// 接受时间
-		Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				getRoomContent();
-				super.handleMessage(msg);
-			}
-		};
-		// 传递时间
-		private TimerTask timetask = new TimerTask() {
-			@Override
-			public void run() {
-				Message message = new Message();
-				message.what = 1;
-				handler.sendMessage(message);
-			}
-		};
+//		Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message msg) {
+//				getRoomContent();
+//				super.handleMessage(msg);
+//			}
+//		};
+//		// 传递时间
+//		private TimerTask timetask = new TimerTask() {
+//			@Override
+//			public void run() {
+//				Message message = new Message();
+//				message.what = 1;
+//				handler.sendMessage(message);
+//			}
+//		};
 	
 	/**
 	 * 取得房间信息，每30秒刷新一次，或者是有推送进来的时候刷新
@@ -158,7 +168,7 @@ public class net_room_create extends BaseActivity {
 			}
 			viewUser.addView(newrow);
 		}
-		
+		btnStart.setText("开始游戏 共"+(roomUser.length()+addPeople)+"人");
 	}
 	
 	
@@ -173,6 +183,7 @@ public class net_room_create extends BaseActivity {
 //				setToObject("roomid",String.valueOf(roomid));
 //				setToObject("gametype","create");
 				reflashUser();
+				ToastMessage("已经刷新");
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

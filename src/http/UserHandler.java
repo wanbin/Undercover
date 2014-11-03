@@ -109,4 +109,13 @@ public class UserHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.MAIL_SEND);
 	}
 	
+	public void RoomGetContent() {
+		JSONObject obj = new JSONObject();
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.ROOM_GET_CONTENT);
+	}
+	
 }
