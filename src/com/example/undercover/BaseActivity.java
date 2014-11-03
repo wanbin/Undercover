@@ -1080,6 +1080,11 @@ public static String getDeviceInfo(Context context) {
 		userHandler.RoomPunish(gameuidstr);
 	}
 	
+	protected void MailSend(String content,int gameuid) {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.MailSend(content,gameuid);
+	}
+	
 	/**
 	* 根据手机的分辨率从 dp 的单位 转成为 px(像素)
 	*/
@@ -1119,6 +1124,16 @@ public static String getDeviceInfo(Context context) {
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
 		ImageLoader.getInstance().init(config);
 		ImageLoader.getInstance().displayImage(url, imageView);
+	}
+	public String getVersion() {
+		try {
+			PackageManager manager = this.getPackageManager();
+			PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+			return info.versionName;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "3.0";
+		}
 	}
 	
 }

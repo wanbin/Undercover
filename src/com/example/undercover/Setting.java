@@ -1,5 +1,6 @@
 package com.example.undercover;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class setting  extends BaseActivity {
 	TextView txtVersion;
 	TextView txtUsername;
 	LinearLayout LinearSound;
+	LinearLayout LinearFeedback;
 	TextView txtSound;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class setting  extends BaseActivity {
 		txtUsername=(TextView)this.findViewById(R.id.txtUsername);
 		
 		LinearSound=(LinearLayout)this.findViewById(R.id.LinearSound);
+		LinearFeedback=(LinearLayout)this.findViewById(R.id.LinearFeedback);
 		txtVersion.setText(getVersion());
 		
 		txtUsername.setText(getFromObject("username"));
@@ -44,6 +47,14 @@ public class setting  extends BaseActivity {
 				setSwithSound(!SoundPlayer.getSoundSt());
 			}
 		});
+		LinearFeedback.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentGo = new Intent();
+				intentGo.setClass(setting.this, feedback.class);
+				startActivity(intentGo);
+			}
+		});
 	}
 
 	private void setSwithSound(boolean isChecked) {
@@ -58,14 +69,5 @@ public class setting  extends BaseActivity {
 		}
 	}
 	
-	public String getVersion() {
-		try {
-			PackageManager manager = this.getPackageManager();
-			PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
-			return info.versionName;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "3.0";
-		}
-	}
+
 }

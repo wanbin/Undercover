@@ -87,6 +87,7 @@ public class UserHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.ROOM_START_GAME);
 	}
+	
 	//RoomGetInfo
 	public void RoomPunish(String gameuidstr) {
 		JSONObject obj = new JSONObject();
@@ -96,6 +97,16 @@ public class UserHandler extends BaseHttpCommand {
 			e.printStackTrace();
 		}
 		getHttpRequest(obj, ConstantControl.ROOM_PUNISH);
+	}
+	public void MailSend(String content,int gameuid) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("content", content);
+			obj.put("sendto", gameuid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.MAIL_SEND);
 	}
 	
 }

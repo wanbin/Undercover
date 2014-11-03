@@ -35,7 +35,7 @@ public class local_punish  extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intentGo = new Intent();
-				intentGo.setClass(local_punish.this, net_punish.class);
+				intentGo.setClass(local_punish.this, local_punish_list.class);
 				uMengClick("click_intenet");
 				startActivity(intentGo);
 			}
