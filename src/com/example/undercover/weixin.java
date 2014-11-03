@@ -6,18 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class weixin extends BaseActivity {
 	private ImageView weixin;
+	private TextView txtDes1;
+	private TextView txtDes2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.weixin);
 		weixin = (ImageView) findViewById(R.id.imageView1);
-		initBtnBack(R.id.btnback);
-		initShareBtn();
-		initBtnInfo(R.id.btninfo, strFromId("txtWeixinHelp"));
-
+		txtDes1 = (TextView) findViewById(R.id.txtDes1);
+		txtDes2 = (TextView) findViewById(R.id.txtDes2);
+		txtDes1.setText("扫一下，加入微信也可玩");
+		txtDes2.setText("微信号：centurywar");
+		
 		// 屏幕变黑
 		// WindowManager.LayoutParams lp = getWindow().getAttributes();
 		// lp.alpha = 0.3f;

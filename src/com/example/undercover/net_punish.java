@@ -22,10 +22,7 @@ import android.widget.Toast;
 public class net_punish extends BaseActivity {
 	private Button btnChange;
 	private Button btnSay;
-	private Button btnReturn;
-	private CheckBox checkGm;
 	private ListView myList;
-	private boolean isGMView=false;
 	//private Button userConSend;
 	//private EditText userConTextField; 
 	
@@ -39,9 +36,7 @@ public class net_punish extends BaseActivity {
 //		initBtnBack(R.id.btnback);
 		btnChange = (Button)findViewById(R.id.btnChange);
 		btnSay = (Button) findViewById(R.id.btnSay);
-		btnReturn = (Button) findViewById(R.id.btnReturn);
 		myList = (ListView) findViewById(R.id.myList);
-		checkGm = (CheckBox) findViewById(R.id.checkGM);
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
 		//添加真心话按钮
@@ -49,16 +44,7 @@ public class net_punish extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intentGo = new Intent();
-				intentGo.setClass(net_punish.this, editContributeActivity.class);
-				startActivity(intentGo);
-			}
-		});
-		//返回
-		btnReturn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
+				punishAdd("");
 			}
 		});
 		
@@ -69,62 +55,32 @@ public class net_punish extends BaseActivity {
 				// TODO Auto-generated method stub
 				// finish();
 				uMengClick("click_reflash");
-				if (isGMView == true) {
-					getAllPublishShenHe(0);
-				} else {
-					getAllPublish(0);
-				}
+				getAllPublish(0);
 
 			}
 		});
 		
-		JSONObject user = getUserInfoFromLocal();
-		try {
-			if (isGm==1) {
-				checkGm.setVisibility(View.VISIBLE);
-			} else {
-				checkGm.setVisibility(View.GONE);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 
 		if (!detect(net_punish.this)) {
 			ToastMessageLong("当前网络不可用");
 		}
-		checkGm.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
-				AdManage.showad = isChecked;
-				if (isChecked) {
-					Toast.makeText(net_punish.this, "切换为GM视图", Toast.LENGTH_SHORT)
-							.show();
-					isGMView = true;
-				} else {
-					Toast.makeText(net_punish.this, "切换为普通视图", Toast.LENGTH_SHORT)
-							.show();
-					isGMView = false;
-				}
-				getAllPublish(0);
-			}
-		});
 
 		getAllPublish(0);
 //		updateMessage(null);
 	}
 	
-	
+	public void punishAdd(String content){
+		Intent intentGo = new Intent();
+		intentGo.setClass(net_punish.this, editContributeActivity.class);
+		intentGo.putExtra("content", content);
+		startActivity(intentGo);
+	}
 	/**
 	 * 取得所有新闻
 	 */
 	protected void getAllPublish(int page) {
 		PublishHandler publishHandler = new PublishHandler(this);
-		if (isGMView) {
-			publishHandler.getAllPublishNeedShenhe(page);
-		} else {
-			publishHandler.getAllPublish(page);
-		}
+		publishHandler.getAllPublish(page);
 	}
 	
 	/**
@@ -171,7 +127,7 @@ public class net_punish extends BaseActivity {
 						.getString("username"), temobj.getString("content"),
 						temobj.getInt("like"), temobj.getInt("dislike")
 						, temobj.getBoolean("liked"),
-						temobj.getBoolean("disliked"), false, "", temobj.getInt("type")));
+						temobj.getBoolean("disliked"), temobj.getInt("type")));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -180,7 +136,6 @@ public class net_punish extends BaseActivity {
 		MyAdapter adapter = new MyAdapter(net_punish.this, temPubs,
 				this.getUid());
 		adapter.setCallBack(this);
-		adapter.setGM(isGMView);
 		myList.setAdapter(adapter);
 	}
 

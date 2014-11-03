@@ -1,93 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/FrameLayout1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="textStart" >
 
-    <include
+    <EditText
+        android:id="@+id/editText1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        layout="@layout/activity_bg" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="3dp"
+        android:ems="10"
+        android:gravity="top|center_vertical"
+        android:lines="@integer/lines"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/alphabet_size" >
 
-    <LinearLayout
+    </EditText>
+
+    <Button
+        android:id="@+id/btnsend"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_gravity="center"
-        android:orientation="vertical" >
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:background="@color/gameblue"
+        android:maxWidth="200dp"
+        android:text="@string/send"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/index" />
 
-        <LinearLayout
-            android:id="@+id/UserName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/username" />
-
-            <EditText
-                android:id="@+id/editUserName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10" >
-
-                <requestFocus />
-            </EditText>
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:lines="@integer/lines"
-            android:textAlignment="viewStart" >
-        </EditText>
-
-        <LinearLayout
-            android:id="@+id/TypeBtn"
-            android:layout_width="240dp"
-            android:layout_height="50dp" >
-
-            <Button
-                android:id="@+id/honest"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/honest" />
-
-            <Button
-                android:id="@+id/adventure"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/adventure" />
-
-            <Button
-                android:id="@+id/actor"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:text="@string/actor" />
-        </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/checkImport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/importInto" />
-
-        <Button
-            android:id="@+id/btnsend"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@drawable/greenbtn1"
-            android:maxWidth="200dp"
-            android:text="@string/send"
-            android:textColor="@color/WRITE"
-            android:textSize="@dimen/index" />
-    </LinearLayout>
-
-</FrameLayout>
+</RelativeLayout>

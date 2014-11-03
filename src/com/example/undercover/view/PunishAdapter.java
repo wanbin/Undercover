@@ -65,7 +65,7 @@ public class PunishAdapter extends BaseAdapter {
 					R.layout.net_room_punish_list, null);
 			viewHolder = new ViewHolder();
 			viewHolder.imageUser = (ImageView) convertView
-					.findViewById(R.id.imageUser);
+					.findViewById(R.id.imgPhoto);
 			viewHolder.txtName = (TextView) convertView
 					.findViewById(R.id.txtName);
 			viewHolder.txtPunish = (TextView) convertView
@@ -75,12 +75,9 @@ public class PunishAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
-		
 		//设置各控件的内容在这里
 		viewHolder.txtName.setText(temPublish.name);  
         viewHolder.txtPunish.setText(temPublish.punish);
-//        viewHolder.imageUser.setText(temPublish.punish);
-        	
 		return convertView;
 	}  
 	

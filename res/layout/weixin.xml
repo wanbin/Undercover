@@ -4,55 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <include
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        layout="@layout/activity_bg" />
-
-    <ScrollView
-        android:id="@+id/j"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp" >
-
-        <LinearLayout
-            android:id="@+id/LinearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:orientation="vertical"
-            android:overScrollMode="always" >
-
-            <TextView
-                android:id="@+id/txtWeixin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/strweixin"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
             <ImageView
                 android:id="@+id/imageView1"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:src="@drawable/qrcode_for_gh_f07084634d58_430" />
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/wx_qcode" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/txtDes1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/saoma" />
+                android:layout_above="@+id/imageView1"
+                android:layout_centerHorizontal="true"
+                android:text="Medium Text" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
+                android:id="@+id/txtDes2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/weixinrule" />
-        </LinearLayout>
-    </ScrollView>
+                android:layout_below="@+id/imageView1"
+                android:layout_centerHorizontal="true"
+                android:text="TextView" />
 
 </RelativeLayout>

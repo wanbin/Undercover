@@ -1,89 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:padding="3dp" >
-
-    <LinearLayout
-        android:id="@+id/usercon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <ImageView
-                android:id="@+id/imageUser"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="2dp"
-                android:src="@drawable/umeng_socialize_action_personal_selected" />
-
-            <LinearLayout
-                android:id="@+id/dd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/txtName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/txtContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|right"
-            android:paddingRight="5dp" >
-
-            <Button
-                android:id="@+id/buttonLike"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:padding="@dimen/smailpadding"
-                android:textColor="@color/WRITE"
-                android:textSize="@dimen/txtSmall12" />
-
-            <Button
-                android:id="@+id/buttonDislike"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:padding="@dimen/smailpadding"
-                android:textColor="@color/WRITE"
-                android:textSize="@dimen/txtSmall12" />
-
-            <Button
-                android:id="@+id/buttonCollect"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:padding="@dimen/smailpadding"
-                android:textColor="@color/WRITE"
-                android:textSize="@dimen/txtSmall12" />
-        </LinearLayout>
-    </LinearLayout>
+    android:padding="10dp" >
 
     <TextView
-        android:id="@+id/txtTime"
+        android:id="@+id/txtContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="5dp"
-        android:text="09/14/2013|万斌"
-        android:textColor="@color/title2"
-        android:textSize="@dimen/txtSmall12" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/aa"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/aa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtContent" >
+
+        <Button
+            android:id="@+id/buttonLike"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/heart_2x"
+            android:padding="@dimen/smailpadding"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/txtSmall12" />
+
+        <TextView
+            android:id="@+id/txtLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp" />
+
+        <Button
+            android:id="@+id/buttonDislike"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:background="@drawable/heart_gray_2x"
+            android:padding="@dimen/smailpadding"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/txtSmall12" />
+
+        <TextView
+            android:id="@+id/txtDislike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp" />
+
+        <Button
+            android:id="@+id/buttonCollect"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:background="@drawable/share_2x"
+            android:padding="@dimen/smailpadding"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/txtSmall12" />
+    </LinearLayout>
+
+</RelativeLayout>
