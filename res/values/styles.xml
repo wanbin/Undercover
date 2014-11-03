@@ -50,6 +50,11 @@
 <color name="WRITE">#ffffff</color>
 <color name="Writegray">#ffffff</color>
 <color name="light_gray">#eeeeee</color>
+<color name="gamepink">#F7A6B5</color>
+<color name="gamegreen">#BEEEA9</color>
+<color name="gamepurple">#AE7BB3</color>
+<color name="gameyellow">#F7F5CE</color>
+<color name="gameblue">#ADD3E1</color>
 
     <style name="Transparent">
         <item name="android:windowBackground">@android:color/transparent</item>

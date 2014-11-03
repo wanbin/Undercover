@@ -40,6 +40,7 @@ public class feedback extends BaseActivity {
 		if (cmd.equals(ConstantControl.MAIL_SEND)) {
 			try {
 				initContent();
+				ToastMessage("感谢您的反馈");
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

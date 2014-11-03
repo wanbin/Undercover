@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class homegame extends BaseActivity {
+public class homeguide extends BaseActivity {
 	// 把需要滑动的页卡添加到这个list中
 	private List<View> viewList;
 	// viewPager 滑动
@@ -45,59 +45,41 @@ public class homegame extends BaseActivity {
 
 		viewList = new ArrayList<View>();
 		
-		int gameCount=6;
+		int gameCount=5;
 		imageViews = new ImageView[gameCount];
 		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","本周热门"};
+		String[] gamename={"快速！","简洁！","丰富！","妥协！","爱上聚会"};
+		String[] des1={"感受到了吗？","删除复杂的功能与设计","总有适合你们的游戏","不幸的是，我们妥协了","你们才是主角"};
+		String[] des2={"我们和您一样，是急性了，不想在聚会的时候耽搁时间。","一目了然的设计，让所有人都能快速使用。","每个人都有理由参与其中","因为这只是工具，不必太华丽","马上开始"};
 		
-		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.week_recom_2x};
   		
 		for(int i=0;i<gameCount;i++){
-			View welcomeView = mInflater.inflate(R.layout.game_select, null);
-			ImageView btn=(ImageView)welcomeView.findViewById(R.id.image);
-			TextView txtName=(TextView)welcomeView.findViewById(R.id.txtName);
-			txtName.setText(gamename[i]);
-			
-			btn.setTag(i);
-			String imageUri = "drawable://" + imageId[i];
-			ImageFromLocal(btn,imageUri);
-			
-			
-			btn.setOnClickListener(new Button.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					cleanStatus();
-					Intent mIntent = new Intent();
-					int tag=(Integer) v.getTag();
-					switch(tag){
-					case 0:
-						mIntent.setClass(homegame.this, local_setting.class);
-						setGameType("game_undercover");
-						break;
-					case 1:
-						mIntent.setClass(homegame.this, local_setting.class);
-						setGameType("game_killer");
-						break;
-					case 2:
-						mIntent.setClass(homegame.this, local_punish.class);
-						break;
-					case 3:
-						mIntent.setClass(homegame.this, local_click.class);
-						break;
-					case 4:
-						mIntent.setClass(homegame.this, local_bottle.class);
-						break;
-					case 5:
-						mIntent.setClass(homegame.this, homepage.class);
-						mIntent.putExtra("type", "newGame");
-						break;
+			if(i<4){
+				View welcomeView = mInflater.inflate(R.layout.game_guide, null);
+				TextView txtTitle=(TextView)welcomeView.findViewById(R.id.txtTitle);
+				TextView txtDes1=(TextView)welcomeView.findViewById(R.id.txtDes1);
+				TextView txtDes2=(TextView)welcomeView.findViewById(R.id.txtDes2);
+				txtTitle.setText(gamename[i]);
+				txtDes1.setText(des1[i]);
+				txtDes2.setText(des2[i]);
+				
+				viewList.add(welcomeView);
+			}else{
+				View welcomeView = mInflater.inflate(R.layout.game_guide2, null);
+				TextView txtTitle=(TextView)welcomeView.findViewById(R.id.txtTitle);
+				TextView txtDes1=(TextView)welcomeView.findViewById(R.id.txtDes1);
+				Button btnStart=(Button)welcomeView.findViewById(R.id.btnStart);
+				btnStart.setOnClickListener(new Button.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						finish();
 					}
-					
-					startActivity(mIntent);
-				}
-			});
-			viewList.add(welcomeView);
+				});
+				txtTitle.setText(gamename[i]);
+				txtDes1.setText(des1[i]);
+				viewList.add(welcomeView);
+			}
+			
 		}
 		
 		
@@ -112,10 +94,10 @@ public class homegame extends BaseActivity {
 	
 		// 将小圆点放到Layout中
 		for (int i = 0; i < imageViews.length; i++) {
-			ImageView image = new ImageView(homegame.this);
+			ImageView image = new ImageView(homeguide.this);
 			image.setLayoutParams(new LayoutParams(10, 10));
 	
-			RelativeLayout temview=new RelativeLayout(homegame.this);
+			RelativeLayout temview=new RelativeLayout(homeguide.this);
 			temview.setLayoutParams(new LayoutParams(20, 10));
 			image.setPadding(5, 0, 5, 0);
 			temview.addView(image);
@@ -136,18 +118,6 @@ public class homegame extends BaseActivity {
         viewPager.setCurrentItem(0);
         setContentView(mainContainer);
         getUserInfo();
-        
-        
-        
-        //判断是不是本版本第一次打开游戏，如果是的话，开用户引导
-        
-        String checkisfirst=getFromObject("guide_"+getVersion());
-        if(checkisfirst.length()==0){
-            Intent intentGo = new Intent();
-    		intentGo.setClass(homegame.this, homeguide.class);
-    		startActivity(intentGo);
-    		setToObject("guide_"+getVersion(),"guide");
-        }
 	}
 	
 	
@@ -237,50 +207,4 @@ public class homegame extends BaseActivity {
     	
     }
     
-	@Override
-	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
-		super.CallBackPublicCommand(jsonobj, cmd);
-		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
-			try {
-				setUserInfo(new JSONObject(jsonobj.getString("data")));
-				JSONObject obj = new JSONObject(jsonobj.getString("data"));
-				//obj={"uid":"A0000043A574DC","username":"","gameuid":310,"time":1414514074,"newgameimage":"http:\/\/192.168.1.120\/CenturyServer\/www\/image\/recom_1.png","newgamename":"我爱我OR不要脸","_id":310,"newgame":1,"pushcount":"0","photo":"","channel":"ANDROID"}
-				String username=obj.getString("username");
-				String gameuid=obj.getString("gameuid");
-				String photo=obj.getString("photo");
-				
-				
-				String newgameimage=obj.getString("newgameimage");
-				String newgamename=obj.getString("newgamename");
-				String newgame=obj.getString("newgame");
-				
-				updateNewGame(newgamename,newgameimage);
-				
-				setToObject("username", username);
-				setToObject("gameuid", gameuid);
-				setToObject("photo", photo);
-				
-				
-				if(obj.has("isgm")){
-					isGm=obj.getInt("isgm");
-				}
-				if (obj.has("mail")) {
-					JSONArray mailArr = obj.getJSONArray("mail");
-//					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
-				}
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public void updateNewGame(String newgamename,String newgameimage){
-		View temview=viewList.get(viewList.size()-1);
-		ImageView btn=(ImageView)temview.findViewById(R.id.image);
-		TextView txtName=(TextView)temview.findViewById(R.id.txtName);
-		txtName.setText(newgamename);
-		ImageFromUrl(btn,newgameimage,R.drawable.week_recom_2x);
-		
-	}
 }

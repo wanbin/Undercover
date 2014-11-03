@@ -18,6 +18,7 @@ public class setting  extends BaseActivity {
 	TextView txtUsername;
 	LinearLayout LinearSound;
 	LinearLayout LinearFeedback;
+	LinearLayout LinearAbout;
 	TextView txtSound;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class setting  extends BaseActivity {
 		
 		LinearSound=(LinearLayout)this.findViewById(R.id.LinearSound);
 		LinearFeedback=(LinearLayout)this.findViewById(R.id.LinearFeedback);
+		LinearAbout=(LinearLayout)this.findViewById(R.id.LinearAbout);
+		
 		txtVersion.setText(getVersion());
 		
 		txtUsername.setText(getFromObject("username"));
@@ -52,6 +55,14 @@ public class setting  extends BaseActivity {
 			public void onClick(View v) {
 				Intent intentGo = new Intent();
 				intentGo.setClass(setting.this, feedback.class);
+				startActivity(intentGo);
+			}
+		});
+		LinearAbout.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentGo = new Intent();
+				intentGo.setClass(setting.this, homeguide.class);
 				startActivity(intentGo);
 			}
 		});

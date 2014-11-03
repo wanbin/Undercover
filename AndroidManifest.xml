@@ -78,6 +78,8 @@
         </activity>
         <activity android:name="com.example.undercover.feedback">
         </activity>
+         <activity android:name="com.example.undercover.homeguide">
+        </activity>
          <activity android:name="com.example.undercover.HomeNew">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
