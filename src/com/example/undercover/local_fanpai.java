@@ -22,7 +22,6 @@ public class local_fanpai extends BaseActivity {
 	private String[] content;
 	private String[] libary;
 	private TextView txtShenfen;
-//	private Button btnchangeword;
 	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
 	private ImageView imagebg;
@@ -37,7 +36,6 @@ public class local_fanpai extends BaseActivity {
 
 	private SharedPreferences gameInfo;
 	private String blank;
-	private boolean canchangeword = true;
 	private String word;
 	private Animation animation;
 	private LinearLayout linChangeword;
@@ -74,10 +72,8 @@ public class local_fanpai extends BaseActivity {
 		Log.i("fanpai",
 				strFromId("TheWords")
 						+ gameInfo.getString("word", "").trim());
-		initFanpai();
 		
-
-
+		
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -91,42 +87,23 @@ public class local_fanpai extends BaseActivity {
 				tapPai(v);
 			}
 		});
-
-
-//		setBtnGreen(imagePan);
-
-		// 刷新换词
-//		btnchangeword.setOnClickListener(new Button.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				// v.setVisibility(View.INVISIBLE);
-//				if (!canchangeword) {
-//					siampleTitle(strFromId("txtPaiFirstPeople"));
-//				} else {
-//					initFanpai();
-//					btnchangeword.startAnimation(animation);
-//				}
-//
-//				// 添加变化动画
-//			}
-//		});
-
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		initFanpai();
+	}
+	
 
 	protected void tapPai(View v) {
 		setContentVis(!isShowWords);
 		// 在这里更新nowIndex，不至于呀恢复时错开一个
 		SoundPlayer.playball();
-		if (nowIndex >= 1) {
-			canchangeword = false;
-//			btnchangeword.setBackgroundResource(R.drawable.update2);
-			//用全局广告管理类来显示广告
-//			AdManage.showBanner(local_fanpai.this);
-			// changeword.setVisibility(View.INVISIBLE);
-		}
-		else{
+		if (nowIndex < 1) {
 			uMengClick("click_undercover_pai_first");
 		}
+
 		if (isShowWords) {
 			nowIndex++;
 			if (nowIndex <= content.length) {
@@ -145,7 +122,7 @@ public class local_fanpai extends BaseActivity {
 				uMengClick("click_undercover_pai_last");
 				// finish();
 				//这一块重新初始化好了
-				initFanpai();
+				
 			}
 		}
 		else{

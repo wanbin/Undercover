@@ -260,10 +260,6 @@ public class homegame extends BaseActivity {
 				setToObject("gameuid", gameuid);
 				setToObject("photo", photo);
 				
-				
-				if(obj.has("isgm")){
-					isGm=obj.getInt("isgm");
-				}
 				if (obj.has("mail")) {
 					JSONArray mailArr = obj.getJSONArray("mail");
 //					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));

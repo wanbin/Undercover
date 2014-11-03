@@ -61,7 +61,6 @@ public class local_guess extends BaseActivity {
 		btn_restart = (Button) findViewById(R.id.btn_restart);
 		btn_restart.setVisibility(View.GONE);
 		content = getGuessContent();
-		hasClicked = getClickedContent();
 
 		
 		btn_restart.setOnClickListener(new Button.OnClickListener() {
@@ -71,11 +70,19 @@ public class local_guess extends BaseActivity {
 			}
 		});
 		
+		
+		hasClicked = new boolean[content.length];
+		for (int i = 0; i < content.length; i++) {
+				hasClicked[i] = false;
+		}
+		
 		if (lastGameType().equals("game_killer")) {
 			initKill();
 		} else {
 			initUnderCover();
 		}
+		
+	
 
 		temindex = 0;
 		for (int i = 0; i < Math.ceil((float) content.length / 4); i++) {
@@ -95,6 +102,7 @@ public class local_guess extends BaseActivity {
 					select.setText("法官");
 					select.setClickable(false);
 					select.setEnabled(false);
+					hasClicked[temindex]=true;
 				}
 				
 				if (hasClicked[temindex]) {
@@ -135,16 +143,6 @@ public class local_guess extends BaseActivity {
 	}
 
 	private void initKill() {
-		if (hasClicked.length < 4) {
-			hasClicked = new boolean[content.length];
-			for (int i = 0; i < content.length; i++) {
-				if (content[i].equals(faguan)) {
-					hasClicked[i] = true;
-				} else {
-					hasClicked[i] = false;
-				}
-			}
-		}
 		policeCount = Math.max((int) Math.floor(content.length / 4), 1);
 		killerCount = Math.max((int) Math.floor(content.length / 4), 1);
 		otherCount = content.length - policeCount - killerCount - 1;
@@ -162,12 +160,6 @@ public class local_guess extends BaseActivity {
 	}
 
 	private void initUnderCover() {
-		if (hasClicked.length < 4) {
-			hasClicked = new boolean[content.length];
-			for (int i = 0; i < content.length; i++) {
-				hasClicked[i] = false;
-			}
-		}
 		son = gameInfo.getString("son", "");
 		soncount = gameInfo.getInt("underCount", 1);
 		fathercount = content.length - soncount;
@@ -292,8 +284,8 @@ public class local_guess extends BaseActivity {
 				hasNotClick.add(i);
 			} 
 		}
-		int seq = Math.abs(random.nextInt()) % hasNotClick.size()+1;
-		return hasNotClick.get(seq)+"号用户开始描述";
+		int seq = Math.abs(random.nextInt()) % hasNotClick.size();
+		return (hasNotClick.get(seq)+1)+"号用户开始描述";
 	}
 
 	/**
