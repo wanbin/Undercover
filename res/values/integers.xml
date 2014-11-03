@@ -3,4 +3,5 @@
     <integer name="lines">3</integer>
     <integer name="peopelNetMax">5</integer>
     <integer name="peopleNetMin">1</integer>
+    <integer name="itemMax">30</integer>
 </resources>
