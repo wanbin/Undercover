@@ -58,7 +58,7 @@ public class net_room_game extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_netroom_game);
+		setContentView(R.layout.net_room_game);
 		
 		btnTip1=(Button)this.findViewById(R.id.btnTip1);
 		btnTip2=(Button)this.findViewById(R.id.btnTip2);

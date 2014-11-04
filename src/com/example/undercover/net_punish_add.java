@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class editContributeActivity extends BaseActivity {
+public class net_punish_add extends BaseActivity {
 	private Button send;
 	private EditText textCotent;
 	private int sign = 1;
@@ -17,7 +17,7 @@ public class editContributeActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_editcontribute);
+		setContentView(R.layout.net_punish_add);
 		send = (Button) findViewById(R.id.btnsend);
 		textCotent = (EditText) findViewById(R.id.editText1);
 		String content=getIntent().getStringExtra("content");

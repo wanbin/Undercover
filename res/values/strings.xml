@@ -233,11 +233,8 @@
 
 <string name="刷新词汇">刷新词汇</string>
 
-
-
 <string name="刷新房间">刷新房间</string>
-
-
-
-
-<string name="删除">删除</string></resources>
+<string name="昵称">昵称</string>
+<string name="删除">删除</string>
+<string name="请输入房间号">请输入房间号</string>
+</resources>

@@ -19,7 +19,7 @@ public class net_room_punish extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_netroom_punish);
+		setContentView(R.layout.net_room_punish);
 		listView=(ListView)this.findViewById(R.id.listPunishUser);
 		
 		try {

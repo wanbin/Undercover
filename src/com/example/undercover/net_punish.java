@@ -71,7 +71,7 @@ public class net_punish extends BaseActivity {
 	
 	public void punishAdd(String content){
 		Intent intentGo = new Intent();
-		intentGo.setClass(net_punish.this, editContributeActivity.class);
+		intentGo.setClass(net_punish.this, net_punish_add.class);
 		intentGo.putExtra("content", content);
 		startActivity(intentGo);
 	}

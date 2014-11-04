@@ -36,7 +36,7 @@ public class net_room_create extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_roomcreate);
+		setContentView(R.layout.net_room_create);
 		btnStart = (Button) this.findViewById(R.id.btnstart);
 		btnreflash = (Button) this.findViewById(R.id.btnreflash);
 		btnWX = (Button) this.findViewById(R.id.btnwx);

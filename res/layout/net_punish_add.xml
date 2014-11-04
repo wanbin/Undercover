@@ -13,9 +13,9 @@
         android:layout_marginTop="3dp"
         android:ems="10"
         android:gravity="top|center_vertical"
-        android:lines="@integer/lines"
+        android:lines="5"
         android:textAlignment="viewStart"
-        android:textSize="@dimen/alphabet_size" >
+        android:textSize="@dimen/activity_horizontal_margin" >
 
     </EditText>
 

@@ -178,8 +178,8 @@
  <!-- 极光推送配置开始 -->
         
         
-<activity android:name="editContributeActivity"></activity>
-<activity android:name="AddUserNameActivity"></activity>
+<activity android:name="com.example.undercover.net_punish_add"></activity>
+<activity android:name="com.example.undercover.net_changename"></activity>
 
 </application>
 

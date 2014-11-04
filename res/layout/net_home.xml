@@ -3,26 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/WRITE"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
+        android:layout_margin="10dp"
         android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/activity_vertical_margin" />
 
     <EditText
         android:id="@+id/txtRoomid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number" />
+        android:gravity="center"
+        android:hint="@string/请输入房间号"
+        android:inputType="number"
+        android:textColor="@color/RED" />
 
     <Button
         android:id="@+id/btnJoin"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:background="@drawable/btn_blue_2x"
         android:text="@string/game_join"
         android:textColor="@color/WRITE"

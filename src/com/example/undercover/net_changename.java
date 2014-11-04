@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddUserNameActivity extends BaseActivity {
+public class net_changename extends BaseActivity {
 	private Button finish;
 	private EditText username;
 	
@@ -17,7 +17,7 @@ public class AddUserNameActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_addname);
+		setContentView(R.layout.net_changename);
 		initBtnBack(R.id.btnback);
 		finish = (Button) findViewById(R.id.button1);
 		username = (EditText) findViewById(R.id.editname);
@@ -31,7 +31,7 @@ public class AddUserNameActivity extends BaseActivity {
 				if (username.getText().length() != 0) {
 					gameInfo.edit().putString("username", name2).commit();
 					Intent intentGo = new Intent();
-					intentGo.setClass(AddUserNameActivity.this, net_punish.class);
+					intentGo.setClass(net_changename.this, net_punish.class);
 					// uMengClick("click_intenet");
 					startActivity(intentGo);
 					finish();

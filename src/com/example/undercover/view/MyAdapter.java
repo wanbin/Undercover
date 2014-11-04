@@ -5,7 +5,7 @@ import http.PublishHandler;
 import java.util.List;
 import com.example.undercover.BaseActivity;
 import com.example.undercover.R;
-import com.example.undercover.editContributeActivity;
+import com.example.undercover.net_punish_add;
 import com.example.undercover.net_punish;
 
 import android.content.Context;

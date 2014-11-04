@@ -173,7 +173,7 @@ public class PunishActivity extends BaseActivity {
 				} else {
 					Intent intentGo = new Intent();
 					intentGo.setClass(PunishActivity.this,
-							AddUserNameActivity.class);
+							net_changename.class);
 					uMengClick("click_intenet");
 					startActivity(intentGo);
 				}
