@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -15,14 +16,14 @@ public class local_setting extends BaseActivity {
 	TextView undercoverCount;
 	Button btnStart;
 	String gameType;
-	TableRow tableUndercover;
+	LinearLayout linearUndercover;
 	int basePeople=4;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.local_setting);
-		tableUndercover=(TableRow)this.findViewById(R.id.rowUndercover);
+		linearUndercover=(LinearLayout)this.findViewById(R.id.tem2);
 		
 		seekPeople=(SeekBar)this.findViewById(R.id.seekPeople);
 		seekUndercover=(SeekBar)this.findViewById(R.id.seekUndercover);
@@ -37,7 +38,7 @@ public class local_setting extends BaseActivity {
 			basePeople=4;
 		} else if (gameType.equals("game_killer")) {
 			seekPeople.setMax(10);
-			tableUndercover.setVisibility(View.GONE);
+			linearUndercover.setVisibility(View.GONE);
 			basePeople=6;
 		}
 		seekPeople.setProgress(0);

@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class net_home extends BaseActivity {
 	Button btnJoin;
 	Button btnCreate;
+	Button btnResent;
 	EditText txtRoomid;
 	TextView txtTitle;
 	@Override
@@ -21,6 +22,8 @@ public class net_home extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.net_home);
 		btnJoin = (Button) this.findViewById(R.id.btnJoin);
+		btnCreate = (Button) this.findViewById(R.id.btnCreate);
+		btnResent = (Button) this.findViewById(R.id.btnResent);
 		
 		txtRoomid = (EditText) this.findViewById(R.id.txtRoomid);
 		txtTitle = (TextView) this.findViewById(R.id.txtTitle);
@@ -50,7 +53,6 @@ public class net_home extends BaseActivity {
 				}
 			}
 		});
-		btnCreate = (Button) this.findViewById(R.id.btnCreate);
 		btnCreate.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -60,8 +62,22 @@ public class net_home extends BaseActivity {
 				createRoom();
 			}
 		});
+		btnResent.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				checkIsInRoom();
+			}
+		});
 		checkIsInRoom();
 	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		checkIsInRoom();
+	}
+	
+	
 	
 	
 	private boolean checkhasname(){
@@ -86,7 +102,11 @@ public class net_home extends BaseActivity {
 			mIntent.setClass(net_home.this, net_room_create.class);
 			startActivity(mIntent);
 		}else if (roomType.equals("join")){
-			
+			Intent mIntent = new Intent();
+			mIntent.setClass(net_home.this, net_room_join.class);
+			startActivity(mIntent);
+		}else{
+			btnResent.setVisibility(View.GONE);
 		}
 	}
 	
