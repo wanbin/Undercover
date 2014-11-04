@@ -19,9 +19,11 @@
             android:text="@string/个人信息" />
 
         <LinearLayout
+            android:id="@+id/LinearInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WRITE"
+            android:gravity="center_vertical"
             android:padding="@dimen/alphabet_size" >
 
             <ImageView
@@ -38,6 +40,14 @@
                 android:gravity="right|center_vertical"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:text="" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:gravity="right"
+                android:text="@string/向右" />
 
         </LinearLayout>
 

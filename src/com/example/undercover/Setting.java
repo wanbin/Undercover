@@ -1,8 +1,7 @@
 package com.example.undercover;
 
+
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +18,7 @@ public class setting  extends BaseActivity {
 	LinearLayout LinearSound;
 	LinearLayout LinearFeedback;
 	LinearLayout LinearAbout;
+	LinearLayout LinearInfo;
 	TextView txtSound;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class setting  extends BaseActivity {
 		LinearSound=(LinearLayout)this.findViewById(R.id.LinearSound);
 		LinearFeedback=(LinearLayout)this.findViewById(R.id.LinearFeedback);
 		LinearAbout=(LinearLayout)this.findViewById(R.id.LinearAbout);
+		LinearInfo=(LinearLayout)this.findViewById(R.id.LinearInfo);
 		
 		txtVersion.setText(getVersion());
 		
@@ -64,6 +65,16 @@ public class setting  extends BaseActivity {
 				Intent intentGo = new Intent();
 				intentGo.setClass(setting.this, homeguide.class);
 				startActivity(intentGo);
+			}
+		});
+		LinearInfo.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+//				UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login",null);
+//				mController.openUserCenter(setting.this,SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
+//				Intent intentGo = new Intent();
+//				intentGo.setClass(setting.this, homeguide.class);
+//				startActivity(intentGo);
 			}
 		});
 	}
