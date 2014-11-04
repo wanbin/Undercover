@@ -145,35 +145,6 @@ public class SoundPlayer{
 		
 	}
 	
-	/**
-	 * 播放鼓掌音效
-	 */
-	public static void playclaps() {
-		playSound(R.raw.claps3);
-	}
-	public static void playball() {
-		// playSound(R.raw.ball);
-	}
-
-	public static void playbottle() {
-		playSound(R.raw.bottle);
-	}
-
-	public static void playJishi() {
-		playMusic(R.raw.jishi, true);
-	}
-
-	public static void stopJishi() {
-		pauseMusic();
-	}
-
-	public static void playRolling() {
-		playMusic(R.raw.rolling, true);
-	}
-
-	public static void stopRolling() {
-		pauseMusic();
-	}
 
 	public static void playHighSoure() {
 		playSound(R.raw.hiscore02);

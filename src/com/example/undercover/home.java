@@ -16,7 +16,7 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HomeNew extends BaseActivity {
+public class home extends BaseActivity {
     private Context mContex = this;  
     
 	private TabHost mTabHost;

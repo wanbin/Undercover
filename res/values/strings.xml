@@ -1,6 +1,6 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
 <resources>
-<string name="app_name">谁是卧底-爱上聚会</string>
+<string name="app_name">爱上聚会</string>
 <string name="punishmen">开始惩罚</string>
 <string name="hello_world">Hello world!</string>
 <string name="menu_settings">Settings</string>
@@ -21,7 +21,7 @@
 <string name="question_jump">进入头脑风暴</string>
 <string name="question_title">开始头脑风暴啦,嘎嘎</string>
 <string name="givetoother">请避免被别的玩家看到</string>
-<string name="question_rule"><b>游戏规则：</b>\n1、拿到手机的玩家，回答屏幕上的问题\n2、结束后下一个玩家，接过手机，点击下一题，并读出问题，游戏继续\n<b>惩罚条件：</b>\n1、游戏是有时间限制的，随机默认30-120秒\n2、当游戏结束时候，持有手机的玩家将接受惩罚</string>
+<string name="question_rule">游戏规则：</string>
 <string name="question_next">下一题</string>
 <string name="more">更多</string>
 <string name="lose">点背不能怨社会，你输了！</string>
@@ -238,4 +238,5 @@
 <string name="删除">删除</string>
 <string name="请输入房间号">请输入房间号</string>
 <string name="历史房间">历史房间</string>
+<string name="长按重新开始">长按重新开始</string>
 </resources>

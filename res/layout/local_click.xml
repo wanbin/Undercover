@@ -13,14 +13,13 @@
         android:layout_marginBottom="20dp" >
     </LinearLayout>
 
-    
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/btn_quan_2x" />
+        android:src="@drawable/circle_2x" />
     
     <Button
         android:id="@+id/imageBtnMain"
@@ -34,18 +33,6 @@
         android:textColor="@color/WRITE"
         android:textSize="@dimen/large80" />
 
-    <Button
-        android:id="@+id/btn_restart"
-        android:layout_width="100dp"
-        android:layout_height="49dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/pinkbtn1"
-        android:text="@string/restart"
-        android:textColor="@color/WRITE"
-        android:textSize="@dimen/size20" />
 
     <Button
         android:id="@+id/btn_punish"
@@ -58,5 +45,15 @@
         android:text="@string/punishmen"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/size20" />
+
+    <TextView
+        android:id="@+id/txtDes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/长按重新开始"
+         />
 
 </RelativeLayout>

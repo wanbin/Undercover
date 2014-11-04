@@ -33,7 +33,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_weight="20"
-            android:background="@drawable/btn_fang_write"
+            android:background="@color/WRITE"
             android:text="@string/punishmen"
             android:textAlignment="viewStart"
             android:textColor="@color/GREEN" />

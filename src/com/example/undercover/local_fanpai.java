@@ -99,7 +99,7 @@ public class local_fanpai extends BaseActivity {
 	protected void tapPai(View v) {
 		setContentVis(!isShowWords);
 		// 在这里更新nowIndex，不至于呀恢复时错开一个
-		SoundPlayer.playball();
+		
 		if (nowIndex < 1) {
 			uMengClick("click_undercover_pai_first");
 		}
@@ -126,6 +126,7 @@ public class local_fanpai extends BaseActivity {
 			}
 		}
 		else{
+			SoundPlayer.playChuiShao();
 			imagePan.setText("请交给下一位");
 		}
 		isShowWords=!isShowWords;

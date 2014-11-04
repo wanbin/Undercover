@@ -170,7 +170,6 @@ public class MyAdapter extends BaseAdapter {
 	 */
 	public void setDisableBtn(Button btn) {
 		btn.setClickable(false);
-		((BaseActivity) this.context).setBtnPink(btn);
 	}
 
 	/**

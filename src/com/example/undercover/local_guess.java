@@ -367,13 +367,12 @@ public class local_guess extends BaseActivity {
 	}
 
 	private void initControlBtn() {
-		punishBtn.setBackgroundResource(R.drawable.btn_fang_purple);
+		punishBtn.setBackgroundResource(R.color.gamepurple);
 		btn_restart.setVisibility(View.VISIBLE);
 		punishBtn.setTextColor(getResources().getColor(R.color.WRITE));
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				SoundPlayer.playball();
 				Intent goMain = new Intent();
 				goMain.setClass(local_guess.this, local_punish.class);
 				uMengClick("game_undercover_punish");

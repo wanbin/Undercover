@@ -9,7 +9,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/btn_fang_purple"
+        android:background="@color/gamepurple"
         android:textColor="@color/WRITE" />
 
     <ScrollView

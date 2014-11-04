@@ -8,7 +8,6 @@
         android:id="@+id/TableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:padding="@dimen/activity_horizontal_margin" >
@@ -99,7 +98,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/btn_fang_write"
+        android:background="@color/WRITE"
         android:text="@string/返回" />
 
 </RelativeLayout>

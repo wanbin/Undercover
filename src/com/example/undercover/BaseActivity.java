@@ -158,61 +158,12 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		return MobclickAgent.getConfigParams(this, configname);
 	}
 
-	protected void initShareBtn() {
-		Button btnShare = (Button) findViewById(R.id.btnshare);
-		btnShare.setVisibility(View.VISIBLE);
-		// wx967daebe835fbeac是你在微信开发平台注册应用的AppID, 这里需要替换成你注册的AppID
-		// String appID = "wx867ce76242dbeafe";
-		// String contentUrl = "http://www.umeng.com/social";
-		// 添加微信平台，参数1为当前Activity, 参数2为用户申请的AppID, 参数3为点击分享内容跳转到的目标url
-		// mController.getConfig().supportWXPlatform(this, appID,
-		// contentUrl);
-		// // 支持微信朋友圈
-		// mController.getConfig().supportWXCirclePlatform(getActivity(), appID,
-		// contentUrl);
-		mController = UMServiceFactory.getUMSocialService("com.umeng.share",
-				RequestType.SOCIAL);
-		mController.setShareContent(strFromId("txtShareSay"));
-		mController
-				.setShareMedia(new UMImage(this, R.drawable.down_undercover));
-		
-		
-		btnShare.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				openShareEdit("");
-			}
-		});
-	}
 
 	protected void initTitle(String title) {
 		TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
 		txtTitle.setVisibility(View.VISIBLE);
 	}
 
-	protected void initBtnBack(int id) {
-		Button btnBack = (Button) findViewById(id);
-		btnBack.setVisibility(View.VISIBLE);
-		setBtnBlueReturn(btnBack);
-		btnBack.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
-	}
-
-	protected void initBtnInfo(int id, final String infostr) {
-		Button btnInfo = (Button) findViewById(id);
-		btnInfo.setVisibility(View.VISIBLE);
-		btnInfo.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(BaseActivity.this, infostr, Toast.LENGTH_LONG)
-						.show();
-			}
-		});
-	}
 
 
 	protected void openShareEdit(String share) {
@@ -237,18 +188,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	@Override
 	protected void onStart() {
 		super.onResume();
-	}
-
-	protected void initBtnReturn() {
-		btnreturn.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				SoundPlayer.playball();
-				finish();
-			}
-		});
-		btnreturn.setVisibility(View.VISIBLE);
 	}
 
 	
@@ -725,66 +664,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		return 1;
 	}
 
-	protected void setBtnGreen(Button btn) {
-		setTouchActionFactory(btn, R.drawable.greenbtn1, R.drawable.greenbtn2);
-	}
-
-	protected void setBtnPinkCer(Button btn) {
-		setTouchActionFactory(btn, R.drawable.cerpink01, R.drawable.cerpink02);
-	}
-
-	protected void setBtnGrayCer(Button btn) {
-		setTouchActionFactory(btn, R.drawable.cergray01, R.drawable.cergray01);
-	}
-
-
-	protected void setBtnPinkCer(ImageView btn) {
-		setTouchActionFactory(btn, R.drawable.cerpink01,
-				R.drawable.cerpink02);
-	}
-
-	public void setBtnPink(Button btn) {
-		setTouchActionFactory(btn, R.drawable.pinkbtn1, R.drawable.pinkbtn2);
-	}
-
-	protected void setBtnYellow(Button btn) {
-		setTouchActionFactory(btn, R.drawable.yellowbtn1, R.drawable.yellowbtn2);
-	}
-
-	protected void setBtnBlue(Button btn) {
-		setTouchActionFactory(btn, R.drawable.bluebtn1, R.drawable.bluebtn2);
-	}
-
-	protected void setBtnBlueReturn(Button btn) {
-		setTouchActionFactory(btn, R.drawable.returnblue01,
-				R.drawable.returnblue02);
-	}
-
-	protected void setBtnBlue(ImageView btn) {
-		setTouchActionFactory(btn, R.drawable.bluebtn1, R.drawable.bluebtn2);
-	}
-
-	protected void setBtnLightBlue(Button btn) {
-		setTouchActionFactory(btn, R.drawable.lightbluebtn1,
-				R.drawable.lightbluebtn2);
-	}
-
-
-	public void setBtnBrown(Button btn) {
-		setTouchActionFactory(btn, R.drawable.brownbtn1, R.drawable.brownbtn2);
-	}
-
-	protected void setBtnPurple(Button btn) {
-		setTouchActionFactory(btn, R.drawable.purplebtn1, R.drawable.purplebtn2);
-	}
-
-	protected void setBtnMoreGame(Button btn) {
-		setTouchActionFactory(btn, R.color.graybtn, R.color.graybtn2);
-	}
-
-	protected void setBtnGray(Button btn) {
-		setTouchActionFactory(btn, R.drawable.graybtn1, R.drawable.graybtn1);
-	}
 
 	protected void setBtnGrayColor(Button btn) {
 		setTouchActionFactory(btn, R.color.graybtn, R.color.graybtn);
@@ -795,22 +674,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		setTouchActionFactory(btn, R.color.bluebtn1, R.color.bluebtn2);
 	}
 
-	protected void setBtnPinkHeart(Button btn) {
-		setTouchActionFactory(btn, R.drawable.heart_red1, R.drawable.heart_red2);
-	}
-
-	protected void setBtnGrayHeart(Button btn) {
-		setTouchActionFactory(btn, R.drawable.heart_gray2,
-				R.drawable.heart_gray2);
-	}
-
-	protected void setBtnPinkStar(Button btn) {
-		setTouchActionFactory(btn, R.drawable.star_08, R.drawable.star_09);
-	}
-
-	protected void setBtnGrayStar(Button btn) {
-		setTouchActionFactory(btn, R.drawable.star_10, R.drawable.star_10);
-	}
 
 	protected void setTouchActionFactory(Button btn, final int id1,
 			final int id2) {

@@ -82,7 +82,7 @@
         </activity>
           <activity android:name="com.example.undercover.net_room_join">
         </activity>
-         <activity android:name="com.example.undercover.HomeNew">
+         <activity android:name="com.example.undercover.home">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

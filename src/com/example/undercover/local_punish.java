@@ -56,7 +56,7 @@ public class local_punish  extends BaseActivity {
 		nextPunish();
 	}
 	private void nextPunish(){
-		SoundPlayer.playclaps();
+		SoundPlayer.playNormalSoure();
 		txtPunish.setText(getRandomMaoxianFromLocate());
 	}
 }

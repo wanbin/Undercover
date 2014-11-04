@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="20"
-            android:background="@drawable/btn_fang_purple"
+            android:background="@color/gamepurple"
             android:text="@string/开始游戏"
             android:textColor="@color/WRITE" />
 
