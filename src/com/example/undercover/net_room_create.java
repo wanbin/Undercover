@@ -2,10 +2,13 @@ package com.example.undercover;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -14,18 +17,22 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 
 public class net_room_create extends BaseActivity {
 	Button btnStart;
 	Button btnreflash;
 	Button btnWX;
+	TextView txtRoominfo;
 	ScrollView scrollContent;
 	SeekBar selectPeople;
 	Timer timer;
@@ -33,6 +40,8 @@ public class net_room_create extends BaseActivity {
 	
 	JSONArray roomUser;
 	int addPeople=0;
+	
+	List<TableRow> listRow;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,9 +49,20 @@ public class net_room_create extends BaseActivity {
 		btnStart = (Button) this.findViewById(R.id.btnstart);
 		btnreflash = (Button) this.findViewById(R.id.btnreflash);
 		btnWX = (Button) this.findViewById(R.id.btnwx);
+		txtRoominfo = (TextView) this.findViewById(R.id.txtRoominfo);
 		scrollContent=(ScrollView)this.findViewById(R.id.scrollContent);
 		selectPeople=(SeekBar)this.findViewById(R.id.seekSelectPeople);
 		viewUser=(TableLayout)this.findViewById(R.id.viewUserTable);
+		
+		listRow=new ArrayList<TableRow>();
+		
+		int roomid=Integer.parseInt(getFromObject("roomid")) ;
+		if(roomid<10000){
+			finish();
+		}else{
+			txtRoominfo.setText("房间号:"+roomid+"[上限10人]");
+		}
+		
 		
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -145,27 +165,54 @@ public class net_room_create extends BaseActivity {
 	 */
 	private void reflashUser(){
 		int index=0;
-		viewUser.removeAllViews();
+//		viewUser.removeAllViews();
+		for(int count=0;count<listRow.size();count++){
+			TableRow tem=listRow.get(count) ;
+			if ( null != tem) {
+			      ViewGroup parent = ( ViewGroup )tem.getParent() ;
+			      parent.removeView( tem ) ;
+			}
+		}
+		listRow.clear();
 		for (int i = 0; i < Math.ceil((float) (roomUser.length()+addPeople) / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
-				FrameLayout fl = new FrameLayout(this);
-				Button temBtn =new Button(this);
-				if(index<addPeople){
-					temBtn.setText("NO."+(index+1));
-					temBtn.setBackgroundResource(R.drawable.default_photo);
-				}else{
-					temBtn.setText(String.valueOf(index));
-				}
-				temBtn.setGravity(Gravity.CENTER|Gravity.BOTTOM);
-				fl.addView(temBtn);
-				fl.setPadding(4, 4, 4, 4);
-				newrow.addView(fl, disWidth / 4, disWidth / 4);
-				index++;
-				if(index>=roomUser.length()+addPeople){
-					break;
+				try {
+					JSONObject temobj =new JSONObject();
+					if(index<roomUser.length())
+					{
+						temobj= roomUser.getJSONObject(index);
+					}else{
+						temobj.put("photo", "");
+					}
+					FrameLayout fl = new FrameLayout(this);
+					ImageView temBtn = new ImageView(this);
+					TextView txt = new TextView(this);
+					if (index >= roomUser.length()) {
+						txt.setText("NO." + (index + 1-roomUser.length()));
+						temBtn.setBackgroundResource(R.drawable.default_photo);
+					} else {
+						txt.setText(temobj.getString("username"));
+					}
+					txt.setGravity(Gravity.CENTER | Gravity.BOTTOM);
+					fl.addView(temBtn);
+					fl.addView(txt);
+					fl.setPadding(5, 5, 5, 5);
+					newrow.addView(fl, disWidth / 4, disWidth / 4);
+					index++;
+					ImageFromUrl(
+							temBtn,
+							temobj.getString("photo"),
+							R.drawable.default_photo);
+					if (index >= roomUser.length() + addPeople) {
+						break;
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
+			listRow.add(newrow);
 			viewUser.addView(newrow);
 		}
 		btnStart.setText("开始游戏 共"+(roomUser.length()+addPeople)+"人");
@@ -183,7 +230,7 @@ public class net_room_create extends BaseActivity {
 //				setToObject("roomid",String.valueOf(roomid));
 //				setToObject("gametype","create");
 				reflashUser();
-				ToastMessage("已经刷新");
+				ToastMessage("获取成功");
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

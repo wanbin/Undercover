@@ -1,10 +1,22 @@
 package com.example.undercover;
 
 
+import org.json.JSONObject;
+
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.media.UMImage;
+
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,6 +56,7 @@ public class setting  extends BaseActivity {
 			setSwithSound(false);
 		}
 		
+		usernameList.add(txtUsername);
 		
 		LinearSound.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -67,14 +80,13 @@ public class setting  extends BaseActivity {
 				startActivity(intentGo);
 			}
 		});
+		
 		LinearInfo.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.login",null);
-//				mController.openUserCenter(setting.this,SocializeConstants.FLAG_USER_CENTER_HIDE_LOGININFO);
-//				Intent intentGo = new Intent();
-//				intentGo.setClass(setting.this, homeguide.class);
-//				startActivity(intentGo);
+				Intent intentGo = new Intent();
+				intentGo.setClass(setting.this, setting_username.class);
+				startActivity(intentGo);
 			}
 		});
 	}
@@ -91,5 +103,27 @@ public class setting  extends BaseActivity {
 		}
 	}
 	
-
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (resultCode) {
+		case 20:
+			txtUsername.setText(getFromObject("username"));
+			break;
+		}
+	}
+//	@Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        // 获取当前活动的Activity实例
+//        Activity subActivity = getLocalActivityManager().getCurrentActivity();
+//        //判断是否实现返回值接口
+//        if (subActivity instanceof OnTabActivityResultListener) {
+//            //获取返回值接口实例
+//            OnTabActivityResultListener listener = (OnTabActivityResultListener) subActivity;
+//            //转发请求到子Activity
+//            listener.onTabActivityResult(requestCode, resultCode, data);
+//        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//    }
+	
 }

@@ -16,7 +16,7 @@
 
     <EditText
         android:id="@+id/txtRoomid"
-        android:layout_width="match_parent"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
@@ -26,8 +26,8 @@
 
     <Button
         android:id="@+id/btnJoin"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_blue_2x"
         android:text="@string/game_join"
@@ -36,8 +36,8 @@
 
     <Button
         android:id="@+id/btnCreate"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
         android:background="@drawable/btn_green_2x"
         android:text="@string/game_create"
         android:layout_margin="10dp"
@@ -46,8 +46,8 @@
     
         <Button
             android:id="@+id/btnResent"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_width="193dp"
+            android:layout_height="49dp"
             android:background="@drawable/btn_pink_2x"
             android:text="@string/历史房间"
             android:textColor="@color/WRITE"

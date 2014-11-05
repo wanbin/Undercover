@@ -5,6 +5,9 @@ import http.PublishHandler;
 import java.util.List;
 import com.example.undercover.BaseActivity;
 import com.example.undercover.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -71,6 +74,7 @@ public class PunishAdapter extends BaseAdapter {
 			viewHolder.txtPunish = (TextView) convertView
 					.findViewById(R.id.txtPunish);
 			convertView.setTag(viewHolder);
+			
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
@@ -78,9 +82,23 @@ public class PunishAdapter extends BaseAdapter {
 		//设置各控件的内容在这里
 		viewHolder.txtName.setText(temPublish.name);  
         viewHolder.txtPunish.setText(temPublish.punish);
+        if(temPublish.photo.length()>0){
+        	ImageFromUrl(viewHolder.imageUser,temPublish.photo,R.drawable.default_photo);
+        }
 		return convertView;
 	}  
-	
+
+	public void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
+		//第一次调用初始化
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
+		ImageLoader.getInstance().init(config);
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
+		.build();//构建完成  
+		ImageLoader.getInstance().displayImage(url, imageView,options);
+	}
 	
 	
 	/**

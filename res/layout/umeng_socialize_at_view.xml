@@ -46,7 +46,7 @@
 
         <com.umeng.socialize.view.wigets.SlideBar
             android:id="@+id/slideBar"
-            android:layout_width="28px"
+            android:layout_width="28dp"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_below="@id/umeng_socialize_line_serach"

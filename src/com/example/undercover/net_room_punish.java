@@ -9,8 +9,12 @@ import org.json.JSONObject;
 
 import com.example.undercover.view.PunishAdapter;
 import com.example.undercover.view.PunishAdapter.PublishUser;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class net_room_punish extends BaseActivity {
@@ -47,4 +51,5 @@ public class net_room_punish extends BaseActivity {
 				this.getUid());
 		listView.setAdapter(adapter);
 	}
+
 }

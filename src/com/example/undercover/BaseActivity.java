@@ -3,8 +3,10 @@ package com.example.undercover;
 import http.BehaveHandler;
 import http.UserHandler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -25,12 +27,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -50,19 +55,15 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.socialize.controller.RequestType;
-import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
-import com.umeng.socialize.controller.UMSsoHandler;
-import com.umeng.socialize.media.UMImage;
 
 /**
  * @author wanhin
  *
  */
-public class BaseActivity extends Activity  implements httpCallBack{
+public class BaseActivity extends FragmentActivity  implements httpCallBack{
 	//这是服务器的地址
-		protected String serverUrl = "http://42.121.123.185/CenturyServer/Entry.php";
+	protected String serverUrl = "http://www.centurywar.cn/CenturyServer/Entry.php";
 //	protected String serverUrl = "http://192.168.1.31/Entry.php";
 	int disWidth;
 	int disHeight;
@@ -79,8 +80,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	
 	protected String VersionName = "1.00";
 	protected int versionType = 1;
-	private ImageView btnreturn;
-	private UMSocialService controller;
 	protected String faguan;
 	protected String police;
 	protected String killer;
@@ -90,6 +89,9 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	protected static String uid = "";
 	protected UMSocialService mController;
 	protected static BehaveHandler behaveHandler =null;
+	
+	
+	protected static List<TextView> usernameList;
 	
 	/**
 	 * 用户是否为GM管理员
@@ -107,6 +109,9 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		police = strFromId("txtPolice");
 		killer = strFromId("txtKiller");
 		nomalpeople = strFromId("txtNormal");
+		if (usernameList == null) {
+			usernameList = new ArrayList<TextView>();
+		}
 		try {
 			VersionName = GetVersion();
 			// 初始化版本号信息,在替换界面元素时候使用
@@ -138,6 +143,14 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		// 保持屏幕常亮，仅此一句
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		initJPUSH();
+	}
+	protected void updateUsername(String username){
+		for(int i=0;i<usernameList.size();i++){
+			TextView tem=usernameList.get(i);
+			if(tem!=null){
+				tem.setText(username);
+			}
+		}
 	}
 
 	/**
@@ -171,19 +184,6 @@ public class BaseActivity extends Activity  implements httpCallBack{
 		// UMServiceFactory.shareTo(BaseActivity.this, share, null);
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		/**
-		 * 使用SSO必须添加，指定获取授权信息的回调页面，并传给SDK进行处理
-		 */
-		UMSsoHandler sinaSsoHandler = controller.getConfig()
-				.getSinaSsoHandler();
-		if (sinaSsoHandler != null
-				&& requestCode == UMSsoHandler.DEFAULT_AUTH_ACTIVITY_CODE) {
-			sinaSsoHandler.authorizeCallBack(requestCode, resultCode, data);
-		}
-	}
 
 	@Override
 	protected void onStart() {
@@ -372,163 +372,10 @@ public class BaseActivity extends Activity  implements httpCallBack{
 	}
 
 
-	protected Map<String, StringBuffer> map;
+	
 
-	protected void getMaoxian() {
-		String[] zhenxin = getResources().getStringArray(R.array.damaoxian);
-		map = new HashMap<String, StringBuffer>();
-		for (int n = 0; n < zhenxin.length; n++) {
-			String[] children = zhenxin[n].split("_");
-			if (children.length == 2) {
-				StringBuffer temstr = map.get("start");
-				if (temstr == null) {
-					temstr = new StringBuffer();
-				}
-				temstr.append(zhenxin[n] + "&");
-				map.put("start", temstr);
-			} else {
-				StringBuffer temstr = map.get(children[0]);
-				if (temstr == null) {
-					temstr = new StringBuffer();
-				}
-				temstr.append(children[1] + "_" + children[2] + "&");
-				map.put(children[0], temstr);
-			}
-		}
-	}
 
-	protected StringBuffer appendString(StringBuffer temstr, String stradd) {
-		if (temstr == null) {
-			temstr = new StringBuffer();
-		}
-		return temstr.append(stradd + ",");
-	}
 
-	protected String getRandomMaoxian(String strkey) {
-		if (map == null) {
-			getMaoxian();
-		}
-		StringBuffer temstr = map.get(strkey);
-		if (temstr == null) {
-			return "";
-		}
-		String[] children = temstr.toString().split("&");
-		Random random = new Random();
-		int randomindex = 0;
-		if (children.length > 1) {
-			randomindex = Math.abs(random.nextInt()) % (children.length - 1);
-		}
-		String temmaoxian = children[randomindex];
-		String[] tem = temmaoxian.split("_");
-		String strReturn = tem[0];
-		if (tem.length <= 1) {
-			return strReturn;
-		}
-		if (!tem[1].equals("end")) {
-			strReturn = strReturn + getRandomMaoxian(tem[1]);
-		}
-		return strReturn;
-	}
-
-	
-	
-	
-	
-	/**
-	 * 取得一条网络随机的大冒险，优先先网络，如果没有网络，那么取本地
-	 * 
-	 * @return
-	 */
-	public String getRandomMaoxianFromLocate() {
-		JSONArray jsonarray = getLocateDamaoxian();
-		Random a = new Random();
-		// 这里有个BUG
-		if (jsonarray.length() < 20) {
-			// 防止词汇较少一直取相同的词汇情况
-			if (Math.abs(a.nextInt()) % 10 < 8) {
-				return getRandomMaoxian("start");
-			}
-		}
-		try {
-			if (jsonarray.length() == 0) {
-				return getRandomMaoxian("start");
-			}
-			int index = Math.abs(a.nextInt()) % jsonarray.length();
-			return jsonarray.getJSONObject(index).getString("data").toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return getRandomMaoxian("start");
-	}
-	
-	/**
-	 * 把网络取到的真心话保存到本地
-	 * @param objarray
-	 */
-	protected void setLocateDamaoxian(JSONArray objarray) {
-		gameInfo.edit().putString("damaoxian", objarray.toString()).commit();
-	}
-	
-	
-	/**
-	 * 添加一条大冒险，需要判断是否有重复的值
-	 * @param damaoxian
-	 */
-	public boolean addDamaoxian(String damaoxian) {
-		JSONArray jsonarray = getLocateDamaoxian();
-		for (int i = 0; i < jsonarray.length(); i++) {
-			try {
-				JSONObject tem = jsonarray.getJSONObject(i);
-				String str = tem.getString("data");
-				if (str.equals(damaoxian)) {
-					return false;
-				}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		JSONObject newtem = new JSONObject();
-		try {
-			newtem.put("data", damaoxian);
-			jsonarray.put(newtem);
-			setLocateDamaoxian(jsonarray);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return true;
-	}
-
-	
-	/**
-	 * 取到网络的真心话
-	 * @return
-	 */
-	protected JSONArray getLocateDamaoxian() {
-		JSONArray json = new JSONArray();
-		try {
-			json = new JSONArray(gameInfo.getString("damaoxian", ""));
-		} catch (Exception e) {
-			e.printStackTrace();
-			// TODO: handle exception
-		}
-		return json;
-	}
-	
-	
-	
-	/**
-	 * 取到本地的真心话
-	 * @return
-	 */
-	public String getTurns() {
-		String[] zhenxin = getResources().getStringArray(R.array.zhenxinhua);
-		Random random = new Random();
-		int index = Math.abs(random.nextInt()) % (zhenxin.length);
-		return zhenxin[index];
-	}
 
 	protected Map<String, StringBuffer> mapWords;
 
@@ -863,7 +710,7 @@ public static String getDeviceInfo(Context context) {
 	 */
 	protected   void SayWithCode(int code) {
 		if (code == ConstantCode.SUCCESS) {
-			Toast.makeText(BaseActivity.this, "成功!!!", Toast.LENGTH_LONG).show();
+//			Toast.makeText(BaseActivity.this, "成功!!!", Toast.LENGTH_LONG).show();
 		}else if (code == ConstantCode.FAILE) {
 			Toast.makeText(BaseActivity.this, "失败!!!", Toast.LENGTH_LONG).show();
 		}
@@ -952,6 +799,15 @@ public static String getDeviceInfo(Context context) {
 		userHandler.MailSend(content,gameuid);
 	}
 	
+	protected void NameChange(String username,String photo) {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.NameChange(username,photo);
+	}
+	protected void PublishRandomOne() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.PublishRandomOne();
+	}
+	
 	/**
 	* 根据手机的分辨率从 dp 的单位 转成为 px(像素)
 	*/
@@ -975,7 +831,7 @@ public static String getDeviceInfo(Context context) {
 	 * @param url
 	 * @param defaultphoto
 	 */
-	protected void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
+	public void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
 		//第一次调用初始化
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
 		ImageLoader.getInstance().init(config);
@@ -1003,5 +859,241 @@ public static String getDeviceInfo(Context context) {
 		}
 	}
 	
+	
+	
+	
+	protected Map<String, StringBuffer> map;
+
+	protected StringBuffer appendString(StringBuffer temstr, String stradd) {
+		if (temstr == null) {
+			temstr = new StringBuffer();
+		}
+		return temstr.append(stradd + ",");
+	}
+	/**
+	 * 取到本地的真心话
+	 * @return
+	 */
+	public String getTurns() {
+		String[] zhenxin = getResources().getStringArray(R.array.zhenxinhua);
+		Random random = new Random();
+		int index = Math.abs(random.nextInt()) % (zhenxin.length);
+		return zhenxin[index];
+	}
+	
+	public boolean addDamaoxian(String damaoxian) {
+		JSONArray jsonarray = getLocateDamaoxian();
+		for (int i = 0; i < jsonarray.length(); i++) {
+			try {
+				JSONObject tem = jsonarray.getJSONObject(i);
+				String str = tem.getString("data");
+				if (str.equals(damaoxian)) {
+					return false;
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		JSONObject newtem = new JSONObject();
+		try {
+			newtem.put("data", damaoxian);
+			jsonarray.put(newtem);
+			setLocateDamaoxian(jsonarray);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	
+	public boolean removeDamaoxian(String damaoxian) {
+		JSONArray jsonarray = getLocateDamaoxian();
+		JSONArray jsonarray2=new JSONArray();
+		for (int i = 0; i < jsonarray.length(); i++) {
+			try {
+				JSONObject tem = jsonarray.getJSONObject(i);
+				String str = tem.getString("data");
+				if (!str.equals(damaoxian)) {
+					jsonarray2.put(tem);
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		setLocateDamaoxian(jsonarray2);
+		return true;
+	}
+	
+	/**
+	 * 取到网络的真心话
+	 * @return
+	 */
+	protected JSONArray getLocateDamaoxian() {
+		JSONArray json = new JSONArray();
+		try {
+			json = new JSONArray(gameInfo.getString("damaoxian", ""));
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return json;
+	}
+	/**
+	 * 取得一条网络随机的大冒险，优先先网络，如果没有网络，那么取本地
+	 * 
+	 * @return
+	 */
+	public String getRandomMaoxianFromLocate() {
+		JSONArray jsonarray = getLocateDamaoxian();
+		Random a = new Random();
+		// 这里有个BUG
+		if (jsonarray.length() < 20) {
+			// 防止词汇较少一直取相同的词汇情况
+			if (Math.abs(a.nextInt()) % 10 < 8) {
+				return getRandomMaoxian("start");
+			}
+		}
+		try {
+			if (jsonarray.length() == 0) {
+				return getRandomMaoxian("start");
+			}
+			int index = Math.abs(a.nextInt()) % jsonarray.length();
+			return jsonarray.getJSONObject(index).getString("data").toString();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return getRandomMaoxian("start");
+	}
+	
+	/**
+	 * 把网络取到的真心话保存到本地
+	 * @param objarray
+	 */
+	protected void setLocateDamaoxian(JSONArray objarray) {
+		gameInfo.edit().putString("damaoxian", objarray.toString()).commit();
+	}
+	protected String getRandomMaoxian(String strkey) {
+		//判断用户下在获取词汇
+		if(isNetworkAvailable(this)){
+			PublishRandomOne();
+			return  "正在获取";
+		}
+		if (map == null) {
+			getMaoxian();
+		}
+		StringBuffer temstr = map.get(strkey);
+		if (temstr == null) {
+			return "";
+		}
+		String[] children = temstr.toString().split("&");
+		Random random = new Random();
+		int randomindex = 0;
+		if (children.length > 1) {
+			randomindex = Math.abs(random.nextInt()) % (children.length - 1);
+		}
+		String temmaoxian = children[randomindex];
+		String[] tem = temmaoxian.split("_");
+		String strReturn = tem[0];
+		if (tem.length <= 1) {
+			return strReturn;
+		}
+		if (!tem[1].equals("end")) {
+			strReturn = strReturn + getRandomMaoxian(tem[1]);
+		}
+		return strReturn;
+	}
+
+
+	protected void getMaoxian() {
+		String[] zhenxin = getResources().getStringArray(R.array.damaoxian);
+		map = new HashMap<String, StringBuffer>();
+		for (int n = 0; n < zhenxin.length; n++) {
+			String[] children = zhenxin[n].split("_");
+			if (children.length == 2) {
+				StringBuffer temstr = map.get("start");
+				if (temstr == null) {
+					temstr = new StringBuffer();
+				}
+				temstr.append(zhenxin[n] + "&");
+				map.put("start", temstr);
+			} else {
+				StringBuffer temstr = map.get(children[0]);
+				if (temstr == null) {
+					temstr = new StringBuffer();
+				}
+				temstr.append(children[1] + "_" + children[2] + "&");
+				map.put(children[0], temstr);
+			}
+		}
+	}
+		
+	/**
+	 * 判断是否联网
+	 * @param context
+	 * @return
+	 */
+	public static boolean isNetworkAvailable(Context context) {   
+        ConnectivityManager cm = (ConnectivityManager) context   
+                .getSystemService(Context.CONNECTIVITY_SERVICE);   
+        if (cm == null) {
+        	return false;
+        } else {
+            NetworkInfo[] info = cm.getAllNetworkInfo();   
+            if (info != null) {   
+                for (int i = 0; i < info.length; i++) {   
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {   
+                        return true;   
+                    } 
+                }
+            }
+        }
+        return false;
+	}
+	
+	/**
+	 * 判断是否开GPS
+	 * @param context
+	 * @return
+	 */
+	public static boolean isGpsEnabled(Context context) {   
+        LocationManager lm = ((LocationManager) context   
+                .getSystemService(Context.LOCATION_SERVICE));   
+        List<String> accessibleProviders = lm.getProviders(true);   
+        return accessibleProviders != null && accessibleProviders.size() > 0;   
+    } 
+	
+	/**
+	 * 判断是否wifi
+	 * @param context
+	 * @return
+	 */
+	public static boolean isWifiEnabled(Context context) {   
+        ConnectivityManager mgrConn = (ConnectivityManager) context   
+                .getSystemService(Context.CONNECTIVITY_SERVICE);   
+        TelephonyManager mgrTel = (TelephonyManager) context   
+                .getSystemService(Context.TELEPHONY_SERVICE);   
+        return ((mgrConn.getActiveNetworkInfo() != null && mgrConn   
+                .getActiveNetworkInfo().getState() == NetworkInfo.State.CONNECTED) || mgrTel   
+                .getNetworkType() == TelephonyManager.NETWORK_TYPE_UMTS);   
+    } 
+	  /**
+	   * 判断是否3G
+	 * @param context
+	 * @return
+	 */
+	public static boolean is3rd(Context context) {   
+	        ConnectivityManager cm = (ConnectivityManager) context   
+	                .getSystemService(Context.CONNECTIVITY_SERVICE);   
+	        NetworkInfo networkINfo = cm.getActiveNetworkInfo();   
+	        if (networkINfo != null   
+	                && networkINfo.getType() == ConnectivityManager.TYPE_MOBILE) {   
+	            return true;   
+	        }   
+	        return false;   
+	    } 
 }
 

@@ -117,5 +117,23 @@ public class UserHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.ROOM_GET_CONTENT);
 	}
+	public void NameChange(String username,String photo) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("username", username);
+			obj.put("photo", photo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.NAME_CHANGE);
+	}
+	public void PublishRandomOne() {
+		JSONObject obj = new JSONObject();
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.PUNISH_RANDOMONE);
+	}
 	
 }

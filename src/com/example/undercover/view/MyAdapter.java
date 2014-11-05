@@ -110,13 +110,7 @@ public class MyAdapter extends BaseAdapter {
 		// 设置各控件的内容在这里
 		viewHolder.content.setText(temPublish.content);
 		
-		if (temPublish.likeed) {
-			viewHolder.likebtn.setEnabled(false);
-		} 
 		
-		if (temPublish.dislikeed) {
-			viewHolder.dislikebtn.setEnabled(false);
-		} 
 
 		viewHolder.txtLike.setText(String.format("%s", temPublish.like));
 		viewHolder.txtDislike.setText(String.format("%s",
@@ -127,8 +121,10 @@ public class MyAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				temPublish.likeed = true;
 				addcollect(temPublish, 1, viewHolder.likebtn);
+//				if(temPublish.likeed){
 				viewHolder.txtLike.setText(String.format("%d",
 						++temPublish.like));
+//			}
 			}
 		});
 		viewHolder.dislikebtn.setOnClickListener(new OnClickListener() {
@@ -136,8 +132,10 @@ public class MyAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				temPublish.dislikeed = true;
 				addcollect(temPublish, 2, viewHolder.dislikebtn);
+//				if (temPublish.dislikeed) {
 				viewHolder.txtDislike.setText(String.format("%d",
 						++temPublish.dislike));
+//				}
 			}
 		});
 		
@@ -155,12 +153,11 @@ public class MyAdapter extends BaseAdapter {
 	 */
 	public void addcollect(Publish tempublish, int type, Button btn) {
 		setDisableBtn(btn);
-		PublishHandler publishHandler = new PublishHandler(callBackActivity);
-		publishHandler.setUid(uid);
-		publishHandler.addCollect(tempublish.id, type);
-		if (type == 3) {
-			((BaseActivity) this.context).addDamaoxian(tempublish.content);
-		}
+		((BaseActivity) this.context).addDamaoxian(tempublish.content);
+	}
+	public void reomvecollect(Publish tempublish, int type, Button btn) {
+		setDisableBtn(btn);
+		((BaseActivity) this.context).removeDamaoxian(tempublish.content);
 	}
 
 	/**

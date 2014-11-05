@@ -3,6 +3,9 @@ package com.example.undercover;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.umeng.analytics.MobclickAgent;
+
+import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +29,7 @@ public class home extends BaseActivity {
     private String TAB2 = "参与";  
     private String TAB3 = "玩法";  
     private String TAB4 = "设置";  
+    Intent pageSetting;
     
     private List<LinearLayout> menuItemList;  
 
@@ -90,6 +95,16 @@ public class home extends BaseActivity {
 			SoundPlayer.setSoundSt(false);
 		}
 	    
+		mTabHost.setOnTabChangedListener(new OnTabChangeListener() {
+			public void onTabChanged(String tabId) {
+				if (tabId.equals("tab1")) {
+				} else if (tabId.equals("tab2")) {
+				} else if (tabId.equals("tab3")) {
+				} else if (tabId.equals("tab4")) {
+				}
+			}
+		});
+
 		
 
 		

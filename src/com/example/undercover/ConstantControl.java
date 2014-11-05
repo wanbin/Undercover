@@ -34,6 +34,8 @@ public class ConstantControl {
 	public static String MAIL_SEND = "MailSend";
 
 	public static String ROOM_GET_CONTENT = "RoomGetContent";
+	public static String NAME_CHANGE = "NameChange";
+	public static String PUNISH_RANDOMONE = "PublishRandomOne";
 
 
 	

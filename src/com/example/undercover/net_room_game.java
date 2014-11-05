@@ -20,8 +20,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class net_room_game extends BaseActivity {
 	Button btnTip1;
@@ -36,63 +38,60 @@ public class net_room_game extends BaseActivity {
 	String gameName;
 	int gameType;
 	int addPeople;
-	List<Button> btnList;
+	List<ImageView> btnList;
 
 	JSONObject room_contente;
-	
-	
-	//谁是卧底用到的参数
-	int soncount=0;
-	int fathercount=0;
-	String sonstr="";
-	String fatherstr="";
+
+	// 谁是卧底用到的参数
+	int soncount = 0;
+	int fathercount = 0;
+	String sonstr = "";
+	String fatherstr = "";
 	Timer timer;
-	
-	//杀人游戏用到的参数
-	
-	
-	//正在展示的tag
-	int isShowTag=0;
-	int showLimitTime=-1; 
-	
+
+	// 杀人游戏用到的参数
+
+	// 正在展示的tag
+	int isShowTag = 0;
+	int showLimitTime = -1;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.net_room_game);
-		
-		btnTip1=(Button)this.findViewById(R.id.btnTip1);
-		btnTip2=(Button)this.findViewById(R.id.btnTip2);
-		btnTip3=(Button)this.findViewById(R.id.btnTip3);
-		btnTip4=(Button)this.findViewById(R.id.btnTip4);
-		btnTip5=(Button)this.findViewById(R.id.btnTip5);
-		
-		btnPunish=(Button)this.findViewById(R.id.btnPunish);
-		viewUser=(TableLayout)this.findViewById(R.id.tableUser);
-		
-		//把本地用户显示正常
-		
-		gameName=getIntent().getStringExtra("gameName");
-		gameType=getIntent().getIntExtra("gameType",0);
-		addPeople=getIntent().getIntExtra("addPeople",0);
-		
-		
+
+		btnTip1 = (Button) this.findViewById(R.id.btnTip1);
+		btnTip2 = (Button) this.findViewById(R.id.btnTip2);
+		btnTip3 = (Button) this.findViewById(R.id.btnTip3);
+		btnTip4 = (Button) this.findViewById(R.id.btnTip4);
+		btnTip5 = (Button) this.findViewById(R.id.btnTip5);
+
+		btnPunish = (Button) this.findViewById(R.id.btnPunish);
+		viewUser = (TableLayout) this.findViewById(R.id.tableUser);
+
+		// 把本地用户显示正常
+
+		gameName = getIntent().getStringExtra("gameName");
+		gameType = getIntent().getIntExtra("gameType", 0);
+		addPeople = getIntent().getIntExtra("addPeople", 0);
+
 		try {
-			roomUser=new JSONArray(getIntent().getStringExtra("userJson"));
-			room_contente=new JSONObject(getIntent().getStringExtra("room_contente"));
-			if(gameType==1){
-				soncount=room_contente.getInt("soncount");
-				sonstr=room_contente.getString("son");
-				fatherstr=room_contente.getString("father");
-				fathercount=roomUser.length()-soncount;
-			}else if(gameType==2){
-				
+			roomUser = new JSONArray(getIntent().getStringExtra("userJson"));
+			room_contente = new JSONObject(getIntent().getStringExtra(
+					"room_contente"));
+			if (gameType == 1) {
+				soncount = room_contente.getInt("soncount");
+				sonstr = room_contente.getString("son");
+				fatherstr = room_contente.getString("father");
+				fathercount = roomUser.length() - soncount;
+			} else if (gameType == 2) {
+
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 		btnPunish.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -102,20 +101,20 @@ public class net_room_game extends BaseActivity {
 				startActivity(mIntent);
 			}
 		});
-		
-		btnList=new ArrayList<Button>();
+
+		btnList = new ArrayList<ImageView>();
 		initShowShenfen();
 		reflashUser();
-		
+
 		timer = new Timer();
 		timer.schedule(timetask, 0, 1000);
 	}
-	
+
 	/**
 	 * 查看用户身份
 	 */
-	private void initShowShenfen(){
-		switch (addPeople){
+	private void initShowShenfen() {
+		switch (addPeople) {
 		case 0:
 			btnTip5.setVisibility(View.GONE);
 			btnTip4.setVisibility(View.GONE);
@@ -141,7 +140,7 @@ public class net_room_game extends BaseActivity {
 		btnTip4.setText("NO.3");
 		btnTip3.setText("NO.2");
 		btnTip2.setText("NO.1");
-		int thisGameuid=Integer.parseInt(getFromObject("gameuid"));
+		int thisGameuid = Integer.parseInt(getFromObject("gameuid"));
 		btnTip1.setTag(thisGameuid);
 		btnTip2.setTag(1);
 		btnTip3.setTag(2);
@@ -178,21 +177,21 @@ public class net_room_game extends BaseActivity {
 			}
 		});
 	}
-	
-	private void showShenFen(View v){
-		int tag=(Integer) v.getTag();
-		Button btn=(Button)v;
-		String shenfen=getShenfenOfGameuid(tag);
+
+	private void showShenFen(View v) {
+		int tag = (Integer) v.getTag();
+		Button btn = (Button) v;
+		String shenfen = getShenfenOfGameuid(tag);
 		btn.setText(shenfen);
-		if(isShowTag!=tag&&isShowTag!=0){
+		if (isShowTag != tag && isShowTag != 0) {
 			hideBtnOfGameuid(isShowTag);
 		}
-		isShowTag=tag;
-		showLimitTime=5; 
+		isShowTag = tag;
+		showLimitTime = 5;
 	}
-	
-	private void hideBtnOfGameuid(int gameuid){
-		switch(gameuid){
+
+	private void hideBtnOfGameuid(int gameuid) {
+		switch (gameuid) {
 		case 1:
 			btnTip2.setVisibility(View.GONE);
 			break;
@@ -206,101 +205,113 @@ public class net_room_game extends BaseActivity {
 			btnTip5.setVisibility(View.GONE);
 			break;
 		}
-		int thisgameuid=Integer.parseInt(getFromObject("gameuid"));
-		if(gameuid==thisgameuid){
+		int thisgameuid = Integer.parseInt(getFromObject("gameuid"));
+		if (gameuid == thisgameuid) {
 			btnTip1.setVisibility(View.GONE);
 		}
 	}
-	
-	
-	private void reflashUser(){
-		int index=0;
+
+	private void reflashUser() {
+		int index = 0;
 		viewUser.removeAllViews();
 		for (int i = 0; i < Math.ceil((float) (roomUser.length()) / 4); i++) {
 			TableRow newrow = new TableRow(this);
 			for (int m = 0; m < 4; m++) {
+				JSONObject temobj = new JSONObject();
 				FrameLayout fl = new FrameLayout(this);
-				final Button temBtn =new Button(this);
+				final ImageView temBtn = new ImageView(this);
+				final TextView txt = new TextView(this);
 				JSONObject userinfo;
 				String name = "玩家";
 				try {
-					userinfo=roomUser.getJSONObject(index);
-					name=userinfo.getString("username");
+					temobj = roomUser.getJSONObject(index);
+					userinfo = roomUser.getJSONObject(index);
+					name = userinfo.getString("username");
+					if(temobj.has("photo")){
+						ImageFromUrl(temBtn, temobj.getString("photo"),
+							R.drawable.default_photo);
+						}
+					else{
+						temBtn.setBackgroundResource(R.drawable.default_photo);
+					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				final int tag=index;
+
+				final int tag = index;
 				temBtn.setOnClickListener(new Button.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						temBtn.setText("出局");
-						if(gameType==1){
-							tapUnderCoverUser(tag);	
-						}else if(gameType==2){
+						txt.setText("出局");
+						if (gameType == 1) {
+							tapUnderCoverUser(tag);
+						} else if (gameType == 2) {
 							tapKillerUser(tag);
 						}
 						temBtn.setEnabled(false);
 					}
 				});
-				
+
 				temBtn.setTag(index);
-				temBtn.setText(name);
-				temBtn.setGravity(Gravity.CENTER|Gravity.BOTTOM);
+				txt.setText(name);
+				txt.setGravity(Gravity.CENTER | Gravity.BOTTOM);
 				fl.addView(temBtn);
+				fl.addView(txt);
 				fl.setPadding(4, 4, 4, 4);
 				newrow.addView(fl, disWidth / 4, disWidth / 4);
 				btnList.add(temBtn);
 				index++;
-				if(index>=roomUser.length()){
+				if (index >= roomUser.length()) {
 					break;
 				}
 			}
 			viewUser.addView(newrow);
 		}
-		
+
 	}
-	
+
 	/**
 	 * 点击某个玩家，判断游戏是否结束,谁是卧底游戏点击
+	 * 
 	 * @param index
 	 */
-	private void tapUnderCoverUser(int index){
-		String shenfen=getShenfenOfIndex(index);
-		//证明是卧底
-		if(shenfen.equals(sonstr)){
+	private void tapUnderCoverUser(int index) {
+		String shenfen = getShenfenOfIndex(index);
+		// 证明是卧底
+		if (shenfen.equals(sonstr)) {
 			soncount--;
-		}else{
+		} else {
 			fathercount--;
 		}
-		boolean isEnd=false;
-		//卧底胜利
-		if(soncount>=fathercount){
+		boolean isEnd = false;
+		// 卧底胜利
+		if (soncount >= fathercount) {
 			btnPunish.setText("卧底胜利，平民接受惩罚");
-			String punishStr=getGameruidOfShenfen(fatherstr);
+			String punishStr = getGameruidOfShenfen(fatherstr);
 			RoomPunish(punishStr);
-			isEnd=true;
+			isEnd = true;
 		}
-		
-		//平民胜利
-		if(soncount<=0){
+
+		// 平民胜利
+		if (soncount <= 0) {
 			btnPunish.setText("平民胜利，卧底接受惩罚");
-			String punishStr=getGameruidOfShenfen(sonstr);
+			String punishStr = getGameruidOfShenfen(sonstr);
 			RoomPunish(punishStr);
-			isEnd=true;
+			isEnd = true;
 		}
-		if(isEnd){
+		if (isEnd) {
 			disableAllButton();
 		}
 	}
-	
-	private String getGameruidOfShenfen(String shenfen){
-		String ret="";
-		for(int i=0;i<roomUser.length();i++){
+
+	private String getGameruidOfShenfen(String shenfen) {
+		String ret = "";
+		for (int i = 0; i < roomUser.length(); i++) {
 			try {
-				JSONObject userinfo=roomUser.getJSONObject(i);
-				if( userinfo.getString("content").equals(shenfen)){
-					ret=ret+userinfo.getString("gameuid")+"_";
+				JSONObject userinfo = roomUser.getJSONObject(i);
+				if (userinfo.getString("content").equals(shenfen)) {
+					ret = ret + userinfo.getString("gameuid") + "_";
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
@@ -309,10 +320,10 @@ public class net_room_game extends BaseActivity {
 		}
 		return ret;
 	}
-	
-	private String getShenfenOfIndex(int index){
+
+	private String getShenfenOfIndex(int index) {
 		try {
-			JSONObject userinfo=roomUser.getJSONObject(index);
+			JSONObject userinfo = roomUser.getJSONObject(index);
 			return userinfo.getString("content");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -320,14 +331,13 @@ public class net_room_game extends BaseActivity {
 		}
 		return "";
 	}
-	
-	
-	private String getShenfenOfGameuid(int gameuid){
-		String ret="";
-		for(int i=0;i<roomUser.length();i++){
+
+	private String getShenfenOfGameuid(int gameuid) {
+		String ret = "";
+		for (int i = 0; i < roomUser.length(); i++) {
 			try {
-				JSONObject userinfo=roomUser.getJSONObject(i);
-				if( Math.abs(userinfo.getInt("gameuid"))==gameuid){
+				JSONObject userinfo = roomUser.getJSONObject(i);
+				if (Math.abs(userinfo.getInt("gameuid")) == gameuid) {
 					return userinfo.getString("content");
 				}
 			} catch (JSONException e) {
@@ -337,74 +347,73 @@ public class net_room_game extends BaseActivity {
 		}
 		return "";
 	}
-	
+
 	/**
 	 * 点击某个玩家，判断游戏是否结束,谁是卧底游戏点击
+	 * 
 	 * @param index
 	 */
-	private void tapKillerUser(int index){
-		Log.v("tap", "tap killer:"+index); 
-//		disableAllButton();
+	private void tapKillerUser(int index) {
+		Log.v("tap", "tap killer:" + index);
+		// disableAllButton();
 	}
-	
-	private void disableAllButton(){
-		for(int i=0;i<btnList.size();i++){
-			Button tembtn=btnList.get(i);
+
+	private void disableAllButton() {
+		for (int i = 0; i < btnList.size(); i++) {
+			ImageView tembtn = btnList.get(i);
 			tembtn.setEnabled(false);
-			tembtn.setText(getShenfenOfIndex(i));
+//			tembtn.setText(getShenfenOfIndex(i));
 		}
 	}
-	
-	
+
 	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
 		if (cmd.equals(ConstantControl.ROOM_PUNISH)) {
 			try {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
-				punishUser=obj.getJSONArray("punish");
+				punishUser = obj.getJSONArray("punish");
 				btnPunish.setEnabled(true);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-			
+
 		}
 	}
-	
-	
+
 	@Override
-	protected void onDestroy(){
+	protected void onDestroy() {
 		super.onDestroy();
 		timer.cancel();
 	}
-	
-	private void costOneSec(){
-//		int isShowTag;
-//		int showLimitTime; 
-		if(showLimitTime>0){
+
+	private void costOneSec() {
+		// int isShowTag;
+		// int showLimitTime;
+		if (showLimitTime > 0) {
 			showLimitTime--;
-		}else if(showLimitTime==0){
-			showLimitTime=-1;
+		} else if (showLimitTime == 0) {
+			showLimitTime = -1;
 			hideBtnOfGameuid(isShowTag);
 		}
 	}
-	
+
 	// 接受时间
-		Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				costOneSec();
-				super.handleMessage(msg);
-			}
-		};
-		// 传递时间
-		private TimerTask timetask = new TimerTask() {
-			@Override
-			public void run() {
-				Message message = new Message();
-				message.what = 1;
-				handler.sendMessage(message);
-			}
-		};
+	Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			costOneSec();
+			super.handleMessage(msg);
+		}
+	};
+	// 传递时间
+	private TimerTask timetask = new TimerTask() {
+		@Override
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	};
 }

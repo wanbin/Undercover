@@ -18,36 +18,46 @@
         android:focusable="false"
         android:gravity="center_vertical" >
 
-        <ImageButton
-            android:id="@+id/umeng_socialize_post_fetch_image"
-            android:layout_width="40dp"
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginLeft="0.5dp"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:padding="8dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/umeng_socialize_fetch_image"
-            android:visibility="gone" />
+            android:layout_centerVertical="true"
+            android:id="@+id/umeng_socialize_follow_layout"
+            >
+
+            <CheckBox
+                android:id="@+id/umeng_socialize_follow_check"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:button="@drawable/umeng_socialize_follow_check"
+                android:paddingLeft="25dp"
+                android:text="关注官方微博"
+                android:textColor="@color/umeng_socialize_text_share_content"
+                android:textSize="13sp"
+                android:checked="true" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/umeng_socialize_share_location"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="11dp"
-            android:layout_toRightOf="@id/umeng_socialize_post_fetch_image"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@id/umeng_socialize_follow_layout"
             android:gravity="center" >
 
             <ImageButton
                 android:id="@+id/umeng_socialize_location_ic"
                 android:layout_width="38dp"
                 android:layout_height="23dp"
+                android:layout_centerVertical="true"
                 android:background="@null"
                 android:paddingLeft="7.5dp"
                 android:paddingRight="7.5dp"
                 android:scaleType="fitXY"
-                android:layout_centerVertical="true"
                 android:src="@drawable/umeng_socialize_location_off"
                 android:visibility="visible" />
 
@@ -63,22 +73,20 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/umeng_socialize_share_location"
             android:background="@null"
             android:padding="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/umeng_socialize_at_button"
-            android:layout_marginLeft="5dp"
             android:visibility="visible" />
-
 
         <RelativeLayout
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-             >
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp" >
 
             <ImageView
                 android:id="@+id/umeng_socialize_share_previewImg"
@@ -93,8 +101,8 @@
                 android:layout_width="13dp"
                 android:layout_height="13dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/umeng_socialize_x_button"
                 android:scaleType="fitXY"
+                android:src="@drawable/umeng_socialize_x_button"
                 android:visibility="gone" />
 
             <ProgressBar
@@ -115,22 +123,23 @@
         android:background="@color/umeng_socialize_list_item_bgcolor"
         android:bufferType="spannable"
         android:gravity="top"
+        android:hint="@string/umeng_socialize_text_comment_hint"
+        android:lineSpacingExtra="3dp"
         android:paddingLeft="8dp"
         android:paddingRight="4dp"
         android:paddingTop="10dp"
-        android:lineSpacingExtra="3dp"
+        android:textColor="@color/umeng_socialize_text_share_content" />
+
+    <TextView
+        android:id="@+id/umeng_socialize_share_word_num"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_above="@id/umeng_socialize_share_bottom_area"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
         android:textColor="@color/umeng_socialize_text_share_content"
-        android:hint="@string/umeng_socialize_text_comment_hint"
-        />
-        <TextView
-            android:id="@+id/umeng_socialize_share_word_num"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_above="@id/umeng_socialize_share_bottom_area"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:layout_marginBottom="6dp"
-            android:textSize="18sp"
-            android:textColor="@color/umeng_socialize_text_share_content" />
+        android:textSize="18sp" />
+
 </com.umeng.socialize.view.wigets.KeyboardListenRelativeLayout>

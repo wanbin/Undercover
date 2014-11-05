@@ -1,7 +1,19 @@
 package com.example.undercover;
 
+import java.util.HashMap;
+import java.util.Random;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.example.util.Punish;
+
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,5 +70,23 @@ public class local_punish  extends BaseActivity {
 	private void nextPunish(){
 		SoundPlayer.playNormalSoure();
 		txtPunish.setText(getRandomMaoxianFromLocate());
+	}
+
+	@Override
+	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
+		super.CallBackPublicCommand(jsonobj, cmd);
+		if (cmd.equals(ConstantControl.PUNISH_RANDOMONE)) {
+			try {
+				JSONObject obj = new JSONObject(jsonobj.getString("data"));
+				JSONArray objarr=obj.getJSONArray("content");
+				JSONObject random=objarr.getJSONObject(0);
+				String punish=random.getString("content");
+				txtPunish.setText(punish);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				txtPunish.setText("可以免除惩罚");
+			}
+		}
 	}
 }
