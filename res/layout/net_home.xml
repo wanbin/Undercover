@@ -29,7 +29,7 @@
         android:layout_width="193dp"
         android:layout_height="49dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/btn_blue_2x"
+        android:background="@drawable/btn_blue_pressed"
         android:text="@string/game_join"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/btn_font_size" />
@@ -38,9 +38,9 @@
         android:id="@+id/btnCreate"
         android:layout_width="193dp"
         android:layout_height="49dp"
-        android:background="@drawable/btn_green_2x"
-        android:text="@string/game_create"
         android:layout_margin="10dp"
+        android:background="@drawable/btn_green_pressed"
+        android:text="@string/game_create"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/btn_font_size" />
     
@@ -48,7 +48,7 @@
             android:id="@+id/btnResent"
             android:layout_width="193dp"
             android:layout_height="49dp"
-            android:background="@drawable/btn_pink_2x"
+            android:background="@drawable/btn_pink_pressed"
             android:text="@string/历史房间"
             android:textColor="@color/WRITE"
             android:textSize="@dimen/btn_font_size" />

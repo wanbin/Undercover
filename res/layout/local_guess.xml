@@ -45,7 +45,7 @@
             android:layout_above="@+id/btn_punish"
             android:layout_centerHorizontal="true"
             android:layout_weight="50"
-            android:background="@color/gamepink"
+            android:background="@drawable/fang_pink_pressed"
             android:text="@string/重新开始"
             android:textAlignment="viewStart"
             android:textColor="@color/WRITE" />

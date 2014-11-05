@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+@SuppressLint("ResourceAsColor")
 public class net_room_game extends BaseActivity {
 	Button btnTip1;
 	Button btnTip2;
@@ -136,79 +138,85 @@ public class net_room_game extends BaseActivity {
 		case 4:
 			break;
 		}
-		btnTip5.setText("NO.4");
-		btnTip4.setText("NO.3");
-		btnTip3.setText("NO.2");
-		btnTip2.setText("NO.1");
+		btnTip5.setText("NO.4(长按)");
+		btnTip4.setText("NO.3(长按)");
+		btnTip3.setText("NO.2(长按)");
+		btnTip2.setText("NO.1(长按)");
+		btnTip1.setText("自己(长按)");
 		int thisGameuid = Integer.parseInt(getFromObject("gameuid"));
 		btnTip1.setTag(thisGameuid);
 		btnTip2.setTag(1);
 		btnTip3.setTag(2);
 		btnTip4.setTag(3);
 		btnTip5.setTag(4);
-		btnTip1.setOnClickListener(new Button.OnClickListener() {
+		btnTip1.setOnLongClickListener(new Button.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				showShenFen(v);
+			public boolean onLongClick(View v) {
+				return showShenFen(v);
 			}
 		});
-		btnTip2.setOnClickListener(new Button.OnClickListener() {
+		btnTip2.setOnLongClickListener(new Button.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				showShenFen(v);
+			public boolean onLongClick(View v) {
+				return showShenFen(v);
 			}
 		});
-		btnTip3.setOnClickListener(new Button.OnClickListener() {
+		btnTip3.setOnLongClickListener(new Button.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				showShenFen(v);
+			public boolean onLongClick(View v) {
+				return showShenFen(v);
 			}
 		});
-		btnTip4.setOnClickListener(new Button.OnClickListener() {
+		btnTip4.setOnLongClickListener(new Button.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				showShenFen(v);
+			public boolean onLongClick(View v) {
+				return showShenFen(v);
 			}
 		});
-		btnTip5.setOnClickListener(new Button.OnClickListener() {
+		btnTip5.setOnLongClickListener(new Button.OnLongClickListener() {
 			@Override
-			public void onClick(View v) {
-				showShenFen(v);
+			public boolean onLongClick(View v) {
+				return showShenFen(v);
 			}
 		});
 	}
 
-	private void showShenFen(View v) {
+	private boolean showShenFen(View v) {
 		int tag = (Integer) v.getTag();
+		if(isShowTag != tag&& isShowTag != 0){
+			return false;
+		}
 		Button btn = (Button) v;
 		String shenfen = getShenfenOfGameuid(tag);
 		btn.setText(shenfen);
-		if (isShowTag != tag && isShowTag != 0) {
+		if (isShowTag == tag && isShowTag != 0) {
 			hideBtnOfGameuid(isShowTag);
 		}
 		isShowTag = tag;
-		showLimitTime = 5;
+		showLimitTime = 3;
+		return true;
 	}
 
 	private void hideBtnOfGameuid(int gameuid) {
 		switch (gameuid) {
 		case 1:
-			btnTip2.setVisibility(View.GONE);
+			btnTip2.setVisibility(View.INVISIBLE);
 			break;
 		case 2:
-			btnTip3.setVisibility(View.GONE);
+			btnTip3.setVisibility(View.INVISIBLE);
 			break;
 		case 3:
-			btnTip4.setVisibility(View.GONE);
+			btnTip4.setVisibility(View.INVISIBLE);
 			break;
 		case 4:
-			btnTip5.setVisibility(View.GONE);
+			btnTip5.setVisibility(View.INVISIBLE);
 			break;
 		}
 		int thisgameuid = Integer.parseInt(getFromObject("gameuid"));
 		if (gameuid == thisgameuid) {
-			btnTip1.setVisibility(View.GONE);
+			btnTip1.setVisibility(View.INVISIBLE);
 		}
+		isShowTag=0;
 	}
 
 	private void reflashUser() {
@@ -366,6 +374,7 @@ public class net_room_game extends BaseActivity {
 		}
 	}
 
+	@SuppressLint("ResourceAsColor")
 	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
@@ -373,6 +382,7 @@ public class net_room_game extends BaseActivity {
 			try {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
 				punishUser = obj.getJSONArray("punish");
+				btnPunish.setBackgroundResource(R.drawable.fang_purple_pressed);
 				btnPunish.setEnabled(true);
 			} catch (Exception e) {
 				// TODO: handle exception

@@ -32,7 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_purple_2x"
+        android:background="@drawable/btn_purple_pressed"
         android:text="@string/下一条"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/newBtnFont" />
@@ -52,7 +52,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/tag_green_2x"
+            android:background="@drawable/tag_green_pressed"
             android:text="@string/本地词汇"
             android:textColor="@color/WRITE"
             android:textSize="@dimen/activity_vertical_margin" />
@@ -61,7 +61,7 @@
                 android:id="@+id/btnNet"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:background="@drawable/tag_blue_2x"
+                android:background="@drawable/tag_blue_pressed"
                 android:text="@string/网络词汇"
                 android:textColor="@color/WRITE"
                 android:textSize="@dimen/activity_horizontal_margin" />

@@ -25,7 +25,7 @@
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/editText1"
-        android:background="@color/gameblue"
+        android:background="@drawable/fang_blue_pressed"
         android:maxWidth="200dp"
         android:text="@string/send"
         android:textColor="@color/WRITE"

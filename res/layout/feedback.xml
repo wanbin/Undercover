@@ -28,7 +28,7 @@
         android:layout_below="@+id/txtContent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:background="@drawable/btn_blue_2x"
+        android:background="@drawable/btn_blue_pressed"
         android:text="@string/建议反馈"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/newBtnFont" />

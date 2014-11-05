@@ -188,7 +188,7 @@
 <string name="showgm">显示GM设置</string>
 <string name="finish">完成</string>
 <string name="pleaseInput">请输入昵称：</string>
-
+<string name="历史房间">历史房间</string>
 <string name="game_join">加入房间</string>
 <string name="game_create">创建房间</string>
 <string name="peoplethis">本机人数</string>
@@ -209,8 +209,6 @@
 <string name="num4">4</string>
 
 <string name="卧底人数">卧底人数</string>
-
-
 <string name="个人信息">个人信息</string>
 <string name="基本设置">基本设置</string>
 <string name="音效">音效</string>
@@ -220,24 +218,19 @@
 <string name="意见建议反馈">意见建议反馈</string>
 <string name="开">开</string>
 <string name="向右">></string>
-
 <string name="下一条">下一条</string>
 <string name="真心话大冒险">真心话大冒险</string>
 <string name="网络词汇">网络词汇</string>
 <string name="本地词汇">本地词汇</string>
 <string name="建议反馈">建议反馈</string>
 <string name="关于">关于</string>
-
 <string name="重新开始">重新开始</string>
-
-
 <string name="刷新词汇">刷新词汇</string>
-
 <string name="刷新房间">刷新房间</string>
 <string name="昵称">昵称</string>
 <string name="删除">删除</string>
 <string name="请输入房间号">请输入房间号</string>
-<string name="历史房间">历史房间</string>
+
 <string name="长按重新开始">长按重新开始</string>
 <string name="修改昵称">修改昵称</string>
 </resources>

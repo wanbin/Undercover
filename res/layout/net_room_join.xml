@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_pink_2x"
+        android:background="@drawable/btn_pink_pressed"
         android:text="@string/刷新词汇"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/btn_font_size" />

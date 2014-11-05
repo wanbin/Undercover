@@ -14,19 +14,19 @@
 
         <Button
             android:id="@+id/btnstart"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_weight="20"
-            android:background="@color/gamepurple"
+            android:layout_weight="5"
+            android:background="@drawable/fang_purple_pressed"
             android:text="@string/开始游戏"
             android:textColor="@color/WRITE" />
 
         <Button
             android:id="@+id/btnreflash"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_weight="50"
-            android:background="@color/gamepink"
+            android:layout_weight="2"
+            android:background="@drawable/fang_pink_pressed"
             android:text="@string/刷新房间"
             android:textColor="@color/WRITE" />
 

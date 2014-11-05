@@ -367,7 +367,7 @@ public class local_guess extends BaseActivity {
 	}
 
 	private void initControlBtn() {
-		punishBtn.setBackgroundResource(R.color.gamepurple);
+		punishBtn.setBackgroundResource(R.drawable.fang_purple_pressed);
 		btn_restart.setVisibility(View.VISIBLE);
 		punishBtn.setTextColor(getResources().getColor(R.color.WRITE));
 		punishBtn.setOnClickListener(new Button.OnClickListener() {

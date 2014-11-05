@@ -31,7 +31,7 @@
                         android:id="@+id/btnUndercover"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:background="@drawable/start_undercover_2x"
+                        android:background="@drawable/circle_purple_pressed"
                         android:text="@string/卧"
                         android:textColor="@color/WRITE"
                         android:textSize="@dimen/large60" />
@@ -65,7 +65,7 @@
                         android:id="@+id/btnKiller"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:background="@drawable/start_killer_2x"
+                        android:background="@drawable/circle_green_pressed"
                         android:text="@string/杀"
                         android:textColor="@color/WRITE"
                         android:textSize="@dimen/large60" />
@@ -98,7 +98,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/WRITE"
+        android:background="@drawable/fang_write_pressed"
         android:text="@string/返回" />
 
 </RelativeLayout>

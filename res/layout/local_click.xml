@@ -27,12 +27,11 @@
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/btn_yuan_red_2x"
+        android:background="@drawable/circle_red_pressed"
         android:text="@string/clickme"
         android:textAlignment="center"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/large80" />
-
 
     <Button
         android:id="@+id/btn_punish"
@@ -41,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/btn_purple_2x"
+        android:background="@drawable/btn_purple_pressed"
         android:text="@string/punishmen"
         android:textColor="@color/WRITE"
         android:textSize="@dimen/size20" />

@@ -35,7 +35,7 @@ public class net_room_willstart extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.net_game_select);
+		setContentView(R.layout.net_game_willstart);
 		
 		final int addPeople=getIntent().getIntExtra("addPeople",0);
 		final int PeopleCount2=getIntent().getIntExtra("PeopleCount",1);
