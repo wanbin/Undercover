@@ -2,6 +2,9 @@ package com.example.undercover;
 
 import java.util.Random;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,10 +72,6 @@ public class local_fanpai extends BaseActivity {
 		animation = AnimationUtils.loadAnimation(this,
 				R.anim.reflash);
 
-		Log.i("fanpai",
-				strFromId("TheWords")
-						+ gameInfo.getString("word", "").trim());
-		
 		
 		imagePan.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -137,10 +136,21 @@ public class local_fanpai extends BaseActivity {
 		// 如果是杀人游戏，界面显示去掉一些东西
 		if (lastGameType().equals("game_killer")) {
 			content = getRandomString();
+			gamewillstart();
 		} else {
-			content = getRandomStringUnderCover();
+			if(isNetworkAvailable(this)){
+				UndercoverWordRandomOne();
+			}else{
+				libary = getUnderWords(word);
+				int selectindex = Math.abs(random.nextInt()) % libary.length;
+				content = getRandomStringUnderCover(libary[selectindex]);
+				gamewillstart();
+			}
 		}
 		// 设置content
+		
+	}
+	protected void gamewillstart(){
 		setContent(content);
 		nowIndex = 1;
 		setContentVis(false);
@@ -174,13 +184,9 @@ public class local_fanpai extends BaseActivity {
 	 * @param contnettxt
 	 * @return
 	 */
-	private String[] getRandomStringUnderCover() {
-		libary = getUnderWords(word);
-		int selectindex = Math.abs(random.nextInt()) % libary.length;
-		String[] children = new String[2];
-		children = libary[selectindex].split("_");
-
-		setHasGuessed(children[0] + "_" + children[1]);
+	private String[] getRandomStringUnderCover(String word) {
+		String[] children=word.split("_");
+		setHasGuessed(word);
 		int sonindex = Math.abs(random.nextInt()) % 2;
 		son = children[sonindex];
 		String father = children[Math.abs(sonindex - 1)];
@@ -244,5 +250,22 @@ public class local_fanpai extends BaseActivity {
 		setSon(son);
 		return ret;
 	}
-
+	@Override
+	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
+		super.CallBackPublicCommand(jsonobj, cmd);
+		if (cmd.equals(ConstantControl.WORD_UNDERCOVER)) {
+			try {
+				JSONObject obj = new JSONObject(jsonobj.getString("data"));
+				content = getRandomStringUnderCover(obj.getString("word"));
+				//obj={"uid":"A0000043A574DC","username":"","gameuid":310,"time":1414514074,"newgameimage":"http:\/\/192.168.1.120\/CenturyServer\/www\/image\/recom_1.png","newgamename":"我爱我OR不要脸","_id":310,"newgame":1,"pushcount":"0","photo":"","channel":"ANDROID"}
+			} catch (Exception e) {
+				libary = getUnderWords(word);
+				int selectindex = Math.abs(random.nextInt()) % libary.length;
+				content = getRandomStringUnderCover(libary[selectindex]);
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			gamewillstart();
+		}
+	}
 }

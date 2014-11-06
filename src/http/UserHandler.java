@@ -135,5 +135,13 @@ public class UserHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.PUNISH_RANDOMONE);
 	}
+	public void UndercoverWordRandomOne() {
+		JSONObject obj = new JSONObject();
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.WORD_UNDERCOVER);
+	}
 	
 }

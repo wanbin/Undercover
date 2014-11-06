@@ -36,6 +36,7 @@ public class ConstantControl {
 	public static String ROOM_GET_CONTENT = "RoomGetContent";
 	public static String NAME_CHANGE = "NameChange";
 	public static String PUNISH_RANDOMONE = "PublishRandomOne";
+	public static String WORD_UNDERCOVER = "WordUndercover";
 
 
 	

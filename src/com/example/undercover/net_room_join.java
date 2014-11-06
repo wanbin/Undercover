@@ -56,6 +56,7 @@ public class net_room_join extends BaseActivity {
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
+				reflash("","好像出了点问题");
 			}
 			
 		}

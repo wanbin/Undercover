@@ -806,6 +806,10 @@ public static String getDeviceInfo(Context context) {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.PublishRandomOne();
 	}
+	protected void UndercoverWordRandomOne() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.UndercoverWordRandomOne();
+	}
 	
 	/**
 	* 根据手机的分辨率从 dp 的单位 转成为 px(像素)

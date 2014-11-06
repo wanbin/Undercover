@@ -28,13 +28,14 @@ public class net_home extends BaseActivity {
 		txtRoomid = (EditText) this.findViewById(R.id.txtRoomid);
 		txtTitle = (TextView) this.findViewById(R.id.txtTitle);
 		
-		
-		String username=getFromObject("username");
-		if(username.equals(""))
-		{
+		String username = getFromObject("username");
+		if (!isNetworkAvailable(this)) {
+			txtTitle.setText("当前网络不通，无法进行线上游戏");
+		}
+		else if (username.equals("")) {
 			txtTitle.setText("还没有用户名，请先设置");
-		}else{
-			txtTitle.setText(username+"请创建或加入房间");
+		} else {
+			txtTitle.setText(username + "请创建或加入房间");
 		}
 		
 		btnJoin.setOnClickListener(new Button.OnClickListener() {
