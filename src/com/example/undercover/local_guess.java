@@ -97,13 +97,14 @@ public class local_guess extends BaseActivity {
 				Button select = new Button(this);
 				select.setTag(temindex);
 				select.setText(String.valueOf(temindex + 1));
-				select.setTextSize(20);
+				select.setTextSize(16);
 				select.setGravity(Gravity.CENTER|Gravity.BOTTOM);
-				
+				select.setBackgroundResource(R.drawable.btn_photo_pressed);
 				if (lastGameType().equals("game_killer")&&content[temindex].equals("法官")) {
 					select.setText("法官");
 					select.setClickable(false);
 					select.setEnabled(false);
+					select.setBackgroundResource(R.drawable.default_photo3);
 					hasClicked[temindex]=true;
 				}
 				
@@ -127,6 +128,7 @@ public class local_guess extends BaseActivity {
 								tapIndex((Integer) v.getTag());
 							}
 							hasClicked[(Integer) v.getTag()] = true;
+							v.setBackgroundResource(R.drawable.default_photo3);
 							v.setEnabled(false);
 							v.setClickable(false);
 							return true;

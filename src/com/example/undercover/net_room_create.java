@@ -190,7 +190,7 @@ public class net_room_create extends BaseActivity {
 					TextView txt = new TextView(this);
 					if (index >= roomUser.length()) {
 						txt.setText("NO." + (index + 1-roomUser.length()));
-						temBtn.setBackgroundResource(R.drawable.default_photo);
+						temBtn.setBackgroundResource(R.drawable.btn_photo_pressed);
 					} else {
 						txt.setText(temobj.getString("username"));
 					}

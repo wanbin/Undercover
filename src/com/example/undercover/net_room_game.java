@@ -205,6 +205,7 @@ public class net_room_game extends BaseActivity {
 		btn.setText(shenfen);
 		if (isShowTag == tag && isShowTag != 0) {
 			hideBtnOfGameuid(isShowTag);
+			return false;
 		}
 		isShowTag = tag;
 		showLimitTime = 3;
@@ -261,10 +262,10 @@ public class net_room_game extends BaseActivity {
 					content = userinfo.getString("content");
 					if(temobj.has("photo")){
 						ImageFromUrl(temBtn, temobj.getString("photo"),
-							R.drawable.default_photo);
+								R.drawable.btn_photo_pressed);
 						}
 					else{
-						temBtn.setBackgroundResource(R.drawable.default_photo);
+						temBtn.setBackgroundResource(R.drawable.btn_photo_pressed);
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -285,6 +286,7 @@ public class net_room_game extends BaseActivity {
 						} else if (gameType == 2) {
 							tapKillerUser(tag);
 						}
+						temBtn.setBackgroundResource(R.drawable.default_photo3);
 						temBtn.setEnabled(false);
 						return true;
 					}
@@ -436,6 +438,7 @@ public class net_room_game extends BaseActivity {
 		for (int i = 0; i < btnList.size(); i++) {
 			ImageView tembtn = btnList.get(i);
 			tembtn.setEnabled(false);
+			tembtn.setBackgroundResource(R.drawable.default_photo3);
 //			tembtn.setText(getShenfenOfIndex(i));
 		}
 	}
