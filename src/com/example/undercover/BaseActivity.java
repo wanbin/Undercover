@@ -128,15 +128,14 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 
 		// MobclickAgent.setSessionContinueMillis(60000);
 		SoundPlayer.init(this);
-		SoundPlayer.pushSound(R.raw.ball);
-		SoundPlayer.pushSound(R.raw.claps3);
-		SoundPlayer.pushSound(R.raw.bottle);
-		SoundPlayer.pushSound(R.raw.jishi);
 		SoundPlayer.pushSound(R.raw.failshout);
 		SoundPlayer.pushSound(R.raw.hiscore02);
 		SoundPlayer.pushSound(R.raw.whistle);
 		SoundPlayer.pushSound(R.raw.normalscore);
-		SoundPlayer.pushSound(R.raw.rolling);
+		SoundPlayer.pushSound(R.raw.uncover);
+		SoundPlayer.pushSound(R.raw.shake_sound);
+		SoundPlayer.pushSound(R.raw.vote_popu);
+		SoundPlayer.pushSound(R.raw.cancel);
 
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);

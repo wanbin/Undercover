@@ -123,6 +123,7 @@ public class net_home extends BaseActivity {
 					Intent mIntent = new Intent();
 					mIntent.setClass(net_home.this, net_room_create.class);
 					startActivity(mIntent);
+					checkIsInRoom();
 				}
 				else{
 					//创建房间出错
@@ -142,6 +143,7 @@ public class net_home extends BaseActivity {
 				Intent mIntent = new Intent();
 				mIntent.setClass(net_home.this, net_room_join.class);
 				startActivity(mIntent);
+				checkIsInRoom();
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

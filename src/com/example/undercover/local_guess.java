@@ -16,10 +16,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class local_guess extends BaseActivity {
 	private TableLayout contentTable;
-
+	TextView txtTitle;
 	// 卧底人数
 	private int soncount;
 	// 平民人数
@@ -59,6 +60,7 @@ public class local_guess extends BaseActivity {
 		contentTable = (TableLayout) findViewById(R.id.tableContent);
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		btn_restart = (Button) findViewById(R.id.btn_restart);
+		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		btn_restart.setVisibility(View.GONE);
 		content = getGuessContent();
 
@@ -139,7 +141,7 @@ public class local_guess extends BaseActivity {
 			}
 			contentTable.addView(newrow);
 		}
-		punishBtn.setText(saySeqString());
+		txtTitle.setText(saySeqString());
 	}
 
 	private void initKill() {
@@ -229,14 +231,14 @@ public class local_guess extends BaseActivity {
 				uMengClick("game_kill_guesslast");
 				gamefinish = true;
 			}
-			SoundPlayer.playHighSoure();
+			SoundPlayer.highSouce();
 			showAllWord();
 			setAllButton(false);
 			initControlBtn();
 			punishBtn.setText("杀手接受惩罚");
 			cleanStatus();
 		} else if (policeCount <= 0 || otherCount <= 0) {
-			SoundPlayer.playNormalSoure();
+			SoundPlayer.normalSouce();
 //			txtTitle.setText(strFromId("txtKillerKillerSucces"));
 			if (!gamefinish) {
 				uMengClick("game_kill_guesslast");
@@ -248,7 +250,7 @@ public class local_guess extends BaseActivity {
 			punishBtn.setText("平民和警官接受惩罚");
 			cleanStatus();
 		} else {
-			punishBtn.setText(saySeqString());
+			txtTitle.setText(saySeqString());
 		}
 	}
 
@@ -285,7 +287,7 @@ public class local_guess extends BaseActivity {
 			} 
 		}
 		int seq = Math.abs(random.nextInt()) % hasNotClick.size();
-		return (hasNotClick.get(seq)+1)+"号用户开始描述";
+		return (hasNotClick.get(seq)+1)+"号玩家开始描述";
 	}
 
 	/**
@@ -307,14 +309,14 @@ public class local_guess extends BaseActivity {
 				uMengClick("click_guess_last");
 				gamefinish = true;
 			}
-			SoundPlayer.playHighSoure();
+			SoundPlayer.highSouce();
 			showAllWord();
 			initControlBtn();
 			setAllButton(false);
 			punishBtn.setText(getSonStr());
 			cleanStatus();
 		} else if (fathercount <= soncount) {
-			SoundPlayer.playNormalSoure();
+			SoundPlayer.normalSouce();
 			if (!gamefinish) {
 				uMengClick("click_guess_last");
 				gamefinish = true;
@@ -325,7 +327,8 @@ public class local_guess extends BaseActivity {
 			punishBtn.setText(getFatherStr());
 			cleanStatus();
 		} else {
-			punishBtn.setText(saySeqString());
+			SoundPlayer.out();
+			txtTitle.setText(saySeqString());
 		}
 	}
 

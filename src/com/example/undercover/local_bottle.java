@@ -37,7 +37,7 @@ public class local_bottle extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				startAnimation();
-				SoundPlayer.playChuiShao();
+				SoundPlayer.start();
 				uMengClick("count_bottle");
 				
 			}
@@ -121,7 +121,7 @@ public class local_bottle extends BaseActivity {
 				// restartBtn.setClickable(true);
 				quan.setClickable(true);
 				punishment.setVisibility(View.VISIBLE);
-				SoundPlayer.playA();
+				SoundPlayer.faile();
 			}
 		});
 

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ss"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/txtTitle" >
 
         <TableLayout
             android:id="@+id/tableContent"
@@ -50,5 +50,14 @@
             android:textAlignment="viewStart"
             android:textColor="@color/WRITE" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gameblue"
+        android:gravity="center"
+        android:padding="5dp"
+         />
 
 </RelativeLayout>

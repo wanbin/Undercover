@@ -118,10 +118,10 @@ public class net_room_willstart extends BaseActivity {
 				mIntent.setClass(net_room_willstart.this, net_room_game.class);
 				mIntent.putExtra("userJson",roomUser.toString());
 				mIntent.putExtra("gameName", gamename);
+				SoundPlayer.start();
 				mIntent.putExtra("gameType", gameType);
 				mIntent.putExtra("addPeople", add);
 				mIntent.putExtra("room_contente", obj.getJSONObject("room_contente").toString());
-				
 //				mIntent.putExtra("PeopleCount", roomUser.length());
 				startActivity(mIntent);
 				

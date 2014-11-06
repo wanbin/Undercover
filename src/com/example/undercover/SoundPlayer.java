@@ -145,20 +145,35 @@ public class SoundPlayer{
 		
 	}
 	
-
-	public static void playHighSoure() {
-		playSound(R.raw.hiscore02);
-	}
-
-	public static void playNormalSoure() {
-		playSound(R.raw.normalscore);
-	}
-
-	public static void playChuiShao() {
+	public static void out() {
 		playSound(R.raw.whistle);
 	}
-
-	public static void playA() {
+	
+	/**
+	 * 人多数胜利
+	 */
+	public static void highSouce() {
+		playSound(R.raw.normalscore);
+	}
+	
+	/**
+	 * 人少数胜利
+	 */
+	public static void normalSouce() {
+		playSound(R.raw.hiscore02);
+	}
+	
+	
+	public static void shake() {
+		playSound(R.raw.shake_sound);
+	}
+	public static void start() {
+		playSound(R.raw.uncover);
+	}
+	public static void click() {
+		playSound(R.raw.cancel);
+	}
+	public static void faile() {
 		playSound(R.raw.failshout);
 	}
 }

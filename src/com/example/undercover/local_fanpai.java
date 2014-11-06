@@ -126,7 +126,7 @@ public class local_fanpai extends BaseActivity {
 			}
 		}
 		else{
-			SoundPlayer.playChuiShao();
+			SoundPlayer.click();
 			imagePan.setText("请交给下一位");
 		}
 		isShowWords=!isShowWords;
@@ -145,6 +145,7 @@ public class local_fanpai extends BaseActivity {
 		nowIndex = 1;
 		setContentVis(false);
 		initPan(nowIndex);
+		SoundPlayer.start();
 	}
 
 	protected void initPan(int index) {

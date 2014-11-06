@@ -42,12 +42,12 @@ public class local_click extends BaseActivity {
 				}
 
 				if (click_times >= random_times) {
-					SoundPlayer.playA();
+					SoundPlayer.faile();
 					setFinish();
 					click_button.setText("罚");
 					isOver=true;
 				} else {
-					SoundPlayer.playChuiShao();
+					SoundPlayer.click();
 					click_button.setText(""+click_times);
 				}
 				
@@ -95,6 +95,7 @@ public class local_click extends BaseActivity {
 		punishment_button.setVisibility(View.INVISIBLE);
 		DisplayParameter(0);
 		txtDes.setVisibility(View.GONE);
+		SoundPlayer.start();
 	}
 
 	protected void setFinish() {

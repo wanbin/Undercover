@@ -39,6 +39,7 @@ public class local_punish  extends BaseActivity {
 		btnNext.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				SoundPlayer.click();
 				nextPunish();
 			}
 		});		
@@ -66,9 +67,9 @@ public class local_punish  extends BaseActivity {
 	@Override
 	public void shackAction() {
 		nextPunish();
+		SoundPlayer.shake();
 	}
 	private void nextPunish(){
-		SoundPlayer.playNormalSoure();
 		txtPunish.setText(getRandomMaoxianFromLocate());
 	}
 

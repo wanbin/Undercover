@@ -34,6 +34,7 @@ public class net_room_game extends BaseActivity {
 	Button btnTip4;
 	Button btnTip5;
 	Button btnPunish;
+	TextView txtTitle;
 	TableLayout viewUser;
 	JSONArray roomUser;
 	JSONArray punishUser;
@@ -52,11 +53,18 @@ public class net_room_game extends BaseActivity {
 	Timer timer;
 
 	// 杀人游戏用到的参数
+	int killercount=0;
+	int policecount=0;
+	int peoplecount=0;
 
 	// 正在展示的tag
 	int isShowTag = 0;
 	int showLimitTime = -1;
+	
+	//判断一下，是否完全看完自己的身份
+	int localTotalPeople=1;
 
+	boolean gameStart=false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,7 +75,11 @@ public class net_room_game extends BaseActivity {
 		btnTip3 = (Button) this.findViewById(R.id.btnTip3);
 		btnTip4 = (Button) this.findViewById(R.id.btnTip4);
 		btnTip5 = (Button) this.findViewById(R.id.btnTip5);
+		txtTitle = (TextView) this.findViewById(R.id.txtTitle);
 
+		
+		txtTitle.setText("查看并记住身份");
+		
 		btnPunish = (Button) this.findViewById(R.id.btnPunish);
 		viewUser = (TableLayout) this.findViewById(R.id.tableUser);
 
@@ -76,7 +88,7 @@ public class net_room_game extends BaseActivity {
 		gameName = getIntent().getStringExtra("gameName");
 		gameType = getIntent().getIntExtra("gameType", 0);
 		addPeople = getIntent().getIntExtra("addPeople", 0);
-
+		localTotalPeople+=addPeople;
 		try {
 			roomUser = new JSONArray(getIntent().getStringExtra("userJson"));
 			room_contente = new JSONObject(getIntent().getStringExtra(
@@ -87,7 +99,9 @@ public class net_room_game extends BaseActivity {
 				fatherstr = room_contente.getString("father");
 				fathercount = roomUser.length() - soncount;
 			} else if (gameType == 2) {
-
+				killercount=room_contente.getInt("killer");
+				policecount=room_contente.getInt("police");
+				peoplecount=roomUser.length()-killercount-policecount-1;
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -118,22 +132,22 @@ public class net_room_game extends BaseActivity {
 	private void initShowShenfen() {
 		switch (addPeople) {
 		case 0:
-			btnTip5.setVisibility(View.GONE);
-			btnTip4.setVisibility(View.GONE);
-			btnTip3.setVisibility(View.GONE);
-			btnTip2.setVisibility(View.GONE);
+			btnTip5.setVisibility(View.INVISIBLE);
+			btnTip4.setVisibility(View.INVISIBLE);
+			btnTip3.setVisibility(View.INVISIBLE);
+			btnTip2.setVisibility(View.INVISIBLE);
 			break;
 		case 1:
-			btnTip5.setVisibility(View.GONE);
-			btnTip4.setVisibility(View.GONE);
-			btnTip3.setVisibility(View.GONE);
+			btnTip5.setVisibility(View.INVISIBLE);
+			btnTip4.setVisibility(View.INVISIBLE);
+			btnTip3.setVisibility(View.INVISIBLE);
 			break;
 		case 2:
-			btnTip5.setVisibility(View.GONE);
-			btnTip4.setVisibility(View.GONE);
+			btnTip5.setVisibility(View.INVISIBLE);
+			btnTip4.setVisibility(View.INVISIBLE);
 			break;
 		case 3:
-			btnTip5.setVisibility(View.GONE);
+			btnTip5.setVisibility(View.INVISIBLE);
 			break;
 		case 4:
 			break;
@@ -217,6 +231,14 @@ public class net_room_game extends BaseActivity {
 			btnTip1.setVisibility(View.INVISIBLE);
 		}
 		isShowTag=0;
+		if(btnTip1.getVisibility()==View.INVISIBLE&&
+				btnTip2.getVisibility()==View.INVISIBLE&&
+				btnTip3.getVisibility()==View.INVISIBLE&&
+				btnTip4.getVisibility()==View.INVISIBLE&&
+				btnTip5.getVisibility()==View.INVISIBLE){
+			txtTitle.setText("游戏正式开始，长按投票");
+			gameStart=true;
+		}
 	}
 
 	private void reflashUser() {
@@ -231,10 +253,12 @@ public class net_room_game extends BaseActivity {
 				final TextView txt = new TextView(this);
 				JSONObject userinfo;
 				String name = "玩家";
+				String content="";
 				try {
 					temobj = roomUser.getJSONObject(index);
 					userinfo = roomUser.getJSONObject(index);
 					name = userinfo.getString("username");
+					content = userinfo.getString("content");
 					if(temobj.has("photo")){
 						ImageFromUrl(temBtn, temobj.getString("photo"),
 							R.drawable.default_photo);
@@ -248,9 +272,13 @@ public class net_room_game extends BaseActivity {
 				}
 
 				final int tag = index;
-				temBtn.setOnClickListener(new Button.OnClickListener() {
+				temBtn.setOnLongClickListener(new Button.OnLongClickListener() {
 					@Override
-					public void onClick(View v) {
+					public boolean onLongClick(View v) {
+						//游戏没有正式开始的时候，不能点
+						if(!gameStart){
+							return false;
+						}
 						txt.setText("出局");
 						if (gameType == 1) {
 							tapUnderCoverUser(tag);
@@ -258,9 +286,14 @@ public class net_room_game extends BaseActivity {
 							tapKillerUser(tag);
 						}
 						temBtn.setEnabled(false);
+						return true;
 					}
 				});
 
+				if(gameType==2&&content.equals("法官")){
+					name="法官";
+					temBtn.setEnabled(false);
+				}
 				temBtn.setTag(index);
 				txt.setText(name);
 				txt.setGravity(Gravity.CENTER | Gravity.BOTTOM);
@@ -299,6 +332,7 @@ public class net_room_game extends BaseActivity {
 			String punishStr = getGameruidOfShenfen(fatherstr);
 			RoomPunish(punishStr);
 			isEnd = true;
+			SoundPlayer.normalSouce();
 		}
 
 		// 平民胜利
@@ -306,6 +340,7 @@ public class net_room_game extends BaseActivity {
 			btnPunish.setText("平民胜利，卧底接受惩罚");
 			String punishStr = getGameruidOfShenfen(sonstr);
 			RoomPunish(punishStr);
+			SoundPlayer.highSouce();
 			isEnd = true;
 		}
 		if (isEnd) {
@@ -362,8 +397,39 @@ public class net_room_game extends BaseActivity {
 	 * @param index
 	 */
 	private void tapKillerUser(int index) {
-		Log.v("tap", "tap killer:" + index);
-		// disableAllButton();
+		String shenfen = getShenfenOfIndex(index);
+		// 证明是卧底
+		if (shenfen.equals("警察")) {
+			policecount--;
+		} else if (shenfen.equals("杀手")) {
+			killercount--;
+		}else if (shenfen.equals("平民")) {
+			peoplecount--;
+		}
+		boolean isEnd = false;
+		// 卧底胜利
+		if (killercount <= 0) {
+			txtTitle.setText("杀手失败，平民和警察胜利");
+			btnPunish.setText("杀人接受惩罚");
+			String punishStr = getGameruidOfShenfen("杀手");
+			RoomPunish(punishStr);
+			isEnd = true;
+			SoundPlayer.normalSouce();
+		}
+
+		// 平民胜利
+		if (peoplecount <= 0||policecount<=0) {
+			txtTitle.setText("杀手胜利，平民和警察失败");
+			btnPunish.setText("平民和警察接受惩罚");
+			String punishStr = getGameruidOfShenfen("平民")+getGameruidOfShenfen("警察");
+			RoomPunish(punishStr);
+			SoundPlayer.highSouce();
+			isEnd = true;
+		}
+		if (isEnd) {
+			disableAllButton();
+		}
+		
 	}
 
 	private void disableAllButton() {

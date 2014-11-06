@@ -9,16 +9,16 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/WRITE"
+        android:background="@drawable/fang_write_pressed"
         android:textColor="@color/WRITE" />
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/btnPunish"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/txtTitle" >
 
         <TableLayout
             android:id="@+id/tableUser"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:orientation="vertical"
-        android:layout_marginTop="25dp" >
+        android:layout_marginTop="50dp" >
 
         <Button
             android:id="@+id/btnTip1"
@@ -93,5 +93,13 @@
             android:textColor="@color/WRITE"
             android:textSize="@dimen/btn_font_size" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gameblue"
+        android:gravity="center"
+        android:padding="5dp" />
 
 </RelativeLayout>
