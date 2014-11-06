@@ -260,7 +260,7 @@ public class net_room_game extends BaseActivity {
 					userinfo = roomUser.getJSONObject(index);
 					name = userinfo.getString("username");
 					content = userinfo.getString("content");
-					if(temobj.has("photo")){
+					if(temobj.has("photo")&&temobj.getString("photo").length()>0){
 						ImageFromUrl(temBtn, temobj.getString("photo"),
 								R.drawable.btn_photo_pressed);
 						}
