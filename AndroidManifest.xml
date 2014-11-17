@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.example.undercover"
+<manifest package="cn.centurywar.undercover"
     android:versionCode="301"
     android:versionName="3.01" xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -9,62 +9,62 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.undercover.SelectGameActivity"
+            android:name="cn.centurywar.undercover.SelectGameActivity"
             android:label="@string/app_name" >
            
         </activity>
-        <activity android:name="com.example.undercover.local_fanpai" >
+        <activity android:name="cn.centurywar.undercover.local_fanpai" >
         </activity>
         <!-- android:screenOrientation屏幕方向 -->
         <activity
-            android:name="com.example.undercover.QuestionAnswer"
+            android:name="cn.centurywar.undercover.QuestionAnswer"
             android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.example.undercover.local_guess" >
+        <activity android:name="cn.centurywar.undercover.local_guess" >
         </activity>
-        <activity android:name="com.example.undercover.local_click" >
+        <activity android:name="cn.centurywar.undercover.local_click" >
         </activity>
-        <activity android:name="com.example.undercover.local_bottle" >
+        <activity android:name="cn.centurywar.undercover.local_bottle" >
         </activity>
-        <activity android:name="com.example.undercover.home_page" >
+        <activity android:name="cn.centurywar.undercover.home_page" >
         </activity>
-        <activity android:name="com.example.undercover.weixin" >
+        <activity android:name="cn.centurywar.undercover.weixin" >
         </activity>
-        <activity android:name="com.example.undercover.kill" >
+        <activity android:name="cn.centurywar.undercover.kill" >
         </activity>
-        <activity android:name="com.example.undercover.net_punish">
+        <activity android:name="cn.centurywar.undercover.net_punish">
         </activity>
-        <activity android:name="com.example.undercover.homegame">
+        <activity android:name="cn.centurywar.undercover.homegame">
         </activity>
-        <activity android:name="com.example.undercover.net_home">
+        <activity android:name="cn.centurywar.undercover.net_home">
         </activity>
-        <activity android:name="com.example.undercover.net_room_create">
+        <activity android:name="cn.centurywar.undercover.net_room_create">
         </activity>
-         <activity android:name="com.example.undercover.net_room_willstart">
+         <activity android:name="cn.centurywar.undercover.net_room_willstart">
         </activity>
-         <activity android:name="com.example.undercover.net_room_game">
+         <activity android:name="cn.centurywar.undercover.net_room_game">
         </activity>
-          <activity android:name="com.example.undercover.net_room_punish">
+          <activity android:name="cn.centurywar.undercover.net_room_punish">
         </activity>
-        <activity android:name="com.example.undercover.local_setting">
+        <activity android:name="cn.centurywar.undercover.local_setting">
         </activity>
-        <activity android:name="com.example.undercover.local_punish">
+        <activity android:name="cn.centurywar.undercover.local_punish">
         </activity>
-         <activity android:name="com.example.undercover.local_punish_list">
+         <activity android:name="cn.centurywar.undercover.local_punish_list">
         </activity>
-        <activity android:name="com.example.undercover.setting">
+        <activity android:name="cn.centurywar.undercover.setting">
         </activity>
-        <activity android:name="com.example.undercover.homepage">
+        <activity android:name="cn.centurywar.undercover.homepage">
         </activity>
-        <activity android:name="com.example.undercover.feedback">
+        <activity android:name="cn.centurywar.undercover.feedback">
         </activity>
-         <activity android:name="com.example.undercover.homeguide">
+         <activity android:name="cn.centurywar.undercover.homeguide">
         </activity>
-          <activity android:name="com.example.undercover.net_room_join">
+          <activity android:name="cn.centurywar.undercover.net_room_join">
         </activity>
-          <activity android:name="com.example.undercover.setting_username">
+          <activity android:name="cn.centurywar.undercover.setting_username">
         </activity>
-         <activity android:name="com.example.undercover.home">
+         <activity android:name="cn.centurywar.undercover.home">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -73,15 +73,15 @@
         <activity android:name="com.umeng.fb.ConversationActivity" />
         <activity android:name="com.umeng.fb.ContactActivity" />
         <activity android:name="com.umeng.fb.ContributionActivity" />
-        <activity android:name="com.example.undercover.DiceActivity" />
+        <activity android:name="cn.centurywar.undercover.DiceActivity" />
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5206311756240b10f70a9558" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="MarketWandoujia" />
-        <activity android:name="com.example.undercover.ContributionActivity"></activity>
+            android:value="Market360" />
+        <activity android:name="cn.centurywar.undercover.ContributionActivity"></activity>
 
         
 	 <!-- ###################注册SDK使用的Activity###################### -->
@@ -136,7 +136,7 @@
             android:enabled="true" >
           <intent-filter android:priority="1000"> <!--since 1.3.5 -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--since 1.3.5 -->
-                <category android:name="com.example.undercover" /> <!--since 1.3.5 -->
+                <category android:name="cn.centurywar.undercover" /> <!--since 1.3.5 -->
             </intent-filter> <!--since 1.3.5 -->
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -156,7 +156,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.example.undercover" />
+                <category android:name="cn.centurywar.undercover" />
             </intent-filter>
         </activity>
         <!-- Required SDK核心功能-->
@@ -180,8 +180,8 @@
  <!-- 极光推送配置开始 -->
         
         
-<activity android:name="com.example.undercover.net_punish_add"></activity>
-<activity android:name="com.example.undercover.net_changename"></activity>
+<activity android:name="cn.centurywar.undercover.net_punish_add"></activity>
+<activity android:name="cn.centurywar.undercover.net_changename"></activity>
 
 </application>
 
@@ -199,8 +199,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /><!-- 用于评论模块分享位置信息 -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/><!-- 显示系统窗口 -->
     <uses-permission android:name="android.permission.GET_TASKS"/><!-- 允许一个程序获取信息有关当前或最近运行的任 -->
-    <permission android:name="com.example.undercover.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
-    <uses-permission android:name="com.example.undercover.permission.JPUSH_MESSAGE" />
+    <permission android:name="cn.centurywar.undercover.permission.JPUSH_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="cn.centurywar.undercover.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

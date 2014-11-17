@@ -2,8 +2,8 @@ package http;
 
 import org.json.JSONObject;
 
-import com.example.undercover.ConstantControl;
-import com.example.undercover.httpCallBack;
+import cn.centurywar.undercover.ConstantControl;
+import cn.centurywar.undercover.httpCallBack;
 
 public class BehaveHandler extends BaseHttpCommand {
 
