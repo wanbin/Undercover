@@ -5,6 +5,8 @@ import http.PublishHandler;
 import java.util.List;
 import cn.centurywar.undercover.BaseActivity;
 import cn.centurywar.undercover.R;
+import cn.centurywar.undercover.mail_list;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -23,10 +25,11 @@ import android.widget.TextView;
  * @author chenzheng_java
  * @description 该类的部分实现模仿了SimpleAdapter
  */
-public class PunishAdapter extends BaseAdapter {
-	private List<PublishUser> publishs; 
+public class MailAdapter extends BaseAdapter {
+	private Button hasPress;
+	private List<MailUser> publishs; 
 	Context context;  
-    private BaseActivity callBackActivity=null;
+    private mail_list callBackActivity=null;
     
     /**
      * 初始化Myadapter
@@ -34,17 +37,23 @@ public class PunishAdapter extends BaseAdapter {
      * @param publishs 这个是返回的数据LIST
      * @param uid
      */
-    public PunishAdapter(Context context,List<PublishUser> publishs,String uid){  
+    public MailAdapter(Context context,List<MailUser> publishs,String uid){  
         this.publishs = publishs;  
         this.context = context;  
+     
     }  
     
+    public void setCallBack(mail_list view){
+    	this.callBackActivity=view;
+    }
     
 	
     public final class ViewHolder {  
         public ImageView imageUser;
         public TextView txtName;  
         public TextView txtPunish;  
+        public TextView txtTime;  
+        public Button btnDel;
     }
 	@Override
 	public int getCount() {
@@ -59,33 +68,66 @@ public class PunishAdapter extends BaseAdapter {
 		return position;
 	}
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		final PublishUser temPublish = (PublishUser) getItem(position);
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		final MailUser temPublish = (MailUser) getItem(position);
 		final ViewHolder viewHolder;
 
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
-					R.layout.net_room_punish_list, null);
+					R.layout.mail_list_content, null);
 			viewHolder = new ViewHolder();
 			viewHolder.imageUser = (ImageView) convertView
 					.findViewById(R.id.imgPhoto);
 			viewHolder.txtName = (TextView) convertView
 					.findViewById(R.id.txtName);
+			viewHolder.txtTime = (TextView) convertView
+					.findViewById(R.id.txtTime);
 			viewHolder.txtPunish = (TextView) convertView
 					.findViewById(R.id.txtPunish);
+			viewHolder.btnDel = (Button) convertView
+					.findViewById(R.id.btnDel);
 			convertView.setTag(viewHolder);
+			
 			//设置各控件的内容在这里
-			viewHolder.txtName.setText(temPublish.name);  
-	        viewHolder.txtPunish.setText(temPublish.punish);
+			viewHolder.txtName.setText(temPublish.fromname);  
+	        viewHolder.txtPunish.setText(temPublish.content);
+	        viewHolder.txtTime.setText(temPublish.time);
+
 	        if(temPublish.photo.length()>0){
 	        	ImageFromUrl(viewHolder.imageUser,temPublish.photo,R.drawable.default_photo);
 	        }
+	        
+	        
+	        convertView.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if(hasPress!=null){
+						hasPress.setVisibility(View.GONE);
+					}
+					viewHolder.btnDel.setVisibility(View.VISIBLE);
+					hasPress=viewHolder.btnDel;
+				}
+			});
+	        
+	        final View temview=convertView;
+	        viewHolder.btnDel.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					callBackActivity.removeMail(temPublish.id);
+					publishs.remove(position);
+					notifyDataSetChanged();
+//					temview.su.setVisibility(View.GONE);
+				}
+			});
 	        
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
-	
+
+        
+      
+		
 		return convertView;
 	}  
 
@@ -106,11 +148,13 @@ public class PunishAdapter extends BaseAdapter {
 	 * @author wanhin
 	 *真心话大冒险类，需要在里面添加like,dislike内容
 	 */
-	public static class PublishUser {
+	public static class MailUser {
 		public int id;
-		public String name;
-		public String punish;
+		public String content;
+		public String fromname;
+		public String time;
 		public String photo;
+		public boolean isread;
 
 		/**
 		 * @param id
@@ -118,13 +162,16 @@ public class PunishAdapter extends BaseAdapter {
 		 * @param content
 		 * @param photo
 		 */
-		public PublishUser(int id, String name, String content,String photo) {
+		public MailUser(int id, String content, String fromname,String photo,String time,boolean isread) {
 			super();
 			this.id = id;
-			this.name = name;
-			this.punish=content;
+			this.content = content;
+			this.fromname=fromname;
+			this.time=time;
+			this.isread=isread;
 			this.photo=photo;
 		} 
+		
 	}  
 }
 

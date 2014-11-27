@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="cn.centurywar.undercover"
-    android:versionCode="301"
-    android:versionName="3.01" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionCode="302"
+    android:versionName="3.02" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -60,6 +60,8 @@
         </activity>
          <activity android:name="cn.centurywar.undercover.homeguide">
         </activity>
+         <activity android:name="cn.centurywar.undercover.mail_list">
+        </activity>
           <activity android:name="cn.centurywar.undercover.net_room_join">
         </activity>
           <activity android:name="cn.centurywar.undercover.setting_username">
@@ -76,7 +78,7 @@
         <activity android:name="cn.centurywar.undercover.DiceActivity" />
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5206311756240b10f70a9558" >
+            android:value="5476c767fd98c5a3ce000eb9" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
@@ -176,7 +178,7 @@
         <!-- 目前这个渠道统计功能的报表还未开放。-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="d0085b49b0682dbbb3a36ff5"/> 
+        <meta-data android:name="JPUSH_APPKEY" android:value="1fca24a4ae00341567e84792"/> 
  <!-- 极光推送配置开始 -->
         
         

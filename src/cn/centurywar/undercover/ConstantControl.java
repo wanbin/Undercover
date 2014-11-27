@@ -38,7 +38,9 @@ public class ConstantControl {
 	public static String PUNISH_RANDOMONE = "PublishRandomOne";
 	public static String WORD_UNDERCOVER = "WordUndercover";
 
-
+	// 返回所有真心话大冒险
+		public static String MAIL_LIST = "MailList";
+		public static String MAIL_DEL = "MailDel";
 	
 	//添加用户行为LOG
 	public static String BEHAVE_ADD = "BehaveAdd";

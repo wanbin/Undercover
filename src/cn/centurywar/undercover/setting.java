@@ -31,6 +31,7 @@ public class setting  extends BaseActivity {
 	LinearLayout LinearFeedback;
 	LinearLayout LinearAbout;
 	LinearLayout LinearInfo;
+	LinearLayout LinearMail;
 	TextView txtSound;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class setting  extends BaseActivity {
 		LinearFeedback=(LinearLayout)this.findViewById(R.id.LinearFeedback);
 		LinearAbout=(LinearLayout)this.findViewById(R.id.LinearAbout);
 		LinearInfo=(LinearLayout)this.findViewById(R.id.LinearInfo);
+		LinearMail=(LinearLayout)this.findViewById(R.id.LinearMail);
 		
 		txtVersion.setText(getVersion());
 		
@@ -86,6 +88,14 @@ public class setting  extends BaseActivity {
 			public void onClick(View v) {
 				Intent intentGo = new Intent();
 				intentGo.setClass(setting.this, setting_username.class);
+				startActivity(intentGo);
+			}
+		});
+		LinearMail.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentGo = new Intent();
+				intentGo.setClass(setting.this, mail_list.class);
 				startActivity(intentGo);
 			}
 		});

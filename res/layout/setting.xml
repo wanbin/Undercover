@@ -50,6 +50,39 @@
                 android:text="@string/向右" />
 
         </LinearLayout>
+                <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/light_gray" />
+        
+        <LinearLayout
+            android:id="@+id/LinearMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WRITE"
+            android:padding="@dimen/alphabet_size" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="@string/信件" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:gravity="right"
+                android:text="@string/向右" />
+        </LinearLayout>
+        
+        
+        
+        
+        
 
         <TextView
             android:id="@+id/textView3"

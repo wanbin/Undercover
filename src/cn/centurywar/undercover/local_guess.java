@@ -290,7 +290,7 @@ public class local_guess extends BaseActivity {
 			} 
 		}
 		int seq = Math.abs(random.nextInt()) % hasNotClick.size();
-		return (hasNotClick.get(seq)+1)+"号玩家开始描述";
+		return (hasNotClick.get(seq)+1)+"号玩家开始描述[长按投票]";
 	}
 
 	/**

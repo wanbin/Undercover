@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -253,6 +255,7 @@ public class homegame extends BaseActivity {
 				String newgameimage=obj.getString("newgameimage");
 				String newgamename=obj.getString("newgamename");
 				String newgame=obj.getString("newgame");
+				String newgameurl=obj.getString("newgameurl");
 				
 				updateNewGame(newgamename,newgameimage);
 				
@@ -260,8 +263,24 @@ public class homegame extends BaseActivity {
 				setToObject("gameuid", gameuid);
 				setToObject("photo", photo);
 				
+				setToObject("newgameurl", newgameurl);
+				
 				if (obj.has("mail")) {
 					JSONArray mailArr = obj.getJSONArray("mail");
+					new AlertDialog.Builder(this)   
+					.setTitle("有新消息")  
+					.setMessage(mailArr.getJSONObject(0).getString("content"))  
+					.setPositiveButton("查看更多",  
+							new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialoginterface, int i){
+                            //按钮事件
+                        	Intent intentGo = new Intent();
+                    		intentGo.setClass(homegame.this, mail_list.class);
+                    		startActivity(intentGo);
+                        }
+						})  
+					.setNegativeButton("关闭", null)  
+					.show(); 
 //					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
 				}
 			} catch (Exception e) {

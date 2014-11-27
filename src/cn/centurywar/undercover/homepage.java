@@ -12,10 +12,10 @@ public class homepage extends BaseActivity {
 		urlPage=(WebView)this.findViewById(R.id.urlpage);
 		String gameType=getIntent().getStringExtra("type");
 		if(gameType!=null&&gameType.equals("newGame")){
-			urlPage.loadUrl("http://www.centurywar.cn/www/index.php?showpage=gamenow&uid="+getUid());
+			String url=getFromObject("newgameurl");
+			urlPage.loadUrl(url+"?showpage=gamenow&uid="+getUid());
 		}else{
-			urlPage.loadUrl("http://www.centurywar.cn/www/index.php?showpage=help&uid="+getUid());
+			urlPage.loadUrl("http://mobile.centurywar.cn?showpage=help&uid="+getUid());
 		}
 	}
-	
 }

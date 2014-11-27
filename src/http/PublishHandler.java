@@ -78,6 +78,32 @@ public class PublishHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
 	}
+	
+
+	/**
+	 * 取得所有新闻
+	 */
+	public void getAllMail(int page) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("page", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.MAIL_LIST);
+	}
+
+	
+	public void delMail(int id) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("mailid", id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.MAIL_DEL);
+	}
+
 
 	/**
 	 * 取得所有需要审核的新闻
