@@ -54,6 +54,14 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="20dp" />
+
+        <Button
+            android:id="@+id/btnShare"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/umeng_socialize_action_share_icon" />
+
     </LinearLayout>
 
 </RelativeLayout>

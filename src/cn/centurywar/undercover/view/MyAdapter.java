@@ -60,6 +60,7 @@ public class MyAdapter extends BaseAdapter {
 		public TextView txtDislike;
 		public Button likebtn;
 		public Button dislikebtn;
+		public Button btnshare;
 		public RelativeLayout relativeView;
 	}
 
@@ -97,6 +98,10 @@ public class MyAdapter extends BaseAdapter {
 			
 			viewHolder.likebtn = (Button) convertView
 					.findViewById(R.id.buttonLike);
+			
+			viewHolder.btnshare = (Button) convertView
+					.findViewById(R.id.btnShare);
+			
 			viewHolder.dislikebtn = (Button) convertView
 					.findViewById(R.id.buttonDislike);
 			viewHolder.relativeView = (RelativeLayout) convertView
@@ -143,6 +148,12 @@ public class MyAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				callBackActivity.punishAdd(temPublish.content);
+			}
+		});
+		viewHolder.btnshare.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				callBackActivity.share(temPublish.content);
 			}
 		});
 		return convertView;

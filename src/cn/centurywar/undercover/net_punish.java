@@ -75,6 +75,10 @@ public class net_punish extends BaseActivity {
 		intentGo.putExtra("content", content);
 		startActivity(intentGo);
 	}
+	
+	public void share(String content){
+		shareIt(net_punish.this,"发现了个好玩的聚会惩罚："+content+"(爱上聚会 http://www.centurywar.cn )");
+	}
 	/**
 	 * 取得所有新闻
 	 */

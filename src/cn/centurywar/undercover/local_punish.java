@@ -7,8 +7,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.UMServiceFactory;
+import com.umeng.socialize.controller.UMSocialService;
+
 import cn.centurywar.util.Punish;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -22,6 +27,7 @@ import android.widget.TextView;
 public class local_punish  extends BaseActivity {
 	TextView txtPunish;
 	Button btnNext;
+	Button btnShare;
 	Button btnNet;
 	Button btnLocal;
 	
@@ -32,6 +38,7 @@ public class local_punish  extends BaseActivity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		txtPunish=(TextView)this.findViewById(R.id.txtPunish);
 		btnNext=(Button)this.findViewById(R.id.btnNext);
+		btnShare=(Button)this.findViewById(R.id.btnShare);
 		
 		btnLocal=(Button)this.findViewById(R.id.btnLocal);
 		btnNet=(Button)this.findViewById(R.id.btnNet);
@@ -41,6 +48,12 @@ public class local_punish  extends BaseActivity {
 			public void onClick(View v) {
 				SoundPlayer.click();
 				nextPunish();
+			}
+		});		
+		btnShare.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				shareIt(local_punish.this,"发现了个好玩的聚会惩罚："+txtPunish.getText().toString()+"(爱上聚会 http://www.centurywar.cn )");
 			}
 		});		
 		
@@ -64,6 +77,9 @@ public class local_punish  extends BaseActivity {
 			}
 		});		
 	}
+	
+
+	
 	@Override
 	public void shackAction() {
 		nextPunish();

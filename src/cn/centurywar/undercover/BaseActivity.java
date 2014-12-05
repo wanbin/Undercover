@@ -55,7 +55,13 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
+import com.umeng.socialize.sso.QZoneSsoHandler;
+import com.umeng.socialize.sso.SinaSsoHandler;
+import com.umeng.socialize.sso.TencentWBSsoHandler;
+import com.umeng.socialize.sso.UMQQSsoHandler;
 
 /**
  * @author wanhin
@@ -1119,6 +1125,24 @@ public static String getDeviceInfo(Context context) {
 	    }
 	
 	
+	public void shareIt(Activity activ,String content){
+		final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
+		// 设置分享内容
+		QZoneSsoHandler qZoneSsoHandler = new QZoneSsoHandler(activ, "1103446374",
+                "34exCuoYFu7mlL9l");
+		qZoneSsoHandler.addToSocialSDK();
+		mController.getConfig().setSsoHandler(new SinaSsoHandler());
+		mController.getConfig().setSsoHandler(new TencentWBSsoHandler());
+		mController.setShareContent(content);
+		UMQQSsoHandler qqSsoHandler = new UMQQSsoHandler(activ, "1103446374",
+                "34exCuoYFu7mlL9l");
+		
+		qqSsoHandler.addToSocialSDK();  
+		// 设置分享图片, 参数2为图片的url地址
+//		mController.setShareMedia(new UMImage(getActivity(), "http://www.umeng.com/images/pic/banner_module_social.png"));
+		mController.getConfig().removePlatform( SHARE_MEDIA.RENREN, SHARE_MEDIA.DOUBAN);
+		mController.openShare(activ, false);
+	}
 
 }
 

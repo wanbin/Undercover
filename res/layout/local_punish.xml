@@ -68,4 +68,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
+        android:layout_above="@+id/btnNext"
+        android:layout_alignLeft="@+id/btnNext"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/begin_pressed"
+        android:text="@string/分享"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/newBtnFont" />
+
 </RelativeLayout>

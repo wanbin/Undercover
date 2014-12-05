@@ -5,6 +5,9 @@ import http.PublishHandler;
 import java.util.List;
 import cn.centurywar.undercover.BaseActivity;
 import cn.centurywar.undercover.R;
+import cn.centurywar.undercover.net_punish;
+import cn.centurywar.undercover.net_room_punish;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -26,7 +29,7 @@ import android.widget.TextView;
 public class PunishAdapter extends BaseAdapter {
 	private List<PublishUser> publishs; 
 	Context context;  
-    private BaseActivity callBackActivity=null;
+    private net_room_punish callBackActivity=null;
     
     /**
      * 初始化Myadapter
@@ -39,12 +42,15 @@ public class PunishAdapter extends BaseAdapter {
         this.context = context;  
     }  
     
-    
+	public void setCallBack(net_room_punish v) {
+		callBackActivity = v;
+	}
 	
     public final class ViewHolder {  
         public ImageView imageUser;
         public TextView txtName;  
         public TextView txtPunish;  
+        public Button btnShare;  
     }
 	@Override
 	public int getCount() {
@@ -73,6 +79,8 @@ public class PunishAdapter extends BaseAdapter {
 					.findViewById(R.id.txtName);
 			viewHolder.txtPunish = (TextView) convertView
 					.findViewById(R.id.txtPunish);
+			viewHolder.btnShare = (Button) convertView
+					.findViewById(R.id.btnShare);
 			convertView.setTag(viewHolder);
 			//设置各控件的内容在这里
 			viewHolder.txtName.setText(temPublish.name);  
@@ -85,7 +93,12 @@ public class PunishAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
-	
+		viewHolder.btnShare.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				callBackActivity.share(temPublish.name,temPublish.punish);
+			}
+		});
 		return convertView;
 	}  
 

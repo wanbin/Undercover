@@ -49,7 +49,11 @@ public class net_room_punish extends BaseActivity {
 		
 		PunishAdapter adapter = new PunishAdapter(net_room_punish.this, temPubs,
 				this.getUid());
+		adapter.setCallBack(this);
 		listView.setAdapter(adapter);
+	}
+	public void share(String name,String content){
+		shareIt(net_room_punish.this,name+" 受到了 "+content+"(爱上聚会 http://www.centurywar.cn )");
 	}
 
 }
