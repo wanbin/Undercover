@@ -6,4 +6,5 @@ public interface httpCallBack {
 	public String getUid();
 	public void ToastMessage(String message);
 	public void MessageCallBack(JSONObject obj,String cmd);
+	public void MessageCallBackWrong(String cmd);
 }

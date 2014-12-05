@@ -111,6 +111,19 @@ public class net_punish extends BaseActivity {
 		}
 	}
 	
+	
+	@Override
+	public void MessageCallBackWrong(String cmd) {
+		super.MessageCallBackWrong(cmd);
+		if(cmd.equals(ConstantControl.SHOW_PUBLISH_ALL))
+		{
+			try{
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
 
 	/**
 	 * update message

@@ -646,6 +646,15 @@ public static String getDeviceInfo(Context context) {
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public  void MessageCallBackWrong(String cmd){
+		try {
+			CallBackPublicCommandWrong(cmd);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 回调的公共处理类方法
 	 * @param jsonobj
@@ -657,6 +666,16 @@ public static String getDeviceInfo(Context context) {
 		
 	}
 	
+	/**
+	 * 回调的公共处理类方法
+	 * @param jsonobj
+	 * @param cmd
+	 */
+	public void CallBackPublicCommandWrong(String cmd)
+	{
+		
+		
+	}
 	
 	
 	/**
@@ -949,19 +968,19 @@ public static String getDeviceInfo(Context context) {
 	 * 
 	 * @return
 	 */
-	public String getRandomMaoxianFromLocate() {
+	public String getRandomMaoxianFromLocate(boolean trynet) {
 		JSONArray jsonarray = getLocateDamaoxian();
 		Random a = new Random();
 		// 这里有个BUG
 		if (jsonarray.length() < 20) {
 			// 防止词汇较少一直取相同的词汇情况
 			if (Math.abs(a.nextInt()) % 10 < 8) {
-				return getRandomMaoxian("start");
+				return getRandomMaoxian("start",trynet);
 			}
 		}
 		try {
 			if (jsonarray.length() == 0) {
-				return getRandomMaoxian("start");
+				return getRandomMaoxian("start",trynet);
 			}
 			int index = Math.abs(a.nextInt()) % jsonarray.length();
 			return jsonarray.getJSONObject(index).getString("data").toString();
@@ -969,7 +988,7 @@ public static String getDeviceInfo(Context context) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return getRandomMaoxian("start");
+		return getRandomMaoxian("start",trynet);
 	}
 	
 	/**
@@ -979,9 +998,9 @@ public static String getDeviceInfo(Context context) {
 	protected void setLocateDamaoxian(JSONArray objarray) {
 		gameInfo.edit().putString("damaoxian", objarray.toString()).commit();
 	}
-	protected String getRandomMaoxian(String strkey) {
+	protected String getRandomMaoxian(String strkey,boolean fromnet) {
 		//判断用户下在获取词汇
-		if(isNetworkAvailable(this)){
+		if(isNetworkAvailable(this)&&fromnet){
 			PublishRandomOne();
 			return  "正在获取";
 		}
@@ -1005,7 +1024,7 @@ public static String getDeviceInfo(Context context) {
 			return strReturn;
 		}
 		if (!tem[1].equals("end")) {
-			strReturn = strReturn + getRandomMaoxian(tem[1]);
+			strReturn = strReturn + getRandomMaoxian(tem[1],fromnet);
 		}
 		return strReturn;
 	}

@@ -268,4 +268,16 @@ public class local_fanpai extends BaseActivity {
 			gamewillstart();
 		}
 	}
+	
+	@Override
+	public void CallBackPublicCommandWrong( String cmd) {
+		super.CallBackPublicCommandWrong( cmd);
+		if (cmd.equals(ConstantControl.WORD_UNDERCOVER)) {
+			libary = getUnderWords(word);
+			int selectindex = Math.abs(random.nextInt()) % libary.length;
+			content = getRandomStringUnderCover(libary[selectindex]);
+				// TODO: handle exception
+			gamewillstart();
+		}
+	}
 }

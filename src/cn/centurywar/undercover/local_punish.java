@@ -70,7 +70,7 @@ public class local_punish  extends BaseActivity {
 		SoundPlayer.shake();
 	}
 	private void nextPunish(){
-		txtPunish.setText(getRandomMaoxianFromLocate());
+		txtPunish.setText(getRandomMaoxianFromLocate(true));
 	}
 
 	@Override
@@ -87,6 +87,19 @@ public class local_punish  extends BaseActivity {
 				// TODO: handle exception
 				e.printStackTrace();
 				txtPunish.setText("可以免除惩罚");
+			}
+		}
+	}
+	
+	@Override
+	public void MessageCallBackWrong(String cmd) {
+		super.MessageCallBackWrong(cmd);
+		if(cmd.equals(ConstantControl.PUNISH_RANDOMONE))
+		{
+			try{
+				txtPunish.setText(getRandomMaoxianFromLocate(false));
+			}catch(Exception e){
+				e.printStackTrace();
 			}
 		}
 	}
