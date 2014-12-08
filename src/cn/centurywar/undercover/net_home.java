@@ -133,6 +133,7 @@ public class net_home extends BaseActivity {
 				//显示
 
 			} catch (Exception e) {
+				ToastMessage("无法解析服务器返回，请稍候再试");
 				// TODO: handle exception
 				e.printStackTrace();
 			}
@@ -146,10 +147,28 @@ public class net_home extends BaseActivity {
 				startActivity(mIntent);
 				checkIsInRoom();
 			} catch (Exception e) {
+				ToastMessage("无法解析服务器返回，请稍候再试");
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 		}
 	}
+	/**
+	 * 回调的公共处理类方法
+	 * @param jsonobj
+	 * @param cmd
+	 */
+	public void CallBackPublicCommandWrong(String cmd)
+	{
+		super.CallBackPublicCommandWrong(cmd);
+		if (cmd.equals(ConstantControl.ROOM_CREATE)) {
+			ToastMessage("创建房间出错，或服务器无返回，请稍后再试");
+		}else if(cmd.equals(ConstantControl.ROOM_JOIN)) {
+			ToastMessage("加入房间出错，或服务器无返回，请稍后再试");
+		}
+		
+	}
+	
+	
 	
 }

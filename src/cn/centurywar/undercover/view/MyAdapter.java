@@ -86,7 +86,7 @@ public class MyAdapter extends BaseAdapter {
 
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
-					R.layout.activity_sub_usercontribute, null);
+					R.layout.net_punish_list, null);
 			viewHolder = new ViewHolder();
 			
 			viewHolder.content = (TextView) convertView

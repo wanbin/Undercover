@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listPunishUser"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/qwe"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-</ListView>
+    <ListView
+        android:id="@+id/listPunishUser"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_above="@+id/btnPunish"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/btnPunish"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/fang_purple_pressed"
+        android:text="@string/惩罚"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/btn_font_size" />
+
+</RelativeLayout>
