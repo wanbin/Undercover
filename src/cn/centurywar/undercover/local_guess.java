@@ -239,6 +239,7 @@ public class local_guess extends BaseActivity {
 			setAllButton(false);
 			initControlBtn();
 			punishBtn.setText("杀手接受惩罚");
+			setGameIsNew(ConstantControl.GAME_KILLER,false);
 			cleanStatus();
 		} else if (policeCount <= 0 || otherCount <= 0) {
 			SoundPlayer.normalSouce();
@@ -252,6 +253,7 @@ public class local_guess extends BaseActivity {
 			initControlBtn();
 			punishBtn.setText("平民和警官接受惩罚");
 			cleanStatus();
+			setGameIsNew(ConstantControl.GAME_KILLER,false);
 		} else {
 			txtTitle.setText(saySeqString());
 		}
@@ -318,6 +320,8 @@ public class local_guess extends BaseActivity {
 			setAllButton(false);
 			punishBtn.setText(getSonStr());
 			cleanStatus();
+			setGameIsNew(ConstantControl.GAME_UNDERCOVER,false);
+			
 		} else if (fathercount <= soncount) {
 			SoundPlayer.normalSouce();
 			if (!gamefinish) {
@@ -329,6 +333,7 @@ public class local_guess extends BaseActivity {
 			setAllButton(false);
 			punishBtn.setText(getFatherStr());
 			cleanStatus();
+			setGameIsNew(ConstantControl.GAME_UNDERCOVER,false);
 		} else {
 			SoundPlayer.out();
 			txtTitle.setText(saySeqString());

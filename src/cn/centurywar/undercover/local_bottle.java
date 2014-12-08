@@ -83,6 +83,7 @@ public class local_bottle extends BaseActivity {
 			public float getInterpolation(float arg0) {
 				// TODO Auto-generated method stub
 				bottle.setClickable(true);
+				setGameIsNew(ConstantControl.GAME_CIRCLE,false);
 				return interpolator.accelerate_decelerate;
 			}
 		});

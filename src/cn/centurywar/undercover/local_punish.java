@@ -87,6 +87,7 @@ public class local_punish  extends BaseActivity {
 	}
 	private void nextPunish(){
 		txtPunish.setText(getRandomMaoxianFromLocate(true));
+		setGameIsNew(ConstantControl.GAME_PUNISH,false);
 	}
 
 	@Override

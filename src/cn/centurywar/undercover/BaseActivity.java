@@ -1143,6 +1143,14 @@ public static String getDeviceInfo(Context context) {
 		mController.getConfig().removePlatform( SHARE_MEDIA.RENREN, SHARE_MEDIA.DOUBAN);
 		mController.openShare(activ, false);
 	}
+	
+	
+	public boolean checkGameIsNew(int gameid){
+		return gameInfo.getBoolean("gamenew_"+getVersion()+"_"+gameid,true);
+	}
+	public void setGameIsNew(int gameid,boolean isnew){
+		gameInfo.edit().putBoolean("gamenew_"+getVersion()+"_"+gameid, isnew).commit();
+	}
 
 }
 

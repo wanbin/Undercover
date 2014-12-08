@@ -56,6 +56,8 @@
         </activity>
           <activity android:name="cn.centurywar.undercover.setting_username">
         </activity>
+          <activity android:name="cn.centurywar.undercover.local_push">
+        </activity>
          <activity android:name="cn.centurywar.undercover.home">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

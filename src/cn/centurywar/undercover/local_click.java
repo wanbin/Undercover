@@ -103,6 +103,7 @@ public class local_click extends BaseActivity {
 //		restart_button.setVisibility(View.VISIBLE);
 		punishment_button.setVisibility(View.VISIBLE);
 		txtDes.setVisibility(View.VISIBLE);
+		setGameIsNew(ConstantControl.GAME_CLICK,false);
 	}
 
 	protected void DisplayParameter(int time) {

@@ -44,4 +44,13 @@ public class ConstantControl {
 	
 	//添加用户行为LOG
 	public static String BEHAVE_ADD = "BehaveAdd";
+	
+	
+	public static int GAME_UNDERCOVER=101;
+	public static int GAME_KILLER=102;
+	public static int GAME_PUNISH=103;
+	public static int GAME_CLICK=104;
+	public static int GAME_CIRCLE=105;
+	public static int GAME_PUSH=106;
+	public static int GAME_RECOMMEND=107;
 }

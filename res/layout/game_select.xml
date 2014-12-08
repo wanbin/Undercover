@@ -27,6 +27,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/WRITE" />
 
+        <ImageView
+            android:id="@+id/imgNew"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/game_new" />
+
     </RelativeLayout>
 
 </RelativeLayout>

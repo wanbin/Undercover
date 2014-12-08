@@ -27,25 +27,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:id="@+id/ww"
+        <TextView
+            android:id="@+id/txtPunish"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:maxLines="@integer/lines" />
 
-            <TextView
-                android:id="@+id/txtPunish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="@integer/lines" />
+        <Button
+            android:id="@+id/btnShare"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/umeng_socialize_action_share_icon"
+            android:gravity="right|center_vertical" />
 
-            <Button
-                android:id="@+id/btnShare"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/umeng_socialize_action_share_icon" />
-
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
