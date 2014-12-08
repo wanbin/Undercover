@@ -12,6 +12,7 @@ import android.view.animation.Interpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class local_bottle extends BaseActivity {
 	int bottleWidth;
@@ -19,6 +20,7 @@ public class local_bottle extends BaseActivity {
 	float fromDe;
 	float toDe;
 	Button restartBtn;
+	TextView txtDes;
 	private Button punishment;
 	ImageView bottle;
 	ImageView quan;
@@ -31,6 +33,8 @@ public class local_bottle extends BaseActivity {
 		quan = (ImageView) findViewById(R.id.quan);
 		punishment = (Button) findViewById(R.id.button1);
 		punishment.setVisibility(View.INVISIBLE);
+		txtDes = (TextView) findViewById(R.id.txtDes);
+		txtDes.setVisibility(View.GONE);
 //		bottle.setPaddingRelative(110, 0, 0, 0);
 //		bottle.setPaddingRelative(start, top, end, bottom);
 		quan.setOnClickListener(new ImageView.OnClickListener() {
@@ -94,6 +98,7 @@ public class local_bottle extends BaseActivity {
 	}
 
 	private void startAnimation() {
+		txtDes.setVisibility(View.GONE);
 		toDe = getDegrees();
 		Animation a = getAnimation(fromDe, toDe);
 		a.setFillAfter(true);
@@ -123,6 +128,7 @@ public class local_bottle extends BaseActivity {
 				quan.setClickable(true);
 				punishment.setVisibility(View.VISIBLE);
 				SoundPlayer.faile();
+				txtDes.setVisibility(View.VISIBLE);
 			}
 		});
 

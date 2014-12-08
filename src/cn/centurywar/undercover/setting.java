@@ -1,9 +1,14 @@
 package cn.centurywar.undercover;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.JSONObject;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.fb.model.UserInfo;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
@@ -69,9 +74,29 @@ public class setting  extends BaseActivity {
 		LinearFeedback.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intentGo = new Intent();
-				intentGo.setClass(setting.this, feedback.class);
-				startActivity(intentGo);
+				 FeedbackAgent agent = new FeedbackAgent(setting.this);
+				 
+//				 UserInfo info = agent.getUserInfo();
+//                 if (info == null)
+//                     info = new UserInfo();
+//                 Map<String, String> contact = info.getContact();
+//                 if (contact == null)
+//                     contact = new HashMap<String, String>();
+//
+//                 // optional, setting user gender information.
+//                 //contact.put("gender", "male");
+//                 //contact.put("gender", "female");
+//
+//                 //optional, setting user age group information
+//                 contact.put("uid", getUid());
+//
+//                 info.setContact(contact);
+//                 agent.setUserInfo(info);
+//                 
+				 agent.startFeedbackActivity();
+//				Intent intentGo = new Intent();
+//				intentGo.setClass(setting.this, feedback.class);
+//				startActivity(intentGo);
 			}
 		});
 		LinearAbout.setOnClickListener(new Button.OnClickListener() {

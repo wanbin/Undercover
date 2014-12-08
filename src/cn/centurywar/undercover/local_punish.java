@@ -21,7 +21,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class local_punish  extends BaseActivity {
@@ -30,6 +34,7 @@ public class local_punish  extends BaseActivity {
 	Button btnShare;
 	Button btnNet;
 	Button btnLocal;
+	ImageView imgBg;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,6 +47,8 @@ public class local_punish  extends BaseActivity {
 		
 		btnLocal=(Button)this.findViewById(R.id.btnLocal);
 		btnNet=(Button)this.findViewById(R.id.btnNet);
+		
+		imgBg=(ImageView)this.findViewById(R.id.imgBg);
 		
 		btnNext.setOnClickListener(new Button.OnClickListener() {
 			@Override
@@ -76,9 +83,22 @@ public class local_punish  extends BaseActivity {
 				startActivity(intentGo);
 			}
 		});		
+		imgShake();
 	}
 	
 
+	/**
+	 * 背景图摇晃
+	 */
+	public void imgShake(){
+		RotateAnimation rt = new RotateAnimation(-10,10,
+				dip2px(this,151),dip2px(this,120));
+		rt.setDuration(1000);
+		rt.setFillAfter(true);
+		imgBg.startAnimation(rt);
+		rt.setRepeatCount(-1);	
+        rt.setRepeatMode(Animation.REVERSE);
+	}
 	
 	@Override
 	public void shackAction() {

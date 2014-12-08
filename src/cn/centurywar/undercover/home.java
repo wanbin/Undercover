@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
 
 import android.app.Activity;
 import android.app.LocalActivityManager;
@@ -107,6 +108,9 @@ public class home extends BaseActivity {
 
 		
 
+		//友盟用户反馈提示
+		FeedbackAgent agent = new FeedbackAgent(home.this);
+		agent.sync();
 		
 	}
     public View getMenuItem(int imgID, String textID){  
