@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="303" android:versionName="3.03" package="cn.centurywar.undercover">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="304" android:versionName="3.04" package="cn.centurywar.undercover">
 
     <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme">
         <activity android:label="@string/app_name" android:name="cn.centurywar.undercover.SelectGameActivity">
@@ -58,6 +58,8 @@
         </activity>
           <activity android:name="cn.centurywar.undercover.local_push">
         </activity>
+          <activity android:name="cn.centurywar.undercover.local_draw">
+        </activity>
          <activity android:name="cn.centurywar.undercover.home">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -72,7 +74,7 @@
         <activity android:name="cn.centurywar.undercover.DiceActivity"/>
         <meta-data android:name="UMENG_APPKEY" android:value="5476c767fd98c5a3ce000eb9">
         </meta-data>
-        <meta-data android:name="UMENG_CHANNEL" android:value="Market360"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="Marketqq"/>
         <activity android:name="cn.centurywar.undercover.ContributionActivity"/>
 
         

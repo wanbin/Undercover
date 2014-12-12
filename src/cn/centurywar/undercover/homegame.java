@@ -47,11 +47,12 @@ public class homegame extends BaseActivity {
 
 		viewList = new ArrayList<View>();
 		
-		int gameCount=7;
+		
+		
+		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","挤数字","大家来抽签","本周热门"};
+		int gameCount=gamename.length;
 		imageViews = new ImageView[gameCount];
 		
-		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","挤数字","本周热门"};
 //		public static int GAME_UNDERCOVER=101;
 //		public static int GAME_KILLER=102;
 //		public static int GAME_PUNISH=103;
@@ -65,10 +66,11 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_CLICK,
 				ConstantControl.GAME_CIRCLE,
 				ConstantControl.GAME_PUSH,
+				ConstantControl.GAME_DRAW,
 				ConstantControl.GAME_RECOMMEND
 		};
  		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_17_2x,R.drawable.week_recom_2x};
+		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.week_recom_2x};
   		
 		for(int i=0;i<gameCount;i++){
 			View welcomeView = mInflater.inflate(R.layout.game_select, null);
@@ -115,6 +117,9 @@ public class homegame extends BaseActivity {
 						mIntent.setClass(homegame.this, local_push.class);
 						break;
 					case 6:
+						mIntent.setClass(homegame.this, local_draw.class);
+						break;
+					case 7:
 						mIntent.setClass(homegame.this, homepage.class);
 						mIntent.putExtra("type", "newGame");
 						break;

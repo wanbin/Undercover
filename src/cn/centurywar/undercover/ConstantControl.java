@@ -52,5 +52,6 @@ public class ConstantControl {
 	public static int GAME_CLICK=104;
 	public static int GAME_CIRCLE=105;
 	public static int GAME_PUSH=106;
-	public static int GAME_RECOMMEND=107;
+	public static int GAME_DRAW=107;
+	public static int GAME_RECOMMEND=201;
 }
