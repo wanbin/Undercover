@@ -15,7 +15,7 @@ public class homepage extends BaseActivity {
 			String url=getFromObject("newgameurl");
 			urlPage.loadUrl(url+"?showpage=gamenow&uid="+getUid());
 		}else{
-			urlPage.loadUrl("http://mobile.centurywar.cn?showpage=help&uid="+getUid());
+			urlPage.loadUrl("http://www.centurywar.cn/?cat=2&uid="+getUid());
 		}
 	}
 }

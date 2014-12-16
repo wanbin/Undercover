@@ -157,7 +157,8 @@ public class net_room_game extends BaseActivity {
 		btnTip3.setText("NO.2(长按)");
 		btnTip2.setText("NO.1(长按)");
 		btnTip1.setText("自己(长按)");
-		int thisGameuid = Integer.parseInt(getFromObject("gameuid"));
+		
+		int thisGameuid = getFromObjectInt("gameuid");
 		btnTip1.setTag(thisGameuid);
 		btnTip2.setTag(1);
 		btnTip3.setTag(2);
@@ -196,11 +197,21 @@ public class net_room_game extends BaseActivity {
 	}
 
 	private boolean showShenFen(View v) {
+		Button btn=(Button)v;
+		//当已经显示的时候，点击一次就消失
+		
+		btn.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				hideBtnOfGameuid(isShowTag);
+				return;
+			}
+		});
+		
 		int tag = (Integer) v.getTag();
 		if(isShowTag != tag&& isShowTag != 0){
 			return false;
 		}
-		Button btn = (Button) v;
 		String shenfen = getShenfenOfGameuid(tag);
 		btn.setText(shenfen);
 		if (isShowTag == tag && isShowTag != 0) {
@@ -227,7 +238,7 @@ public class net_room_game extends BaseActivity {
 			btnTip5.setVisibility(View.INVISIBLE);
 			break;
 		}
-		int thisgameuid = Integer.parseInt(getFromObject("gameuid"));
+		int thisgameuid = getFromObjectInt("gameuid");
 		if (gameuid == thisgameuid) {
 			btnTip1.setVisibility(View.INVISIBLE);
 		}

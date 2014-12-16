@@ -70,7 +70,7 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_RECOMMEND
 		};
  		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.week_recom_2x};
+		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
   		
 		for(int i=0;i<gameCount;i++){
 			View welcomeView = mInflater.inflate(R.layout.game_select, null);
@@ -277,7 +277,7 @@ public class homegame extends BaseActivity {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
 				//obj={"uid":"A0000043A574DC","username":"","gameuid":310,"time":1414514074,"newgameimage":"http:\/\/192.168.1.120\/CenturyServer\/www\/image\/recom_1.png","newgamename":"我爱我OR不要脸","_id":310,"newgame":1,"pushcount":"0","photo":"","channel":"ANDROID"}
 				String username=obj.getString("username");
-				String gameuid=obj.getString("gameuid");
+				int gameuid=obj.getInt("gameuid");
 				String photo=obj.getString("photo");
 				
 				
@@ -289,7 +289,7 @@ public class homegame extends BaseActivity {
 				updateNewGame(newgamename,newgameimage);
 				
 				setToObject("username", username);
-				setToObject("gameuid", gameuid);
+				setToObjectInt("gameuid", gameuid);
 				setToObject("photo", photo);
 				
 				setToObject("newgameurl", newgameurl);

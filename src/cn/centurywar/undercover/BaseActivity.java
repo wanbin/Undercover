@@ -710,6 +710,16 @@ public static String getDeviceInfo(Context context) {
 		return gameInfo.getString(key, "");
 	}
 	
+	//设置持久化存储
+	protected boolean setToObjectInt(String name,int value){
+		return gameInfo.edit().putInt(name, value).commit();
+	}
+	
+	//获取持久化存储
+	protected int getFromObjectInt(String key){
+		return gameInfo.getInt(key, 0);
+	}
+	
 	/**
 	 * 从本地取得用户基本信息
 	 * @return

@@ -25,6 +25,7 @@ public class local_fanpai extends BaseActivity {
 	private String[] content;
 	private String[] libary;
 	private TextView txtShenfen;
+	private TextView txtName;
 	private Button imagePan;
 	/** 按钮--记住了，传给下一位 */
 	private ImageView imagebg;
@@ -51,6 +52,7 @@ public class local_fanpai extends BaseActivity {
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 //		btnchangeword = (Button) findViewById(R.id.btnchangeword);
 		txtShenfen = (TextView) findViewById(R.id.txtShenfen);
+		txtName = (TextView) findViewById(R.id.txtName);
 		imagePan = (Button) findViewById(R.id.imagePan);
 		imagebg = (ImageView) findViewById(R.id.imagebg);
 //		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
@@ -126,6 +128,7 @@ public class local_fanpai extends BaseActivity {
 		}
 		else{
 			SoundPlayer.click();
+			
 			imagePan.setText("请交给下一位");
 		}
 		isShowWords=!isShowWords;
@@ -159,6 +162,7 @@ public class local_fanpai extends BaseActivity {
 	}
 
 	protected void initPan(int index) {
+		txtName.setText("编号："+index);
 		setContentVis(false);
 		imagePan.setText("第" + index+"位");
 		txtShenfen.setText(content[index - 1]);

@@ -11,13 +11,16 @@ import android.widget.TextView;
 
 public class local_setting extends BaseActivity {
 	SeekBar seekPeople;
-	SeekBar seekUndercover;
 	TextView peopleCount;
 	TextView undercoverCount;
+	TextView txtName;
 	Button btnStart;
+	Button btn1;
+	Button btn2;
 	String gameType;
 	LinearLayout linearUndercover;
 	int basePeople=4;
+	int undercovercount=1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,32 +29,37 @@ public class local_setting extends BaseActivity {
 		linearUndercover=(LinearLayout)this.findViewById(R.id.tem2);
 		
 		seekPeople=(SeekBar)this.findViewById(R.id.seekPeople);
-		seekUndercover=(SeekBar)this.findViewById(R.id.seekUndercover);
 		peopleCount=(TextView)this.findViewById(R.id.labPeople);
 		undercoverCount=(TextView)this.findViewById(R.id.labUndercover);
+		txtName=(TextView)this.findViewById(R.id.txtName);
 		btnStart=(Button)this.findViewById(R.id.btnStart);
+		btn1=(Button)this.findViewById(R.id.btn1);
+		btn2=(Button)this.findViewById(R.id.btn2);
 		
 		gameType=lastGameType();
 		if (gameType.equals("game_undercover")) {
 			seekPeople.setMax(8);
-			seekUndercover.setMax(3);
 			basePeople=4;
+			txtName.setText("谁是卧底");
 		} else if (gameType.equals("game_killer")) {
 			seekPeople.setMax(10);
 			linearUndercover.setVisibility(View.GONE);
 			basePeople=6;
+			txtName.setText("杀人游戏");
 		}
+		
 		seekPeople.setProgress(0);
-		seekUndercover.setProgress(0);
 		peopleCount.setText(String.valueOf (basePeople));
 		undercoverCount.setText("1");
+		
 		
 		
 		btnStart.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				gameInfo.edit().putInt("peopleCount", basePeople+seekPeople.getProgress()).commit();
-				gameInfo.edit().putInt("underCount", 1+seekUndercover.getProgress()).commit();
+				gameInfo.edit().putInt("underCount", undercovercount).commit();
+
 				gameInfo.edit().putBoolean("isShow", false).commit();
 				gameInfo.edit().putBoolean("isBlank", false).commit();
 				gameInfo.edit().putString("word", "全部分类").commit();
@@ -61,6 +69,27 @@ public class local_setting extends BaseActivity {
 			}
 		});
 		
+		btn1.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int now=seekPeople.getProgress();
+				if(now>0){
+					seekPeople.setProgress(now-1);
+				}
+			}
+		});
+		btn2.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int now=seekPeople.getProgress();
+				if(now<seekPeople.getMax()){
+					seekPeople.setProgress(now+1);
+				}
+			}
+		});
+		
+		
+		
 		
 		
 		
@@ -69,13 +98,8 @@ public class local_setting extends BaseActivity {
             public void onProgressChanged(SeekBar seekBar, int progress,
                     boolean fromUser) {
 					peopleCount.setText(String.valueOf (basePeople+progress));
-					
-					int undercover=1+seekUndercover.getProgress();
-					if(basePeople+progress<undercover*3&&seekUndercover.getProgress()>0){
-						seekUndercover.setProgress(seekUndercover.getProgress()-1);
-					}
-//					addPeople=progress;
-//	                description.setText("当前进度："+progress+"%");
+					 undercovercount=(4+progress)/3;
+					 undercoverCount.setText(undercovercount+"");
             }
 
 			@Override
@@ -91,29 +115,5 @@ public class local_setting extends BaseActivity {
 			}
 		});
 		
-		seekUndercover.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-			@Override
-            public void onProgressChanged(SeekBar seekBar, int progress,
-                    boolean fromUser) {
-					undercoverCount.setText(String.valueOf (1+progress));
-					int people=basePeople+seekPeople.getProgress();
-					if(people<(1+progress)*3){
-						seekPeople.setProgress(Math.min((1+progress)*3, 12)-basePeople);
-					}
-//	                description.setText("当前进度："+progress+"%");
-            }
-
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 	}
 }

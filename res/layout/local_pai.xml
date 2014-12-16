@@ -43,4 +43,15 @@
         android:textColor="@color/WRITE"
         android:textSize="@dimen/newBtnFont" />
 
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/gameblue"
+            android:textSize="@dimen/Large" />
+
 </RelativeLayout>

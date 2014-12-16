@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class local_guess extends BaseActivity {
 
 	private int temindex;
 	private Random random = new Random();
+	private LinearLayout layoutBtn;
 //	private TextView txtLong;
 	// 还有人员分配
 	/**
@@ -61,8 +63,9 @@ public class local_guess extends BaseActivity {
 		punishBtn = (Button) findViewById(R.id.btn_punish);
 		btn_restart = (Button) findViewById(R.id.btn_restart);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		btn_restart.setVisibility(View.GONE);
 		content = getGuessContent();
+		layoutBtn = (LinearLayout) findViewById(R.id.ss);
+		layoutBtn.setVisibility(View.GONE);
 
 		
 		btn_restart.setOnClickListener(new Button.OnClickListener() {
@@ -379,7 +382,9 @@ public class local_guess extends BaseActivity {
 
 	private void initControlBtn() {
 		punishBtn.setBackgroundResource(R.drawable.fang_purple_pressed);
-		btn_restart.setVisibility(View.VISIBLE);
+		
+		layoutBtn.setVisibility(View.VISIBLE);
+		
 		punishBtn.setTextColor(getResources().getColor(R.color.WRITE));
 		punishBtn.setOnClickListener(new Button.OnClickListener() {
 			@Override

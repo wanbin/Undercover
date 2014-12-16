@@ -33,10 +33,10 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_weight="20"
-            android:background="@color/WRITE"
+            android:background="@drawable/fang_purple_pressed"
             android:text="@string/punishmen"
             android:textAlignment="viewStart"
-            android:textColor="@color/GREEN" />
+            android:textColor="@color/WRITE" />
 
         <Button
             android:id="@+id/btn_restart"

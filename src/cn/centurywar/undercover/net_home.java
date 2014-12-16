@@ -102,9 +102,11 @@ public class net_home extends BaseActivity {
 			Intent mIntent = new Intent();
 			mIntent.setClass(net_home.this, net_room_create.class);
 			startActivity(mIntent);
+			btnResent.setVisibility(View.VISIBLE);
 		}else if (roomType.equals("join")){
 			Intent mIntent = new Intent();
 			mIntent.setClass(net_home.this, net_room_join.class);
+			btnResent.setVisibility(View.VISIBLE);
 			startActivity(mIntent);
 		}else{
 			btnResent.setVisibility(View.GONE);
@@ -121,9 +123,6 @@ public class net_home extends BaseActivity {
 				setToObject("roomid",String.valueOf(roomid));
 				setToObject("gametype","create");
 				if(roomid>0){
-					Intent mIntent = new Intent();
-					mIntent.setClass(net_home.this, net_room_create.class);
-					startActivity(mIntent);
 					checkIsInRoom();
 				}
 				else{
@@ -142,9 +141,6 @@ public class net_home extends BaseActivity {
 			try {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
 				setToObject("gametype","join");
-				Intent mIntent = new Intent();
-				mIntent.setClass(net_home.this, net_room_join.class);
-				startActivity(mIntent);
 				checkIsInRoom();
 			} catch (Exception e) {
 				ToastMessage("无法解析服务器返回，请稍候再试");
