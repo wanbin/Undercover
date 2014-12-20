@@ -97,6 +97,11 @@ public class net_home extends BaseActivity {
 	 * 进来的时候，检测是不是已经在房间中，如果在房间中则进行跳转
 	 */
 	private void checkIsInRoom(){
+		if(!isNetworkAvailable(this)){
+			txtTitle.setText("当前网络不通，无法进行线上游戏");
+			return;
+		}
+		
 		String roomType=getFromObject("gametype");
 		if(roomType.equals("create")){
 			Intent mIntent = new Intent();

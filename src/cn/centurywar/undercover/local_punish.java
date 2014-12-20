@@ -2,6 +2,8 @@ package cn.centurywar.undercover;
 
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,12 +22,15 @@ import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class local_punish  extends BaseActivity {
@@ -35,6 +40,11 @@ public class local_punish  extends BaseActivity {
 	Button btnNet;
 	Button btnLocal;
 	ImageView imgBg;
+	Timer timer;
+	int remainSec=0;
+	int onesSec=300;
+	
+	ProgressBar proBar;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +57,7 @@ public class local_punish  extends BaseActivity {
 		
 		btnLocal=(Button)this.findViewById(R.id.btnLocal);
 		btnNet=(Button)this.findViewById(R.id.btnNet);
+		proBar=(ProgressBar)this.findViewById(R.id.proBar);
 		
 		imgBg=(ImageView)this.findViewById(R.id.imgBg);
 		
@@ -84,7 +95,43 @@ public class local_punish  extends BaseActivity {
 			}
 		});		
 		imgShake();
+		timer = new Timer();
+		timer.schedule(timetask, 0, 10);
+		proBar.setMax(onesSec);
 	}
+
+	Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			mincost();
+			super.handleMessage(msg);
+		}
+	};
+	
+	// 传递时间
+	private TimerTask timetask = new TimerTask() {
+		@Override
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	};
+	
+	
+	/**
+	 * 这个方法为了3秒取一次惩罚
+	 */
+	private void mincost(){
+		if(remainSec>0){
+			remainSec--;
+			proBar.setProgress(remainSec);
+		}
+		if(remainSec<=0){
+			btnNext.setEnabled(true);
+		}
+	}
+	
 	
 
 	/**
@@ -102,12 +149,20 @@ public class local_punish  extends BaseActivity {
 	
 	@Override
 	public void shackAction() {
-		nextPunish();
-		SoundPlayer.shake();
+		if(nextPunish()){
+			SoundPlayer.shake();
+		}
 	}
-	private void nextPunish(){
+	private boolean nextPunish(){
+		if (remainSec <= 0) {
+			btnNext.setEnabled(false);
+			remainSec = onesSec;
+		} else {
+			return false;
+		}
 		txtPunish.setText(getRandomMaoxianFromLocate(true));
 		setGameIsNew(ConstantControl.GAME_PUNISH,false);
+		return true;
 	}
 
 	@Override

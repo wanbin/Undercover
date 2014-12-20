@@ -58,7 +58,7 @@ public class local_fanpai extends BaseActivity {
 //		linChangeword = (LinearLayout) findViewById(R.id.changewordlin);
 		blank = getResources().getString(R.string.blank);
 		random = new Random();
-
+		content = new String[0];
 		if (lastGameType().equals("kill")) {
 			linChangeword.setVisibility(View.INVISIBLE);
 		}

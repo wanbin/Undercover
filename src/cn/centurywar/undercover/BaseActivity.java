@@ -99,6 +99,8 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 	
 	protected static List<TextView> usernameList;
 	
+	boolean isneedshack=false;
+	
 	/**
 	 * 用户是否为GM管理员
 	 */
@@ -256,10 +258,14 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 			if (Math.abs(x) > medumValue || Math.abs(y) > medumValue
 					|| Math.abs(z) > medumValue) {
 				vibrator.vibrate(200);
+				isneedshack=true;
 				Message msg = new Message();
 				msg.what = SENSOR_SHAKE;
 				handler.sendMessage(msg);
 			}
+			
+			
+			
 		}
 
 		@Override

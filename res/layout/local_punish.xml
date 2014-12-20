@@ -80,4 +80,12 @@
         android:textColor="@color/WRITE"
         android:textSize="@dimen/newBtnFont" />
 
+    <ProgressBar
+        android:id="@+id/proBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
 </RelativeLayout>
