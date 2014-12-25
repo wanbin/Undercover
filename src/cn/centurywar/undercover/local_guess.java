@@ -401,7 +401,6 @@ public class local_guess extends BaseActivity {
 	public void finish() {
 		// TODO Auto-generated method stub
 		// game_guess_finish
-		uMengClick("game_guess_finish");
 		super.finish();
 	}
 }

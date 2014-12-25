@@ -58,6 +58,7 @@ public class local_zhuan extends BaseActivity {
 				return true;
 			}
 		});
+		uMengClick("game_zhuan");
 	}
 	
 	private void changeGame(){
@@ -106,6 +107,7 @@ public class local_zhuan extends BaseActivity {
 		return as;
 	}
 	private void startAnimation() {
+		uMengClick("game_zhuan_click");
 //		txtDes.setVisibility(View.GONE);
 		toDe = getDegrees();
 		Animation a = getAnimation(fromDe, toDe);

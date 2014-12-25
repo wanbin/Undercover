@@ -41,11 +41,13 @@ public class local_setting extends BaseActivity {
 			seekPeople.setMax(8);
 			basePeople=4;
 			txtName.setText("谁是卧底");
+			uMengClick("game_undercover");
 		} else if (gameType.equals("game_killer")) {
 			seekPeople.setMax(10);
 			linearUndercover.setVisibility(View.GONE);
 			basePeople=6;
 			txtName.setText("杀人游戏");
+			uMengClick("game_kill_select");
 		}
 		
 		seekPeople.setProgress(0);

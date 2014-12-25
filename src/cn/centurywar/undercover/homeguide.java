@@ -118,6 +118,7 @@ public class homeguide extends BaseActivity {
         viewPager.setCurrentItem(0);
         setContentView(mainContainer);
         getUserInfo();
+        uMengClick("click_about");
 	}
 	
 	

@@ -101,7 +101,7 @@ public class local_fanpai extends BaseActivity {
 		setContentVis(!isShowWords);
 		// 在这里更新nowIndex，不至于呀恢复时错开一个
 		
-		if (nowIndex < 1) {
+		if (nowIndex <= 1) {
 			uMengClick("click_undercover_pai_first");
 		}
 

@@ -41,6 +41,7 @@ public class weixin extends BaseActivity {
 			}
 		});
 
+		uMengClick("click_weixin");
 	}
 
 

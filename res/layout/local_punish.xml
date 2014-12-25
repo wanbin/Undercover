@@ -23,7 +23,9 @@
         android:gravity="center"
         android:maxLines="@integer/lines"
         android:text="@string/真心话大冒险"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/gamered2"
+        android:textSize="@dimen/btn_font_size" />
 
     <Button
         android:id="@+id/btnNext"
@@ -87,5 +89,15 @@
         android:layout_height="3dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/txtLast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtPunish"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/gamered" />
 
 </RelativeLayout>

@@ -49,13 +49,14 @@ public class homegame extends BaseActivity {
 		
 		
 		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","本周热门"};
+		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","本周热门"};
 		int gameCount=gamename.length;
 		imageViews = new ImageView[gameCount];
 		
 		int[] gameId={ConstantControl.GAME_UNDERCOVER,
 				ConstantControl.GAME_KILLER,
 				ConstantControl.GAME_PUNISH,
+				ConstantControl.GAME_ACTION,
 				ConstantControl.GAME_CLICK,
 				ConstantControl.GAME_CIRCLE,
 				ConstantControl.GAME_PUSH,
@@ -64,7 +65,7 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_RECOMMEND
 		};
  		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
+		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
   		
 		for(int i=0;i<gameCount;i++){
 			View welcomeView = mInflater.inflate(R.layout.game_select, null);
@@ -102,21 +103,24 @@ public class homegame extends BaseActivity {
 						mIntent.setClass(homegame.this, local_punish.class);
 						break;
 					case 3:
-						mIntent.setClass(homegame.this, local_click.class);
+						mIntent.setClass(homegame.this, local_act.class);
 						break;
 					case 4:
-						mIntent.setClass(homegame.this, local_bottle.class);
+						mIntent.setClass(homegame.this, local_click.class);
 						break;
 					case 5:
-						mIntent.setClass(homegame.this, local_push.class);
+						mIntent.setClass(homegame.this, local_bottle.class);
 						break;
 					case 6:
-						mIntent.setClass(homegame.this, local_draw.class);
+						mIntent.setClass(homegame.this, local_push.class);
 						break;
 					case 7:
-						mIntent.setClass(homegame.this, local_zhuan.class);
+						mIntent.setClass(homegame.this, local_draw.class);
 						break;
 					case 8:
+						mIntent.setClass(homegame.this, local_zhuan.class);
+						break;
+					case 9:
 						mIntent.setClass(homegame.this, homepage.class);
 						mIntent.putExtra("type", "newGame");
 						break;

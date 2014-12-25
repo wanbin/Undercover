@@ -51,8 +51,10 @@ public class local_draw extends BaseActivity {
 			}
 		});
 		init();
+		uMengClick("game_draw");
 	}
 	private void init(){
+		uMengClick("game_draw_count");
 		int temindex=0;
 		randomNum= Math.abs(random.nextInt()%peoplecount);
 		layoutContent.removeAllViews();

@@ -36,6 +36,7 @@ public class ConstantControl {
 	public static String ROOM_GET_CONTENT = "RoomGetContent";
 	public static String NAME_CHANGE = "NameChange";
 	public static String PUNISH_RANDOMONE = "PublishRandomOne";
+	public static String ACTION_RANDOMONE = "ActRandomOne";
 	public static String WORD_UNDERCOVER = "WordUndercover";
 
 	// 返回所有真心话大冒险
@@ -54,5 +55,6 @@ public class ConstantControl {
 	public static int GAME_PUSH=106;
 	public static int GAME_DRAW=107;
 	public static int GAME_ZHUANG=108;
+	public static int GAME_ACTION=109;
 	public static int GAME_RECOMMEND=201;
 }

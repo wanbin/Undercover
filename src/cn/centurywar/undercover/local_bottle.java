@@ -43,7 +43,6 @@ public class local_bottle extends BaseActivity {
 				startAnimation();
 				SoundPlayer.start();
 				uMengClick("count_bottle");
-				
 			}
 		});
 		// 惩罚
@@ -69,7 +68,7 @@ public class local_bottle extends BaseActivity {
 				bottleHeight = bottle.getHeight();
 			}
 		});
-
+		uMengClick("game_bottle");
 	}
 
 

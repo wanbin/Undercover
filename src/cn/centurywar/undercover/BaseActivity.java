@@ -847,6 +847,12 @@ public static String getDeviceInfo(Context context) {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.PublishRandomOne();
 	}
+	
+	protected void ActionRandomOne() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.ActionRandomOne();
+	}
+	
 	protected void UndercoverWordRandomOne() {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.UndercoverWordRandomOne();

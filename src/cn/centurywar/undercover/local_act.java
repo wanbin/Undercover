@@ -33,13 +33,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class local_punish  extends BaseActivity {
-	TextView txtPunish;
+public class local_act  extends BaseActivity {
+	TextView txtAction;
+	TextView txtDes;
 	TextView txtLast;
 	Button btnNext;
 	Button btnShare;
-	Button btnNet;
-	Button btnLocal;
 	ImageView imgBg;
 	Timer timer;
 	int remainSec=0;
@@ -49,16 +48,15 @@ public class local_punish  extends BaseActivity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.local_punish);
+		setContentView(R.layout.local_act);
 		showShack = true;
 		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-		txtPunish=(TextView)this.findViewById(R.id.txtPunish);
+		txtAction=(TextView)this.findViewById(R.id.txtAction);
+		txtDes=(TextView)this.findViewById(R.id.txtDes);
 		txtLast=(TextView)this.findViewById(R.id.txtLast);
 		btnNext=(Button)this.findViewById(R.id.btnNext);
 		btnShare=(Button)this.findViewById(R.id.btnShare);
 		
-		btnLocal=(Button)this.findViewById(R.id.btnLocal);
-		btnNet=(Button)this.findViewById(R.id.btnNet);
 		proBar=(ProgressBar)this.findViewById(R.id.proBar);
 		
 		imgBg=(ImageView)this.findViewById(R.id.imgBg);
@@ -73,35 +71,16 @@ public class local_punish  extends BaseActivity {
 		btnShare.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				shareIt(local_punish.this,"发现了个好玩的聚会惩罚："+txtPunish.getText().toString()+"(爱上聚会 http://www.centurywar.cn )");
+				shareIt(local_act.this,"发现了个好玩的聚会惩罚："+txtDes.getText().toString()+"的/地"+txtAction.getText().toString()+"(爱上聚会 http://www.centurywar.cn )");
 			}
 		});		
 		
-		btnLocal.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intentGo = new Intent();
-				intentGo.setClass(local_punish.this, local_punish_list.class);
-				uMengClick("click_intenet");
-				startActivity(intentGo);
-			}
-		});
-		
-		btnNet.setOnClickListener(new Button.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intentGo = new Intent();
-				intentGo.setClass(local_punish.this, net_punish.class);
-				uMengClick("click_intenet");
-				startActivity(intentGo);
-			}
-		});		
 		imgShake();
 		timer = new Timer();
 		timer.schedule(timetask, 0, 10);
 		proBar.setMax(onesSec);
-		
 		txtLast.setText(getLastString());
+		uMengClick("game_action");
 	}
 
 	Handler handler = new Handler() {
@@ -137,7 +116,6 @@ public class local_punish  extends BaseActivity {
 	}
 	
 	
-	
 
 	/**
 	 * 背景图摇晃
@@ -165,36 +143,43 @@ public class local_punish  extends BaseActivity {
 		} else {
 			return false;
 		}
-		String punish=getRandomMaoxianFromLocate(true);
-		txtLast.setText(getLastString());
-		setLastString(txtPunish.getText().toString());
-		txtPunish.setText(punish);
-		setGameIsNew(ConstantControl.GAME_PUNISH,false);
+		if(isNetworkAvailable(this)){
+			ActionRandomOne();
+			txtAction.setText("正在获取");
+			txtDes.setText("正在获取");
+			uMengClick("game_action_count");
+		}
+		setGameIsNew(ConstantControl.GAME_ACTION,false);
 		return true;
-	}
-	public void setLastString(String str){
-		setToObject("PUNISH_LAST",str);
-	}
-	public String getLastString(){
-		return getFromObject("PUNISH_LAST");
 	}
 
 	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
-		if (cmd.equals(ConstantControl.PUNISH_RANDOMONE)) {
+		if (cmd.equals(ConstantControl.ACTION_RANDOMONE)) {
 			try {
 				JSONObject obj = new JSONObject(jsonobj.getString("data"));
-				JSONArray objarr=obj.getJSONArray("content");
-				JSONObject random=objarr.getJSONObject(0);
-				String punish=random.getString("content");
-				txtPunish.setText(punish);
+				JSONObject objobj=obj.getJSONObject("content");
+				String action=objobj.getString("action");
+				String des=objobj.getString("des");
+				txtAction.setText(action);
+				txtDes.setText(des);
+				txtLast.setText(getLastString());
+				setLastString("上一条："+des+"[的/地]"+action);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
-				txtPunish.setText("可以免除惩罚");
+				txtAction.setText("可以免除");
+				txtDes.setText("可以免除");
 			}
 		}
+	}
+	
+	public void setLastString(String str){
+		setToObject("ACT_LAST",str);
+	}
+	public String getLastString(){
+		return getFromObject("ACT_LAST");
 	}
 	
 	@Override
@@ -203,7 +188,8 @@ public class local_punish  extends BaseActivity {
 		if(cmd.equals(ConstantControl.PUNISH_RANDOMONE))
 		{
 			try{
-				txtPunish.setText(getRandomMaoxianFromLocate(false));
+				txtAction.setText("服务器错误");
+				txtDes.setText("服务器错误");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
