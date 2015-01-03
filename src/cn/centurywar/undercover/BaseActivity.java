@@ -23,6 +23,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -874,7 +875,9 @@ public static String getDeviceInfo(Context context) {
 	return (int) (pxValue / scale + 0.5f);
 	}
 	
-	
+	public void clickGame(int gameid) {
+		
+	}
 	/**
 	 * 异步加载图片
 	 * @param imageView
@@ -891,6 +894,16 @@ public static String getDeviceInfo(Context context) {
 		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
 		.build();//构建完成  
 		ImageLoader.getInstance().displayImage(url, imageView,options);
+	}
+	public Bitmap BitmapFromUrl(String url,int defaultphoto){
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+		ImageLoader.getInstance().init(config);
+		DisplayImageOptions options;  
+		options = new DisplayImageOptions.Builder()  
+		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
+		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
+		.build();//构建完成  
+		return ImageLoader.getInstance().loadImageSync(url);
 	}
 	protected void ImageFromLocal(ImageView imageView,String url){
 		//第一次调用初始化
@@ -1172,6 +1185,20 @@ public static String getDeviceInfo(Context context) {
 	}
 	public void setGameIsNew(int gameid,boolean isnew){
 		gameInfo.edit().putBoolean("gamenew_"+getVersion()+"_"+gameid, isnew).commit();
+	}
+	
+	/**
+	 * 添加缩略图形式，节省流量
+	 * @param url
+	 */
+	public String getImgUrlSmall(String url){
+		if (disWidth <= 320) {
+			return url + "!KUANx320";
+		} else if (disWidth <= 480) {
+			return url + "!KUANx480";
+		} else {
+			return url + "!KUANx600";
+		}
 	}
 
 }

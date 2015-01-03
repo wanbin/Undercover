@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp" >
+
+    <ImageView
+        android:id="@+id/imgPhoto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/fang_pink_pressed" />
+
+    <LinearLayout
+        android:id="@+id/warpUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgPhoto"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imgPhoto"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/imgPhoto"
+        android:gravity="left|center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left|center" >
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/btnMoreBottom" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gamegreen2"
+                android:textSize="@dimen/alphabet_size" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

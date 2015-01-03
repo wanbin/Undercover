@@ -102,7 +102,12 @@ public class local_fanpai extends BaseActivity {
 		// 在这里更新nowIndex，不至于呀恢复时错开一个
 		
 		if (nowIndex <= 1) {
-			uMengClick("click_undercover_pai_first");
+			if (lastGameType().equals("kill")) {
+				uMengClick("game_kill_paifirst");
+			}else{
+				uMengClick("click_undercover_pai_first");
+			}
+			
 		}
 
 		if (isShowWords) {
@@ -120,7 +125,11 @@ public class local_fanpai extends BaseActivity {
 				goMain.putExtras(bundle);
 				goMain.setClass(local_fanpai.this, local_guess.class);
 				startActivity(goMain);
-				uMengClick("click_undercover_pai_last");
+				if (lastGameType().equals("kill")) {
+					uMengClick("game_kill_pailast");
+				}else{
+					uMengClick("click_undercover_pai_last");
+				}
 				// finish();
 				//这一块重新初始化好了
 				

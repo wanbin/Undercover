@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,13 +39,19 @@ public class mail_list extends BaseActivity {
 		txtTitle=(TextView)this.findViewById(R.id.txtTitle);
 		maillist=new JSONArray();
 		getAllMail(1);
-		txtTitle.setText("正在获取信件");
+		txtTitle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getAllMail(1);
+			}
+		});
 	}
 	
 	/**
 	 * 取得所有新闻
 	 */
 	protected void getAllMail(int page) {
+		txtTitle.setText("正在获取信件");
 		PublishHandler publishHandler = new PublishHandler(this);
 		publishHandler.getAllMail(page);
 	}
@@ -60,7 +67,7 @@ public class mail_list extends BaseActivity {
 				maillist=new JSONArray(temstr);
 				updateMessage();
 			}catch(Exception e){
-				txtTitle.setText("获取信件失败");
+				txtTitle.setText("数据异常[点击刷新]");
 				e.printStackTrace();
 			}
 		}
@@ -74,6 +81,19 @@ public class mail_list extends BaseActivity {
 //				}
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void MessageCallBackWrong(String cmd) {
+		super.MessageCallBackWrong(cmd);
+		if(cmd.equals(ConstantControl.MAIL_LIST))
+		{
+			try{
+				txtTitle.setText("数据异常[点击刷新]");
+			}catch(Exception e){
 				e.printStackTrace();
 			}
 		}
@@ -98,7 +118,7 @@ public class mail_list extends BaseActivity {
 	}
 	
 	protected void updateMessage() {
-		txtTitle.setText("获取到"+maillist.length()+"条信件");
+		txtTitle.setText("获取到"+maillist.length()+"条信件[点击刷新]");
 		List<MailUser> temPubs = new ArrayList<MailUser>();
 		for (int i = 0; i < maillist.length(); i++) {
 			try {

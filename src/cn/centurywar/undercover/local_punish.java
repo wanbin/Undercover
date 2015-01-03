@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
@@ -40,6 +41,7 @@ public class local_punish  extends BaseActivity {
 	Button btnShare;
 	Button btnNet;
 	Button btnLocal;
+	Button btnAct;
 	ImageView imgBg;
 	Timer timer;
 	int remainSec=0;
@@ -56,6 +58,7 @@ public class local_punish  extends BaseActivity {
 		txtLast=(TextView)this.findViewById(R.id.txtLast);
 		btnNext=(Button)this.findViewById(R.id.btnNext);
 		btnShare=(Button)this.findViewById(R.id.btnShare);
+		btnAct=(Button)this.findViewById(R.id.btnAct);
 		
 		btnLocal=(Button)this.findViewById(R.id.btnLocal);
 		btnNet=(Button)this.findViewById(R.id.btnNet);
@@ -87,6 +90,17 @@ public class local_punish  extends BaseActivity {
 			}
 		});
 		
+		btnAct.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentGo = new Intent();
+				intentGo.setClass(local_punish.this, local_act.class);
+				startActivity(intentGo);
+				finish();
+			}
+		});
+		
+		
 		btnNet.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -102,6 +116,8 @@ public class local_punish  extends BaseActivity {
 		proBar.setMax(onesSec);
 		
 		txtLast.setText(getLastString());
+		runAniSetting();
+		uMengClick("game_zhenxinhua_damaoxian");
 	}
 
 	Handler handler = new Handler() {
@@ -155,10 +171,12 @@ public class local_punish  extends BaseActivity {
 	@Override
 	public void shackAction() {
 		if(nextPunish()){
+			uMengClick("punish_shack");
 			SoundPlayer.shake();
 		}
 	}
 	private boolean nextPunish(){
+		uMengClick("game_undercover_punish");
 		if (remainSec <= 0) {
 			btnNext.setEnabled(false);
 			remainSec = onesSec;
@@ -167,7 +185,6 @@ public class local_punish  extends BaseActivity {
 		}
 		String punish=getRandomMaoxianFromLocate(true);
 		txtLast.setText(getLastString());
-		setLastString(txtPunish.getText().toString());
 		txtPunish.setText(punish);
 		setGameIsNew(ConstantControl.GAME_PUNISH,false);
 		return true;
@@ -189,6 +206,7 @@ public class local_punish  extends BaseActivity {
 				JSONObject random=objarr.getJSONObject(0);
 				String punish=random.getString("content");
 				txtPunish.setText(punish);
+				setLastString(punish);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -203,10 +221,31 @@ public class local_punish  extends BaseActivity {
 		if(cmd.equals(ConstantControl.PUNISH_RANDOMONE))
 		{
 			try{
-				txtPunish.setText(getRandomMaoxianFromLocate(false));
+				String punish=getRandomMaoxianFromLocate(false);
+				setLastString(punish);
+				txtPunish.setText(punish);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	
+	protected void runAniSetting(){
+        //创建一个AnimationSet对象，参数为Boolean型，
+        //true表示使用Animation的interpolator，false则是使用自己的
+        AnimationSet animationSet = new AnimationSet(true);
+        //创建一个AlphaAnimation对象，参数从完全的透明度，到完全的不透明
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1, 0.5f);
+        //设置动画执行的时间
+        alphaAnimation.setDuration(1500);
+        alphaAnimation.setRepeatCount(-1);	
+        alphaAnimation.setRepeatMode(Animation.REVERSE);
+//        alphaAnimation.reset();
+        //将alphaAnimation对象添加到AnimationSet当中
+        animationSet.addAnimation(alphaAnimation);
+        
+        //使用ImageView的startAnimation方法执行动画
+        btnAct.startAnimation(animationSet);
 	}
 }

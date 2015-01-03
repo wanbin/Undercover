@@ -118,5 +118,24 @@ public class PublishHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
 	}
+	
+	public void getGameList(int page) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("page", page);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.GAME_LIST);
+	}
+	public void getGameOne(int gameid) {
+		JSONObject obj = new JSONObject();
+		try {
+			obj.put("gameid", gameid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.GAME_ONE);
+	}
 
 }

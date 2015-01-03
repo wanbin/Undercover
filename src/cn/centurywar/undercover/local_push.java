@@ -60,6 +60,7 @@ public class local_push extends BaseActivity {
 			}
 		});
 		initGame();
+		uMengClick("game_push_select");
 	}
 
 	private void initGame() {

@@ -6,6 +6,11 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import cn.centurywar.undercover.view.GameAdapter;
+import cn.centurywar.undercover.view.GameAdapter.GameContent;
+import cn.centurywar.undercover.view.MailAdapter;
+import cn.centurywar.undercover.view.MailAdapter.MailUser;
+
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,6 +26,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,6 +45,9 @@ public class homegame extends BaseActivity {
 	// 包含滑动ViewPager的Layout
     private ViewGroup mainContainer;
     
+    private ImageView urlBtn;
+    private TextView urlText;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,10 +59,35 @@ public class homegame extends BaseActivity {
 		
 		
 		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","本周热门"};
+		String[] gamepeople={
+				"（4~12人）",
+				"（6~16人）",
+				"（惩罚游戏）",
+				"（惩罚游戏）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（聚会游戏、酒桌游戏）",
+				""
+				};
+		String[] des={
+				"找出卧底",
+				"（6~16人）",
+				"（惩罚游戏）",
+				"（惩罚游戏）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（2人及以上）",
+				"（聚会游戏、酒桌游戏）",
+				""
+				};
 		int gameCount=gamename.length;
-		imageViews = new ImageView[gameCount];
+		imageViews = new ImageView[gameCount+1];
 		
-		int[] gameId={ConstantControl.GAME_UNDERCOVER,
+		int[] gameId={
+				ConstantControl.GAME_UNDERCOVER,
 				ConstantControl.GAME_KILLER,
 				ConstantControl.GAME_PUNISH,
 				ConstantControl.GAME_ACTION,
@@ -65,71 +99,63 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_RECOMMEND
 		};
  		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_13_2x,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
+		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_19,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
   		
-		for(int i=0;i<gameCount;i++){
-			View welcomeView = mInflater.inflate(R.layout.game_select, null);
-			ImageView btn=(ImageView)welcomeView.findViewById(R.id.image);
-			ImageView imgNew=(ImageView)welcomeView.findViewById(R.id.imgNew);
-			TextView txtName=(TextView)welcomeView.findViewById(R.id.txtName);
-			txtName.setText(gamename[i]);
-			
-			
-			if(!checkGameIsNew(gameId[i])){
-				imgNew.setVisibility(View.GONE);
-			}
-			
-			btn.setTag(i);
-			String imageUri = "drawable://" + imageId[i];
-			ImageFromLocal(btn,imageUri);
-			
-			
-			btn.setOnClickListener(new Button.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					cleanStatus();
-					Intent mIntent = new Intent();
-					int tag=(Integer) v.getTag();
-					switch(tag){
-					case 0:
-						mIntent.setClass(homegame.this, local_setting.class);
-						setGameType("game_undercover");
-						break;
-					case 1:
-						mIntent.setClass(homegame.this, local_setting.class);
-						setGameType("game_killer");
-						break;
-					case 2:
-						mIntent.setClass(homegame.this, local_punish.class);
-						break;
-					case 3:
-						mIntent.setClass(homegame.this, local_act.class);
-						break;
-					case 4:
-						mIntent.setClass(homegame.this, local_click.class);
-						break;
-					case 5:
-						mIntent.setClass(homegame.this, local_bottle.class);
-						break;
-					case 6:
-						mIntent.setClass(homegame.this, local_push.class);
-						break;
-					case 7:
-						mIntent.setClass(homegame.this, local_draw.class);
-						break;
-					case 8:
-						mIntent.setClass(homegame.this, local_zhuan.class);
-						break;
-					case 9:
-						mIntent.setClass(homegame.this, homepage.class);
-						mIntent.putExtra("type", "newGame");
-						break;
+		for(int i=-1;i<gameCount;i++){
+			//-1显示缩略图
+			if (i < 0) {
+				View welcomeView = mInflater.inflate(R.layout.game_list, null);
+				ListView listView=(ListView)welcomeView.findViewById(R.id.gamelist);
+				
+				List<GameContent> temPubs = new ArrayList<GameContent>();
+				for (int m = 0; m < gamename.length; m++) {
+					try {
+						//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
+						temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],""));
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
 					}
-					
-					startActivity(mIntent);
 				}
-			});
-			viewList.add(welcomeView);
+				GameAdapter adapter= new GameAdapter(homegame.this, temPubs,
+						this.getUid());
+				adapter.setCallBack(homegame.this);
+				listView.setAdapter(adapter);
+				viewList.add(welcomeView);
+				
+			} else {
+				
+				View welcomeView = mInflater.inflate(R.layout.game_select, null);
+				ImageView btn = (ImageView) welcomeView
+						.findViewById(R.id.image);
+				ImageView imgNew = (ImageView) welcomeView
+						.findViewById(R.id.imgNew);
+				TextView txtName = (TextView) welcomeView
+						.findViewById(R.id.txtName);
+				txtName.setText(gamename[i]);
+
+				if(i==gameCount-1){
+					urlBtn=btn;
+					urlText=txtName;
+				}
+				
+				if (!checkGameIsNew(gameId[i])) {
+					imgNew.setVisibility(View.GONE);
+				}
+
+				String imageUri = "drawable://" + imageId[i];
+				ImageFromLocal(btn, imageUri);
+
+				final int temgameid=gameId[i];
+				btn.setOnClickListener(new Button.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						cleanStatus();
+						clickGame(temgameid);
+					}
+				});
+				viewList.add(welcomeView);
+			}
 		}
 		
 		
@@ -180,6 +206,47 @@ public class homegame extends BaseActivity {
     		startActivity(intentGo);
     		setToObject("guide_"+getVersion(),"guide");
         }
+	}
+	
+	
+//	ConstantControl.GAME_UNDERCOVER,
+//	ConstantControl.GAME_KILLER,
+//	ConstantControl.GAME_PUNISH,
+//	ConstantControl.GAME_ACTION,
+//	ConstantControl.GAME_CLICK,
+//	ConstantControl.GAME_CIRCLE,
+//	ConstantControl.GAME_PUSH,
+//	ConstantControl.GAME_DRAW,
+//	ConstantControl.GAME_ZHUANG,
+//	ConstantControl.GAME_RECOMMEND
+	
+	public void clickGame(int gameid) {
+		Intent mIntent = new Intent();
+		if (gameid == ConstantControl.GAME_UNDERCOVER) {
+			mIntent.setClass(homegame.this, local_setting.class);
+			setGameType("game_undercover");
+		} else if (gameid == ConstantControl.GAME_KILLER) {
+			mIntent.setClass(homegame.this, local_setting.class);
+			setGameType("game_killer");
+		} else if (gameid == ConstantControl.GAME_PUNISH) {
+			mIntent.setClass(homegame.this, local_punish.class);
+		} else if (gameid == ConstantControl.GAME_ACTION) {
+			mIntent.setClass(homegame.this, local_act.class);
+		} else if (gameid == ConstantControl.GAME_CLICK) {
+			mIntent.setClass(homegame.this, local_click.class);
+		} else if (gameid == ConstantControl.GAME_CIRCLE) {
+			mIntent.setClass(homegame.this, local_bottle.class);
+		} else if (gameid == ConstantControl.GAME_PUSH) {
+			mIntent.setClass(homegame.this, local_push.class);
+		} else if (gameid == ConstantControl.GAME_DRAW) {
+			mIntent.setClass(homegame.this, local_draw.class);
+		} else if (gameid == ConstantControl.GAME_ZHUANG) {
+			mIntent.setClass(homegame.this, local_zhuan.class);
+		} else {
+			mIntent.setClass(homegame.this, game_list.class);
+			mIntent.putExtra("type", "newGame");
+		}
+		startActivity(mIntent);
 	}
 	
 	
@@ -321,11 +388,11 @@ public class homegame extends BaseActivity {
 	}
 	
 	public void updateNewGame(String newgamename,String newgameimage){
-		View temview=viewList.get(viewList.size()-1);
-		ImageView btn=(ImageView)temview.findViewById(R.id.image);
-		TextView txtName=(TextView)temview.findViewById(R.id.txtName);
-		txtName.setText(newgamename);
-		ImageFromUrl(btn,newgameimage,R.drawable.week_recom_2x);
+//		View temview=viewList.get(viewList.size()-1);
+//		ImageView btn=(ImageView)temview.findViewById(R.id.image);
+//		TextView txtName=(TextView)temview.findViewById(R.id.txtName);
+		urlText.setText(newgamename);
 		
+		ImageFromUrl(urlBtn,newgameimage,R.drawable.week_recom_2x);
 	}
 }

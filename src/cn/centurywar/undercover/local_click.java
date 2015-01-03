@@ -31,7 +31,7 @@ public class local_click extends BaseActivity {
 		punishment_button = (Button) findViewById(R.id.btn_punish);
 		txtDes = (TextView) findViewById(R.id.txtDes);
 		punishment_button.setVisibility(View.INVISIBLE);
-
+		uMengClick("game_click");
 		click_button.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {

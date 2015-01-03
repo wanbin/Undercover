@@ -100,4 +100,12 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/gamered" />
 
+    <Button
+        android:id="@+id/btnAct"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/imgBg"
+        android:layout_alignTop="@+id/ddd"
+        android:background="@drawable/btn_act" />
+
 </RelativeLayout>

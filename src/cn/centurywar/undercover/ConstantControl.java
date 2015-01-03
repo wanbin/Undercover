@@ -39,6 +39,10 @@ public class ConstantControl {
 	public static String ACTION_RANDOMONE = "ActRandomOne";
 	public static String WORD_UNDERCOVER = "WordUndercover";
 
+	
+	public static String GAME_ONE = "GameOne";
+	public static String GAME_LIST = "GameList";
+
 	// 返回所有真心话大冒险
 		public static String MAIL_LIST = "MailList";
 		public static String MAIL_DEL = "MailDel";

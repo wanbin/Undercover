@@ -74,7 +74,7 @@ public class home extends BaseActivity {
 		
 		mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator(getMenuItem(R.drawable.game_2x,TAB1)).setContent(new Intent(this, homegame.class)));  
 		mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator(getMenuItem(R.drawable.join_2x,TAB2)).setContent(new Intent(this, net_home.class)));  
-	    mTabHost.addTab(mTabHost.newTabSpec("tab3").setIndicator(getMenuItem(R.drawable.help_2x,TAB3)).setContent(new Intent(this, homepage.class)));  
+	    mTabHost.addTab(mTabHost.newTabSpec("tab3").setIndicator(getMenuItem(R.drawable.help_2x,TAB3)).setContent(new Intent(this, game_list.class)));  
 	    mTabHost.addTab(mTabHost.newTabSpec("tab4").setIndicator(getMenuItem(R.drawable.setting_2x,TAB4)).setContent(new Intent(this, setting.class)));
 //	        mTabHost.addTab(mTabHost.newTabSpec("tab5").setIndicator(getMenuItem(R.drawable.son, TAB5)).setContent(R.id.tab5));
 	    
