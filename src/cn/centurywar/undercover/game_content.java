@@ -51,6 +51,7 @@ public class game_content extends BaseActivity {
 				getGameInfo(gameid);
 			}
 		});
+		setNetGameIsNew(gameid,false);
 	}
 	protected void getGameInfo(int gameid){
 		txtTitle.setText("正在获取游戏数据");

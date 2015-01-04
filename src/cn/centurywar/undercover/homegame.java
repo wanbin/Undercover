@@ -20,11 +20,14 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -46,19 +49,25 @@ public class homegame extends BaseActivity {
     private ViewGroup mainContainer;
     
     private ImageView urlBtn;
+    private ImageView imgNew;
     private TextView urlText;
+    
+    private FrameLayout frameLayout;
+    private View ad;
+    
+    private TextView txtTitle;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		LayoutInflater mInflater = getLayoutInflater();
+		
 		// Welcome 的Layout
 
 		viewList = new ArrayList<View>();
 		
 		
 		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","本周热门"};
+		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘"};
 		String[] gamepeople={
 				"（4~12人）",
 				"（6~16人）",
@@ -99,100 +108,56 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_RECOMMEND
 		};
  		
-		int[] imageId={R.drawable.logo_11_2x,R.drawable.logo_12_2x,R.drawable.logo_13_2x,R.drawable.logo_19,R.drawable.logo_14_2x,R.drawable.logo_15_2x,R.drawable.logo_16_2x,R.drawable.logo_17_2x,R.drawable.logo_18_2x,R.drawable.week_recom_2x};
-  		
-		for(int i=-1;i<gameCount;i++){
-			//-1显示缩略图
-			if (i < 0) {
-				View welcomeView = mInflater.inflate(R.layout.game_list, null);
-				ListView listView=(ListView)welcomeView.findViewById(R.id.gamelist);
-				
-				List<GameContent> temPubs = new ArrayList<GameContent>();
-				for (int m = 0; m < gamename.length; m++) {
-					try {
-						//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
-						temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],""));
-					} catch (Exception e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
-				}
-				GameAdapter adapter= new GameAdapter(homegame.this, temPubs,
-						this.getUid());
-				adapter.setCallBack(homegame.this);
-				listView.setAdapter(adapter);
-				viewList.add(welcomeView);
-				
-			} else {
-				
-				View welcomeView = mInflater.inflate(R.layout.game_select, null);
-				ImageView btn = (ImageView) welcomeView
-						.findViewById(R.id.image);
-				ImageView imgNew = (ImageView) welcomeView
-						.findViewById(R.id.imgNew);
-				TextView txtName = (TextView) welcomeView
-						.findViewById(R.id.txtName);
-				txtName.setText(gamename[i]);
-
-				if(i==gameCount-1){
-					urlBtn=btn;
-					urlText=txtName;
-				}
-				
-				if (!checkGameIsNew(gameId[i])) {
-					imgNew.setVisibility(View.GONE);
-				}
-
-				String imageUri = "drawable://" + imageId[i];
-				ImageFromLocal(btn, imageUri);
-
-				final int temgameid=gameId[i];
-				btn.setOnClickListener(new Button.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						cleanStatus();
-						clickGame(temgameid);
-					}
-				});
-				viewList.add(welcomeView);
+		setContentView(R.layout.game_list);
+		
+		ListView listView=(ListView)this.findViewById(R.id.gamelist);
+		frameLayout=(FrameLayout)this.findViewById(R.id.frameLayout);
+		
+		
+		
+		LayoutInflater mInflater = getLayoutInflater();
+		 ad = mInflater.inflate(R.layout.game_ad, null);
+		ImageView btn = (ImageView) ad
+				.findViewById(R.id.image);
+		
+		 imgNew = (ImageView) ad
+				.findViewById(R.id.imgNew);
+		TextView txtName = (TextView) ad
+				.findViewById(R.id.txtName);
+		txtTitle = (TextView) this.findViewById(R.id.txtTitle);
+		
+		
+		txtTitle.setText("刷新用户信息");
+		txtTitle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getUserInfo();
+			}
+		});
+		
+		frameLayout.addView(ad);
+		ad.setVisibility(View.INVISIBLE);
+		
+		
+		urlBtn=btn;
+		urlText=txtName;
+		
+		
+		List<GameContent> temPubs = new ArrayList<GameContent>();
+		for (int m = 0; m < gamename.length; m++) {
+			try {
+				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
+				temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],""));
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		mainContainer = (ViewGroup) mInflater.inflate(
-				R.layout.activity_select_game, null);
-		pointContainer = (ViewGroup) mainContainer
-				.findViewById(R.id.pointGroup);
-		
-		viewPager = (ViewPager) mainContainer.findViewById(R.id.viewpager);
-		
-	
-		// 将小圆点放到Layout中
-		for (int i = 0; i < imageViews.length; i++) {
-			ImageView image = new ImageView(homegame.this);
-			image.setLayoutParams(new LayoutParams(10, 10));
-	
-			RelativeLayout temview=new RelativeLayout(homegame.this);
-			temview.setLayoutParams(new LayoutParams(20, 10));
-			image.setPadding(5, 0, 5, 0);
-			temview.addView(image);
-			// 默认为第一小圆点
-			if (i==0) {
-				image.setBackgroundResource(R.drawable.red_ball_2x);
-			}else{
-				image.setBackgroundResource(R.drawable.gray_ball_2x);
-			}
-			imageViews[i] = image;
-			pointContainer.addView(temview);
-		}
-		pointContainer.setPadding(5, 0, 5, 20);
-		
-		
-		viewPager.setAdapter(new PageAdapterGame());
-        viewPager.setOnPageChangeListener(new GamePageChangeListener());
-        viewPager.setCurrentItem(0);
-        setContentView(mainContainer);
+		GameAdapter adapter= new GameAdapter(homegame.this, temPubs,
+				this.getUid());
+		adapter.setCallBack(homegame.this);
+		listView.setAdapter(adapter);
+        
         getUserInfo();
         
         
@@ -207,18 +172,6 @@ public class homegame extends BaseActivity {
     		setToObject("guide_"+getVersion(),"guide");
         }
 	}
-	
-	
-//	ConstantControl.GAME_UNDERCOVER,
-//	ConstantControl.GAME_KILLER,
-//	ConstantControl.GAME_PUNISH,
-//	ConstantControl.GAME_ACTION,
-//	ConstantControl.GAME_CLICK,
-//	ConstantControl.GAME_CIRCLE,
-//	ConstantControl.GAME_PUSH,
-//	ConstantControl.GAME_DRAW,
-//	ConstantControl.GAME_ZHUANG,
-//	ConstantControl.GAME_RECOMMEND
 	
 	public void clickGame(int gameid) {
 		Intent mIntent = new Intent();
@@ -250,92 +203,7 @@ public class homegame extends BaseActivity {
 	}
 	
 	
-	// 滑动页面的的适配器啊，主要把ViewList中的View传给ViewPager
-    private class PageAdapterGame extends PagerAdapter {  
-  	  
-        @Override  
-        public int getCount() {  
-            return viewList.size();  
-        }  
-  
-        @Override  
-        public boolean isViewFromObject(View arg0, Object arg1) {  
-            return arg0 == arg1;  
-        }  
-  
-        @Override  
-        public int getItemPosition(Object object) {  
-            // TODO Auto-generated method stub  
-            return super.getItemPosition(object);  
-        }  
-  
-        @Override  
-        public void destroyItem(View view, int position, Object object) {  
-            // TODO Auto-generated method stub  
-            ((ViewPager) view).removeView(viewList.get(position));  
-        }  
-  
-        @Override  
-        public Object instantiateItem(View view, int position) {  
-            // TODO Auto-generated method stub  
-            ((ViewPager) view).addView(viewList.get(position));  
-            return viewList.get(position);  
-        }  
-  
-        @Override  
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {  
-            // TODO Auto-generated method stub  
-  
-        }  
-  
-        @Override  
-        public Parcelable saveState() {  
-            // TODO Auto-generated method stub  
-            return null;  
-        }  
-  
-        @Override  
-        public void startUpdate(View arg0) {  
-            // TODO Auto-generated method stub  
-  
-        }  
-  
-        @Override  
-        public void finishUpdate(View arg0) {  
-            // TODO Auto-generated method stub  
-  
-        }  
-    } 
-    
-    
-	// 监听页面切换，切换时把小圆点变更
-    class GamePageChangeListener implements OnPageChangeListener{
-
-		@Override
-		public void onPageScrollStateChanged(int arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void onPageScrolled(int arg0, float arg1, int arg2) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void onPageSelected(int position) {
-			// TODO Auto-generated method stub
-			for (int i = 0; i < imageViews.length; i++) {
-				if (i!=position) {
-					imageViews[i].setBackgroundResource(R.drawable.gray_ball_2x);
-				}
-				imageViews[position].setBackgroundResource(R.drawable.red_ball_2x);
-			}
-		}
-    	
-    }
-    
+	
 	@Override
 	public void CallBackPublicCommand(JSONObject jsonobj, String cmd) {
 		super.CallBackPublicCommand(jsonobj, cmd);
@@ -349,18 +217,19 @@ public class homegame extends BaseActivity {
 				String photo=obj.getString("photo");
 				
 				
-				String newgameimage=obj.getString("newgameimage");
-				String newgamename=obj.getString("newgamename");
-				String newgame=obj.getString("newgame");
-				String newgameurl=obj.getString("newgameurl");
+				JSONObject newgamecontent=obj.getJSONObject("newgamecontent");
+				String newgameimage=newgamecontent.getString("homeimg");
+				String newgamename=newgamecontent.getString("title");
+				int newgameid=newgamecontent.getInt("_id");
 				
-				updateNewGame(newgamename,newgameimage);
+				//本周热门功能暂时省略
+				updateNewGame(newgamename,newgameimage,newgameid);
 				
 				setToObject("username", username);
 				setToObjectInt("gameuid", gameuid);
 				setToObject("photo", photo);
 				
-				setToObject("newgameurl", newgameurl);
+//				setToObject("newgameurl", newgameurl);
 				
 				if (obj.has("mail")) {
 					JSONArray mailArr = obj.getJSONArray("mail");
@@ -386,13 +255,38 @@ public class homegame extends BaseActivity {
 			}
 		}
 	}
+	@Override
+	public void CallBackPublicCommandWrong( String cmd) {
+		super.CallBackPublicCommandWrong( cmd);
+		if (cmd.equals(ConstantControl.GET_USER_INFO)) {
+			Log.v("error", "error");
+		}
+	}
 	
-	public void updateNewGame(String newgamename,String newgameimage){
-//		View temview=viewList.get(viewList.size()-1);
-//		ImageView btn=(ImageView)temview.findViewById(R.id.image);
-//		TextView txtName=(TextView)temview.findViewById(R.id.txtName);
+	
+	
+	public void updateNewGame(String newgamename,String newgameimage,final int gameid){
 		urlText.setText(newgamename);
+		ImageFromUrl(urlBtn,getImgBanner(newgameimage),R.color.WRITE);
+		ad.setVisibility(View.VISIBLE);
 		
-		ImageFromUrl(urlBtn,newgameimage,R.drawable.week_recom_2x);
+		//显示是否显示NEW
+		if (checkNetGameIsNew(gameid)) {
+			imgNew.setVisibility(View.VISIBLE);
+		} else {
+			imgNew.setVisibility(View.INVISIBLE);
+		}
+		
+		urlBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent mIntent = new Intent();
+				mIntent.setClass(homegame.this, game_content.class);
+				mIntent.putExtra("gameid", gameid);
+				startActivity(mIntent);
+				imgNew.setVisibility(View.INVISIBLE);
+			}
+		});
+		
 	}
 }

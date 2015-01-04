@@ -697,7 +697,7 @@ public static String getDeviceInfo(Context context) {
 	 */
 	protected void setUserInfo(JSONObject o) {
 		try {
-			isGm=o.getInt("isgm");
+//			isGm=o.getInt("isgm");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -1187,6 +1187,13 @@ public static String getDeviceInfo(Context context) {
 		gameInfo.edit().putBoolean("gamenew_"+getVersion()+"_"+gameid, isnew).commit();
 	}
 	
+	public boolean checkNetGameIsNew(int gameid){
+		return gameInfo.getBoolean("netgamenew_"+getVersion()+"_"+gameid,true);
+	}
+	public void setNetGameIsNew(int gameid,boolean isnew){
+		gameInfo.edit().putBoolean("netgamenew_"+getVersion()+"_"+gameid, isnew).commit();
+	}
+	
 	/**
 	 * 添加缩略图形式，节省流量
 	 * @param url
@@ -1199,6 +1206,9 @@ public static String getDeviceInfo(Context context) {
 		} else {
 			return url + "!KUANx600";
 		}
+	}
+	public String getImgBanner(String url){
+		return url+"!480X120";
 	}
 
 }
