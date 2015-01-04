@@ -74,7 +74,7 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 //	protected String serverUrl = "http://192.168.1.31/Entry.php";
 	int disWidth;
 	int disHeight;
-	private SensorManager sensorManager;
+	protected SensorManager sensorManager;
 	private Vibrator vibrator;
 	protected boolean showShack = false;
 
@@ -110,7 +110,7 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+//		this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		MobclickAgent.setDebugMode(false);
 		MobclickAgent.onError(this);
@@ -206,8 +206,7 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 		
 		if (sensorManager != null && showShack) {// 注册监听器
 			sensorManager.registerListener(sensorEventListener,
-					sensorManager
-							.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+					sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 					SensorManager.SENSOR_DELAY_NORMAL);
 			// 第一个参数是Listener，第二个参数是所得传感器类型，第三个参数值获取传感器信息的频率
 		}
@@ -857,6 +856,12 @@ public static String getDeviceInfo(Context context) {
 	protected void UndercoverWordRandomOne() {
 		UserHandler userHandler = new UserHandler(this);
 		userHandler.UndercoverWordRandomOne();
+	}
+	
+	
+	protected void GuessRandomOne() {
+		UserHandler userHandler = new UserHandler(this);
+		userHandler.GuessRandomOne();
 	}
 	
 	/**

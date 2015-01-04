@@ -2,71 +2,66 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="307" android:versionName="3.07" package="cn.centurywar.undercover">
 
     <application android:allowBackup="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme">
-        <activity android:label="@string/app_name" android:name="cn.centurywar.undercover.SelectGameActivity">
-           
-        </activity>
-        <activity android:name="cn.centurywar.undercover.local_fanpai">
+        <activity android:name="cn.centurywar.undercover.local_fanpai" android:screenOrientation="portrait">
         </activity>
         <!-- android:screenOrientation屏幕方向 -->
-        <activity android:name="cn.centurywar.undercover.QuestionAnswer" android:screenOrientation="portrait">
+        <activity android:name="cn.centurywar.undercover.local_guess" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.local_guess">
+        <activity android:name="cn.centurywar.undercover.local_click" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.local_click">
+        <activity android:name="cn.centurywar.undercover.local_bottle" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.local_bottle">
+        <activity android:name="cn.centurywar.undercover.home_page" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.home_page">
+        <activity android:name="cn.centurywar.undercover.weixin" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.weixin">
+        <activity android:name="cn.centurywar.undercover.net_punish" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.kill">
+        <activity android:name="cn.centurywar.undercover.homegame" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.net_punish">
+        <activity android:name="cn.centurywar.undercover.net_home" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.homegame">
+        <activity android:name="cn.centurywar.undercover.net_room_create" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.net_home">
+         <activity android:name="cn.centurywar.undercover.net_room_willstart" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.net_room_create">
+         <activity android:name="cn.centurywar.undercover.net_room_game" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.net_room_willstart">
+          <activity android:name="cn.centurywar.undercover.net_room_punish" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.net_room_game">
+        <activity android:name="cn.centurywar.undercover.local_setting" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.net_room_punish">
+        <activity android:name="cn.centurywar.undercover.local_punish" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.local_setting">
+         <activity android:name="cn.centurywar.undercover.local_punish_list" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.local_punish">
+        <activity android:name="cn.centurywar.undercover.setting" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.local_punish_list">
+        <activity android:name="cn.centurywar.undercover.game_list" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.setting">
+        <activity android:name="cn.centurywar.undercover.feedback" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.game_list">
+         <activity android:name="cn.centurywar.undercover.homeguide" android:screenOrientation="portrait">
         </activity>
-        <activity android:name="cn.centurywar.undercover.feedback">
+         <activity android:name="cn.centurywar.undercover.mail_list" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.homeguide">
+          <activity android:name="cn.centurywar.undercover.net_room_join" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.mail_list">
+          <activity android:name="cn.centurywar.undercover.setting_username" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.net_room_join">
+          <activity android:name="cn.centurywar.undercover.local_push" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.setting_username">
+          <activity android:name="cn.centurywar.undercover.local_draw" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.local_push">
+          <activity android:name="cn.centurywar.undercover.local_zhuan" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.local_draw">
+         <activity android:name="cn.centurywar.undercover.local_act" android:screenOrientation="portrait">
         </activity>
-          <activity android:name="cn.centurywar.undercover.local_zhuan">
+         <activity android:name="cn.centurywar.undercover.game_content" android:screenOrientation="portrait">
         </activity>
-         <activity android:name="cn.centurywar.undercover.local_act">
+        <activity android:name="cn.centurywar.undercover.local_cai" android:screenOrientation="sensorLandscape">
         </activity>
-         <activity android:name="cn.centurywar.undercover.game_content">
-        </activity>
-         <activity android:name="cn.centurywar.undercover.home">
+         <activity android:name="cn.centurywar.undercover.home" android:screenOrientation="portrait">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -81,7 +76,6 @@
         <meta-data android:name="UMENG_APPKEY" android:value="5476c767fd98c5a3ce000eb9">
         </meta-data>
         <meta-data android:name="UMENG_CHANNEL" android:value="Market360"/>
-        <activity android:name="cn.centurywar.undercover.ContributionActivity"/>
 
         
 	 <!-- ###################注册SDK使用的Activity###################### -->

@@ -67,7 +67,7 @@ public class homegame extends BaseActivity {
 		
 		
 		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘"};
+		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","疯狂猜词"};
 		String[] gamepeople={
 				"（4~12人）",
 				"（6~16人）",
@@ -105,7 +105,7 @@ public class homegame extends BaseActivity {
 				ConstantControl.GAME_PUSH,
 				ConstantControl.GAME_DRAW,
 				ConstantControl.GAME_ZHUANG,
-				ConstantControl.GAME_RECOMMEND
+				ConstantControl.GAME_CAI
 		};
  		
 		setContentView(R.layout.game_list);
@@ -195,7 +195,10 @@ public class homegame extends BaseActivity {
 			mIntent.setClass(homegame.this, local_draw.class);
 		} else if (gameid == ConstantControl.GAME_ZHUANG) {
 			mIntent.setClass(homegame.this, local_zhuan.class);
-		} else {
+		}else if (gameid == ConstantControl.GAME_CAI) {
+			mIntent.setClass(homegame.this, local_cai.class);
+		}
+		else {
 			mIntent.setClass(homegame.this, game_list.class);
 			mIntent.putExtra("type", "newGame");
 		}
@@ -262,7 +265,6 @@ public class homegame extends BaseActivity {
 			Log.v("error", "error");
 		}
 	}
-	
 	
 	
 	public void updateNewGame(String newgamename,String newgameimage,final int gameid){

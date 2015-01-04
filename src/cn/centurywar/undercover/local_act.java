@@ -174,18 +174,10 @@ public class local_act  extends BaseActivity {
 			}
 		}
 	}
-	
-	public void setLastString(String str){
-		setToObject("ACT_LAST",str);
-	}
-	public String getLastString(){
-		return getFromObject("ACT_LAST");
-	}
-	
 	@Override
 	public void MessageCallBackWrong(String cmd) {
 		super.MessageCallBackWrong(cmd);
-		if(cmd.equals(ConstantControl.PUNISH_RANDOMONE))
+		if(cmd.equals(ConstantControl.ACTION_RANDOMONE))
 		{
 			try{
 				txtAction.setText("服务器错误");
@@ -195,4 +187,13 @@ public class local_act  extends BaseActivity {
 			}
 		}
 	}
+	
+	public void setLastString(String str){
+		setToObject("ACT_LAST",str);
+	}
+	public String getLastString(){
+		return getFromObject("ACT_LAST");
+	}
+	
+
 }

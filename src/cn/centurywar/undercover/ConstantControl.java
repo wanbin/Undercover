@@ -37,6 +37,7 @@ public class ConstantControl {
 	public static String NAME_CHANGE = "NameChange";
 	public static String PUNISH_RANDOMONE = "PublishRandomOne";
 	public static String ACTION_RANDOMONE = "ActRandomOne";
+	public static String GUESS_RANDOMONE = "GuessRandomOne";
 	public static String WORD_UNDERCOVER = "WordUndercover";
 
 	
@@ -60,5 +61,7 @@ public class ConstantControl {
 	public static int GAME_DRAW=107;
 	public static int GAME_ZHUANG=108;
 	public static int GAME_ACTION=109;
+	//疯狂猜图
+	public static int GAME_CAI=110;
 	public static int GAME_RECOMMEND=201;
 }

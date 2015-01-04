@@ -143,6 +143,18 @@ public class UserHandler extends BaseHttpCommand {
 		}
 		getHttpRequest(obj, ConstantControl.ACTION_RANDOMONE);
 	}
+	
+	/**
+	 * 返回疯狂猜词
+	 */
+	public void GuessRandomOne() {
+		JSONObject obj = new JSONObject();
+		try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		getHttpRequest(obj, ConstantControl.GUESS_RANDOMONE);
+	}
 	public void UndercoverWordRandomOne() {
 		JSONObject obj = new JSONObject();
 		try {
