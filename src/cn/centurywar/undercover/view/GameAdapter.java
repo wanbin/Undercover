@@ -90,7 +90,11 @@ public class GameAdapter extends BaseAdapter {
         viewHolder.txtTime.setText(temPublish.people);
 
 //        if(viewHolder.imageUser.getBackground()==callBackActivity.getResources().getDrawable(R.drawable.fang_pink_pressed)){
-        ImageFromUrl(viewHolder.imageUser,temPublish.img+"!50X50",R.drawable.fang_write_pressed);
+        if(temPublish.img.length()>0){
+        	ImageFromUrl(viewHolder.imageUser,temPublish.img+"!50X50",R.drawable.fang_write_pressed);
+        }else{
+        	viewHolder.imageUser.setBackgroundResource(R.drawable.fang_write_pressed);
+        }
 //        }
         
         
@@ -108,12 +112,16 @@ public class GameAdapter extends BaseAdapter {
 
 	public void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
 		//第一次调用初始化
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
-		ImageLoader.getInstance().init(config);
+		if(ImageLoader.getInstance()==null){
+			ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
+			ImageLoader.getInstance().init(config);
+		}
 		DisplayImageOptions options;  
 		options = new DisplayImageOptions.Builder()  
 		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
 		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
+		 .cacheInMemory(true)
+         .cacheOnDisk(true)
 		.build();//构建完成  
 		ImageLoader.getInstance().displayImage(url, imageView,options);
 	}

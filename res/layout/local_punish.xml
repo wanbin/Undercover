@@ -19,13 +19,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:maxLines="@integer/lines"
         android:text="@string/真心话大冒险"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/gamered2"
-        android:textSize="@dimen/btn_font_size" />
+        android:textSize="@dimen/btnMoreBottom" />
 
     <Button
         android:id="@+id/btnNext"

@@ -2,6 +2,8 @@ package cn.centurywar.undercover;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,6 +18,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -131,7 +135,7 @@ public class homegame extends BaseActivity {
 		txtTitle.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				getUserInfo();
+				willUserInfo();
 			}
 		});
 		
@@ -158,10 +162,6 @@ public class homegame extends BaseActivity {
 		adapter.setCallBack(homegame.this);
 		listView.setAdapter(adapter);
         
-        getUserInfo();
-        
-        
-        
         //判断是不是本版本第一次打开游戏，如果是的话，开用户引导
         
         String checkisfirst=getFromObject("guide_"+getVersion());
@@ -171,7 +171,34 @@ public class homegame extends BaseActivity {
     		startActivity(intentGo);
     		setToObject("guide_"+getVersion(),"guide");
         }
+        
+		Timer timer = new Timer();
+		timer.schedule(timetask, 1000, 600000);
 	}
+	
+	Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			willUserInfo();
+		}
+	};
+	
+	// 传递时间
+	private TimerTask timetask = new TimerTask() {
+		@Override
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	};
+	
+	private void willUserInfo(){
+		txtTitle.setText("正在获取用户信息[点击刷新]");
+		getUserInfo();
+	}
+	
 	
 	public void clickGame(int gameid) {
 		Intent mIntent = new Intent();
@@ -226,11 +253,15 @@ public class homegame extends BaseActivity {
 				int newgameid=newgamecontent.getInt("_id");
 				
 				//本周热门功能暂时省略
-				updateNewGame(newgamename,newgameimage,newgameid);
+				updateNewGame(newgamename,newgameimage,newgameid,username);
 				
 				setToObject("username", username);
 				setToObjectInt("gameuid", gameuid);
 				setToObject("photo", photo);
+				
+				
+				
+				
 				
 //				setToObject("newgameurl", newgameurl);
 				
@@ -267,7 +298,14 @@ public class homegame extends BaseActivity {
 	}
 	
 	
-	public void updateNewGame(String newgamename,String newgameimage,final int gameid){
+	public void updateNewGame(String newgamename,String newgameimage,final int gameid,String username){
+		
+		if(username.length()>0){
+			txtTitle.setText("欢迎您："+username+"[点击刷新]");
+		}
+		else{
+			txtTitle.setText("欢迎您[点击刷新]");
+		}
 		urlText.setText(newgamename);
 		ImageFromUrl(urlBtn,getImgBanner(newgameimage),R.color.WRITE);
 		ad.setVisibility(View.VISIBLE);

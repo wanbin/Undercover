@@ -23,6 +23,7 @@ import android.text.Html.ImageGetter;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -33,6 +34,9 @@ public class game_content extends BaseActivity {
 	TextView txtTitle;
 	TextView txtContent;
 	LinearLayout imgLayout;
+	Button btnShare;
+	String gameName;
+	String gameImg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class game_content extends BaseActivity {
 		txtTitle=(TextView)this.findViewById(R.id.txtTitle);
 		txtContent=(TextView)this.findViewById(R.id.txtContent);
 		imgLayout=(LinearLayout)this.findViewById(R.id.imgLayout);
+		btnShare=(Button)this.findViewById(R.id.btnShare);
 		
 		final int gameid=getIntent().getIntExtra("gameid", 0);
 //		txtTitle.setText(Html.fromHtml("<p>游戏规则：</p><ol><li>两人游戏，在喝酒时候进行。</li><li>两人对坐，伸出双手。握拳代表零，手掌代表五。</li><li>两人同时喊『十五十五**』（**可以是零、五、十、十五、二十）。</li><li>计算两人伸出手指总和，如果猜中，则对方输，如果同时都猜中，则继续。</li></ol><p>活动评价：</p><p>&nbsp; 划拳游戏，适合酒场时候进行。喊出来，特别有气氛。</p>"));
@@ -52,6 +57,13 @@ public class game_content extends BaseActivity {
 			}
 		});
 		setNetGameIsNew(gameid,false);
+		
+		btnShare.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				shareItImg(game_content.this,"发现了个好玩的聚会游戏："+gameName+" 下次聚会我们就可以玩这个了！(爱上聚会 http://www.centurywar.cn/www/index.php?showpage=gamenow&gameid="+gameid+" )",gameImg);
+			}
+		});
 	}
 	protected void getGameInfo(int gameid){
 		txtTitle.setText("正在获取游戏数据");
@@ -107,10 +119,14 @@ public class game_content extends BaseActivity {
 //		mImageView.setBackgroundColor(Color.GRAY);
 		imgLayout.addView(mImageView);
 		ImageFromUrl(mImageView,getImgUrlSmall(source),R.drawable.fang_pink_pressed);
+//		if(gameImg.length()==0){
+		gameImg=source;
+//		}
 	}
 	
 	protected void updateMessage(JSONObject content){
 		try {
+			gameName=content.getString("title");
 			txtTitle.setText(content.getString("title")+"[点击刷新]");
 			txtContent.setText(Html.fromHtml(content.getString("content"),imageGetter,null));
 		} catch (JSONException e) {
@@ -119,4 +135,6 @@ public class game_content extends BaseActivity {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

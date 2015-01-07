@@ -13,6 +13,7 @@
             android:id="@+id/dds"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical" >
 
             <TextView
@@ -41,6 +42,19 @@
                 android:layout_below="@+id/txtTitle"
                 android:padding="5dp"
                 android:text="" />
+
+            <Button
+        android:id="@+id/btnShare"
+        android:layout_width="193dp"
+        android:layout_height="49dp"
+        android:layout_above="@+id/btnNext"
+        android:layout_alignLeft="@+id/btnNext"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/begin_pressed"
+        android:text="@string/分享"
+        android:textColor="@color/WRITE"
+        android:textSize="@dimen/newBtnFont" />
+
         </LinearLayout>
     </ScrollView>
 

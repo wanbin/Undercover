@@ -183,7 +183,9 @@ public class local_punish  extends BaseActivity {
 		} else {
 			return false;
 		}
-		String punish=getRandomMaoxianFromLocate(true);
+		PublishRandomOne();
+		String punish=  "正在获取";
+//		getRandomMaoxianFromLocate(true);
 		txtLast.setText(getLastString());
 		txtPunish.setText(punish);
 		setGameIsNew(ConstantControl.GAME_PUNISH,false);
