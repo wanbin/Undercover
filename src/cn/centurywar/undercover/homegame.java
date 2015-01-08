@@ -151,7 +151,7 @@ public class homegame extends BaseActivity {
 		for (int m = 0; m < gamename.length; m++) {
 			try {
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
-				temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],""));
+				temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],"","LOCAL_"+gameId[m]));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -311,7 +311,7 @@ public class homegame extends BaseActivity {
 		ad.setVisibility(View.VISIBLE);
 		
 		//显示是否显示NEW
-		if (checkNetGameIsNew(gameid)) {
+		if (checkNetGameIsNew(gameid+"")) {
 			imgNew.setVisibility(View.VISIBLE);
 		} else {
 			imgNew.setVisibility(View.INVISIBLE);
@@ -322,7 +322,7 @@ public class homegame extends BaseActivity {
 			public void onClick(View v) {
 				Intent mIntent = new Intent();
 				mIntent.setClass(homegame.this, game_content.class);
-				mIntent.putExtra("gameid", gameid);
+				mIntent.putExtra("gameid", gameid+"");
 				startActivity(mIntent);
 				imgNew.setVisibility(View.INVISIBLE);
 			}

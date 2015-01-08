@@ -32,6 +32,7 @@ public class net_room_create extends BaseActivity {
 	Button btnStart;
 	Button btnreflash;
 	Button btnWX;
+	Button btnHelp;
 	TextView txtRoominfo;
 	ScrollView scrollContent;
 	SeekBar selectPeople;
@@ -49,6 +50,8 @@ public class net_room_create extends BaseActivity {
 		btnStart = (Button) this.findViewById(R.id.btnstart);
 		btnreflash = (Button) this.findViewById(R.id.btnreflash);
 		btnWX = (Button) this.findViewById(R.id.btnwx);
+		btnHelp = (Button) this.findViewById(R.id.btnHelp);
+		
 		txtRoominfo = (TextView) this.findViewById(R.id.txtRoominfo);
 		scrollContent=(ScrollView)this.findViewById(R.id.scrollContent);
 		selectPeople=(SeekBar)this.findViewById(R.id.seekSelectPeople);
@@ -80,6 +83,12 @@ public class net_room_create extends BaseActivity {
 			public void onClick(View v) {
 //				joinRoom(10001);
 				getRoomContent();
+			}
+		});
+		btnHelp.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showHelp("NET_ROOM_LOCAL_PEOPLE");
 			}
 		});
 		btnWX.setOnClickListener(new Button.OnClickListener() {

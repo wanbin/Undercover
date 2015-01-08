@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,10 +26,9 @@ import android.widget.TextView;
  * @author chenzheng_java
  * @description 该类的部分实现模仿了SimpleAdapter
  */
-public class MailAdapter extends BaseAdapter {
+public class MailAdapter extends GameBaseAdapter {
 	private Button hasPress;
 	private List<MailUser> publishs; 
-	Context context;  
     private mail_list callBackActivity=null;
     
     /**
@@ -40,7 +40,7 @@ public class MailAdapter extends BaseAdapter {
     public MailAdapter(Context context,List<MailUser> publishs,String uid){  
         this.publishs = publishs;  
         this.context = context;  
-     
+        
     }  
     
     public void setCallBack(mail_list view){
@@ -57,11 +57,7 @@ public class MailAdapter extends BaseAdapter {
     }
 	@Override
 	public int getCount() {
-		 return (publishs==null)?0:publishs.size();  
-	}
-	@Override
-	public Object getItem(int position) {
-		return publishs.get(position);  
+		 return publishs.size();  
 	}
 	@Override
 	public long getItemId(int position) {
@@ -69,7 +65,7 @@ public class MailAdapter extends BaseAdapter {
 	}
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
-		final MailUser temPublish = (MailUser) getItem(position);
+		final MailUser temPublish = this.publishs.get(position);
 		final ViewHolder viewHolder;
 
 		if (convertView == null) {
@@ -96,53 +92,34 @@ public class MailAdapter extends BaseAdapter {
 	        if(temPublish.photo.length()>0){
 	        	ImageFromUrl(viewHolder.imageUser,temPublish.photo,R.drawable.default_photo);
 	        }
-	        
-	        
-	        convertView.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					if(hasPress!=null){
-						hasPress.setVisibility(View.GONE);
-					}
-					viewHolder.btnDel.setVisibility(View.VISIBLE);
-					hasPress=viewHolder.btnDel;
-				}
-			});
-	        
-	        final View temview=convertView;
-	        viewHolder.btnDel.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					callBackActivity.removeMail(temPublish.id);
-					publishs.remove(position);
-					notifyDataSetChanged();
-//					temview.su.setVisibility(View.GONE);
-				}
-			});
-	        
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
-
+		
+        convertView.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(hasPress!=null){
+					hasPress.setVisibility(View.GONE);
+				}
+				viewHolder.btnDel.setVisibility(View.VISIBLE);
+				hasPress=viewHolder.btnDel;
+			}
+		});
         
+        viewHolder.btnDel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				publishs.remove(position);
+				notifyDataSetChanged();
+				callBackActivity.removeMail(temPublish.id);
+			}
+		});
       
 		
 		return convertView;
 	}  
-
-	public void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
-		//第一次调用初始化
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
-		ImageLoader.getInstance().init(config);
-		DisplayImageOptions options;  
-		options = new DisplayImageOptions.Builder()  
-		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
-		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
-		.build();//构建完成  
-		ImageLoader.getInstance().displayImage(url, imageView,options);
-	}
-	
 	
 	/**
 	 * @author wanhin

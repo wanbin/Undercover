@@ -61,15 +61,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/WRITE"
+            android:gravity="center_vertical"
             android:padding="@dimen/alphabet_size" >
+
+           
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="50"
                 android:text="@string/信件" />
-
+ 	<ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:src="@drawable/txt_new" />
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
@@ -121,48 +127,25 @@
             android:padding="12dp"
             android:text="@string/关于游戏" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/WRITE"
-            android:padding="@dimen/alphabet_size" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="50"
-                android:text="@string/版本信息" />
-
-            <TextView
-                android:id="@+id/txtVersion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="50"
-                android:gravity="right"
-                android:text="TextView" />
-        </LinearLayout>
-
-        
-        <View
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:background="@color/light_gray" />
-
-        <LinearLayout
-            android:id="@+id/LinearAbout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/WRITE"
-            android:padding="@dimen/alphabet_size" >
+                <LinearLayout
+                    android:id="@+id/LinearHelp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/WRITE"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/alphabet_size" >
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="50"
-                android:text="@string/关于" />
+                android:text="游戏帮助" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="10dp"
+                android:src="@drawable/txt_new" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -172,14 +155,12 @@
                 android:gravity="right"
                 android:text="@string/向右" />
         </LinearLayout>
-        
         <View
-            android:id="@+id/view1"
+            android:id="@+id/view2d"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/light_gray" />
-
-        <LinearLayout
+<LinearLayout
             android:id="@+id/LinearFeedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -194,13 +175,52 @@
                 android:text="@string/意见建议反馈" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textVisewd5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="50"
                 android:gravity="right"
                 android:text="@string/向右" />
         </LinearLayout>
+                
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/light_gray" />
+        
+        <LinearLayout
+            android:id="@+id/LinearVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/WRITE"
+            android:padding="@dimen/alphabet_size" >
+
+            <TextView
+                android:id="@+id/textViedw1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="@string/版本信息" />
+
+            <TextView
+                android:id="@+id/txtVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right" />
+            
+                     <TextView
+                         android:id="@+id/textVisewdd5"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:gravity="right"
+                         android:text="@string/向右" />
+
+        </LinearLayout>
+
+        
+
     </LinearLayout>
 
 </ScrollView>

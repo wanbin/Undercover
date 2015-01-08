@@ -10,6 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.centurywar.undercover.view.GuessHistoryAdapter;
+import cn.centurywar.undercover.view.GuessHistoryAdapter.GuessString;
+import cn.centurywar.undercover.view.ItemAdapter;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -23,6 +27,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,8 +45,12 @@ public class local_cai extends BaseActivity {
 	TextView txtRight;
 	
 	Button butStart;
+	ListView listView;
 	RelativeLayout bg;
 
+	List<GuessString> historyData;
+	GuessHistoryAdapter historyAdapter;
+	
 	private SensorManager sensorMgr;
 	Sensor sensor;
 	private float x, y, z;
@@ -75,6 +84,7 @@ public class local_cai extends BaseActivity {
 		
 		butStart=(Button)this.findViewById(R.id.butStart);
 		bg=(RelativeLayout)this.findViewById(R.id.bg);
+		listView=(ListView)this.findViewById(R.id.listView);
 		
 		sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
 		sensor = sensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -119,7 +129,15 @@ public class local_cai extends BaseActivity {
 			}
 		});
 		uMengClick("game_guess");
+		
+		
+		historyData=new ArrayList<GuessString>();
+		historyAdapter= new GuessHistoryAdapter(this,historyData);  
+        listView.setAdapter(historyAdapter); 
 	}
+	
+	
+	
 	
 	//将要开始，有倒计时
 	private void gameWillStart(){
@@ -132,6 +150,8 @@ public class local_cai extends BaseActivity {
 		txtTime.setText("3");
 		GuessRandomOne();
 		
+		historyData.clear();
+		historyAdapter.notifyDataSetChanged();
 		
 		uMengClick("game_guess_click");
 		
@@ -186,11 +206,12 @@ public class local_cai extends BaseActivity {
 				temobj = gameArray.getJSONObject(wordIndex);
 				String tem=temobj.getString("content");
 				rightArray.add(tem);
+				historyData.add(new GuessString(tem,true));
+				historyAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			wordIndex++;
 			txtContent.setText("正确");
 			txtContent.setTextColor(Color.WHITE);
@@ -206,6 +227,8 @@ public class local_cai extends BaseActivity {
 				temobj = gameArray.getJSONObject(wordIndex);
 				String tem=temobj.getString("content");
 				wrongArray.add(tem);
+				historyData.add(new GuessString(tem,false));
+				historyAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

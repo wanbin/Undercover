@@ -24,9 +24,8 @@ import android.widget.TextView;
  * @author chenzheng_java
  * @description 该类的部分实现模仿了SimpleAdapter
  */
-public class MyAdapter extends BaseAdapter {
+public class MyAdapter extends GameBaseAdapter {
 	private List<Publish> publishs;
-	Context context;
 	private String uid;
 	private net_punish callBackActivity = null;
 	private boolean isGM = false;
@@ -62,6 +61,7 @@ public class MyAdapter extends BaseAdapter {
 		public Button dislikebtn;
 		public Button btnshare;
 		public RelativeLayout relativeView;
+		public ImageView imgType;
 	}
 
 	@Override
@@ -106,6 +106,8 @@ public class MyAdapter extends BaseAdapter {
 					.findViewById(R.id.buttonDislike);
 			viewHolder.relativeView = (RelativeLayout) convertView
 					.findViewById(R.id.relativeView);
+			viewHolder.imgType = (ImageView) convertView
+					.findViewById(R.id.imgType);
 			
 			convertView.setTag(viewHolder);
 		} else {
@@ -121,6 +123,22 @@ public class MyAdapter extends BaseAdapter {
 		viewHolder.txtDislike.setText(String.format("%s",
 				temPublish.dislike));
 
+		
+		if (temPublish.contenttype == 1) {
+			viewHolder.imgType.setBackgroundResource(R.drawable.turns_1);
+			viewHolder.imgType.setVisibility(View.VISIBLE);
+		} else if (temPublish.contenttype == 2) {
+			viewHolder.imgType.setBackgroundResource(R.drawable.turns_2);
+			viewHolder.imgType.setVisibility(View.VISIBLE);
+		} else if (temPublish.contenttype == 3) {
+			viewHolder.imgType.setBackgroundResource(R.drawable.turns_3);
+			viewHolder.imgType.setVisibility(View.VISIBLE);
+		}else{
+			viewHolder.imgType.setVisibility(View.INVISIBLE);
+		}
+		
+		
+		
 		viewHolder.likebtn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -164,10 +182,12 @@ public class MyAdapter extends BaseAdapter {
 	 */
 	public void addcollect(Publish tempublish, int type, Button btn) {
 		setDisableBtn(btn);
+		((net_punish) this.context).like(tempublish.id);
 		((BaseActivity) this.context).addDamaoxian(tempublish.content);
 	}
 	public void reomvecollect(Publish tempublish, int type, Button btn) {
 		setDisableBtn(btn);
+		((net_punish) this.context).dislike(tempublish.id);
 		((BaseActivity) this.context).removeDamaoxian(tempublish.content);
 	}
 
@@ -206,9 +226,10 @@ public class MyAdapter extends BaseAdapter {
 		public boolean dislikeed = false;
 		public boolean collented = false;
 		public int type = 1;
+		public int contenttype = 1;
 
 		public Publish(int id, String name, String content, int like,
-				int dislike, boolean likeed, boolean dislikeed, int type) {
+				int dislike, boolean likeed, boolean dislikeed, int type,int contenttype) {
 			super();
 			this.id = id;
 			this.content = content;
@@ -217,6 +238,7 @@ public class MyAdapter extends BaseAdapter {
 			this.likeed = likeed;
 			this.dislikeed = dislikeed;
 			this.type = type;
+			this.contenttype = contenttype;
 		}
 	}
 }

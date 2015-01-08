@@ -15,6 +15,7 @@ public class net_home extends BaseActivity {
 	Button btnJoin;
 	Button btnCreate;
 	Button btnResent;
+	Button btnHelp;
 	EditText txtRoomid;
 	TextView txtTitle;
 	@Override
@@ -24,6 +25,7 @@ public class net_home extends BaseActivity {
 		btnJoin = (Button) this.findViewById(R.id.btnJoin);
 		btnCreate = (Button) this.findViewById(R.id.btnCreate);
 		btnResent = (Button) this.findViewById(R.id.btnResent);
+		btnHelp = (Button) this.findViewById(R.id.btnHelp);
 		
 		txtRoomid = (EditText) this.findViewById(R.id.txtRoomid);
 		txtTitle = (TextView) this.findViewById(R.id.txtTitle);
@@ -69,6 +71,14 @@ public class net_home extends BaseActivity {
 				checkIsInRoom();
 			}
 		});
+		
+		btnHelp.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showHelp("NET_HOME");
+			}
+		});
+		
 		checkIsInRoom();
 	}
 	

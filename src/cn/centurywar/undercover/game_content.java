@@ -46,18 +46,19 @@ public class game_content extends BaseActivity {
 		imgLayout=(LinearLayout)this.findViewById(R.id.imgLayout);
 		btnShare=(Button)this.findViewById(R.id.btnShare);
 		
-		final int gameid=getIntent().getIntExtra("gameid", 0);
+		final String gameid=getIntent().getStringExtra("gameid");
+		
 //		txtTitle.setText(Html.fromHtml("<p>游戏规则：</p><ol><li>两人游戏，在喝酒时候进行。</li><li>两人对坐，伸出双手。握拳代表零，手掌代表五。</li><li>两人同时喊『十五十五**』（**可以是零、五、十、十五、二十）。</li><li>计算两人伸出手指总和，如果猜中，则对方输，如果同时都猜中，则继续。</li></ol><p>活动评价：</p><p>&nbsp; 划拳游戏，适合酒场时候进行。喊出来，特别有气氛。</p>"));
 		getGameInfo(gameid);
 		
+		gameImg="";
 		txtTitle.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				getGameInfo(gameid);
 			}
 		});
-		setNetGameIsNew(gameid,false);
-		
+		setNetGameIsNew( gameid,false);
 		btnShare.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -65,7 +66,7 @@ public class game_content extends BaseActivity {
 			}
 		});
 	}
-	protected void getGameInfo(int gameid){
+	protected void getGameInfo(String gameid){
 		txtTitle.setText("正在获取游戏数据");
 		PublishHandler publishHandler = new PublishHandler(this);
 		publishHandler.getGameOne(gameid);
@@ -83,6 +84,7 @@ public class game_content extends BaseActivity {
 				JSONObject content=new JSONObject(temstr);
 				updateMessage(content);
 			}catch(Exception e){
+				txtTitle.setText("数据异常[点击刷新]");
 				e.printStackTrace();
 			}
 			System.out.print(jsonobj.toString());

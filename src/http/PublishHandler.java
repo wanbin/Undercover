@@ -119,16 +119,17 @@ public class PublishHandler extends BaseHttpCommand {
 		getHttpRequest(obj, ConstantControl.SHOW_PUBLISH_ALL);
 	}
 	
-	public void getGameList(int page) {
+	public void getGameList(int page,int type) {
 		JSONObject obj = new JSONObject();
 		try {
 			obj.put("page", page);
+			obj.put("type", type);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		getHttpRequest(obj, ConstantControl.GAME_LIST);
 	}
-	public void getGameOne(int gameid) {
+	public void getGameOne(String gameid) {
 		JSONObject obj = new JSONObject();
 		try {
 			obj.put("gameid", gameid);

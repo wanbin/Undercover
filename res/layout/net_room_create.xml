@@ -85,6 +85,14 @@
             android:layout_weight="2"
             android:max="4" />
 
+        <Button
+            android:id="@+id/btnHelp"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/help_pressed" />
+
     </LinearLayout>
 
                

@@ -34,7 +34,8 @@ public class setting  extends BaseActivity {
 	TextView txtUsername;
 	LinearLayout LinearSound;
 	LinearLayout LinearFeedback;
-	LinearLayout LinearAbout;
+	LinearLayout LinearVersion;
+	LinearLayout LinearHelp;
 	LinearLayout LinearInfo;
 	LinearLayout LinearMail;
 	TextView txtSound;
@@ -48,9 +49,10 @@ public class setting  extends BaseActivity {
 		
 		LinearSound=(LinearLayout)this.findViewById(R.id.LinearSound);
 		LinearFeedback=(LinearLayout)this.findViewById(R.id.LinearFeedback);
-		LinearAbout=(LinearLayout)this.findViewById(R.id.LinearAbout);
+		LinearVersion=(LinearLayout)this.findViewById(R.id.LinearVersion);
 		LinearInfo=(LinearLayout)this.findViewById(R.id.LinearInfo);
 		LinearMail=(LinearLayout)this.findViewById(R.id.LinearMail);
+		LinearHelp=(LinearLayout)this.findViewById(R.id.LinearHelp);
 		
 		txtVersion.setText(getVersion());
 		
@@ -75,36 +77,22 @@ public class setting  extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				 FeedbackAgent agent = new FeedbackAgent(setting.this);
-				 
-//				 UserInfo info = agent.getUserInfo();
-//                 if (info == null)
-//                     info = new UserInfo();
-//                 Map<String, String> contact = info.getContact();
-//                 if (contact == null)
-//                     contact = new HashMap<String, String>();
-//
-//                 // optional, setting user gender information.
-//                 //contact.put("gender", "male");
-//                 //contact.put("gender", "female");
-//
-//                 //optional, setting user age group information
-//                 contact.put("uid", getUid());
-//
-//                 info.setContact(contact);
-//                 agent.setUserInfo(info);
-//                 
 				 agent.startFeedbackActivity();
-//				Intent intentGo = new Intent();
-//				intentGo.setClass(setting.this, feedback.class);
-//				startActivity(intentGo);
 			}
 		});
-		LinearAbout.setOnClickListener(new Button.OnClickListener() {
+		LinearHelp.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intentGo = new Intent();
-				intentGo.setClass(setting.this, homeguide.class);
+				intentGo.setClass(setting.this, game_list.class);
+				intentGo.putExtra("showtype", 2);
 				startActivity(intentGo);
+			}
+		});
+		LinearVersion.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showHelp("VERSION");
 			}
 		});
 		

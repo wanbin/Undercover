@@ -22,35 +22,28 @@ public class game_list extends BaseActivity {
 //	WebView urlPage;
 	TextView txtTitle;
 	ListView listView;
+	//1是游戏，2是帮助
+	int showtype;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_list2);
 		txtTitle=(TextView)this.findViewById(R.id.txtTitle);
 		listView=(ListView)this.findViewById(R.id.gamelist);
-//		urlPage=(WebView)this.findViewById(R.id.urlpage);
-//		String gameType=getIntent().getStringExtra("type");
-//		if(gameType!=null&&gameType.equals("newGame")){
-//			String url=getFromObject("newgameurl");
-//			urlPage.loadUrl(url+"?showpage=gamenow&uid="+getUid());
-//		}else{
-//			urlPage.loadUrl("http://www.centurywar.cn/?cat=2&uid="+getUid());
-//		}
-		
-		
+
 		txtTitle.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				getAllGame();
 			}
 		});
-		
+		showtype=getIntent().getIntExtra("showtype",1);
 		getAllGame();
 	}
 	protected void getAllGame(){
-		txtTitle.setText("正在获取游戏列表");
+		txtTitle.setText("正在获取列表");
 		PublishHandler publishHandler = new PublishHandler(this);
-		publishHandler.getGameList(1);
+		publishHandler.getGameList(1,showtype);
 	}
 	
 	@Override
@@ -86,7 +79,7 @@ public class game_list extends BaseActivity {
 	public void clickGame(int gameid) {
 		Intent mIntent = new Intent();
 		mIntent.setClass(game_list.this, game_content.class);
-		mIntent.putExtra("gameid", gameid);
+		mIntent.putExtra("gameid", gameid+"");
 		startActivity(mIntent);
 	}
 	
@@ -97,7 +90,7 @@ public class game_list extends BaseActivity {
 			try {
 				JSONObject tem=content.getJSONObject(m);
 				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
-				temPubs.add(new GameContent(tem.getInt("_id"),tem.getString("homeimg"),tem.getString("title"),"",""));
+				temPubs.add(new GameContent(tem.getInt("_id"),tem.getString("homeimg"),tem.getString("title"),"","",""));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

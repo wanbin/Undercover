@@ -884,6 +884,13 @@ public static String getDeviceInfo(Context context) {
 	public void clickGame(int gameid) {
 		
 	}
+	
+	public void showHelp(String helpid) {
+		Intent mIntent = new Intent();
+		mIntent.setClass(BaseActivity.this, game_content.class);
+		mIntent.putExtra("gameid", helpid);
+		startActivity(mIntent);
+	}
 	/**
 	 * 异步加载图片
 	 * @param imageView
@@ -898,16 +905,25 @@ public static String getDeviceInfo(Context context) {
 		options = new DisplayImageOptions.Builder()  
 		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
 		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
-		.build();//构建完成  
+		 .cacheInMemory(true)
+         .cacheOnDisk(true)
+		.build();//构建完成   
 		ImageLoader.getInstance().displayImage(url, imageView,options);
 	}
+	
+	
 	public Bitmap BitmapFromUrl(String url,int defaultphoto){
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-		ImageLoader.getInstance().init(config);
+		if(ImageLoader.getInstance()==null){
+			ImageLoader.getInstance().destroy();
+			ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+			ImageLoader.getInstance().init(config);
+		}
 		DisplayImageOptions options;  
 		options = new DisplayImageOptions.Builder()  
 		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
 		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
+		 .cacheInMemory(true)
+         .cacheOnDisk(true)
 		.build();//构建完成  
 		return ImageLoader.getInstance().loadImageSync(url);
 	}
@@ -1202,11 +1218,12 @@ public static String getDeviceInfo(Context context) {
 		gameInfo.edit().putBoolean("gamenew_"+getVersion()+"_"+gameid, isnew).commit();
 	}
 	
-	public boolean checkNetGameIsNew(int gameid){
-		return gameInfo.getBoolean("netgamenew_"+getVersion()+"_"+gameid,true);
+	
+	public boolean checkNetGameIsNew(String gameid){
+		return gameInfo.getBoolean("netgamenew_"+gameid,true);
 	}
-	public void setNetGameIsNew(int gameid,boolean isnew){
-		gameInfo.edit().putBoolean("netgamenew_"+getVersion()+"_"+gameid, isnew).commit();
+	public void setNetGameIsNew(String gameid,boolean isnew){
+		gameInfo.edit().putBoolean("netgamenew_"+gameid, isnew).commit();
 	}
 	
 	/**
@@ -1225,6 +1242,8 @@ public static String getDeviceInfo(Context context) {
 	public String getImgBanner(String url){
 		return url+"!480X120";
 	}
+	
+	
 
 }
 

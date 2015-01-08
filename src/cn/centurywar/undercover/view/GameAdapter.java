@@ -26,9 +26,8 @@ import android.widget.TextView;
  * @author chenzheng_java
  * @description 该类的部分实现模仿了SimpleAdapter
  */
-public class GameAdapter extends BaseAdapter {
+public class GameAdapter extends GameBaseAdapter {
 	private List<GameContent> publishs; 
-	Context context;  
     private BaseActivity callBackActivity=null;
     
     /**
@@ -49,6 +48,7 @@ public class GameAdapter extends BaseAdapter {
 	
     public final class ViewHolder {  
         public ImageView imageUser;
+        public ImageView imgHelp;
         public TextView txtName;  
         public TextView txtTime;  
     }
@@ -75,6 +75,10 @@ public class GameAdapter extends BaseAdapter {
 			viewHolder = new ViewHolder();
 			viewHolder.imageUser = (ImageView) convertView
 					.findViewById(R.id.imgPhoto);
+			
+			viewHolder.imgHelp = (ImageView) convertView
+					.findViewById(R.id.imgHelp);
+			
 			viewHolder.txtName = (TextView) convertView
 					.findViewById(R.id.txtName);
 			viewHolder.txtTime = (TextView) convertView
@@ -95,6 +99,12 @@ public class GameAdapter extends BaseAdapter {
         }else{
         	viewHolder.imageUser.setBackgroundResource(R.drawable.fang_write_pressed);
         }
+        
+        if(temPublish.helpid.length()>0){
+        	viewHolder.imgHelp.setVisibility(View.VISIBLE);
+        }else{
+        	viewHolder.imgHelp.setVisibility(View.GONE);
+        }
 //        }
         
         
@@ -105,27 +115,18 @@ public class GameAdapter extends BaseAdapter {
 			}
 		});
         
+        viewHolder.imgHelp.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				callBackActivity.showHelp(temPublish.helpid);
+			}
+		});
+        
       
 		
 		return convertView;
 	}  
 
-	public void ImageFromUrl(ImageView imageView,String url,int defaultphoto){
-		//第一次调用初始化
-		if(ImageLoader.getInstance()==null){
-			ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context).build();
-			ImageLoader.getInstance().init(config);
-		}
-		DisplayImageOptions options;  
-		options = new DisplayImageOptions.Builder()  
-		 .showImageOnLoading(defaultphoto) //设置图片在下载期间显示的图片  
-		 .showImageForEmptyUri(defaultphoto)//设置图片Uri为空或是错误的时候显示的图片  
-		 .cacheInMemory(true)
-         .cacheOnDisk(true)
-		.build();//构建完成  
-		ImageLoader.getInstance().displayImage(url, imageView,options);
-	}
-	
 	
 	/**
 	 * @author wanhin
@@ -137,6 +138,7 @@ public class GameAdapter extends BaseAdapter {
 		public String name;
 		public String people;
 		public String des;
+		public String helpid;
 
 		/**
 		 * @param id
@@ -144,13 +146,14 @@ public class GameAdapter extends BaseAdapter {
 		 * @param content
 		 * @param photo
 		 */
-		public GameContent(int id,String img, String name, String people,String des) {
+		public GameContent(int id,String img, String name, String people,String des,String helpid) {
 			super();
 			this.id = id;
 			this.img=img;
 			this.name = name;
 			this.people=people;
 			this.des=des;
+			this.helpid=helpid;
 		} 
 		
 	}  

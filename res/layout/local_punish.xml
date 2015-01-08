@@ -13,20 +13,6 @@
         android:layout_centerVertical="true"
         android:src="@drawable/shake" />
 
-    <TextView
-        android:id="@+id/txtPunish"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:maxLines="@integer/lines"
-        android:text="@string/真心话大冒险"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/gamered2"
-        android:textSize="@dimen/btnMoreBottom" />
-
     <Button
         android:id="@+id/btnNext"
         android:layout_width="193dp"
@@ -46,8 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="18dp"
-        android:orientation="vertical"
-         >
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/btnLocal"
@@ -59,15 +44,14 @@
             android:textColor="@color/WRITE"
             android:textSize="@dimen/activity_vertical_margin" />
 
-            <Button
-                android:id="@+id/btnNet"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:background="@drawable/tag_blue_pressed"
-                android:text="@string/网络词汇"
-                android:textColor="@color/WRITE"
-                android:textSize="@dimen/activity_horizontal_margin" />
-
+        <Button
+            android:id="@+id/btnNet"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/tag_blue_pressed"
+            android:text="@string/网络词汇"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/activity_horizontal_margin" />
     </LinearLayout>
 
     <Button
@@ -90,16 +74,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" />
 
-    <TextView
-        android:id="@+id/txtLast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtPunish"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/gamered" />
-
     <Button
         android:id="@+id/btnAct"
         android:layout_width="100dp"
@@ -107,5 +81,39 @@
         android:layout_alignLeft="@+id/imgBg"
         android:layout_alignTop="@+id/ddd"
         android:background="@drawable/btn_act" />
+
+    <LinearLayout
+        android:id="@+id/dd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txtLast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gamered" />
+
+        <TextView
+            android:id="@+id/txtPunish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:maxLines="@integer/lines"
+            android:text="@string/真心话大冒险"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/gamered2"
+            android:textSize="@dimen/btnMoreBottom" />
+
+        <ImageView
+            android:id="@+id/imgType"
+            android:layout_width="40dp"
+            android:layout_height="13dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

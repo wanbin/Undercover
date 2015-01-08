@@ -43,6 +43,7 @@ public class local_punish  extends BaseActivity {
 	Button btnLocal;
 	Button btnAct;
 	ImageView imgBg;
+	ImageView imgType;
 	Timer timer;
 	int remainSec=0;
 	int onesSec=300;
@@ -65,7 +66,8 @@ public class local_punish  extends BaseActivity {
 		proBar=(ProgressBar)this.findViewById(R.id.proBar);
 		
 		imgBg=(ImageView)this.findViewById(R.id.imgBg);
-		
+		imgType=(ImageView)this.findViewById(R.id.imgType);
+		imgType.setVisibility(View.INVISIBLE);
 		btnNext.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -207,7 +209,20 @@ public class local_punish  extends BaseActivity {
 				JSONArray objarr=obj.getJSONArray("content");
 				JSONObject random=objarr.getJSONObject(0);
 				String punish=random.getString("content");
+				int contenttype=random.getInt("contenttype");
 				txtPunish.setText(punish);
+				if (contenttype == 1) {
+					imgType.setBackgroundResource(R.drawable.turns_1);
+					imgType.setVisibility(View.VISIBLE);
+				} else if (contenttype == 2) {
+					imgType.setBackgroundResource(R.drawable.turns_2);
+					imgType.setVisibility(View.VISIBLE);
+				} else if (contenttype == 3) {
+					imgType.setBackgroundResource(R.drawable.turns_3);
+					imgType.setVisibility(View.VISIBLE);
+				}else{
+					imgType.setVisibility(View.INVISIBLE);
+				}
 				setLastString(punish);
 			} catch (Exception e) {
 				// TODO: handle exception

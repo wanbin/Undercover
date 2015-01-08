@@ -16,16 +16,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ItemAdapter extends BaseAdapter {
+public class ItemAdapter extends GameBaseAdapter {
 	private List<String> arrays = null;
-	private Context mContext;
 	private Button curDel_btn;
 	private TextView curDel_text;
 	private float x, ux;
 	private local_punish_list callBackClass;
 
 	public ItemAdapter(Context mContext,local_punish_list call, List<String> arrays) {
-		this.mContext = mContext;
+		this.context = mContext;
 		this.arrays = arrays;
 		callBackClass=call;
 	}
@@ -46,7 +45,7 @@ public class ItemAdapter extends BaseAdapter {
 		ViewHolder viewHolder = null;
 		if (view == null) {
 			viewHolder = new ViewHolder();
-			view = LayoutInflater.from(mContext).inflate(R.layout.item, null);
+			view = LayoutInflater.from(context).inflate(R.layout.item, null);
 			viewHolder.tvTitle = (TextView) view.findViewById(R.id.title);
 			viewHolder.btnDel = (Button) view.findViewById(R.id.del);
 			view.setTag(viewHolder);

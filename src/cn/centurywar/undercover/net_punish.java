@@ -13,15 +13,18 @@ import cn.centurywar.undercover.view.MyAdapter.Publish;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class net_punish extends BaseActivity {
 	private Button btnChange;
 	private Button btnSay;
+	private TextView txtTitle;
 	private ListView myList;
 	//private Button userConSend;
 	//private EditText userConTextField; 
@@ -37,6 +40,9 @@ public class net_punish extends BaseActivity {
 		btnChange = (Button)findViewById(R.id.btnChange);
 		btnSay = (Button) findViewById(R.id.btnSay);
 		myList = (ListView) findViewById(R.id.myList);
+		
+		txtTitle = (TextView) findViewById(R.id.txtTitle);
+		
 		//userConSend = (Button) findViewById(R.id.userConSend);
 		//userConTextField = (EditText) findViewById(R.id.userConTextField);
 		//添加真心话按钮
@@ -60,7 +66,15 @@ public class net_punish extends BaseActivity {
 			}
 		});
 		
+		
+		txtTitle.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				getAllPublish(0);
+			}
+		});
 
+		
 		if (!detect(net_punish.this)) {
 			ToastMessageLong("当前网络不可用");
 		}
@@ -83,8 +97,14 @@ public class net_punish extends BaseActivity {
 	 * 取得所有新闻
 	 */
 	protected void getAllPublish(int page) {
+		txtTitle.setText("正在获取列表");
 		PublishHandler publishHandler = new PublishHandler(this);
 		publishHandler.getAllPublish(page);
+	}
+	
+	protected void addCollect(int id,int type) {
+		PublishHandler publishHandler = new PublishHandler(this);
+		publishHandler.addCollect(id,type);
 	}
 	
 	/**
@@ -105,8 +125,8 @@ public class net_punish extends BaseActivity {
 		{
 			try{
 				String temstr=jsonobj.getString("data");
-//				temstr=String.
 				JSONArray content=new JSONArray(temstr);
+				txtTitle.setText("成功获取列表[点击刷新]");
 				updateMessage(content);
 			}catch(Exception e){
 				e.printStackTrace();
@@ -144,7 +164,7 @@ public class net_punish extends BaseActivity {
 						.getString("username"), temobj.getString("content"),
 						temobj.getInt("like"), temobj.getInt("dislike")
 						, temobj.getBoolean("liked"),
-						temobj.getBoolean("disliked"), temobj.getInt("type")));
+						temobj.getBoolean("disliked"), temobj.getInt("type"), temobj.getInt("contenttype")));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -197,6 +217,12 @@ public class net_punish extends BaseActivity {
 	}
 
 	
+	public void like(int id){
+		addCollect(id,1);
+	}
+	public void dislike(int id){
+		addCollect(id,2);
+	}
 
 }
 
