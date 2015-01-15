@@ -63,9 +63,6 @@ public class BaseHttpCommand {
 		});
 		
 		
-//		AsyncImageLoader il = new AsyncImageLoader();
-//		ImageView indexcover = (ImageView) findViewById(R.id.indexcover);
-//		il.loadDrawable("http://ticketfinder.sinaapp.com/custom/2wm.png",indexcover);
 
 	}
 }

@@ -6,20 +6,41 @@
     android:background="@color/WRITE"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/txtTitle"
+    <RelativeLayout
+        android:id="@+id/ssss"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gameblue"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="" />
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/gameblue"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="" />
+
+        <Button
+            android:id="@+id/btnMail"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/small_tip_red"
+            android:text="信件2"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/alphabet_size" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="80dp" >
-
     </FrameLayout>
 
     <ListView

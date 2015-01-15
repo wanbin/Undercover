@@ -581,28 +581,6 @@ public class BaseActivity extends FragmentActivity  implements httpCallBack{
 		});
 	}
 
-	public void addShortcut(Context context) {
-
-		String ACTION_INSTALL_SHORTCUT = "com.android.launcher.action.INSTALL_SHORTCUT";
-		// 快捷方式要启动的包
-		Intent intent = new Intent(context, context.getClass());
-
-		// 设置快捷方式的参数
-		Intent shortcutIntent = new Intent(ACTION_INSTALL_SHORTCUT);
-		// 设置名称
-		shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, context
-				.getResources().getString(R.string.app_name)); // 设置启动 Intent
-		shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intent);
-		// 设置图标
-		shortcutIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-				Intent.ShortcutIconResource.fromContext(context,
-						R.drawable.ic_launcher));
-		// 只创建一次快捷方式
-		shortcutIntent.putExtra("duplicate", false);
-		// 创建
-		context.sendBroadcast(shortcutIntent);
-	}
-	
 
 /**
  * 友盟提供取得设备号的方法

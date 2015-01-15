@@ -13,6 +13,7 @@ public class net_punish_add extends BaseActivity {
 	private Button send;
 	private EditText textCotent;
 	private int sign = 1;
+	private String oldStr="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,17 +23,25 @@ public class net_punish_add extends BaseActivity {
 		textCotent = (EditText) findViewById(R.id.editText1);
 		String content=getIntent().getStringExtra("content");
 		textCotent.setText(content);
+		oldStr=content;
 		send.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String content = textCotent.getText().toString();
-				if (textCotent.getText().length() != 0) {
+				if(content.length()==0){
+					ToastMessageLong("输入内容为空");
+					return;
+				}
+				if(content.equals(oldStr)){
+					ToastMessageLong("请不要提交相同内容");
+					return;
+				}
 					// 判断content的内容是否为控制
-					if (sendPublish(content)) {
-						addDamaoxian(content);
-						finish();
-					}
+				if (sendPublish(content)) {
+					addDamaoxian(content);
+					finish();
+					ToastMessageLong("提交成功");
 				}
 			}
 		});

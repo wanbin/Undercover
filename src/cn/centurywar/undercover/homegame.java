@@ -60,6 +60,7 @@ public class homegame extends BaseActivity {
     private View ad;
     
     private TextView txtTitle;
+    private Button btnMail;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,8 +117,19 @@ public class homegame extends BaseActivity {
 		
 		ListView listView=(ListView)this.findViewById(R.id.gamelist);
 		frameLayout=(FrameLayout)this.findViewById(R.id.frameLayout);
+		btnMail=(Button)this.findViewById(R.id.btnMail);
+		btnMail.setVisibility(View.INVISIBLE);
 		
-		
+		btnMail.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intentGo = new Intent();
+        		intentGo.setClass(homegame.this, mail_list.class);
+        		startActivity(intentGo);
+        		btnMail.setVisibility(View.INVISIBLE);
+			}
+		});
+
 		
 		LayoutInflater mInflater = getLayoutInflater();
 		 ad = mInflater.inflate(R.layout.game_ad, null);
@@ -260,28 +272,28 @@ public class homegame extends BaseActivity {
 				setToObject("photo", photo);
 				
 				
-				
-				
-				
 //				setToObject("newgameurl", newgameurl);
 				
-				if (obj.has("mail")) {
-					JSONArray mailArr = obj.getJSONArray("mail");
-					new AlertDialog.Builder(this)   
-					.setTitle("有新消息")  
-					.setMessage(mailArr.getJSONObject(0).getString("content"))  
-					.setPositiveButton("查看更多",  
-							new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialoginterface, int i){
-                            //按钮事件
-                        	Intent intentGo = new Intent();
-                    		intentGo.setClass(homegame.this, mail_list.class);
-                    		startActivity(intentGo);
-                        }
-						})  
-					.setNegativeButton("关闭", null)  
-					.show(); 
+				if (obj.has("mailcount")&&obj.getInt("mailcount")>0) {
+					btnMail.setVisibility(View.VISIBLE);
+					btnMail.setText("信件"+obj.getInt("mailcount"));
+//					JSONArray mailArr = obj.getJSONArray("mail");
+//					new AlertDialog.Builder(this)   
+//					.setTitle("有新消息")  
+//					.setMessage(mailArr.getJSONObject(0).getString("content"))  
+//					.setPositiveButton("查看更多",  
+//							new DialogInterface.OnClickListener(){
+//                        public void onClick(DialogInterface dialoginterface, int i){
+//                            //按钮事件
+//                        	;
+//                        }
+//						})  
+//					.setNegativeButton("关闭", null)  
+//					.show(); 
 //					textMail.setText("通知："+ mailArr.getJSONObject(0).getString("content"));
+				}
+				else{
+					btnMail.setVisibility(View.INVISIBLE);
 				}
 			} catch (Exception e) {
 				// TODO: handle exception
