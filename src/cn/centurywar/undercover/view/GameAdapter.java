@@ -51,6 +51,7 @@ public class GameAdapter extends GameBaseAdapter {
         public ImageView imgHelp;
         public TextView txtName;  
         public TextView txtTime;  
+        public TextView txtDes;  
     }
 	@Override
 	public int getCount() {
@@ -83,6 +84,8 @@ public class GameAdapter extends GameBaseAdapter {
 					.findViewById(R.id.txtName);
 			viewHolder.txtTime = (TextView) convertView
 					.findViewById(R.id.txtTime);
+			viewHolder.txtDes = (TextView) convertView
+					.findViewById(R.id.txtDes);
 			convertView.setTag(viewHolder);
 	        
 		} else {
@@ -92,6 +95,12 @@ public class GameAdapter extends GameBaseAdapter {
 		//设置各控件的内容在这里
 		viewHolder.txtName.setText(temPublish.name);  
         viewHolder.txtTime.setText(temPublish.people);
+        if(temPublish.des.equals("")){
+        	viewHolder.txtDes.setVisibility(View.GONE);
+        }else{
+        	viewHolder.txtDes.setVisibility(View.VISIBLE);
+        	viewHolder.txtDes.setText(temPublish.des);
+        }
 
 //        if(viewHolder.imageUser.getBackground()==callBackActivity.getResources().getDrawable(R.drawable.fang_pink_pressed)){
         if(temPublish.img.length()>0){
@@ -146,14 +155,14 @@ public class GameAdapter extends GameBaseAdapter {
 		 * @param content
 		 * @param photo
 		 */
-		public GameContent(int id,String img, String name, String people,String des,String helpid) {
+		public GameContent(int id,String img, String name, String people,String des) {
 			super();
 			this.id = id;
 			this.img=img;
 			this.name = name;
 			this.people=people;
 			this.des=des;
-			this.helpid=helpid;
+			this.helpid="LOCAL_"+id;
 		} 
 		
 	}  

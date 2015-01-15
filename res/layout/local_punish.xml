@@ -114,6 +114,47 @@
             android:layout_width="40dp"
             android:layout_height="13dp" />
 
+        <LinearLayout
+            android:id="@+id/likeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="喜欢"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+                    <Button
+            android:id="@+id/buttonLike"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="6dp"
+            android:background="@drawable/heart_2x"
+            android:padding="@dimen/smailpadding"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/txtSmall12" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不喜欢"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Button
+            android:id="@+id/buttonDislike"
+            android:layout_width="25dp"
+            android:layout_height="20dp"
+            android:background="@drawable/heart_gray_2x"
+            android:padding="@dimen/smailpadding"
+            android:textColor="@color/WRITE"
+            android:textSize="@dimen/txtSmall12" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

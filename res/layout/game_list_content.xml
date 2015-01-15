@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     android:padding="3dp" >
 
     <ImageView
         android:id="@+id/imgPhoto"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:src="@drawable/fang_pink_pressed" />
 
     <LinearLayout
         android:id="@+id/warpUser"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imgPhoto"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/imgPhoto"
         android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/imgPhoto"
         android:gravity="left|center"
         android:orientation="vertical" >
 
@@ -34,7 +30,7 @@
                 android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/btnMoreBottom" />
+                android:textSize="@dimen/activity_vertical_margin" />
 
             <TextView
                 android:id="@+id/txtTime"
@@ -49,9 +45,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
                 android:src="@drawable/help_pressed" />
-
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/txtDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="@integer/lines"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/light_gray2"
+            android:textSize="@dimen/alphabet_size" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

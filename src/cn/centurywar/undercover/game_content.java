@@ -124,7 +124,7 @@ public class game_content extends BaseActivity {
 			imgLayout.setVisibility(View.VISIBLE);
 			newImage(source);
 			Drawable drawable = getResources().getDrawable(R.drawable.imghode);
-		    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+		    drawable.setBounds(0, 0, 0,0);
 		    return drawable;
 		}
 	}; 

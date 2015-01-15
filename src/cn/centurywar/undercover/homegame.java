@@ -6,6 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.centurywar.undercover.view.GameAdapter;
@@ -38,13 +39,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class homegame extends BaseActivity {
-	// 把需要滑动的页卡添加到这个list中
-	private List<View> viewList;
 	// viewPager 滑动
 	private ViewPager viewPager;
 		
-	// 将小圆点ImageView放入该List
-	private ImageView[] imageViews;
 		
 	// 包裹小圆点的LinearLayout
     private ViewGroup pointContainer;
@@ -62,57 +59,12 @@ public class homegame extends BaseActivity {
     private TextView txtTitle;
     private Button btnMail;
     
+    List<GameContent> temPubs;
+    GameAdapter adapter;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		// Welcome 的Layout
-
-		viewList = new ArrayList<View>();
-		
-		
-		
-		String[] gamename={"谁是卧底","杀人游戏","真心话大冒险","我们都爱演","有胆量就点","有胆量就转","疯狂挤数字","大家来抽签","幸运转盘","疯狂猜词"};
-		String[] gamepeople={
-				"（4~12人）",
-				"（6~16人）",
-				"（惩罚游戏）",
-				"（惩罚游戏）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（聚会游戏、酒桌游戏）",
-				""
-				};
-		String[] des={
-				"找出卧底",
-				"（6~16人）",
-				"（惩罚游戏）",
-				"（惩罚游戏）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（2人及以上）",
-				"（聚会游戏、酒桌游戏）",
-				""
-				};
-		int gameCount=gamename.length;
-		imageViews = new ImageView[gameCount+1];
-		
-		int[] gameId={
-				ConstantControl.GAME_UNDERCOVER,
-				ConstantControl.GAME_KILLER,
-				ConstantControl.GAME_PUNISH,
-				ConstantControl.GAME_ACTION,
-				ConstantControl.GAME_CLICK,
-				ConstantControl.GAME_CIRCLE,
-				ConstantControl.GAME_PUSH,
-				ConstantControl.GAME_DRAW,
-				ConstantControl.GAME_ZHUANG,
-				ConstantControl.GAME_CAI
-		};
- 		
 		setContentView(R.layout.game_list);
 		
 		ListView listView=(ListView)this.findViewById(R.id.gamelist);
@@ -153,24 +105,36 @@ public class homegame extends BaseActivity {
 		
 		frameLayout.addView(ad);
 		ad.setVisibility(View.INVISIBLE);
-		
-		
 		urlBtn=btn;
 		urlText=txtName;
 		
 		
-		List<GameContent> temPubs = new ArrayList<GameContent>();
-		for (int m = 0; m < gamename.length; m++) {
-			try {
-				//在这里把从网络传回来的参数给初始化为publish实例，并加到list里面
-				temPubs.add(new GameContent(gameId[m],"",gamename[m],gamepeople[m],"","LOCAL_"+gameId[m]));
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-		GameAdapter adapter= new GameAdapter(homegame.this, temPubs,
-				this.getUid());
+		
+		GameContent game1=new GameContent(ConstantControl.GAME_UNDERCOVER,"","谁是卧底","（4~12人）","");
+		GameContent game2=new GameContent(ConstantControl.GAME_KILLER,"","杀人游戏","（4~12人）","");
+		GameContent game3=new GameContent(ConstantControl.GAME_PUNISH,"","真心话大冒险","（4~12人）","");
+		GameContent game4=new GameContent(ConstantControl.GAME_ACTION,"","我们都爱演","（4~12人）","");
+		GameContent game5=new GameContent(ConstantControl.GAME_CLICK,"","有胆量就点","（4~12人）","");
+		GameContent game6=new GameContent(ConstantControl.GAME_CIRCLE,"","有胆量就转","（4~12人）","");
+		GameContent game7=new GameContent(ConstantControl.GAME_PUSH,"","疯狂挤数字","（4~12人）","");
+		GameContent game8=new GameContent(ConstantControl.GAME_DRAW,"","大家来抽签","（4~12人）","");
+		GameContent game9=new GameContent(ConstantControl.GAME_ZHUANG,"","幸运转盘","（4~12人）","");
+		GameContent game10=new GameContent(ConstantControl.GAME_ZHUANG,"","疯狂猜词","（4~12人）","");
+		
+		temPubs = new ArrayList<GameContent>();
+		temPubs.add(game1);
+		temPubs.add(game2);
+		temPubs.add(game3);
+		temPubs.add(game4);
+		temPubs.add(game5);
+		temPubs.add(game6);
+		temPubs.add(game7);
+		temPubs.add(game8);
+		temPubs.add(game9);
+		temPubs.add(game10);
+		
+		
+		adapter = new GameAdapter(homegame.this, temPubs, this.getUid());
 		adapter.setCallBack(homegame.this);
 		listView.setAdapter(adapter);
         
@@ -267,6 +231,13 @@ public class homegame extends BaseActivity {
 				//本周热门功能暂时省略
 				updateNewGame(newgamename,newgameimage,newgameid,username);
 				
+				
+				if (obj.has("local")) {
+					// 本地游戏列表
+					JSONArray local = obj.getJSONArray("local");
+					updateLocal(local);
+				}
+				
 				setToObject("username", username);
 				setToObjectInt("gameuid", gameuid);
 				setToObject("photo", photo);
@@ -309,9 +280,23 @@ public class homegame extends BaseActivity {
 		}
 	}
 	
+	private void updateLocal(JSONArray localarr){
+		temPubs.clear();
+		for(int i=0;i<localarr.length();i++){
+			try {
+				JSONObject tem=localarr.getJSONObject(i);
+				GameContent temgame=new GameContent(tem.getInt("gameid"),tem.getString("img"),tem.getString("name"),tem.getString("typename"),tem.getString("des"));
+				temPubs.add(temgame);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		adapter.notifyDataSetChanged();
+		
+	}
 	
 	public void updateNewGame(String newgamename,String newgameimage,final int gameid,String username){
-		
 		if(username.length()>0){
 			txtTitle.setText("欢迎您："+username+"[点击刷新]");
 		}
@@ -341,4 +326,5 @@ public class homegame extends BaseActivity {
 		});
 		
 	}
+	
 }

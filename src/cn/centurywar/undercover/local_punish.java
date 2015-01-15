@@ -1,5 +1,7 @@
 package cn.centurywar.undercover;
 
+import http.PublishHandler;
+
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
@@ -31,6 +33,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -42,13 +45,17 @@ public class local_punish  extends BaseActivity {
 	Button btnNet;
 	Button btnLocal;
 	Button btnAct;
+	Button buttonLike;
+	Button buttonDislike;
 	ImageView imgBg;
 	ImageView imgType;
 	Timer timer;
 	int remainSec=0;
 	int onesSec=300;
 	
+	int thisid=0;
 	ProgressBar proBar;
+	LinearLayout likeLayout;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,6 +68,11 @@ public class local_punish  extends BaseActivity {
 		btnShare=(Button)this.findViewById(R.id.btnShare);
 		btnAct=(Button)this.findViewById(R.id.btnAct);
 		
+		buttonLike=(Button)this.findViewById(R.id.buttonLike);
+		buttonDislike=(Button)this.findViewById(R.id.buttonDislike);
+		
+		likeLayout=(LinearLayout)this.findViewById(R.id.likeLayout);
+		likeLayout.setVisibility(View.INVISIBLE);
 		btnLocal=(Button)this.findViewById(R.id.btnLocal);
 		btnNet=(Button)this.findViewById(R.id.btnNet);
 		proBar=(ProgressBar)this.findViewById(R.id.proBar);
@@ -112,6 +124,21 @@ public class local_punish  extends BaseActivity {
 				startActivity(intentGo);
 			}
 		});		
+		
+		
+		buttonLike.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				addCollect(thisid,1);
+			}
+		});		
+		buttonDislike.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				addCollect(thisid,2);
+			}
+		});	
+		
 		imgShake();
 		timer = new Timer();
 		timer.schedule(timetask, 0, 10);
@@ -120,6 +147,11 @@ public class local_punish  extends BaseActivity {
 		txtLast.setText(getLastString());
 		runAniSetting();
 		uMengClick("game_zhenxinhua_damaoxian");
+	}
+	
+	protected void addCollect(int id,int type) {
+		PublishHandler publishHandler = new PublishHandler(this);
+		publishHandler.addCollect(id,type);
 	}
 
 	Handler handler = new Handler() {
@@ -209,6 +241,10 @@ public class local_punish  extends BaseActivity {
 				JSONArray objarr=obj.getJSONArray("content");
 				JSONObject random=objarr.getJSONObject(0);
 				String punish=random.getString("content");
+				int temid=random.getInt("_id");
+				thisid=temid;
+				likeLayout.setVisibility(View.VISIBLE);
+				
 				int contenttype=random.getInt("contenttype");
 				txtPunish.setText(punish);
 				if (contenttype == 1) {
@@ -229,6 +265,9 @@ public class local_punish  extends BaseActivity {
 				e.printStackTrace();
 				txtPunish.setText("可以免除惩罚");
 			}
+		}
+		else if (cmd.equals(ConstantControl.SEND_PUBLISH_COLLECT)) {
+			ToastMessage("操作成功");
 		}
 	}
 	
