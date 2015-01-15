@@ -61,6 +61,8 @@
         </activity>
         <activity android:name="cn.centurywar.undercover.local_cai" android:screenOrientation="sensorLandscape">
         </activity>
+        <activity android:name="cn.centurywar.undercover.homepage" android:screenOrientation="sensorLandscape">
+        </activity>
          <activity android:name="cn.centurywar.undercover.home" android:screenOrientation="portrait">
               <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -26,9 +26,9 @@ public class home extends BaseActivity {
     
 	private TabHost mTabHost;
 			
-    private String TAB1 = "游戏";  
-    private String TAB2 = "参与";  
-    private String TAB3 = "玩法";  
+    private String TAB1 = "本地";  
+    private String TAB2 = "网络";  
+    private String TAB3 = "规则";  
     private String TAB4 = "设置";  
     Intent pageSetting;
     

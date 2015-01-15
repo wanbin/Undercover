@@ -1,6 +1,7 @@
 package cn.centurywar.undercover;
 
 import http.PublishHandler;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -35,6 +36,7 @@ public class game_content extends BaseActivity {
 	TextView txtContent;
 	LinearLayout imgLayout;
 	Button btnShare;
+	Button btnNet;
 	String gameName;
 	String gameImg;
 	@Override
@@ -45,6 +47,7 @@ public class game_content extends BaseActivity {
 		txtContent=(TextView)this.findViewById(R.id.txtContent);
 		imgLayout=(LinearLayout)this.findViewById(R.id.imgLayout);
 		btnShare=(Button)this.findViewById(R.id.btnShare);
+		btnNet=(Button)this.findViewById(R.id.btnNet);
 		
 		final String gameid=getIntent().getStringExtra("gameid");
 		
@@ -63,6 +66,15 @@ public class game_content extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				shareItImg(game_content.this,"发现了个好玩的聚会游戏："+gameName+" 下次聚会我们就可以玩这个了！(爱上聚会 http://www.centurywar.cn/www/index.php?showpage=gamenow&gameid="+gameid+" )",gameImg);
+			}
+		});
+		btnNet.setOnClickListener(new Button.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent mIntent = new Intent();
+				mIntent.setClass(game_content.this, homepage.class);
+				mIntent.putExtra("url", "http://www.centurywar.cn/www/index.php?showpage=article&articleid="+gameid);
+				startActivity(mIntent);
 			}
 		});
 	}
